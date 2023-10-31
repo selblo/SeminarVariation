@@ -1,0 +1,42 @@
+/*
+ * strainwave.maxima
+ *
+ * (c) 2023 Prof Dr Andreas Müller
+ */
+gradef(y(x), yp(x));
+gradef(yp(x), ypp(x));
+gradef(ypp(x), yppp(x));
+gradef(yppp(x), ypppp(x));
+
+L: ypp(x)^2 / (1+yp(x)^2)^3;
+
+p:
+diff(L, y(x))
+-
+diff(diff(L, yp(x)), x)
++
+diff(diff(diff(L, ypp(x)), x), x);
+
+p: num(ratsimp(p));
+
+q: coeff(p, ypppp(x), 1);
+r: p - q * ypppp(x);
+
+f: ratsimp(r / q);
+
+/*
+Y: sqrt(1-x^2)/a^2;
+Yp: diff(Y, x);
+Ypp: diff(Yp, x);
+Yppp: diff(Ypp, x);
+Ypppp: diff(Yppp, x);
+
+p: subst(Y, y(x), p);
+p: subst(Yp, yp(x), p);
+p: subst(Ypp, ypp(x), p);
+p: subst(Yppp, yppp(x), p);
+p: subst(Ypppp, ypppp(x), p);
+P: ratsimp(expand(p));
+num(P);
+subst(1, a, P);
+*/
