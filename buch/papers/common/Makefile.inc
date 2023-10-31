@@ -10,15 +10,27 @@ PAPERFILES = \
 	papers/uebersicht.tex \
 	papers/beispiel/main.tex \
 	
-buch1-blx.bbl:	buch1-blx.aux
-	bibtex buch1-blx
+$(workdir)/buch1-blx.bbl:	$(workdir)/buch1-blx.aux
+	cd $(workdir); bibtex buch1-blx
 
-buch2-blx.bbl:	buch2-blx.aux
-	bibtex buch2-blx
+$(workdir)/$(seminar)1-blx.bbl:	$(workdir)/$(seminar)1-blx.aux
+	cd $(workdir); bibtex $(seminar)1-blx
 
-BLXFILES = buch.bbl \
-	buch1-blx.bbl \
-	buch2-blx.bbl \
+$(workdir)/buch2-blx.bbl:	$(workdir)/buch2-blx.aux
+	cd $(workdir) bibtex buch2-blx
+
+$(workdir)/$(seminar)2-blx.bbl:	$(workdir)/$(seminar)2-blx.aux
+	cd $(workdir) bibtex $(seminar)2-blx
+
+BLXFILES = $(workdir)/buch.bbl \
+	$(workdir)/buch1-blx.bbl \
+	$(workdir)/buch2-blx.bbl \
+
+
+SBLXFILES = $(workdir)/$(seminar).bbl\
+	$(workdir)/$(seminar)1-blx.bbl \
+	$(workdir)/$(seminar)2-blx.bbl \
+
 
 PAPER_DIRECTORIES = \
 	beispiel \

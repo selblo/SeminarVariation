@@ -40,17 +40,37 @@ awk 'BEGIN {
 	counter=1
 }
 {
-	printf("buch%d-blx.bbl:\tbuch%d-blx.aux\n", counter, counter)
-	printf("\tbibtex buch%d-blx\n\n", counter)
+	# buch
+	printf("$(workdir)/buch%d-blx.bbl:\t$(workdir)/buch%d-blx.aux\n",
+		counter, counter)
+	printf("\tcd $(workdir); bibtex buch%d-blx\n\n", counter)
+	# Seminar
+	printf("$(workdir)/$(seminar)%d-blx.bbl:\t$(workdir)/$(seminar)%d-blx.aux\n",
+		counter, counter)
+	printf("\tcd $(workdir); bibtex $(seminar)%d-blx\n\n", counter)
 	counter++
 }
 END {
-	printf("buch%d-blx.bbl:\tbuch%d-blx.aux\n", counter, counter)
-	printf("\tbibtex buch%d-blx\n\n", counter)
-	printf("BLXFILES = buch.bbl \\\n")
+	printf("$(workdir)/buch%d-blx.bbl:\t$(workdir)/buch%d-blx.aux\n",
+		counter, counter)
+	printf("\tcd $(workdir) bibtex buch%d-blx\n\n", counter)
+	printf("$(workdir)/$(seminar)%d-blx.bbl:\t$(workdir)/$(seminar)%d-blx.aux\n",
+		counter, counter)
+	printf("\tcd $(workdir) bibtex $(seminar)%d-blx\n\n", counter)
+	printf("BLXFILES = $(workdir)/buch.bbl \\\n")
 	for (i = 1; i <= counter; i++) {
-		printf("\tbuch%d-blx.bbl \\\n", i)
+		printf("\t$(workdir)/buch%d-blx.bbl \\\n", i)
 	}
+	#printf("\tbuch%d-blx.bbl\n", i)
+	printf("\n")
+	#printf("\tbuch%d-blx.bbl\n", i)
+	printf("\n")
+	printf("SBLXFILES = $(workdir)/$(seminar).bbl\\\n")
+	for (i = 1; i <= counter; i++) {
+		printf("\t$(workdir)/$(seminar)%d-blx.bbl \\\n", i)
+	}
+	#printf("\tbuch%d-blx.bbl\n", i)
+	printf("\n")
 	#printf("\tbuch%d-blx.bbl\n", i)
 	printf("\n")
 }' common/paperlist >> common/Makefile.inc

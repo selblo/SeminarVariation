@@ -9,7 +9,7 @@ CHAPTERFILES = 								\
 	chapters/vorwort.tex
 
 #include chapters/000-einleitung/Makefile.inc
-#include chapters/010-skalarprodukt/Makefile.inc
+include chapters/010-fuvar/Makefile.inc
 #include chapters/020-orthofkt/Makefile.inc
 #include chapters/030-gruppen/Makefile.inc
 #include chapters/040-operatoren/Makefile.inc
