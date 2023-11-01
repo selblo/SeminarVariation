@@ -10,9 +10,10 @@ CHAPTERFILES = 								\
 
 #include chapters/000-einleitung/Makefile.inc
 include chapters/010-fuvar/Makefile.inc
-#include chapters/020-orthofkt/Makefile.inc
-#include chapters/030-gruppen/Makefile.inc
-#include chapters/040-operatoren/Makefile.inc
-#include chapters/050-radon/Makefile.inc
-#include chapters/060-diskret/Makefile.inc
-#include chapters/070-nichtkomm/Makefile.inc
+include chapters/020-variation/Makefile.inc
+include chapters/030-felder/Makefile.inc
+include chapters/040-nebenbedingungen/Makefile.inc
+include chapters/050-variation2/Makefile.inc
+include chapters/060-direkt/Makefile.inc
+include chapters/070-mechanik/Makefile.inc
+include chapters/080-symmetrien/Makefile.inc
