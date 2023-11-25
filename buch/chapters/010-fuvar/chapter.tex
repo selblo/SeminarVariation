@@ -6,6 +6,39 @@
 \chapter{Extremalprobleme für Funktionen mehrere Variablen
 \label{buch:chapter:fuvar}}
 \kopflinks{Extremalprobleme}
+Die Beobachtung, dass in einem Extremum einer Funktion die Ableitung
+verschwindet, gehört zu den frühesten Anwendungen, die Studierende
+der Analysis praktisch umzusetzen lernen.
+Genauere Aussagen darüber, ob ein Minimum oder Maximum 
+vorliegt, lassen sich aus den höheren Ableitungen gewinnen.
+
+In einzelnen Fällen lassen sich sogar Aufgaben lösen, die auf
+den ersten Blick mehrere Variablen zu involvieren scheinen.
+Um das Rechteck mit Seiten $l$ und $b$ hat den grössten Flächeninhalt
+$F=lb$ bei gegebenem Umfang zu finden, nutzt man aus, dass $2l+2b=U$ ist
+und damit $l=U/2-b$ ist.
+Der Flächeninhalt wird damit zur Funktion $f(b)=lb=(U/2-b)b$, die nur
+noch von der einen Variable $b$ abhängt. 
+Die quadratische Funktion
+\[
+f(b) = \frac{U}2b-b^2
+\]
+hat die Ableitung
+\[
+f'(b) = \frac{U}2-2b
+\]
+mit der einzigen Nullstelle $b_{\text{max}}=U/4$.
+Das Rechteck mit maximalem Inhalt ist also ein Quadrat mit Seitenlänge
+$U/4$.
+
+Die im obigen Beispiel mögliche Reduktion auf ein Problem mit nur einer
+Variablen ist nur in sehr speziellen Situationen möglich.
+Ziel dieses Kapitels ist daher, die Theorie der Bestimmung der
+Extremwerte für Funktionen mehrerer Variablen zu entwickeln.
+Die Variationsrechnung, die ab Kapitel~\ref{buch:chapter:variation}
+dargestellt wird, verwendet sowohl die im Fall endlich vieler Variablen
+entwickelten Methoden wie auch die Intuition, um analoge Techniken
+für den unendlichdimensionalen Fall der Funktionale zu finden.
 
 \input{chapters/010-fuvar/1-richtungsableitung.tex}
 \input{chapters/010-fuvar/2-kritisch.tex}
