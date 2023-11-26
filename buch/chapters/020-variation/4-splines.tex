@@ -6,6 +6,103 @@
 \section{Spline-Interpolation
 \label{buch:variation:section:splines}}
 \kopfrechts{Spline-Interpolation}
+In diesem Abschnitt soll eine Anwendung diskutiert werden, die grossen
+Nutzen in der numerischen Mathematik bringt.
+Es unterscheidet sich von früheren Beispielen dadurch, dass die
+gesuchte Funktion nicht nur an den Intervallenden festgehalten wird,
+sondern auch die Werte in Zwischenpunkten vorgeschrieben sind.
+
+%
+% Problemstellung
+%
+\subsection{Problemstellung}
+Von einer Funktion sind die Werte 
+$f_i=f(x_i)$ in den Stellen $x_0=a<x_1<\dots<x_n=b$ bekannt.
+Man finde eine Interpolationsfunktion $g(x)$ derart, dass
+\[
+f(x_i) = g(x_i)
+\quad
+\forall i=0,\dots,n.
+\]
+Ausserdem soll der Funktionsgraph von $g(x)$ möglichst wenig Krümmung haben.
+Da die Krümmung eines Graphen ist im Wesentlichen abhängig von der zweiten
+Ableitung, wir verlangen daher, dass das Integral
+\begin{equation}
+I(g)
+=
+\int_a^b g''(x)^2\,dx
+\label{buch:variation:spline:eqn:funktional}
+\end{equation}
+möglichst klein wird.
+Eine solche Funktion heisst {\em Spline-Interpolationsfunktion}.
+
+%
+% Euler-Lagrange-Differentialgleichung
+%
+\subsection{Euler-Lagrange-Differentialgleichung}
+Die Lagrange-Funktion des
+Funktionals~\eqref{buch:variation:spline:eqn:funktional} ist
+\[
+L(x,y,y',y'') = y^{\prime\prime 2}.
+\]
+Für die Herleitung der Euler-Lagrange-Differentialgleichungen
+dürfen jetzt aber nur Funktionen $\eta$ verwendet werden, die
+in den Stellen $x_i$ verschwinden.
+Die Variation ergibt
+\begin{align*}
+\delta I
+&=
+\frac{d}{dt}
+\int_a^b (y''(x)+t\eta''(x))^2\,dx
+\bigg|_{t=0}
+\\
+&=
+\int_a^b 2y''(x)\eta''(x) \,dx.
+\end{align*}
+Da wir nur wissen, dass $y''(x)$ in den Teilintervallen $[x_i,x_{i+1}]$
+differenzierbar ist, muss die partielle Integration auf diese
+Teilintervalle beschränkt werden:
+\begin{align*}
+\delta I
+&=
+2
+\sum_{i=0}^{n-1}
+\int_{x_i}^{x_{i+1}} y''(x) \eta'(x)\,dx
+=
+2\sum_{i=0}^{n-1}\biggl[y''(x)\eta(x)\biggr]_{x_i}^{x_{i+1}}
+-
+2\sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}} y'''(x)\eta'(x)\,dx
+\\
+&=
+-2y''(a)\eta'(a)
++\sum_{i=0}^{n-1}\bigl(y''(x_i-) -y''(x_i+)\bigr)\eta'(x_i)
++
+2y''(b)\eta'(b)
+-
+2
+\sum_{i=0}^{n-1}
+\biggl[
+y'''(x_i)\eta(x_i)
+\biggr]_{x_i}^{x_{i+1}}
+\\
+&\qquad
++2
+\sum_{i=0}^{n-1}
+\int_{x_i}^{x_{i+1}} y''''(x)\eta(x)\,dx.
+\end{align*}
+Da $\eta$ in den Stützstellen verschwindet, ist diezweite Summe auf der
+rechten Seite $=0$.
+Die Variation kann nur für alle $\eta$ verschwinden, wenn die
+Koeffizienten in der ersten Summe verschwinden, es folgt daher, dass
+\[
+y''(x_i-) = y''(x_i+) \quad\text{für alle $i$},
+\]
+die Funktion $y(x)$ ist also zweimal stetig differenzierbar auf dem
+ganzen Intervall.
+Aus dem Fundamentallemma angewandt auf die letzte Summe folgt, dass
+$y''''(x)=0$ ist in jedem Teilintervall $[x_i,x_{i+1}]$.
+Die Funktion $y(x)$ ist daher auf jedem solchen Teilintervall ein
+kubisches Polynom.
 
 \begin{verbatim}
 - Problemstellung

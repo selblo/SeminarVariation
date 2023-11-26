@@ -1,0 +1,51 @@
+%
+% g.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{3}
+\def\a{-0.5}
+\def\b{2.5}
+\pgfmathparse{2/(\b-\a)}
+\xdef\l{\pgfmathresult}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-1,0) -- (3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.05) -- (0,1.1) coordinate[label={left:$y$}];
+
+\begin{scope}
+\clip (-1,-0.1) rectangle (2.9,1);
+\draw[color=red,line width=1.2pt]
+	plot[domain=0.25:10,samples=100] ({\a+1/\x},{exp(-\x)})
+	-- (\a,0) -- (-1,0);
+\draw[color=red,line width=1.2pt]
+	plot[domain=0.25:10,samples=100] ({\b-1/\x},{exp(-\x)})
+	-- (\b,0) -- (3,0);
+
+\draw[color=blue,line width=1.2pt]
+	plot[domain=\l:10,samples=100]
+		({\a+1/\x},{exp(-\x)*exp(-1/(\b-\a-1/\x))}) -- (\a,0) -- (-1,0);
+\draw[color=blue,line width=1.2pt]
+	plot[domain=\l:10,samples=100]
+		({\b-1/\x},{exp(-\x)*exp(-1/(-\a+\b-1/\x))}) -- (\b,0) -- (3,0);
+\end{scope}
+
+\draw (\a,-0.02) -- (\a,0.02);
+\node at (\a,0) [below] {$a\mathstrut$};
+\draw (\b,-0.02) -- (\b,0.02);
+\node at (\b,0) [below] {$b\mathstrut$};
+\node[color=blue] at ({0.5*(\a+\b)},0.12) {$g_{a,b}(x)$};
+\node[color=red] at (\a,0.8) {$f(x-a)\mathstrut$};
+\node[color=red] at (\b,0.8) {$f(b-x)\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

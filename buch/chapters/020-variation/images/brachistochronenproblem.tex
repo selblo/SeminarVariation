@@ -1,0 +1,54 @@
+%
+% brachistochronenproblem.tex -- Brachistochronenproblem
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\r{1.5}
+\pgfmathparse{3.14159/180}
+\xdef\m{\pgfmathresult}
+\def\xwert#1{\r*((#1)*\m-sin(#1))}
+\def\ywert#1{\r*(cos(#1)-1)}
+\def\punkt#1{ ({\r*((#1)*\m-sin(#1))},{\r*(cos(#1)-1)}) }
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=gray!50] plot[domain=0:360,samples=360]
+	({\r*((\x)*\m-sin(\x))},{\r*(cos(\x)-1)});
+
+\draw[->] (-0.1,0) -- (10,0) coordinate[label={$x$}];
+\draw[->] (0,0.1) -- (0,-3.5) coordinate[label={left:$y$}];
+
+\draw ({\m*\r*180},0.05) -- ({\m*\r*180},-0.05);
+\node at ({\m*\r*180},0) [above] {$\frac{\pi}2\mathstrut$};
+\draw ({\m*\r*360},0.05) -- ({\m*\r*360},-0.05);
+\node at ({\m*\r*360},0) [above] {$\pi\mathstrut$};
+
+\draw[line width=0.2pt]  ({\xwert{60}},0) -- \punkt{60};
+\node at ({\xwert{60}},0) [above] {$a\mathstrut$};
+\draw ({\xwert{60}},0.05) -- ({\xwert{60}},-0.05);
+
+\draw[line width=0.2pt]  ({\xwert{160}},0) -- \punkt{160};
+\node at ({\xwert{160}},0) [above] {$b\mathstrut$};
+\draw ({\xwert{160}},0.05) -- ({\xwert{160}},-0.05);
+
+\draw[color=red,line width=1.2pt] plot[domain=60:160,samples=100]
+	({\r*((\x)*\m-sin(\x))},{\r*(cos(\x)-1)});
+
+\fill[color=red] \punkt{60} circle[radius=0.08];
+\node at \punkt{60} [above right] {$A$};
+\fill[color=red] \punkt{160} circle[radius=0.08];
+\node at \punkt{160} [below] {$B$};
+\fill[color=red] \punkt{100} circle[radius=0.08];
+\node at \punkt{100} [below left] {$M$};
+
+\end{tikzpicture}
+\end{document}
+

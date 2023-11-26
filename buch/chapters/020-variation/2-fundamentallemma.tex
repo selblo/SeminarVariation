@@ -6,8 +6,263 @@
 \section{Das Fundamentallemma
 \label{buch:variation:section:fundamentallemma}}
 \kopfrechts{Das Fundamentallemma}
+Im Fall des endlichdimensionalen Extremalproblems ist aus der
+Forderung, dass alle Richtungsableitung verschwinden müssen, 
+die Bedingung geworden, dass
+\[
+v\cdot\grad f = 0
+\]
+sein muss für alle Vektoren $v\in\mathbb{R}^n$.
+Wir haben daraus geschlossen, dass der Gradient $\grad f=0$
+sein muss.
+Wir hatten dies das endlichdimensionale Fundamentallemma genannt,
+wegen $e_k\cdot \grad f = D_kf$ war es eine ziemliche Selbstverständlichkeit.
+Bei der Lösung von Variationsproblemen, wo es nicht um endlichdimensionale
+Vektoren und das Skalarprodukt, sondern um Funktionen und Integrale
+geht, brauchen wir eine ähnliche Aussage für Funktionen.
 
-\begin{verbatim}
-- positive glatte Funktionen mit kompaktem Träger
-- das Fundamentallemma
-\end{verbatim}
+%
+% Positive glatte Funktionen mit kompaktem Träger
+%
+\subsection{Positive glatte Funktionen mit kompaktem Träger}
+Die Aussage des Fundamentallemmas für endlichdimensionale Vektoren 
+folgte sofort aus der Tatsache, dass es für jedes $k$ einen Vektor
+$e_k$ gibt, der nur in der Koordinaten $k$ von $0$ verschieden ist.
+Natürlich gibt es auch Funktionen, die nur in genau einem Punkt
+von $0$ verschieden sind.
+Eine solche Funktion ist aber im allgemeinen nicht differenzier-
+oder integrierbar.
+In diesem Abschnitt soll daher gezeigt werden, dass es unendlich
+oft stetig differnzierbare Funktionen gibt, die nur in einem beliebig
+kleinen vorgegebenen Intervall $\ge 0$ sind.
+
+\begin{definition}[Träger]
+Der {\em Träger} einer Funktion $f\colon X\to\mathbb{R}$ ist die Menge
+\index{Träger}%
+\[
+\supp f = \{ x\in X\mid f(x)\ne \}.
+\]
+\end{definition}
+
+Gesucht ist also eine beliebig oft stetig differenzierbare Funktion,
+deren Träger in einem vorgegebenen Intervall $[a,b]$ enthalten ist.
+Wir konstruieren so eine Funktion in zwei Schritten.
+
+\input{chapters/020-variation/fig/f.tex}
+
+\begin{satz}
+\label{buch:variation:fundamentallemma:satz:glatt}
+Die Funktion
+\[
+f(x)
+=
+\begin{cases}
+e^{-1/x}&\qquad x>0\\
+0&\qquad x\le 0
+\end{cases}
+\]
+(siehe auch Abbildung~\ref{buch:variation:fundamentallemma:fig:glatt})
+ist beliebig oft stetig differenzierbar.
+\end{satz}
+
+\begin{proof}
+Es ist klar, dass die Funktion $f$ beliebig oft stetig differenzierbar
+ist in jedem Punkt $x\ne 0$.
+Es ist also nur nachzuweisen, dass $f(x)$ im Punkt $0$ beliebig
+oft stetig differenzierbar ist.
+
+Die ersten drei Ableitungen von $f(x)$ sind
+\begin{align}
+f'(x) &= \frac{1}{x^2} f(x)
+\label{buch:variation:fundamentallemma:eqn:f1}
+\\
+f''(x) &= \frac{1-2x}{x^4}f(x)
+\notag
+\\
+f'''(x) &= \frac{6x^2-6x+1}{x^6}f(x).
+\notag
+\end{align}
+Daraus lässt sich die Vermutung ableiten, dass
+\begin{equation}
+f^{(n)}(x)
+=
+\frac{p_{n-1}(x)}{x^{2n}} f(x)
+\label{buch:variation:fundamentallemma:eqn:fabl}
+\end{equation}
+ist, wobei $p_k(x)$ ein Polynom vom Grad $k$ ist.
+Wir beweisen diese Vermutung mit Hilfe von vollständiger Induktion.
+Die Induktionsverankerung für die $0$-te Ableitung ist trivial.
+
+Wir nehmen jetzt im Sinne der Induktionsannahme an, dass die $n$-te
+Ableitung die Form \eqref{buch:variation:fundamentallemma:eqn:fabl}
+hat.
+Wir müssen zeigen, dass dann auch $f^{(n+1)}(x)$ diese Form hat.
+Dazu berechnen wir
+\begin{align}
+f^{(n+1)}(x)
+&=
+\frac{d}{dx}
+\frac{p_n(x)}{x^{2n}} f(x)
+\notag
+\\
+&=
+\frac{p_n'(x)}{x^{2n}} f(x)
+-2n
+\frac{p_n(x)}{x^{2n+1}} f(x)
++
+\frac{p_n(x)}{x^{2n}} f'(x).
+\notag
+\intertext{Mit der ersten Ableitung
+\eqref{buch:variation:fundamentallemma:eqn:f1} wird dies zu}
+&=
+\frac{p_n'(x)}{x^{2n}} f(x)
+-2n
+\frac{p_n(x)}{x^{2n+1}} f(x)
++
+\frac{p_n(x)}{x^{2n}} \frac{1}{x^2}f(x)
+\notag
+\\
+&=
+\frac{x^2p_n'(x) -2nxp_n(x)+p_n(x)}{x^{2n+2}} f(x).
+\label{buch:variation:fundamentallemma:eqn:induktionsschritt}
+\end{align}
+Die Ableitung $p_n'(x)$ ist ein Polynom vom Grad $n-1$ und damit
+ist $x^2p_n'(x)$ ein Polynom vom Grad $n+1$.
+Ebenso ist $xp_n(x)$ ein Polynom vom Grad $n+1$ während
+$p_n(x)$ ein Polynom vom Grad $n$ ist.
+Der Zähler von
+\eqref{buch:variation:fundamentallemma:eqn:induktionsschritt}
+ist
+\[
+p_{n+1}(x)
+=
+x^2p_n'(x)+(1 -2nx)p_n(x),
+\]
+ein Polynom vom Grad $n+1$.
+Damit ist der Induktionsschritt erfolgreich und die Behauptung betreffend
+die Form von $f^{(n)}(x)$ ist bewiesen.
+
+Es ist jetzt nur noch zu zeigen, dass der Grenzwert von $f^{(n)}(x)$
+für $x\to 0+$ verschwindet.
+Da das Polynom $p_n(x)$ stetig ist, folgt
+\[
+\lim_{x\to 0}
+f^{(n)}(x)
+=
+\lim_{x\to 0}\frac{p_n(x)}{x^{2n}}f(x)
+=
+p_n(0) \lim_{t\to\infty} t^{2n} e^{-t}
+=
+0.
+\]
+Damit ist die beliebige stetige Differenzierbarkeit an der Stelle
+$x=0$ gezeigt.
+\end{proof}
+
+Die Funktion $f(x)$ von 
+Satz~\ref{buch:variation:fundamentallemma:satz:glatt} 
+erfüllt noch nicht die Forderung, dass sie nur in einem vorgegebenen
+Intervall von $0$ verschieden ist.
+
+\input{chapters/020-variation/fig/g.tex}
+
+\begin{satz}
+\label{buch:variation:fundamentallemma:satz:gab}
+Sei $f(x)$ die Funktion von
+Satz~\ref{buch:variation:fundamentallemma:satz:glatt}.
+Dann ist
+\[
+g_{a,b}(x)
+=
+f(x-a) f(b-x)
+\]
+eine unendlich oft stetig differenzierbare, nichtnegative Funktion mit Träger
+$\supp g_{a,b}=(a,b)$.
+\end{satz}
+
+%
+% Das Fundamentallemma
+%
+\subsection{Das Fundamentallemma}
+Mit der Funktion $g_{a,b}(x)$ von
+Satz~\ref{buch:variation:fundamentallemma:satz:gab}
+lässt sich jetzt das Fundamentallemma in der folgenden Form
+leicht beweisen.
+
+\begin{satz}[Fundamentallemma]
+Wenn für die stetige Funktion $f\colon[a,b]\to\mathbb{R}$ 
+\begin{equation}
+\int_a^b f(x)\varphi(x)\,dx = 0
+\label{buch:variation:fundamentallemma:eqn:fundamentalbed}
+\end{equation}
+gilt für jede beliebig oft stetig differenzierbare Funktion $\varphi(x)$ 
+dann ist $f(x)=0$.
+Das Resultat gilt selbst dann, wenn
+\eqref{buch:variation:fundamentallemma:eqn:fundamentalbed}
+nur für beliebig oft stetig differenzierbare Funktionen $\varphi(x)$ 
+gilt, die ausserdem an den Intervallenden verschwinden:
+$\varphi(a)=\varphi(b)=0$.
+\end{satz}
+
+\begin{proof}
+Wir zeigen mit Hilfe eines Widerspruchs, dass es einen Punkt $x_0\in[a,b]$
+geben kann, für den $f(x_0)\ne 0$ ist.
+Dazu nehmen wir also an, dass $f(x_0)\ne 0$ ist.
+Falls $f(x_0)<0$ ist, ersetzen wir $f$ durch $-f$, 
+die Bedingung
+\eqref{buch:variation:fundamentallemma:eqn:fundamentalbed}
+ändert sich dadurch nicht.
+Wir dürfen daher annehmen, dass $f(x_0)>0$ ist.
+Da $f$ stetig ist, gibt es ein Intervall $[x_0-\varepsilon,x_0+\varepsilon]$
+derart, dass $f(x)> \frac12 f(x_0)$ für
+$x\in[x_0-\varepsilon,x_0+\varepsilon]$ gilt.
+Dann gilt für das Integral
+\[
+\int_a^b
+f(x)
+g_{x_0-\varepsilon,x_0+\varepsilon} (x)
+\,dx
+>
+\frac{f(x_0)}{2}
+\int_a^b
+g_{x_0-\varepsilon,x_0+\varepsilon} (x)
+\,dx
+>
+0
+\]
+im Widerspruch zur Bedingung
+\eqref{buch:variation:fundamentallemma:eqn:fundamentalbed}.
+Der Widerspruch zeigt, dass $f(x)=0$ sein muss.
+\end{proof}
+
+%
+% Skalarproduktformulierung des Fundamentallemmas
+%
+\subsection{Skalaproduktformulierung des Fundamentallemmas}
+Die Richtungsableitung einer Funktion endlich vieler Variablen 
+konnte als Skalarprodukt mit dem Gradienten geschrieben werden und
+das Fundamentallemma hat besagt, dass der Gradient verschwindet,
+wenn alle Richtungsableitungen verschwinden.
+Diese Schlussweise ist auch für Funktionen möglich, wenn man Funktionen
+ein Skalarprodukt definieren kann.
+
+\begin{definition}[$L^2$-Skalarprodukt]
+Das {\em Skalarprodukt} zweier quadratintegrierbarer Funktion $f$ und $g$
+auf dem Intervall $[a,b]$ ist definiert durch
+\[
+\langle f,g\rangle
+=
+\int_a^b f(x)g(x)\,dx.
+\]
+\end{definition}
+
+\begin{satz}[Fundamentallemma, Skalarproduktform]
+Wenn für eine stetige Funktion $f\colon[a,b]\to\mathbb{R}$ das Skalarprodukt
+\[
+\langle f,\varphi\rangle = 0
+\]
+ist für jede unendlich oft differenzierbare Funktion $\varphi$ auf dem
+Intervall $[a,b]$, dann ist $f=0$.
+\end{satz}
+
+
