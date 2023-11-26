@@ -22,7 +22,8 @@ Lösung bereits eine ausgefeilte Theorie existiert.
 %
 % Der Anfang: das Brachistochronenproblem von Bernoulli
 %
-\subsection{Der Anfang: Das Brachistochronenproblem von Bernoulli}
+\subsection{Der Anfang: Das Brachistochronenproblem von Bernoulli
+\label{buch:variation:problem:subsection:brachistochrone}}
 \input{chapters/020-variation/fig/brachistochronenproblem.tex}
 Im Jahr 1696 publiziert der Basler Mathematiker Johann Bernoulli, damals
 Professor für Mathematik in Groningen das folgende Problem in der
@@ -280,7 +281,8 @@ Ausmultiplizieren im Nenner ergibt
 %
 % Das Brachistochronenproblem als Variationsproblem
 %
-\subsection{Das Brachistochronenproblem als Variationsproblem}
+\subsection{Das Brachistochronenproblem als Variationsproblem
+\label{buch:variation:problem:subsection:variationsproblem}}
 Die Bernoullische Lösung des Brachistochronenproblems verwendet die
 Analogie zum Fermat-Prinzip.
 Eine solche Analogie ist nur selten möglich, daher soll das Problem
@@ -335,6 +337,375 @@ L(x,y,y')
 %
 % Funktionale
 %
-\subsection{Funktionale}
+\subsection{Funktionale
+\label{buch:variation:problem:subsection:funktionale}}
+Die Variationsrechnung löst Optimierungsproblem, die von einer
+Funktion abhängen.
+Um dies mathematisch präzis zu fassen, ist zunächst nötig, die Menge
+der in Frage kommenden Funktionen so einzuschränken, dass die interessierende
+Grösse überhaupt wohldefiniert ist.
 
+%
+% Vektorräume
+%
+\subsubsection{Vektorräume}
+Zunächst sind die gemeinsamen algebraischen Eigenschaften zu charakterisieren,
+die wir von den für unsere Untersuchungen zweckmässigen Funktionenmengen
+erwarten.
+
+\begin{definition}[Vektorraum]
+Ein Vektorraum über den reellen Zahlen $\mathbb{R}$ ist einem Menge $V$ mit
+zwei Operationen, der Addition und der Multiplikation mit Skalaren
+\begin{align*}
+    +\colon V\times V         &\to V : (u,v)\mapsto u+v
+&
+\cdot\colon \mathbb{R}\times V&\to V : (\lambda,v) \mapsto\lambda v
+\end{align*}
+mit den folgenden Eigenschaften.
+\begin{enumerate}
+\item
+Es gelten die Assoziativgesetze
+\begin{align*}
+(u+v)+w&=u+(v+w)&&\text{für alle $u,v,w\in V$}\\
+(\lambda \mu)v&=\lambda(\mu v)&&\text{für alle $\lambda,\mu\in\mathbb{R},\;v\in V$.}
+\end{align*}
+\item
+Es gibt einen Vektor $0\in V$ mit der Eigenschaft $0+v=v$ für alle
+Vektoren $v\in V$.
+\item
+Zu jedem Vektor $v\in V$ gibt es den entgegengesetzten Vektor $-v\in V$
+mit der Eigenschaft, dass $-v+v=0$ ist.
+\item
+Die Addition von Vektoren ist kommutativ: $u+v=v+u$ für alle $u,v\in V$.
+\item
+Es gelten die Distributivgesetze 
+\begin{align*}
+(\lambda + \mu) v &= \lambda v + \mu v
+	&\quad\text{für alle $\lambda,\mu\in\mathbb{R},\;v\in V$}\\
+\lambda(u+v)      &= \lambda u + \lambda v
+	&\quad\text{für alle $\lambda\in\mathbb{R},\;u,v\in V$}
+\end{align*}
+\end{enumerate}
+\end{definition}
+
+Die Mengen $\mathbb{R}^n$ erfüllen die genannten Eigenschaften, sind
+also Vektorräume.
+Die Definition eines Vektorraums ist aber viel allgemeiner, insbesondere
+gehören dazu auch Mengen von Funktionen.
+Damit wird es möglich, die Berechnungen in $\mathbb{R}^n$ auf Funktionen
+auszudehnen.
+Zum Beispiel bilden die stetigen Funktionen auf einem Intervall einen
+Vektorraum, wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+Die Menge
+\[
+C([a,b])
+=
+\{f\colon[a,b]\to\mathbb{R}\mid \text{$f$ ist stetig}\}
+\]
+der stetigen Funktionen bildet einen Vektorraum.
+Die Operationen sind die punktweise Addition von Funktionen und die
+Multiplikation der Werte mit Skalaren, für $f,g\in C([a,b])$ und
+$\lambda\in \mathbb{R}$ ist
+\begin{align*}
+(f+g)(x) &= f(x)+g(x)
+&&\text{und}&
+(\lambda f)(x) &= \lambda f(x).
+\end{align*}
+Entscheidend ist, dass die Addition von Funktionen und die Multiplikation
+mit Skalaren nicht aus der Menge herausführt.
+Tatsächlich wird in der Analysis gezeigt, dass die Summe stetiger Funktionen
+wieder stetig ist und dass die Funktion $x\mapsto \lambda f(x)$ stetig,
+wenn $f$ stetig ist.
+Die übrigen Eigenschaften sind ebenfalls erfüllt, da sie bereits für die
+Funktionswerte erfüllt sind.
+\end{beispiel}
+
+%
+% Norm und Grenzwerte
+%
+\subsubsection{Norm und Grenzwerte}
+Um Analysis zu betreiben, muss man ausdrücken können, dass eine Folge
+von Funktionen konvergiert.
+Dazu ist ein Abstandsbegriff zwischen Funktionen nötig.
+
+\begin{definition}[Norm, normierter Raum]
+Eine {\em Norm} auf einem Vektorraum $V$ ist eine Abbildung
+\index{Norm}%
+$\|\cdot\|\colon V\to\mathbb{R}^+_0$ mit nichtnegativen reellen Werten
+und den folgenden Eigenschaften
+\begin{itemize}
+\item Definitheit: $\|v\|\ge 0$ für $v\in V$ mit Gleichheit 
+genau dann, wenn $v=0$.
+\index{Definitheit}%
+\item Absolute Homogenität: Für alle Vektoren $v\in V$ und
+\index{Homogenität}%
+$\lambda\in\mathbb{R}$ gilt $\|\lambda v\| = |\lambda|\, \|v\|$.
+\item Dreiecksungleichung: für alle Vektoren $u,v\in V$ gilt
+\index{Dreiecksungleichung}%
+$\|u+v\|\le \|u\|+\|v\|$.
+\end{itemize}
+Ein {\em normierter Raum} ist ein Vektorraum mit einer Norm.
+\index{normierter Raum}%
+\end{definition}
+
+\begin{beispiel}
+Der Vektorraum der stetigen Funktionen kann mit der Supremum-Norm
+\[
+\|f\| = \sup_{x\in[a,b]} |f(x)|
+\]
+zu einem normierten Raum gemacht werden.
+Die Definitheit ist durch die Definition offensichtlich sichersgtellt.
+Für $\|\lambda f\|$ finden wir
+\[
+\|\lambda f\|
+=
+\sup_{x\in[a,b]} |\lambda f(x)|
+=
+|\lambda|\,
+\sup_{x\in[a,b]} |f(x)|
+=
+|\lambda|\, \|f\|,
+\]
+was die Homogenität zeigt.
+Die Dreiecksungleichung folgt aus
+\begin{align*}
+\|f+g\|
+&=
+\sup_{x\in[a,b]} |f(x)+g(x)|
+\\
+&\le
+\sup_{x\in[a,b]} (|f(x)|+|g(x)|)
+\\
+&\le
+\sup_{x\in[a,b], y\in[a,b]} (|f(x)|+|g(y)|)
+\\
+&=
+\sup_{x\in[a,b]} |f(x)|
++
+\sup_{y\in[a,b]} |g(y)|
+=
+\|f\| + \|g\|.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+Mit einer Norm ist es jetzt möglich, die Konvergenz von Folgen und den
+Begriff des Grenzwertes zu definieren.
+
+\begin{definition}[Cauchy-Folge, Grenzwert]
+Eine Folge $(x_n)_{n\in\mathbb{N}}$ in $V$ in einem normierten Raum $V$
+mit der Norm $\|\cdot\|$
+heisst eine Cauchy-Folge, wenn es für jedes $\varepsilon>0$ eine
+\index{Cauchy-Folge}%
+$N\in \mathbb{N}$ gibt derart, dass
+\[
+\| x_n - x_m \| < \varepsilon
+\quad\forall n,m\ge N.
+\]
+Der Vektor $x\in V$ heisst {\em Grenzwert} der Folge $(x_n)_{n\in\mathbb{N}}$,
+\index{Grenzwert}%
+wenn es zu jedem $\varepsilon > 0$ ein $N\mathbb{N}$ gibt derart, dass
+\[
+\|x_n-x\| < \varepsilon 
+\quad\forall n\ge N.
+\]
+Die Folge $(x_n)_{n\in\mathbb{N}}$  in $V$ heisst {\em konvergent}, wenn
+\index{konvergent}%
+$x$ der Grenzwert von $(x_n)_{n\in\mathbb{N}}$ ist.
+\end{definition}
+
+Der durch die Supremum-Norm definierte Konvergenzbegriff ist die gleichmässige
+Konvergenz.
+Zur Erinnerung:
+Eine Folge $f_n$ von Funktionen heisst gleichmässig konvergent gegen die
+Funktion $f$, wenn es zu jedem
+$\varepsilon >0$ ein $N\in\mathbb{N}$ gibt derart, dass
+\[
+|f_n(x) - f(x)|<\varepsilon\quad\forall n>N\text{ und }x\in [a,b].
+\]
+Die Supremum-Norm ist
+\[
+\|f_n(x) - f(x)\|
+=
+\sup_{x\in[a,b]} |f_n(x)-f(x)| < \varepsilon
+\]
+für alle $n>N$.
+Dies ist genau die Konvergenz in der Norm $\|\cdot\|$.
+Aus der Analysis ist bekannt, dass eine gleichmässig konvergente 
+Funktionenfolge gegen eine stetige Funktion konvergiert.
+
+\begin{definition}[Banach-Raum]
+Ein normierter Raum $V$ heisst ein {\em Banach-Raum},
+\index{Banach-Raum}%
+wenn jede Cauchy-Folge in $V$ einen Grenzwert hat.
+\end{definition}
+
+\begin{beispiel}
+Die Menge $C^1([0,2])$
+der stetigen Funktionen auf dem Intervall $[0,2]$ ist ein normierter
+Raum mit der Norm
+\[
+\|f\|_1
+=
+\int_0^2 |f(x)|\,dx,
+\]
+die auch die $L^1$-Norm heisst.
+\index{L1-Norm@$L^1$-Norm}%
+Zunächst ist nachzuprüfen, dass dies tatsächlich eine Norm ist.
+Die Definitheit und die Homogenität von $\|\cdot\|_1$ ist klar, nur
+die Dreiecksungleichung erfordert etwas Arbeit.
+Für Funktionen $f,g\in L^1([0,2])$ gilt
+\begin{align*}
+\|f+g\|_1
+&=
+\int_0^2 |f(x)+g(x)|\,dx
+\\
+&\le 
+\int_0^2 |f(x)|+|g(x)|\,dx
+=
+\int_0^2 |f(x)|\,dx
++
+\int_0^2 |g(x)|\,dx
+=
+\|f\|_1+\|g\|_1,
+\end{align*}
+was die Dreeicksungleichung beweist.
+
+Eine Cauchy-Folge in der $L^1$-Norm muss aber nicht unbedingt einen
+stetigen Grenzwert haben.
+Die Funktionen
+\(
+f_n(x) =
+\begin{cases}
+x^n&\quad x< 1\\
+1&\quad x\ge 1
+\end{cases}
+\)
+haben die $L^1$-Norm
+\begin{align*}
+\|f_n-f_m\|_1
+=
+\int_0^2 |f_n(x)-f_m|\,dx
+\\
+&=
+\biggl|\int_0^1 x^n-x^m\,dx\biggr|
+=
+\biggl[
+\biggl|
+\frac{1}{n+1}x^{n+1}
+-
+\frac{1}{m+1}x^{m+1}
+\biggr|
+\biggr]_0^1
+\\
+&=
+\biggl|
+\frac{1}{n+1}
+-
+\frac{1}{m+1}\biggr|.
+\end{align*}
+Wegen
+\[
+\|f_n-f_m\|_1
+<\varepsilon
+\]
+für $n,m>2/\varepsilon$ ist $f_n$ eine Cauchy-Folge in $L^1$.
+In $L^1$ konvergiert die Folge $f_n$ gegen die Funktion
+\[
+f(x)
+=
+\begin{cases}
+0&\quad x< 1\\
+1&\quad x\ge 1.
+\end{cases}
+\]
+Diese Funktion ist aber nicht stetig, da sie bei $x=1$ einen
+Sprung hat.
+Bezüglich der $L^1$-Norm ist $C^1([a,b])$ als im Allgemeinen
+kein Banach-Raum.
+\end{beispiel}
+
+%
+% Stetige und differenzierbare Funktionen
+%
+\subsubsection{Stetige und differenzierbare Funktionen}
+Mit der Norm lässt sich auch die Stetigkeit von Abbildungen zwischen
+normierten Räumen definieren.
+
+\begin{definition}[Stetigkeit]
+Eine Funktion $f\colon U\to V$ zwischen normierten Räumen heisst
+{\em stetig im Punkt} $x\in U$, wenn es zu jedem $\varepsilon > 0$
+\index{stetig in einem Punkt}%
+ein $\delta > 0$
+gibt derart, dass
+\(
+\|f(x)-f(y)\| < \delta
+\)
+wenn
+\(
+\|x-y\|<\varepsilon
+\).
+Eine Funktion $f\colon U\to V$ heisst {\em stetig}, wenn sie in
+jedem Punkt von $U$ stetig ist.
+\end{definition}
+
+Das Bild einer Folge $x_n\in U$, die gegen $x_0\in U$ konvergiert,
+ist eine Folge $f(x_n)$ in $V$.
+Man sagt, $y\in V$ sei der Grenzwert von $f(x)$ für $x\to x_0$,
+wenn $f(x_n)$ für jede solche Folge $x_n$ gegen $y$ konvergiert.
+Der Grenzwert wird auch
+\[
+\lim_{x\to x_0} f(x)
+=
+y
+\]
+geschrieben.
+Stetige Funktionen zeichnen sich wie in der Analysis der Funktionen
+einer Variablen dadurch aus, dass der Grenzwert der Werte der Funktion
+auf einer konvergenten Folge mit dem Funktionswert des Grenzwertes
+übereinstimmt.
+
+\begin{satz}
+Eine Funktion $f\colon U\to V$ ist genau dann stetig im Punkt $x\in U$,
+wenn für jede Folge $x_n$ in $U$ mit Grenzwert $x$ die Folge $f(x_n)$
+konvergent ist und
+\[
+\lim_{n\to\infty} f(x_n) = f(x).
+\]
+Eine lineare Funktion $f\colon U\to V$ ist genau dann stetig,
+wenn für jede Nullfolge $x_n$ in $U$ 
+\[
+\lim_{n\to \infty} f(x_n) = 0
+\]
+gilt.
+\end{satz}
+
+\begin{definition}
+Eine Funktion $f\colon U\to V$ zwischen normierten Räumen heisst
+differenzierbar im Punkt $x\in U$ wenn es eine lineare Funktion
+$Df(x_0)\colon U\to V$ gibt derart, dass
+\[
+f(x+v) =f(x) + Df(x_0)\cdot v + o(v),
+\]
+wobei $o(v)$ bedeutet, dass für diese Funktion
+\[
+\frac{o(v)}{|v|}\to 0
+\quad\text{für $v\to 0$}
+\]
+gilt.
+\end{definition}
+
+Funktionen auf einem Vektorraum mit reellen Werten weren auch
+{\em Funktionale} genannt.
+\index{Funktional}
+Vor dem 20.~Jahrhundert wurde häufig ein Untersschied zwischen
+Funktionen von endlich vielen reellen Variablen und Funktionen
+von einem unendlichdimensionalen Vektorraum gemacht.
+Die Entwicklungen dieses  Abschnittes haben gezeigt, dass eine
+solche Unterscheidung nicht gerechtfertigt ist.
+Es ist lediglich notwendig, die Definitionen allgemein genug zu
+fassen und sich jederzeit über die Funktionenmenge und die zu
+verwendende Norm Rechenschaft abzulegen.
 
