@@ -7,7 +7,189 @@
 \label{buch:variation:section:mehrerefunktionen}}
 \kopfrechts{Mehrere Funktionen}
 
-\begin{verbatim}
-- Lagrange-Funktion für mehrere Funktionen
-- Die Euler-Lagrange-Differentialgleichungen 
-\end{verbatim}
+%
+% Lagrange-Funktion für mehrere Funktionen
+%
+\subsection{Lagrange-Funktion für mehrere Funktionen}
+
+%
+% Die Euler-Lagrange-Differentialgleichung
+%
+\subsection{Die Euler-Lagrange-Differentialgleichung}
+Für eine Lagrange-Funktion für $r$ Funktionen $y_1(x),\dots,y_r(x)$
+lässt sich die Variation des Integrals
+\[
+I
+=
+\int_a^b L(x,y_1(x),y_1'(x),\dots,y_r(x),y_r'(x))\,dx
+\]
+ganz analog zur einer Lagrange-Funktion
+mit nur einer Funktion berechnen.
+Dazu verwenden wir Funktionen $\eta_1(x),\dots,\eta_r(x)$, die
+in den Endpunkten verschwinden und berechnen die Variation
+\begin{align}
+\delta I
+&=
+\frac{d}{dt}
+\int_a^b
+L(x,y_1(x)+t\eta_1(x),y_1'(x)+t\eta_1'(x),\dots,
+y_r(x)+t\eta_r(x),y_r'(x)+t\eta_r'(x))
+\,dx
+\bigg|_{t=0}
+\notag
+\\
+&=
+\int_a^b
+\frac{\partial L}{\partial y_1}\eta_1(x)
++
+\frac{\partial L}{\partial y'_1}\eta'_1(x)
++
+\dots
+\frac{\partial L}{\partial y_r}\eta_r(x)
++
+\frac{\partial L}{\partial y'_r}\eta'_r(x)
+\,dx
+\notag
+\intertext{Die Terme mit Ableitungen von $\eta'_i(x)$ können durch partielle
+Integration umgeformt werden:}
+&=
+\int_a^b
+\frac{\partial L}{\partial y_1}\eta_1(x)
++\dots+
+\frac{\partial L}{\partial y_r}\eta_r(x)
+\,dx
++
+\biggl[
+\frac{\partial L}{\partial y'_1}\eta_1(x)
++
+\frac{\partial L}{\partial y'_r}\eta_r(x)
+\biggr]_a^b
+\\
+&\qquad
+-
+\int_a^b
+\frac{d}{dx}
+\frac{\partial L}{\partial y'_1}
+\eta_1(x)
++
+\dots
++
+\frac{d}{dx}
+\frac{\partial L}{\partial y'_r}
+\eta_r(x).
+\notag
+\intertext{Der mittlere Term verschwindet, weil die Funktionen
+$\eta_i(x)$ an den Intervallenden verschwinden.
+Die Variation ist daher}
+\delta I
+&=
+\int_a^b
+\biggl(
+\frac{\partial L}{\partial y_1}-\frac{d}{dx}\frac{\partial L}{\partial y'_1}
+\biggr)\eta_1(x)
+\,dx
++
+\dots
++
+\int_a^b
+\biggl(
+\frac{\partial L}{\partial y_r}-\frac{d}{dx}\frac{\partial L}{\partial y'_r}
+\biggr)\eta_r(x)
+\,dx
+\label{buch:variation:mehrere:eqn:summe}
+\end{align}
+Da die Funktionen $\eta_i(x)$ alle bis auf eine $=0$ gewählt werden können,
+muss jedes der Integrale in \eqref{buch:variation:mehrere:eqn:summe}
+verschwinden muss.
+Nach dem Fundamentallemma folgt daher der folgende Satz.
+
+\begin{satz}
+\label{buch:variation:mehrere:satz:rfunktionen}
+Das Integral
+\[
+\int_a^b L(x,y_1(x),y_1'(x),\dots,y_r(x),y'_r(x))\,dx
+\]
+mit einer Lagrange-Funktion für $r$-Funktionen 
+hat als stationäre Lösung Funktionen $y_1(x),\dots,y_r(x)$, welche das
+Differentialgiechungssystem
+\[
+\frac{\partial L}{\partial y_k}(x,y_1(x),y'_1(x),\dots,y_r(x),y'_r(x))
+-
+\frac{d}{dx}
+\frac{\partial L}{\partial y'_k}(x,y_1(x),y'_1(x),\dots,y_r(x),y'_r(x))
+=
+0
+\]
+mit $k=1,\dots,r$ erfüllen.
+\end{satz}
+
+%
+% Vektorform der Euler-Lagrange-Differentialgleichung
+%
+\subsubsection{Vektorform der Euler-Lagrange-Differentialgleichung}
+Die Lagrange-Funktion $L(x,y_1,y'_1,\dots,y_r,y'_r)$ kann auch als
+eine Funktion
+\[
+L\colon
+\mathbb{R}\times\mathbb{R}^r \times \mathbb{R}^r
+\to
+\mathbb{R}
+\]
+geschrieben werden.
+Die Ableitung $D_2L$ ist die Ableitung nach den Variablen $y_1,\dots,y_r$
+während $D_3L$ die Ableitung nach den Variablen $y'_1,\dots,y'_r$ ist.
+Gesucht ist wie früher ein stationärer Punkt des Integrals
+\[
+I
+=
+\int_a^b L(x,y(x),y'(x))\,dx,
+\]
+wobei $y\colon[a,b]\to\mathbb{R}^r$ eine vektorwertige Funktion ist.
+Um die Variation zu bilden, brauchen wir eine vektorwertige Funktion
+$\eta\colon[a,b]\to\mathbb{R}$, deren Komponenten in den Endpunkten
+des Intervalls verschwinden.
+Die Variation ist dann
+\begin{align*}
+\delta I
+&=
+\frac{d}{dx}
+\int_a^b L(x, y(x)+t\eta(x), y'(x)+t\eta'(x))\,dx
+\bigg|_{t=0}
+\\
+&=
+\int_a^b
+D_2L(x,y(x),y'(x)) \eta(x)
++
+D_3L(x,y(x),y'(x)) \eta'(x)
+\,dx
+\intertext{$D_2L$ ist eine Linearform, die auf den Vektor $\eta(x)$ 
+angewendet wird, und analog für $D_3L$.
+Für den Term mit $\eta'(x)$ verwenden wir wieder partielle Integration}
+&=
+\int_a^b D_2L(x,y(x),y'(x))\eta(x)\,dx
++
+\biggl[L(x,y(x),y'(x))\biggr]_a^b
+\\
+&\qquad
+-
+\int_a^b \frac{d}{dx}D_eL(x,y(x),y'(x)) \eta(x)\,dx.
+\intertext{Da die Komponenten von $\eta(x)$ an den Intervallenden
+verschwinden, fällt der mittlere Term weg und es bleibt}
+&=
+\int_a^b \bigl(D_2L(x,y(x),y'(x))-\frac{d}{dx}D_3L(x,y(x),y'(x))\bigr)
+\eta(x)\,dx.
+\end{align*}
+Nach dem Fundamentallemma folgt die $r$-dimensionale
+Vektor-Differentialgleichung
+\[
+D_2L(x,y(x),y'(x)) - \frac{d}{dx}D_3L(x,y(x),y'(x)) = 0.
+\]
+Beide Terme sind Linearformen auf $\mathbb{R}^r$, ihre Koeffizienten
+sind die einzelnen Differentialgleichungen von
+Satz~\ref{buch:variation:mehrere:satz:rfunktionen}.
+
+%
+% Parameterdarstellung von Kurven
+%
+\subsection{Parameterdarstellung von Kurven}
+

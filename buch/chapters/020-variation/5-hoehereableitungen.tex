@@ -6,8 +6,229 @@
 \section{Höhere Ableitungen
 \label{buch:variation:section:hoehereableitungen}}
 \kopfrechts{Höhere Ableitungen}
+Das Beispiel der Spline-Interpolation hat gezeigt, dass es manchmal
+nötig ist, höhere Ableitungen als die erste in einem Funktional
+zu berücksichtigen.
+In diesem Abschnitt werden weitere Beispiele dazu vorgestellt.
 
-\begin{verbatim}
-- Lagrange-Funktion mit höheren Ableitungen
-- Die verallgemeinerte Euler-Lagrange-Differentialgleichung
-\end{verbatim}
+%
+% Lagrange-Funktion mit höheren Ableitungen
+%
+\subsection{Lagrange-Funktion mit höheren Ableitungen}
+Die Euler-Lagrange-Differentialgleichung wurde bisher für Funktionale
+hergeletet, deren Lagrange-Funktion von $x$, der Funktion $y(x)$ und
+der ersten Ableitung $y'(x)$ abhängen.
+
+\begin{definition}
+Eine Funktion $L(x,y,y',\dots,y^{(n)})$ heisst eine Lagrange-Funktion
+der Ordnung $n$.
+\index{Lagrange-Funktion $n$-ter Ordnung}%
+\end{definition}
+
+\begin{beispiel}
+Das Variationsproblem für die Spline-Integration hat die Lagrange-Funktion
+zweiter Ordnung
+\[
+L(x,y,y',y'') = y^{\prime\prime 2}
+\]
+verwendet.
+\end{beispiel}
+
+Ein elastischer Stab speichert bei Verbiegung Energie, deren Dichte
+entlang des Stabes proportional zur Krümmung ist.
+Ist $s\mapsto \gamma(s)\in\mathbb{R}^2$ eine differenzierbare
+Parametrisierung einer ebenen Kurve, die die Form eines dünnen elastischen
+Stabes beschreibt, dann ist die Gesamtenergie des Stabes gegeben durch
+das Integral
+\[
+E
+=
+\int_a^b \kappa(s)^2 \,ds.
+\]
+Ist $s$ ein Bogenlängenparameter, also $|\dot{\gamma}(s)|=1$, dann ist
+die Krümmung die zweite Ableitung, also
+\[
+I = \int_a^b \ddot{\gamma}(s)^2\,ds.
+\]
+Diese Parameterdarstellung ist aber nicht die Form, in der wir bis jetzt
+Kurven in der Ebene beschreiben konnten.
+
+Sei $y(x)$ eine Funktion, deren Graph einen elastisch verbogenen Stab
+in der Ebene beschreibt.
+Die Krümmung des Graphen kann nach
+\[
+\kappa(x)
+=
+\frac{y''(x)}{(1+y'(x)^2)^{\frac32}}
+\]
+berechnet werden.
+Die Energie des Stabes wird dann
+\[
+E
+=
+\int_a^b \frac{y''(x)^2}{(1+y'(x)^2)^3}\,dx.
+\]
+Die Lagrange-Funktion des Problems der Biegung eines Stabes ist daher
+\[
+L(x,y,y',y'')
+=
+\frac{y^{\prime\prime 2}}{(1+y^{\prime 2})^3}.
+\]
+
+%
+% Die verallgemeinerte Euler-Lagrange-Differentialgleichung
+%
+\subsection{Die verallgemeinerte Euler-Lagrange-Differentialgleichung}
+Auch für ein Variationsproblem mit einer Lagrange-Funktion, die höhere
+Ableitungen enthält, lässt sich mit der mehr oder weniger gleichen
+Vorgehensweise eine Differentialgleichung für die gesuchte Funktion
+$y(x)$ herleiten.
+Wie schon im Beispiel zur Spline-Interpolation angedeutet, wird es
+notwendig sein, mehrmals partiell zu integrieren.
+
+Sei also $L(x,y,y',\dots,y^{(n)})$ eine Lagrange-Funktion $n$-ter Ordnung
+und sei eine Funktion $y(x)$ gesucht, die ein kritischer Punkt des Integrals
+\[
+I
+=
+\int_a^b L(x,y(x),y'(x),\dots,y^{(n)}(x))\,dx
+\]
+ist.
+Wir berechnen wieder die erste Variation mit Hilfe einer beliebig
+oft differenzierbaren Funktion $\eta(x)$, welche in den Endpunkten
+des Intervalls zusammen mit allen Ableitungen verschwindet.
+Die Variation ist definiert als die Richtungsableitung in Richtung
+von $\eta(x)$ als
+\begin{align*}
+\delta I
+&=
+\frac{d}{dt}
+\int_a^b
+L(x,y(x)+t\eta(x),y'(x)+t\eta'(x),\dots,y^{(n)}(x)+t\eta^{(n)}(x))
+\,dx\biggl|_{t=0}.
+\intertext{Durch Ableitung nach $t$ finden wir}
+&=
+\int_a^b
+\frac{\partial L}{\partial y}(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta(x)
++
+\frac{\partial L}{\partial y'}(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta'(x)
+\\
+&\qquad
++
+\dots
++
+\frac{\partial L}{\partial y^{(n)}}(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta^{(n)}(x)
+\,dx.
+\end{align*}
+Die Terme mit Ableitungen von $\eta(x)$ können durch partielle
+Integration in Terme umgewandelt werden, die nur die Funktion 
+$\eta(x)$ enthalten:
+\begin{align*}
+\delta I
+&=
+\int_a^b
+\frac{\partial L}{\partial y^{(k)}}
+(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta^{(k)}(x)
+\,dx
+\\
+&=
+\biggl[
+\frac{\partial L}{\partial y^{(k)}}
+(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta^{(k-1)}(x)
+\biggr]_a^b
+\\
+&\qquad
+-
+\int_a^b
+\frac{d}{dx}
+\frac{\partial L}{\partial y^{(k)}}
+(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta^{(k-1)}(x)
+\,dx.
+\intertext{Da die Ableitungen von $\eta(x)$ in den Intevallenden
+verschwinden, ist dies gleichbedeutend mit}
+&=
+-\int_a^b \frac{d}{dx} \frac{\partial L}{\partial y^{(k)}}
+(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta^{(k-1)}(x)
+\,dx.
+\intertext{Durch Iterieren dieser Rechnung erhalten wir}
+&=
+(-1)^{k}
+\int_a^b
+\frac{d^k}{dx^k}
+\frac{\partial L}{\partial y^{(k)}}
+(x,y(x),y'(x),\dots,y^{(n)}(x))
+\eta(x)
+\,dx.
+\end{align*}
+Die Variation kann jetzt als
+\begin{align*}
+\delta I
+&=
+\int_a^b
+\biggl(
+\frac{\partial L}{\partial y}
+-
+\frac{d}{dx}
+\frac{\partial L}{\partial y'}
++
+\frac{d^2}{dx^2}
+\frac{\partial L}{\partial y''}
+-
+\dots
++
+(-1)^n
+\frac{d^n}{dx^n}
+\frac{\partial L}{\partial y^{(n)}}
+\biggr)
+\eta(x)\,dx
+\end{align*}
+geschrieben werden.
+Die Variation $\delta I$ muss für jede Wahl von $\eta(x)$ verschwinden,
+daher folgt aus dem Fundamentallemma, dass $y(x)$ die Differentialgleichung
+\begin{equation}
+\frac{\partial L}{\partial y}
+-
+\frac{d}{dx}
+\frac{\partial L}{\partial y'}
++
+\frac{d^2}{dx^2}
+\frac{\partial L}{\partial y''}
+-
+\dots
++
+(-1)^n
+\frac{d^n}{dx^n}
+\frac{\partial L}{\partial y^{(n)}}
+=
+0
+\label{buch:variation:hohere:eqn:eulerlagrange}
+\end{equation}
+erfüllen muss.
+Man beachte, dass wir in dieser Rechnung stillschweigend annehmen,
+dass die Funktion $y(x)$ genügend oft stetig differenzierbar ist,
+so dass die einzelnen Terme der Differentialgleichung
+\eqref{buch:variation:hohere:eqn:eulerlagrange} wohldefiniert sind.
+
+\begin{satz}[Euler-Lagrange-Differentialgleichung]
+Eine genügend oft differenzierbare Funktion $y(x)$ ist ein stationärer
+Punkt des Integrals
+\[
+I
+=
+\int_a^b
+L(x,y(x),y'(x),\dots,y^{(n)}(x))
+\,dx
+\]
+mit der Lagrange-Funktion $n$-ter Ordnung $L(x,y,y',\dots,y^{(n)})$,
+wenn sie die die Euler-Lagrange-Differentialgleichung
+\eqref{buch:variation:hohere:eqn:eulerlagrange} erfüllt.
+\end{satz}
+
+
