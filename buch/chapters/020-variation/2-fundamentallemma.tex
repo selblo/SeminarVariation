@@ -180,6 +180,41 @@ eine unendlich oft stetig differenzierbare, nichtnegative Funktion mit Träger
 $\supp g_{a,b}=(a,b)$.
 \end{satz}
 
+Die Funktionen $g_{a,b}(x)$ sind beliebig oft differenzierbar und nur im
+Intervall $[a,b]$ von $0$ verschieden und sogar positiv.
+Weil sie stetig sind, sind sie auch integrierbar, man kann also das
+Integral über $\mathbb{R}$ berechnen und die Funktion damit normieren.
+Die neue Funktion
+\[
+\frac{1}{N}
+\tilde{g}_{a,b}(x)
+\qquad\text{mit}\;
+N
+=
+\int_{-\infty}^{\infty}g_{a,b}(x)\,dx
+=
+\int_a^b g_{a,b}(x)\,dx
+\]
+ist immer noch beliebig oft stetig differenzierbar und hat zusätzlich die
+Eigenschaft
+\[
+\int_{-\infty}^{\infty}
+\tilde{g}_{a,b}(x)\,dx
+=
+\int_a^b
+\tilde{g}_{a,b}(x)\,dx
+=
+1.
+\]
+Wir formulieren dieses Resultat als Satz.
+
+\begin{satz}
+\label{buch:variation:satz:gabeins}
+Zu jedem Intervall $[a,b]$ gibt es eine beliebig oft stetig
+differenzierbare Funktion $g(x)$, genau das Intervall $[a,b]$
+als Träger hat und deren Integral über $[a,b]$ den Wert $1$ hat.
+\end{satz}
+
 %
 % Das Fundamentallemma
 %

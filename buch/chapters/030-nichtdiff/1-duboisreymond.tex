@@ -5,6 +5,388 @@
 %
 \section{Das Lemma von du~Bois-Reymond
 \label{buch:nichtdiff:section:duboisreymond}}
+\kopfrechts{Das Lemma von du~Boid-Reymond}
+Wir gehen wieder von einem Variationsproblem der Form
+\begin{equation}
+\delta
+\int_{x_0}^{x_1}
+F(x,y(x),y'(x))\,dx
+=
+0
+\label{buch:nichtdiff:duboisreymond:eqn:problem}
+\end{equation}
+mit festen Randwerten $y(x_0)=y_0$ und $y(x_1)=y_1$ aus.
+Die Herleitung der Euler-Lagrange-Differentialgleichung für dieses
+Problem hat angenommen, dass die Lösungsfunktion $y(x)$ zweimal
+stetig differenzierbar ist.
+Paul du~Bois-Reymond%
+\footnote{Paul du~Bois-Reymond, 1831--1889, deutscher
+Mathematiker, studierte erst in Zürich Medizin, dann in Mathematik
+in Königsberg und an der Universität Berlin.
+Er promovierte bei Ernst Kummer und arbeitete anschliessend als
+Gymnasiallehrer.
+Er habilitierte sich 1865 in Heidelberg und 1869 als Professor nach
+Freiburg im  Breisgau berufen.
+Ab 1874 wirkte er in Tübingen und ab 1884 an der
+Technischen Hochschule Berlin.}
+hat darauf hingewiesen, dass dadurch die Menge der akzeptablen
+Lösungsfunktionen unnötig eingeschränkt wird.
+Die folgende Rechnung und das weiter unten formulierte 
+Lemma~\ref{buch:nichtdiff:duboisreymond:lemma:duboisreymond}
+zeigen, dass die Euler-Lagrange-Gleichung auch gilt, wenn $y(x)$
+als nur einmal stetig differenzierbar angenommen wird.
+
+Die erste Variation ist die Ableitung
+\[
+\frac{d}I(y+\varepsilon\eta)\bigg|_{\varepsilon=0}
+=
+\frac{d}{d\varepsilon}
+\int_{x_0}^{x_1}
+F(x,y(x)+\varepsilon\eta(x), y'(x)+\varepsilon\eta'(x))\,dx
+\bigg|_{\varepsilon}
+\]
+für beliebige Variationen $\eta(x)$ der Funktion $y(x)$.
+Wie früher nehmen wir an, dass $F$ nach $y$ und $y'$ differenzierbar
+ist, und verwenden dies, um die Ableitung zu berechnen:
+\begin{equation}
+\frac{d}{d\varepsilon}I(y+\varepsilon\eta)
+=
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))\cdot \eta(x)
++
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))\cdot \eta'(x)
+\,dx.
+\label{nichtdiff:duboisreymon:eqn:ableitung}
+\end{equation}
+Bei der Herleitung der Euler-Lagrange-Gleichung in
+Abschnitt~\ref{buch:variation:section:eulerlagrange}
+haben wir uns nicht gescheut, den zweiten Term im Integral
+partiell zu integrieren, und aus dem Faktor $\eta'(x)$ einen
+beiden Termen gemeinsamen Faktor $\eta(x)$ zu machen.
+Falls jedoch $y(x)$ nicht differenzierbar ist, oder wenn $F$ nur
+einmal stetig differenzierbar ist, ist dies nicht zulässig.
+
+Es gibt aber keine solchen Einschränkungen für die Funktionen $\eta(x)$.
+Wir können uns bei der Wahl von $\eta(x)$ auf beliebig oft differenzierbare
+Funktionen einschränken.
+Wir versuchen daher den ersten Term
+in~\eqref{nichtdiff:duboisreymon:eqn:ableitung}
+partiell zu integrieren.
+Die dazu benötigte Stammfunktion des ersten Terms schreiben wir
+\[
+\int_{x_0}^x \frac{\partial F}{\partial y}F(\xi, y(\xi), y'(\xi))\,d\xi.
+\]
+Das erste Integral in~\eqref{nichtdiff:duboisreymon:eqn:ableitung}
+wird damit zu
+\begin{align*}
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y}(x,y(x),y'(x)\eta(x)\,dx
+&=
+\biggl[
+\int_{x_0}^{x}
+\frac{\partial F}{\partial y}(\xi,y(\xi),y'(\xi))
+\,d\xi
+\cdot 
+\eta(x)
+\biggr]_{x_0}^{x_1}
+\\
+&\qquad
+-
+\int_{x_0}^{x_1}
+\int_{x_0}^{x}
+\frac{\partial F}{\partial y}(\xi,y(\xi),y'(\xi))
+\,d\xi
+\cdot\eta'(x)
+\,dx.
+\end{align*}
+Da in den Randpunkten $\eta(x_0)=\eta(x_1)=0$ gilt, 
+fällt der erste Term weg.
+Einsetzen in~\eqref{nichtdiff:duboisreymon:eqn:ableitung}
+liefert jetzt die Bedingung
+\begin{equation}
+\int_{x_0}^{x_1}
+\biggl(
+-\int_{x_0}^x\frac{\partial F}{\partial y}(\xi, y(\xi),y'(\xi))
+\,d\xi
++
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\cdot
+\eta'(x)\,dx
+=
+0
+\label{buch:nichtdiff:duboisreymond:eqn:integralgleichung}
+\end{equation}
+für alle einmal stetig differenzierbaren Funktionen $\eta(x)$, die
+an den Endpunkten des Intervalls verschwinden.
+Daraus können wir aber nicht schliessen, dass die Klammer im
+Integral verschwindet, denn dies folgt nach dem Fundamentallemma
+nur, wenn man mit beliebige Funktionen $\eta(x)$ multipliziert.
+Die Funktionen $\eta'(x)$ haben die einschränkende Eigenschaft,
+dass ihr Integral zwischen $x_0$ und $x_1$
+\[
+\int_{x_0}^{x_1}
+\eta'(x)\,dx
+=
+\biggl[
+\eta(x)
+\biggr]_{x_0}^{x_1}
+=
+\eta(x_1) - \eta(x_0)
+=
+0-0
+=
+0
+\]
+ist.
+Für beliebige Funktionen $\eta(x)$ kann das Integral zwischen $x_0$
+und $x_1$ bliebige Werte annehmen, selbst wenn $\eta(x_0)=\eta(x_1)=0$
+sind.
+Es gilt aber die folgende Verallgemeinerung des Fundamentallemmas.
+
+\begin{lemma}[du Bois-Reymond
+\footnote{Paul du~Bois-Reymond, 1831--1889, deutscher
+Mathematiker, studierte erst in Zürich Medizin, dann in Mathematik
+in Königsberg und an der Universität Berlin.
+Er promovierte bei Ernst Kummer und arbeitete anschliessend als
+Gymnasiallehrer.
+Er habilitierte sich 1865 in Heidelber und 1869 als Professor nach
+Freiburg im  Breisgau berufen.
+Ab 1874 wirkte er in Tübingen und ab 1884 an der
+Technischen Hochschule Berlin.}]
+\label{buch:nichtdiff:duboisreymond:lemma:duboisreymond}
+Sei $f(x)$ eine stetige Funktion auf dem Intervall $[x_0,x_1]$, für die
+\[
+\int_{x_0}^{x_1}
+f(x)\,\eta'(x)\,dx
+=
+0
+\]
+gilt für alle einmal stetig differenzierbaren Funktionen auf $[x_0,x_1]$,
+die in den Intervallenden verschwinden.
+Dann ist die Funktion $f(x)$ konstant.
+\end{lemma}
+
+\input{chapters/030-nichtdiff/fig/dbr.tex}
+
+\begin{proof}
+Wir müssen zeigen, dass die Funktionswerte von $f$ in den Punkten $a$ und $b$
+im inneren des Intervalls $[x_0,x_1]$ gleich gross sind.
+Sei $\varepsilon>0$ so klein, dass die die Intervalle
+$(a-\varepsilon,a+\varepsilon)$ und $(b-\varepsilon,b+\varepsilon)$ ebenfalls
+vollständig in $[a,b]$ enthalten sind.
+Nach Satz~\ref{buch:variation:satz:gabeins} gibt es zwei nichtnegative
+Funktionen $g_a$ und $g_b$ mit
+\[
+\operatorname{supp} g_a = (a-\varepsilon,a+\varepsilon)
+\qquad\text{und}\qquad
+\operatorname{supp} g_b = (b-\varepsilon,b+\varepsilon),
+\]
+deren Integral ausserdem den Wert $1$ haben.
+Wir wählen für $\eta$ die Stammfunktion
+\[
+\eta(x)
+=
+\int_{x_0}^x g_a(\xi)-g_b(\xi)\,d\xi
+\]
+von $x\mapsto g_a(x) -g_b(x)$.
+Am linken Rand $x_0$ verschwindet sie, am rechten Rand gilt
+\[
+\eta(x_1)
+=
+\int_{x_0}^{x_1}
+g_a(\xi)-g_b(\xi)
+\,d\xi
+=
+\int_{x_0}^{x_1}
+g_a(\xi)
+\,d\xi
+-
+\int_{x_0}^{x_1}
+g_b(\xi)
+\,d\xi
+=
+1-1
+=
+0.
+\]
+Die Ableitung $\eta'(x)=g_a(x)-g_b(x)$ ist somit eine Funktion,
+auf die die Voraussetzungen des Satzes zutreffend sind.
+Daher gilt $\langle f,\eta'\rangle=0$.
+
+Da die Funktion $f(x)$ stetig ist, können wir zu jedem beliebigen 
+$\delta>0$ das $\varepsilon>0$ so klein wählen, dass 
+$|f(x)-f(a)|<\delta$ für $|x-a|<\varepsilon$ und
+$|f(x)-f(b)|<\delta$ für $|x-b|<\varepsilon$.
+Wir approximieren die $f$ durch die Funktion
+\[
+\tilde{f}(x)
+=
+\begin{cases}
+f(a)&\qquad x\in[a-\varepsilon,a+\varepsilon]\\
+f(b)&\qquad x\in[b-\varepsilon,b+\varepsilon]\\
+0&\qquad\text{sonst}.
+\end{cases}
+\]
+Die Funktion $\tilde{f}$ ist immer noch integrierbar und es gilt
+\[
+|f(x)-\tilde{f}(x)| < \delta.
+\]
+Für das Integral $\langle f-\tilde{f}, \eta'\rangle$ folgt jetzt
+\begin{align*}
+|\langle f-\tilde{f},\eta'\rangle|
+&=
+\biggl|
+\int_{x_0}^{x_1}
+(f(x)-\tilde{f}(x))\eta'(x)
+\,dx
+\biggr|
+\\
+&\le
+\int_{x_0}^{x_1}
+|f(x)-\tilde{f}(x)| \cdot |\eta'(x)|
+\,dx
+\\
+&\le 
+\delta
+\,
+\biggl(
+\int_{x_0}^{x_1} g_a(x)\,dx
++
+\int_{x_0}^{x_1} g_b(x)\,dx
+\biggr)
+=
+2\delta.
+\end{align*}
+Die beiden Integrale $\langle f,\eta'\rangle$ und 
+$\langle \tilde{f},\eta'\rangle$ unterscheiden sich höchstens um
+\begin{equation}
+|\langle f,\eta'\rangle - \langle \tilde{f},\eta'\rangle|
+=
+|\langle f-\tilde{f},\eta' \rangle|
+\le
+2\delta,
+\label{buch:nichtdiff:duboisreymond:eqn:ftildef}
+\end{equation}
+sie sind also beliebig nahe.
+
+Die Funktion $\tilde{f}$ ist auf den beiden Teilintervallen
+$(a-\varepsilon,a+\varepsilon)$ und $(b-\varepsilon,b+\varepsilon)$
+konstant, das Integral kann daher sofort berechnet werden:
+\begin{align*}
+\langle \tilde{f},g_a\rangle
+&=
+\int_{a-\varepsilon}^{a+\varepsilon}
+f(a) g_a(x)
+\,dx
+=
+f(a)
+&&\text{und}&
+\langle \tilde{f},g_b\rangle
+&=
+\int_{b-\varepsilon}^{b+\varepsilon}
+f(b) g_b(x)
+\,dx
+=
+f(b),
+\end{align*}
+und damit
+\[
+\langle \tilde{f},\eta'\rangle
+=
+\langle \tilde{f},g_a-g_b\rangle
+=
+f(a)-f(b).
+\]
+Nach Voraussetzung ist $\langle f,\eta'\rangle=0$ und damit ist
+wegen \eqref{buch:nichtdiff:duboisreymond:eqn:ftildef}
+\[
+|f(a)-f(b)|
+=
+|\langle\tilde{f},\eta'\rangle|
+=
+|
+\underbrace{\langle f,\eta'\rangle}_{\displaystyle =0}
+-
+\langle \tilde{f},\eta'\rangle
+|
+=
+|\langle f-\tilde{f},\eta'\rangle|
+\le
+2\delta
+\]
+für jedes beliebige $\delta > 0$.
+Dies ist nur möglich, wenn $f(a)-f(b)=0$ ist oder $f(a)=f(b)$.
+Somit hat $f$ überall im Intervall den gleichen Wert.
+\end{proof}
+
+Mit dem Lemma~\ref{buch:nichtdiff:duboisreymond:lemma:duboisreymond}
+von du~Bois-Reymond kann man jetzt schliessen, dass der Integrand in
+\eqref{buch:nichtdiff:duboisreymond:eqn:integralgleichung}
+konstant sein muss.
+Es gilt also
+\begin{equation}
+\int_{x_0}^x\frac{\partial F}{\partial y}(\xi, y(\xi),y'(\xi))
+\,d\xi
+=
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
++
+C
+\label{buch:nichtdiff:duboisreymond:gleichung}
+\end{equation}
+Da die Funktionen $y(\xi)$ und $y'(\xi)$ stetig sind und auch
+die Ableitung $\partial F/\partial y$ als stetig in allen Argumenten
+vorausgesetzt ist, ist der Integrand auf der linken Seite eine
+stetige Funktion von $\xi$.
+Nach dem Hauptsatz der Infinitesimalrechnung ist das Integral
+stetig differenzierbar und die Ableitung ist der Integrand.
+Daher muss auch die rechte Seite stetig differenzierbar sein,
+es ist also zulässig den Ableitungsoperator $d/dx$ darauf anzuwenden,
+was die Gleichung
+\begin{equation}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+=
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\label{buch:nichtdiff:duboisreymond:eqn:eulerlagrange}
+\end{equation}
+ergibt.
+Die Gleichung
+\eqref{buch:nichtdiff:duboisreymond:eqn:eulerlagrange}
+ist aber wieder die Euler-Lgrange-Gleichung.
+Die Voraussetzung, dass $y(x)$ zweimal stetig differenzierbar sein
+muss, war also gar nicht notwendig für die Gültigkeit der
+Euler-Lagrange-Gleichung.
+Sie folgt auch, wenn man nur voraussetzt, dass $y(x)$ einmal stetig
+differenzierbar ist.
+
+Aus der Euler-Lagrange-Differentialgleichung folgt noch nicht, dass
+die zweite Ableitung $y''(x)$ der Lösung stetig ist.
+David Hilbert hat aber gezeigt.
+
+\begin{satz}
+Ist $\frac{\partial F}{\partial y'}$ differenzierbar und ist $y(x)$ eine
+Lösung des Variationsproblems~\eqref{buch:nichtdiff:duboisreymond:eqn:problem},
+dann ist $y''(x)$ überall dort definiert, wo
+\[
+\frac{\partial^2 F}{\partial y^{\prime 2}}(x,y(x),y'(x)) \ne 0
+\]
+gilt.
+\end{satz}
+
+% XXX TODO Beweis des Satzes (Funk, p. 204)
+
+In der Theorie der zweiten Variation von Kapitel~\ref{buch:chapter:variation2}
+wird die notwendige Bedingung
+\[
+\frac{\partial^2 F}{\partial y^{\prime 2}}(x,y(x),y'(x)) \ne 0
+\ge 0
+\]
+für ein Maximum hergeleitet.
+Falls in dieser Bedingung sogar das strikte Zeichen gilt, kann man
+somit folgern, dass das Maximum sogar eine zweimal stetig differenzierbare
+Funktion ist.
+
 
 
 

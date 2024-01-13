@@ -1,0 +1,94 @@
+%
+% dbr.tex -- Beweis des Lemmas von du Bois-Reymond
+%
+% (c) 2024 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={ f(\x) = 2*cos(10*\x-20)+0.5*sin(50*\x)+1; },
+]
+
+\def\a{2}
+\def\b{8}
+\def\e{0.8}
+\def\h{3}
+\def\d{0.45}
+
+\fill[color=orange!20] ({\a-\e},{f(\a)-\d}) rectangle ({\a+\e},{f(\a)+\d});
+\fill[color=orange!20] ({\b-\e},{f(\b)-\d}) rectangle ({\b+\e},{f(\b)+\d});
+\fill[color=blue!20]
+	plot[domain=-180:180] ({\a-\e*\x/180},{\h*(1+cos(\x))/2}) -- cycle;
+\fill[color=darkred!20]
+	plot[domain=-180:180] ({\b-\e*\x/180},{-\h*(1+cos(\x))/2}) -- cycle;
+
+\draw[color=orange,line width=1.4pt] ({\a-\e},{f(\a)}) -- ({\a+\e},{f(\a)});
+\draw[color=orange,line width=1.4pt] ({\b-\e},{f(\b)}) -- ({\b+\e},{f(\b)});
+\draw[color=orange,line width=0.4pt]
+	({\a-\e},0) -- ({\a-\e},{f(\a)}) -- ({\a+\e},{f(\a)}) -- ({\a+\e},0);
+\draw[color=orange,line width=0.4pt]
+	({\b-\e},0) -- ({\b-\e},{f(\b)}) -- ({\b+\e},{f(\b)}) -- ({\b+\e},0);
+
+\draw[color=darkgreen,line width=1.4pt]
+	plot[domain=0:11,samples=100] ({\x},{f(\x)});
+\draw[color=darkgreen,line width=0.3pt] (\a,0) -- (\a,{f(\a)});
+\draw[color=darkgreen,line width=0.3pt] (\b,0) -- (\b,{f(\b)});
+\fill[color=darkgreen] (\a,{f(\a)}) circle[radius=0.08];
+\fill[color=darkgreen] (\b,{f(\b)}) circle[radius=0.08];
+\node[color=darkgreen] at (\a,{f(\a)}) [above] {$f(a)$};
+\node[color=darkgreen] at (\b,{f(\b)}) [above] {$f(b)$};
+
+\node[color=orange] at ({\a+\e},{f(\a)+\d}) [right] {$f(a)+\delta\mathstrut$};
+\node[color=orange] at ({\a+\e},{f(\a)-\d}) [right] {$f(a)-\delta\mathstrut$};
+\node[color=orange] at ({\b+\e},{f(\b)+\d}) [right] {$f(b)+\delta\mathstrut$};
+\node[color=orange] at ({\b+\e},{f(\b)-\d}) [right] {$f(b)-\delta\mathstrut$};
+
+\coordinate (A) at (6,3.9);
+
+\node[color=orange] at (A) {$\tilde{f}(x)$};
+\draw[color=orange,line width=0.3pt,shorten >= 0.3cm]
+	({\a+0.8*\e},{f(\a)}) -- (A);
+\draw[color=orange,line width=0.3pt,shorten >= 0.3cm]
+	({\b-0.8*\e},{f(\b)}) -- (A);
+
+\node[color=darkgreen] at (5,{f(5)}) [below] {$f(x)$};
+
+\draw[color=blue,line width=1.1pt]
+	plot[domain=-180:180] ({\a-\e*\x/180},{\h*(1+cos(\x))/2});
+
+\draw[color=darkred,line width=1.1pt]
+	plot[domain=-180:180] ({\b-\e*\x/180},{-\h*(1+cos(\x))/2});
+
+\draw[->] (-0.1,0) -- (11.5,0) coordinate[label={$x$}];
+\draw[->] (0,-3.2) -- (0,4.3) coordinate[label={left:$y$}];
+
+\draw (\a,-0.05) -- (\a,0.05);
+\node at (\a,0) [below] {$a\mathstrut$};
+\draw (\b,-0.05) -- (\b,0.05);
+\node at (\b,0) [below] {$b\mathstrut$};
+
+\draw ({\a-\e},-0.05) -- ({\a-\e},0.05);
+\node at ({\a-\e},0) [below left] {$a-\varepsilon\mathstrut$};
+\draw ({\a+\e},-0.05) -- ({\a+\e},0.05);
+\node at ({\a+\e},0) [below right] {$a+\varepsilon\mathstrut$};
+
+\node[color=blue] at (\a,{0.3*\h}) {$g_a(x)$};
+\node[color=darkred] at (\b,{-0.3*\h}) {$-g_b(x)$};
+
+\draw ({\b-\e},-0.05) -- ({\b-\e},0.05);
+\node at ({\b-\e},0) [below left] {$b-\varepsilon\mathstrut$};
+\draw ({\b+\e},-0.05) -- ({\b+\e},0.05);
+\node at ({\b+\e},0) [below right] {$b+\varepsilon\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+
