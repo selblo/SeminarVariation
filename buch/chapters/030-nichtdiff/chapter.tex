@@ -1,0 +1,42 @@
+%
+% chapter.tex -- Nicht differenzierbare Lösungen
+%
+% (c) 2023 Prof Dr Andreas Müller
+%
+\chapter{Nicht differenzierbare Lösungen
+\label{buch:chapter:nichtdiff}}
+\kopflinks{Nicht differenzierbare Lösungen}
+Die Herleitung der Euler-Lagrange-Differentialgleichung im
+Abschnitt~\ref{buch:variation:euler-lagrange} hat vorausgesetzt,
+dass die Lösungsfunktion mindestens zweimal stetig differenzierbar ist.
+Dies war nötig, um die partielle Integration durchführen zu können,
+schränkt aber auch die Menge der Kandidatenfunktionen für die Lösungen
+stark ein.
+Im Abschnitt~\ref{buch:nichtdiff:section:duboisreymond} wird 
+das Lemma von du~Bois-Reymond vorgestellt, welches eine alternative
+Vorgehensweise zeigt, mit der die Ableitung vermieden werden kann.
+
+Es liegt jedoch in der Natur von Variationsproblemen, dass sie 
+als Lösungen nicht differenzierbare Lösungen haben können.
+Das Lemma von du~Bois-Reymond beseitigt diese Schwierigkeit
+nicht, es werden nur die Anforderungen an die Funktionen auf 
+nur eine Ableitung abgeschwächt.
+Die Weierstrass-Ermdannsche Eckenbedingung, die in
+Abschnitt~\ref{buch:nichtdiff:section:ecken} vorgestellt
+wird, ermöglicht, Lösungsfunktionen zu finden, welche mit Ausnahme
+einiger diskreter Stellen Lösungen der Euler-Lagrange-Differentialgleichung
+sind.
+An dien Ausnahmestellen sind die Lösungen immer noch stetig, die
+Ableitung kann aber springen, jedoch nicht beliebig.
+
+Die im Abschnitt~\ref{buch:nichtdiff:section:splines} vorgestellte,
+für die numerische Mathematik besonders wichtige
+Spline-Interpolation verwendet Lösungsfunktionen eines
+Variationsproblems zur Approximation einer Funktion, welche aber an
+einigen Stellen nicht stetig differenzierbar sind.
+
+
+\input{chapters/030-nichtdiff/1-duboisreymond.tex}
+\input{chapters/030-nichtdiff/2-eckenbedingung.tex}
+\input{chapters/030-nichtdiff/3-splines.tex}
+
