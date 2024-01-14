@@ -10,4 +10,5 @@ CHAPTERFILES +=								\
 	chapters/020-variation/3-eulerlagrange.tex			\
 	chapters/020-variation/4-hoehereableitungen.tex			\
 	chapters/020-variation/5-mehrerefunktionen.tex			\
+	chapters/020-variation/6-allgemein.tex				\
 	chapters/020-variation/chapter.tex

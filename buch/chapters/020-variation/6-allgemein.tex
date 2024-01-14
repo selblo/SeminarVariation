@@ -1,0 +1,659 @@
+%
+% 6-allgemein.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\section{Die allgemeine Theorie der ersten Variation
+\label{buch:variation:section:allgemein}}
+\kopfrechts{Die allgemeine Theorie der ersten Variation}
+In Abschnitt~\ref{buch:variation:eulerlagrange:subsection:freierb}
+wurde gezeigt, wie sich in einem Variationsproblem mit vorgegebenem
+Randwert nur an einem Ende des Intervalls aus der ersten Variation
+automatisch eine zusätzliche Randbedingung am anderen Ende des
+Intervalls ergibt.
+Die Endpunkte $x_0$ und $x_1$ des Intervalls waren aber immer noch 
+fest.
+In diesem Abschnitt soll gezeigt werden, wie sich diese Einschränkung
+aufheben lässt.
+
+%
+% Allgemeine Variation einer Funktion
+%
+\subsection{Allgemeine Variation einer Funktion $y(x)$
+\label{buch:variation:allgemein:subsection:vary}}
+In Abschnitt~\ref{buch:variation:section:eulerlagrange} wurde die
+erste Variation mit Hilfe von Funktionen der Form
+\begin{equation}
+x
+\mapsto
+y(x)+\varepsilon\eta(x)
+\label{buch:variation:allgemein:eqn:ansatz}
+\end{equation}
+konstruiert.
+Mit diesem Ansatz ist es nicht möglich, die Endpunkte $x_0$ und $x_1$
+des Intervalls zu varieren.
+Es war zwar möglich, die $y$-Werte zu varieren, was auf die zusätzliche
+Randbedingung von
+Satz~\ref{buch:variation:eulerlagrange:satz:zusaetzlicherb}
+geführt hat.
+Wir möchten aber sogar die Intervallgrenzen varieren können, dieser
+Fall wird von den bisherigen Entwicklungen nicht abgedeckt.
+
+%
+% Verallgemeinerung des Variationsansatzes
+%
+\subsubsection{Verallgemeinerung des Variationsansatzes}
+Statt des Ansatzes~\eqref{buch:variation:allgemein:eqn:ansatz}
+verwenden wir jetzt eine Parametrisierung
+\begin{equation}
+y
+\colon
+[x_0(\varepsilon),x_1(\varepsilon)]
+\to
+\mathbb{R}
+:
+x\mapsto y(x,\varepsilon)
+\label{buch:variation:allgemein:eqn:ansatz2}
+\end{equation}
+für $\varepsilon$-Werte in einer Umgebung von $0$.
+Damit
+\eqref{buch:variation:allgemein:eqn:ansatz2}
+eine Variation der einer Funktion $y(x)$ beschreibt, soll
+$y(x) = y(x,0)$ sein.
+Die Funktionen $x_0(\varepsilon)$ und $x_1(\varepsilon)$ beschreiben
+die Endpunkte des Definitionsintervalls der partiellen Funktion
+$x\mapsto y(x,\varepsilon)$.
+
+Der ursprüngliche Ansatz~\eqref{buch:variation:allgemein:eqn:ansatz}
+ist in \eqref{buch:variation:allgemein:eqn:ansatz2} enthalten, wenn
+man $x_0(\varepsilon)=x_0$, $x_1(\varepsilon)=x_1$ und
+\[
+y(x,\varepsilon) = y(x) + \varepsilon \eta(x)
+\]
+setzt.
+In der Herleitung der Euler-Lagrange-Differentialgleichung wurde
+entscheidend verwendet, dass man diese Funktion nach $\varepsilon$
+ableiten kann.
+Dass dies möglich ist, ist nach den bisherigen Forderungen an
+$y(x,\varepsilon)$ nicht garantiert.
+Es muss also zusätzlich Differenzierbarkeit nach $\varepsilon$
+gefordert werden.
+
+\begin{definition}[Allgemeine Variation einer Funktion]
+\label{buch:variation:allgemein:def:variation}
+Eine stetig nach beiden Variablen differenzierbare Funktion $y(x,\varepsilon)$
+ist eine {\em allgemeine Variation} der Funktion $y(x)$, wenn es stetig
+differenzierbare Funktionen
+$x_0(\varepsilon)$ und $x_1(\varepsilon)$ gibt derart, dass
+die partielle Funktion $x\mapsto y(x,\varepsilon)$ auf dem
+Intervall $[x_0(\varepsilon),x_1(\varepsilon)]$ stetig differenzierbar
+ist und für $\varepsilon=0$ mit $y(x)$ übereinstimmt: $y(x)=y(x,0)$.
+Der Einfachheit halber wird die partielle Ableitung von $y(x,\varepsilon)$
+nach $x$ auch
+\[
+y'(x,\varepsilon) = \frac{\partial y}{\partial x}(x,\varepsilon)
+\]
+geschrieben.
+Für die Werte an den Endpunkten schreiben wir abkürzend
+\begin{align*}
+x_i &= x_i(0),
+&
+y_i &= y(x_i(0),0) = y(x_i)
+&&\text{und}&
+y_i'
+=
+y'(x_i(0),0)
+=
+\frac{\partial y(x(\varepsilon),\varepsilon)}{\partial\varepsilon}
+\bigg|_{\varepsilon=0}
+\end{align*}
+für $i=0,1$.
+\end{definition}
+
+%
+% Kurven, auf denen sich die Endpunkte bewegen
+%
+\subsubsection{Kurven, auf denen sich die Endpunkte bewegen}
+Der Ansatz~\eqref{buch:variation:allgemein:eqn:ansatz2} beschreibt
+Kurven, die die beiden Punkte
+\begin{align*}
+P_0(\varepsilon)
+&=
+(x_0(\varepsilon),y(x_0(\varepsilon),\varepsilon))
+&&\text{und}&
+P_1
+&=
+(x_1(\varepsilon),y(x_1(\varepsilon),\varepsilon))
+\end{align*}
+miteinander verbinden.
+Die Endpunkte der Kurve bewegen sich also auf den Kurven
+\begin{align*}
+\varepsilon
+&\mapsto
+P_0(\varepsilon)
+=
+(x_0(\varepsilon),y(x_0(\varepsilon),\varepsilon)
+&&\text{und}&
+\varepsilon
+&\mapsto
+P_1(\varepsilon)
+=
+(x_1(\varepsilon),y(x_1(\varepsilon),\varepsilon).
+\end{align*}
+Da alle beteiligten Funktionen als differenzierbar vorausgesetzt wurden,
+lassen sich auch die Tangenten dieser Kurven bestimmen.
+Der Richtungsvektor der Tangente im Punkt $x_i=x_i(0)$ ist
+\begin{align}
+\vec{r}_i(\varepsilon)
+=
+\frac{d}{d\varepsilon}
+\begin{pmatrix}
+x_i(\varepsilon)\\
+y(x_i(\varepsilon),\varepsilon)
+\end{pmatrix}
+\bigg|_{\varepsilon=0}
+\label{buch:variation:allgemein:eqn:tangential}
+\end{align}
+für $i=0,1$.
+Die Kurve $\varepsilon\mapsto P_i(\varepsilon)$ lässt sich daher für
+genügend kleine $\varepsilon$ beliebig genau durch
+\[
+x\mapsto
+\begin{pmatrix}
+x_0(0)\\
+y(x,0) 
+\end{pmatrix}
++
+\varepsilon
+\frac{d}{d\varepsilon}
+\begin{pmatrix}
+x_i(\varepsilon)\\
+y(x_i(\varepsilon),\varepsilon)
+\end{pmatrix}
+\bigg|_{\varepsilon=0}
+\]
+approximieren.
+
+%
+% Erste Variation
+%
+\subsection{Erste Variation einer einzelnen Funktion
+\label{buch:variation:allgemein:subsection:var1}}
+Wir betrachten jetzt wieder das Funktional
+\[
+I(y)
+=
+\int_{x_0}^{x_1} F(x,y(x),y'(x)) \,dx
+\]
+für die Lagrange-Funktion $f(x,y,y')$.
+Eine allgemeine Variation der Funktion $y(x)$ im Sinne der
+Definition~\ref{buch:variation:allgemein:def:variation} macht aus
+$I(y)$ eine Funktion 
+\[
+I(y,\varepsilon)
+=
+\int_{x_0(\varepsilon)}^{x_1(\varepsilon)}
+F(x,y(x,\varepsilon),y'(x,\varepsilon))
+\,dx
+\]
+von $\varepsilon$.
+Davon ist wieder die Ableitung nach $\varepsilon$ an der Stelle
+$\varepsilon=0$ zu ermitteln.
+Sie ist
+\begin{align*}
+\frac{\partial}{\partial\varepsilon}I(y,\varepsilon)
+&=
+F(x_1(\varepsilon),y(x_1(\varepsilon),\varepsilon),
+y'(x_1(\varepsilon),\varepsilon))
+\frac{dx_1(\varepsilon)}{d\varepsilon}
+-
+F(x_0(\varepsilon),y(x_0(\varepsilon),\varepsilon),
+y'(x_0(\varepsilon),\varepsilon))
+\frac{dx_0(\varepsilon)}{d\varepsilon}
+\\
+&\qquad
++
+\int_{x_0(\varepsilon)}^{x_1(\varepsilon)}
+\frac{\partial F}{\partial y}(x, y(x,\varepsilon), y'(x,\varepsilon))
+\frac{\partial y}{\partial \varepsilon}(x,\varepsilon)
+\,dx
+\\
+&\qquad
++
+\int_{x_0(\varepsilon)}^{x_1(\varepsilon)}
+\frac{\partial F}{\partial y'}(x, y(x,\varepsilon), y'(x,\varepsilon))
+\frac{\partial^2 y}{\partial x\partial \varepsilon}(x,\varepsilon)
+\,dx
+\end{align*}
+An der Stelle $\varepsilon=0$ vereinfacht sich die Variation zu
+\begin{align}
+\delta I(y)
+&=
+F(x_1,y(x_1),y'(x_1))
+\frac{dx_0(0)}{d\varepsilon}
+-
+F(x_0,y(x_0),y'(x_0))
+\frac{dx_1(0)}{d\varepsilon}
+\notag
+\\
+&\qquad
++
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+\frac{\partial y}{\partial \varepsilon}(x,0)
+\,dx
+\notag
+\\
+&\qquad
++
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\frac{\partial^2 y}{\partial x\partial \varepsilon}(x,0)
+\,dx.
+\label{buch:variation:allgemein:eqn:var1}
+\end{align}
+Die Ableitung $y'$ im zweiten Integral kann mit partieller Integration 
+vereinfacht werden:
+\begin{align*}
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\frac{\partial y'}{\partial \varepsilon}(x,0)
+\,dx
+&=
+\biggl[
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\frac{\partial y}{\partial\varepsilon}(x,0)
+\biggr]_{x_0}^{x_1}
+\\
+&\qquad
+-
+\int_{x_0}^{x_1}
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\frac{\partial y}{\partial\varepsilon}(x,0)
+\,dx.
+\end{align*}
+Eingesetzt in 
+\eqref{buch:variation:allgemein:eqn:var1}
+ist die allgemeine Variation des Funktionals $I(y)$ daher
+\begin{equation}
+\begin{aligned}
+\delta I(y)
+&=
+F(x_1,y(x_1),y'(x_1))
+\frac{dx_0(0)}{d\varepsilon}
+-
+F(x_0,y(x_0),y'(x_0))
+\frac{dx_1(0)}{d\varepsilon}
+\\
+&\qquad
++
+\biggl[
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\frac{\partial y}{\partial\varepsilon}(x,0)
+\biggr]_{x_0}^{x_1}
+\\
+&\qquad
++
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\frac{\partial y}{\partial \varepsilon}(x,0)
+\,dx.
+\end{aligned}
+\label{buch:variation:allgemein:eqn:variation}
+\end{equation}
+
+Sei jetzt $y(x)$ eine Funktion, die das Funktional $I(y)$ stationär macht,
+für jede Wahl einer Variation von $y(x)$ ist also $\delta I(y)=0$.
+Dies gilt insbesondere auch für alle Variationen, die Endpunkte der
+Kurve unverändert lassen.
+Für eine solche Variation verschwinden die ersten drei Terme, es bleibt
+nur das Integral.
+Wie früher folgt daher, dass der Ausdruck in der Klammer im Integral
+verschwinden muss.
+Eine Lösung des Variationsproblems muss also die
+Euler-Lagrange-Differentialgleichung erfüllen.
+
+Die verbleibenden Terme in \eqref{buch:variation:allgemein:eqn:variation}
+drücken aus, wie sich das Funktional $I(y)$ ändert, wenn sich die
+Endpunkte der Kurve verschieben.
+Die ersten zwei Terme behandeln offensichtlich den Fall, dass die 
+Intervalgrenzen verschoben werden.
+Der dritte Term behandelt die Änderung, die ausschliesslich von der
+Änderung des zweiten Parameters von $y(x,\varepsilon)$ ausgeht.
+Der $y$-Wert kann sich auch dadurch ändern, dass $x$ variert wird.
+\begin{align*}
+\frac{dy(x_i(\varepsilon),\varepsilon)}{d\varepsilon}
+&=
+\frac{\partial y(x_i(\varepsilon),\varepsilon)}{\partial x}
+\frac{dx_i(\varepsilon)}{d\varepsilon}
++
+\frac{\partial y(x_i(\varepsilon), \varepsilon)}{\partial \varepsilon}
+\intertext{oder an der Stelle $\varepsilon=0$}
+\frac{dy(x_i(0),0)}{d\varepsilon}
+&=
+\frac{\partial y(x_i(0),0)}{\partial x}
+\frac{dx_i(0)}{d\varepsilon}
++
+\frac{\partial y(x_i(0), 0)}{\partial \varepsilon}
+\intertext{Aufgelöst nach dem letzten Term ist dies}
+\frac{\partial y(x_i(0), 0)}{\partial \varepsilon}
+&=
+\frac{dy(x_i(0),0)}{d\varepsilon}
+-
+\frac{\partial y(x_i(0),0)}{\partial x}
+\frac{dx_i(0)}{d\varepsilon}
+\end{align*}
+Dies können wir in die Variation
+\eqref{buch:variation:allgemein:eqn:variation}
+einsetzen und erhalten
+\begin{equation}
+\begin{aligned}
+\delta I(y)
+&=
+\biggl(
+F(x_1,y(x_1),y'(x_1))
+-
+\frac{\partial y(x_1(0),0)}{\partial x}
+\frac{\partial F}{\partial y'}(x_1,y(x_1),y'(x_1))
+\biggr)
+\frac{dx_1(0)}{d\varepsilon}
+\\
+&\qquad
++
+\frac{\partial F}{\partial y'}(x_1,y(x_1),y'(x_1))
+\frac{dy(x_1(0),0)}{d\varepsilon}
+\\
+&\qquad
+-
+\biggl(
+F(x_0,y(x_0),y'(x_0))
+-
+\frac{\partial y(x_0(0),0)}{\partial x}
+\frac{\partial F}{\partial y'}(x_0,y(x_0),y'(x_0))
+\biggr)
+\frac{dx_0(0)}{d\varepsilon}
+\\
+&\qquad
+-
+\frac{\partial F}{\partial y'}(x_0,y(x_0),y'(x_0))
+\frac{dy(x_0(0),0)}{d\varepsilon}
+\\
+&\qquad
++
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\frac{\partial y}{\partial \varepsilon}(x,0)
+\,dx.
+\end{aligned}
+\label{buch:variation:allgemein:eqn:variation}
+\end{equation}
+Von den ersten vier Terme lassen sich jeweils zwei als ein Skalarprodukt
+des Vektors
+\[
+\vec{f}_i
+=
+\begin{pmatrix}
+F(x_i,y(x_i),y'(x_i))
+-
+\frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
+\frac{\partial y(x_i(0),0)}{\partial\varepsilon}
+\\
+\frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
+\end{pmatrix}
+\]
+mit dem Richtungsvektor  $\vec{r}_i(0)$ von
+\eqref{buch:variation:allgemein:eqn:tangential} schreiben.
+Mit dieser Notation erhält die allgemeinste Form der ersten Variation
+die Form
+\begin{equation}
+\delta I(y)
+=
+\vec{f}_1\cdot \vec{r}_i(0)
+-
+\vec{f}_0\cdot \vec{r}_0(0)
++
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\frac{\partial y}{\partial \varepsilon}(x,0)
+\,dx.
+\end{equation}
+
+\begin{satz}
+\label{buch:variation:allgemein:satz:allgemeinvariation1}
+Sei $y(x,\varepsilon)$ eine Variation der zweimal stetig differenzierbaren
+Funktion $y(x)$ und sei
+\[
+\vec{r}_i(0)
+=
+\frac{d}{d\varepsilon}
+\begin{pmatrix}
+x_i(\varepsilon)\\
+y(x_i(\varepsilon),\varepsilon)
+\end{pmatrix}\bigg|_{\varepsilon=0}
+\]
+der Tangentialvektor an die Kurve
+$\varepsilon\mapsto P_i(\varepsilon) = (x_i(\varepsilon),y(x_i(\varepsilon)))$,
+auf der sich der Endpunkt $P_i$ der Kurve während der Variation
+bewegt.
+Dann ist die Variation
+\begin{equation}
+\delta I(y)
+=
+\vec{f}_1\cdot\vec{r}_1(0)
+-
+\vec{f}_0\cdot\vec{r}_0(0)
++
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\frac{\partial y}{\partial \varepsilon}(x,0)
+\,dx
+\label{buch:variation:allgemein:eqn:allgemeinvariation1}
+\end{equation}
+mit
+\[
+\vec{f}_i
+=
+\begin{pmatrix}
+F(x_i,y(x_i),y'(x_i))
+-
+y'(x_i)
+\frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
+\\
+\frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
+\end{pmatrix}.
+\]
+\end{satz}
+
+Beliebige Variationen der Endpunkte sind nicht sinnvoll, denn
+wären die Endpunkte beliebig wählbar, dann lässt sich $I(y)$ kleiner
+(oder grösser) machen, indem der Weg geeignet verkürzt wird.
+Das einzig mögliche Minimum für das Funktional wird dann für eine
+Funktion erreicht, bei der $x_0=x_1$ gilt.
+Es sind daher nur Variationen zielführend, die tangential an eine
+Kurve in der $x$-$y$-Ebene sind.
+Die Skalarprodukte in 
+\eqref{buch:variation:allgemein:eqn:allgemeinvariation1}
+bedeuten liefern dann Randbedingungen für $y(x)$.
+
+%
+% Erste Variation für mehrere Funktionen 
+%
+\subsection{Erste Variation mehrere Funktionen
+\label{buch:variation:allgemein:subsection:var1n}}
+Die Entwicklung des letzten Abschnitts lässt sich auch für mehrere
+Funktionen $y_1(x),\dots,y_n(x)$ durchführen.
+Seien also $y_k(x,\varepsilon)$ Variationen der Funktionen $y_k(x)$
+mit der Variation $x_0(\varepsilon)$ und $x_1(\varepsilon)$ der 
+Intervallenden.
+Die Endpunkte der Kurven
+\[
+x\mapsto
+=
+(x
+y_1(x,\varepsilon),\dots
+y_n(x,\varepsilon))
+\in \mathbb{R}^{n+1}
+\]
+bewegen sich jetzt auf der Kurve
+\[
+\varepsilon
+\mapsto
+P_i(\varepsilon)
+=
+(x_i(\varepsilon),
+y_1(x_i(\varepsilon),\varepsilon),
+\dots
+y_n(x_i(\varepsilon),\varepsilon))
+\]
+mit dem Tangentialvektor
+\[
+\vec{r}_i(\varepsilon)
+=
+\frac{d}{d\varepsilon}
+\begin{pmatrix}
+x_i(\varepsilon)\\
+y_1(x_i(\varepsilon),\varepsilon)\\
+\vdots\\
+y_n(x_i(\varepsilon),\varepsilon)
+\end{pmatrix}
+\]
+für $i=0,1$.
+
+Dem Vektor $\vec{f}_i$ im Falle einer Funktion entspricht der Vektor
+\[
+\vec{f}_i
+=
+\begin{pmatrix}
+F(x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
+-
+\sum_{k=1}^n y'_k(x_i) \frac{\partial F}{\partial y_k'}
+(x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
+\\
+\frac{\partial F}{\partial y_1}
+(x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
+\\
+\vdots
+\\
+\frac{\partial F}{\partial y_n}
+(x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
+\end{pmatrix}.
+\]
+
+Diese Notation ist nicht wirklich lesbar, wir greifen daher wieder
+zurück auf die vektorielle Schreibweise, in der 
+$y(x)$ und die Variation $y(x,\varepsilon)$ die $n$-dimensionalen
+Vektoren
+\[
+y(x)
+=
+\begin{pmatrix}
+y_1(x)\\
+\vdots\\
+y_n(x)
+\end{pmatrix}
+\qquad
+\text{und}
+\qquad
+y(x,\varepsilon)
+=
+\begin{pmatrix}
+y_1(x,\varepsilon)\\
+\vdots\\
+y_n(x,\varepsilon)
+\end{pmatrix}
+\]
+sind.
+Auch die Funktion $F$ können wir jetzt wie in Abschnitt
+kompakter als
+Funktion
+\[
+F\colon
+\mathbb{R}\times \mathbb{R}^n\times\mathbb{R}^n
+\to
+\mathbb{R}
+:
+(x,y,y')
+\mapsto
+F(x,y,y')
+\]
+schreiben.
+Die unteren $n$ Komponenten der Richtungsvektoren sind einfach
+die Ableitung des Vektors
+$y(x(\varepsilon),\varepsilon)$ nach $\varepsilon$.
+
+Die unteren $n$ Komponenten von $\vec{f}_i$ sind die Ableitungen von
+$F$ nach den $n$ Variablen $y_1,\dots,y_n$.
+Dies sieht aus wie der Gradient, wenn man nur die $y$-Variablen 
+berücksichtigt.
+Wir schreiben dafür daher $\operatorname{grad}_yF(x,y,y')$.
+Analog können wir für den Vektor der Ableitungen von $F$ nach den
+$y_k'$ als $\operatorname{grad}_{y'}F(x,y,y')$ schreiben.
+Mit dieser Notation bekommen wir die sehr kompakte Form
+\[
+\vec{f}_i
+=
+\begin{pmatrix}
+F(x_i,y(x_i),y'(x_i)) - \operatorname{grad}_{y'}(x_i,y(x_i),y'(x_i))
+\\
+\operatorname{grad}_y F(x_i,y(x_i),y'(x_i))
+\end{pmatrix}
+\]
+für $i=0,1$.
+
+Für die Variation finden wir dann
+\begin{align*}
+\delta I(y)
+&=
+\vec{f}_1\cdot \vec{r}_1(0)
+-
+\vec{f}_0\cdot \vec{r}_0(0)
+\\
+&\qquad
++
+\int_{x_0}^{x_1}
+\biggl(
+\operatorname{grad}_yF(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\operatorname{grad}_{y'}F(x,y(x),y'(x))
+\biggr)
+\cdot
+\frac{\partial y}{\partial\varepsilon}(x,0)
+\,dx
+\end{align*}
+Damit die Variation verschwindet, müssen also die
+Euler-Lagrange-Differentialgleichungen erfüllt sein.
+Zusätzlich müssen aber die Skalarprodukte
+$\vec{f}_1\cdot \vec{r}_1(0)$
+und
+$\vec{f}_0\cdot \vec{r}_0(0)$
+verschwinden.
+Dies bedeutet, dass die Vektoren $\vec{f}_i$ auf den erlaubten
+Tangentialvektoren $\vec{r}_i(0)$ orthogonal sind.
+
+
+%
+% Erste Variation mit höheren Ableitungen
+%
+\subsection{Erste Variation mit höheren Ableitungen
+\label{buch:variation:allgemein:subsection:var2h}}
+
+
+

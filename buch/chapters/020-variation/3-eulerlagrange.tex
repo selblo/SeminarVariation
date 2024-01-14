@@ -64,7 +64,8 @@ Differentialgleichung vermeiden.
 %
 % Die Lagrange-Funktion
 %
-\subsection{Die Lagrange-Funktion}
+\subsection{Die Lagrange-Funktion
+\label{buch:variation:eulerlagrange:subsection:lagrange-funktion}}
 Wir betrachten Variationsproblem der folgenden Art.
 Gesucht ist eine auf dem Intervall $[x_0,x_1]$ definirte
 Funktion $y(x)$, die das Integral
@@ -95,7 +96,7 @@ des Funktionals \eqref{buch:variation:eulerlagrange:eqn:funktional}.
 \begin{beispiel}
 Die Lagrange-Funktion des Brachistochronenproblems ist
 \[
-L(x,y,y')
+F(x,y,y')
 =
 \sqrt{ \frac{1+y^{\prime 2}}{y} }.
 \]
@@ -117,7 +118,7 @@ l(y)
 \]
 Daraus lesen wir ab, dass die Lagrange-Funktion dieses Variationsproblems
 \begin{equation}
-L(x,y,y') = \sqrt{1+y^{\prime 2}}
+F(x,y,y') = \sqrt{1+y^{\prime 2}}
 \label{buch:variation:eulerlagrange:eqn:geradeL}
 \end{equation}
 ist.
@@ -126,14 +127,15 @@ Dies ist auch zu erwarten, denn die Länge einer Kurve hängt nicht davon
 ob, wo in der Ebene sie platziert ist.
 Eine Verschiebung in $x$-Richtung würde das $x$-Argument ändern,
 eine Verschiebung in $y$-Richtung die $y$-Werte.
-Wäre $L$ von $x$ oder $y$ abhängig, könnte auch die Länge der Kurve
+Wäre $F$ von $x$ oder $y$ abhängig, könnte auch die Länge der Kurve
 davon abhängen.
 \end{beispiel}
 
 %
 % Euler-Lagrange_Differentialgleichung
 %
-\subsection{Euler-Lagrange-Differentialgleichung}
+\subsection{Euler-Lagrange-Differentialgleichung
+\label{buch:variation:eulerlagrange:subsection:dgl}}
 Das Maximum oder Minimum einer Funktionen mehrere Variablen wurde
 gefunden, indem die Richtungsableitung berechnet und $=0$ gesetzt
 wurde.
@@ -300,6 +302,7 @@ Es gibt aber durchaus Variationsprobleme, deren Lösungen
 nicht differenzierbar sind, dazu mehr im Kapitel~\ref{buch:chapter:nichtdiff}.
 
 \begin{beispiel}
+\label{buch:variation:eulerlagrange:beispiel:gerade}
 Wir lösen das Variationsproblem von Beispiel
 \ref{buch:variation:eulerlagrange:beispiel:gerade}
 mit der Lagrange-Funk\-tion
@@ -314,12 +317,13 @@ Euler-Lagrange-Gleichung nur
 \]
 übrig.
 Berechnung der Ableitung liefert
-\[
+\begin{equation}
 \frac{\partial}{\partial y'}
 \sqrt{1+y^{\prime 2}}
 =
 \frac{y'}{\sqrt{1+y^{\prime 2}}}.
-\]
+\label{buch:variation:eulerlagrange:eqn:ableitungFyp}
+\end{equation}
 Die Ableitung nach $x$ ergibt
 \begin{align*}
 \frac{d}{dx}
@@ -363,6 +367,182 @@ Kürzeste Verbindungen in der Ebene sind daher Geraden.
 %
 % Freie Randbedingungen
 %
-\subsection{Freie Randbedingungen}
+\subsection{Freie Randbedingungen
+\label{buch:variation:eulerlagrange:subsection:freierb}}
+In der Herleitung der Euler-Lagrange-Differentialgleichung wurde angenommen,
+dass die Endpunkte der Lösungsfunktion durch $y(x_0)=y_0$ und $y(x_1)=y_1$
+fest vorgegeben sind.
+Diese Voraussetzung soll in diesem Abschnitt abgeschwächt werden.
+Die Funktionswerte in den Endpunkten sollen also nicht mehr fest
+vorgegeben sein.
+
+\begin{beispiel}
+\label{buch:variation:eulerlagrange:beispiel:freiegerade}
+Im Beispiel~\ref{buch:variation:eulerlagrange:beispiel:gerade}
+wurde die kürzeste Kurve zwischen zwei Punkten in der Ebene
+gesucht und wie erwartet eine Gerade als Lösung gefunden.
+Wenn die Werte $y_0$ und $y_1$ jetzt nicht mehr vorgegeben sind,
+wird die kürzeste Verbindung zwischen den beiden Geraden
+$x=x_0$ und $x=x_1$ gesucht.
+Die Lösung dieses Problems ist nicht eindeutig, jede horizontale
+Strecke mit $y_0=y_1$ ist eine Lösung.
+\end{beispiel}
+
+Das Beispiel zeigt, dass es im Allgemeinen immer noch die Vorgabe
+eines der beiden Randwerte braucht, um die Lösung eindeutig zu
+bestimmen.
+Wir lösen daher die folgende Aufgabe.
+
+\begin{aufgabe}
+Gesucht ist eine zweimal stetig differnzierbare Funktion $y(x)$ auf
+dem Intervall $[x_0,x_1]$ mit $y(x_0)=y_0$, die das Integral
+\[
+I(y)
+=
+\int_{x_0}^{x_1} F(x,y(x),y'(x))\,dx
+\]
+zu einem Extremum macht.
+\end{aufgabe}
+
+\begin{proof}[Lösung]
+Sei $y(x)$ eine Lösung der Aufgabe und sei $y_1:=y(x_1)$ der Wert
+der Lösung am rechten Rand des Intervalls.
+Wir berechnen wieder die Variation von $I(y)$ mit Hilfe von
+stetig differenzierbaren Funktionen $\eta(x)$, die jetzt aber 
+nur noch die Bedingungn $\eta(x_0)=0$ erfüllen müssen.
+Die Richtungsableitung ist wie früher
+\begin{align*}
+\frac{d}{d\varepsilon}
+I(y+\varepsilon\eta)
+\bigg|_{\varepsilon=0}
+&=
+\frac{d}{d\varepsilon}
+\int_{x_0}^{x_1}
+F(x,y(x)+\varepsilon\eta(x),y'(x)+\varepsilon\eta'(x))\,dx
+\\
+&=
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y}(x,y(x),y'(x)) 
+\eta(x)
++
+\frac{\partial F}{\partial y'}
+(x,y(x),y'(x))
+\eta'(x)
+\,dx
+\intertext{und mit partieller Integration}
+&=
+\biggl[
+\frac{\partial F}{\partial y'}(x,y(x),y'(x)) \eta(x)
+\biggr]_{x_0}^{x_1}
+\\
+&\qquad
++
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\,
+\eta(x)
+\,dx.
+\end{align*}
+Im Gegensatz zu früher können wir jetzt aber nicht mehr
+schliessen, dass der erste Term verschwindet, da $y(x_1)$ nicht
+mehr als $=0$ verausgesetzt wird.
+Vielmehr erhalten wir für die erste Variation
+\begin{equation*}
+\delta I(y)
+=
+\frac{\partial F}{\partial y'} (x_1,y(x_1),y'(x_1)) \eta(x_1)+
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\,
+\eta(x)
+\,dx.
+\end{equation*}
+Die Klammer im Integral ist von der Euler-Lagrange-Differentialgleichung
+her bekannt, aber es ist ein weiterer hinzugekommen, der genau dann
+verschwindet wenn auch $\eta(x_1)=0$ ist.
+
+Dann ist $y(x)$ natürlich erst recht eine Lösung des Problems, das
+Funktional $I(y)$ mit den {\em zwei} Randbedingungen
+$y(x_0)=y_0$ und $y(x_1)=y_1$ zu einem Extremum zu machen, also
+muss die Funktion $y(x)$ sicher die Euler-Lagrange-Differentialgleichung
+erfüllen.
+Die Klammer im Integral wird daher verschwinden, die Variation
+reduziert sich auf den ersten Term
+\[
+\delta I(y)
+=
+\frac{\partial F}{\partial y'} (x_1,y(x_1),y'(x_1)) \eta(x_1)
+=
+0.
+\]
+Sie verschwindet nur dann für alle zulässigen Funktionen $\eta(x)$, wenn
+\begin{equation*}
+\frac{\partial F}{\partial y'}(x_1,y(x_1),y'(x_1))=0
+\end{equation*}
+gilt.
+Dies ist eine zusätzliche Randbedingung für die Funktion $y(x)$, geschrieben
+in einer impliziten Form.
+\end{proof}
+
+Wir halten das Resultat der Aufgabenlösung als Satz fest:
+
+\begin{satz}
+\label{buch:variation:eulerlagrange:satz:zusaetzlicherb}
+Wenn die zweimal stetig differenzierbare Funktion $y(x)$ mit dem
+Randwert $y(x_0)=y_1$ das Integral
+\[
+I(y)
+=
+\int_{x_0}^{x_1} F(x,y(x),y'(x))\,dx
+\]
+zu einem Extremum macht, dann erfüllt sie am rechten Intervallende
+die Randbedingung
+\begin{equation}
+\frac{\partial F}{\partial y'}(x_1,y(x_1),y'(x_1))=0.
+\label{buch:variation:eulerlagrange:eqn:zusaetzlicherb}
+\end{equation}
+zusätzlich zur Euler-Lagrange-Gleichung für die Lagrange-Funktion $L$.
+\end{satz}
+
+\begin{beispiel}
+\label{buch:variation:eulerlagrange:beispiel:einseitigegerade}
+Wir betrachten wieder das Funktional
+\[
+I(y)
+=
+\int_{x_0}^{x_1}
+\sqrt{1+y^{\prime 2}(x)}
+\,dx
+\]
+mit der einzigen Randbedingung $y(x_0)=y_0$, der Funktionswert auf 
+der rechten Seite ist nicht vorgebeben.
+Der Satz~\eqref{buch:variation:eulerlagrange:satz:zusaetzlicherb}
+besagt zunächst, dass die Lösungsfunktion wieder eine Gerade sein
+muss, da die Euler-Lagrange-Gleichung erfüllt sein muss.
+Zusätzlich muss aber auch die Randbedingung
+\eqref{buch:variation:eulerlagrange:eqn:zusaetzlicherb}
+am rechten Ende des Intervalls erfüllt sein.
+Die Ableitung der Lagrange-Funktion ist in diesem Fall durch
+\eqref{buch:variation:eulerlagrange:eqn:ableitungFyp}
+gegeben, es muss also
+\[
+\frac{y'(x_1)}{\sqrt{1+y'(x_1)^2}}
+=
+0
+\qquad\Rightarrow\qquad y'(x_1)=0
+\]
+gelten.
+Die Lösung ist daher wie erwartet eine horizontale Strecke.
+\end{beispiel}
 
 
