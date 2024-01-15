@@ -23,7 +23,180 @@ den Steigungen an den Knickstellen Einschränkungen auferlegt.
 %
 % Ein Variationsproblem mit nicht differenzierbarer Lösung
 %
-\subsection{Ein Variationsproblem mit nicht differenzierbarer Lösung}
+\subsection{Ein Variationsproblem mit nicht differenzierbarer Lösung
+\label{buch:nichtdiff:eckenbedingung:subsection:problem}}
+Wir betrachten das Funktional
+\begin{equation}
+I(y)
+=
+\int_{-1}^1 F(x,y(x),y'(x))\,dx
+=
+\int_{-1}^1 y^2(1-y')^2\,dx
+\label{buch:nichtdiff:eckenbedingung:eqn:l}
+\end{equation}
+für Funktionen, die auf dem Intervall $[-1,1]$ definiert sind und
+die Randbedingung $y(-1) = 0$ und $y(1)=1$ erfüllen.
+Da der Integrand nicht negativ ist, gilt auch immer $I(y)\ge 0$.
+
+Die Euler-Lagrange-Differentialgleichung des Funktionals
+\eqref{buch:nichtdiff:eckenbedingung:eqn:l} ist
+\begin{equation*}
+\left.
+\begin{aligned}
+\frac{\partial F}{\partial y}
+&=
+2y(1-y')^2
+\\
+\frac{\partial F}{\partial y'}
+&=
+-2y^2(1-y')
+\end{aligned}
+\;
+\right\}
+\quad\Rightarrow\quad
+0
+=
+\frac{\partial F}{\partial y}-\frac{d}{dx}\frac{\partial F}{\partial y'}
+=
+2y(1-y')^2
++4yy'(1-y') + 2y^2y''.
+\end{equation*}
+Die Differentialgleichung lässt sich ausmultiplizieren zu
+\begin{align*}
+2y
+-4y'y
++
+2y^{\prime 2}y
++
+4y'
+-
+4y^{\prime 2}y
++
+4y^2y''
+=
+0
+\end{align*}
+und vereinfachen und faktorisieren zu
+\begin{equation}
+y(1-y^{\prime 2}+2yy'')
+=
+0.
+\label{buch:nichtdiff:eckenbedingung:eqn:dgl}
+\end{equation}
+Der erste Faktor liefert die spezielle Lösung $y(x)=0$.
+Der zweite Faktor verschwindet, wenn $y'=1$ konstant ist.
+Jede Gerade mit Steigung $1$ ist Lösung der Differentialgleichung.
+Beide Bedingungen führen ausserdem dazu, dass die Lagrange-Funktion
+des Problems
+\eqref{buch:nichtdiff:eckenbedingung:eqn:l}
+verschwindet.
+
+%
+% Eine nicht differenzierbare Lösung
+%
+\subsubsection{Eine nicht differenzierbare Lösung}
+\input{chapters/030-nichtdiff/fig/nichtdiff.tex}
+Aus den bisher identifizierten Lösungen der Differentialgleichung
+\eqref{buch:nichtdiff:eckenbedingung:eqn:dgl}
+Tatsächlich lässt sich eine Funktion $y(x)$ zusammensetzen,
+die den Punkt $(-1,0)$ mit dem Punkt $(1,1)$ verbindet,
+nämlich
+\[
+y(x)
+=
+\begin{cases}
+0&\qquad \text{für $x<0$}\\
+x&\qquad \text{für $x\ge 0$}
+\end{cases}
+\]
+(Abbildung~\ref{buch:nichtdiff:fig:nichtdiff}).
+Für diese Funktion erreicht das Funktional $I(y)$ den kleinstmöglichen
+Wert.
+
+Jede stetige Variation $\eta(x)$ mit $\eta(-1)=\eta(1)=0$ gibt als Wert
+für das Funktional
+\[
+I(y+\eta)
+=
+\int_{-1}^1 \eta(x)^2 \eta'(x)^2 \,dx.
+\]
+Dies ist immer positiv, es gibt also keine differenzierbare Lösung
+des Variationsproblems.
+
+%
+% Lösung in geschlossener Form
+%
+\subsubsection{Lösung in geschlossener Form}
+Die Differentialgleichung
+\begin{equation}
+2yy'' - y^{\prime 2} + 1 = 0,
+\label{buch:nichtdiff:eckenbedingung:eqn:dgl2}
+\end{equation}
+die sich aus dem zweiten Faktor von
+\eqref{buch:nichtdiff:eckenbedingung:eqn:dgl}
+ergibt, lässt sich sogar in geschlossener Form lösen.
+Setzt man an $y(x)=ax^2+bx+c$ und setzt dies in
+\eqref{buch:nichtdiff:eckenbedingung:eqn:dgl2} ein, erhält man
+\[
+2\cdot2a(ax^2+bx+c) - (2ax+b)^2 + 1 
+=
+4a^2x^2 + 4abx + 4ac - 4a^2x^2 -4abx-b^2 + 1
+=
+4ac-b^2+1
+\]
+für die linke Seite.
+Das quadratische Polynom $y(x)$ ist also genau dann eine Lösung
+der Differentialgleichung
+\eqref{buch:nichtdiff:eckenbedingung:eqn:dgl2},
+wenn die Diskriminante $b^2-4ac=1$ ist.
+Für die Randbedingungen $y(x_0)=y_0$ und $y(x_1)=y_1$ ergeben sich die
+zusätzlichen Gleichungen
+\begin{equation*}
+\begin{aligned}
+ax_0^2+bx_0+c&=y_0
+\\
+ax_1^2+bx_1+c&=y_1,
+\end{aligned}
+\end{equation*}
+aus denen sich die Koeffizienten $a$, $b$ und $c$ bestimmen lassen.
+
+Für die Randpunkte $y(-1)=0$ und $y(1)=1$ der ursprünglichen Aufgabe
+ergeben sich die Gleichungen
+\begin{align*}
+a-b+c&=0\\
+a+b+c&=1\\
+b^2-4ac&=1.
+\end{align*}
+Aus den ersten beiden Gleichungen ergeben sich
+\[
+a+c=\frac12, \qquad b=\frac12
+\qquad\text{und}\qquad
+ac = \frac14(b^2-1) = \frac{3}{16}.
+\]
+Die beiden Koeffizienten $a$ und $c$ müssen Lösungen der
+quadratischen Gleichung
+\[
+0
+=
+(u-a)(u-c)
+=
+u^2 -(a+c)u+ac
+=
+u^2-\frac12u+\frac{3}{16}
+\]
+sein.
+Die Diskriminante dieser Gleichung ist
+\[
+\biggl(\frac12\biggr)^2
+-4\cdot1\cdot\frac{3}{16}
+=
+\frac14-\frac{3}{4}
+=
+-\frac12
+<0.
+\]
+Die quadratische Gleichung hat also keine reellen Lösungen und damit
+gibt es auch keine differenzierbare Lösung des Variationsproblems.
 
 %
 % Die Eckenbedingung
@@ -246,6 +419,50 @@ dass also
 \end{equation}
 Das folgende Beispiel illustriert diesen Spezialfall anhand des
 Brechungsgesetztes.
+
+\begin{beispiel}
+In Abschnitt~\ref{buch:nichtdiff:eckenbedingung:subsection:problem}
+wurde eine Lösung für das Variationsproblem für das Funktional
+\eqref{buch:nichtdiff:eckenbedingung:eqn:l} mit den Randbedingungen
+$y(-1)=0$ und $y(1)=1$ mit ad hoc Argumenten gefunden.
+Da die Funktionen $y(x)=0$ und $y(x)=x$ die
+Euler-Lagrange-Differentialgleichung auf dem ganzen Intervall
+erfüllen, ist nur noch zu prüfen, ob die weierstrass-erdmannsche
+Eckenbedingung an der Stelle $x_*=0$ erfüllt ist.
+Dazu berechnen wir 
+\begin{equation}
+\left.
+\begin{aligned}
+F(0,0,y'(0-))&=F(0,0,0)=0
+\\
+F(0,0,y'(0+))&=F(0,0,1)=0
+\end{aligned}
+\;
+\right\}
+\qquad\Rightarrow\qquad
+F(x_*,y(x_*),y(x_*-))=F(x_*,y(x_*),y(x_*+)),
+\end{equation}
+die erste Bedingung ist also erfüllt.
+Für die zweite Bedingung berechnen wir die Ableitungen
+\[
+\left.
+\begin{aligned}
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*-))
+&=
+0
+\\
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*+))
+&=
+0
+\end{aligned}
+\;\right\}
+\quad\Rightarrow\quad
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*-))
+=
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*+)),
+\]
+damit ist auch die zweite Bedingung erfüllt.
+\end{beispiel}
 
 \begin{beispiel}
 \input{chapters/030-nichtdiff/fig/brechung.tex}
