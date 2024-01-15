@@ -5,3 +5,126 @@
 %
 \section{Jacobi-Kriterium
 \label{buch:variation2:section:jacobi}}
+Die zweite Variation in der Form
+\eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+zeigt, dass es für die Beurteilung, ob tatsächlich ein Extremum 
+vorliegt, auf das Verhalten der Funktion $S(x)$ ankommt.
+In einem Minimum garantiert die Legendre-Bedingung bereits,
+dass $R(x)\ge 0$ ist.
+Es bleibt noch zu untersuchen, ob sich Bedinungen an die Funktion
+$S(x)$ finden lassen, die garantieren können, dass ein Minimum
+vorliegt.
+Zu diesem Zweck betrachten wir das Funktional
+\begin{equation}
+K(u)
+=
+\int_{x_0}^{x_1}
+S(x) u(x)^2 + R(x) u'(x)^2
+\,dx
+\label{buch:variation2:jacobi:eqn:K}
+\end{equation}
+mit Randbedingungen $u(x_0)=u(x_1)=0$ und versuchen das Minimum
+zu bestimmen.
+Für $u(x)=0$ ist $K(0)=0$.
+Sollte es aber Funktionen $u(x)$ geben, die $K(u)$ negativ machen,
+dann kann die Funktion $y(x)$ von der ausgehen die Funktionen $S(x)$
+und $R(x)$ konstruiert wurden, kein Minimum sein.
+
+Die Euler-Lagrange-Differentialgleichung des Funktionals
+\eqref{buch:variation2:jacobi:eqn:K}
+mit der Lagrange-Funk\-tion 
+\[
+G(x,u,u') = S(x) u^2 + R(x) u^{\prime 2}
+\]
+können wir nach trivialen Vereinfachungen
+\[
+L(u)
+=
+\frac{d}{dx}\frac{\partial G}{\partial y'}
+-
+\frac{\partial G}{\partial y}
+=
+\frac{d}{dx}(Ru') 
+-
+Su
+=
+0
+\]
+schreiben,
+oder auch
+\begin{equation}
+\frac{d}{dx} R(x)\frac{d}{dx} u(x) - S(x) u(x) = 0,
+\label{buch:variation2:jacobi:eqn:jacobisl}
+\end{equation}
+eine lineare Differentialgleichung zweiter Ordnung für die Funktion $u(x)$.
+Sie ist ausserdem von der Form einer Sturm-Liouville-Differentialgleichung,
+wie sie in Abschnitt~\ref{buch:variation2:section:diffgl} genauer
+untersucht wurden.
+
+Ist die Funktion $u(x)$ eine Lösung der
+Differentialgleichung~\eqref{buch:variation2:jacobi:eqn:jacobisl}
+mit $u(x_0)=u(x_1)=0$, dann ist auch jedes Vielfache von $u(x)$
+eine Lösung mit den gleichen Randbedingungen, und die zweite Variation
+des ursprünglichen Funktionals verschwindet für alle Werte von $\varepsilon$.
+Falls es keine solche Funktion $u(x)$ gibt, dann ist die zweite
+Variation $\ne 0$.
+Die Eigenschaft, ob ein Minimum oder Maximum vorliegt, wird also
+dadurch entschieden, ob es eine Lösung der Differentialgleichung
+\eqref{buch:variation2:jacobi:eqn:jacobisl} mit
+Randwerten $u(x_0)=u(x_1)=1$ gibt.
+
+Ist $u(x)$ eine nichttriviale Lösung der Differentialgleichung
+\eqref{buch:variation2:jacobi:eqn:jacobisl} mit $u(x_0)=0$,
+dann muss $u'(x_0)\ne 0$ sein.
+Durch Division druch $u'(x_0)$ erhalten wir eine Lösung, die
+sogar $u'(x_0)=1$ hat.
+Durch diese Anfangswerte ist aber die Lösung der Differentialgleichung
+vollständig bestimmt.
+Die Frage ob ein Minimum oder Maximum vorliegt, wird also
+durch die Lage der Nullstellen von Lösungen der Differentialgleichung
+\eqref{buch:variation2:jacobi:eqn:jacobisl} bestimmt.
+
+\begin{definition}[Jacobi-Differentialgleichung]
+Die Differentialgleichung
+\eqref{buch:variation2:jacobi:eqn:jacobisl}
+heisst die {\em Jacobi-Differentialgleichung}.
+\end{definition}
+
+%Aus der Definition des Funktionals $K(u)$ erhält man durch
+%partielle Integration für Funktionen mit den Randbedingungen
+%$u(x_0)=u(x_1)=0$ 
+%\begin{align*}
+%K(u)
+%&=
+%\int_{x_0}^{x_1} S(x)u(x)^2 + R(x) u'(x)^2 \,dx
+%\\
+%&=
+%\int_{x_0}^{x_1} S(x)u(x)^2 \,dx
+%+
+%\int_{x_0}^{x_1} R(x) u'(x)^2 \,dx
+%\\
+%&=
+%\int_{x_0}^{x_1} S(x)u(x)^2 \,dx
+%+
+%\int_{x_0}^{x_1} (R(x) u'(x)) u'(x) \,dx
+%\\
+%&=
+%\int_{x_0}^{x_1} S(x)u(x)^2 \,dx
+%+
+%\biggl[R(x)u'(x)u(x)\biggr]_{x_0}^{x_1}
+%-
+%\int_{x_0}^{x_1} \frac{d}{dx}(R(x) u'(x)) u(x) \,dx
+%\\
+%&=
+%\int_{x_0}^{x_1}
+%\biggl(S(x) u(x) - \frac{d}{dx}\bigl(R(x)u'(x)\bigr)\biggr) u(x)
+%\,dx
+%\\
+%&=
+%-\int_{x_0}^{x_1} L(u) u(x) \,dx.
+%\end{align*}
+
+
+
+
+
