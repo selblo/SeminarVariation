@@ -1,0 +1,102 @@
+%
+% legendre.tex -- Legendre Bedingung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\a{0.3}
+\def\d{1}
+\def\b{5}
+\def\N{500}
+\def\xstern{3}
+\pgfmathparse{\a*(\b+0.5)/\d}
+\xdef\B{\pgfmathresult}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	S(\x) = sin(50*\x+40)+2*cos(20*(\x-4))+0.1*\x;
+	R(\x) = cos(10*\x)-3*exp(-(3-\x)*(3-\x)/4);
+	eta(\x) = \a*cos((\b+0.5)*180*(\x-\xstern)/\d);
+	etastrich(\x) = -\a*(\b+0.5)*sin((\b+0.5)*180*(\x-\xstern)/\d)/\d;
+}]
+
+
+\fill[color=gray!10] ({\xstern-\d},-10) rectangle ({\xstern+\d},3);
+
+\begin{scope}
+\draw[->] (-4.2,0) -- (8.5,0) coordinate[label={$x$}];
+\fill[color=darkred!20] ({\xstern-\d},0) rectangle ({\xstern+\d},{\a*\a});
+\draw[->] (0,-3) -- (0,3.3) coordinate[label={right:$y$}];
+\node[color=darkred] at (\xstern,{\a*\a}) [above] {$\eta(x)^2$};
+\draw[color=blue] plot[domain=-4:8,samples=100] ({\x},{S(\x)});
+\draw[color=darkred]
+	(-4,0)
+	--
+	({\xstern-\d},0)
+	--
+	plot[domain={\xstern-\d}:{\xstern+\d},samples=\N]
+		({\x},{eta(\x)*eta(\x)})
+	--
+	({\xstern+\d},0)
+	--
+	(8,0);
+\draw (-4,-0.05) -- (-4,0.05);
+\draw (8,-0.05) -- (8,0.05);
+\node at (-4,-0.05) [below] {$x_0\mathstrut$};
+\node at (8,-0.05) [below] {$x_1\mathstrut$};
+\node at ({\xstern-\d},-0.05) [below left] {$x_*-d$};
+\node at ({\xstern+\d},-0.05) [below right] {$x_*+d$};
+\node[color=blue] at (-2,1.5) {$S(x)$};
+\draw[color=blue,line width=0.3pt,shorten <= 0.3cm]
+	(-2,1.5) -- (-0.5,{S(-0.5)});
+\end{scope}
+
+\begin{scope}[yshift=-7cm]
+\fill[color=blue!10]
+	({\xstern-\d},0) rectangle ({\xstern+\d},{R(\xstern-\d)+0.1});
+\draw[->] (-4.2,0) -- (8.5,0) coordinate[label={$x$}];
+\fill [color=darkred!20] ({\xstern-\d},0) rectangle ({\xstern+\d},{\B*\B});
+\draw[color=blue,line width=0.2pt]
+	({\xstern-\d},{R(\xstern-\d)+0.1})
+	--
+	({\xstern+\d},{R(\xstern-\d)+0.1});
+\node[color=blue] at (\xstern,{R(\xstern-\d)+0.1}) [above] {$-a$};
+\node[color=blue] at (\xstern,{R(\xstern)}) [below] {$R(x) < -a$};
+\draw[->] (0,-3) -- (0,3.3) coordinate[label={right:$y$}];
+%\node[color=darkred] at (\xstern,{\B*\B})
+%	[above] {$\displaystyle\frac{a(b+\frac12)\pi}{d}$};
+\node[color=darkred] at (\xstern,{\B*\B}) [above] {$\eta'(x)^2$};
+\draw[color=blue] plot[domain=-4:8,samples=100] ({\x},{R(\x)});
+\draw[color=darkred]
+	(-4,0)
+	--
+	({\xstern-\d},0);
+\draw[color=darkred,smooth]
+	plot[domain={\xstern-\d}:{\xstern+\d},samples=\N]
+		({\x},{etastrich(\x)*etastrich(\x)});
+\draw[color=darkred]
+	({\xstern+\d},0)
+	--
+	(8,0);
+\draw (-4,-0.05) -- (-4,0.05);
+\draw (8,-0.05) -- (8,0.05);
+\node at (-4,-0.05) [below] {$x_0\mathstrut$};
+\node at (8,-0.05) [below] {$x_1\mathstrut$};
+\node at ({\xstern-\d},-0.05) [above left] {$x_*-d$};
+\node at ({\xstern+\d},-0.05) [above right] {$x_*+d$};
+\node[color=blue] at (-2,1.5) {$R(x)$};
+\draw[color=blue,line width=0.3pt,shorten <= 0.3cm]
+	(-2,1.5) -- (-1.5,{R(-1.5)});
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

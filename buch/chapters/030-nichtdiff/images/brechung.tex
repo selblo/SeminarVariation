@@ -1,0 +1,70 @@
+%
+% brechung.tex -- Herleitung des Brechungsgesetztes
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\xnull{-3.5}
+\def\ynull{1}
+\def\xeins{4.0}
+\def\yeins{5}
+\def\ystern{3.5}
+
+\pgfmathparse{atan2(\yeins-\ystern,\xeins)}
+\xdef\alphaeins{\pgfmathresult}
+\pgfmathparse{atan2(\ynull-\ystern,\xnull)}
+\xdef\alphanull{\pgfmathresult}
+
+\coordinate (A) at (\xnull,\ynull);
+\coordinate (B) at (0,\ystern);
+\coordinate (C) at (\xeins,\yeins);
+
+\fill[color=blue!10] (-5,-0.1) rectangle (0,6.1);
+\fill[color=blue!30] (0,-0.1) rectangle (5,6.1);
+
+\fill[color=gray!40,opacity=0.5]
+	(B) -- +(0:2) arc (0:\alphaeins:2) -- cycle;
+\node at ($(B)+({\alphaeins/2}:1.5)$) {$\alpha(0+)$};
+\fill[color=gray!40,opacity=0.5]
+	(B) -- +(-180:2) arc (-180:\alphanull:2) -- cycle;
+\node at ($(B)+({-180+(180+\alphanull)/2}:{1.5})$) {$\alpha(0-)$};
+
+\draw[->] (0,-0.1) -- (0,6.5) coordinate[label={right:$y$}];
+\draw[->] (-5.1,0) -- (5.5,0) coordinate[label={$x$}];
+
+\draw[line width=0.3pt] (-3,\ystern) -- (3,\ystern);
+
+\draw[line width=0.3pt] (\xnull,0) -- (A);
+\draw (\xnull,0.05) -- (\xnull,-0.05);
+\node at (\xnull,-0.05) [below] {$x_0\mathstrut$};
+\draw[line width=0.3pt] (\xeins,0) -- (C);
+\draw (\xeins,0.05) -- (\xeins,-0.05);
+\node at (\xeins,-0.05) [below] {$x_1\mathstrut$};
+\node at (0,-0.05) [below] {$0\mathstrut$};
+
+\draw[color=darkred,line width=1.4pt] (A) -- (B) -- (C);
+\fill[color=darkred] (A) circle[radius=0.08];
+\node at (A) [left] {$(x_0,y_0)$};
+\fill[color=darkred] (C) circle[radius=0.08];
+\node at (C) [above] {$(x_1,y_1)$};
+
+\node[color=blue] at (-4.5,5.5) {$n_-$};
+\node[color=blue] at (4.5,0.5) {$n_+$};
+
+\node[color=darkred] at (B) [below right] {$(0,y_*)$};
+\fill[color=darkred] (B) circle[radius=0.08];
+
+\end{tikzpicture}
+\end{document}
+

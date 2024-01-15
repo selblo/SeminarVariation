@@ -6,7 +6,139 @@
 \section{Die zweite Ableitung
 \label{buch:variation2:section:zweiteableitung}}
 \kopfrechts{Zweite Ableitung}
+Wir betrachten wieder ein Funktional der Form
+\[
+I(y)
+=
+\int_{x_0}^{x_1}
+F(x,y(x),y'(x))
+\,dx
+\]
+und eine Variation $y(x)+\varepsilon\eta(x)$ mit $\eta(x_0)=0$
+und $\eta(x_1)=0$.
+Die erste Ableitung der Funktion $\varepsilon\mapsto I(y+\varepsilon\eta)$
+wurde früher als
+\[
+\delta I(y)
+=
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\,
+\eta(x)
+\,dx
+\]
+berechnet.
+Wir berechnen nun zusätzlich die zweite Ableitung.
+Dazu verwenden wir die Entwicklung des Integranden
+$f(\varepsilon) = F(x,y(x)+\varepsilon\eta(x),y'(x)+\varepsilon\eta'(x))$
+nach Potenzen von $\varepsilon$, sie ist
+\begin{align*}
+f(\varepsilon)
+%F(x,y(x)+\varepsilon\eta(x),y'(x)+\varepsilon\eta'(x))
+&=
+F(x,y(x),y'(x))
++
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))\eta(x)
++
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))\eta'(x)
+\biggr)
+\varepsilon
+\\
+&\quad
++
+\frac{1}{2!}
+\biggl(
+\frac{\partial^2 F}{\partial y^2}(x,y(x),y'(x))
+\eta(x)^2
++
+\frac{\partial^2 F}{\partial y\,\partial y'}(x,y(x),y'(x))
+\eta(x)\eta'(x)
+\\
+&\qquad\qquad
++
+\frac{\partial^2 F}{\partial y^{\prime 2}}(x,y(x),y'(x))
+\eta'(x)^2
+\biggr)
+\varepsilon^2
++
+\dots
+\end{align*}
+Für die Untersuchung eines Extremums müssen wir nur den quadratischen
+Term betrachten.
+Der besseren Übersichtlichkeit wegen schreiben wir ihn als
+\[
+G(x)
+=
+P(x)\eta(x)^2 + 2Q(x) \eta(x)\eta'(x) + R(x)\eta'(x)^2
+\]
+mit
+\begin{align*}
+P(x) &= \frac{\partial^2 F}{\partial y^2} (x,y(x),y'(x)),
+&
+Q(x) &= \frac{\partial^2 F}{\partial y\,\partial y'} (x,y(x),y'(x))
+\\
+\text{und}
+\qquad
+R(x) &= \frac{\partial^2 F}{\partial y^{\prime 2}} (x,y(x),y'(x)).
+\end{align*}
+Wegen
+\[
+2Q(x)\eta(x)\eta'(x)
+=
+Q(x)\cdot 2\eta(x)\eta'(x)
+=
+Q(x)\cdot \frac{d\eta(x)^2}{dx}
+\]
+kann bei der Berechnung des Integrals des mittleren Terms partielle
+Integration verwendet werden:
+\begin{align*}
+\int_{x_0}^{x_1}
+2Q(x)\eta(x)\eta'(x)
+\,dx
+&=
+\int_{x_0}^{x_1}
+Q(x) \frac{d\eta(x)^2}{dx}
+\,dx
+=
+\biggl[Q(x)\eta(x)^2\biggr]_{x_0}^{x_1}
+-
+\int_{x_0}^{x_1} Q'(x) \eta(x)^2\,dx
+\end{align*}
+Wegen der Randbedingung $\eta(x_0)=\eta(x_1)=0$ fällt der
+erste Term auf der rechten Seite weg.
+Das Integral von $G(x)$ heisst die zweite Variation von $I$ an der
+Stelle $y$ und kann damit zu
+\begin{align}
+\delta^2 I(y)
+&=
+\int_{x_0}^{x_1} G(x)\,dx
+\notag
+\\
+&=
+\int_{x_0}^{x_1}
+(\underbrace{P(x)-Q'(x)}_{\displaystyle = S(x)}) \eta(x)^2
++
+R(x)\eta'(x)^2
+\,dx
+\notag
+\\
+&=
+\int_{x_0}^{x_1}
+S(x)\eta(x)^2 + R(x)\eta'(x)^2
+\,dx
+\label{buch:variation2:zweitevariation:eqn:SRintegral}
+\end{align}
+vereinfacht werden.
+Die Faktoren $\eta(x)^2$ und $\eta'(x)^2$ sind immer positiv,
+über das Vorzeichen des Integrals entscheidet also nur das Vorzeichen
+der Koeffizienten $S(x)$ und $R(x)$.
+Gesucht sind jetzt Bedingungen an $S(x)$ und $R(x)$, die garantieren,
+dass die zweite Variation $\delta^2 I(y)\ge 0$ ist.
 
-\begin{verbatim}
-- zweite Ableitung
-\end{verbatim}
+

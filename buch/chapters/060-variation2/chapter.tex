@@ -11,8 +11,64 @@ mit endlich vielen Variablen möglich, hinreichende Bedingungen dafür
 zu formulieren, dass ein Maximum oder Minimum vorliegt.
 Es liegt nahe, solche Kriterien auch für Variationsproblem
 zu erwarten.
-Es stellt sich aber heraus, das es für Variationsprobleme viel
-schwieriger ist, solche Bedinungen zu finden.
+Schliesslich lässt sich auch die Variation als Funktion
+$f(\varepsilon) = I(y+\varepsilon\eta)$ als Potenzreihe
+\[
+f(\varepsilon)
+=
+I(y) + \varepsilon \delta I(y) + \frac{f''(0)}{2!}\varepsilon^2 + \dots
+\]
+entwickeln.
+Notwendig für ein Extremum ist das verschwinden der ersten Variation
+$\delta I(y)=0$, wie das in früheren Kapiteln ausführlich verwendet
+worden ist.
+Falls ausserdem $f''(0)>0$ ist, kann man schliessen, dass die
+Funktion $f(\varepsilon)$ ein Minimum an der Stelle $\varepsilon=0$
+hat.
+Dies garantiert aber noch nicht, dass das Funktional $I(y)$
+ein Minimum hat, dazu müssen alle denkbaren Funktionen $\eta(x)$
+untersucht werden, also eine unendliche Menge von ``Richtungen''.
+
+Für Funktionen $\mathbb{R}^n\to\mathbb{R}: x\mapsto f(x)$ von
+$n$ Variablen sind Richtungsableitungen in alle Richtungen zu
+untersuchen.
+Die Taylor-Entwicklung an der Stelle $x=0$
+\[
+f(x)
+=
+f(0)
++
+\operatorname{grad}f(0)\cdot x
++
+\frac{1}{2!}\transpose{x} H x
++
+\dots,
+\]
+wobei $H$ die Hessische Matrix mit den Matrixelementen
+\[
+h_{ik}
+=
+\frac{\partial^2\! f(0)}{\partial x_i\,\partial x_k}
+\]
+ist.
+Für ein Minimum liegt vor, wenn $\operatorname{grad}f(0)=0$ und ausserdem
+$\transpose{x}Hx>0$ für alle Vektoren $x\in\mathbb{R}^n\setminus\{0\}$.
+Eine solche Matrix $H$ heisst positiv definit.
+Die Matrix $H$ ist symmetrisch und damit immer diagonalisierbar.
+Dass sie positiv definit ist, äussert sich darin, dass alle Eigenwerte
+positiv sind.
+Der kleinste Eigenwert beschreibt, wie schnell $f(x)$ mindestens
+anwächst, es gibt so etwas wie eine minimale Krümmung des Graphen
+in der Stelle $x=0$ Nullpunkt.
+
+Es stellt sich aber heraus, dass es für Variationsprobleme viel
+schwieriger ist, hinreichende Bedingungen für ein Extremum zu finden.
+Da es unendlich viele mögliche Richtungen gibt, kann zwar für alle
+möglichen Funktion $\eta$ die zweite Ableitung $f''(0)>0$ sein, aber 
+sie kann trotzdem beliebig klein werden.
+Damit lässt sich nicht mehr schliessen, dass der Punkt tatsächlich
+ein Minimum ist.
+
 In diesem Abschnitt werden zunächst aus der sogenannten zweiten
 Variation notwendige Bedingungen für ein Maximum oder Minimum
 hergeleitet.

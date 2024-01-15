@@ -1,0 +1,66 @@
+%
+% sin2.tex -- Oszillationen von sin^2
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\d{4.8}
+\def\a{4}
+\def\b{3}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	f(\x) = \a*sin((\b+0.5)*180*\x/\d);
+	g(\x) = f(\x)*f(\x)/\a;
+}]
+
+\fill[color=gray!20] (-\d,0) rectangle (\d,\a);
+\fill[color=darkred!20]
+	(-\d,0)
+	--
+	plot[domain=-\d:\d,samples=100]
+	({\x},{g(\x)})
+	--
+	(\d,0)
+	--
+	cycle;
+
+\draw[color=blue,smooth,line width=1.2pt]
+	plot[domain=-\d:\d,samples=100] ({\x},{f(\x)});
+\draw[color=darkred,smooth,line width=1.2pt]
+	plot[domain=-\d:\d,samples=100] ({\x},{g(\x)});
+
+\draw[->] (-5,0) -- (7.3,0) coordinate[label={$t$}];
+\draw[->] (0,-4.1) -- (0,4.5) coordinate[label={right:$y$}];
+
+\draw (-0.05,4) -- (0.05,4);
+\node at (-0.05,4) [above left] {$1$};
+\draw (-0.05,-4) -- (0.05,-4);
+\node at (-0.05,-4) [left] {$-1$};
+
+\draw (-\d,-0.05) -- (-\d,0.05);
+\node at (-\d,-0.05) [below] {$-d\mathstrut$};
+\draw (\d,-0.05) -- (\d,0.05);
+\node at (\d,-0.05) [below] {$d\mathstrut$};
+
+\coordinate (A) at ({-3*\d/7},{-6*\a/7});
+\node[color=blue] at (A) {$\displaystyle\sin\frac{(c+\frac12)\pi t}{d}$};
+\draw[color=blue,line width=0.2pt,shorten <= 0.6cm]
+	(A) -- ({-9*\d/14},{f(-9*\d/14)});
+
+\coordinate (B) at (6.0,{3*\a/4});
+\node[color=darkred] at (B) {$\displaystyle\sin^2\frac{(c+\frac12)\pi t}{d}$};
+\draw[color=darkred,line width=0.2pt,shorten <= 0.65cm]
+	(B) -- ({13*\d/14},{g(13*\d/14)});
+
+\end{tikzpicture}
+\end{document}
+

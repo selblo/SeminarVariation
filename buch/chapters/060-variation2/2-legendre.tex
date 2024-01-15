@@ -5,3 +5,180 @@
 %
 \section{Die Legendre-Bedingung
 \label{buch:variation2:section:legendre}}
+Der Ausdruck \eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+für die zweite Variation ist sicher positiv, wenn sowohl $S(x)$
+als auch $R(x)$ auf dem ganzen Intervall positiv sind.
+In diesem Abschnitt soll untersucht werden, inwieweit die
+Umkehrung auch gilt.
+
+\begin{satz}[Legendre-Bedingung]
+\label{buch:variation2:legendre:satz:legendre}
+Dafür, dass $\delta^2I(y)\ge 0$ für jede Funktion $\eta(x)$ gilt ist
+notwendig, dass
+\[
+R(x)
+=
+\frac{\partial^2F}{\partial y\,\partial y'}(x,y(x),y'(x))
+\ge
+0
+\]
+im ganzen Intervall $[x_0,x_1]$ ist.
+\end{satz}
+
+\begin{proof}
+\input{chapters/060-variation2/fig/legendre.tex}
+Wir zeigen mit Hilfe eines Widerspruchs, dass es keine Stelle $x$
+geben kann, für die $R(x)<0$ ist.
+Nehmen wir also an, es gäbe eine Stelle $x_*$ derart, dass
+$R(x_*)<0$.
+Da die Funktion $R(x)$ stetig ist, wird $R(x)$ auch noch in einer
+Umgebung $(x_*-d,x_*+d)$ negativ sind.
+Wir dürfen daher annehmen, dass es eine positive Zahl $a$ gibt
+derart, dass $R(x)<-a$ für $x$ mit $|x-x_*|<d$.
+
+Wir müssen jetzt zeigen, dass sich immer eine Funktion $\eta(x)$ finden
+lässt, die das Integral $\delta^2 I(y)$ negativ macht, selbst wenn
+der Koeffizient $S(x)$ auf dem Teilintervall
+$(x_*-d,x_*+d)$ positiv ist.
+Wir müssen zeigen, dass $\eta(x)$ so gewählt werden kann, dass der
+Term mit $\eta(x)^2$ beliebig klein, der Term mit $\eta'(x)^2$ aber
+beliebig negativ gemacht werden kann.
+
+Wir verwenden die Funktion
+\[
+\eta(x)
+=
+\begin{cases}
+\displaystyle
+b\cos \frac{(c+\frac12)\pi (x-x_*)}{d}&\qquad |x-x_*|<d\\[3pt]
+0&\qquad \text{sonst},
+\end{cases}
+\]
+wobei $c\in\mathbb{N}$ eine natürliche Zahl ist
+(Abbildung~\ref{buch:variation2:legendre:fig:legendre}).
+Dies stellt sicher, dass $\eta(x)$ stetig ist,
+wenn auch nicht differenzierbar an den Stellen $x_*\pm d$.
+
+Zunächst ist $|\eta(x)|\le b$ für alle $x$, der erste Summand
+des Integrals kann daher wegen
+\[
+\biggl|
+\int_{x_0}^{x_1} S(x)\eta(x)^2\,dx
+\biggr|
+=
+\biggl|
+\int_{x_*-d}^{x_*+d} S(x)\eta(x)^2\,dx
+\biggr|
+\le
+\int_{x_*-d}^{x_*+d} |S(x)|\cdot |\eta(x)|^2\,dx
+\le
+b^2
+\int_{x_*-d}^{x_*+d} |S(x)|\,dx
+\]
+beliebig klein gemacht werden, indem $a$ klein gewählt wird.
+Für die Ableitung gilt
+\[
+\eta'(x)
+=
+\begin{cases}
+\displaystyle
+-\frac{b(c+\frac12)\pi}{d}\sin\frac{(c+\frac12)\pi(x-x_*)}{d}&\qquad |x-x_*|<d\\[3pt]
+0&\qquad\text{sonst.}
+\end{cases}
+\]
+Der zweite Summand des Integrals wird damit zu
+\begin{align*}
+\int_{x_0}^{x_1} R(x) \eta'(x)^2\,dx
+&=
+\int_{x_*-d}^{x_*+d} R(x)\eta'(x)^2\,dx
+\\
+&\le 
+\int_{x_*-d}^{x_*+d} (-a) \eta'(x)^2\,dx
+\\
+&=
+-ab^2\int_{x_*-d}^{x_*+d} \frac{(c+\frac12)^2\pi^2}{d^2}
+\sin^2 \frac{(c+\frac12)\pi(x-x_*)}{d}\,dx.
+\intertext{Das Integral von $\sin^2 t$ über eine ganz Anzahl von
+Perioden ist die halbe Intervalllänge, somit wird das Integral zu}
+&=
+-ab^2
+\frac{(c+\frac12)^2\pi^2}{d^2}
+2d
+=
+-\frac{ab^2(c+\frac12)^2\pi^2}{d}
+\end{align*}
+(siehe Lemma~\ref{buch:variation2:legendre:lemma:sin} weiter unten).
+Die rechte Seite kann beliebig gross gemacht werden, indem ein
+geeignet grosses $c$ gewählt wird.
+So wird die zweite Variation
+\begin{align}
+\delta^2I(y)
+=
+\int_{x_0}^{x_1} S(x)\eta(x)^2 + R(x)\eta'(x)^2\,dx
+&=
+\int_{x_0}^{x_1} S(x)\eta(x)^2\,dx
++
+\int_{x_0}^{x_1} R(x)\eta'(x)^2\,dx
+\notag
+\\
+&\le
+\int_{x_*-d}^{x_*+d}|S(x)|\eta(x)\,dx
++
+\int_{x_*-d}^{x_*+d} R(x) \eta(x)\,dx
+\notag
+\\
+&\le
+b^2\int_{x_*-d}^{x_*+d} |S(x)|\,dx
+-
+\frac{ab^2(c+\frac12)^2\pi^2}{d}
+\notag
+\\
+&=
+\frac{ab^2\pi^2}{d}
+\biggl(
+\frac{d}{a\pi^2}
+\int_{x_*-d}^{x_*+d}|S(x)|\,dx
+-
+(c+{\textstyle\frac12})^2
+\biggr).
+\label{buch:variation2:legendre:eqn:bgl}
+\end{align}
+Indem man 
+\[
+(c+{\textstyle\frac12})^2
+>
+\frac{d}{a\pi^2}\int_{x_*-d}^{x_*+d} |S(x)|\,dx
+\]
+wählt, wird die Klammer in \eqref{buch:variation2:legendre:eqn:bgl}
+negativ, so dass die zweite Variation negativ wird.
+Dies widerspricht der Annahme über die zweite Variation.
+Der Widerspruch zeigt, dass $R(x)\ge 0$ sein muss.
+\end{proof}
+
+\begin{lemma}
+\label{buch:variation2:legendre:lemma:sin}
+Für $c\in\mathbb{N}$ gilt
+\[
+\int_{-d}^d
+\sin^2 \frac{(c+\frac12)\pi t}{d}
+\,dt
+=
+d.
+\]
+\end{lemma}
+
+\begin{proof}
+\input{chapters/060-variation2/fig/sin2.tex}
+Wegen
+\[
+\sin^2 t
+=
+\frac12 - \frac12\cos 2t
+\]
+ist das Integral die Fläche unter einer um $\frac12$ nach oben
+verschobenen Cosinus-Kurve mit doppelter Frequenz.
+Diese Kurve halbiert das Rechteck mit den Ecken $(-d,0)$ und $(d,1)$
+mit dem Flächeninhalt $2d$.
+Daher ist der Wert des Integrals $2d/2=d$.
+\end{proof}
+

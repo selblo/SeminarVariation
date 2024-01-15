@@ -3,8 +3,9 @@
 %
 % (c) 2024 Prof Dr Andreas Müller
 %
-\section{Weierstrass-Erdmannsche Eckenbedingung
+\section{Die weierstrass-erdmannsche Eckenbedingung
 \label{buch:nichtdiff:section:ecken}}
+\kopfrechts{Die weierstrass-erdmannsche Eckenbedingung}
 Die Lösungen der Euler-Lagrange-Differentialgleichungen sind überall
 differenzierbar, aber nicht jedes Variationsproblem hat überhaupt
 eine differenzierbare Lösung.
@@ -29,5 +30,298 @@ den Steigungen an den Knickstellen Einschränkungen auferlegt.
 %
 \subsection{Die Eckenbedingung
 \label{buch:nichtdiff:eckenbedingung:subsection:eckenbedingung}}
+Wir betrachten eine Lösung $y(x)$ eines Variationsproblems 
+\[
+\delta
+\int_{x_0}^{x_1}
+F(x,y(x),y'(x))
+\,dx
+=
+0
+\]
+auf dem Intervall $[x_0,x_1]$ mit vorgegebenen Randwerten 
+$y(x_0)=y_0$ und $y(x_1)=y_1$.
+Wir verlangen nicht, dass die Funktion $y(x)$ überall differenzierbar
+ist, der Einfachheit halber nehmen wir aber an, dass es nur eine
+Stelle $x_*$ gibt, an der die Funktion $y(x)$ nicht differenzierbar ist.
+Auf den Teilintervallen $[x_0,x_*]$ und $[x_*,x_1]$ ist $y(x)$ eine
+Lösung der Euler-Lagrange-Differentialgleichung.
+Es bleibt also nur noch der Punkt $(x_*,y_*)$ gewählt werden, so dass
+die Variation verschwindet.
+
+Die Lösung $y(x)$ setzt sich zusammen aus den Lösungen $y|_{[x_0,x_*]}$
+und $y|_{[x_*,x_1]}$ mit den Randbedingungen
+\begin{equation*}
+\begin{aligned}
+y(x_0)&=y_0\\
+y(x_*)&=y_*
+\end{aligned}
+\qquad\text{und}\qquad
+\begin{aligned}
+y(x_*)&=y_*\\
+y(x_1)&=y_1.
+\end{aligned}
+\end{equation*}
+Auch das Funktional $I(y)$ setzt sich aus zwei Teilen
+\[
+I(y)
+=
+\underbrace{
+\int_{x_0}^{x_*}
+F(x,y(x),y'(x))
+\,dx
+}_{\displaystyle I_0}
++
+\underbrace{
+\int_{x_*}^{x_1}
+F(x,y(x),y'(x))
+\,dx
+}_{\displaystyle I_1}
+\]
+zusammen.
+Die Variation von $\delta I(y)=\delta I_0+\delta I_1$ ist die Summe 
+der Variationen der Teilfunktionale.
+Der gemeinsame Endpunkt $(x_*,y_*)$ ist frei beweglich,
+die Variation der Teile muss diese Schwankung berücksichtigen.
+Sei $\vec{r}$ der Richtungsvektor der Bewegung des Punktes während
+einer Variation der Funktion $y(x)$.
+Da der Punkt den beiden Teilen gemeinsam ist, muss $\vec{r}$
+mit dem Richtungsvektor $\vec{r}_1(0)$ der zugehörigen Variation
+der Lösung auf dem linken Teil des Intervalls und dem
+Richtungsvektor $\vec{r}_0(0)$ der Variation der Lösung dem rechtn Teil
+des Intervalls übereinstimmen.
+
+Nach Satz~\ref{buch:variation:allgemein:satz:allgemeinvariation1} 
+lässt sich die Variation der beiden Teile durch 
+\begin{align*}
+\delta I(y)
+&=
+\vec{f}_1\cdot \vec{r}
++
+\int_{x_0}^{x_*}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\frac{\partial y}{\partial\varepsilon}(x,0)\,dx
+\,dx
+\\
+&\qquad
+-
+\vec{f}_0\cdot \vec{r}
++
+\int_{x_*}^{x_0}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\frac{\partial y}{\partial\varepsilon}(x,0)\,dx
+\,dx
+\end{align*}
+ausdrücken.
+Da in den Teilintervallen die Lösung die Euler-Lagrange-Differentialgleichung
+erfüllt, fallen die Integrale weg.
+Die verbleibenden Terme sind
+\begin{align*}
+\delta I(y)
+&=
+(\vec{f}_1-\vec{f}_0)\cdot \vec{r}.
+\end{align*}
+Da dies für alle Vektoren $\vec{r}$ in der $x$-$y$-Ebene verschwinden muss,
+folgt
+\begin{equation}
+\vec{f}_1-\vec{f}_0
+=
+0
+\qquad\Rightarrow\qquad
+\vec{f}_1=\vec{f}_2.
+\label{buch:nichtdiff:eckenbedingung:eqn:e2}
+\end{equation}
+Darin gehört der $\vec{f}_1$ zur Lösung auf dem Teilintervall $[x_0,x_*]$,
+wird also mit dem Funktionswert $y(x_*)$ und dem linksseitigen Grenzwert
+$y'(x_*-)$ der Ableitung berechnet, während $\vec{f}_0$ zum Teilintervall
+$[x_*,x_1]$ gehört und mit $y(x_*)$ und dem rechtsseitigen Grenzwert
+$y'(x_*+)$ berechnet wird.
+Da $\vec{f}_i$ Vektoren sind, 
+Ausgeschrieben lauten die Bedingungen, entsprechen der Gleichung
+\eqref{buch:nichtdiff:eckenbedingung:eqn:e2}
+die zwei Komponentengleichungen
+\begin{align*}
+F(x_*,y_*,y'(x_*-))
+- 
+\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*-)\bigr)
+\frac{\partial y}{\partial\varepsilon}(x,0)
+&=
+F(x_*,y_*,y'(x_*-))
+- 
+\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*-)\bigr)
+\frac{\partial y}{\partial\varepsilon}(x,0)
+\\
+\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*-)\bigr)
+&=
+\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*+)\bigr)
+\end{align*}
+Die zweite Bedingung bedeutet, dass die Ableitungen nach $y'$ auch
+in der ersten Bedingung gleich sind.
+Die erste Bedingung vereinfacht sich daher zu
+\[
+F(x_*,y_*,y'(x_*-))
+=
+F(x_*,y_*,y'(x_*-)).
+\]
+Die links- und rechtsseitigen Steigungen in Punkt $(x_*,y_*)$ sind
+also nicht beliebig, sie müssen zwei zusätzliche Bedingungen erfüllen.
+Für den Fall $y'(x_*+)=y'(x_*-)$ sind beide Bedingungen erfüllt.
+Diese Bedinung heisst auch die weierstrass-erdmansche Eckenbedingung.
+
+\begin{satz}[Weierstrass-Erdmann]
+Sei $y(x)$ eine Funktion auf dem Intervall $[x_0,x_1]$ mit Randwerten
+$y(x_0)=y_0$ und $y(x_1)=y_1$, die mit Ausnahme von endlich
+vielen Stellen $\overline{x}_k$ zweimal
+stetig differenzierbar ist und das Funktional
+\[
+I(y)
+=
+\int_{x_0}^{x_1}
+F(x,y(x),y'(x))
+\,dx
+\]
+stationär macht.
+Dann erfüllen rechts- und linksseitigen Steigungen
+\[
+y'(\overline{x}_k-) = \lim_{x\to \overline{x}_k-} y'(x)
+\qquad\text{und}\qquad
+y'(\overline{x}_k+) = \lim_{x\to \overline{x}_k+} y'(x)
+\]
+der Funktion in jedem Punkt $\overline{x}_k$ die Bedingung
+\begin{equation}
+\begin{aligned}
+F\bigl(
+\overline{x}_k,
+y(\overline{x}_k),
+y'(\overline{x}_k-)
+\bigr)
+&=
+F\bigl(
+\overline{x}_k,
+y(\overline{x}_k),
+y'(\overline{x}_k+)
+\bigr)
+\\
+\frac{\partial F}{\partial y'}\bigl(
+\overline{x}_k,
+y(\overline{x}_k),
+y'(\overline{x}_k-)
+\bigr)
+&=
+\frac{\partial F}{\partial y'}\bigl(
+\overline{x}_k,
+y(\overline{x}_k),
+y'(\overline{x}_k+)
+\bigr)
+\end{aligned}
+\label{buch:nichtdiff:eckenedingung:eqn:we}
+\end{equation}
+\end{satz}
+
+Ein interessanter Spezialfall ist, wenn der Sprung der Steigung
+an der Stelle $x_*$ durch eine Unstetigkeit der Funktion $f(x,y,y')$
+an dieser Stelle verursacht wird.
+In diesem Fall ist klar, dass die Ecke $(x_*,y_*)$ gar nicht in
+$x$-Richtung bewegt werden kann, der Richtungsvektor $\vec{r}$ ist
+vertikal.
+Damit folgt aus $(\vec{f}_1-\vec{f}_0)\cdot\vec{r}$ nicht mehr,
+dass die beiden Vektoren gleich sein müssen.
+Es folgt nur noch, dass sie die gleich $y$-Komponenten haben,
+dass also
+\begin{equation}
+\frac{\partial F}{\partial y'}\bigl(x_*-,y(x_*),y'(x_*-)\bigr)
+=
+\frac{\partial F}{\partial y'}\bigl(x_*+,y(x_*),y'(x_*+)\bigr).
+\label{buch:nichtdiff:eckenbedingung:eqn:we0}
+\end{equation}
+Das folgende Beispiel illustriert diesen Spezialfall anhand des
+Brechungsgesetztes.
+
+\begin{beispiel}
+\input{chapters/030-nichtdiff/fig/brechung.tex}
+Das Brechungsgesetz beschreibt die Ausbreitung eines Lichtstrahls
+in homogenen Medien, die entlang einer Kurve zusammentreffen.
+In der $x$-$y$-Ebene sei die Halbebene $x<0$ mit einem Medium
+mit Brechungsindex $n_-$ gefüllt, während die rechte Halbebene
+den Brechungsindex $n_+$ hat.
+Die Lagrange-Funktion ist
+\[
+F(x,y,y')
+=
+\begin{cases}
+\displaystyle
+\frac{1}{n_-}\sqrt{1+y^{\prime 2}} &\qquad \text{für $x<0$}\\
+\\[-8pt]
+\displaystyle
+\frac{1}{n_+}\sqrt{1+y^{\prime 2}} &\qquad \text{für $x>0$.}
+\end{cases}
+\]
+Gesucht ist eine Funktion $y(x)$, die $y(x_0)=y_0$ und $y(x_1)=y_1$ 
+erfüllt, wobei $x_0<0$ und $x_1>0$ ist.
+In jeder Halbebene ist die Lagrange-Funktion im Wesentlichen
+die Lagrange-Funktion von
+Beispiel~\ref{buch:variation:eulerlagrange:beispiel:gerade}.
+Dort wurde gefunden, dass die Lösungen Geraden sind.
+Es folgt, dass die Lösung im vorliegenden Problem sich aus
+Geraden zusammensetzen muss, nur bei $x=0$ könnte ein Stelle
+vorliegen, wo die Funktion $y(x)$ nicht differenzierbar ist.
+Dort muss daher die weierstrass-erdmannsche Eckenbedingung
+\eqref{buch:nichtdiff:eckenbedingung:eqn:we0}
+gelten.
+
+Die Ableitung der Lagrange-Funktion nach $y'$ ist
+\[
+\frac{\partial F}{\partial y'}(x,y,y')
+=
+\frac{1}{n_\pm}
+\frac{y'}{\sqrt{1+y^{\prime 2}}}.
+\]
+Die weierstrass-erdmannsche Eckenbedingung ist jetzt
+\begin{align}
+\frac{\partial F}{\partial y'}\bigl(0-,y_*,y'(0-)\bigr)
+&=
+\frac{\partial F}{\partial y'}\bigl(0+,y_*,y'(0+)\bigr)
+\notag
+\intertext{oder nach Einsetzen der Ableitung}
+\frac{1}{n_-}
+\frac{y'(0-)}{\sqrt{1+y'(0-)^2}}
+&=
+\frac{1}{n_+}
+\frac{y'(0+)}{\sqrt{1+y'(0+)^2}}
+\label{buch:nichtdiff:eckenbedingung:eqn:steigung}
+\end{align}
+Die Steigung $y'(x)$ ist der Tangens des Winkels $\alpha(x)$ zwischen der 
+Horizontalen und dem Lichtstrahl.
+Der Bruch in \eqref{buch:nichtdiff:eckenbedingung:eqn:steigung}
+ist der Sinus
+\[
+\sin\alpha(x)
+=
+\frac{y'(x)}{\sqrt{1+y'(x)^2}}
+\]
+dieses Winkels.
+Die Bedingung~\eqref{buch:nichtdiff:eckenbedingung:eqn:steigung}
+wird damit zu
+\[
+\frac{1}{n_-}\sin\alpha(0-)
+=
+\frac{1}{n_+}\sin\alpha(0+)
+\qquad\text{oder}\qquad
+\frac{\sin\alpha(0-)}{\sin\alpha(0+)}
+=
+\frac{n_+}{n_-},
+\]
+dies ist genau das Brechungsgesetz von Snellius.
+\end{beispiel}
 
 
