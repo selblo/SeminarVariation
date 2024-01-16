@@ -10,12 +10,77 @@
 \usepackage{pgfplots}
 \usepackage{csvsimple}
 \usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{hellblau}{rgb}{0.2,0.6,1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
 \begin{document}
 \def\skala{1}
-\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	x0(\t) =  1.5-\t;
+	y0(\t) =  3*sqrt(2+\t)-1.9;
+	x1(\t) = 8+cosh(1.2*\t+0.5)-\t;
+	y1(\t) = 3+2.3*sinh(\t+0.5);
+	x(\t) = \t;
+	y(\t,\a) = 0.3*(\a+1)*\t*(1-\t)+0.03*sin(180*\t)-0.08*sin(3*180*\t);
+	X(\x,\t) = x0(\t)*(1-x(\x))+x1(\t)*x(\x)-y(\x,\t)*(y1(\t)-y0(\t));
+	Y(\x,\t) = y0(\t)*(1-x(\x))+y1(\t)*x(\x)+y(\x,\t)*(x1(\t)-x0(\t));
+	f(\x) = 1;
+	dx(\x,\a) = (X(\x,\a+0.01)-X(\x,\a));
+	dy(\x,\a) = (Y(\x,\a+0.01)-Y(\x,\a));
+	rl(\x,\a) = sqrt(dx(\x,\a)*dx(\x,\a)+dy(\x,\a)*dy(\x,\a));
+	rx(\x,\a) = dx(\x,\a)/rl(\x,\a);
+	ry(\x,\a) = dy(\x,\a)/rl(\x,\a);
+}]
 
 \draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
 \draw[->] (0,-0.1) -- (0,8.4) coordinate[label={right:$y$}];
+
+\draw[color=red] plot[domain=-1:1] ({x0(\x)},{y0(\x)});
+\draw[color=blue] plot[domain=-1:1] ({x1(\x)},{y1(\x)});
+
+\foreach \t in {-1,-0.8,...,1}{
+	\draw[smooth,color=gray!40] plot[domain=0:1] ({X(\x,\t)},{Y(\x,\t)});
+}
+\foreach \t in {0,0.1,...,1}{
+	\draw[smooth,color=gray!40] plot[domain=-1:1] ({X(\t,\x)},{Y(\t,\x)});
+}
+
+\node[color=gray!80] at (4.79,6.68) {$y(x,\varepsilon)$};
+
+\draw[color=darkred,line width=1.4pt,smooth]
+	plot[domain=0:1] ({X(\x,0)},{Y(\x,0)});
+\node[color=darkred] at (5.3,4.95) {$y(x)$};
+
+\draw[color=blue,line width=1.4pt,smooth]
+	plot[domain=-1:1] ({X(0,\x)},{Y(0,\x)});
+\draw[color=blue,line width=1.4pt,smooth]
+	plot[domain=-1:1] ({X(1,\x)},{Y(1,\x)});
+
+\node[color=blue] at (2.0,1.3)
+	[rotate=-53] {$(x_0(\varepsilon),y_0(\varepsilon))$};
+\node[color=blue] at (9.9,2.9)
+	[rotate=-62] {$(x_1(\varepsilon),y_1(\varepsilon))$};
+
+\draw[->,color=hellblau,line width=2pt]
+	({X(1,0.6)},{Y(1,0.6)}) -- +({2*rx(1,0.6)},{2*ry(1,0.6)});
+\fill[color=hellblau] ({X(1,0.6)},{Y(1,0.6)}) circle[radius=0.08];
+\node[color=hellblau] at (0.4,3.7) {$\vec{r}_0(\varepsilon)$};
+
+\draw[->,color=hellblau,line width=2pt]
+	({X(0,0.4)},{Y(0,0.4)}) -- +({rx(0,0.4)},{ry(0,0.4)});
+\fill[color=hellblau] ({X(0,0.4)},{Y(0,0.4)}) circle[radius=0.08];
+\node[color=hellblau] at (9.7,8.2) {$\vec{r}_1(\varepsilon)$};
+
+\draw[->,color=darkgreen,line width=2pt]
+	({X(1,0)},{Y(1,0)}) -- +({1.5*ry(1,0)},{-1.5*rx(1,0)});
+\fill[color=darkgreen] ({X(1,0)},{Y(1,0)}) circle[radius=0.08];
+\node[color=darkgreen] at (10.2,4.7) {$\vec{f}_1$};
+
+\draw[->,color=darkgreen,line width=2pt]
+	({X(0,0)},{Y(0,0)}) -- +({-1.5*ry(0,0)},{1.5*rx(0,0)});
+\fill[color=darkgreen] ({X(0,0)},{Y(0,0)}) circle[radius=0.08];
+\node[color=darkgreen] at (0.8,1.3) {$\vec{f}_0$};
 
 \end{tikzpicture}
 \end{document}
