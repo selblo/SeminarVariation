@@ -5,3 +5,250 @@
 %
 \section{Nullstellen von Lösungen linearer Differentialgleichungen
 \label{buch:variation2:section:diffgl}}
+\kopfrechts{Nullstellen von Lösungen}
+In Abschnitt~\ref{buch:variation2:section:jacobi} wird das
+Jacobi-Kriterium für die Existenz eines Extremus formuliert.
+Es basiert auf Eigenschaften der Lösungen der Jacobi-Differentialgleichung,
+einer linearen Differentialgleichung zweiter Ordnung.
+Diese Eigenschaften sind nicht spezifisch für das Variationsproblem
+und werden daher in diesem Abschnitt allgemein dargestellt.
+
+Wir betrachten die lineare Differentialgleichung zweiter Ordnung
+\begin{equation}
+y'' + p(x) y' + q(x) = 0.
+\label{buch:variation2:diffgl:eqn:dgl}
+\end{equation}
+Die Koeffizienten $p(x)$ und $q(x)$ sind stetige Funktionen auf dem
+abgeschlossenen Intervall $[x_0,x_1]$.
+In expliziter Form kann sie auch als
+\begin{equation}
+y'' = - p(x) y' - q(x)
+\label{buch:variation2:diffgl:eqn:explizit}
+\end{equation}
+geschrieben werden.
+Für die numerische Rechnung und für Fragen über Existenz und Eindeutigkeit
+der Lösung ist die Vektorschreibeise
+\begin{equation}
+\frac{d}{dx}
+\begin{pmatrix} y\\ y' \end{pmatrix}
+=
+\underbrace{
+\begin{pmatrix}
+    0&    1\\
+-q(x)&-p(x)
+\end{pmatrix}
+}_{\displaystyle =A(x)}
+\begin{pmatrix} y\\ y' \end{pmatrix}
+\qquad\Rightarrow\qquad
+\frac{d}{dx}v = A(x) v
+\label{buch:variation2:diffgl:eqn:vektordgl}
+\end{equation}
+der Differentialgleichung nützlicher.
+Der Satz von Picard und Lindelöf besagt, dass die Differentialgleichung
+\eqref{buch:variation2:diffgl:eqn:vektordgl} eine eindeutige
+Lösung hat, wenn die rechte Seite eine Lipschitz-Bedingung
+erfüllt.
+Die Lipschitz-Bedingung verlangt im vorliegenden Fall, dass
+\[
+|A(x)v_1 - A(x)v_2|
+\le
+L |v_1-v_2|
+\]
+für eine geeignete Lipschitz-Konstante $L$ gilt.
+Wegen
+\[
+|A(x)v_1-A(x)v_2|
+=
+|A(x)(v_1-v_2)|
+\le
+\|A(x)\|\cdot |v_1-v_2|
+\]
+ist die Lipschitz-Bedingung mit der Lipschitz-Konstanten
+$L=\|A(x)\|$ immer erfüllt.
+Zu vorgegebenen Anfangswerten $y_0$ und $y'_0$ gibt es also
+immer eine eindeutige Lösung $y(x)$ mit $y(x_0)=y_0$ und
+$y'(x_0)=y_0$.
+
+%
+% Keine mehrfachen Nullstellen
+%
+\subsection{Keine mehrfachen Nullstellen
+\label{buch:variation2:diffgl:subsection:mehrfachenullstellen}}
+Sei $y(x)$ eine nichttriviale Lösung der Differentialgleichung
+\eqref{buch:variation2:diffgl:eqn:dgl} und $x_0$ eine
+Nullstelle $y(x_0)=0$.
+Die Stelle $x=x_0$ kann keine mehrfache Nullstelle sein, denn dann
+wäre auch $y'(x_0)=0$, $y(x)$ wäre also eine Lösung der Differentialgleichung
+mit Anfangsbedingungen $y(x_0)=0$ und $y'(x_0)=0$. 
+Da die Nullfunktion eine Lösung mit den selben Anfangsbedingungen ist,
+folgt aus dem Satz von Picard-Lindelöf, dass $y(x)=0$ sein müsste, im
+Widerspruch zur Annahme, dass $y(x)$ eine nichttriviale Lösung ist.
+
+Für jede Nullstelle $y_0$ von $y(x)$ ist also $y(x_0)\ne 0$.
+Insbesondere wechselt $y(x)$ bei jeder Nullstelle das Vorzeichen.
+
+
+%
+% Linear unabhängige Lösungen
+%
+\subsection{Linear unabhängige Lösungen
+\label{buch:variation2:diffgl:subsetion:linunabh}}
+Seien jetzt $y_1(x)$ und $y_2(x)$ zwei Lösungen
+der Differentialgleichung~\eqref{buch:variation2:diffgl:eqn:dgl}.
+Falls an einer Stelle $x_0$ die Vektoren
+\[
+v_1(x_0)
+=
+\begin{pmatrix}
+y_1(x_0)\\
+y'_1(x_0)
+\end{pmatrix}
+\qquad\text{und}\qquad
+v_2(x_0)
+=
+\begin{pmatrix}
+y_2(x_0)\\
+y'_2(x_0)
+\end{pmatrix}
+\]
+linear abhängig sind, dann gibt es eine Zahl $a$ mit $av_1(x_0)=v_2(x_0)$.
+Dies bedeutet, dass die Funktion $ay_1(x)$ an der Stelle $x_0$ 
+die gleichen Anfangsbedingungen erfüllt wie $y_2(x)$, nach dem
+Satz von Picard-Lindelöf folgt daher, dass $y_2(x)=ay_1(x)$ für 
+\index{Picard-Lindelof@Picard-Lindelöf, Satz von}%
+alle $x$.
+Die Vektoren $v_1(x)$ und $v_2(x)$ sind daher immer für alle
+$x$ linear abhängig und die Funktionen $y_1(x)$ und $y_2(x)$ haben
+die gleichen Nullstellen.
+
+Wir betrachten jetzt zwei linear unabhängige Lösungen
+$y_1(x)$ und $y_2(x)$.
+Die Vektoren $v_1(x)$ und $v_2(x)$ müssen dann
+für alle $x$ linear unabhängig sein, denn wären sie an einer Stelle
+linear abhängig und müssten damit nach dem vorangegangenen Absatz
+überall linear abhängig sein.
+Insbesondere ist die Wronski-Determinante
+\index{Wronski-Determinante}%
+\[
+W(y_1,y_2)
+=
+\det(v_1,v_2)
+=
+\left|
+\begin{matrix}
+ y_1(x) &  y_2(x) \\
+y'_1(x) & y'_2(x)
+\end{matrix}
+\right|
+\ne
+0.
+\]
+Insbesondere wechselt die Wronski-Determinante das Vorzeichen nicht.
+
+Die Wronski-Determinante hat die Ableitung
+\begin{align*}
+\frac{d}{dx} W(y_1(x),y_2(x))
+&=
+\frac{d}{dx} \bigl(y_1(x)y'_2(x) - y_2(x)y'_1(x)\bigr)
+\\
+&=
+y'_1(x)y'_2(x) + y_1(x)y''_2(x) - y'_2(x)y'_1(x) - y_2(x)y''_1(x)
+\\
+&=
+y_1(x)y''_2(x) - y_2(x)y''_1(x).
+\intertext{Durch Einsetzen der explizienten Form
+\eqref{buch:variation2:diffgl:eqn:explizit} der
+Differentialgleichung für $y''(x)$ wird daraus}
+&=
+y_1(x)(-p(x)y'_2(x)-q(x)) - y_2(x)(-p(x)y'_1(x)-q(x))
+\\
+&=
+-p(x)
+\bigl(
+y_1(x)y'_2(x) - y_2(x)y'_1(x)
+\bigr)
+\\
+&=
+-p(x) W(y_1(x),y_2(x))
+\end{align*}
+Die Wronski-Determinante erfüllt also die Differentialgleichung
+\[
+u' = -p(x) u,
+\]
+die sich separieren lässt, indem man sie
+\[
+\frac{du}{u}
+=
+-p(x) \,dx
+\qquad\Rightarrow\qquad
+\int \frac{du}{u}
+=
+-\int p(x)\,dx
+\]
+schreibt.
+Ihre Lösung
+\[
+\log |u(x)|
+=
+-\int p(x)\,dx
+\qquad\Rightarrow\qquad
+u(x) = u_0 e^{-\int_{x_0}^s p(\xi)\,d\xi}
+\]
+erfüllt die Anfangsbedingungen $u(x_0)=u_0$.
+Es folgt, dass die Wronski-Determinante
+\[
+W(y_1(x),y_2(x))
+=
+W(y_1(x_0),y_2(x_0))
+e^{-\int_{x_0}^x p(\xi)\,d\xi}
+\]
+erfüllt.
+Da die Exponentialfunktion keine Nullstellen hat, ergibt sich erneut
+die Eigenschaft, dass die Wronski-Determinante das Vorzeichen nicht
+wechselt.
+
+%
+% Alternierende Nullstellen
+%
+\subsection{Alternierende Nullstellen
+\label{buch:variation2:diffgl:subsection:alternierendenullstellen}}
+Seien wieder $y_1(x)$ und $y_2(x)$ zwei linear unabhängige Lösungen
+der Differentialgleichung \eqref{buch:variation2:diffgl:eqn:dgl}.
+Da die Funktionen linear unab hängig sind, kann der
+Quotient $y_2(x)/y_1(x)$ nicht konstant sein.
+Wir berechnen daher
+\[
+\frac{d}{dx}\biggl(
+\frac{y_2(x)}{y_1(x)}
+\biggr)
+=
+\frac{y_2'(x)y_1(x)-y_1'(x)y_2(x)}{y_1(x)^2}
+=
+-
+\frac{W(y_1(x),y_2(x))}{y_1(x)^2}
+=
+-
+\frac{\Delta_0}{y_1(x)^2}
+e^{-\int_{x_0}^x p(\xi)\,d\xi}
+\]
+mit $\Delta_0 = W(y_1(x_0),y_2(x_0))$.
+Die Ableitung des Quotienten hat daher im ganzen Definitionsbereich
+keine Vorzeichenwechsel.
+Der Quotient ist daher monoton wachsend oder monoton fallend im 
+ganzen Definitionsbereich.
+
+Bei den Nullstellen der Funktion $y_1(x)$ hat der Quotient
+$y_2(x)/y_1(x)$ Pole, auf beiden Seiten einer solchen Nullstelle
+divergiert der Quotient mit verschiedenem Vorzeichen.
+Da der Quotient zwischen zwei solchen Nullstellen monoton, kann es
+nur eine einzige Nullstelle geben.
+Folglich hat $y_2(x)$ zwischen zwei Nullstellen von $y_1(x)$ genau
+eine Nullstelle.
+Dasselbe gilt mit vertauschten Rollen von $y_1(x)$ und $y_2(x)$
+auch für $y_1(x)$, diese Funktion hat zwischen zwei Nullstellen
+von $y_2(x)$ genau eine Nullstelle.
+Die Funktionen $y_1(x)$ und $y_2(x)$ haben also alternierende
+Nullstellen.
+
+
+
