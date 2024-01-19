@@ -6,16 +6,174 @@
 \section{Varationsproblem für mehrere Funktionen
 \label{buch:variation:section:mehrerefunktionen}}
 \kopfrechts{Mehrere Funktionen}
+Nur sehr spezielle Kurven können dargestellt werden als Graphen
+einer Funktion $y(x)$.
+Als Lösung des isoperimetrischen Problems wird ein Kreis erwartet,
+der sich sicher nicht so darstellen lässt.
+Die natürliche Darstellung eines Kreises ist eine Parameterdarstellung
+$t\mapsto(\cos t,\sin t)$, auf die die bisherige Theorie nicht
+vorbereitet ist.
 
 %
 % Lagrange-Funktion für mehrere Funktionen
 %
-\subsection{Lagrange-Funktion für mehrere Funktionen}
+\subsection{Lagrange-Funktion für mehrere Funktionen
+\label{buch:variation:mehrerefunction:subsection:lagrangefunktion}}
+Eine Parameterdarstellung einer Kurve ist ein Vektor von Funktionen
+$y_1(x),\dots,y_n(x)$.
+Wir schreiben auch
+\[
+y(x)
+=
+\begin{pmatrix}
+y_1(x)\\
+\vdots\\
+y_n(x)
+\end{pmatrix}
+\qquad\text{und}\qquad
+y'(x)
+=
+\frac{d}{dx}
+\begin{pmatrix}
+y_1(x)\\
+\vdots\\
+y_n(x)
+\end{pmatrix}
+=
+\begin{pmatrix}
+y_1'(x)\\
+\vdots\\
+y_n'(x)
+\end{pmatrix}
+\]
+für die Vektorfunktion und ihre erste Ableitung.
+
+Eine {\em Lagrange-Funktion} für ein Variationsproblem wird von
+der unabhängigen Variablen $x$, den Funktionswerten aller Funktionen
+$y_1(x),\dots,y_n(x)$ und den Ableitungen $y'_1(x),\dots,y'_n(x)$
+abhängen.
+Sie ist also eine Funktion von $2n+1$ Variablen, die wir als
+\begin{equation*}
+F
+\colon
+\mathbb{R}^{2n+1}\to\mathbb{R}
+:
+(x,y_1,\dots,y_n,y'_1,\dots,y'_n)\mapsto F(x,y_1,\dots,y_n,y'_1,\dots,y'_n)
+\end{equation*}
+Mit dieser Schreibweise wird das Funktional, das extremal gemacht 
+werden soll.
+\[
+I(y)
+=
+\int_{x_0}^{x_1}
+F(x,y_1(x),\dots,y_n(x),y'_1(x),\dots,y'_n(x))\,dx.
+\]
+Der Fall $n=1$ ist der bereits früher behandelte.
+
+Besonders elegant lässt sich die Theorie formulieren, wenn wir
+die Lagrange-Funktion als Funktion der vektorwertigen Argumente
+$y$ und $y'$ schreiben:
+\begin{equation}
+F
+\colon
+\mathbb{R}\times\mathbb{R}^n\times\mathbb{R}^n
+\to
+\mathbb{R}
+:
+(x,y,y')
+\mapsto F(x,y,y').
+\label{buch:variation:mehrerefunktionen:eqn:Fvektor}
+\end{equation}
+Das zu varierende Integral wird dann
+\[
+I(y)
+=
+\int_{x_0}^{x_1}
+F(x,y(x),y'(x))
+\,dx
+\]
+In dieser Schreibweise unterscheidet sich das Problem formal
+nicht mehr vom bereits behandelten.
+Es kann in dieser Form aber nicht mit der bereits hergeleiteten
+Euler-Lagrange-Differentialgleichung gelöst werden, da die
+Ableitung $\partial F/\partial y$ nach einem Vektor $y$ nicht
+definiert ist.
+
+%
+% Ableitungen nach den Vektorargumenten
+%
+\subsection{Ableitungen nach den Vektorargumenten
+\label{buch:variation:mehrerefunktionen:subsection:vektorableitung}}
+Sei $F$ eine Lagrange-Funktion der Form
+\eqref{buch:variation:mehrerefunktionen:eqn:Fvektor}.
+Wir möchten die Ableitung nach den Vektorargument $y$ und $y'$ 
+definieren, damit wir später im
+Abschnitt~\ref{buch:variation:mehrerefunktionen:subsection:eulerlagrange}
+die Euler-Lagrange-Gleichungen so kompakt wie möglich schreiben können.
+
+Da der Vektor $y$ aus den Variablen $y_1,\dots,y_n$ besteht und $y'$
+aus den $y'_1,\dots,y'_n$, ist jede der Ableitungen
+\[
+\frac{\partial F}{\partial y_k}
+\qquad\text{und}\qquad
+\frac{\partial F}{\partial y'_k}
+\]
+wohldefiniert.
+Sie bilden zwei Vektoren, die wir als
+\begin{equation}
+\frac{\partial}{\partial y}
+F(x,y,y')
+=
+\begin{pmatrix}
+\frac{\partial}{\partial y_1}F(x,y,y')\\
+\vdots\\
+\frac{\partial}{\partial y_n}F(x,y,y')
+\end{pmatrix}
+\qquad\text{und}\qquad
+\frac{\partial}{\partial y'} F(x,y,y')
+=
+\begin{pmatrix}
+\frac{\partial}{\partial y'_1}F(x,y,y')\\
+\vdots\\
+\frac{\partial}{\partial y'_n}F(x,y,y')
+\end{pmatrix}
+\end{equation}
+schreiben wollen.
+Ist $\eta(x)$ eine vektorwertige Funktion mit Komponenten
+$\eta_k(x)$, dann kann man jetzt 
+die in der Variation von
+$f(\varepsilon) = F(x,y(x)+\varepsilon\eta(x),y(x)+\varepsilon\eta(x))$
+benötigte Ableitung nach $\varepsilon$ schreiben:
+\begin{align*}
+\frac{d}{d\varepsilon}f(\varepsilon)
+&=
+\sum_{k=1}^n
+\frac{\partial}{\partial y_k}
+F(x,y(x)+\varepsilon\eta(x),y'(x)+\varepsilon\eta'(x))
+\eta_k(x)
+\\
+&\qquad
++
+\frac{\partial}{\partial y'_k}
+F(x,y(x)+\varepsilon\eta(x),y'(x)+\varepsilon\eta'(x))
+\eta_k'(x)
+\\
+&=
+\frac{\partial}{\partial y}
+F(x,y(x),y'(x))\cdot \eta(x)
++
+\frac{\partial}{\partial y'}
+F(x,y(x),y'(x))\cdot \eta'(x)
+\end{align*}
+Der einzige Unterschied in der Notation gegenüber dem skalaren Fall
+ist, dass jeweils das Skalarprodukt zur Multiplikation mit $\eta(x)$
+bzw.~$\eta'(x)$ verwendet werden muss.
 
 %
 % Die Euler-Lagrange-Differentialgleichung
 %
-\subsection{Die Euler-Lagrange-Differentialgleichung}
+\subsection{Die Euler-Lagrange-Differentialgleichung
+\label{buch:variation:mehrerefunktionen:subsection:eulerlagrange}}
 Für eine Lagrange-Funktion für $r$ Funktionen $y_1(x),\dots,y_r(x)$
 lässt sich die Variation des Integrals
 \[

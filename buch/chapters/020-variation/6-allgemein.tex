@@ -600,21 +600,35 @@ Die unteren $n$ Komponenten der Richtungsvektoren sind einfach
 die Ableitung des Vektors
 $y(x(\varepsilon),\varepsilon)$ nach $\varepsilon$.
 
-Die unteren $n$ Komponenten von $\vec{f}_i$ sind die Ableitungen von
-$F$ nach den $n$ Variablen $y_1,\dots,y_n$.
-Dies sieht aus wie der Gradient, wenn man nur die $y$-Variablen 
-berücksichtigt.
-Wir schreiben dafür daher $\operatorname{grad}_yF(x,y,y')$.
-Analog können wir für den Vektor der Ableitungen von $F$ nach den
-$y_k'$ als $\operatorname{grad}_{y'}F(x,y,y')$ schreiben.
+Die unteren $n$ Komponenten von $\vec{r}_i$ und $\vec{f}_i$ bilden jeweils
+einen Vektor.
+Im Falle von $\vec{r}_i$ schreiben wir
+\[
+\vec{r}_i(\varepsilon)
+=
+\frac{d}{d\varepsilon}
+\begin{pmatrix}
+x_i(\varepsilon)\\
+y(x_i(\varepsilon),\varepsilon)
+\end{pmatrix}.
+\]
+Im Falle von $\vec{f}_i$ sind die unteren $n$ Komponenten
+die Ableitungen von $F$ nach den $n$ Variablen $y_1,\dots,y_n$.
+Dafür wurde in
+Abschnitt~\ref{buch:variation:mehrerefunktionen:subsection:vektorableitung}
+die Notation $\partial F/\partial y$ eingeführt.
+Analog können wir den Vektor der Ableitungen von $F$ nach den
+$y_k'$ als $\partial F/\partial y'$.
 Mit dieser Notation bekommen wir die sehr kompakte Form
 \[
 \vec{f}_i
 =
 \begin{pmatrix}
-F(x_i,y(x_i),y'(x_i)) - \operatorname{grad}_{y'}(x_i,y(x_i),y'(x_i))
-\\
-\operatorname{grad}_y F(x_i,y(x_i),y'(x_i))
+\displaystyle
+F(x_i,y(x_i),y'(x_i)) - \frac{\partial}{\partial y'}(x_i,y(x_i),y'(x_i))
+\\[5pt]
+\displaystyle
+\frac{\partial}{\partial y} F(x_i,y(x_i),y'(x_i))
 \end{pmatrix}
 \]
 für $i=0,1$.
@@ -631,10 +645,10 @@ Für die Variation finden wir dann
 +
 \int_{x_0}^{x_1}
 \biggl(
-\operatorname{grad}_yF(x,y(x),y'(x))
+\frac{\partial}{\partial y}F(x,y(x),y'(x))
 -
 \frac{d}{dx}
-\operatorname{grad}_{y'}F(x,y(x),y'(x))
+\frac{\partial}{\partial y'}F(x,y(x),y'(x))
 \biggr)
 \cdot
 \frac{\partial y}{\partial\varepsilon}(x,0)

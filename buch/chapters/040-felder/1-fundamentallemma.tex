@@ -6,8 +6,173 @@
 \section{Das Fundamentallemma für Funktionen mehrere Variablen
 \label{buch:felder:section:fundamentallemma}}
 \kopfrechts{Das Fundamentallemma}
+Der Schlüssel für die Umwandlung eines eindimensionalen Variationsproblems
+in eine Differentialgleichung war das Fundamentallemma.
 
-\begin{verbatim}
-- positive glatte Funktionen mit kompaktem Träger mehrerer Variablen
-- das Fundamentallemma für mehrere Variablen
-\end{verbatim}
+%
+% Gebiete
+%
+\subsection{Gebiete}
+Variationsprobleme für Funktionen von nur einer Variablen sind auf 
+Funktionen auf einem Intervall beschränkt.
+Besteht der Definitionsbereich aus mehreren Intervallen, kann jedes
+einzelne Intervall unabhängig von allen anderen betrachtet werden.
+Für ein Intervall $[x_0,x_1]$ ist auch das Integral einfach zu definieren,
+wie es zur Konstruktion des zu minimierenden Funktionals nötig ist.
+
+Für Funktionen von zwei oder mehr Variablen ist bereits die
+Festlegung des Definitionsgebietes viel komplizierter.
+Sie muss so erfolgen, dass auch die partielle Integration eines
+Produktes darauf übertragbar ist.
+Diese wurde im eindimensionalen Fall dazu aus dem Integral
+über $F\cdot\eta'$ eine Integral über $dF/dx\cdot \eta$ zu
+machen, auf welches das Fundamentallemma anwendbar war.
+
+%
+% Offene Mengen
+%
+\subsubsection{Offene Mengen}
+
+%
+% Der Rand eines Gebietes
+%
+\subsubsection{Der Rand eines Gebiets}
+
+%
+% Integration über ein Gebiet
+%
+\subsubsection{Integration über ein Gebiet}
+
+%
+% Integration über eine Kurve
+%
+\subsubsection{Integration über eine Kurve}
+
+%
+% Integration
+%
+\subsection{Partielle Integration}
+Die partielle Integration für ein Integral einer Variablen
+transformiert das Integral
+\[
+\int_{a}^{b} f(x) g'(x)\,dx
+\]
+in die Summe
+\[
+\biggl[ f(x) g(x) \biggr]_a^b
+-
+\int_a^b f'(x) g(x)\,dx.
+\]
+Der erste Term hängt nur von Informationen auf dem Rand des 
+Definitionsbereichs ab.
+Eine Verallgemeinerung dieser Regel muss vor allem auch klären,
+wie dieser erste Term aussehen soll.
+Er darf nur von den Funktionswerten der Funktionen auf dem Rand
+$\partial\Omega$ abhängen.
+Die Abhängigkeit muss ausserdem linear sein.
+In diesem Abschnitt sollen in einer Folge von Beispielen die
+wichtigsten Fälle systematisch entwickelt werden.
+
+%
+% Ableitung von Produkten
+%
+\subsubsection{Ableitung von Produkten}
+Die Regel für die partielle Integration von Produkten von Funktionen
+einer Variable ist die Integralform der Produktregel
+\[
+\frac{d}{dx}(f(x)g(x)) = f'(x)g(x) + f(x)g'(x).
+\]
+Für eine Erweiterung auf ist daher als erstes zu klären, welche Art
+von Differentialoperatoren überhaupt in Frage kommen.
+
+Die partielle Ableitung nach einer der Variablen bei Funktionen
+$f$ und $g$ von $n$ Variablen erfüllt eine Produktregel:
+\[
+\frac{\partial}{\partial x_k}
+(f(x)g(x))
+=
+\frac{\partial f}{\partial x_k}(x)\,g(x)
++
+f(x)
+\,
+\frac{\partial g}{\partial x_k}(x)
+\]
+für jedes $k=1,\dots,n$.
+Die partiellen Ableitungen sind aber nur von untergeordnetem Interesse,
+da sie für sich allein von der Wahl des Koordinatensystems abhängig 
+sind und daher zum Beispiel keine koordinatenunabhängige physikalische
+Bedeutung haben können.
+
+Der Gradient wurde aus der Richtungsableitung konstruiert und es wurde
+gezeigt, dass 
+\[
+\operatorname{grad} f(x)
+=
+\begin{pmatrix}
+\frac{\partial f}{\partial x_1}\\
+\vdots\\
+\frac{\partial f}{\partial x_n}
+\end{pmatrix}
+\]
+eine koordinatenunabhängige Bedeutung als der Vektor hat, in dessen
+Richtung die schnellste Zunahme der Funktion $f$ erfolgt.
+Und tatsächlich gilt auch für den Gradienten eine Produktformel:
+\begin{align*}
+\operatorname{grad}(f(x)g(x))
+&=
+\begin{pmatrix}
+\frac{\partial}{\partial x_1}(f(x)g(x))\\
+\vdots\\
+\frac{\partial}{\partial x_n}(f(x)g(x))
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{\partial f}{\partial x_1} g(x)
++
+f(x) \frac{\partial g}{\partial x_1}\\
+\vdots\\
+\frac{\partial f}{\partial x_n} g(x)
++
+f(x) \frac{\partial g}{\partial x_n}
+\end{pmatrix}
+\\
+&=
+(\operatorname{grad}f(x)) g(x)
++
+f(x)(\operatorname{grad}g(x))
+\end{align*}
+
+%
+% Der Satz von Green
+%
+\subsubsection{Der Satz von Green}
+
+%
+% Der Satz von Gauss
+%
+\subsubsection{Der Satz von Gauss}
+
+%
+% Der Satz von Stokes
+%
+\subsubsection{Der Satz von Stokes}
+
+%
+% Glatte Funktionen mit kompaktem Träger
+%
+\subsection{Glatte Funktionen mit kompaktem Träger}
+
+%
+% Das Fundamentallemma für mehrere Variablen
+%
+\subsection{Das Fundamentallemma für mehrere Variablen}
+
+\begin{satz}[Fundamentallemma]
+Sei $\Omega\subset\mathbb{R}^n$ ein Gebiet und $f\colon \Omega\to\mathbb{F}$
+eine stetige Funktion.
+Ausserdem gelte für jede glatte Funktion $g\colon\Omega\to\mathbb{R}$ 
+\[
+\int_{\Omega} f(x)g(x)\,dx = 0.
+\]
+Dann folgt $f(x)=0$.
+\end{satz}

@@ -1,0 +1,57 @@
+%
+% variation1.tex -- Variation mit freiem rechtem Ende
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\xzero{1}
+\def\xone{10}
+\def\yzero{1}
+\def\yone{4}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	x(\t)   = (1-\t)*\xzero+\t*\xone;
+	t(\x)   = (\x-\xzero)/(\xone-\xzero);
+	eta(\t) = \t*(1-\t)*2*cos(180*\t)+0.5*sin(810*\t)+1.8*\t;
+	y(\t)   = (1-\t)*\yzero+\t*\yone+4*\t*(1-\t);
+}]
+
+\draw (\xzero,-0.05) -- (\xzero,0.05);
+\draw (-0.05,\yzero) -- (0.05,\yzero);
+\draw[line width=0.2pt] (\xzero,0) -- (\xzero,\yzero);
+\draw[line width=0.2pt] (0,\yzero) -- (\xzero,\yzero);
+\node at (\xzero,-0.05) [below] {$x_0\mathstrut$};
+\node at (-0.05,\yzero) [left] {$y_0\mathstrut$};
+
+\draw (\xone,-0.05) -- (\xone,0.05);
+\draw[line width=0.2pt] (\xone,0) -- (\xone,{y(1)+1.6*eta(1)});
+\node at (\xone,-0.05) [below] {$x_1\mathstrut$};
+
+\fill[color=darkred] (\xzero,\yzero) circle[radius=0.08];
+\fill[color=darkred] (\xone,\yone) circle[radius=0.08];
+\node at (\xzero,\yzero) [above left] {$P_0$};
+\node at (\xone,\yone) [right] {$P_1$};
+
+\foreach \e in {-1.6,-1.2,...,1.7}{
+	\draw[color=gray,smooth] plot[domain=0:1] ({x(\x)},{y(\x)+\e*eta(\x)});
+}
+\node[color=gray] at (3.2,3.75) {$y(x)+\varepsilon\eta(x)$};
+
+\draw[color=darkred,smooth,line width=1.4pt] plot[domain=0:1] ({x(\x)},{y(\x)});
+\node[color=darkred] at (6.2,3.98) {$y(x)$};
+
+\draw[->] (-0.1,0) -- (11.6,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,8) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+

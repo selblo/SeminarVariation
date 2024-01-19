@@ -11,4 +11,10 @@ CHAPTERFILES +=								\
 	chapters/020-variation/4-hoehereableitungen.tex			\
 	chapters/020-variation/5-mehrerefunktionen.tex			\
 	chapters/020-variation/6-allgemein.tex				\
+	chapters/020-variation/fig/brachistochronenproblem.tex		\
+	chapters/020-variation/fig/f.tex				\
+	chapters/020-variation/fig/g.tex				\
+	chapters/020-variation/fig/variation.tex			\
+	chapters/020-variation/fig/variation0.tex			\
+	chapters/020-variation/fig/variation1.tex			\
 	chapters/020-variation/chapter.tex

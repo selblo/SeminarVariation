@@ -136,6 +136,7 @@ davon abhängen.
 %
 \subsection{Euler-Lagrange-Differentialgleichung
 \label{buch:variation:eulerlagrange:subsection:dgl}}
+\input{chapters/020-variation/fig/variation0.tex}
 Das Maximum oder Minimum einer Funktionen mehrere Variablen wurde
 gefunden, indem die Richtungsableitung berechnet und $=0$ gesetzt
 wurde.
@@ -146,7 +147,8 @@ Wir nehmen daher an, dass $y(x)$ eine Funktion ist, die das Funktional
 $I(y)$ zu einem Minimum macht.
 Für die Richtungsableitung addieren wir ein Vielfaches einer
 Funktion $\eta(x)$, die Summe $y(x)+\varepsilon\eta(x)$ entspricht
-dann einer Geraden mit Richtung $\eta(x)$ im Funktionenraum.
+dann einer Geraden mit Richtung $\eta(x)$ im Funktionenraum
+(Abbildung~\ref{buch:variation:fig:variation0}).
 Die Funktionen $y(x)+\varepsilon\eta(x)$ sind aber nur dann Kandidaten
 für eine Lösung des Problems, wenn immer noch
 \begin{align*}
@@ -271,7 +273,7 @@ I(y)
 F(x,y(x),y'(x))\,dx
 \]
 zu einem Maximum oder Minimum macht, dann ist $y(x)$ eine Lösung der
-{\em Euler-Lagrange-Differentialgleichung}
+gewöhnlichen Differentialgleichung
 \begin{equation}
 \frac{d}{dx}
 \frac{\partial F}{\partial y'}(x,y(x),y'(x))
@@ -281,6 +283,7 @@ zu einem Maximum oder Minimum macht, dann ist $y(x)$ eine Lösung der
 0.
 \label{buch:variation:eulerlagrange:eqn:eulerlagrange}
 \end{equation}
+Sie heisst die {\em Euler-Lagrange-Differentialgleichung}.
 \end{satz}
 
 Eine Lösung des Variationsproblems kann also als Lösung der
@@ -402,14 +405,18 @@ I(y)
 \int_{x_0}^{x_1} F(x,y(x),y'(x))\,dx
 \]
 zu einem Extremum macht.
+Am rechten Ende des Intervalls ist der Funktion $y(x)$ keine
+Randbedingung auferlegt.
 \end{aufgabe}
 
 \begin{proof}[Lösung]
+\input{chapters/020-variation/fig/variation1.tex}
 Sei $y(x)$ eine Lösung der Aufgabe und sei $y_1:=y(x_1)$ der Wert
 der Lösung am rechten Rand des Intervalls.
 Wir berechnen wieder die Variation von $I(y)$ mit Hilfe von
 stetig differenzierbaren Funktionen $\eta(x)$, die jetzt aber 
-nur noch die Bedingungn $\eta(x_0)=0$ erfüllen müssen.
+nur noch die Bedingungn $\eta(x_0)=0$ erfüllen müssen
+(Abbildung~\ref{buch:variation:fig:variation1}).
 Die Richtungsableitung ist wie früher
 \begin{align*}
 \frac{d}{d\varepsilon}
@@ -499,7 +506,7 @@ Wir halten das Resultat der Aufgabenlösung als Satz fest:
 \begin{satz}
 \label{buch:variation:eulerlagrange:satz:zusaetzlicherb}
 Wenn die zweimal stetig differenzierbare Funktion $y(x)$ mit dem
-Randwert $y(x_0)=y_1$ das Integral
+Randwert $y(x_0)=y_0$ das Integral
 \[
 I(y)
 =
