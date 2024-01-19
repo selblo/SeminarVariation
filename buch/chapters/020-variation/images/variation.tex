@@ -19,8 +19,8 @@
 declare function = {
 	x0(\a) = 1.5-\a;
 	y0(\a) = 3*sqrt(2+\a)-1.9;
-	x1(\a) = 8+cosh(1.2*\a+0.5)-\a;
-	y1(\a) = 3+2.3*sinh(\a+0.5);
+	x1(\a) = 8+cosh(1.2*\a+0.5)+0.7*\a;
+	y1(\a) = 2.0+2.3*sinh(\a+0.5);
 	x(\t,\a) = x0(\a)+\t*(x1(\a)-x0(\a));
 	t(\x,\a) = (\x-x0(\a))/(x1(\a)-x0(\a));
 	y(\x,\a) = 0.3*(\a+1)*t(\x,\a)*(1-t(\x,\a))+0.03*sin(180*t(\x,\a))-0.08*sin(3*180*t(\x,\a));
@@ -32,6 +32,7 @@ declare function = {
 	rl(\t,\a) = sqrt(dx(\t,\a)*dx(\t,\a)+dy(\t,\a)*dy(\t,\a));
 	rx(\t,\a) = dx(\t,\a)/rl(\t,\a);
 	ry(\t,\a) = dy(\t,\a)/rl(\t,\a);
+	deltay(\x,\a) = (Y(\x+0.01,\a)-Y(\x,\a))/0.01;
 }]
 
 \draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
@@ -67,11 +68,11 @@ declare function = {
 	}
 \end{scope}
 
-\node[color=gray!80] at (4.79,6.68) {$y(x,\varepsilon)$};
+\node[color=gray!80] at (5.51,6.38) {$y(x,\varepsilon)$};
 
 \draw[color=darkred,line width=1.4pt,smooth]
 	plot[domain={x0(0)}:{x1(0)}] ({X(\x,0)},{Y(\x,0)});
-\node[color=darkred] at (5.3,4.95) {$y(x)$};
+\node[color=darkred] at (5.5,4.45) {$y(x)$};
 
 \draw[color=blue,line width=1.4pt,smooth]
 	plot[domain=-1:1] ({X(x(0,\x),\x)},{Y(x(0,\x),\x)});
@@ -80,29 +81,54 @@ declare function = {
 
 \node[color=blue] at (2.0,1.3)
 	[rotate=-53] {$(x_0(\varepsilon),y_0(\varepsilon))$};
-\node[color=blue] at (9.9,2.9)
-	[rotate=-62] {$(x_1(\varepsilon),y_1(\varepsilon))$};
+\node[color=blue] at (9.0,1.7)
+	[rotate=80] {$(x_1(\varepsilon),y_1(\varepsilon))$};
 
-\draw[->,color=hellblau,line width=2pt]
-	({X(x(1,0.6),0.6)},{Y(x(1,0.6),0.6)}) -- +({2*rx(1,0.6)},{2*ry(1,0.6)});
-
-\fill[color=hellblau] ({X(x(1,0.6),0.6)},{Y(x(1,0.6),0.6)}) circle[radius=0.08];
-\node[color=hellblau] at (0.4,3.7) {$\vec{r}_0(\varepsilon)$};
-
-\draw[->,color=hellblau,line width=2pt]
-	({X(x(0,0.4),0.4)},{Y(x(0,0.4),0.4)}) -- +({rx(0,0.4)},{ry(0,0.4)});
-\fill[color=hellblau] ({X(x(0,0.4),0.4)},{Y(x(0,0.4),0.4)}) circle[radius=0.08];
-\node[color=hellblau] at (9.7,8.2) {$\vec{r}_1(\varepsilon)$};
-
+% f1
 \draw[->,color=darkgreen,line width=2pt]
-	({X(x(1,0),0)},{Y(x(1,0),0)}) -- +({1.5*ry(1,0)},{-1.5*rx(1,0)});
-\fill[color=darkgreen] ({X(x(1,0),0)},{Y(x(1,0),0)}) circle[radius=0.08];
-\node[color=darkgreen] at (10.2,4.7) {$\vec{f}_1$};
+	({X(x(1,0),0)},{Y(x(1,0),0)}) -- +({2.0*ry(1,0)},{-2.0*rx(1,0)});
+%\fill[color=darkgreen] ({X(x(1,0),0)},{Y(x(1,0),0)}) circle[radius=0.08];
+\node[color=darkgreen] at (10.7,2.0) {$\vec{f}_1$};
 
+% f0
 \draw[->,color=darkgreen,line width=2pt]
 	({X(x(0,0),0)},{Y(x(0,0),0)}) -- +({-1.5*ry(0,0)},{1.5*rx(0,0)});
 \fill[color=darkgreen] ({X(x(0,0),0)},{Y(x(0,0),0)}) circle[radius=0.08];
 \node[color=darkgreen] at (0.8,1.3) {$\vec{f}_0$};
+
+% Dreieck
+\def\l{2}
+\fill[color=darkred!20] ({x(1,0)},{Y(x(1,0),0)}) -- +(\l,{\l*deltay(x(1,0),0)})
+	-- ({x(1,0)+\l},{Y(x(1,0),0)}) -- cycle;
+\draw ({x(1,0)},{Y(x(1,0),0)}) -- +(\l,0);
+\draw ({x(1,0)},{Y(x(1,0),0)}) -- +(\l,{\l*ry(1,0)/rx(1,0)})
+	-- ({x(1,0)+\l},{Y(x(1,0),0)});
+\node at ({x(1,0)+1.5},{Y(x(1,0),0)+0.06}) [below] {$\delta x_1$};
+\draw[color=darkred,line width=1.2pt] ({x(1,0)},{Y(x(1,0),0)})
+	-- +(\l,{\l*deltay(x(1,0),0)})
+	-- ({x(1,0)+\l},{Y(x(1,0),0)});
+\node[color=darkred] at ({x(1,0)+\l},{Y(x(1,0),0)+0.45})
+	[right] {$\displaystyle\frac{\partial y}{\partial x}\cdot\delta x_1$};
+\node at ({x(1,0)+\l},{Y(x(1,0),0)+2.2}) [right]
+{$\displaystyle\frac{\partial y}{\partial\varepsilon}\cdot\delta\varepsilon$};
+
+% r1(epsilon)
+\def\L{4.5}
+\draw[->,color=hellblau,line width=2pt]
+	({X(x(1,0.0),0.0)},{Y(x(1,0.0),0.0)})
+	--
+	+({\L*rx(1,0.0)},{\L*ry(1,0.0)});
+\fill[color=hellblau] ({X(x(1,0.0),0.0)},{Y(x(1,0.0),0.0)})
+	circle[radius=0.08];
+\node[color=hellblau] at 
+	({X(x(1,0.0),0.0)+\L*rx(1,0.0)},{Y(x(1,0.0),0.0)+\L*ry(1,0.0)})
+	[above] {$\vec{r}_1(\varepsilon)$};
+
+% r0(epsilon)
+\draw[->,color=hellblau,line width=2pt]
+	({X(x(0,0.4),0.4)},{Y(x(0,0.4),0.4)}) -- +({rx(0,0.4)},{ry(0,0.4)});
+\fill[color=hellblau] ({X(x(0,0.4),0.4)},{Y(x(0,0.4),0.4)}) circle[radius=0.08];
+\node[color=hellblau] at (0.4,3.7) {$\vec{r}_0(\varepsilon)$};
 
 \end{tikzpicture}
 \end{document}
