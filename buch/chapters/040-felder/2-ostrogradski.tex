@@ -6,9 +6,614 @@
 \section{Die Euler-Ostrogradski-Differentialgleichung
 \label{buch:felder:section:euler-ostrogradski}}
 \kopfrechts{Die Euler-Ostrogradski-Differentialgleichung}
+Die in den vorangegangenen Abschnitten entwickelte Theorie der
+Integration von Funktionen und Vektorfeldern für mehrere Variablen
+soll jetzt dazu verwendet werden, Variationsprinzipien für solche
+Felder zu formulieren und mit Hilfe einer der
+Euler-Lagrange-Differentialgleichung ähnlichen partiellen
+Differentialgleichung zu lösen.
 
-\begin{verbatim}
-- Variationsprinzipien für Felder
-- Lagrange-Funktionen
-- die Differentialgleichung
-\end{verbatim}
+% 
+% Variationsprinzipien für Felder
+%
+\subsection{Variationsprinzipien für Felder}
+In diesem Abschnitt werden drei Beispiele von Variationsprinzipien aus
+der Physik vorgestellt.
+Dabei geht es vor allem um die Illustration der Gemeinsamkeiten,
+die anschliessend als Basis für eine nützliche Definition der
+Funktionale dienen können, für die das Variationsproblem gelöst
+werden soll.
+
+%
+% Gravitationsfeld
+%
+\subsubsection{Graviationsfeld}
+Das newtonsche Gravitaionsgesetz berechnet die Kraft
+\[
+F = G \frac{m_1m_2}{r^2}
+\]
+zwischen zwei Massen $m_1$ und $m_2$ im Abstand $r$.
+Befindet sich die Masse $m_1$ im Nullpunkt, dann erfährt die Masse im
+Punkt $P$ im Abstand $r$ vom Nullpunkt die Kraft 
+\begin{equation}
+\vec{F}
+=
+m_2
+\cdot
+\underbrace{\frac{Gm_1}{r^2} \overrightarrow{PO}}_{\displaystyle =\vec{a}}.
+\label{buch:felder:ostrogradski:eqn:gravitationsfeld}
+\end{equation}
+Alle Massen erfahren also die gleiche Beschleunigung, die durch das
+Feld $\vec{a}$ gegeben ist.
+Auf der Erdoberfläche ist dies die Erdbeschleunigung $\vec{g}$, die jeden
+Körper mit ungefähr $9.81 \text{m}/\text{s}^2$ zum Mittelpunkt der
+Erde hin beschleunigt.
+
+Aus der Gleichung \eqref{buch:felder:ostrogradski:eqn:gravitationsfeld}
+kann man ableiten, dass das Gravitationsfeld ein Potentialfeld ist.
+Dies bedeutet, dass es eine Funktion $\varphi$ der Koordinaten gibt, 
+so dass der Gradient von $\varphi$ die Gravitationsbeschleunigung
+\[
+\frac{Gm_1}{r^2}\overrightarrow{PO}
+=
+\grad\varphi
+\]
+ist.
+Das Feld einer ausgedehnten Masseverteilung mit Dichte $\varrho$
+kann daraus durch Überlagerung gewonnen werden.
+Man kann auch zeigen, dass das Potential einer solchen Verteilung
+die Laplace-Gleichung $\Delta \varphi = 4\pi G \varrho$ erfüllt.
+
+Die Gleichung des Gravitationsfeldes lässt sich aber auch aus einem
+Variationsprinzip gewinnen.
+Die Lagrange-Mechanik eines Massepunktes kann helfen, die richtige
+Lagrange-Funktion
+\begin{equation}
+L(x,\varrho,\varphi)
+=
+-\frac{1}{8\pi G}
+\sum_{k=1}^3
+\biggl(
+\frac{\partial \varphi}{\partial x_k}(x)
+\biggr)^2
+-
+\varrho(x)\varphi(x)
+\label{buch:felder:ostrogradski:eqn:gravitationslagrange}
+\end{equation}
+zu finden.
+Der potentiellen Energie $mgh$ in der Mechanik des Massepunktes
+entspricht die potentielle Energiedichte $\varrho(x)\varphi(x)$
+in der
+Lagrangefunktion~\eqref{buch:felder:ostrogradski:eqn:gravitationslagrange}.
+Wir werden später sehen, dass sich die Feldgleichungen für das
+Gravitationsfeld dadurch finden lassen, dass man das Minimum des
+Funktionals
+\[
+I(x,\varrho,\varphi)
+=
+\int_{\mathbb{R}^3} L(\varphi)
+\,dx
+\]
+sucht.
+
+%
+% Elektromagnetisches Feld
+%
+\subsubsection{Elektromagnetisches Feld}
+Das elektromagnetische Feld ist viel komplizierter als das Gravitationsfeld.
+Das elektrostatische Feld einer Punktladung kann zwar ganz analog zum
+Gravitationsfeld modelliert werden, aber die Bewegung einer Ladung
+verursacht zusätzlich ein Magnetfeld, welches sich nur als ein
+Vektorfeld beschreiben lässt.
+Die magnetische Induktion $\vec{B}$ kann nicht als Gradient einer Funktion
+geschrieben werden.
+Da sie aber quellenfrei ist, kann man ein Vektorfeld $\vec{A}$,
+das sogenannte Vektorpotential finden, aus welchem sich das $\vec{B}$-Feld
+durch Bilden der Rotation $\operatorname{rot}\vec{A}=\vec{B}$ bilden
+lässt.
+
+Das elektrische Feld wird durch Ladungen erzeugt, die mit der
+Ladungsdichte $\varrho(x,t)$ im Raum verteilt sind.
+Die Bewegung der Ladung, die für die Magnetfelder verantwortlich ist,
+äussert sich in Strömen, die durch den Stromdichtevektor $\vec{\jmath}(x,t)$
+beschrieben werden.
+
+Der Zusammenhänge zwischen $\varphi$ und $\vec{\jmath}$ und den Feldern
+$\vec{E}$ und $\vec{B}$ lässt sich jetzt mit einer Lagrange-Funktion
+\begin{equation}
+L(x,t,\varrho,\vec{j},\varphi,\vec{A})
+=
+-\varrho(x,t) \varphi(x,t)
++
+\vec{j}(x,t)\vec{A}(x,t)
++
+\frac{\varepsilon_0}{2}\vec{E}(x,t)^2
+-
+\frac{1}{2\mu_0}\vec{B}(x,t)^2
+\label{buch:felder:ostrogradski:eqn:emlagrange}
+\end{equation}
+erfassen.
+\eqref{buch:felder:ostrogradski:eqn:emlagrange} ist tatsächlich nur
+eine eine Funktion von der angegebenen Argumente, denn die Felder
+$\vec{E}$ und $\vec{B}$ lassen sich aus $\varphi$ und $\vec{\jmath}$ 
+berechnen.
+Wir erwarten, dass sich die Maxwell-Gleichungen wieder durch
+Lösung eines Variationsproblems finden lassen.
+
+%
+% Elastizitätstheorie
+%
+\subsubsection{Elastizitätstheorie}
+In der Elastizitätstheorie wird die Deformation eines Körpers unter
+dem Einfluss äusserer Kräfte durch die Verschiebungen
+$u_{i}(x), i=1,\dots,3$ beschrieben.
+Der Vektor mit den Komponenten $u_i(x)$ beschreibt, wie weit der Punkt
+$x$ durch die Deformation bewegt wird.
+Nach der Deformation befindet sich der Punkt $x$ also an der Stelle $x+u(x)$.
+Die Grundaufgabe der Elastizitätstheorie ist, die Deformation $u_k(x)$
+eines Körpers in Abhängigkeit von den äusseren Kräften zu berechnen.
+
+Wenn alle Punkte mit dem gleichen Vektor verschoben werden, entstehen
+im Material keine Spannungen.
+Spannungen im Material manifestieren sich daher nur, wenn die Ableitungen
+der Komponenten $u_i(x)$ nach den Koordinaten nicht verschwinden.
+Daher wird der {\em Verzerrungstensor}
+\index{Verzerrungstensor}%
+durch
+\begin{equation}
+u_{ik}
+=
+\frac12\biggl(
+\frac{\partial u_i}{\partial x_k}
++
+\frac{\partial u_k}{\partial x_i}
+\biggr)
+\label{buch:felder:ostrogradski:eqn:verzerrungstensor}
+\end{equation}
+definiert.
+
+Die im Körper vorhandenen Spannungen werden durch den sogenannten
+Spannungstensor $\sigma_{ik}(x)$ beschrieben.
+Die Diagonalkomponent $\sigma_{ii}$ beschreibt den Druck auf die 
+Oberfläche eines kleinen Volumens in Richtung der $i$-ten Koordinate.
+Die ausserdiagonalen Elemente $\sigma_{ik}$ beschreiben die
+Scherkräfte in Richtung der $k$-ten Koordinate auf eine Oberfläche
+mit Normalen in Richtung der $i$-ten Koordinate.
+Eine weitere Deformation des Körpers ändert die Verzerrungen, so dass
+sich zusätzliche Spannungen aufbauen.
+Die bei der Deformation geleistete Arbeit wird in Form von Spannungsenergie
+gespeichert.
+
+In einer Flüssigkeit kann es keine Scherkräfte geben.
+Der Spannungstensor ist diagonal und die Spannungen sind durch
+den hydrostatischen Druck $p$ in der Flüssigkeit gegeben, also
+durch $\sigma_{ik}=-p\delta_{ik}$.
+Eine Änderung des Volumens bedeutet, dass der Verzerrungstensor
+verändert wird.
+Die diagonalen Komponenten geben den Streckungsfaktor in Richtung der
+Koordinate $i$ an.
+Die mit der Volumenänderung verbundene Arbeit gegen den Druck $p$ ist
+daher durch
+\[
+dE
+=
+-p\sum_{i=1}^3 du_{ii}
+\]
+gegeben.
+
+Im allgemeinen Fall eines elastischen Körpers muss bei einer
+Deformationsänderung auch Arbeit gegen die Scherkräfte geleistet
+werden.
+Bei der Verdrehung eines Balkens ist dies der hauptsächliche Anteil
+der nötigen Arbeit.
+Diese Arbeit ist proportional zu den Scherspannungen und den ausserdiagonalen
+Elementen des Verzerrungstensors.
+Die freie Enthalpie
+\[
+\Phi
+=
+E - TS - \sum_{i,k=1}^n \sigma_{ik} u_{ik}
+\]
+des Körpers kann als Lagrange-Funktion für ein Minimalprinzip
+verwendet werden, aus dem sich die Grundgleichungen der
+Elastizitätstheorie ableiten lassen.
+
+%
+% Lagrange-Funktion
+%
+\subsection{Lagrange-Funktion}
+Die Beispiele in
+Abschnitt~\ref{buch:felder:ostrogradski:subsection:variationsprinzipien}
+haben gezeigt, dass sich in der Physik Theorien über Felder verschiedenster
+Art auf Variationsprinzipien zurückführen lassen.
+Den Beispielen ist gemeinsam, dass die Lagrange-Funktion eines zu
+variierenden Integrals nicht mehr nur von einer Funktion $y(x)$ von
+einer Variablen und ihrer Ableitung $y'(x)$ abhängt, sondern von mindestens
+einer Funktion $\varphi(x)$ von mehreren Variablen und allen ihren
+ersten Ableitungen.
+
+Die einfachste Form eines Variationsproblems für Funktionen mehrere
+Variablen ist daher die folgende.
+Gegeben ist ein Gebiet $\Omega\in\mathbb{R}$ mit Rand $\partial\Omega$.
+
+\begin{definition}[Lagrange-Funktion]
+Eine Funktion
+\[
+L
+\colon
+\mathbb{R}^n\times\mathbb{R}\times{R}^n
+\to
+\mathbb{R}
+:
+(x,u,u_x)
+\mapsto
+L(x,u,u_x),
+\]
+die in jeder Variable $n$-mal stetig diferenzierbar ist, heisst eine
+{\em Lagrange-Funktion}.
+Das zugehörige Funktional ist
+\begin{equation}
+\begin{aligned}
+I(\varphi)
+&=
+\int_{\Omega}
+L(x,\varphi,\grad\varphi(x))
+\,dx
+\\
+&=
+\int_{\Omega} 
+L\biggl(
+x_1,\dots,x_n,
+\varphi(x_1,\dots,x_n),
+\frac{\partial \varphi}{\partial x_1}(x_1,\dots,x_n),
+\dots,
+\frac{\partial \varphi}{\partial x_n}(x_1,\dots,x_n)
+\biggr)
+\,dx_1\dots\,dx_n.
+\end{aligned}
+\label{buch:felder:astrogradski:eqn:Lfunktional}
+\end{equation}
+\end{definition}
+
+Zudem sei auf dem Rand $\partial\Omega$ auf $\Omega$
+eine Randwertfunktion
+$f(x)$ gegeben.
+Betrachtet werden Funktionen
+$\varphi\colon\overline{\Omega}\to \mathbb{R}$,
+die vorgegebene Randwerte
+\(
+\varphi(x) = f(x)
+\)
+für $x\in\partial\Omega$ erfüllen.
+Gesucht wird jetzt diejenige solche Funktion $\varphi(x)$, die das Funktional
+$I(\varphi)$ zu einem Extremum macht.
+
+In zwei Dimensionen für die unabhängigen Variablen $x$ und $y$
+und eine gesuchte Funktion $\varphi(x,y)$ ausgeschrieben ist also
+$\varphi(x,y)$ derart zu bestimmen, dass das Integral
+\[
+\int_{\Omega}
+L\biggl(
+x,y,\varphi(x,y),
+\frac{\partial\varphi}{\partial x}(x,y),
+\frac{\partial\varphi}{\partial y}(x,y)
+\biggr)
+\,dx
+\]
+einen Extremwert erreicht für alle Funktionen, die ausserdem die 
+Randbedingungen $\varphi(x,y)=f(x,y)$ erfüllt für $(x,y)\in\partial\Omega$.
+
+\begin{definition}[1.~Variation]
+Die {\em erste Variation} des Funktionals $I(\varphi)$ von
+\index{erste Variation!von mehreren Variablen}
+\eqref{buch:felder:astrogradski:eqn:Lfunktional}
+für eine Funktion $\eta(x)$, die auf dem Rand $\partial\Omega$ verschwindet,
+ist die Richtungsableitung
+\[
+\delta I(\varphi)
+=
+\frac{\partial I(\varphi+\varepsilon \eta)}{\partial \varepsilon}
+\bigg|_{\varepsilon=0}.
+\]
+\end{definition}
+
+%
+% Euler-Ostrogradski-Differentialgleichung
+%
+\subsection{Euler-Ostrogradski-Differentialgleichung}
+Die Hauptzutaten für die Euler-Lagrange-Differentialgleichung für
+die Extremale eines Funktionals von einer Funktion $y(x)$ einer
+Variable waren das Fundamentallemma und die partielle Integration.
+Beide stehen auch für Funktionen mehrere Variablen zur Verfügung.
+Es ist daher nicht überraschend, dass sich eine Differentialgleichung
+ähnlicher Art auch für Variationsprinzipien für Funktionen mehrere
+Variablen finden lässt.
+
+\begin{satz}[Euler-Ostrogradski]
+Sei $L(x,u,u_x)$ eine Lagrange-Funktion auf dem Gebiet $\Omega$ mit
+rektifizierbarem Rand gegeben.
+Ist $\varphi$ eine zweimal stetig differenzierbare Funktion auf
+dem Gebiet $\Omega$, die dem Funktional $I(\varphi)$ 
+\eqref{buch:felder:astrogradski:eqn:Lfunktional}
+ein Extremum erteilt, dann erfüllt $\varphi$ die Differentialgleichung
+\begin{equation}
+\begin{aligned}
+0
+&=
+\frac{\partial L}{\partial u} 
+-
+\frac{\partial}{\partial x_1}
+\frac{\partial L}{\partial u_{x_1}}(x,\varphi(x),\grad\varphi(x))
+-
+\dots
+-
+\frac{\partial}{\partial x_n}
+\frac{\partial L}{\partial u_{x_n}}(x,\varphi(x),\grad\varphi(x)).
+\\
+&=
+\frac{\partial L}{\partial u}(x,\varphi(x),\grad\varphi(x))
+-
+\operatorname{div}
+(\grad_{u_x} L)(x,\varphi(x),\grad\varphi(x))
+\end{aligned}
+\label{buch:felder:ostrogradski:eqn:euler-ostrogradski}
+\end{equation}
+Sie heisst die {\em Euler-Ostrogradski-Differentialgleichung}.
+\index{Euler-Ostrogradski-Differentialgleichung}%
+\end{satz}
+
+\begin{proof}
+Da $\varphi$ dem Funktional ein Extremum erteilt, muss die erste
+Variation für jede differenzierbare Funktion $\eta(x)$ mit Nullwerten
+auf dem Rand verschwinden.
+Es gilt also
+\begin{align}
+0
+&=
+\delta I(\varphi)
+=
+\frac{d}{d\varepsilon}
+\int_{\Omega}
+L\bigl(x,\varphi(x)+\varepsilon\eta(x),
+\grad(\varphi(x) + \varepsilon\eta(x))
+\bigr)
+\,dx
+\bigg|_{\varepsilon=0}
+\notag
+\intertext{für jede zulässige Funktion $\eta(x)$.
+Entwicklung der Funktion $L$ nach Potenzen von $\varepsilon$ ergbibt
+}
+&=
+\int_{\Omega} \frac{\partial L}{\partial u}(x,\varphi(x),\grad\varphi(x))\,dx
++
+\int_{\Omega}
+\sum_{k=1}^n
+\frac{\partial L}{\partial u_{x_k}}
+L\bigl(x,\varphi(x),\grad\varphi(x))
+\frac{\partial\eta}{\partial x_k}
+\,dx.
+\notag
+\intertext{Die Summe im zweiten Integral lässt sich etwas kompakter
+als ein Skalarprodukt von der Form}
+&=
+\int_{\Omega} \frac{\partial L}{\partial u}(x,\varphi(x),\grad\varphi(x))\,dx
++
+\int_{\Omega}
+(\grad_{u_x}L)(x,\varphi(x),\grad\varphi(x))
+\cdot
+\grad\eta(x)
+\,dx.
+\label{buch:felder:ostrogradski:eqn:abgeleitet}
+\end{align}
+schreiben.
+
+Der Integrand des zweiten Integrals in
+\eqref{buch:felder:ostrogradski:eqn:abgeleitet}
+ist von der Form $\vec{u}(x)\cdot \grad v(x)$, die auch in der
+Produktformel
+\[
+\operatorname{div}\bigl(v(x)\vec{u}(x)\bigr)
+=
+\grad v(x)
+\cdot
+\vec{u}(x)
++
+v(x) \, \operatorname{div} u(x)
+\]
+vorkommt, wenn man $v(x) = \eta(x)$ und $\vec{u}=\grad_{u_x}L$ setzt.
+Die zugehörige partielle Integrationsformel wendelt das zweite Integral
+\eqref{buch:felder:ostrogradski:eqn:abgeleitet}
+in 
+\[
+\int_{\partial \Omega}
+v(x) \eta(x) \grad_{u_x}(L(x,\varphi(x),\grad\varphi(x)))
+\,d\vec{\omega}
+-
+\int_{\Omega}
+(\grad_{u_x} L)(x,\varphi(x),\grad \varphi(x))
+\,dx
+\]
+um.
+Die Art des Integrals über den Rand spielt dabei überhaupt keine Rolle,
+denn da $\eta(x)=0$ ist auf dem Rand, verschwindet es unabhängig davon.
+Aus der Gleichung
+\eqref{buch:felder:ostrogradski:eqn:abgeleitet}
+wird dann
+\begin{equation}
+0
+=
+\int_{\Omega}
+\biggl(
+\frac{\partial L}{\partial u}(x,\varphi(x),\grad\varphi(x))
+-
+\operatorname{div}
+(\grad_{u_x}L)(x,\varphi(x),\grad\varphi(x))
+\biggr)
+\eta(x)
+\,dx.
+\end{equation}
+Dies muss gelten für jede stetig differenzierbare Funktion $\eta(x)$
+mit verschwindenden Randwerten.
+Nach dem
+Fundamentallemma~\ref{buch:felder:fundamentallemma:satz:fundamentallemma}
+für Funktionen mehrere Variablen folgt jetzt die Differentialgleichung
+\eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski}.
+\end{proof}
+
+%
+% Gravitationsfeld
+%
+\subsubsection{Gravitationsfeld}
+Die Lagrange-Funktion
+\[
+L(x,u,u_x)
+=
+-\frac{1}{8\pi G}
+u_x\cdot u_x 
+-\varrho u
+=
+-\frac{1}{8\pi G}
+(u_{x_1}^2 + \dots + u_{x_2}^2)
+\]
+für das Gravitationsfeld wurde in
+\eqref{buch:felder:ostrogradski:eqn:gravitationslagrange}
+vorgestellt.
+Wir können jetzt die zugehörige Euler-Lagrange-Differentialgleichung
+ableiten.
+Dazu muss die Ableitungen nach $u$ und $u_{x_k}$ ermittelt werden.
+Sie sind
+\begin{align*}
+\frac{\partial L}{\partial u}
+&=
+-\varrho
+\\
+\frac{\partial L}{\partial u_{x_k}}
+&=
+-\frac{1}{4\pi G}u_{x_k}
+&&\Rightarrow&
+\frac{\partial L}{\partial u_x}
+&=
+-\frac{1}{4\pi G}\grad u.
+\end{align*}
+Eingesetzt in die Euler-Ostrogradski-Differentialgleichung ergibt sich
+\begin{align*}
+0
+&=
+-\varrho
+-
+\operatorname{div} \biggl(-\frac{1}{4\pi G}\grad u\biggr)
+=
+-\varrho + \frac{1}{4\pi G} \operatorname{div}\grad u
+\qquad\Rightarrow\qquad
+\Delta u = 4\pi G\varrho.
+\end{align*}
+Dies ist die Laplace-Gleichung für das Gravitationspotential.
+
+%
+% Schrödingergleichung
+%
+\subsubsection{Die Schrödingergleichung}
+\input{chapters/040-felder/fig/garbageman.tex}
+Im Dilbert-Comic in Abbildung~\ref{buch:felder:fig:garbageman} beweist
+der Müllmann, dass Ingenieure Quantenmechanik verstehen müssen.
+Daher soll in diesem Abschnitt gezeigt werden, wie sich die
+Schrödinger-Gleichung aus einem Variationsprinzip ableiten lässt.
+
+Die Schrödinger-Gleichung ist eine partielle Differentialgleichung
+für die sogenannte Wellenfunktion $\psi(x,t)$ eines Teilchens.
+Die Funktion $\psi$ hat komplexe Werte, ihre physikalische
+Interpretation ist, dass $|\psi(x,t)|^2$ die Wahrscheinlichkeitsdichte
+dafür ist, das Teilchen an der Stelle $x$ zu finden.
+Die Lagrange-Funktion muss eine Funktion der Orts- und Zeitkoordinaten,
+der Funktion $\psi$ und den partiellen Ableitungen von $\psi$ nach
+den Ortskoordinaten und der Zeit sein.
+Wir schreiben sie als
+\[
+L
+\colon
+\mathbb{R}\times \mathbb{R}^3\times
+\mathbb{R}\times
+\mathbb{R}\times\mathbb{R}^3
+\to\mathbb{R}
+:
+(t,x,u, u_t, u_x)
+\mapsto
+L(t,x,u, u_t, u_x).
+\]
+Die Schrödinger-Gleichung sollte sich dann als die Euler-Ostrogradski-Gleichung
+zu La\-grange-Funktion $L$ ergeben.
+
+Die Theorie schlägt die folgende Lagrange-Funktion vor:
+\begin{equation}
+L(t,x,u,u_t,u_x)
+=
+-\frac{\hbar}{i}\bar{u}u_t- \frac{\hbar^2}{2m} \bar{u}_x\cdot u_x - V \bar{u}u,
+\label{buch:felder:ostrogradski:eqn:schroedingerlagrange}
+\end{equation}
+wobei $V(x)$ das Potential ist, in dem sich das Teilchen bewegt.
+Zur Herleitung der Euler-Ostrogradski-Differentialgleichung zur
+Lagrange-Funktion
+\eqref{buch:felder:ostrogradski:eqn:schroedingerlagrange}
+bestimmen wir zu nächst die Ableitung nach den Feldbariablen:
+\begin{equation}
+\begin{aligned}
+\frac{\partial L}{\partial u}
+&=
+-V\bar{u}
+\\
+\frac{\partial L}{\partial u_t}
+&=
+-
+\frac{\hbar}{i}
+\bar{u}
+\\
+\frac{\partial L}{\partial u_{x_k}}
+&=
+-\frac{\hbar^2}{2m}\bar{u}_{x_k}
+\end{aligned}
+\label{buch:felder:ostrogradski:eqn:schroedingerableitungen}
+\end{equation}
+Diese Ableitungen sind rein formal zu verstehen, da uns im Moment die
+notwendige komplexe Analysis für eine konsistente Herleitung fehlt.
+Sie wird gerechtfertigt dadurch, dass in der komplexen Analysis die
+Variablen $u$ und $\bar{u}$ als unabhängig betrachtet werden können,
+insbesondere verschwindet die Ableitung von $\bar{u}$ nach $u$.
+Eigentlich gibt es also zwei Felder, die unabhängig voneinander
+variert werden können, nämlich $u$ und $\bar{u}$.
+Indem wir die Ableitungen $\bar{u}$ ignorieren, führen wir die Variation
+nur für die Funktionen $u$ durch.
+
+Aus den Ableitungen
+\eqref{buch:felder:ostrogradski:eqn:schroedingerableitungen}
+lässt sich formal die zugehörige Euler-Ostrogradski-Glei\-chung entwickeln.
+Sie wird
+\begin{align*}
+0
+&=
+- V\bar{\psi}(t,x)
++
+\frac{\partial}{\partial t}\frac{\hbar}{i}\bar{\psi}(t,x)
++
+\sum_{k=1}^{3}
+\frac{\partial}{\partial x_k}
+\frac{\hbar^2}{2m} \frac{\partial\bar{\psi}}{\partial x_k}(t,x)
+\end{align*}
+Durch Umordnen der Terme erhält man
+\begin{align}
+\frac{\hbar}{i}
+\frac{\partial}{\partial t}\bar{\psi}(t,x)
+&=
+-\frac{\hbar^2}{2m} \Delta \bar{\psi}(t,x)
++
+V\bar{\psi}(t,x)
+\notag
+\intertext{und nach komplexer Konjugation die übliche Form}
+-\frac{\hbar}{i}\psi(t,x)
+&=
+-\frac{\hbar^2}{2m}\Delta \psi(t,x) + V(x)\psi(t,x)
+\label{buch:felder:ostrogradski:eqn:schroedingergleichung}
+\end{align}
+der Schrödinger-Gleichung.
+\index{Schrödinger-Gleichung}%
+
+
