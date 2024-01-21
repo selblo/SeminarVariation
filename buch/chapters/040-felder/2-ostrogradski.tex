@@ -483,17 +483,17 @@ ableiten.
 Dazu muss die Ableitungen nach $u$ und $u_{x_k}$ ermittelt werden.
 Sie sind
 \begin{align*}
-\frac{\partial L}{\partial u}
+\frac{\partial L}{\partial u}(x,\varphi(x),\grad\varphi(x))
 &=
--\varrho
+-\varrho(x)
 \\
-\frac{\partial L}{\partial u_{x_k}}
+\frac{\partial L}{\partial u_{x_k}}(x,\varphi(x),\grad \varphi(x))
 &=
--\frac{1}{4\pi G}u_{x_k}
+-\frac{1}{4\pi G}\frac{\partial \varphi}{\partial x_k}(x)
 &&\Rightarrow&
-\frac{\partial L}{\partial u_x}
+\frac{\partial L}{\partial u_x}(x,\varphi,\grad\varphi)
 &=
--\frac{1}{4\pi G}\grad u.
+-\frac{1}{4\pi G}\grad \varphi(x).
 \end{align*}
 Eingesetzt in die Euler-Ostrogradski-Differentialgleichung ergibt sich
 \begin{align*}
@@ -501,11 +501,11 @@ Eingesetzt in die Euler-Ostrogradski-Differentialgleichung ergibt sich
 &=
 -\varrho
 -
-\operatorname{div} \biggl(-\frac{1}{4\pi G}\grad u\biggr)
+\operatorname{div} \biggl(-\frac{1}{4\pi G}\grad \varphi\biggr)
 =
--\varrho + \frac{1}{4\pi G} \operatorname{div}\grad u
+-\varrho + \frac{1}{4\pi G} \operatorname{div}\grad \varphi
 \qquad\Rightarrow\qquad
-\Delta u = 4\pi G\varrho.
+\Delta \varphi = 4\pi G\varrho.
 \end{align*}
 Dies ist die Laplace-Gleichung für das Gravitationspotential.
 
