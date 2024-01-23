@@ -6,8 +6,228 @@
 \section{Varationsproblem für Vektorfelder
 \label{buch:felder:section:vektorfelder}}
 \kopfrechts{Variationsprobleme für Vektorfelder}
+In Abschnitt~\ref{buch:felder:section:euler-ostrogradski} wurde gezeigt,
+wie ein Variationsprinzip für eine einzelne Funktion von mehreren Variablen
+formuliert werden kann.
+Wie im Fall einer Funktion einer Variablen ist die Erweiterung auf
+mehrere Funktion vor allem die Herausforderung, eine geeignete Notation
+für die vielen involvierten Funktionen zu finden.
 
-\begin{verbatim}
-- Lagrange-Funktion für Vektorfelder
-- Die Euler-Ostrogradski-Differentialgleichungen 
-\end{verbatim}
+%
+% Lagrange-Funktion
+%
+\subsection{Lagrange-Funktion
+\label{buch:felder:vektorfeilder:subsetion:lagrange-funktion}}
+Statt einer skalaren Funktion $u(x_1,\dots,x_n)$ von $n$ Variablen
+wird jetzt eine vektorwertige Funktion
+\[
+u
+\colon
+\mathbb{R}^n \to \mathbb{R}^m
+:
+(x_1,\dots,x_n)
+\mapsto
+(
+u_1(x_1,\dots,x_n)
+,\dots,
+u_m(x_1,\dots,x_n)
+)
+\]
+gesucht.
+Jede der $m$ Komponenten $u_i(x_1,\dots,x_n)$ ist Funktion von
+$n$ Variablen.
+
+Im Folgenden werden Funktionen betrachtet, die ein- oder mehrmals
+stetig differenzierbar sind.
+Dies bedeutet, dass die partiellen Ableitungen nach jeder beliebigen
+Variablen stetige Funktionen sind.
+Die $m$ Funktionen $u_1,\dots,u_m$ haben $nm$ partielle Ableitungen
+nach den $n$ Variablen $x_1,\dots,x_n$.
+Wir schreiben wieder $u_x$ für die die ersten Ableitungen.
+$u_x$ besteht aus den $nm$ Ableitungen 
+\[
+u_{ik}
+=
+u_{i,k}
+=
+\frac{\partial u_i}{\partial x_k}.
+\]
+Die Notation $x_{i,k}$ ist in der Tensoranalysis üblich als Bezeichnung
+für die partiellen Ableitung der Komponenten eines Tensors.
+Wir werden auch die noch kompaktere Notation $\grad\varphi$ dafür 
+verwenden.
+
+Für die Formulierung von Variationsproblemen wird wieder eine
+Lagrange-Funktion benötigt, die sowohl von den Funktionswerten
+$u_i$ wie auch von allen ersten Ableitungen $u_{ik}$ abhängt.
+Die Lagrange-Funktion ist also eine Funktion
+\begin{equation*}
+L
+\colon
+\mathbb{R}^n\times \mathbb{R}^m \times \mathbb{R}^{nm}\to\mathbb{R}
+:
+(x,u,u_x)
+\mapsto
+L(x,u,u_x).
+\end{equation*}
+Wenn wir die Komponenten explizit machen wollen, schreiben wir
+\[
+L(x_1,\dots,x_n,u_1,\dots,u_m,u_{11},\dots,u_{1n},\dots,u_{mn}).
+\]
+Das zugehörige Funktion ist dann wieder das Integral
+\begin{equation}
+I(\varphi)
+=
+\int_{\Omega}
+L\biggl(x_1,\dots,x_n,
+\varphi_1(x),\dots,\varphi_m(x),
+\frac{\partial\varphi_1}{\partial x_1}(x),
+\dots,
+\frac{\partial\varphi_1}{\partial x_k}(x),
+\dots
+\frac{\partial\varphi_m}{\partial x_n}(x)
+\biggr)
+\,dx
+\label{buch:felder:vektorfelder:eqn:lagrange-funktional}
+\end{equation}
+für eine auf dem Gebiet $\Omega$ definierte vektorwertige Funktion
+$\varphi$ mit den Komponenten $\varphi_i(x_1,\dots,x_n)$.
+
+In der Euler-Ostrogradski-Gleichung treten die Ableitungen nach
+den $u_i$ und den Variablen $u_{ik}$, die für die partiellen
+Ableitungen stehen.
+Die partiellen Ableitungen nach den $u_i$ bilden einen Vektor
+mit Komponenten
+\begin{align*}
+\frac{\partial L}{\partial u}
+&=
+\biggl(
+\frac{\partial L}{\partial u_1}
+,\dots,
+\frac{\partial L}{\partial u_m}
+\biggr)
+\end{align*}
+mit $m$ Komponenten.
+Die $mn$ partiellen Ableitungen der Komponenten $i$ nach der Variablen $x_k$
+sind von Paaren $(i,k)$ indiziert, wir schreiben Komponenten als
+\[
+\biggl(
+\frac{\partial L}{\partial u_x}
+\biggr)_{ik}
+=
+\frac{\partial L}{\partial u_{ik}}
+\]
+mit $i=1,\dots,n$ und $k=1,\dots,m$.
+
+%
+% Euler-Ostrogradski-Differentialgleichung
+%
+\subsection{Euler-Ostrogradski-Differentialgleichung
+\label{buch:felder:vektorfelder:subsection:euler-ostrogradski-dgl}}
+Die Euler-Ostrogradski-Differentialgleichung für eine skalare
+Funktion lässt sich zusammen mit ihrer Herleitung auf beliebige 
+Variationsproblem für eine vektorielle Funktion und ein Funktional
+der Form~\eqref{buch:felder:vektorfelder:eqn:lagrange-funktional}
+verallgemeinern.
+
+Sei also $\varphi(x)$ eine zweimal stetig differenzierbare, vektorwertige
+Funktion, die das Funktional $I(\varphi)$
+von~\eqref{buch:felder:vektorfelder:eqn:lagrange-funktional}
+zu einem Extremum macht.
+Sei $\eta(x)$ eine vektorwertige, einmal stetig differenzierbare
+Funktion mit verschwindenden Werten auf dem Rand von $\Omega$.
+Dann ist die Richtungsableitung in Richtung $\eta$ an der Stelle
+$\varepsilon=0$
+\begin{align}
+\frac{d}{d\varepsilon}
+I(\varphi+\varepsilon\eta)
+\bigg|_{\varepsilon=0}
+&=
+\int_{\Omega}
+\sum_{i=1}^n
+\frac{\partial L}{\partial u_i}
+\eta_i
++
+\sum_{i=1}^n
+\sum_{k=1}^m
+\frac{\partial L}{\partial u_{ik}} \frac{\partial \eta_i}{\partial x_k}
+\,dx.
+\label{buch:felder:vektorfelder:eqn:richtungsableitung}
+\end{align}
+Im Interesse der Übersichtlichkeit der Formeln haben wir die Argumente
+der Funktionen $\varphi$ und $\eta$ weggelassen.
+Da $\varphi$ extremal ist, muss die Richtungsableitung für jede 
+zulässige Funktion $\eta$ verschwinden.
+
+Indem man jede bis auf eine Komponenten von $\eta$ gleich $0$
+wählt, folgen aus
+\eqref{buch:felder:vektorfelder:eqn:richtungsableitung}
+die Gleichungen
+\begin{equation*}
+0
+=
+\int_{\Omega}
+\frac{\partial L}{\partial u_i}
+\eta_i
++
+\sum_{k=1}^n
+\frac{\partial L}{\partial u_{ik}}
+\frac{\partial \eta_i}{\partial x_k}
+\,dx
+\end{equation*}
+für $i=1,\dots,m$.
+Partielle Integration ermöglicht, das Integral über den zweiten
+Term in ein Integral mit $\eta_i$ als zweitem Faktor umzuwandeln,
+nämlich
+\begin{equation*}
+0
+=
+\int_{\Omega}
+\frac{\partial L}{\partial u_i}
+(x,\varphi(x),\grad\varphi(x))
++
+\sum_{k=1}^n
+\frac{\partial}{\partial x_k}
+\frac{\partial L}{\partial u_{ik}}
+(x,\varphi(x),\grad\varphi(x))
+\,dx
+\end{equation*}
+mit $i=1,\dots m$.
+Nach dem Fundamentallemma folgt jetzt wieder, dass
+\begin{equation}
+\frac{\partial L}{\partial u_i}
+(x,\varphi(x),\grad\varphi(x))
++
+\sum_{k=1}^n
+\frac{\partial}{\partial x_k}
+\frac{\partial L}{\partial u_{ik}}
+(x,\varphi(x),\grad\varphi(x))
+\label{buch:felder:vektorrelder:eqn:euler-ostrogradski}
+\end{equation}
+für $i=1,\dots m$.
+Man beachte, dass die ``äussere'' partielle Ableitung im zweiten Term
+von
+\eqref{buch:felder:vektorrelder:eqn:euler-ostrogradski}
+wieder als die Ableitung der Funktion
+\[
+x_k
+\mapsto
+L(x,\varphi(x),\grad\varphi(x))
+\]
+nach $x_k$ zu interpretieren ist.
+Es werden also erst die Funktion $\varphi_i(x)$ und die Ableitungen
+in $L$ eingesetzt, erst dann wird die Ableitung gebildet.
+Sie hat nichts mit der Ableitung $\partial L/\partial x_k$ zu tun, welche
+die partielle Ableitung der Funktion nach dem Argument $x_k$ ist.
+
+
+Die Gleichungen
+\eqref{buch:felder:vektorrelder:eqn:euler-ostrogradski}
+bilden ein System von $m$ partiellen Differentialgleichungen
+für die $m$ Funktionen $\varphi_i(x)$.
+Sie heissen die {\em Euler-Ostrogradski-Differentialgleichungen}
+für das Funktional
+\eqref{buch:felder:vektorfelder:eqn:lagrange-funktional}.
+
+
+

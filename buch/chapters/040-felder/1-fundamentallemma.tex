@@ -32,11 +32,106 @@ machen, auf welches das Fundamentallemma anwendbar war.
 % Offene Mengen
 %
 \subsubsection{Offene Mengen}
+Die Ableitung einer Funktion $f$ in einem Punkt $x\in\mathbb{R}$ erfordert,
+dass man Funktionswerte in $x$ mit Funktionswerten in Punkten $x+h$
+vergleichen kann, wobei $h\in\mathbb{R}^n$ ein beliebiger kleiner Vektor
+sein kann.
+Die Ableitung einer Funktion ist dann definiert als die lineare
+Ersatzfunktion $Df(x)$ mit der Eigenschaft
+\[
+f(x+h) = f(x) + Df(x)\cdot h + o(h).
+\]
+Die Ableitung kann also nur dann sinnvoll definiert werden, wenn
+Funktion nicht nur im Punkt $x$, sondern auch in einer Umgebung
+des Punktes $x$.
+Die Ableitung einer Funktion ist daher nur definiert auf einer
+offenen Menge im Sinne der folgenden Definition.
+
+\begin{definition}[offene Menge, Gebiet]
+Eine Teilmenge $\Omega\subset\mathbb{R}^n$ heisst {\em offen}, wenn es für
+\index{offen}%
+jeden Punkt $x\in\Omega$ eine $r>0$ gibt derart, dass ein
+Ball mit Radius $r$ um den Punkt $x$ ebenfalls in $\Omega$ enthalten
+ist:
+\[
+B_r(x)
+=
+\{y\in\mathbb{R}^n
+\mid
+|y-x|<r\}
+\subset \Omega.
+\]
+Eine offene Menge $\Omega\subset\mathbb{R}$ heisst auch ein {\em Gebiet}.
+\index{Gebiet}%
+\end{definition}
 
 %
 % Der Rand eines Gebietes
 %
 \subsubsection{Der Rand eines Gebiets}
+Die partielle Integration einer Funktion einer Variablen liefert
+neben dem Integralterm auch einen Term, der nur von den Werten der
+Funktionen an den Endpunkten des Intervalls abhängt.
+Es ist zu erwarten, dass ein ähnliches Prinzip auch für die
+Integration von Funktionen mehrere Variablen gilt.
+Dazu ist jedoch nötig zu erklären, wie genau der Rand eines
+Gebietes zu finden ist.
+
+Der Rand eines Intervalls ist einfach zu finden.
+Ein Endpunkt eines Intervalls hat die Eigenschaft, dass sich
+auf der einen Seite des Punktes lauter Werte befinden, die zum
+Intervall gehören, während auf der anderen Seite nur Werte liegen,
+die nicht zum Intervall gehören.
+Diese anschauliche Beschreibung appelliert aber an eine Vorstellung
+einer Richtung und ist daher nicht direkt übersetzbar.
+Sie lässt sich aber noch etwas vereinfachen: ein Endpunkt eines
+Intervalls hat beliebig nahe Werte die zum Intervall gehören, und
+solche die nicht mehr dazu gehören.
+Dies suggeriert die folgende Definition für den Rand eines Gebietes.
+
+\begin{definition}[Rand]
+\label{buch:felder:fundamentallemma:def:rand}
+Ein Randpunkt eines Gebietes $\Omega\subset\mathbb{R}^n$ ist ein Punkt
+$x\in\mathbb{R}^n$ mit der Eigenschaft, dass in jeder noch so kleinen 
+Umgebung von $x$ Punkte von $\Omega$ und von $\mathbb{R}^n\setminus\Omega$
+liegen.
+Ein Randpunkt ist also ein Punkt $x\in\mathbb{R}^n$ mit
+\[
+B_r(x)\cap \Omega\ne \emptyset
+\qquad\text{und}\qquad
+B_r(x)\cap (\mathbb{R}^n\setminus \Omega)
+\ne \emptyset
+\]
+für alle $r>0$.
+Der Rand $\partial \Omega$ eines Gebietes $\Omega$ ist die Menge
+aller Randpunkte von $\Omega$.
+\end{definition}
+
+Man beachte, dass ein Gebiet $\Omega$ keine Randpunkte enthält.
+Wäre $x$ ein Randpunkt von $\Omega$, dann gibt es einen Radius $r$
+derart, dass $B_r(x)\in\Omega$ ist.
+Für diesen Radius folgt
+\[
+B_r(x)\cap (\mathbb{R}^n\setminus\Omega)
+=
+\emptyset,
+\]
+im Widerspruch zu Annahme, dass $x$ ein Randpunkt war.
+Der Widerspruch zeigt, dass ein Punkt von $\Omega$ kein Randpunkt
+sein kann.
+
+Die rein punktmengentopologische 
+\input{chapters/040-felder/fig/mandelbrot.tex}%
+Definition~\ref{buch:felder:fundamentallemma:def:rand} des Randes ist
+auf Mengen anwendbar, deren Rand sehr kompliziert ist.
+Ein Beispiel ist die Mandelbrot-Menge, die in
+Abbildung~\ref{buch:felder:fundamentallemma:fig:mandelbrot}
+dargestellt ist.
+Der schwarze Bereich ist die Mandelbrot-Menge, die farbigen Bereich
+liegen ausserhalb der Menge.
+Der Rand ist berühmt dafür, dass man beliebig tief hineinzoomen
+und immer neue Strukturen entdecken kann.
+
 
 %
 % Integration über ein Gebiet
