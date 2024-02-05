@@ -6,6 +6,263 @@
 \section{Lagrange-Multiplikatoren für Variationsprobleme
 \label{buch:nebenbedingungen:section:lagrangemult}}
 \kopfrechts{Lagrange-Multiplikatoren für Variationsprobleme}
+In diesem Abschnitt gehen wir wieder von einem Funktional
+\begin{equation}
+I(y)
+=
+\int_{x_1}^{x_2}
+F(x,y(x),y'(x))
+\,dx,
+\label{buch:nebenbedingungen:lagrangemult:eqn:}
+\end{equation}
+für das eine Funktion $y(x)$ mit Randbedingungen $y(x_1)=y_1$ und
+$y(x_2)=y_2$ gesucht wird, deren Wert $I(y)$ extremal ist.
+Für dieses Problem wurde als notwendige Bedingung für die Lösung die
+Euler-Lagrange-Differentialgleichung gefunden.
+In diesem Abschnitt sollen jetzt zusätzliche Bedingungen auferlegt 
+werden, zum Beispiel vorgegebene Werte in vorgegebenen Punkten oder
+vorgegebene Werte eines Funktionals.
+In
+Abschnitt~\ref{buch:nebenbedingungen:lagrangemult:subsection:nebenbedingungen}
+soll gezeigt werden, wie sich sollche Nebenbedingungen formulieren
+lassen.
+Die Euler-Lagrange-Differentialgleichung entstand aus der Idee
+der Richtungsableitung, die auch bei der Herleitung der Methode
+der Lagrange-Multiplikatoren im Mittelpunkt stand.
+Im
+Abschnitt~\ref{buch:nebenbedingungen:lagrangemult:subsection:einzeln}
+wird das Problem für eine einzelne Nebenbedingung gelöst, in
+Abschnitt~\ref{buch:nebenbedingungen:lagrangemult:subsection:lagrangemult}
+dann für eine endliche Anzahl von Nebenbedingungen, wobei ein der
+Methode der Lagrange-Multiplikatoren ähnliches Lösungsverfahren entsteht.
+
+%
+% Nebenbedingungen für Variationsprobleme
+%
+\subsection{Nebenbedingungen für Variationsprobleme
+\label{buch:nebenbedingungen:lagrangemult:subsection:nebenbedingungen}}
+In diesem Abschnitt zeigen wir, dass sich verschiedene naheliegende
+Nebenbedingungen an Funktionen in einem Variationsproblem allgemein
+als Nebenbedingungsfunktionale der gleichen Art wie das zu minimierende
+Funktional formulieren lassen.
+
+%
+% Integrale als Nebenbedingungen
+%
+\subsubsection{Integrale als Nebenbedingungen}
+Der Sage nach soll Dido, Tochter des tyrischen Königs Mattan, auf der
+Flucht vor ihrem Bruder Pygmalion über Zypern am Golf von Tunis 
+gelandet sein.
+\index{Dido}%
+\index{Mattan}%
+\index{Pygmalion}%
+\index{Tunis}%
+Der Numiderkönig Iarbas soll ihr so viel Land versprochen haben, wie
+sie mit einer Kuhhaut umspannen konnte.
+\index{Iarbas}%
+Dido schnitt die Haut in einen dünnen Streifen und konnte damit ein
+Gebiet umspannen, das das Gebiet der Byrsa, der Burg des späteren
+Karthago umfasste.
+\index{Byrsa}%
+\index{Karthago}%
+
+Dieser Mythos impliziert, dass Karthago als Lösung eines sogenannten
+isoperimetrischen Problems gegründet wurde.
+\index{isoperimetrisch}%
+Im konkreten Fall geht es zum Beispiel darum, eine Funktion $y(x)$
+auf dem Intervall $[x_1,x_2]$ zu finden, welche $y(x_1)=y(x_2)=0$,
+die den Flächeninhalt
+\[
+I(y)
+=
+\int_{x_1}^{x_2} y(x)\,dx
+\]
+maximiert.
+Die Länge der Kurve ist
+\[
+l(y)
+=
+\int_{x_1}^{x_2}
+\sqrt{1+y'(x)^2}
+\,dx
+=
+L
+\]
+dabei vorgeben.
+
+%
+% Vorgegebene Werte
+%
+\subsubsection{Vorgegebene Werte}
+Wir betrachten zunächst den Fall einer Bedingung, dass an einer Stelle
+$x_*$ der Werte $y_*=y(x_*)$ der Lösungsfunktion $y(x)$ vorgegeben ist.
+Auch diese Art von Nebenbedingung kann als Integral geschrieben werden.
+Dazu wird die Ableitung $y'(x)$ integriert und erhält
+\[
+J(y)
+=
+\int_{x_1}^{x_*} y'(x)\,dx
+=
+\biggl[y(x)\biggr]_{x_1}^{x_*}
+=
+y(x_*)-y(x_1).
+\]
+Das Integral kann mit der Heaviside-Funktion
+\begin{equation}
+\vartheta(x)
+=
+\begin{cases}
+1&\qquad x\ge 0\\
+0&\qquad\text{sonst}
+\end{cases}
+\label{buch:nebenbedingungen:lagrangemult:eqn:heaviside}
+\end{equation}
+geschrieben werden.
+Die Funktion $x\mapsto\vartheta(x_*-x)$ verschwindet genau dann,
+wenn $x_*\ge x$ ist.
+Daher ist
+\[
+J(y)
+=
+\int_{x_1}^{x_*} y'(x)\,dx
+=
+\int_{x_1}^{x_2} y'(x)\vartheta(x_*-x)\,dx.
+\]
+Mit der Lagrange-Funktion
+\begin{equation}
+G(x,y,y')
+=
+\vartheta(x_*-x)
+y'
+\label{buch:nebenbedingungen:lagrangemult:eqn:heavilagrange}
+\end{equation}
+wird $J(y)$ zu einem Funktional
+\[
+J(y)
+=
+\int_{x_1}^{x_2}
+G(x,y(x),y'(x))
+\,dx.
+\]
+Die einzige Schwierigkeit ist, dass die Funktion $G(x,y,y')$ nicht
+differenzierbar ist in der ersten Variablen.
+
+%
+% Ableitung der Heaviside-Funktion
+%
+\subsubsection{Ableitung der Heaviside-Funktion}
+Mit der Theorie der Distributionen lässt sich die Schwierigkeit,
+dass $G(x,y,y')$ nicht differenzierbar ist, umgehen.
+Da es bei der Herleitung der Euler-Lagrange-Differentialgleichung nur
+auf Integrale von Produkten mit beliebig oft stetig differenzierbaren
+Funktionen ankommt, lässt sich die Ableitung der Heaviside-Funktion
+als Dirac-\textdelta-Funktion
+\[
+\vartheta'(x-x_*) = \delta(x-x_*)
+\]
+an der Stelle $x_*$ schreiben.
+Das Integral eines Produktes einer Funktion $f(x)$ mit der
+Delta-Funktion an der Stelle $x_*$ liefert
+\[
+\int_{x_1}^{x_2} \delta(x-x_*) f(x)\,dx
+=
+f(x_*),
+\]
+den Wert des Faktors $f(x)$ an dieser Stelle.
+Damit bleibt die Formel für die partielle Integration erhalten,
+wie wir im folgenden nachrechnen wollen.
+Dazu berechnen wir das Integral des Produktes $\vartheta(x-x_*)f'(x)$
+direkt als
+\begin{align}
+\int_{x_1}^{x_2}
+\vartheta(x_*-x) f'(x)
+\,dx
+&=
+f(x_*)-f(x_1)
+\label{buch:nebenbedingungen:lagrangemult:eqn:lhs}
+\intertext{und andererseits die beiden Terme auf der rechten Seite der
+Regel für das partielle Integrieren, die}
+\biggl[\vartheta(x_*-x) f(x)\biggr]_{x_1}^{x_2}
+&=
+\underbrace{\vartheta(x_*-x_2)}_{\displaystyle = 0}
+f(x_2)
+-
+\underbrace{\vartheta(x_*-x_1)}_{\displaystyle = 1}
+f(x_1)
+=
+-f(x_1)
+\notag
+\\
+\int_{x_1}^{x_2}
+\delta(x-x_*)f(x)\,dx
+&=
+f(x_*)
+\notag
+\intertext{sind.
+Die rechte Seite von~\ref{buch:nebenbedingungen:lagrangemult:eqn:lhs}
+ist daher dasselbe wie
+}
+\int_{x_1}^{x_2}
+\vartheta(x_*-x) f'(x)
+\,dx
+&=
+\biggl[\vartheta(x_*-x) f(x)\biggr]_{x_1}^{x_2}
+-
+\int_{x_1}^{x_2}
+\vartheta'(x-x_*)f(x)\,dx.
+\end{align}
+Dies zeigt, dass die Regel für das partielle Integrieren auch
+für die Funktion $\vartheta$ gilt, sofern sie nur
+als Faktor zusammen mit differenzierbare Funktionen verwendet wird.
+Da genau diese Situation in der Herleitung der
+Euler-Lagrange-Differentialgleichung vorliegt, lässt sich diese auf
+Funktionale mit einer Lagrange-Funktion wie 
+\eqref{buch:nebenbedingungen:lagrangemult:eqn:heavilagrange}
+verallgemeinern.
+
+%
+% Allgemeine Form von Nebenbedingungen
+%
+\subsubsection{Nebenbedingungsfunktionale}
+Die beiden Beispiele illustrieren, dass sich Nebenbedingungen für
+Variationsprobleme meistens in der Form eines Nebenbedingungsfunktionls
+schreiben kann.
+Eine Nebenbedingung ist also gegeben durch eine Lagrange-Funktion
+\[
+G
+\colon
+\mathbb{R}
+\times
+\mathbb{R}
+\times
+\mathbb{R}
+\to
+\mathbb{R}
+:
+(x,y,y')
+\mapsto
+G(x,y,y')
+\]
+und den Wert, $g$, den das Funktional
+\[
+\int_{x_1}^{x_2}
+G(x,y(x),y'(x))\,dx
+=
+g
+\]
+annehmen muss.
+
+%
+% Eine einzelne Nebenbedingung
+%
+\subsection{Eine einzelne Nebenbedingung
+\label{buch:nebenbedingungen:lagrangemult:subsection:einzeln}}
+
+%
+% Laagrange-Multiplikatoren für Variationsprobleme
+%
+\subsection{Lagrange-Multiplikatoren für Variationsprobleme
+\label{buch:nebenbedingungen:lagrangemult:subsection:lagrangemult}}
 
 \begin{verbatim}
 - Nebenbedingungen
