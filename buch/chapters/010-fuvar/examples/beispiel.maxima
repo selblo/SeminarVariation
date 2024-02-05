@@ -1,0 +1,14 @@
+/*
+ * beispiel.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+A: matrix(
+    [   0,  -1,  -1  ],
+    [  -1,   2,  -1  ],
+    [  -1,  -1,   0  ]
+);
+p: expand(charpoly(A, t));
+factor(p);
+l: eigenvalues(A);
+v: eigenvectors(A);
