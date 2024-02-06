@@ -3,5 +3,8 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:
+all:	dido.pdf
+
+dido.pdf:	dido.tex
+	pdflatex dido.tex
 

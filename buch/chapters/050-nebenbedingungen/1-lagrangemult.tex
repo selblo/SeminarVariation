@@ -147,6 +147,30 @@ G(x,y(x),y'(x))
 Die einzige Schwierigkeit ist, dass die Funktion $G(x,y,y')$ nicht
 differenzierbar ist in der ersten Variablen.
 
+Die Forderung, dass $J(y)$ einen vorgegebenen Wert $g$ annehmen muss,
+kann weiter vereinfacht werden.
+Ersetzt man die Funktion $G$ durch $\tilde{G}(x,y,y')=G(x,y,y')-g/(x_1-x_1)$,
+dann wird das Funktional
+\begin{align*}
+\tilde{J}(y)
+&=
+\int_{x_1}^{x_2}
+\tilde{G}(x,y(x),y'(x))\,dx
+\\
+&=
+\int_{x_1}^{x_2} G(x,y(x),y'(x)) - \frac{g}{x_2-x_1}\,dx
+\\
+&=
+J(y) - g
+=
+0.
+\end{align*}
+Es genügt also, Nebenbedingungen der Form
+\[
+\int_{x_1}^{x_2} G(x,y(x),y'(x))\,dx = 0
+\]
+zu betrachten.
+
 %
 % Ableitung der Heaviside-Funktion
 %
@@ -257,15 +281,483 @@ annehmen muss.
 %
 \subsection{Eine einzelne Nebenbedingung
 \label{buch:nebenbedingungen:lagrangemult:subsection:einzeln}}
+Wie im Abschnitt~\ref{buch:fuvar:section:nebenbedingungen} betrachten
+wir zunächst den etwas übersichtlicheren Fall einer einzelnen Nebenbedingung.
+
+\begin{aufgabe}
+\label{buch:nebenbedingungen:lagrangemult:aufgabe:eine}
+Man finde eine Funktion $y\colon[x_1,x_2]\to\mathbb{R}$ mit $y(x_1)=y_1$
+und $y(x_2)=y_2$, die das Funktional
+\[
+I(y)
+=
+\int_{x_1}^{x_2} F(x,y(x),y'(x))\,dx
+\]
+unter der Nebenbedingung
+\[
+\int_{x_1}^{x_2} G(x,y(x),y'(x))\,dx = 0
+\]
+extremal macht.
+\end{aufgabe}
+
+Über die Funktionen $F$ und $G$ nehmen wir an, dass sie alle stetigen
+Differenzierbarkeitseigenschaften haben, die für die nachfolgenden
+Rechnungen benötig werden.
+
+Die Herleitung der Euler-Lagrange-Differentialgleichung für das
+Funktional $I(y)$ verwendet eine beliebig oft differenzierbare 
+Funktion $\eta(x)$ mit $\eta(x_1)=\eta(x_2)=0$ und bildet
+die Richtungsableitung
+\[
+\frac{d}{d\varepsilon}
+I(y+\varepsilon \eta)
+\bigg|_{\varepsilon=0}
+=
+\frac{d}{d\varepsilon}
+\int_{x_1}^{x_2}
+F(x,y(x)+\varepsilon\eta(x),y'(x)+\varepsilon \eta'(x))\,dx
+\bigg|_{\varepsilon=0}
+\]
+ausgehend von einer angenommenen Lösung $y(x)$.
+Für die Aufgabe~\ref{buch:nebenbedingungen:lagrangemult:aufgabe:eine}
+reicht dies jedoch nicht, denn es ist nicht garantiert, dass die
+Funktionen $y+\varepsilon\eta$ die Nebenbedingung erfüllen.
+Es ist also eine kompliziertere Parametrisierung $y(x,\varepsilon)$
+der Nachbarfunktionen nötig, mit denen die Ableitung
+\begin{align*}
+\frac{d}{d\varepsilon}I(y(x,\varepsilon))
+&=
+\frac{d}{d\varepsilon}
+\int_{x_1}^{x_2}
+F(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
+\end{align*}
+gebildet werden kann.
+Dabei soll $y'(x,\varepsilon)$ die partielle Ableitung nach $x$ 
+bezeichnen, es soll $y(x,0)=y(x)$ sein und es soll $y(x_1,\varepsilon)=y_1$
+und $y(x_2,\varepsilon)=y_2$
+für alle in Frage kommenden Werte von $\varepsilon$ gelten.
+Weiter müssen die Funktionen $x\mapsto y(x,\varepsilon)$ die Nebenbedingung
+\[
+J(y(x,\varepsilon))
+=
+\int_{x_1}^{x_2} G(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
+=
+0
+\]
+für alle $\varepsilon$ erfüllen.
+
+Jetzt muss die Ableitung der Funktionale $I$ und $J$ nach $\varepsilon$
+an der Stelle $\varepsilon =0$ berechnet werden.
+Die Rechnung ist für beide Funktionale gleich, im folgenden wird sie
+nur für $J$ ausgeschrieben.
+Die Ableitung nach $\varepsilon$ ist
+\begin{align*}
+\frac{d}{d\varepsilon}
+J(y(x,\varepsilon))
+&=
+\frac{d}{d\varepsilon}
+\int_{x_1}^{x_2}
+G(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
+\\
+&=
+\int_{x_1}^{x_2}
+\frac{\partial G}{\partial y}(x,y(x,\varepsilon),y'(x,\varepsilon))
+\frac{\partial y}{\partial\varepsilon}(x,\varepsilon)
++
+\frac{\partial G}{\partial y'}(x,y(x,\varepsilon),y'(x,\varepsilon))
+\frac{\partial y'}{\partial\varepsilon}(x,\varepsilon)
+\,dx.
+\intertext{An der Stelle $\varepsilon=0$ schreiben wir für $\eta(x)$ für
+die partielle Ableitung von $y(x,\varepsilon)$ nach $\varepsilon$ und
+erhalten}
+\frac{d}{d\varepsilon}
+J(y(x,\varepsilon))
+\bigg|_{\varepsilon=0}
+&=
+\int_{x_1}^{x_2}
+\frac{\partial G}{\partial y}(x,y(x),y'(x))
+\eta(x)
++
+\frac{\partial G}{\partial y'}(x,y(x),y'(x))
+\eta'(x)
+\,dx.
+\intertext{Da $\eta(x_1)=\eta(x_2)=0$ ist, kann der zweite Term mit
+partieller Integration in}
+&=
+\int_{x_1}^{x_2}
+\biggl(
+\frac{\partial G}{\partial y}(x,y(x),y'(x))
++
+\frac{d}{dx}\frac{\partial G}{\partial y'}(x,y(x),y'(x))
+\biggr)\eta(x)\,dx
+\intertext{oder, mit dem Skalarprodukt von Funktionen auf dem
+Intervall $[x_1,x_2]$ geschrieben, in}
+&=
+\biggl\langle
+\frac{\partial G}{\partial y}(x,y(x),y'(x))
++
+\frac{d}{dx}\frac{\partial G}{\partial y'}(x,y(x),y'(x)),
+\eta
+\biggr\rangle
+\end{align*}
+umgeformt werden.
+Der linke Faktor im Skalarprodukt ist der von der
+Euler-Lagrange-Differentialgleichung bekannte Term.
+Die Skalaproduktschreibweise zeigt, dass er die Rolle übernimmt,
+die der Gradient in Abschnitt~\ref{buch:fuvar:section:nebenbedingungen}
+hatte.
+Im Interesse der Übersichtlichkeit der Formeln werden wir die
+Funktionsargument im Folgenden weglassen und die folgende Notation
+verwenden.
+
+\begin{definition}
+Sind $G\colon[x_1,x_2]\times\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$
+und $y\colon[x_1,x_2]\to\mathbb{R}^n$
+eine zweimal stetig differenzierbare Funktionen, dann schreiben wir
+\[
+\grad (G,y)
+=
+\frac{\partial G}{\partial y}(x,y(x),y'(x))
++
+\frac{d}{dx}\frac{\partial G}{\partial y'}(x,y(x),y'(x))
+=
+\frac{\partial G}{\partial y}
++
+\frac{d}{dx}\frac{\partial G}{\partial y'}
+\]
+für den Vektor Terme, die in der Euler-Lagrange-Differentialgleichung
+für $F$ auftreten.
+\end{definition}
+
+Aus der Nebenbedingung folgt, dass alle möglichen Parametrisierungen
+von Nachbarfunktionen die gemeinsame Eigenschaft haben, dass sie
+\begin{equation}
+0
+=
+\frac{d}{d\varepsilon}J(y(x,\varepsilon))\bigg|_{\varepsilon=0}
+=
+\biggl\langle
+\frac{\partial G}{\partial y}+\frac{d}{dx}\frac{\partial G}{\partial y'}
+,
+\frac{\partial y}{\partial \varepsilon}
+\biggr\rangle
+\label{buch:nebenbedingungen:lagrangemult:eqn:Gskalar}
+\end{equation}
+erfüllen.
+Es sind also nicht beliebige Funktionen $\partial y/\partial \varepsilon$
+zulässig, sondern nur solche, deren Skalarprodukt mit dem
+``Gradienten von $G$'' verschwindet.
+
+Die notwendige Bedingung für ein Extremum des Funktionals $I(y)$ wird 
+daher, dass
+\[
+\biggl\langle
+\frac{\partial F}{\partial y} + \frac{d}{dx}\frac{\partial F}{\partial y'},
+\eta
+\biggr\rangle
+=
+\langle
+\grad(F,y),
+\eta
+\rangle
+=
+0
+\]
+wird für alle Funktionen $\eta$, die auch
+\eqref{buch:nebenbedingungen:lagrangemult:eqn:Gskalar}
+erfüllen.
+Daraus lässt sich der zu Satz~\ref{}
+analog nachstehende Satz ableiten.
+
+\begin{satz}
+\label{buch:nebenbedingungen:lagrangemult:satz:einenb}
+Wenn die Funktion $y(x)$ ein Extremum des Funktionals
+\[
+I(y) = \int_{x_1}^{x_2} F(x,y(x),y'(x))\,dx
+\]
+unter der Nebenbedingung
+\[
+J(y) = \int_{x_1}^{x_2} G(x,y(x),y'(x))\,dx
+\]
+mit zweimal stetig diferenzierbaren Funktionen $F$ und $G$
+unter allen zweimal stetig differenzierbaren Funktionen $y(x)$
+mit $y(x_1)=y_1$ und $y(x_2)=y_2$ ist,
+und ausserdem
+\[
+0
+\ne
+\frac{\partial G}{\partial y}+\frac{d}{dx}\frac{\partial G}{\partial y'}
+=
+\grad (G,y),
+\]
+dann gilt
+\[
+\int_{x_1}^{x_2}
+\biggl(
+\frac{\partial F}{\partial y}
++
+\frac{d}{dx}\frac{\partial F}{\partial y'}
+\biggr)\,
+\eta(x)\,dx
+=
+\langle
+\grad (F,y),\eta
+\rangle
+=0
+\]
+für alle Funktionen $\eta(x)$, für die
+\[
+\int_{x_1}^{x_2}
+\biggl(
+\frac{\partial G}{\partial y}
++
+\frac{d}{dx}\frac{\partial G}{\partial y'}
+\biggr)\,
+\eta(x)\,dx
+=
+\langle
+\grad (G,y),\eta
+\rangle
+=0
+\]
+ist.
+Dieser Fall tritt genau dann ein, wenn es eine Zahl $\lambda\in\mathbb{R}$
+gibt derart, dass
+\begin{equation}
+\frac{\partial F}{\partial y}
++
+\frac{d}{dx}\frac{\partial F}{\partial y'}
+=
+\lambda
+\biggl(
+\frac{\partial G}{\partial y}
++
+\frac{d}{dx}\frac{\partial G}{\partial y'}
+\biggr)
+\qquad\text{oder}\qquad
+\grad (F,y) = \lambda \grad(G,y)
+\label{buch:nebenbedingungen:lagrangemult:notwendig}
+\end{equation}
+gilt.
+\end{satz}
+
+\begin{proof}
+Es ist nur noch die letzte Aussage zu beweisen.
+Da $\grad(G,y)\ne 0$ ist, gibt es eine Funktion, die nicht orthogonal
+auf $\grad(G,y)$ steht, nämlich $\grad(G,y)$.
+Wir normieren diese Funktion und bezeichnen Sie mit
+\[
+g = \frac{\grad(G,y)}{\|\grad(G,y)\|}.
+\]
+Wir müssen zeigen, dass jede Funktion $f$, die auf allen Funktionen $\eta$
+mit $\langle g,\eta\rangle=0$ senkrecht steht, ein Vielfaches
+von $g$ ist.
+Andernfalls wären $f$ und $g$ linear unabhängig und 
+\[
+h
+=
+\frac{
+f-\langle g,f\rangle g
+}{
+\|f-\langle g,f\rangle g\|
+}
+\]
+steht nach Konstruktion senkrecht auf $g$, also $\langle h,g\rangle=0$.
+Mit der Wahl $\eta=h$ folgt aus der Annahme daher auch, dass 
+\[
+\|h\|^2
+=
+\langle h,h\rangle
+=
+\langle h,\eta\rangle
+=
+\langle f,\eta\rangle
+=
+0.
+\]
+Dies zeigt, dass $h=0$ sein muss und damit $f$ und $g$
+linear abhängig sein müssen.
+\end{proof}
+
+\begin{beispiel}
+Wir lösen das Problem von Dido wie folgt
+(Abbildung~\ref{buch:nebenbedingungen:lagrangemult:fig:dido}).
+\input{chapters/050-nebenbedingungen/fig/dido.tex}
+Gesucht ist eine Funktion $y\colon[-1,1]\to\mathbb{R}$ mit $y(-1)=y(1)=0$
+die das Funktional
+\[
+I(y)
+=
+\int_{-1}^1 y(x)\,dx
+\qquad
+\text{mit Lagrange-Funktion}
+\qquad
+F(x,y,y') = y
+\]
+extremal macht unter der Nebenbedingung 
+\[
+J(y)
+=
+\int_{-1}^1 \sqrt{1+y'(x)^2}\,dx
+\qquad
+\text{mit Lagrange-Funktion}
+\qquad
+G(x,y,y') = \sqrt{1+y'^2}.
+\]
+Die Gradienten sind
+\begin{align*}
+\grad(F,y)
+&=
+1
+\\
+\grad(G,y)
+&=
+\frac{\partial G}{\partial y}
++
+\frac{d}{dx}
+\frac{\partial G}{\partial y'}
+=
+\frac{d}{dx}
+\frac{y'(x)}{\sqrt{1+y'(x)^2}}
+=
+\frac{
+y''(x)
+}{
+(1+y'(x)^2)^{\frac32}
+}
+\end{align*}
+Die Bedingung~\eqref{buch:nebenbedingungen:lagrangemult:notwendig} lautet
+jetzt, dass es $\lambda\in\mathbb{R}$ gibt derart, dass
+\begin{equation}
+1 = \lambda\frac{y''(x)}{(1+y'(x)^2)^{\frac32}}
+\qquad\Rightarrow\qquad
+\lambda y''(x)= (1+y'(x)^2)^{\frac32}.
+\label{buch:nebenbedingungen:lagrangemult:didodgl}
+\end{equation}
+Wir möchten zeigen, dass die Lösungen der Differentialgleichung
+\eqref{buch:nebenbedingungen:lagrangemult:didodgl}
+Kreise durch die Punkte $(\pm1, 0)$ sind.
+Ein Kreis vom Radius $r$ durch diese beiden Punkte ist der Graph
+der Funktion
+\[
+y(x) = \sqrt{r^2-x^2} - \sqrt{r^2-1}.
+\]
+Der zweite Term ist konstant und spielt daher in der Differentialgleichung
+keine Rolle.
+Die ersten beiden Ableitungen von $y(x)$ sind
+\begin{align}
+y'(x)
+&=
+-\frac{x}{\!\sqrt{r^2-x^2}}
+\quad\Rightarrow\quad
+1+y'(x)^2
+=
+1+\frac{x^2}{r^2-x^2}
+=
+\frac{r^2}{r^2-x^2}
+\notag
+\\
+y''(x)
+&=
+-
+\frac{
+r^2
+}{
+(r^2-x^2)^{\frac32}
+}
+=
+-\frac{1}{r}
+\biggl(
+\frac{r^2}{^2-x^2}
+\biggr)^{\frac32}
+=
+-\frac{1}{r}
+(1+y'(x)^2)^{\frac32}
+\label{buch:nebenbedingungen:lagrangemult:didoloesung}
+\end{align}
+Die Gleichung \eqref{buch:nebenbedingungen:lagrangemult:didoloesung}
+ist die Bedingung \eqref{buch:nebenbedingungen:lagrangemult:didodgl}
+mit $\lambda=-r$.
+Der Wert, den die Nebenbedingung annimmt, lässt sich jetzt auch
+ausrechnen.
+Da das Integral $J(y)$ die Länge eines Kreisbogens vom Radius $r$ 
+durch die Punkte $(\pm1,0)$ ist, folgt
+\[
+J(y)
+=
+2r\arctan\frac{1}{r}
+=
+-2r\arctan\frac{1}{\lambda}.
+\]
+Das isoperimetrische Problem wird also lokal von einem Kreisbogen
+gelöst.
+\end{beispiel}
+
+Aus der lokalen Lösung des isoperimetrischen Problems von Dido
+folgt auch, dass die grösste Fläche, die von einer Kurve der Länge
+$l$ in der Ebene eingeschlossen werden kann, ein Kreis mit Radius
+$r=l/2\pi$ und Flächeninhalt $l^2/4\pi$ ist.
+Falls der Bogen zwischen den Punkten $P$ und $Q$ auf einer Kurve, die
+den Flächeninhalt maximiert, kein Kreisbogen ist, dann kann man die
+Fläche grösser machen, indem man ihn durch durch einen gleichlangen
+Kreisbogen ersetzt.
+Dieser Widerspruch zeigt, dass die Kurve ein Kreis sein muss.
 
 %
 % Laagrange-Multiplikatoren für Variationsprobleme
 %
 \subsection{Lagrange-Multiplikatoren für Variationsprobleme
 \label{buch:nebenbedingungen:lagrangemult:subsection:lagrangemult}}
+Die Formulierung der notwendigen Bedingung für ein Extremum eines
+Variationsproblems mit einer einzelnen Nebenbedingung kann jetzt
+ganz analog wie in Abschnitt~\ref{} für das Minimalproblem für eine
+Funktion mehrere Variablen mit Nebenbedingungen verallgemeinert
+werden.
 
-\begin{verbatim}
-- Nebenbedingungen
-- Richtungsableitung für Nebenbedingungs-Funktionale
-- Lagrange-Multiplikatoren
-\end{verbatim}
+\begin{satz}
+Seien $F$ und $G_i$ zweimal stetig differenzierbare Funktionen
+$[x_1,x_2]\times\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$
+und $y\colon[x_1,x_2]\to\mathbb{R}$ eine zweimal stetig
+differenzierbare Funktion mit $y(x_1)=y_1$ und $y(x_2)=y_2$, für die
+das Funktional
+\[
+I(y)
+=
+\int_{x_1}^{x_2} F(x,y(x),y'(x))\,dx
+\]
+zu einem Extremwert macht unter allen solchen Funktionen, die zusätzlich
+die Nebenbedingungen
+\[
+J_i(y)
+=
+\int_{x_1}^{x_2}
+G_i(x,y(x),y'(x))\,dx,
+\quad
+i=1,\dots,k,
+\]
+erfüllen.
+Dann gibt es Zahlen $\lambda_i$, $i=1,\dots,k$ derart, dass
+\[
+\grad(F,y)
+=
+\lambda_1\grad(G_1,y)+\ldots+\lambda_k\grad(G_k,y)
+=
+\sum_{i=1}^k \lambda_i \grad(G_i,y)
+\]
+gilt.
+\end{satz}
+
+Ein Extremum des Funktionals $I(y)$ unter den Nebenbedingungen ist
+also eine Lösung des Gleichungssystems
+\begin{align}
+J_i({\color{darkred}y})&=0,\quad i=1,\dots,k\\
+\grad(F,{\color{darkred}y})
+&=\sum_{i=1}^k {\color{darkred}\lambda_i} \grad(G,{\color{darkred}y})
+\end{align}
+Dies sind insgesamt $k+1$ Gleichungen für die $k$ reellen Zahlen
+${\color{darkred}\lambda_i}\in\mathbb{R}$ und eine unbekannte Funktion
+${\color{darkred}y(x)}$.
+Die zweite Gleichung ist eine Differentialgleichungen zweiter Ordnung.
+
+
+

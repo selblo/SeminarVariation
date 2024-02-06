@@ -1,0 +1,44 @@
+%
+% dido.tex -- Problem der Dido
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\a{4}
+\def\r{5}
+\pgfmathparse{sqrt(\r*\r-\a*\a)}
+\xdef\b{\pgfmathresult}
+\pgfmathparse{atan(\b/\a)}
+\xdef\w{\pgfmathresult}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=darkred!20] (-\a,0) -- (\a,0) arc (\w:{180-\w}:\r) -- cycle;
+\draw[color=darkred,line width=1.4pt] (\a,0) arc (\w:{180-\w}:\r);
+\node[color=darkred] at ($(0,-\b)+(110:\r)$) [above] {$l$};
+
+\draw[->] ({-\a-0.5},0) -- ({\a+0.5},0) coordinate[label={$x$}];
+\draw[->] (0,{-\b-0.3}) -- (0,{\r-\b+0.4}) coordinate[label={right:$y$}];
+\begin{scope}
+\clip ({-\a-0.3},{-\b-0.3}) rectangle ({\a+0.3},{\r-\b+0.2});
+\draw[color=darkred] (0,{-\b}) circle[radius=\r];
+\end{scope}
+\fill (0,-\b) circle[radius=0.05];
+\fill[color=darkred] (-\a,0) circle[radius=0.05];
+\fill[color=darkred] (\a,0) circle[radius=0.05];
+\draw[->] (0,-\b) -- +(70:\r);
+\node at ($(0,-\b)+0.5*(70:\r)$) [below right] {$r$};
+\node at (-\a,0) [below right] {$-1$};
+\node at (\a,0) [below left] {$1$};
+
+\end{tikzpicture}
+\end{document}
+

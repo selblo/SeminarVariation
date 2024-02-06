@@ -1,0 +1,21 @@
+/*
+ * dido.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+gradef(y(x), yp(x));
+gradef(yp(x), ypp(x));
+G: sqrt(1+yp(x)^2);
+p: diff(diff(G,yp(x)), x);
+ratsimp(p);
+
+/* Loesung */
+assume(r>0);
+assume(r>x);
+m: sqrt(r^2-1);
+z: sqrt(r^2 - x^2) - m;
+diff(z,x);
+diff(diff(z,x),x);
+
+d: diff(diff(z,x), x) / (1+diff(z,x)^2)^(3/2);
+ratsimp(expand(d));
