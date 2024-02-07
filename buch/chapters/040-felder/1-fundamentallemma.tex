@@ -237,6 +237,345 @@ f(x) \frac{\partial g}{\partial x_n}
 +
 f(x)(\operatorname{grad}g(x))
 \end{align*}
+Wir haben also den folgenden Satz hergeleitet.
+
+\begin{satz}[Produktformel für Gradient]
+Sind $f$ und $g$ Funktionen $\mathbb{R}^n \to\mathbb{R}$, dann gilt
+\[
+\grad (fg) = (\grad f)g + f\grad g.
+\]
+\end{satz}
+
+%
+% Divergenz
+%
+\subsubsection{Divergenz}
+Der Gradient einer Funktion $f\colon\mathbb{R}^n\to\mathbb{R}$ ist
+ein sogenanntes Vektorfeld im Sinne der folgenden Definition.
+
+\begin{definition}[Vektorfeld]
+\label{buch:felder:fundamentallemma:def:vektorfeld}
+Eine Abbildung $g\colon\mathbb{R}^n\to\mathbb{R}^k$, die jedem Punkt
+von $\mathbb{R}^n$ einen $k$-dimensionalen Vektor zuordnet, heisst
+ein {\em $k$-dimensionales Vektorfeld}.
+\index{Vektorfeld}
+\end{definition}
+
+Auch für ein Vektorfeld lassen sich interessante Differentialoperatoren
+definieren, deren Bedeutung später klar werden wird.
+
+\begin{definition}[Divergenz]
+\label{buch:felder:fundamentallemme:def:divergenz}
+Die {\em Divergenz} eines $n$-dimensionalen differenzierbaren
+Vektorfeldes $g\colon:\mathbb{R}^n\to\mathbb{R}^n$ ist die Funktion
+\[
+\operatorname{div} g
+\colon
+\mathbb{R}^n\to\mathbb{R}
+:
+x \mapsto
+\frac{\partial g_1}{\partial x_1}(x)
++\ldots+
+\frac{\partial g_n}{\partial x_n}(x)
+=
+\sum_{i=1}^n
+\frac{\partial g_i}{\partial x_i}(x).
+\]
+\end{definition}
+
+Auch für die Divergenz gibt es eine Produktformel.
+Seien
+\[
+f\colon\mathbb{R}^3\to\mathbb{R}
+\qquad\text{und}\qquad
+g\colon\mathbb{R}^3\to\mathbb{R}^3
+\]
+stetig differenzierbare Funktionen.
+Die Komponenten von $g$ schreiben wir $g_i$, $i=1,\dots,n$.
+
+\begin{satz}[Produktformel für Divergenz]
+Für 
+\[
+\operatorname{div}(fg)
+=
+\grad f \cdot g
++
+f\operatorname{div}g.
+\]
+\end{satz}
+
+\begin{proof}
+Wir berechnen die Divergenz von $f\cdot g$:
+\begin{align*}
+\operatorname{div} fg(x)
+&=
+\frac{\partial}{\partial x_1}(f(x)g_1(x))
++
+\ldots
++
+\frac{\partial}{\partial x_n}(f(x)g_n(x))
+\\
+&=
+\frac{\partial f}{\partial x_1}(x)g_1(x)
++f(x)\frac{\partial g_1}{\partial x_1}(x)
++
+\ldots
++
+\frac{\partial f}{\partial x_n}(x)g_n(x)
++f(x)\frac{\partial g_n}{\partial x_n}(x)
+\\
+&=
+\sum_{i=1}^n \frac{\partial f}{\partial x_i}(x) g_i(x)
++
+f(x)
+\sum_{i=1}^n \frac{\partial g_i}{\partial x_i}(x)
+\\
+&=
+\grad f(x)\cdot \operatorname{div} g(x)
++
+f(x)\operatorname{div}g(x).
+\qedhere
+\end{align*}
+\end{proof}
+
+Die Produktregel sagt also auch hier, dass der Differentialoperator
+auf jeden Faktor einzeln angewendet werden kann. 
+Je nach Art des Faktors passt aber der Gradient oder die Divergenz.
+
+%
+% Laplace-Operator
+%
+\subsubsection{Laplace-Operator}
+Besonderes Interesse an der Divergenz entsteht aus dem Zusammenhang
+mit dem Laplace-Operator.
+
+\begin{definition}[Laplace-Operator]
+Für eine zweimal stetig differenzierbare Funktion
+$f\colon\mathbb{R}^n\to\mathbb{R}$
+ist der {\em Laplace-Operator} definiert durch
+\[
+\Delta f(x)
+=
+\frac{\partial^2 f}{\partial x_1^2}(x)
++\ldots+
+\frac{\partial^2 f}{\partial x_n^2}(x)
+=
+\sum_{i=1}^n \frac{\partial^2 f}{\partial x_i^2}(x).
+\]
+\end{definition}
+
+Der Laplace-Operator ist ein Differentialoperator zweiter Ordnung.
+Wir berechnen die Zusammensetzung der beiden Differentialoperatorn
+erster Ordnung $\operatorname{div}$ und $\grad$
+für eine zweimal stetig differenzierbare Funktion
+$f\colon\mathbb{R}^n\to\mathbb{R}$ und erhalten
+\begin{align*}
+\operatorname{div}\grad f(x)
+&=
+\sum_{i=1}^n
+\frac{\partial}{\partial x_i}
+\frac{\partial f}{\partial x_i}(x)
+=
+\frac{\partial^2 f}{\partial x_i^2}(x)
+=
+\Delta f(x).
+\end{align*}
+Daraus lässt sich jetzt auch eine Produktformel für den Laplace-Operator
+ableiten.
+Dazu wenden wir ihn auf das Produkt zweier skalarer Funktionen
+$f,g\colon\mathbb{R}^n\to\mathbb{R}$ an:
+\begin{align}
+\operatorname{div}\grad (fg)(x)
+&=
+\operatorname{div}\bigl((\grad f(x)) g(x) + f(x)\grad g(x)\bigr)
+\intertext{nach der Produktformel für den Gradienten.
+Auf die einzelnen Summanden wenden wir jetzt die Produktformel für
+die Divergenz an und erhalten}
+&=
+(\operatorname{div}\grad f(x))g(x) + \grad f(x)\cdot \grad g(x)
+\notag
+\\
+&\qquad\qquad
++
+\grad f(x)\cdot\grad g(x) + f(x) \operatorname{div}\grad g(x).
+\notag
+\intertext{Durch Anwendung der Definition des Laplace-Operators
+erhalten wir die gesuchte Produktformel}
+\Delta (fg)(x)
+&=
+(\Delta f(x)) g(x) + 2\grad f(x)\cdot \grad g(x) + f(x)\Delta g(x).
+\label{buch:felder:fundamentallemma:eqn:laplaceproduktformel}
+\end{align}
+Da der Laplace-Operator ein Operator zweiter Ordnung ist, ähnelt 
+die rechte Seite von
+\eqref{buch:felder:fundamentallemma:eqn:laplaceproduktformel}
+der binomischen Formel.
+
+%
+% Rotation
+%
+\subsubsection{Rotation}
+In drei Dimensionen gibt es einen weiteren interessanten Differentialoperator,
+dessen Konstruktion auf dem Vektorprodukt beruht.
+
+\begin{definition}[Rotation]
+Sei $g\colon\mathbb{R}^3\to\mathbb{R}^3$ ein differenzierbares
+dreidimensionales Vektorfeld, dann heisst das Vektor
+\[
+\operatorname{rot}g(x)
+=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial g_3}{\partial x_2}
+-
+\frac{\partial g_2}{\partial x_3}
+\\
+\displaystyle
+\frac{\partial g_1}{\partial x_3}
+-
+\frac{\partial g_3}{\partial x_1}
+\\
+\displaystyle
+\frac{\partial g_2}{\partial x_1}
+-
+\frac{\partial g_1}{\partial x_2}
+\end{pmatrix}
+\]
+die {\em Rotation} von $g(x)$.
+\end{definition}
+
+Die Rotation $\operatorname{rot}g$ wird im englischen Sprachraum manchmal
+auch $\operatorname{curl}g$ geschrieben.
+Auch für die Rotation gibt es Produktformeln für die Ableitung.
+
+\begin{satz}[Produktformeln für Rotation]
+Sei $f\colon\mathbb{R}^3\to\mathbb{R}$ differenzierbar und
+$g,h\colon\mathbb{R}^3\to\mathbb{R}^3$ differenzierbare dreidimensionale
+Vektorfelder.
+Dann gilt
+\begin{align*}
+\operatorname{rot}(fg)(x)
+&=
+\\
+\operatorname{rot}(g\times h)(x)
+&=
+\grad f\times g(x) + f(x)\operatorname{rot}(x).
+\end{align*}
+\end{satz}
+
+\begin{proof}
+Der Beweis erfolgt durch Nachrechnen:
+\bgroup
+\renewcommand{\arraystretch}{1.9}
+\begin{align*}
+\operatorname{rot}(fg)(x)
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial}{\partial x_2}(fg_3)(x)-\frac{\partial}{\partial x_3}(fg_2)(x)
+\\
+\displaystyle
+\frac{\partial}{\partial x_3}(fg_1)(x)-\frac{\partial}{\partial x_1}(fg_3)(x)
+\\
+\displaystyle
+\frac{\partial}{\partial x_1}(fg_2)(x)-\frac{\partial}{\partial x_2}(fg_1)(x)
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial f}{\partial x_2}(x)g_3(x)
+-\frac{\partial f}{\partial x_3}(x)g_2(x)
++
+f(x)\biggl(\frac{\partial g_3}{\partial x_2}(x)
+-\frac{\partial g_2}{\partial x_3}(x)\biggr)
+\\
+\displaystyle
+\frac{\partial f}{\partial x_3}(x)g_1(x)
+-\frac{\partial f}{\partial x_1}(x)g_3(x)
++
+f(x)\biggl(\frac{\partial g_1}{\partial x_3}(x)
+-\frac{\partial g_3}{\partial x_1}(x)\biggr)
+\\
+\displaystyle
+\frac{\partial f}{\partial x_1}(x)g_2(x)
+-\frac{\partial f}{\partial x_2}(x)g_1(x)
++
+f(x)\biggl(\frac{\partial g_2}{\partial x_1}(x)
+-\frac{\partial g_1}{\partial x_2}(x)\biggr)
+\end{pmatrix}
+\\[5pt]
+&=
+(\grad f(x))\times g(x) + f(x)\operatorname{rot}(x).
+\qedhere
+\end{align*}
+\egroup
+\end{proof}
+
+%\begin{satz}[Divergenz eines Vektorproduktes]
+%\begin{align*}
+%\operatorname{div}(g\times h)(x)
+%&=
+%\end{align*}
+%\end{satz}
+%
+%\begin{proof}
+%Durch Nachrechnen
+%\begin{align*}
+%\operatorname{div}(g\times h)(x)
+%&=
+%\frac{\partial}{\partial x_1}\bigl(
+%g_2(x)h_3(x)-g_3(x)h_2(x)
+%\bigr)
+%+
+%\frac{\partial}{\partial x_2}\bigl(
+%g_3(x)h_1(x)-g_1(x)h_3(x)
+%\bigr)
+%\\
+%&\qquad\qquad
+%+
+%\frac{\partial}{\partial x_3}\bigl(
+%g_1(x)h_2(x)-g_2(x)h_1(x)
+%\bigr)
+%\\
+%&=
+%\frac{\partial g_2}{\partial x_1}(x)h_3(x)
+%-
+%g_2(x) \frac{\partial h_3}{\partial x_1}
+%+
+%\frac{\partial g_3}{\partial x_2}(x)h_1(x)
+%-
+%g_3(x) \frac{\partial h_1}{\partial x_2}
+%\\
+%&\qquad\qquad
+%+
+%\frac{\partial g_1}{\partial x_3}(x)h_2(x)
+%-
+%g_1(x) \frac{\partial h_2}{\partial x_3}
+%\\
+%&=
+%\frac{\partial g_3}{\partial x_2}(x)h_1(x)
+%+
+%\frac{\partial g_1}{\partial x_3}(x)h_2(x)
+%+
+%\frac{\partial g_2}{\partial x_1}(x)h_3(x)
+%\\
+%&\qquad\qquad
+%-
+%g_1(x) \frac{\partial h_2}{\partial x_3}
+%-
+%g_2(x) \frac{\partial h_3}{\partial x_1}
+%-
+%g_3(x) \frac{\partial h_1}{\partial x_2}
+%\\
+%&=
+%\end{align*}
+%\end{proof}
+
+%
+% Schreibweise mit dem Nabla-Operator
+%
+\subsubsection{Schreibeweise mit dem Nabla-Operator}
 
 %
 % Der Satz von Green
