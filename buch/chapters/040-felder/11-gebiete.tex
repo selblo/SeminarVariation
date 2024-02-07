@@ -1,0 +1,189 @@
+%
+% 11-gebiete.tex
+%
+% (c) 2023 Prof Dr Andreas Müller
+%
+
+%
+% Gebiete
+%
+\subsection{Gebiete}
+Variationsprobleme für Funktionen von nur einer Variablen sind auf 
+Funktionen auf einem Intervall beschränkt.
+Besteht der Definitionsbereich aus mehreren Intervallen, kann jedes
+einzelne Intervall unabhängig von allen anderen betrachtet werden.
+Für ein Intervall $[x_0,x_1]$ ist auch das Integral einfach zu definieren,
+wie es zur Konstruktion des zu minimierenden Funktionals nötig ist.
+
+Für Funktionen von zwei oder mehr Variablen ist bereits die
+Festlegung des Definitionsgebietes viel komplizierter.
+Sie muss so erfolgen, dass auch die partielle Integration eines
+Produktes darauf übertragbar ist.
+Diese wurde im eindimensionalen Fall dazu aus dem Integral
+über $F\cdot\eta'$ eine Integral über $dF/dx\cdot \eta$ zu
+machen, auf welches das Fundamentallemma anwendbar war.
+
+%
+% Offene Mengen
+%
+\subsubsection{Offene Mengen}
+Die Ableitung einer Funktion $f$ in einem Punkt $x\in\mathbb{R}$ erfordert,
+dass man Funktionswerte in $x$ mit Funktionswerten in Punkten $x+h$
+vergleichen kann, wobei $h\in\mathbb{R}^n$ ein beliebiger kleiner Vektor
+sein kann.
+Die Ableitung einer Funktion ist dann definiert als die lineare
+Ersatzfunktion $Df(x)$ mit der Eigenschaft
+\[
+f(x+h) = f(x) + Df(x)\cdot h + o(h).
+\]
+Die Ableitung kann also nur dann sinnvoll definiert werden, wenn
+Funktion nicht nur im Punkt $x$, sondern auch in einer Umgebung
+des Punktes $x$.
+Die Ableitung einer Funktion ist daher nur definiert auf einer
+offenen Menge im Sinne der folgenden Definition.
+
+\begin{definition}[offene Menge, Gebiet]
+Eine Teilmenge $\Omega\subset\mathbb{R}^n$ heisst {\em offen}, wenn es für
+\index{offen}%
+jeden Punkt $x\in\Omega$ eine $r>0$ gibt derart, dass ein
+Ball mit Radius $r$ um den Punkt $x$ ebenfalls in $\Omega$ enthalten
+ist:
+\[
+B_r(x)
+=
+\{y\in\mathbb{R}^n
+\mid
+|y-x|<r\}
+\subset \Omega.
+\]
+Eine offene Menge $\Omega\subset\mathbb{R}$ heisst auch ein {\em Gebiet}.
+\index{Gebiet}%
+\input{chapters/040-felder/fig/offen.tex}
+\end{definition}
+
+%
+% Der Rand eines Gebietes
+%
+\subsubsection{Der Rand eines Gebiets}
+Die partielle Integration einer Funktion einer Variablen liefert
+neben dem Integralterm auch einen Term, der nur von den Werten der
+Funktionen an den Endpunkten des Intervalls abhängt.
+Es ist zu erwarten, dass ein ähnliches Prinzip auch für die
+Integration von Funktionen mehrere Variablen gilt.
+Dazu ist jedoch nötig zu erklären, wie genau der Rand eines
+Gebietes zu finden ist.
+
+Der Rand eines Intervalls ist einfach zu finden.
+Ein Endpunkt eines Intervalls hat die Eigenschaft, dass sich
+auf der einen Seite des Punktes lauter Werte befinden, die zum
+Intervall gehören, während auf der anderen Seite nur Werte liegen,
+die nicht zum Intervall gehören.
+Diese anschauliche Beschreibung appelliert aber an eine Vorstellung
+einer Richtung und ist daher nicht direkt übersetzbar.
+Sie lässt sich aber noch etwas vereinfachen: ein Endpunkt eines
+Intervalls hat beliebig nahe Werte die zum Intervall gehören, und
+solche die nicht mehr dazu gehören.
+Dies suggeriert die folgende Definition für den Rand eines Gebietes.
+
+\begin{definition}[Rand]
+\label{buch:felder:fundamentallemma:def:rand}
+Ein Randpunkt eines Gebietes $\Omega\subset\mathbb{R}^n$ ist ein Punkt
+$x\in\mathbb{R}^n$ mit der Eigenschaft, dass in jeder noch so kleinen 
+Umgebung von $x$ Punkte von $\Omega$ und von $\mathbb{R}^n\setminus\Omega$
+liegen.
+Ein Randpunkt ist also ein Punkt $x\in\mathbb{R}^n$ mit
+\[
+B_r(x)\cap \Omega\ne \emptyset
+\qquad\text{und}\qquad
+B_r(x)\cap (\mathbb{R}^n\setminus \Omega)
+\ne \emptyset
+\]
+für alle $r>0$.
+Der Rand $\partial \Omega$ eines Gebietes $\Omega$ ist die Menge
+aller Randpunkte von $\Omega$.
+\end{definition}
+
+Man beachte, dass ein Gebiet $\Omega$ keine Randpunkte enthält.
+Wäre $x$ ein Randpunkt von $\Omega$, dann gibt es einen Radius $r$
+derart, dass $B_r(x)\in\Omega$ ist.
+Für diesen Radius folgt
+\[
+B_r(x)\cap (\mathbb{R}^n\setminus\Omega)
+=
+\emptyset,
+\]
+im Widerspruch zu Annahme, dass $x$ ein Randpunkt war.
+Der Widerspruch zeigt, dass ein Punkt von $\Omega$ kein Randpunkt
+sein kann.
+
+Die rein punktmengentopologische 
+\input{chapters/040-felder/fig/mandelbrot.tex}%
+Definition~\ref{buch:felder:fundamentallemma:def:rand} des Randes ist
+auf Mengen anwendbar, deren Rand sehr kompliziert ist.
+Ein Beispiel ist die Mandelbrot-Menge, die in
+Abbildung~\ref{buch:felder:fundamentallemma:fig:mandelbrot}
+dargestellt ist.
+Der schwarze Bereich ist die Mandelbrot-Menge, die farbigen Bereich
+liegen ausserhalb der Menge.
+Der Rand ist berühmt dafür, dass man beliebig tief hineinzoomen
+und immer neue Strukturen entdecken kann.
+
+Im folgenden sollen daher nur solche Gebiete betrachtet werden,
+deren Rand die zusätzliche Eigenschaft haben, dass er mit stetigen
+oder sogar differenzierbaren Funktionen beschrieben werden kann.
+Dies wird von der folgenden Definition erreicht.
+
+\begin{definition}[glatter Rand]
+\label{buch:felder:fundamentallemma:def:glatterrand}
+Der Rand eines Gebietes $\Omega\subset\mathbb{R}^n$ heisst {\em glatt},
+wenn jeder Punkt $P$ des Randes eine Umgebung hat, in der es eine bijektive
+differenzierbare Abbildung
+\[
+\varphi
+\colon
+U\to \mathbb{R}^n 
+:
+x\mapsto \varphi(x)
+\]
+einer offenen Umgebung $U$ des Nullpunktes gibt derart, dass $\varphi(0)=P$
+das Bild $\varphi(x)$ eines Punktes $x=(x_1,\dots,x_{n-1},x_n)$ in $\Omega$
+liegt, wenn $x_n\ge 0$ ist, nicht in $\Omega$ liegt, wenn $x_n<0$ ist und auf
+dem Rand $\partial\Omega$ liegt, wenn $x_n=0$ ist
+(Abbildung~\ref{buch:felder:fundamentallemma:fig:randdef}).
+\input{chapters/040-felder/fig/randdef.tex}
+\end{definition}
+
+Ein Gebiet hat also einen glatten Rand, wenn er sich lokal als das
+differenzierbare Bild der Hyperebene $x_n=0$ in einer Umgebung des
+Nullpunkts in $\mathbb{R}^n$ darstellen lässt.
+Für ein beschränktes Gebiet bedeutet dies, dass sich der Rand durch
+endlich viele solche Abbildungen parametrisieren lässt.
+
+In zwei Dimensionen kann man den Rand eines Gebietes mit
+glattem Rand stückweise als Graphen von differenzierbaren Funktionen
+$y_k(x)$ beschreiben, wie dies in
+\input{chapters/040-felder/fig/2drand.tex}
+Abbildung~\ref{buch:felder:fundamtenallemma:fig:2drand}
+dargestellt ist.
+Mit dieser Definition lassen sich aber natürlich vorkommende Gebiete
+wie ein Rechteck $(x_1,x_2)\times(y_1,y_2)$ nicht beschreiben, da
+es in den Ecken des Rechtecks keine Abbildung gibt, wie sie in der
+Definition~\ref{buch:felder:fundamentallemma:def:glatterrand}
+verlangt wird.
+
+
+%
+% Integration über ein Gebiet
+%
+\subsubsection{Integration über ein Gebiet}
+
+%
+% Integration über eine Kurve
+%
+\subsubsection{Integration über eine Kurve}
+
+%
+% Integration über den Rand
+%
+\subsubsection{Integration über den Rand}
+

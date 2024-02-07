@@ -1,0 +1,94 @@
+%
+% 14-fundamtenallemma.tex
+%
+% (c) 2023 Prof Dr Andreas Müller
+%
+
+%
+% Das Fundamentallemma für mehrere Variablen
+%
+\subsection{Das Fundamentallemma für mehrere Variablen}
+Das Fundamentallemma war instrumental bei der Herleitung der
+Euler-Lagrange-Differentialgleichung.
+Es besagt, dass eine stetige Funktion von einer Variablen auf einem Intervall
+verschwindet, wenn alle ihre Skalarprodukte mit beliebig of stetig
+differenzierbaren Funktionen verschwinden.
+Diese Eigenschaft gilt auch für Funktionen mehrerer Variablen und kann
+ganz analog bewiesen werden.
+
+\begin{satz}[Fundamentallemma]
+Sei $\Omega\subset\mathbb{R}^n$ ein Gebiet und $f\colon \Omega\to\mathbb{F}$
+eine stetige Funktion.
+Ausserdem gelte für jede glatte Funktion $g\colon\Omega\to\mathbb{R}$ 
+\begin{equation}
+\int_{\Omega} f(x)g(x)\,dx = 0.
+\label{buch:felder:fundamentallemma:eqn:bedfundamentallemma}
+\end{equation}
+Dann folgt $f(x)=0$.
+\end{satz}
+
+\begin{proof}
+Wie im eindimensionalen Fall kann der Beweis mit einem Widerspruch
+geführt werden.
+Sei $(x^*_1,\dots,x^*_n)$ ein Punkt im Inneren des Gebietes $\Omega$,
+für den $f(x^*_1,\dots,x^*_n)=a\ne 0$ ist.
+Da die Funktion $f$ stetig ist, gibt es ein $\delta>0$ derart,
+dass sogar
+\[
+f(x_1,\dots,x_n) > \frac{a}2
+\qquad\text{für alle $x_i$ mit $|x_i-x^*_i|<\delta$.}
+\]
+Da $(x^*_1,\dots,x^*_n)$ im Inneren des Gebietes liegt, kann 
+$\delta$ sogar so klein gewählt werden, dass alle Punkte
+$(x_1,\dots,x_n)$ mit $|x^*_i-x_n|<\delta$ immer noch in
+$\Omega$ liegen.
+
+Sei $h(\xi)$ eine beliebig oft differenzierbare Funktion einer Variablen,
+die nur im Intervall $(-\delta,\delta)$ von $0$ verschieden ist und
+deren Integral über das Intervall $(-\delta,\delta)$ den Wert $1$ hat.
+Mit der Funktion
+\[
+g(x_1,\dots,x_n)
+=
+h(x_1-x^*_1)\cdot\ldots\cdot h(x_n-x^*_n),
+\]
+deren Träger nach Konstruktion in $\Omega$ enthalten ist, wird jetzt das
+Integral
+\begin{align*}
+\int_{\Omega} f(x)\,g(x)\,dx
+&=
+\int_{\operatorname{supp} g}
+f(x)\,h(x_1-x^*_1)\cdots h(x_n-x^*_n)
+\,dx_1,\dots,dx_n
+\\
+&>
+\int_{x^*_1-\delta}^{x^*_1+\delta}
+\dots
+\int_{x^*_n-\delta}^{x^*_n+\delta}
+\frac{a}{2}
+h(x_n-x^*_n) \,dx_n
+\,\dots
+h(x_1-x^*_1) \,dx_1
+\\
+&=
+\frac{a}2
+\int_{x^*_1-\delta}^{x^*_1+\delta}
+h(x_1-x^*_1) \,dx_1
+\cdot
+\ldots
+\cdot
+\int_{x^*_n-\delta}^{x^*_n+\delta}
+h(x_n-x^*_n) \,dx_n
+=
+\frac{a}2>0.
+\end{align*}
+Mit dem konstruierten $g(x)$ ist also eine Funktion gefunden, die
+Bedingung~\eqref{buch:felder:fundamentallemma:eqn:bedfundamentallemma}
+des Fundamentallemmas nicht erfüllt.
+Dieser Widerspruch zeigt, dass die Annahme, $f$ verschwinde nicht überall,
+falsch ist.
+Damit folgt, dass $f(x)=0$ ist.
+\end{proof}
+
+
+
