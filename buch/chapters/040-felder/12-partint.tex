@@ -769,7 +769,7 @@ Erweiterung des Hauptsatzes auf zweidimensionale Gebiet ist.
 %
 % Der Satz von Gauss
 %
-\subsubsection{Der sSatz von Gauss}
+\subsubsection{Der Satz von Gauss}
 Der Satz~\ref{buch:felder:fundamentallemma:satz:green} von Green
 war das erste Beispiel eines Satzes, der ein Gebietsintegral über eine
 ``abgeleitete Funktion'' in ein Randintegral umzuwandeln gestattet, wobei
@@ -888,6 +888,73 @@ Der Satz von Gauss ermöglicht also, einen Divergenz-Operator loszuwerden,
 indem man zu einem Integral über den Rand übergeht.
 
 %
+% Partielle Integration und der Satz von Gauss
+%
+\subsubsection{Partielle Integration und der Satz von Gauss}
+Die partielle Integrationsformel für Funktionen einer Variablen folgt aus
+der Formel für die Ableitung eines Produktes von Funktionen.
+Wir erwarten daher eine ähnliche Formel für die Ableitung von
+Funktionen mehrere Variablen, wir müssen jedoch jeweils den richtigen
+Differentialoperator wählen.
+
+Auf ein Vektorfeld ist der Divergenzoperator anwendbar, für eine
+differenzierbare skalare Funktion $f\colon\mathbb{R}^n\to\mathbb{R}$
+und ein differenzierbares $n$-dimensionales Vektorfeld
+$g\colon\mathbb{R}^n\to\mathbb{R}^n$ gilt die Produktregel
+\[
+\operatorname{div}(fg)
+=
+(\grad f)g
++
+f\operatorname{div}g
+\qquad\Rightarrow\qquad
+\left\{
+\begin{aligned}
+(\grad f)g &= \operatorname{div}(fg) - f\operatorname{div}g \\
+f\operatorname{div}g &= \operatorname{div}(fg) - (\grad f)g
+\end{aligned}
+\right.
+\]
+Integrieren wir die Formen auf der rechten Seite über ein Gebiet $\Omega$
+und wenden den Satz~\ref{buch:felder:fundamentallemma:satz:gauss}
+von Gauss auf auf den Term $\operatorname{div}(fg)$ an, folgt im
+ersten Fall die Identität
+\begin{align*}
+\int_{\Omega} (\grad f)(x) g(x)\,dx
+&=
+\int_{\partial\Omega} f(x)g(x)\cdot do(x)
+-
+\int_{\Omega} f(x)\operatorname{div}g(x)\,dx.
+\end{align*}
+
+\begin{satz}[partielle Integration für Vektorfelder]
+Sei $f\colon\mathbb{R}^n\to\mathbb{R}$ eine differenzierbare Funktion,
+$g\colon\mathbb{R}^n\to\mathbb{R}^n$ ein differenzierbares
+$n$-dimensionales Vektorfeld und $\Omega$ ein Gebiet mit stückweise
+glattem Rand.
+Dann gilt
+\begin{align*}
+\int_{\Omega} (\grad f)(x) g(x)\,dx
+&=
+\int_{\partial\Omega} f(x)g(x)\cdot do(x)
+-
+\int_{\Omega} f(x)\operatorname{div}g(x)\,dx.
+\\
+\int_{\Omega} (\nabla f)(x)g(x)\,dx
+&=
+\int_{\partial\Omega} f(x)g(x)\cdot do(x)
+-
+\int_{\Omega} f(x)\nabla\cdot g(x)\,dx.
+\qedhere
+\end{align*}
+\end{satz}
+
+Die partielle Integration verschiebt den Differentialoperator $\nabla$
+vom Faktor $f$ auf den Faktor $g$, dabei tritt ein zusätzlicher Term
+auf, der nur von den Werten der Funktionen auf dem Rand abhängt.
+
+
+%
 % Der Satz von Stokes
 %
 \subsubsection{Der Satz von Stokes}
@@ -909,4 +976,48 @@ wobei das erste Integral der Fluss des Vektorfeldes $\operatorname{rot}g$
 durch die Fläche $S$ und das zweite Integral des Pfadintegral des
 Vektorfeldes entlang der Randkurve ist.
 \end{satz}
+
+%
+% Partielle Integration und der Satz von Stokes
+%
+\subsubsection{Partielle Integration und der Satz von Stokes}
+Für eine differenzierbare skalare Funktion
+$f\colon\mathbb{R}^3\to\mathbb{R}$, ein differenzierbares dreidimensionales
+Vektorfeld $g\colon\mathbb{R}^3\to\mathbb{R}^3$.
+Dann gilt die Produktregel
+\[
+\operatorname{rot}(f g)
+=
+(\grad f)\times g
++
+f\operatorname{rot}g
+\qquad\Rightarrow\qquad
+(\grad f)\times g
+=
+\operatorname{rot}(fg)
+-
+f\operatorname{rot}g.
+\]
+Integration über die Fläche $S\subset \mathbb{R}^3$, die von einer
+geschlossenen Kurve berandet ist, ermöglicht auf den mittleren
+Term den Satz von Stokes anzuwenden, so entsteht die Identität
+\begin{align*}
+\int_{S}(\grad f)(x)\times g(x) \cdot do(x)
+&=
+\int_{\partial S} f(x)g(x)\cdot ds(x)
+-
+\int_{S} f(x)\operatorname{rot}g(x)\cdot do(x)
+\intertext{oder in der Schreibweise mit dem Nabla-Operator}
+\int_{S}(\nabla f)(x)\times g(x) \cdot do(x)
+&=
+\int_{\partial S} f(x)g(x)\cdot ds(x)
+-
+\int_{S} f(x)(\nabla\times g)(x)\cdot do(x).
+\end{align*}
+Wieder kann der Differentialoperator vom einen Faktor auf den anderen
+zu verschieben.
+Dabei entsteht wieder ein Term, der nur von den Funktionswerten
+auf dem Rand der Fläche $S$ abhängt.
+
+
 
