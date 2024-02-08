@@ -6,11 +6,246 @@
 \section{Hessische Matrix
 \label{buch:fuvar:section:hessische}}
 \kopfrechts{Hessische Matrix}
+Das Verschwinden der Ableitung einer differenzierbaren Funktion
+$f\colon\mathbb{R}\to\mathbb{R}$ ist eine notwendige Bedingung
+für ein Extremum, sie ist aber nicht hinreichend.
+Im Grundlagenunterricht in der Analysis lernt man, dass man mit
+Hilfe der zweiten Ableitung zu einem hinreichenden Kriterium
+kommen kann.
+Ist die zweite Ableitung $f''(x_0)$ an einer Stelle $x_0$ grösser
+als $0$, dann liegt ein Minimum vor, falls sie negativ ist, liegt
+ein Maximum vor.
+In diesem Abschnitt soll gezeigt werden, wie dieses Kriterium auf
+Funktionen mehrere Variablen verallemeinert werden kann.
+
+%
+% Die zweite Ableitung
+%
+\subsection{Die zweite Ableitung}
+In diesem Abschnitt ist $f\colon\mathbb{R}^n\to\mathbb{R}$
+eine zweimal stetig differenzierbare Funktionen, derer Gradient
+an der Stelle $x_0$ verschwindet.
+Durch eine Translationb $x\mapsto x-x_0$ kann man immer erreichen,
+dass $x_0=0$ der Nullpunkt des Koordinatensystems ist.
+In der folgenden Diskussion wird diese Konvention wo zweckmässig
+stillschweigend verwendet.
+
+%
+% Die Hessische Matrix
+%
+\subsubsection{Die Hessische Matrix}
+Damit der Punkt $x_0$ ein Minimum ist, muss jede auf die Richtung
+$v\in\mathbb{R}^n$ eingeschränkte Funktion eine positive zweite
+Ableitung haben.
+Es muss also für alle $v\in\mathbb{R}^n$
+\[
+\frac{d^2}{dt^2} f(x_0+vt)\bigg|_{t=0}
+> 0
+\]
+sein.
+Wenn das umgekehrte Zeichen gilt, dann liegt ein Maximum vor.
+Ausgeschrieben in Komponenten gilt
+\[
+\frac{d^2}{dt^2} f(x_0+vt)
+=
+\sum_{i,k=1}^n
+\frac{\partial^2 f}{\partial x_i\,\partial x_k}(x_0+vt)
+\,
+v_iv_k,
+\]
+wobei die $v_i$ die Komponenten von $v$ sind.
+An der Stelle $t=0$ bleibt die Eigenschaft
+\[
+\frac{d^2}{dt^2}f(x_0+vt)_{t=0}
+=
+\sum_{i,k=1}^n \frac{\partial^2 f}{\partial x_i\,\partial x_k}(x_0) \,v_iv_k
+>
+0.
+\]
+Die Summe kann mit Hilfe der Matrix $H$ mit den Einträgen
+\[
+h_{ik}
+=
+\frac{\partial^2 f}{\partial x_i\,\partial x_k}(x_0)
+\]
+kompakter als
+\[
+\frac{d^2}{dt^2}f(x_0+vt)_{t=0}
+=
+\sum_{i,k=1}^n \frac{\partial^2 f}{\partial x_i\,\partial x_k}(x_0) \,v_iv_k
+=
+v^tHv
+>
+0
+\]
+geschrieben werden.
+Ein hinreichendes Kriterium für ein Minimum wird also zu einer
+Eigenschaft der Matrix $H$.
+
+\begin{definition}[Hessische Matrix]
+Ist $f\colon\mathbb{R}^n\to\mathbb{R}$ eine zweimal stetig differenzierbare
+Funktion, dann heisst die Matrix
+\[
+H(x_0)
+=
+\begin{pmatrix}
+h_{11}(x_0)&\dots &h_{1n}(x_0)\\
+\vdots&\ddots&\vdots\\
+h_{n1}(x_0)&\dots &v_{nn}(x_0)
+\end{pmatrix}
+\qquad\text{mit}\qquad
+h_{ik}(x_0)
+=
+\frac{\partial^2 f}{\partial x_i\,\partial x_k}(x_0)
+\]
+die {\em hessische Matrix}.
+\end{definition}
+
+Da die Funktion $f$ zweimal stetig differenzierbar angenommen wurde,
+sind die partiellen Ableitungen nach dem Satz von Schwarz
+\[
+\frac{\partial^2 f}{\partial x_i\,\partial x_k}(x_0)
+=
+\frac{\partial^2 f}{\partial x_k\,\partial x_i}(x_0)
+\]
+vertauschbar.
+Die hessische Matrix $H(x_0)$ ist daher immer symmetrisch: $H(x_0)^t=H(x_0)$.
+
+%
+% Notwendiges Kriterium für ein Extremum
+%
+\subsubsection{Notwendiges Kriterium für ein Extremum}
+Das Vorzeichen von $v^tH(x_0)v$ entscheidet darüber, ob ein Extremum
+vorliegt.
+Dies führt auf die folgende Definition.
+
+\begin{definition}
+Eine symmetrische Matrix $A$ heisst {\em positiv definit}, wenn 
+\index{positiv definit}%
+\index{definit, positiv}%
+$v^tH(x_0)v>0$ für alle Vektoren $v\in\mathbb{R}^n\setminus\{0\}$ ist.
+Sie heisst {\em positiv semidefinit}, wenn $v^tH(x_0)v\ge 0$ für alle
+Vektoren
+\index{positiv semidefinit}%
+\index{semidefinit, positiv}%
+$v\in\mathbb{R}^n\setminus\{0\}$ ist.
+\end{definition}
+
+\begin{satz}[Hinreichendes Kriterium für Extremum]
+Wenn die hessische Matrix einer zweimal stetig differenzierbaren
+Funktion $f\colon\mathbb{R}^n\to\mathbb{R}$ mit $\grad f(x_0)=0$ 
+an der Stelle $x_0$ positiv definit ist, dann hat $f$ an dieser
+Stelle ein Minimum.
+Wenn die hessische Matrix negativ definit ist, dann liegt ein Maximum
+vor.
+\end{satz}
+
+Im Falle einer Funktion einer Variablen lässt sich im Fall $f'(x_0)=0$
+und $f''(x_0)=0$ keine Aussage darüber machen lässt, ob ein Maximum 
+oder Minimum vorliegt.
+Bei einer Funktion mehrerer Variablen verunmöglicht bereits Semidefinitheit
+der hessischen Matrix, dass an der Stelle $x_0$ ein Extremum vorliegt.
+Zum Beispiel hat die Funktion $f(x,y)=x^2+y^3$ die hessische Matrix
+\[
+H(0)
+=
+\begin{pmatrix}
+2&0\\
+0&0
+\end{pmatrix}
+\qquad\text{die wegen}\qquad
+v^tH(0)v = v_1^2 \ge 0
+\]
+positiv semidefinit ist.
+Trotzdem hat $f$ im Nullpunkt kein Extremum.
+Andererseits hat die Funktion $f(x,y)=x^2+y^4$ die gleiche hessische
+Matrix im Nullpunkt, es liegt dort aber ein Minimum vor.
+
+%
+% Extremalkriterien
+%
+\subsubsection{Extremalkriterien}
+Das definierende Kriterium der positiven Definitheit, dass $v^tH(x_0)v>0$
+sein muss für alle Vektoren $v\in\mathbb{R}^n\setminus\{0\}$, ist
+relativ schwer nachzuprüfen.
+Daher sind alternative Kriterien wünschenswert, die leichter zu überprüfen
+sind.
+
+\begin{satz}[positive Eigenwerte]
+\label{buch:fuvar:hessische:satz:positiveeigenwerte}
+Ist $f\colon\mathbb{R}^n\to\mathbb{R}$ eine zweimal stetig differenzierbare
+Funktion mit $\grad f(x_0)=0$, dann liegt an der Stelle $x_0$ ein Minimum
+vor, wenn alle Eigenwerte der hessischen Matrix positiv sind.
+\end{satz}
+
+\begin{proof}
+Da die hessische Matrix symmetrisch ist, lässt sie sich orthogonal
+diagonalisieren.
+Seien $u_i$ orthonormierte Eigenvektoren mit $Hu_i=\lambda_iu_i$ und
+den Eigenwerten $\lambda_i>0$.
+Jeder Vektor $v$ kann also als Linearkombination
+\[
+v = \sum_{i=1}^n v_iu_i
+\]
+der Eigenvektoren $u_i$ geschrieben werden und 
+\[
+v^tHv
+=
+\sum_{i,k=1}^n
+v_ku_k^t
+Hv_iu_i
+=
+\sum_{i,k=1}^n v_iv_k\lambda_i \underbrace{u_k^tu_i}_{\displaystyle=\delta_{ik}}
+=
+\sum_{i=1}^{n} v_i^2\lambda_i > 0,
+\]
+somit ist die hessische Matrix positiv definit und es liegt ein
+Minimum vor.
+\end{proof}
+
+Die Anwendung von Satz~\ref{buch:fuvar:hessische:satz:positiveeigenwerte}
+verlangt die Berechnung aller Eigenwerte der hessischen Matrix, was für
+$n>2$ eher beschwerlich ist.
+Für eine symmetrische Matrix gibt es aber ein numerisch sehr einfach
+nachzuprüfendes Kriterium für positive Definitheit.
+
+\begin{satz}[Cholesky-Zerlegung]
+Sei $f\colon\mathbb{R}^n\to\mathbb{R}$ eine zweimal stetig differenzierbare
+Funktion mit $\grad f(x_0)=0$.
+Falls es eine untere Dreiecksmatrix $L$ mit $\det L\ne 0$ gibt derart,
+dass $H(x_0)=LL^t$ ist, dann liegt an der Stelle $x_0$ ein Minimum vor.
+\end{satz}
+
+\begin{proof}
+Für jeden beliebigen Vektor $v\in\mathbb{R}\setminus\{0\}$ folgt
+\[
+v^tHv
+=
+v^tLL^tv
+=
+(L^tv)^t L^tv
+=
+|L^tv|^2
+\ge
+0.
+\]
+Da die Matrix $L$ ausserdem invertierbar ist, gilt sogar $v^tHv>0$.
+Damit folgt, dass die hessische Matrix positiv definit ist und dass
+ein Minimum vorliegt.
+\end{proof}
+
+Die Zerlegung $H=LL^t$ heisst auch die Cholesky-Zerlegung, für die
+\label{Cholesky-Zerlegung}%
+es einen numerischen Algorithmus gibt, der sehr viel effizienter
+durchzuführen ist als die Bestimmung der Eigenwerte
+\cite[Abschnitt 12.3]{buch:linalg}.
+
+
+%
+% Die Tayloer-Reihe für Funktionen mehrere Variablen
+%
+\subsection{Die Taylor-Reihe für Funktionen mehrere Variablen}
 
 \begin{verbatim}
-- zweite Ableitungen
-- Approximation als quadratische Funktion
-- Notwendige Bedinungen für Extremum
-- Hessische  Matrix und Diagonalisierung
 - Taylorreihe in n Variablen
 \end{verbatim}
