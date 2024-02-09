@@ -205,7 +205,8 @@ $\grad g(x_0)\cdot v=0$ gilt.
 
 Damit haben wir die folgende notwendige Bedingung gefunden.
 
-\begin{satz}
+\begin{satz}[Extremalproblem mit einer Nebenbedingung]
+\label{buch:fuvar:nebenbedingungen:satz:nebenbedingung}
 Sei $f\colon\mathbb{R}^n\to\mathbb{R}$ eine stetig differenzierbare
 Funktion, die im Punkt $x_0\in\mathbb{R}^n$ unter allen Punkten
 $x\in\mathbb{R}^n$ ein Extremum annimmt unter der Nebenbedingung
@@ -229,6 +230,17 @@ auf $\grad g(x_0)$ senkrecht stehen.
 Dies trifft wegen $\grad g(x_0)\ne 0$ genau dann zu, wenn $\grad f(x_0)$
 ein Vielfaches von $\grad g(x_0)$ ist.
 \end{proof}
+
+Die Lösung des Extremalproblems in
+Satz~\ref{buch:fuvar:nebenbedingungen:satz:nebenbedingung}
+\input{chapters/010-fuvar/fig/nebenbedingung.tex}
+lässt sich auch wie in
+Abbildung~\ref{buch:fuvar:nebenbedingungen:fig:nebenbedingung}
+visualisieren.
+Die Funktion $f(x,y)$ ist durch ihre blauen Niveaulinien 
+dargestellt, die Nebenbedingung durch die rote Kurve.
+Das Extremum kann dort gefunden werden, wo die Normalen auf die
+Niveaulinien und die rote Kurve parallel sind.
 
 \begin{beispiel}
 Wir lösen die eingangs gestellte Aufgabe, die Extrema der Funktion
@@ -268,9 +280,11 @@ proportional sind, für die also das Gleichungssystem
 \grad f({\color{darkred}x})&=\lambda \grad g({\color{darkred}x})\\
       g({\color{darkred}x})&=0
 \end{aligned}
+\quad
 \right\}
-\quad\Rightarrow\quad
+\qquad\Rightarrow\qquad
 \left\{
+\quad
 \renewcommand\arraycolsep{2pt}
 \begin{array}{rcrcrcr}
 	&-& {\color{darkred}x_2}
@@ -414,7 +428,7 @@ Dg(x_0) v
 0.
 \]
 
-\begin{satz}
+\begin{satz}[Lagrange-Multiplikatoren]
 \label{buch:fuvar:nebenbedingungen:satz:lm}
 Seien $f\colon\mathbb{R}^n\to\mathbb{R}$ und
 $g_i\colon\mathbb{R}^n\to\mathbb{R}$, $i=1,\dots,k$, stetig

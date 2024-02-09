@@ -65,14 +65,15 @@ eine echte Teilmenge von $A$ ist.
 Da die Funktion $f_k$ nur noch eine Funktion einer einzigen Variablen
 ist, ist auch klar, wie sie abgeleitet werden muss.
 Die Ableitung von $f_k$ ist
-\[
+\begin{align*}
 \frac{d}{dx_k} f_k(x_k)
-=
+&=
 \lim_{h\to 0} \frac{f_k(x_k+h)-f_k(x_k)}{h}
-=
+\\
+&=
 \lim_{h\to 0}
 \frac{f_k(x_1,\dots,x_k+h,\dots,x_n)-f_k(x_1,\dots,x_k,\dots,x_n)}{h}.
-\]
+\end{align*}
 
 \begin{definition}
 \label{buch:richtungsbleitung:def:partielleableitung}
@@ -226,6 +227,7 @@ Werte $x$, $y(x)$ und $y'(x)$ als Argumente eingesetzt werden.
 % Lineare Ersatzfunktion
 %
 \subsubsection{Lineare Ersatzfunktion}
+\input{chapters/010-fuvar/fig/tangentialebene.tex}
 Die Ableitung einer Funktion wird manchmal auch als eine lineare
 Ersatzfunktion definiert.
 
@@ -315,7 +317,7 @@ gegeben.
 Für Funktionen mehrerer Variablen wird die Formel etwas komplizierter.
 
 \begin{satz}
-Seien $f\colon \mathbb{R}^n\to\mathbb{R}^m$ und
+Seien $f\colon \mathbb{R}^m\to\mathbb{R}^n$ und
 $g\colon\mathbb{R}^r\to\mathbb{R}^m$ Funktionen und sei zudem
 $g$ im Punkt $x_0$ differenzierbar und $f$ im Punkt $g(x_0)$.
 Dann ist die Zusammensetzung $f\circ g$ differenzierbar im Punkt $x_0$
@@ -337,6 +339,127 @@ D_kf(g(x_0)) Dg(x_0)
 \frac{\partial y_l}{\partial x_k}(x_0).
 \]
 
+%
+% Höhere Ableitungen
+%
+\subsubsection{Höhere Ableitungen}
+Ist $f\colon U\to\mathbb{R}$ eine differenzierbare Funktion, dann ist
+die Ableitung
+\[
+\partial_if\colon x\mapsto \frac{\partial f}{\partial x_i}(x)
+\]
+wieder eine stetige Funktion auf $U$, und man kann erneut die Frage
+stellen, ob sie differenzierbar ist.
+Die folgende rekursive Definition schafft einen handlichen Begriff
+dafür.
+
+\begin{definition}[Höhere partielle Ableitungen]
+Eine Funktion $f\colon U\to\mathbb{R}$ mit $U\subset\mathbb{R}^n$ heisst
+{\em $n$ mal differenzierbar}, wenn die partiellen Ableitungen
+\[
+\partial_i f
+\colon
+U\to\mathbb{R}
+:
+x\mapsto
+\frac{\partial f}{\partial x_i}(x)
+\]
+für alle $i=1,\dots,n$ $n-1$-mal differenzierbar sind.
+Sie heisst {\em $n$-mal stetig} differenzierbar, wenn alle partiellen
+ersten Ableitungen $n-1$-mal stetig differenzierbar sind.
+\end{definition}
+
+Wenn eine Funktion zweimal differenzierbar ist, existieren alle
+partiellen Ableitungen
+\[
+\frac{\partial^2 f}{\partial x_i\,\partial x_k},
+\quad
+i,k=1,\dots,n,
+\]
+es ist aber a priori alles andere als klar, ob die Reihenfolge der
+Ableitungen eine Rolle spielt.
+Der folgende Satz von Schwarz klärt diese Frage.
+
+\begin{satz}[Schwarz]
+Ist $f\colon U\to\mathbb{R}$ für eine offene Umgebung $U\subset\mathbb{R}^n$
+eine zweimal stetig differenzierbare Funktion, dann kommt es bei
+gemischten Ableitungen nicht auf die Reihenfolge an, es ist
+\[
+\frac{\partial^2 f}{\partial x_i\,\partial x_k}(x)
+=
+\frac{\partial^2 f}{\partial x_k\,\partial x_i}(x)
+\]
+für alle $x\in U$.
+\end{satz}
+
+Man beachte, dass der Satz nicht gilt, wenn die Ableitungen nur
+existieren, aber nicht notwendigerweise stetig sind.
+In diesem Fall lassen sich Gegenbeispiele konstruieren.
+
+\begin{beispiel}
+\label{buch:fuvar:richtungsableitung:beispiel:schwarz}
+\input{chapters/010-fuvar/fig/schwarz.tex}
+Wir betrachten die Funktion
+\[
+f
+\colon
+\mathbb{R}^2\to\mathbb{R}
+:
+(x,y)
+\mapsto
+f(x,y)
+=
+\begin{cases}
+\displaystyle \frac{x^3y-xy^3}{x^2+y^2}&\qquad (x,y)\ne (0,0)\\
+(0,0)&\qquad\text{sonst}
+\end{cases}
+\]
+Die Ableitungen im Nullpunkt sind
+\begin{align*}
+\frac{\partial f}{\partial x}(x,y)
+&=
+\frac{x^4y+4x^2y^3-y^5}{(x^2+y^2)^2}
+&&\Rightarrow&
+\frac{\partial f}{\partial x}(0,y)
+&=
+\frac{-y^5}{y^4} = -y
+\\
+\frac{\partial f}{\partial y}(x,y)
+&=
+\frac{x^5-4x^3y^2-xy^4}{(x^2+y^2)^2}
+&&\Rightarrow&
+\frac{\partial f}{\partial y}(x,0)
+&=
+\frac{x^5}{x^4}
+=
+x.
+\intertext{Daraus ergeben sich die zweiten Ableitungen}
+\frac{\partial^2 f}{\partial y\,\partial x}(0,y)
+&=
+\frac{\partial}{\partial y}(-y)
+=
+-1
+&&\Rightarrow&
+\frac{\partial^2 f}{\partial y\,\partial x}(0,0)
+&=
+-1
+\\
+\frac{\partial^2 f}{\partial x\,\partial y}(x,0)
+&=
+\frac{\partial}{\partial x}(x)
+=
+1
+&&\Rightarrow&
+\frac{\partial^2 f}{\partial x\,\partial y}(0,0)
+&=
+1,
+\end{align*}
+die beiden gemischten partiellen Ableitungen sind also an der Stelle
+$(0,0)$ verschieden.
+Auch die Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz}
+zeigt, dass der Funktionsgraph im Nullpunkt keine lineare
+Ersatzfunktion hat.
+\end{beispiel}
 
 %
 % Richtungsableitung
@@ -346,10 +469,12 @@ Die partiellen Ableitungen einer Funktion $f(x_1,\dots,x_n)$
 nach der Variablen $x_k$ entstehen dadurch, dass alle Variablen
 ausser $x_k$ konstant gehalten werden und die so entstehende
 Funktion der einzigen Variablen $x_k$ abgeleitet wird.
+\input{chapters/010-fuvar/fig/richtungsableitung.tex}
 Die Funktion $f$ kann aber noch auf eine andere Art zu einer
 Funktion nur einer Variablen gemacht werden.
 Dazu verwendet man die Parameterdarstellung $x(t) = x + vt$ einer
-Geraden durch den Punkt $x$ mit Richtungsvektor $v$.
+Geraden durch den Punkt $x$ mit Richtungsvektor $v$
+(Abbildung~\ref{buch:fuvar:richtungsableitung:fig:richtungsableitung}).
 Die Funktion $f(x+vt)$ hängt nur noch von der Variablen $t$ ab
 und kann wie gewohnt nach $t$ abgeleitet.
 
@@ -438,11 +563,14 @@ Vektor
 \operatorname{grad}f(x)
 =
 {
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.9}
 \begin{pmatrix}
+\displaystyle
 \frac{\partial f}{\partial x_1}(x)\\
+\displaystyle
 \frac{\partial f}{\partial x_2}(x)\\
 \vdots \\
+\displaystyle
 \frac{\partial f}{\partial x_n}(x)
 \end{pmatrix}
 }
@@ -464,11 +592,14 @@ Der {\em Nabla-Operator} ist der Differentialoperator
 \nabla 
 =
 {
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.8}
 \begin{pmatrix}
+\displaystyle
 \frac{\partial}{\partial x_1}\\
+\displaystyle
 \frac{\partial}{\partial x_2}\\
 \vdots\\
+\displaystyle
 \frac{\partial}{\partial x_n}
 \end{pmatrix}
 }
@@ -479,11 +610,14 @@ $\mathbb{R}^n\to\mathbb{R}$, der durch
 \nabla f
 =
 {
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.9}
 \begin{pmatrix}
+\displaystyle
 \frac{\partial f}{\partial x_1}(x)\\
+\displaystyle
 \frac{\partial f}{\partial x_2}(x)\\
 \vdots\\
+\displaystyle
 \frac{\partial f}{\partial x_n}(x)
 \end{pmatrix}
 }
