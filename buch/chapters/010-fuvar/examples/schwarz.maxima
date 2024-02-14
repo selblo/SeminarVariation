@@ -7,3 +7,4 @@
 f: (x^3*y-x*y^3)/(x^2+y^2);
 fx: ratsimp(diff(f,x));
 fy: ratsimp(diff(f,y));
+fxy: ratsimp(diff(diff(f,y),x));

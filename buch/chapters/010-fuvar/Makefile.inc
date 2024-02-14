@@ -12,4 +12,5 @@ CHAPTERFILES +=								\
 	chapters/010-fuvar/5-quadratisch.tex				\
 	chapters/010-fuvar/fig/tangentialebene.tex			\
 	chapters/010-fuvar/fig/schwarz.tex				\
+	chapters/010-fuvar/fig/karte.tex				\
 	chapters/010-fuvar/chapter.tex
