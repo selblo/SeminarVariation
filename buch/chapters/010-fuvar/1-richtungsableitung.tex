@@ -411,9 +411,12 @@ f(x,y)
 =
 \begin{cases}
 \displaystyle \frac{x^3y-xy^3}{x^2+y^2}&\qquad (x,y)\ne (0,0)\\
-(0,0)&\qquad\text{sonst}
+(0,0)&\qquad\text{sonst},
 \end{cases}
 \]
+die auch in Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz}
+zusammen mit den partiellen ersten Ableitungen und den gemischten
+zweiten Ableitungen dargestellt ist.
 Die Ableitungen im Nullpunkt sind
 \begin{align*}
 \frac{\partial f}{\partial x}(x,y)
@@ -433,7 +436,9 @@ Die Ableitungen im Nullpunkt sind
 \frac{x^5}{x^4}
 =
 x.
-\intertext{Daraus ergeben sich die zweiten Ableitungen}
+\intertext{Sie sind in Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz}
+in der Mitte rot hervorgehoben.
+Daraus ergeben sich die zweiten Ableitungen}
 \frac{\partial^2 f}{\partial y\,\partial x}(0,y)
 &=
 \frac{\partial}{\partial y}(-y)
@@ -452,12 +457,21 @@ x.
 &&\Rightarrow&
 \frac{\partial^2 f}{\partial x\,\partial y}(0,0)
 &=
-1,
+1.
 \end{align*}
-die beiden gemischten partiellen Ableitungen sind also an der Stelle
-$(0,0)$ verschieden.
-Auch die Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz}
-zeigt, dass der Funktionsgraph im Nullpunkt keine lineare
+Die erste Gleichung entspricht den roten Geraden über der $y$-Achse
+in Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz},
+die zweite entspricht den roten Geraden über der $x$-Achse.
+Die roten Geraden zeigen daher gemischte zweite Ableitungen in
+verschiedenen Differentiationsreihenfolgen mit verschiedenen
+Werten.
+Somit sind die Grenzwerte an der Stelle $(0,0)$ verschieden und
+die Funktion der gemischten Ableitungen ist nicht stetig an der Stelle
+$(0,0)$.
+
+Die Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz}
+zeigt auch, dass der Funktionsgraph sowohl von $\frac{\partial f}{\partial x}$
+und $\frac{\partial f}{\partial y}$ im Nullpunkt keine lineare
 Ersatzfunktion hat.
 \end{beispiel}
 
