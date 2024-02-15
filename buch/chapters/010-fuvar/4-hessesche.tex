@@ -132,6 +132,7 @@ $v\in\mathbb{R}^n\setminus\{0\}$ ist.
 \end{definition}
 
 \begin{satz}[Hinreichendes Kriterium für Extremum]
+\label{buch:fuvar:hessesche:satz:kriterium}
 Wenn die hessesche Matrix einer zweimal stetig differenzierbaren
 Funktion $f\colon\mathbb{R}^n\to\mathbb{R}$ mit $\grad f(x_0)=0$ 
 an der Stelle $x_0$ positiv definit ist, dann hat $f$ an dieser
@@ -242,10 +243,328 @@ durchzuführen ist als die Bestimmung der Eigenwerte
 
 
 %
-% Die Tayloer-Reihe für Funktionen mehrere Variablen
+% Die Taylor-Reihe für Funktionen mehrere Variablen
 %
-\subsection{Die Taylor-Reihe für Funktionen mehrere Variablen}
+\subsection{Extrema und höhere Ableitungen
+\label{buch:fuvar:hessesche:subsection:extrema}}
+Verschwinden für eine Funktion einer Variablen auch höher als die erste
+Ableitung, zieht man gemeinhin die Taylor-Reihe
+\begin{align*}
+\mathscr{T_{x_0}}f(x)
+&=
+f(x_0) + f'(x_0)(x-x_0)
++
+\frac{f''(x_0)}{2!}(x-x_0)^2
++
+\frac{f'''(x_0)}{3!}(x-x_0)^3
++
+\dots
+\\
+&=
+\sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
+\end{align*}
+im Punkt $x_0$ hinzu, um zu entscheiden, ob im Punkt $x_0$ ein Extremum
+vorliegt.
+Ist die erste nicht verschwindende Ableitung von gerade Ordnung $2r$, dann
+liegt genau dann ein Maximum vor, wenn $f^{(2r)}(x_0)<0$ ist, andernfalls
+liegt ein Minimum vor.
+Ist die erste nicht verschwindende Ableitung dagegen von ungerader Ordnung,
+liegt ein Sattelpunkt vor, also kein Extremum.
+Diese Argumentationsweise lässt sich auf auf Funktionen von mehreren
+Variablen übertragen, was in diesem Abschnitt geschehen soll.
+Wir nehmen im Folgenden an, dass alle vorkommenden Funktionen konvergente
+Taylor-Reihen haben.
 
-\begin{verbatim}
-- Taylorreihe in n Variablen
-\end{verbatim}
+%
+% Taylor-Reihe
+%
+\subsubsection{Die Taylor-Reihe für Funktionen zweier Variablen}
+Die partiellen Funktionen einer Funktion von zwei Variablen lassen
+sich in Taylor-Reihen entwickeln:
+\begin{align}
+f(x,y)
+&=
+\mathscr{T}_{x_0} f(x,y)
+=
+f(x_0,y)
++
+\frac{\partial f}{\partial x}(x_0,y) (x-x_0)
++
+\frac{1}{2!}
+\frac{\partial^2 f}{\partial x^2}(x_0,y) (x-x_0)^2
+%+
+%\frac{1}{3!}
+%\frac{\partial^3 f}{\partial x^3}(x_0,y_0) (x-x_0)^3
++
+\dots
+\label{buch:fuvar:hessesche:taylor:Tfx}
+\\
+%f(x,y)
+&=
+\mathscr{T}_{y_0} f(x,y)
+=
+f(x,y_0)
++
+\frac{\partial f}{\partial y}(x,y_0)(y-y_0)
++
+\frac{1}{2!}
+\frac{\partial^2 f}{\partial y^2}(x,y_0) (y-y_0)^2
+%+
+%\frac{1}{3!}
+%\frac{\partial^3 f}{\partial y^3}(x_0,y_0) (y-y_0)^3
++
+\dots
+\label{buch:fuvar:hessesche:taylor:Tfy}
+\end{align}
+In jedem Term ist der Koeffizient eine Funktion von $y$, die als
+Taylor-Reihe entwickelt werden kann.
+\begin{equation}
+\renewcommand{\arraycolsep}{0pt}
+\renewcommand{\arraystretch}{2.2}
+\rlap{\raisebox{-1.63cm}{\begin{tikzpicture}[thick]
+\draw[color=white] (0,0) rectangle (1,3.4);
+\fill[color=darkred!10] (1.27,0) rectangle (4.77,3.4);
+\fill[color=blue!10] (4.81,0) rectangle (9.77,3.4);
+\fill[color=white] (4.79,2.55) rectangle (5.1,3.41);
+\end{tikzpicture}}}
+\begin{array}{cccrclcrclcrclc}
+f(x,y)
+&\;=\;& &f(x_0,y_0)&&
+&\mathstrut+\mathstrut
+&\displaystyle\frac{\partial f}{\partial x}(x_0,y_0)&\cdot&(x-x_0)
+%&+&\displaystyle\frac1{2!}\frac{\partial^2 f}{\partial x^2}(x_0,y_0)(x-x_0)^2
+&\mathstrut+\mathstrut
+&&&\dots
+\\
+&
+&\mathstrut+\mathstrut
+&\displaystyle\frac{\partial f}{\partial y}(x_0,y_0)&\cdot&(y-y_0)
+&\mathstrut+\mathstrut
+&\displaystyle\frac{\partial^2 f}{\partial y\,\partial x}(x_0,y_0)&\cdot&(y-y_0)(x-x_0)
+%&+&\displaystyle\frac{1}{2!}\frac{\partial^3 f}{\partial y\,\partial x}(x_0,y_0)(y-y_0)(x-x_0)
+&\mathstrut+\mathstrut
+&&&\dots
+\\
+&
+&\mathstrut+\mathstrut
+&\displaystyle\frac12\frac{\partial^2 f}{\partial y^2}(x_0,y_0)&\cdot&(y-y_0)^2
+&\mathstrut+\mathstrut
+&\displaystyle\frac12\frac{\partial^3 f}{\partial y^2\,\partial x}(x_0,y_0)&\cdot&(x-x_0)(y-y_0)^2
+&\mathstrut+\mathstrut
+&&&\dots
+\\[-5pt]
+&
+&\mathstrut+\mathstrut
+&&\vdots&
+&\mathstrut+\mathstrut
+&&\vdots&
+&\mathstrut+\mathstrut
+&&&\ddots
+\end{array}
+\label{buch:fuvar:hessesche:taylor:2d}
+\end{equation}
+Die rote Spalte ist die Taylor-Reihe $\mathscr{T}_{y_0} f(x_0,y)$ der
+partiellen Funktion $y\mapsto f(x_0,y)$ an der Stelle $y_0$.
+Die blaue Spalte ist die Taylor-Reihe
+\[
+\mathscr{T}_{y_0} \frac{\partial f}{\partial x}(x_0,y)
+\]
+der partiellen Funktion der partiellen ersten Ableitung von $f$ nach $x$
+an der Stelle $y_0$.
+Die gleiche Konstruktion ist auch ausgehend von der zweiten Entwicklung
+\eqref{buch:fuvar:hessesche:taylor:Tfy} möglich und ergibt eine
+analoge Summe mit vertauschter Ableitungsreihenfolge.
+Für eine beliebig oft stetig differenzierbare Funktion sind die
+Ableitunten nach dem Satz von Schwarz nicht abhängig von der Reihenfolge,
+es entsteht also die gleiche Reihenentwicklung.
+
+Die Reihenentwicklung \eqref{buch:fuvar:hessesche:taylor:2d} kann auch
+\begin{align}
+f(x,y)
+=
+\mathscr{T}_{(x_0,y_0)}f(x,y)
+&=
+\sum_{k=0}^\infty
+\sum_{l=0}^k
+\frac{1}{l!\,(k-l)!}
+\frac{\partial^k f}{\partial x^l\,\partial y^{k-l}}(x_0,y_0)
+(x-x_0)^l(y-y_0)^{k-l}
+\notag
+\\
+&=
+\sum_{k=0}^\infty
+\frac{1}{k!}
+\sum_{l=0}^k
+\binom{k}{l}
+\frac{\partial^k f}{\partial x^l\,\partial y^{k-l}}(x_0,y_0)
+(x-x_0)^l(y-y_0)^{k-l}
+\label{buch:fuvar:hessesche:taylor2:summe}
+\end{align}
+geschrieben werden.
+
+%
+%
+%
+\subsubsection{Multiindizes}
+Die Terme der Taylor-Reihe \eqref{buch:fuvar:hessesche:taylor2:summe}
+sind charakterisiert durch die beiden Zahlen $l$ und $k-l$, eine symmetrischere
+Schreibweise wäre daher
+\[
+\mathscr{T}_{(x_0,y_0)}f(x,y)
+=
+\sum_{k=0}^\infty
+\frac{1}{k!}
+\sum_{l_1+l_2=k}
+\frac{k!}{l_1!\,l_2!}
+\frac{\partial^k f}{\partial x^{l_1}\,\partial y^{l_2}}(x_0,y_0)
+(x-x_0)^{l_1}(y-y_0)^{l_2}.
+\]
+Eine Taylor-Reihe für Funktionen von $n$ Variablen $x_1,\dots,x_n$ wird
+daher durch $n$ Zahlen $l_1,\dots,l_n$ charakterisiert, die wir auch
+als $n$-Tupel oder als Vektor schreiben können.
+
+\begin{definition}[Multiindex]
+Ein {\em $n$-dimensionaler Multiindex} ist ein $n$-Tupel
+$\mathbf{l}\in\mathbb{N}^n$ mit den Komponenten $l_1,\dots,l_n$.
+\end{definition}
+
+Damit die Ausdrücke in der Taylor-Entwicklung kompakt geschrieben werden 
+können, müssen geeignete Operationen mit Multiindizes formuliert werden.
+
+\begin{definition}[Operationen mit Multiindizes]
+Seine $\mathbf{l}$ und $\mathbf{m}$ beides $n$-dimensionale Multiindizes.
+Dann sei
+\begin{enumerate}
+\item {\em Ordnung} eines Multiindex: $|l|=l_1+\dots+l_n$.
+\item {\em Summe}: $\mathbf{l}+\mathbf{m}$ ist der Multiindex mit
+den Komponenten $l_1+m_1,\dots,l_n+m_n$.
+\item {\em Fakultät}: $\mathbf{l}! = l_1!\, \dots\, l_n!$.
+\item {\em Multinomialkoeffizient}: $\displaystyle
+\binom{|\mathbf{l}|}{\mathbf{l}}
+=
+\frac{|\mathbf{l}|!}{\mathbf{l}!}
+=
+\frac{(l_1+\dots+l_n)!}{l_1!\,\dots\,l_n!}
+$
+\item {\em Potenzen}: Sei $x\in\mathbb{R}^n$ ein $n$-dimensionaler Vektor,
+dann ist $x^{\mathbf{l}} = x_1^{l_1}\cdot\ldots\cdot x_n^{l_n}$.
+\item {\em Partielle Ableitungen}: Sei $f\colon\mathbb{R}^n\to\mathbb{R}$
+eine $|\mathbf{l}|$-mal stetig differenzierbare Funktion, dann sind die
+partiellen Ableitungen
+\[
+\frac{\partial^{\mathbf{l}} f}{\partial x^{\mathbf{l}}}(x)
+=
+\frac{\partial^{l_1+\dots+l_n} f}{\partial x_1^{l_1}\,\cdots\,\partial x_n^{l_n}}(x).
+\]
+\end{enumerate}
+\end{definition}
+Die Multindex-Notation ist konsistent mit üblichen algebraischen
+Rechenregeln, zum Beispiel gilt
+$x^{\mathbf{l}}x^{\mathbb{m}}=x^{\mathbf{l}+\mathbf{m}}$
+oder 
+\[
+\frac{\partial^{\mathbf{l}}}{\partial x^{\mathbf{l}}}
+\frac{\partial^{\mathbf{m}}f}{\partial x^{\mathbf{m}}}(x)
+=
+\frac{\partial^{\mathbf{l}+\mathbf{m}}f}{\partial x^{\mathbf{l}+\mathbf{m}}}(x).
+\]
+Die Multinomialformel für die $k$-te Potenz der Summe
+$x_1+\dots+x_n$ der Komponenten des Vektors $x\in\mathbb{R}^n$
+kann damit ebenfalls sehr kompakt als
+\[
+(x_1+\dots+x_n)^{k}
+=
+\sum_{|\mathbf{l}|=k}
+\binom{k}{\mathbf{l}} x^{\mathbf{l}}
+\]
+geschrieben werden.
+
+%
+% Taylor-Reihe von Funktionen R^n -> R
+%
+\subsubsection{Talyor-Reihe für Funktionen von $n$ Variablen}
+Mit der Multiindex-Notation lässt sich jetzt auch die Taylor-Reihe
+für eine Funktion $f\colon\mathbb{R}^n\to\mathbb{R}$ von $n$ Variablen
+aufschreiben.
+Dazu schreiben wir zunächst die Taylor-Reihe
+\eqref{buch:fuvar:hessesche:taylor2:summe}
+einer Funktion von zwei Variablen in Multiindex-Notation als
+\[
+\mathscr{T}_{(x_0,y_0)}f(x,y)
+=
+\sum_{k=0}^\infty
+\frac{1}{k!}
+\sum_{|\mathbf{l}|=k}
+\frac{k!}{\mathbf{l}!}
+\frac{\partial^k f}{\partial x^{\mathbf{l}}}
+(x_0,y_0)
+\begin{pmatrix}
+x-x_0\\
+y-y_0
+\end{pmatrix}^{\mathbf{l}}
+=
+\sum_{k=0}^\infty
+\frac{1}{k!}
+\sum_{|\mathbf{l}|=k}
+\binom{k}{\mathbf{l}}
+\frac{\partial^{\mathbf{l}} f}{\partial x^{\mathbf{l}}}(x_0,y_0)
+\begin{pmatrix}
+x-x_0\\
+y-y_0
+\end{pmatrix}^{\mathbf{l}}.
+\]
+In Analogie dazu können wir jetzt auch die Taylor-Reihe einer Funktion
+von $n$-Variablen schreiben.
+
+\begin{definition}[Taylor-Reihe]
+Sei $f\colon\mathbb{R}^n\to\mathbb{R}$ eine beliebig oft stetig
+differenzierbare Funktion.
+Die {\em Taylor-Reihe} von $f$ im Punkt $x_*$ ist die Reihe
+\[
+\mathscr{T}_{x_*} f(x)
+=
+\sum_{k=0}^\infty
+\frac{1}{k!}
+\sum_{|\mathbf{l}|=k}
+\binom{k}{\mathbf{l}}
+\frac{\partial^k f}{\partial x^{\mathbf{l}}}(x_*) (x-x_*)^{\mathbf{l}}
+=
+\sum_{k=0}^\infty
+\sum_{|\mathbf{l}|=k}
+\frac{1}{\mathbf{l}!}
+\frac{\partial^k f}{\partial x^{\mathbf{l}}}(x_*) (x-x_*)^{\mathbf{l}}.
+\]
+\end{definition}
+
+Für viele praktisch wichtige Funktione ist die Taylor-Reihe konvergent
+und kann damit zur Beurteilung verwendet werden, ob ein kritischer Punkt
+$x_*\in\mathbb{R}^n$ ein Extremum ist.
+Wie im Fall einer Variablen ist ein kritischer Punkt $x_*$ kein Extremum
+wenn die niedrigste Ordnung der in $x_*$ nicht verschwindenden partiellen
+Ableitungen ungerade ist.
+Für gerade Ableitungen ist es deutlich schwieriger, notwendige Kriterien
+für ein Extremum zu formulieren.
+Die Funktion
+\[
+f(x,y)
+=
+x^4 + y^5
+\]
+hat $4$ als niedrigste Ordnung einer nicht verschwindenden partiellen
+Ableitung in $0$.
+Trotzdem ist der Nullpunkt kein Minimum, denn die partielle Funktion
+$y\mapsto f(0,y)=y^5$ einen Sattelpunkt bei $y=0$ hat.
+Es würde aber zum Bespiel genügen, wenn
+\[
+\sum_{2r=|\mathbf{l}|}
+\frac{\partial^{2r}f}{\partial \mathbf{l}}
+(x-x_*)^{\mathbf{l}}
+>
+0
+\]
+ist für alle Vektoren $x\in\mathbb{R}\setminus\{x_*\}$.
+Für $r=1$ ist dies das Kriterium von
+Satz~\ref{buch:fuvar:hessesche:satz:kriterium}.
+
+
+

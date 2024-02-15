@@ -6,9 +6,140 @@
 \section{Kritische Punkte
 \label{buch:fuvar:section:kritisch}}
 \kopfrechts{Kritische Punkte}
+In der Analysis der Funktionen einer Variablen lernt man, dass die
+Nullstellen der Ableitung einer Funktion Kandidaten für die Extrema
+sind.
+Das verschwinden der ersten Ableitung ist also eine notwendige Bedingung
+für ein Minimum oder Maximum.
+In diesem Abschnitt soll dieses Kriterium auf Funktionen mehrere
+Variablen übertragen werden.
 
-\begin{verbatim}
-- verschwindende erste Ableitungen
-- notwendige Bedingung für Extremum
-- Orthogonalität
-\end{verbatim}
+%
+% Das Verschwinden der ersten Ableitungen
+%
+\subsection{Notwendige Bedingung für Extrema}
+Wir betrachten eine stetig differenzierbare Funktion 
+\[
+f
+\colon
+\mathbb{R}^n\to\mathbb{R}
+:
+(x_1,\dots,x_n) \mapsto f(x_1,\dots,x_n) = f(x)
+\]
+und fragen nach den Extrema.
+In einem Extremem $x^*\in\mathbb{R}^n$ wird auch jede der partiellen
+Funktionen
+\[
+x_k \mapsto f(x_1^*,\dots,x_k,\dots,x_n^*)
+\]
+ein Extremum annehmen.
+Es ist daher notwendig, dass auch die Ableitungen dieser partiellen
+Funktionen Nullstellen in $x^*$ haben, es muss daher gelten
+\begin{equation*}
+\frac{\partial f}{\partial x_k}(x^*) = 0
+\end{equation*}
+für alle $k=1,\dots,n$.
+Wir geben einem solchen Punkt $x^*$ einen speziellen Namen.
+
+\begin{definition}[Kritischer Punkt]
+Ist $f\colon \mathbb{R}^n\to\mathbb{R}$ eine stetig differenzierbare
+Funktion dann heisst ein Punkt $x^*\in\mathbb{R}^n$, in dem alle
+ersten partiellen Ableitungen
+\begin{equation}
+\frac{\partial f}{\partial x_k}(x^*) = 0
+\end{equation}
+verschwinden, ein {\em kritischer Punkt}.
+\index{kritischer Punkt}
+\end{definition}
+
+Da der Gradient der Vektor der partiellen Ableitung ist, ist ein
+kritischer Punkt auch eine Nullstelle des Gradienten $\grad f$.
+
+\begin{satz}
+Sei $f\colon\mathbb{R}^n\to\mathbb{R}$ eine stetig differenzierbare
+Funktion.
+Dafür, dass $f(x)$ im Punkt $x^*\in\mathbb{R}^n$ ein Minimum oder Maximum
+annimmt, ist notwendig, dass $x^*$ ein kritischer Punkt ist.
+\end{satz}
+
+Um zu entscheiden, ob tatsächlich ein Minimum oder Maximum vorliegt,
+sind wie im eindimensionalen Fall auch höhere Ableitungen zu berücksichtigen.
+Da es viele höhere partielle Ableitungen gibt, werden die Bedingungen
+jedoch deutlich komplizierter.
+Die Matrix der zweiten Ableitungen wird im
+Abschnitt~\ref{buch:fuvar:section:hessesche} genauer untersucht 
+und ein hinreichendes Kriterium für Extrema hergeleitet.
+
+%
+% Rand
+%
+\subsection{Rand}
+Bisher wurde angenommen, dass die Funktion auf ganz $\mathbb{R}^n$
+definiert ist.
+Auch für eine Funktion einer Variablen, die nur auf einem Intervall
+$[a,b]$ definiert ist, müssen die Randpunkte des Intervalls als
+zusätzliche Kandidation für Extrema in betracht gezogen werden.
+Falls $f'(a)>0$ ist, liegt in $a$ ein lokales Minimum vor, für
+$f'(b)>0$ ein lokales Maximum in $b$.
+
+Die analoge Situation für eine Funktion von $n$ Variablen ist der
+Definitionsbereich $D=\{x\in \mathbb{R}\mid x_1\ge 0\}$.
+Zusätzlich zu den kritischen Punkten im Inneren von $D$ sind die
+Randpunkte $x_1=0$ gesondert zu untersuchen.
+Eine notwendige Bedingung für ein Maximum oder Minimum der Funktion
+$f\colon D\mathbb{R}$ auf dem Rand ist dann, dass die Einschränkung
+\[
+f_{\partial D}
+\colon
+\mathbb{R}^{n-1}\to \mathbb{R}
+:
+(x_2,\dots,x_n)\mapsto f(0,x_2,\dots,x_n)
+\]
+auf den Rand einen kritischen Punkt hat.
+Es müssen also alle partiellen Ableitungen
+\[
+\frac{\partial f}{\partial x_k}(0,x_2,\dots,x_n)
+=
+0,\qquad k=2,\dots,n,
+\]
+nach den Variablen
+$x_2,\dots,x_n$ verschwinden.
+
+Sei jetzt $D$ ein Halbraum, der durch eine Hyperebene mit der Gleichung
+\[
+\vec{n}\cdot (x-x_0) = 0
+\]
+in Normalenform mit der Normalen $\vec{n}$ berandet ist.
+Zusätzlich zu den inneren kritischen Punkten sind weitere Kandidaten
+für lokale Extrema Punkte, in denen die Richtungsableitung für alle
+Richtungen parallel zur Randebene verschwindet.
+Ist also $\vec{v}\cdot \vec{n}$, dann muss
+\[
+D_{\vec{v}} f(x_0)
+=
+\frac{d}{\partial t}f(x_0+\vec{v})\bigg|_{t=0}
+=
+\grad f(x_0)\cdot \vec{v}
+=
+0
+\]
+erfüllt sein.
+Dies ist gleichbedeutend damit, dass der Gradient $\grad f(x_0)$ parallel
+zur Normalen $\vec{n}$ ist.
+
+\begin{satz}
+Dafür, dass eine stetig differenzierbare Funktion auf dem Halbraum
+$D=\{x\in\mathbb{R}^n\mid (x-x_0)\cdot\vec{n}\le 0\}$ ein lokales 
+Extremum im Punkt $x_0$ auf dem Rand von $D$ hat, ist notwendig,
+dass $\grad f(x_0)=0$ oder $\grad f(x_0)$ steht senkrecht der Randebene.
+\end{satz}
+
+Dieser Satz ist nur ein Spezialfall der im nächsten
+Abschnitt~\ref{buch:fuvar:section:nebenbedingungen}
+untersuchten Methode zur Bestimmung von Extrema mit Nebenbedingungen.
+Die Bedingung, dass der Punkt $x_0$ auf dem Rand liegt, kann man
+als Nebenbedingung $g(x) = 0$ mit $g(x)=(x-x_0)\cdot\vec{n}$ betrachten.
+
+
+
+
