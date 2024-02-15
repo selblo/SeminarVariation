@@ -1,0 +1,18 @@
+//
+// parameters.inc
+//
+// (c) 2023 Prof Dr Andreas Müller
+//
+#declare a = 10.5;		// Parameter für die x^3 Kurve
+#declare a0 = a;		// Parameter für die x^3 Kurve
+#declare N = 30;		// Anzahl Schritte für Fläche
+#declare gitterr = 0.004;	// radius für Gitterlinien
+#declare tangenteradius = 2 * gitterr;	// radius für tangente
+#declare kurveradius = 2.2 * gitterr;	// radius der Kurve
+#declare achsendurchmesser = 0.007;
+#declare vektorradius = 0.012;
+
+#declare flaechefarbe = rgb<0.4,0.6,0.8>;
+#declare flaechefarbetransparent = rgbt<0.4,0.6,0.8,0.7>;
+#declare vektorfarbe = rgb<0,0.6,0>;
+

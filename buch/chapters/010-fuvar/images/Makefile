@@ -3,7 +3,7 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	karteextremum.pdf schwarz.pdf
+all:	karteextremum.pdf schwarz.pdf fxy.pdf richtungsabl.pdf
 
 karteextremum.pdf: karte.pdf karteextremum.tex
 	pdflatex karteextremum.tex
@@ -36,3 +36,29 @@ schwarzxy.jpg:	schwarzxy.png Makefile
 
 schwarz.pdf:	$(schwarzimages) schwarz.tex
 	pdflatex schwarz.tex
+
+#
+# Partielle Ableitungen und Richtungsableitung
+#
+richtungsablausschnitt = -extract 1480x1080+220+0
+richtungsablfiles = richtungsabl.inc richtungsabl.params richtungsabl.common
+
+fx.png:	fx.pov $(richtungsablfiles)
+	povray +A0.1 -W1920 -H1080 -Ofx.png fx.pov
+fx.jpg:	fx.png Makefile
+	convert $(richtungsablausschnitt) fx.png fx.jpg
+
+fy.png:	fy.pov $(richtungsablefiles)
+	povray +A0.1 -W1920 -H1080 -Ofy.png fy.pov
+fy.jpg:	fy.png Makefile
+	convert $(richtungsablausschnitt) fy.png fy.jpg
+
+fxy.pdf:	fxy.tex fx.jpg fy.jpg
+	pdflatex fxy.tex
+
+richtungsabl.png:	richtungsabl.pov $(richtungsablfiles)
+	povray +A0.1 -W1920 -H1080 -Orichtungsabl.png richtungsabl.pov
+richtungsabl.jpg:	richtungsabl.png
+	convert $(richtungsablausschnitt) richtungsabl.png richtungsabl.jpg
+richtungsabl.pdf:	richtungsabl.tex richtungsabl.jpg
+	pdflatex richtungsabl.tex

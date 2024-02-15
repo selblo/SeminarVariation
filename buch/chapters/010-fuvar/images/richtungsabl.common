@@ -1,0 +1,80 @@
+//
+// common.inc
+//
+// (c) 2023 Prof Dr Andreas Müller
+//
+#include "colors.inc"
+#include "richtungsabl.params"
+
+#declare imagescale = 0.040;
+
+global_settings {
+	assumed_gamma 1
+}
+
+camera {
+	location <30, 10, -20>
+	look_at <0, 0.4, 0>
+	right 16/9 * x * imagescale
+	up y * imagescale
+}
+
+light_source {
+	<3, 20, -14> color White
+	area_light <1,0,0> <0,0,1>, 10, 10
+	adaptive 1
+	jitter
+}
+
+light_source {
+	<3, -20, -14> color 0.2 * White
+	area_light <1,0,0> <0,0,1>, 10, 10
+	adaptive 1
+	jitter
+}
+
+light_source {
+	<30, 10, -20> color 0.4 * White
+	area_light <0,1,0> <0,0,1>, 10, 10
+	adaptive 1
+	jitter
+}
+
+sky_sphere {
+	pigment {
+		color rgb<1,1,1>
+	}
+}
+
+#macro arrow(from, to, arrowthickness, c)
+#declare arrowdirection = vnormalize(to - from);
+#declare arrowlength = vlength(to - from);
+union {
+	sphere {
+		from, 1.1 * arrowthickness
+	}
+	cylinder {
+		from,
+		from + (arrowlength - 5 * arrowthickness) * arrowdirection,
+		arrowthickness
+	}
+	cone {
+		from + (arrowlength - 5 * arrowthickness) * arrowdirection,
+		2 * arrowthickness,
+		to,
+		0
+	}
+	pigment {
+		color c
+	}
+	finish {
+		specular 0.9
+		metallic
+	}
+}
+#end
+
+arrow(<-1.2,0,0>,<1.2,0,0>, achsendurchmesser, White)
+arrow(<0,-0.75,0>,<0,1.15,0>, achsendurchmesser, White)
+arrow(<0,0,-1.2>,<0,0,1.2>, achsendurchmesser, White)
+

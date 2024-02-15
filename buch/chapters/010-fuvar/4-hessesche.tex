@@ -1,11 +1,11 @@
 %
-% 4-hessische.tex
+% 4-hessesche.tex
 %
 % (c) 2023 Prof Dr Andreas Müller
 %
-\section{Hessische Matrix
-\label{buch:fuvar:section:hessische}}
-\kopfrechts{Hessische Matrix}
+\section{Hessesche Matrix
+\label{buch:fuvar:section:hessesche}}
+\kopfrechts{Hessesche Matrix}
 Das Verschwinden der Ableitung einer differenzierbaren Funktion
 $f\colon\mathbb{R}\to\mathbb{R}$ ist eine notwendige Bedingung
 für ein Extremum, sie ist aber nicht hinreichend.
@@ -31,9 +31,9 @@ In der folgenden Diskussion wird diese Konvention wo zweckmässig
 stillschweigend verwendet.
 
 %
-% Die Hessische Matrix
+% Die Hessesche Matrix
 %
-\subsubsection{Die Hessische Matrix}
+\subsubsection{Die Hessesche Matrix}
 Damit der Punkt $x_0$ ein Minimum ist, muss jede auf die Richtung
 $v\in\mathbb{R}^n$ eingeschränkte Funktion eine positive zweite
 Ableitung haben.
@@ -82,7 +82,7 @@ geschrieben werden.
 Ein hinreichendes Kriterium für ein Minimum wird also zu einer
 Eigenschaft der Matrix $H$.
 
-\begin{definition}[Hessische Matrix]
+\begin{definition}[Hessesche Matrix]
 Ist $f\colon\mathbb{R}^n\to\mathbb{R}$ eine zweimal stetig differenzierbare
 Funktion, dann heisst die Matrix
 \[
@@ -98,7 +98,7 @@ h_{ik}(x_0)
 =
 \frac{\partial^2 f}{\partial x_i\,\partial x_k}(x_0)
 \]
-die {\em hessische Matrix}.
+die {\em hessesche Matrix}.
 \end{definition}
 
 Da die Funktion $f$ zweimal stetig differenzierbar angenommen wurde,
@@ -109,7 +109,7 @@ sind die partiellen Ableitungen nach dem Satz von Schwarz
 \frac{\partial^2 f}{\partial x_k\,\partial x_i}(x_0)
 \]
 vertauschbar.
-Die hessische Matrix $H(x_0)$ ist daher immer symmetrisch: $H(x_0)^t=H(x_0)$.
+Die hessesche Matrix $H(x_0)$ ist daher immer symmetrisch: $H(x_0)^t=H(x_0)$.
 
 %
 % Notwendiges Kriterium für ein Extremum
@@ -132,11 +132,11 @@ $v\in\mathbb{R}^n\setminus\{0\}$ ist.
 \end{definition}
 
 \begin{satz}[Hinreichendes Kriterium für Extremum]
-Wenn die hessische Matrix einer zweimal stetig differenzierbaren
+Wenn die hessesche Matrix einer zweimal stetig differenzierbaren
 Funktion $f\colon\mathbb{R}^n\to\mathbb{R}$ mit $\grad f(x_0)=0$ 
 an der Stelle $x_0$ positiv definit ist, dann hat $f$ an dieser
 Stelle ein Minimum.
-Wenn die hessische Matrix negativ definit ist, dann liegt ein Maximum
+Wenn die hessesche Matrix negativ definit ist, dann liegt ein Maximum
 vor.
 \end{satz}
 
@@ -144,8 +144,8 @@ Im Falle einer Funktion einer Variablen lässt sich im Fall $f'(x_0)=0$
 und $f''(x_0)=0$ keine Aussage darüber machen lässt, ob ein Maximum 
 oder Minimum vorliegt.
 Bei einer Funktion mehrerer Variablen verunmöglicht bereits Semidefinitheit
-der hessischen Matrix, dass an der Stelle $x_0$ ein Extremum vorliegt.
-Zum Beispiel hat die Funktion $f(x,y)=x^2+y^3$ die hessische Matrix
+der hesseschen Matrix, dass an der Stelle $x_0$ ein Extremum vorliegt.
+Zum Beispiel hat die Funktion $f(x,y)=x^2+y^3$ die hessesche Matrix
 \[
 H(0)
 =
@@ -158,7 +158,7 @@ v^tH(0)v = v_1^2 \ge 0
 \]
 positiv semidefinit ist.
 Trotzdem hat $f$ im Nullpunkt kein Extremum.
-Andererseits hat die Funktion $f(x,y)=x^2+y^4$ die gleiche hessische
+Andererseits hat die Funktion $f(x,y)=x^2+y^4$ die gleiche hessesche
 Matrix im Nullpunkt, es liegt dort aber ein Minimum vor.
 
 %
@@ -172,14 +172,14 @@ Daher sind alternative Kriterien wünschenswert, die leichter zu überprüfen
 sind.
 
 \begin{satz}[positive Eigenwerte]
-\label{buch:fuvar:hessische:satz:positiveeigenwerte}
+\label{buch:fuvar:hessesche:satz:positiveeigenwerte}
 Ist $f\colon\mathbb{R}^n\to\mathbb{R}$ eine zweimal stetig differenzierbare
 Funktion mit $\grad f(x_0)=0$, dann liegt an der Stelle $x_0$ ein Minimum
-vor, wenn alle Eigenwerte der hessischen Matrix positiv sind.
+vor, wenn alle Eigenwerte der hesseschen Matrix positiv sind.
 \end{satz}
 
 \begin{proof}
-Da die hessische Matrix symmetrisch ist, lässt sie sich orthogonal
+Da die hessesche Matrix symmetrisch ist, lässt sie sich orthogonal
 diagonalisieren.
 Seien $u_i$ orthonormierte Eigenvektoren mit $Hu_i=\lambda_iu_i$ und
 den Eigenwerten $\lambda_i>0$.
@@ -199,12 +199,12 @@ Hv_iu_i
 =
 \sum_{i=1}^{n} v_i^2\lambda_i > 0,
 \]
-somit ist die hessische Matrix positiv definit und es liegt ein
+somit ist die hessesche Matrix positiv definit und es liegt ein
 Minimum vor.
 \end{proof}
 
-Die Anwendung von Satz~\ref{buch:fuvar:hessische:satz:positiveeigenwerte}
-verlangt die Berechnung aller Eigenwerte der hessischen Matrix, was für
+Die Anwendung von Satz~\ref{buch:fuvar:hessesche:satz:positiveeigenwerte}
+verlangt die Berechnung aller Eigenwerte der hesseschen Matrix, was für
 $n>2$ eher beschwerlich ist.
 Für eine symmetrische Matrix gibt es aber ein numerisch sehr einfach
 nachzuprüfendes Kriterium für positive Definitheit.
@@ -230,7 +230,7 @@ v^tLL^tv
 0.
 \]
 Da die Matrix $L$ ausserdem invertierbar ist, gilt sogar $v^tHv>0$.
-Damit folgt, dass die hessische Matrix positiv definit ist und dass
+Damit folgt, dass die hessesche Matrix positiv definit ist und dass
 ein Minimum vorliegt.
 \end{proof}
 
