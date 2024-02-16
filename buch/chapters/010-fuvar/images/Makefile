@@ -3,10 +3,20 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	karteextremum.pdf schwarz.pdf fxy.pdf richtungsabl.pdf
+all:	karteextremum.pdf schwarz.pdf fxy.pdf richtungsabl.pdf partabl.pdf
 
 karteextremum.pdf: karte.pdf karteextremum.tex
 	pdflatex karteextremum.tex
+
+#
+# Partielle Ableitungen
+#
+partabl.png:	partabl.pov
+	povray +A0.1 -W1920 -H1080 -Opartabl.png partabl.pov
+partabl.jpg:	partabl.png Makefile
+	convert partabl.png partabl.jpg
+partabl.pdf:	partabl.tex partabl.jpg
+	pdflatex partabl.tex
 
 #
 # Gegenbeispiel von Schwarz

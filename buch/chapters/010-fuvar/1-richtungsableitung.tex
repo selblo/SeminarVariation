@@ -100,13 +100,18 @@ und dann die gewöhnliche Ableitung nach der einen verbleibenden Variablen
 bildet.
 
 \begin{beispiel}
+\label{buch:fuvar:richtungsableitung:beispiel:sincos}
 Die Funktion
 \[
 f(x,y)
 =
-\sin(xy)\cos(x+y)
+-\sin(xy)\cos(x+y)
 \]
 hängt von den Variablen $x$ und $y$ ab.
+Der Graph dieser Funktion ist zusammen mit den partiellen
+Funktionen und ihren Ableitungen in
+Abbildung~\ref{buch:fuvar:richtungsableitung:fig:partabl}
+dargestellt.
 Die partiellen Funktionen sind
 \begin{align*}
 x&\mapsto f(x,y)
@@ -118,11 +123,11 @@ werden, sie ergibt die Ableitungen
 \begin{align*}
 \frac{\partial f}{\partial x}
 &=
-y\cos(xy)\cos(x+y) -\sin(xy)\sin(x+y)
+-y\cos(xy)\cos(x+y) +\sin(xy)\sin(x+y)
 \\
 \frac{\partial f}{\partial x}
 &=
-x\cos(xy)\cos(x+y) -\sin(xy)\sin(x+y).
+-x\cos(xy)\cos(x+y) +\sin(xy)\sin(x+y).
 \end{align*}
 Die beiden Ableitungen unterschieden sich nur in dem Faktor $y$ bzw.~$x$,
 der von der inneren Ableitung bei der Ableitung des ersten Faktors
@@ -141,7 +146,7 @@ Die partielle Funktion $x\mapsto f(x,y_0)$ hat als Graph die Schnittkurve
 der Fläche mit der vertikalen Ebene $y=y_0$, entsprechend ist der Graph
 der partiellen Funktion $y\mapsto f(x_0,y)$ die Schnittkurve der Fläche
 mit der vertikalen Ebene $x=x_0$, beide in
-Abbildung~\ref{buch:fuvar:richtungsableitung:fig:partabl} blau hervorgehoben.
+Abbildung~\ref{buch:fuvar:richtungsableitung:fig:partabl} rot hervorgehoben.
 
 %
 % Notation
