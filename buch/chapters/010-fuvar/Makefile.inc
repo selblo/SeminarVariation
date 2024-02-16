@@ -10,6 +10,7 @@ CHAPTERFILES +=								\
 	chapters/010-fuvar/3-nebenbedingungen.tex			\
 	chapters/010-fuvar/4-hessesche.tex				\
 	chapters/010-fuvar/5-quadratisch.tex				\
+	chapters/010-fuvar/6-homogen.tex				\
 	chapters/010-fuvar/fig/tangentialebene.tex			\
 	chapters/010-fuvar/fig/schwarz.tex				\
 	chapters/010-fuvar/fig/karte.tex				\

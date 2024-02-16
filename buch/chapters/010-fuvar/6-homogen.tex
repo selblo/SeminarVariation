@@ -1,0 +1,53 @@
+%
+% 6-homogen.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\section{Homogene Funktionen
+\label{buch:fuvar:section:homogen}}
+Die kinetische Energie eines Teilchens, welches sich auf der 
+Bahn mit den Koordinaten $x_k(t)$ bewegt, ist
+\begin{equation}
+E_{\text{kin}}
+=
+\frac12 m (\dot{x}_1(t)^2 + \dots + \dot{x}_n(t)^2).
+=
+f(\dot{x}_1(t),\dots,\dot{x}_n(t))
+\label{buch:fuvar:homogen:eqn:fbeispiel}
+\end{equation}
+Die Funktion $f(x)$ hat die Eigenschaft
+\begin{align*}
+f(\lambda \dot{x}(t))
+&=
+f(\lambda \dot{x}_1(t),\dots,\lambda\dot{x}_2(t))
+=
+(\lambda\dot{x}_1(t))^2
++\ldots+
+(\lambda\dot{x}_1(t))^2
+=
+\lambda^2(\dot{x}_1(t)^1+\ldots+\dot{x}_n(t)^2)
+\\
+&=
+\lambda^2f(\dot{x}(t)).
+\end{align*}
+Die Ableitungen von $x_k(t)$ gehen also nur in den zweiten Potenzen
+in die Funktion $f$ ein, es gibt keine Terme mit anderen Exponenten.
+Diese Eigenschaft findet man sehr häufig in Funktionen in der Physik.
+Der Wert der Funktion $f$ von \eqref{buch:fuvar:homogen:eqn:fbeispiel}
+muss die Dimension einer Energie haben, was nur mit dem Produkt einer
+Masse mit dem Quadrat der Geschwindigkeit möglich ist.
+Andere Potenzen der Geschwindigkeit führen nur auf eine Energie, wenn
+ein zusätzlicher Faktor mit der Dimension einer passenden Potenz der
+Geschwindigkeit auftritt, der die Masseinheiten korrigiert.
+
+\begin{definition}[homogene Funktion]
+Eine Funktion $f\colon \mathbb{R}^n\to\mathbb{R}$ heisst {\em homogen
+vom Grad $m$} wenn für jedes $\lambda\in\mathbb{R}$ und jedes
+$x\in\mathbb{R}^n$ gilt $f(\lambda x) = \lambda^m f(x)$.
+$f$ heisst {\em positiv homogen vom Grad $m$}, wenn
+$f(\lambda x) = |\lambda|^m f(x)$ gilt.
+\end{definition}
+
+Die kinetische Energie \eqref{buch:fuvar:homogen:eqn:fbeispiel} ist
+also ein homogene Funktion vom Grad 2 der Geschwindigkeit.
+

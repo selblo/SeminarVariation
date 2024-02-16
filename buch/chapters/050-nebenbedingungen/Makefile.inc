@@ -9,4 +9,5 @@ CHAPTERFILES +=								\
 	chapters/050-nebenbedingungen/2-transversal.tex			\
 	chapters/050-nebenbedingungen/fig/dido.tex			\
 	chapters/050-nebenbedingungen/fig/dido2.tex			\
+	chapters/050-nebenbedingungen/fig/heaviside.tex			\
 	chapters/050-nebenbedingungen/chapter.tex
