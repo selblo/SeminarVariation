@@ -40,7 +40,16 @@ Andere Potenzen der Geschwindigkeit führen nur auf eine Energie, wenn
 ein zusätzlicher Faktor mit der Dimension einer passenden Potenz der
 Geschwindigkeit auftritt, der die Masseinheiten korrigiert.
 
+%
+% Definition
+%
+\subsection{Definition und Beispiele}
+Homogene Funktionen verallgemeinern die Eigenschaft einer Funktion,
+dass nur Terme vorkommen dürfen, die die gleiche Masseinheit haben,
+mit Hilfe der folgenden Definition.
+
 \begin{definition}[homogene Funktion]
+\index{homogene Funktion}%
 Eine Funktion $f\colon \mathbb{R}^n\to\mathbb{R}$ heisst {\em homogen
 vom Grad $m$} wenn für jedes $\lambda\in\mathbb{R}$ und jedes
 $x\in\mathbb{R}^n$ gilt $f(\lambda x) = \lambda^m f(x)$.
@@ -50,4 +59,375 @@ $f(\lambda x) = |\lambda|^m f(x)$ gilt.
 
 Die kinetische Energie \eqref{buch:fuvar:homogen:eqn:fbeispiel} ist
 also ein homogene Funktion vom Grad 2 der Geschwindigkeit.
+Eine homogene Funktion vom Grad $m=0$ hat die Eigenschaft
+$f(tx)=f(x)$ für alle $t$, sie hängt also nur von der Richtung, nicht
+vom Betrag ab.
+
+\begin{satz}
+\label{buch:fuvar:homogen:satz:produktquotient}
+Sei $f$ und $g$ homogene Funktionen vom Grad $m_f$ und $m_g$, dann ist
+$fg$ eine homogene Funktion vom Grad $m_f+m_g$ und $f/g$ 
+eine homogene Funktion vom Grad $m_f-m_g$, sofern der Quotient
+definiert ist.
+\end{satz}
+
+\begin{proof}
+Durch Rechnung ergibt sich
+\begin{align*}
+f(tx)g(tx)
+&=
+t^{m_f}f(x) t^{m_g}g(x)
+=
+t^{m_f+m_g}f(x)g(x)
+\\
+\frac{f(tx)}{g(tx)}
+&=
+\frac{t^{m_f}f(x)}{t^{m_g}g(x)}
+=
+t^{m_f-m_g}\frac{f(x)}{g(x)}\qquad \text{falls $g(x)\ne 0$},
+\end{align*}
+was die Behauptung beweist.
+\end{proof}
+
+\begin{satz}
+\label{buch:fuvar:homogen:satz:polynom}
+Die Monome $m_{\mathbf{l}}(x)=x^\mathbf{l}$ sind homogene Funktionen
+vom Grad $|\mathbf{l}|$.
+Für $l_k>0$ ist die partielle Ableitung $m_{\mathbf{l}}(x)$ eine
+homogene Funktion vom Grad $|\mathbf{l}|-1$.
+Das Polynom
+\begin{equation}
+f(x) = \sum_{|\mathbf{l}| = m} a_{\mathbf{l}} x^{\mathbf{l}}
+\label{buch:fuvar:homogen:polynom:summe}
+\end{equation}
+ist homogen vom Grad $m$.
+Falls $f(x)$ von $x_k$ abhängt ist die partielle Ableitung von
+$f$ nach $x_k$ homogen vom Grad $m$.
+\end{satz}
+
+\begin{proof}
+Die partiellen Ableitungen der Monome sind
+\[
+\frac{\partial m_{\mathbf{l}}}{\partial x_k}(x)
+=
+\begin{cases}
+l_kx^{\mathbf{l}-e_k}=l_km_{\mathbf{l}-e_k}(x)&\qquad l_k > 0     \\
+0                                             &\qquad \text{sonst}
+\end{cases}
+\]
+Die Ableitung ist also genau dann homogen vom Grad $|\mathbf{l}|-1$,
+wenn $x_k$ tatsächlich vorkommt.
+Wenn das Polynom $f$ von $x_k$ abhängt, dann gibt es Terme in der
+Summe~\eqref{buch:fuvar:homogen:polynom:summe}, die $x_k$ enthalten.
+Die partiellen Ableitungen dieser Terme nach $x_k$ sind homogen,
+die anderen Terme verschwinden.
+Somit sind die partiellen Ableitungen homogen vom Grad $|\mathbf{l}|-1$.
+\end{proof}
+
+\begin{beispiel}
+Die Funktion
+\[
+f
+\colon
+\mathbb{R}^2\to\mathbb{R}
+:
+(x,y)
+\mapsto
+f(x,y)
+=
+\begin{cases}
+\displaystyle \frac{x^3y-xy^3}{x^2+y^2}&\qquad (x,y)\ne (0,0)\\
+(0,0)&\qquad\text{sonst},
+\end{cases}
+\]
+hat als Beispiel~\ref{buch:fuvar:richtungsableitung:beispiel:schwarz}
+zum Satz von Schwarz gedient.
+Sie hat gezeigt, dass die partiellen Ableitungen nicht vertauschen müssen,
+wenn die zweiten Ableitungen nicht mehr stetig sind.
+Der Zählen von $f$ ist homogen vom Grad 4 und der Nenner ist homogen vom
+Grad 2, daher ist $f$ homogen vom Grad 2.
+Zu einer vorgegebenen Richtung ist $t\mapsto f(tx)$ daher immer eine
+Parabel.
+
+Nach der Quotientenregel sind die ersten partiellen Ableitungen von $f/g$
+\begin{equation}
+\frac{\partial g/h}{\partial x_k}(x)
+=
+\frac{\displaystyle
+\frac{\partial g}{\partial x_k}(x)h(x)-g(x)\frac{\partial h}{\partial x_k}(x)
+}{h(x)^2}.
+\label{buch:fuvar:homogen:eqn:quotientenregel}
+\end{equation}
+Da Zähler und Nenner die Form wie in Satz~\ref{buch:fuvar:homogen:satz:polynom}
+haben, sind Zähler und Nenner von
+\eqref{buch:fuvar:homogen:eqn:quotientenregel}
+homogen und damit sind die partiellen Ableitungen von $f=g/h$ homogen
+vom Grad 1.
+Die Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz} zeigt,
+dass die Graphen der Funktionen
+$t\mapsto (\frac{\partial f}{\partial x})(tx,ty)$
+Geraden sind.
+
+Das gleiche Argument zeigt auch, dass die zweiten Ableitungen 
+homogenen Funktionen vom Grad $0$ sind.
+Tatsächlich zeigt 
+die Abbildung~\ref{buch:fuvar:richtungsableitung:fig:schwarz} auch,
+dass die zweite Ableitung nur von der Richtung abhängt.
+\end{beispiel}
+
+Die partielle Ableitung des Monoms $x^{\mathbf{l}}$ nach $x_k$
+verschwindet nicht, falls $l_k>0$ ist.
+In diesem Fall lassen sich alle Exponenten $\mathbf{l}$ aus der
+partiellen Ableitung ablesen.
+Auch geht genau eine Potenz von $x_k$ verloren, es sollte also
+möglich sein, durch Multiplizieren mit $x_k$ das Monom im wesentlichen
+wiederherzustellen.
+Tatsächlich ist
+\begin{align*}
+\sum_{k=1}^n
+x_k
+\frac{\partial x^{\mathbf{l}}}{\partial x_k}
+&=
+\sum_{k=1}^n
+l_k
+x_k
+x^{\mathbf{l}-e_k}
+(1-\delta_{l_k0})
+=
+\biggl(
+\sum_{k=1}^n
+l_k
+(1-\delta_{l_k0})
+\biggr)
+x^{\mathbf{l}}
+=
+\biggl(
+\sum_{k=1}^n
+l_k
+-\underbrace{\sum_{k=1}^n
+l_k\delta_{l_k0}}_{\displaystyle=0}
+\biggr)
+x^{\mathbf{l}}
+=
+|\mathbf{l}|
+x^{\mathbf{l}}
+\\
+&=
+m\,
+x^{\mathbf{l}}.
+\end{align*}
+Damit ist das Monom aus den Ableitungen rekonstruiert.
+Für ein beliebiges homogenes Polynom $p(x)$ vom Grad $m$ gilt daher auch
+\[
+\sum_{k=1}^n
+x_k
+\frac{\partial p}{\partial x_k}(x)
+=
+mp(x).
+\]
+Diese Formel gilt aber nicht nur für homogene Polynome.
+Der Satz~\ref{buch:fuvar:homogen:satz:euler} von im nächsten Abschnitt
+zeigt, dass er für beliebige homogene Funktionen gilt.
+
+%
+% Der Satz von Euler
+%
+\subsection{Der Satz von Euler}
+Der Satz von Euler besagt, dass sich eine homogene Funktion aus den
+partiellen Ableitungen rekonstruieren lässt.
+
+\begin{satz}[Euler]
+\label{buch:fuvar:homogen:satz:euler}
+Ist $f$ eine differenzierbare homogene Funktion
+$\mathbb{R}^n\to\mathbb{R}$ vom Grad $m$, dann gilt
+\[
+\sum_{k=1}^n x_k \frac{\partial f}{\partial x_k}(x)
+=
+x\cdot \nabla f(x)
+=
+m f(x)
+\]
+für alle $x\in\mathbb{R}^n$.
+\end{satz}
+
+\begin{proof}
+Nach der Kettenregel ist
+\[
+\frac{df}{dt}(tx)\bigg|_{t=1}
+=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x_k}(tx)\,
+\frac{d(tx_k)}{dt} \bigg|_{t=1}
+=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x_k}(x)\,x_k.
+\]
+Andererseits ist $f(tx)=t^mf(x)$ und daher
+\[
+\frac{df}{dt}(tx) \bigg|_{t=1}
+=
+\frac{d}{dt} t^m f(x)\bigg|_{t=1}
+=
+mt^{m-1}
+\bigg|_{t=1}
+f(x)
+=
+m f(x).
+\]
+Damit ist der Satz bewiesen.
+\end{proof}
+
+\begin{beispiel}
+Eine homogene Funktion vom Grad $1$ hat also die Eigenschaft, dass
+\[
+f(x)
+=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x_k}(x)\, x_k.
+\]
+Die Ableitung nach $x_l$ ist daher
+\begin{align*}
+\frac{\partial f}{\partial x_l}(x)
+&=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x_k}(x)
+\underbrace{\frac{\partial x_k}{\partial x_l}}_{\displaystyle\delta_{kl}}
++
+\sum_{k=1}^n
+\frac{\partial^2 f}{\partial x_l\,\partial x_k}(x)\, x_k
+\\
+&=
+\frac{\partial f}{\partial x_l}(x)
++
+\sum_{k=1}^n
+\frac{\partial^2 f}{\partial x_l\,\partial x_k}(x)\, x_k
+\qquad\Rightarrow\qquad
+\sum_{k=1}^n 
+\frac{\partial^2 f}{\partial x_l\,\partial x_k}(x)\, x_k
+=
+0.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+%
+% Die elementarsymmetrischen Polynome
+%
+\subsection{Die elementarsymmetrischen Polynome}
+Die elementarsymmetrischen Polynome sind eine Familie besonders interessanter
+homogener Funktionen.
+
+\begin{definition}[elementarsymmetrische Polynome]
+Der Koeffizient $\sigma_k(x)$ der Potenz $X^k$ im Polynom
+\[
+p(X)
+=
+\prod_{k=1}^n
+(X+x_k)
+=
+X^n + \sigma_1(x) X^{n-1} + \sigma_2(x) X^{n-2} + \ldots + \sigma_{n-1}(x) X + \sigma_n(x)
+\]
+heisst {elementarsymmetrisches Polynom} vom Grad $k$.
+\end{definition}
+
+Durch Ausrechnen findet man sofort
+\begin{equation}
+\begin{aligned}
+\sigma_1(x)
+&=
+x_1+\ldots+x_n
+\\
+\sigma_2(x)
+&=
+x_1x_2+\ldots+x_1x_n+x_2x_3+\ldots x_2x_n+\ldots +\ldots x_{n-1}x_n
+\\[-3pt]
+&\;\vdots
+\\
+\sigma_k(x)
+&=
+\sum_{i_1<i_2<\ldots<i_k}
+x_{i_1}x_{i_2}\cdots x_{i_k}
+\\
+&\;\vdots
+\\[-3pt]
+\sigma_n(x)
+&=
+x_1x_2\cdots x_n
+\end{aligned}
+\label{buch:fuvar:homogen:eqn:sigmadef}
+\end{equation}
+Der Vollständigkeit halber schreiben wir $\sigma_0(x)=1$.
+
+Mit den elementarsymmetrischen Polynomen lassen sich die Koeffizienten
+eines Polynoms mit Hilfe der Nullstellen ausdrücken.
+Sind $x_1,\dots,x_n$ die Nullstellen des Polynoms $p(x)$, dann ist
+\begin{align*}
+p(x)
+&=
+(x-x_1)(x-x_2)\cdot\ldots\cdot(x-x_n)
+%\\
+%&=
+=
+\sum_{k=0}^n (-1)^{n-k}\sigma_k(x_1,\dots,x_n) x^k.
+\end{align*}
+
+Die Darstellung \eqref{buch:fuvar:homogen:eqn:sigmadef} der
+elementarsymmetrischen Polynome zeigt, dass $\sigma_k(x)$ eine Summe
+von Monomen vom Grad $k$ ist, es folgt daher der folgende Satz.
+
+\begin{satz}
+\label{buch:fuvar:homogen:satz:elementarsymmetrischhomogen}
+Das elementarsymmetrische Polynom $\sigma_k(x)$ ist homogen vom Grad $k$.
+\end{satz}
+
+Die elementarsymmetrischen Polynome haben die zusätzliche Eigenschaft,
+dass sie sich nicht ändern, wenn die Zahlen $x_1,\dots,x_n$ permutiert
+werden.
+Ist $\pi\in S_n$ eine Permutation der Zahlen $1,\dots,n$, dann ist
+\[
+\sigma_k(x_{\pi(1)},\dots,x_{\pi(n)})
+=
+\sigma_k(x_1,\dots,x_n)
+\]
+Dasselbe gilt für jeden Ausdruck, der nur von $\sigma_0(x),\dots,\sigma_n(x)$ 
+abhängt.
+
+\begin{definition}[symmetrische Funktion]
+Eine Funktion $f\colon\mathbb{R}^n\to\mathbb{R}$ heisst {\em symmetrisch},
+wenn für jede Permutation $\pi\in S_n$ gilt, dass
+$f(x_{\pi(1)},\dots,x_{\pi(n)})=f(x_1,\dots,x_n)$
+ist.
+Der Wert von $f(x)$ ändert unter beliebigen Permutation der Variablen
+$x_1,\dots,x_n$ nicht.
+\end{definition}
+
+Das Polynom $p(x)=x_1^2+x_2^2+\dots+x_n^2$ ist homogen vom Grad 2 und
+ausserdem symmetrisch.
+Das Polynom $p(x)$ ist keine elementarsymmetrische Funktion, kann
+aber durch elementarsymmetrische Polynome ausgedrückt werden:
+\begin{align*}
+x_1^2 + \dots + x_n^2
+&=
+(x_1+\dots+x_n)^2 - 2(x_1x_2+\dots+x_{n-1}x_n)
+=
+\sigma_1(x)^2 -2 \sigma_2(x)
+\\
+x_1^3+\dots+x_n^3
+&=
+\sigma_1(x)^3
+-3\sigma_1(x)\sigma_2(x)
++3\sigma_3(x)
+\end{align*}
+In der Tat gilt der folgende Satz von Lagrange, der auch schon
+Newton bekannt war:
+
+\begin{satz}[Lagrange]
+Ist $p(x)$ ein symmetrisches Polynom in den Variablen $x_1,\dots,x_n$,
+dann gibt es genau ein Polynom $q(s_1,\dots,s_n)$ derart, dass
+$p(x)=q(\sigma_1(x),\dots,\sigma_n(x))$.
+\end{satz}
+
+\begin{proof}
+\url{https://en.wikipedia.org/wiki/Elementary_symmetric_polynomial}
+\end{proof}
 
