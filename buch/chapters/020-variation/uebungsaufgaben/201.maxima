@@ -1,0 +1,22 @@
+/*
+ * 201.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+
+gradef(y(x), yp(x));
+gradef(yp(x), ypp(x));
+gradef(n(y), np(y));
+
+L(x, y, yp) := n(y) * sqrt(1+yp^2);
+
+Lyp: diff(L(x,y,yp), yp);
+Ly: diff(L(x,y,yp), y);
+Lyp: sublis([y=y(x), yp=yp(x)], Lyp);
+Ly: sublis([y=y(x), yp=yp(x)], Ly);
+
+diff(Lyp,x);
+ratsimp(diff(Lyp,x));
+ratsimp(Ly);
+ratsimp(diff(Lyp, x) - Ly);
+

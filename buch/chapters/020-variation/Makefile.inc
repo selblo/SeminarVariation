@@ -17,4 +17,5 @@ CHAPTERFILES +=								\
 	chapters/020-variation/fig/variation.tex			\
 	chapters/020-variation/fig/variation0.tex			\
 	chapters/020-variation/fig/variation1.tex			\
+	chapters/020-variation/uebungsaufgaben/201.tex			\
 	chapters/020-variation/chapter.tex

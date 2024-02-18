@@ -1,0 +1,170 @@
+Das Fermat-Prinzip besagt, dass Licht immer den schnellsten Weg wählt.
+Die Ausbreitungsgeschwindigkeit $v=c/n$ in einem Medium hängt vom
+Brechungsindex $n$ ab.
+In der Atmosphäre nimmt die Dichte mit zunehmender Höhe ab und damit
+wird auch der Brechungsindex kleiner und nähert sich schliesslich $1$.
+Nehmen Sie also an, dass $n(y)$ nur von der Höhe abhängt.
+\begin{teilaufgaben}
+\item
+Stellen Sie ein Variationsprinzip auf für einen Lichtstrahl, der sich
+vom Punkt $(x_1,y_1)$ zum Punkt $(x_2,y_2)$ ausbreitet.
+\item
+Bestimmen Sie die Lagrange-Funktion des Variationsprinzips.
+\item
+Bestimmen Sie die Differentialgleichung für diesen Strahl.
+\item 
+Lösen Sie die Differentialgleichung für den Fall konstanen Brechungsindexes.
+\end{teilaufgaben}
+
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Wir beschreiben den Lichtstrahl als Funktion $y(x)$ mit den Randbedingungen
+\(
+y(x_1)=y_1
+\)
+und
+\(
+y(x_2)=y_2
+\).
+Die vom Strahl durcheilte Strecke ist $\!\sqrt{1+y'(x)^2}$.
+Damit lässt sich die Zeit berechnen, die der Strahl entlang der
+Kurve $y(x)$ braucht daher die Zeit
+\[
+T(y)
+=
+\int_{x_1}^{x_2}
+\frac{\!\sqrt{1+y'(x)^2}}{c/n(y(x))}
+\,dx
+=
+c
+\int_{x_1}^{x_2}
+n(y(x))
+\sqrt{1+y'(x)^2}
+\,dx
+\]
+für den Weg vom Punkt $(x_1,y_1)$ zum Punkt $(x_2,y_2)$.
+Das gesuchte Variationsprinzip ist daher $\delta T=0$.
+\item
+Die Lagrange-Funktion ist
+\(
+L(x,y,y') = n(y)\sqrt{1+y^{\prime 2}}
+\).
+\item
+Die Euler-Lagrange-Differentialgleichung benötigt die partiellen
+Ableitungen der Lagrange-Funktion nach $y$ und $y'$:
+\begin{align*}
+\frac{\partial L}{\partial y}
+&=
+n'(y) \sqrt{1+y^{\prime 2}}
+\\
+\frac{\partial L}{\partial y'}
+&=
+\frac{y'}{\!\sqrt{1+y^{\prime 2}}}
+\end{align*}
+In der Euler-Lagrange-Differentialgleichung wird in die Ableitung nach $y'$
+die Funktion $y(x)$ eingesetzt und dann nach $x$ abgeleitet, dies ergibt
+\begin{align*}
+\frac{d}{dx}
+\frac{\partial L}{\partial y'}
+&=
+\frac{n'(x) y'(x)^2}{\!\sqrt{1+y'(x)^2}}
++
+n(y(x))
+y''(x)
+\frac{
+(1+y'(x)^2) - y'(x)^2
+}{
+(1+y'(x)^2)^{\frac32}
+}
+\\
+&=
+\frac{n'(x) y'(x)^2}{\!\sqrt{1+y'(x)^2}}
+-
+n(y(x))
+\frac{
+y''(x)
+}{
+(1+y'(x)^2)^{\frac32}
+}
+\end{align*}
+Die Euler-Lagrange-Differentialgleichung wird damit zu
+\begin{align*}
+0
+=
+\frac{d}{dx}\frac{\partial L}{\partial y'}
+-
+\frac{\partial L}{\partial y}
+&=
+\frac{n'(x) y'(x)^2}{\!\sqrt{1+y'(x)^2}}
+-
+n(y(x))
+\frac{
+y''(x)
+}{
+(1+y'(x)^2)^{\frac32}
+}
+-
+n'(y(x))\sqrt{1+y'(x)^2}
+\\
+&=
+\frac{
+n'(x) y'(x)^2
+}{
+\!\sqrt{1+y'(x)^2}
+}
+-
+n(y(x))
+\frac{
+y''(x)
+}{
+(1+y'(x)^2)^{\frac32}
+}
+-
+\frac{
+n'(y(x))(1+y'(x)^2)
+}{
+\!\sqrt{1+y'(x)^2}
+}
+\\
+&=
+-
+n(y(x))
+\frac{
+y''(x)
+}{
+(1+y'(x)^2)^{\frac32}
+}
+-
+\frac{
+n'(y(x))
+}{
+\!\sqrt{1+y'(x)^2}
+}
+\\
+&=
+-
+\frac{
+n(y(x))
+y''(x)
++
+n'(y(x))
+(1+y'(x)^2)
+}{
+(1+y'(x)^2)^{\frac32}
+}.
+\end{align*}
+Da der Nenner nicht verschwinden kann muss der Zähler verschwinden,
+die Differentialgleichung wird damit
+\[
+y''(x) + \frac{n'(y(x))}{n(y(x))} (1 + y'(x)^2) = 0
+\]
+\item
+Im Falle konstanten Brechungsindexes ist $n'(y)=0$ und damit $y''(x)=0$.
+Die Lösungen sind Geraden.
+\qedhere
+\end{teilaufgaben}
+\end{loesung}
+
+
