@@ -11,11 +11,19 @@ vom Punkt $(x_1,y_1)$ zum Punkt $(x_2,y_2)$ ausbreitet.
 \item
 Bestimmen Sie die Lagrange-Funktion des Variationsprinzips.
 \item
-Bestimmen Sie die Differentialgleichung für diesen Strahl.
+Bestimmen Sie die Differentialgleichung für den Strahl von $(x_1,y_1)$
+und $(x_2,y_2)$.
 \item 
-Lösen Sie die Differentialgleichung für den Fall konstanen Brechungsindexes.
+Lösen Sie die Differentialgleichung für den Fall konstanten Brechungsindexes.
+\item
+Zeigen Sie: wenn $n(y)$ streng monoton zunimmt, dann krümmt sich der Strahl
+der Lichtstrahl `nach oben', er wird in Richtung zunehmender $y$-Werte
+abgelenkt.
 \end{teilaufgaben}
-
+An einem heissen Sommertag kann die Luft in Bodennähe so stark aufgeheizt
+werden, dass $n(y)$ mit zunehmender Höhe zunimmt.
+Teilaufgabe e) erklärt dann, warum diese heisse Luft 
+Spiegel wirken und daher wie Wasser aussehen kann.
 
 \begin{loesung}
 \begin{teilaufgaben}
@@ -81,7 +89,7 @@ y''(x)
 \\
 &=
 \frac{n'(x) y'(x)^2}{\!\sqrt{1+y'(x)^2}}
--
++
 n(y(x))
 \frac{
 y''(x)
@@ -98,7 +106,7 @@ Die Euler-Lagrange-Differentialgleichung wird damit zu
 \frac{\partial L}{\partial y}
 &=
 \frac{n'(x) y'(x)^2}{\!\sqrt{1+y'(x)^2}}
--
++
 n(y(x))
 \frac{
 y''(x)
@@ -114,7 +122,7 @@ n'(x) y'(x)^2
 }{
 \!\sqrt{1+y'(x)^2}
 }
--
++
 n(y(x))
 \frac{
 y''(x)
@@ -129,7 +137,6 @@ n'(y(x))(1+y'(x)^2)
 }
 \\
 &=
--
 n(y(x))
 \frac{
 y''(x)
@@ -144,11 +151,10 @@ n'(y(x))
 }
 \\
 &=
--
 \frac{
 n(y(x))
 y''(x)
-+
+-
 n'(y(x))
 (1+y'(x)^2)
 }{
@@ -158,11 +164,28 @@ n'(y(x))
 Da der Nenner nicht verschwinden kann muss der Zähler verschwinden,
 die Differentialgleichung wird damit
 \[
-y''(x) + \frac{n'(y(x))}{n(y(x))} (1 + y'(x)^2) = 0
+y''(x)
+-
+\frac{n'(y(x))}{n(y(x))} (1 + y'(x)^2)
+=
+0
 \]
 \item
 Im Falle konstanten Brechungsindexes ist $n'(y)=0$ und damit $y''(x)=0$.
 Die Lösungen sind Geraden.
+\item
+Wenn $n(y)$ mit zunehmendem $y$ zunmimmt, dann ist $n'(y)>0$ für alle $y$
+und daher
+\[
+y''(x)
+=
+\frac{n'(y(x))}{n(y(x))} (1 + y'(x)^2)
+>
+0,
+\]
+da $n(y(x))\ge 1$ und $1+y'(x)^2\ge 1$.
+Die positive zweite Ableitung bedeutet, dass die Steigung $y'(x)$ zunimmt,
+d.~h.~der Graph von $y(x)$ krümmt sich zu zunehmenden $y$-Werten hin.
 \qedhere
 \end{teilaufgaben}
 \end{loesung}
