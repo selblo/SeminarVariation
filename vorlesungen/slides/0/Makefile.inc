@@ -14,4 +14,7 @@ chapter0 =								\
 	../slides/0/info.tex						\
 	../slides/0/was.tex						\
 	../slides/0/frueher.tex						\
+	../slides/0/themen.tex						\
+	../slides/0/latextipps.tex					\
+	../slides/0/nextsteps.tex					\
 	../slides/0/inhalt.tex
