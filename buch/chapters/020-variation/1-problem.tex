@@ -24,7 +24,8 @@ Lösung bereits eine ausgefeilte Theorie existiert.
 %
 \subsection{Der Anfang: Das Brachistochronenproblem von Bernoulli
 \label{buch:variation:problem:subsection:brachistochrone}}
-\input{chapters/020-variation/fig/brachistochronenproblem.tex}
+%\input{chapters/020-variation/fig/brachistochronenproblem.tex}
+\input{chapters/020-variation/fig/bernoulli.tex}
 Im Jahr 1696 publiziert der Basler Mathematiker Johann Bernoulli, damals
 Professor für Mathematik in Groningen das folgende Problem in der
 von Leibniz herausgegebenen Zeitschrift {\em Acta eruditorum}:
@@ -39,7 +40,7 @@ die Bahn $AMB$ eines Punktes $M$, der unter der Wirkung seines
 Gewichtes in kürzester Zeit vom Punkt $A$ zum anderen Punkt $B$ absteigt.
 \end{quote}
 Die Situation der Aufgabenstellung ist in
-Abbildung~\ref{buch:variation:fig:brachistochronenproblem}
+Abbildung~\ref{buch:variation:problem:fig:bernoulli}
 dargestellt.
 Bernoulli hat als Lösung gefunden, dass die Kurve eine Ausschnitt
 aus einer Zykloide (in der Abbildung grau) sein muss.
@@ -49,27 +50,33 @@ eine Lösung gefunden hat.
 Den Zusammenhang zwischen dem Brachistochronenproblem und der geometrischen
 Optik wird in \cite{buch:broer} ausführlich beschrieben.
 
-
+Das Koordinatensystem wählen wir so, dass der Nullpunkt mit $A$ zusammenfällt
+und die $y$-Achse in Richtung der Schwerkraft zeigt.
 Da die Reibung vernachlässigt wird, ist die Energie des Massepunktes
 erhalten.
 Sie setzt sich aus der potenziellen und der kinetischen Energie
 zusammen.
 Die potenzielle Energie ist $-mgy$, die kinetische Energie ist
 $\frac12mv^2$.
+Zu Beginn ist die Gesamtenergie 0.
 Die Energieerhaltung wird daher zu
 \[
-E=\frac12mv^2-mgy
-\qquad\Rightarrow\qquad
-v
+0=\frac12mv^2-mgy
+\quad\Rightarrow\quad
+\frac12mv^2=mgy
+\quad\Rightarrow\quad
+v^2=2gy
+\quad\Rightarrow\quad
+v(y)
 =
-\sqrt{2g}\!\sqrt{\frac{E}{gm}+y}
+\sqrt{2g}\!\sqrt{y}
 =
-\!\sqrt{2(C+y)}.
+\!\sqrt{2gy}.
 \]
 Durch Wahl einer anderen Zeiteinheit kann die Gleichung noch weiter
 vereinfacht zu
 \(
-v = \sqrt{C+y}
+v(y) = \sqrt{y}
 \)
 vereinfacht werden.
 Gesucht ist also die zeitlich kürzeste Bahn eines Teilchens, 
@@ -207,12 +214,12 @@ gebracht werden.
 Das Fermat-Prinzip besagt, dass ein Lichtstrahl, der sich in einem Medium
 mit der Geschwindigkeit $c/n(y)$ ausbreitet, die Gleichung 
 \eqref{buch:variation:eqn:fermatdgl} erfüllt.
-Beim Brachistochronenproblem ist die Geschwindigkeit $v(y)=\!\sqrt{C-y}$ und 
-damit $n(y) = c/\!\sqrt{C-y}$.
+Beim Brachistochronenproblem ist die Geschwindigkeit $v(y)=\!\sqrt{y}$ und 
+damit $n(y) = c/\!\sqrt{y}$.
 Eine Brachistochrone ist also eine Kurve, die die aus
 \eqref{buch:variation:eqn:fermatdgl} folgende Gleichung
 \begin{equation}
-\frac{x'(y)^2}{(1+x'(y)^2)(C-y)} = K
+\frac{x'(y)^2}{(1+x'(y)^2)y} = K
 \label{buch:variation:problem:eqn:bernoullidgl}
 \end{equation}
 erfüllen.
@@ -310,7 +317,7 @@ t
 =
 \int_a^b \frac{\sqrt{1+y'(x)^2}}{v(y(x))}\,dx
 =
-\int_a^b \sqrt{\frac{1+y'(x)^2}{C-y(x)}}\,dx.
+\int_a^b \sqrt{\frac{1+y'(x)^2}{y(x)}}\,dx.
 \label{buch:variation:problem:eqn:brachint}
 \end{equation}
 Der Integrand auf der rechten Seite hängt nur von den Funktion $y(x)$
@@ -333,7 +340,7 @@ also die Funktion
 \[
 L(x,y,y')
 =
-\sqrt{\frac{1+y^{\prime 2}}{C-y}}.
+\sqrt{\frac{1+y^{\prime 2}}{y}}.
 \]
 \end{definition}
 

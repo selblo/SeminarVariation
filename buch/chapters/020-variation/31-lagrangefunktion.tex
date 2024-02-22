@@ -1,0 +1,76 @@
+%
+% 31-lagrangefunktion.tex
+%
+% (c) 2023 Prof Dr Andreas Müller
+%
+
+%
+% Die Lagrange-Funktion
+%
+\subsection{Die Lagrange-Funktion
+\label{buch:variation:eulerlagrange:subsection:lagrange-funktion}}
+Wir betrachten Variationsproblem der folgenden Art.
+Gesucht ist eine auf dem Intervall $[x_0,x_1]$ definirte
+Funktion $y(x)$, die das Integral
+\begin{equation}
+I(y)
+=
+\int_{x_0}^{x_1}
+F(x, y(x), y'(x))
+\,dx
+\label{buch:variation:eulerlagrange:eqn:funktional}
+\end{equation}
+maximiert oder minimiert.
+Der Ausdruck~\eqref{buch:variation:eulerlagrange:eqn:funktional}
+wird ein Funktional genannt.
+Die Funktion
+\[
+F
+\colon
+\mathbb{R}\times
+\mathbb{R}\times
+\mathbb{R}
+\to
+\mathbb{R}
+\]
+von drei Variablen heisst die {\em Lagrange-Funktion}
+des Funktionals \eqref{buch:variation:eulerlagrange:eqn:funktional}.
+
+\begin{beispiel}
+Die Lagrange-Funktion des Brachistochronenproblems ist
+\[
+F(x,y,y')
+=
+\sqrt{ \frac{1+y^{\prime 2}}{y} }.
+\]
+Die Funktion hängt nicht von $x$ ab, was bedeutet, dass eine
+Verschiebung in $x$-Richtung die Form der Lösungsfunktion des
+Variationsproblems nicht ändert.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:variation:eulerlagrange:beispiel:gerade}
+Wir formulieren die Aufgabe, die kürzeste Verbindung der Punkte
+$(x_0,y_0)$ und $(x_1,y_1)$ in einer Ebene zu finden, als Variationsproblem.
+Die Länge einer Kurve $y(x)$ ist das Integral
+\[
+l(y)
+=
+\int_{x_0}^{x_1}
+\sqrt{1+y'(x)^2}\,dx.
+\]
+Daraus lesen wir ab, dass die Lagrange-Funktion dieses Variationsproblems
+\begin{equation}
+F(x,y,y') = \sqrt{1+y^{\prime 2}}
+\label{buch:variation:eulerlagrange:eqn:geradeL}
+\end{equation}
+ist.
+Die Funktion hängt weder von $x$ noch von $y$ ab.
+Dies ist auch zu erwarten, denn die Länge einer Kurve hängt nicht davon
+ob, wo in der Ebene sie platziert ist.
+Eine Verschiebung in $x$-Richtung würde das $x$-Argument ändern,
+eine Verschiebung in $y$-Richtung die $y$-Werte.
+Wäre $F$ von $x$ oder $y$ abhängig, könnte auch die Länge der Kurve
+davon abhängen.
+\end{beispiel}
+

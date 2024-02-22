@@ -1,0 +1,30 @@
+/*
+ * brachistochrone.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+gradef(y(x), yp(x));
+gradef(yp(x), ypp(x));
+
+L: sqrt((1+yp^2)/y);
+ly: ratsimp(diff(L,y));
+lyp: ratsimp(diff(L,yp));
+
+abl: diff(subst([yp=yp(x),y=y(x)], lyp), x);
+abl: ratsimp(abl);
+
+eldgl:
+ratsimp(
+subst([y=y(x), yp=yp(x)], ly)
+-
+abl
+);
+
+X: r * (t - sin(t));
+Y: r * (1 - cos(t));
+
+Yp: diff(Y,t) / diff(X,t);
+Ypp: ratsimp(diff(Yp, t) / diff(X, t));
+
+g: 1 + Yp^2 + 2*Y+Ypp;
+ratsimp(trigsimp(trigreduce(expand(g))));

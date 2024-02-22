@@ -3,12 +3,16 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	brachistochronenproblem.pdf					\
+all:	bernoulli.pdf							\
+	brachistochronenproblem.pdf					\
 	f.pdf								\
 	g.pdf								\
 	variation0.pdf							\
 	variation1.pdf							\
 	variation.pdf
+
+bernoulli.pdf:	bernoulli.tex
+	pdflatex bernoulli.tex
 
 brachistochronenproblem.pdf:	brachistochronenproblem.tex
 	pdflatex brachistochronenproblem.tex

@@ -1,0 +1,50 @@
+%
+% bernoulli.tex -- Problem von Bernoulli
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\r{2}
+\def\m{4}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	X(\t) = \r*(-sin(180*\t/3.14159)+\t);
+	Y(\t) = -\r*(1-cos(180*\t/3.14159));
+	etaX(\t,\a) = 0;
+	etaY(\t,\a) = 0.015*\a*(X(\t)*(X(\m)-X(\t));
+}]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at ({X(\m)},{Y(\m)});
+\coordinate (M) at ({X(0.7*\m)},{Y(0.7*\m)});
+
+\foreach \a in {-4,-3,...,7}{
+	\draw[color=gray!40,line width=1.0pt] plot[domain=0:\m,samples=40]
+		({X(\x)+etaX(\x,\a)},{Y(\x)+etaY(\x,\a)});
+}
+
+\draw[color=darkred,line width=1.4pt]
+	plot[domain=0:\m,samples=40] ({X(\x)},{Y(\x)});
+
+\draw[->] (-0.1,0) -- ({X(\m)+0.5},0) coordinate[label={$x$}];
+\draw[->] (0,0.1) -- (0,{-2*\r-1.4}) coordinate[label={left:$y$}];
+
+\fill[color=darkred] (A) circle[radius=0.08];
+\fill[color=darkred] (B) circle[radius=0.08];
+\fill[color=darkred] (M) circle[radius=0.08];
+\node[color=darkred] at (A) [above] {$A$};
+\node[color=darkred] at (B) [right] {$B$};
+\node[color=darkred] at (M) [above right] {$M$};
+
+\end{tikzpicture}
+\end{document}
+
