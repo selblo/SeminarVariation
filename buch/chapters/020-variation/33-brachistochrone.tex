@@ -183,9 +183,10 @@ Der folgende Trick hilft mit der Lösung der Differentialgleichung weiter.
 Wir mutliplizieren die Gleichung
 \eqref{buch:variation:eulerlagrange:eqn:brachistochrone0}
 mit $y'(x)$ und erhalten
-\[
+\begin{equation}
 y'(x) + 2y(x)y'(x)y''(x) + y'(x)^3 = 0.
-\]
+\label{buch:variation:eulerlagrange:eqn:multiplikation}
+\end{equation}
 Die ist die Ableitung
 \begin{align*}
 \bigl(
@@ -387,6 +388,24 @@ kann sie mit der konstanten Funktion fortgesetzt werden
 Ebenso kann die Lösung an einer beliebigen Stelle mit dem ansteigenden
 Teil der Zykloide fortgesetzt werden.
 
-
-
+Woher kommen diese singulären Lösungen?
+Eine konstante Lösung $y(x)=C$ hat Ableitungen
+$y'(x)=0$ und $y''(x)=0$.
+Eingesetzt in die ursprüngliche Gleichung
+\eqref{buch:variation:eulerlagrange:eqn:brachistochrone0}
+(Form auf der linken Seite) ergibt
+\[
+0
+=
+1+y'(x)^2+2y(x)y''(x)
+=
+1 + 0^2 + 2C\cdot 0
+=
+1.
+\]
+Dieser Widerspruch zeigt, dass die singulären Lösungen nicht
+Lösungen der Euler-Lagrange-Differentialgleichungen sind, sondern
+durch die Multiplikation mit $y'$ in
+\eqref{buch:variation:eulerlagrange:eqn:multiplikation}
+entstanden sind.
 

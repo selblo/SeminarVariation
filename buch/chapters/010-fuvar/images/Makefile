@@ -3,7 +3,12 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	karteextremum.pdf schwarz.pdf fxy.pdf richtungsabl.pdf partabl.pdf
+all:	karteextremum.pdf 						\
+	schwarz.pdf							\
+	fxy.pdf								\
+	richtungsabl.pdf						\
+	partabl.pdf							\
+	nebenbedingung.pdf
 
 karteextremum.pdf: karte.pdf karteextremum.tex
 	pdflatex karteextremum.tex
@@ -72,3 +77,9 @@ richtungsabl.jpg:	richtungsabl.png
 	convert $(richtungsablausschnitt) richtungsabl.png richtungsabl.jpg
 richtungsabl.pdf:	richtungsabl.tex richtungsabl.jpg
 	pdflatex richtungsabl.tex
+
+#
+# Nebenbedingung für eine Funktion von 2 Variablen
+#
+nebenbedingung.pdf:	nebenbedingung.tex
+	pdflatex nebenbedingung.tex

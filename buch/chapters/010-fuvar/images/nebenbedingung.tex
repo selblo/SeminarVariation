@@ -1,0 +1,49 @@
+%
+% nebenbedingung.tex -- Nebenbedingung in 2 Dimensionen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	R(\t,\a) = (1+0.2*(cos(2*\t)-(cos(6*\t)/3)+(cos(10*\t)/5)))*(1+\a);
+	X(\t,\a) = 2+(R(\t,\a)*cos(\t-3*\a));
+	Y(\t,\a) = 1+(R(\t,\a)*sin(\t-3*\a));
+	XX(\t,\a) = X(\t,\a);
+	YY(\t,\a) = Y(\t,\a);
+}]
+
+\begin{scope}
+\clip (-0.1,-0.1) rectangle (11.3,8.0);
+\fill[color=gray!10] (-1,-1) rectangle (12,9);
+\foreach \a in {3,6,...,60}{
+	\fill[color=blue!\a,opacity=0.1]
+		plot[domain=0:360,samples=72]
+			({XX(\x,(60-\a)/6)},{YY(\x,(60-\a)/6)});
+}
+\foreach \a in {0,2,...,12}{
+	\draw[color=blue] plot[domain=0:360,samples=72]
+		({X(\x,\a)},{Y(\x,\a)});
+	\draw[color=blue] plot[domain=0:360,samples=72]
+		({XX(\x,\a)},{YY(\x,\a)});
+}
+%\draw[color=blue] plot[domain=0:360,samples=100]
+%	({0.01*\x},{R(\x)});
+\draw[color=red,line width=2pt] (0,-3) circle[radius=10];
+\end{scope}
+
+\draw[->] (-0.1,0) -- (11.6,0) coordinate[label={$x_1$}];
+\draw[->] (0,-0.1) -- (0,8.3) coordinate[label={left:$x_2$}];
+\node at (0,0) [below left] {$0\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+
