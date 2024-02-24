@@ -723,12 +723,43 @@ verwendende Norm Rechenschaft abzulegen.
 % Grundaufgaben der Variationsrechnung
 %
 \subsection{Grundaufgaben der Variationsrechnung}
+\input{chapters/020-variation/fig/grundaufgaben.tex}
+Das Brachistochronenproblem sucht eine Kurve, die zwei Punkte miteinander
+verbindet.
+Dies ist bekannt als das {\em Anfangspunkt-Endpunkt-Problem}.
+\index{Anfangspunkt-Endpunkt-Problem}.
+Andere Aufgabenstellungen sind jedoch auch denkbar.
+Ein Schwimmer startet seine Flussüberquerung an einem Punkt
+und will am anderen Ufer das Wasser wieder verlassen.
+In welchem Punkt das geschieht, ist weniger wichtig.
+In dieser Situation ist der Anfangspunkt vorgegeben, der Endpunkt ist
+weniger eingeschränkt, er muss nur auf einer Kurve liegen.
+Dies ist das {\em Anfangspunkt-Endkurve-Problem}.
+Abbildung~\ref{buch:variation:problem:fig:grundaufgaben}
+\index{Anfangspunkt-Endkurve-Problem}
+zeigt alle möglichen Kombinationen.
 
-\begin{verbatim}
-- Punkt-Punkt-Problem
-- Anfangskurve-Punkt-Problem und Punkt-Endkurve-Problem
-- Freie Ränder
-- Nebenbedingungen
-\end{verbatim}
+Sobald bei der Lösung eines Problems mit gegebener Anfangs- oder Endkurve
+die Punkte bekannt sind, in denen die Lösungskurve auf die Randkurven
+trifft, ist das Problem auf ein Anfangspunkt-Endpunkt-Problem reduziert.
+Es ist daher zunächst nötig, ein robustes Verfahren für diesen Grundfall
+zu finden.
+Die in Abschnitt~\ref{buch:variation:section:eulerlagrange}
+abgeleitete Euler-Lagrange-Differentialgleichung behandelt diesen
+Fall.
+Sie ermöglicht, für jedes Paar von Punkten auf den Randkurven
+eine Lösung zu finden.
+Es sind dann weitere Bedingungen notwendig, welche die Anfangs- und
+Endpunkte zu bestimmen gestatten.
+In Kapitel~\ref{buch:chapter:nebenbedingungen} werden die sogenannten
+Transversalitätsbedingungen hergeleitet, die vorschreiben, wie die
+Lösungskurven auf die Randkurven treffen müssen.
+Dadurch werden die Anfangs- und Endpunkte bestimmt.
+
+Weitere denkbare Aufgabenstellungen könnten Kurven sein, deren Endpunkte
+überhaupt nicht festgelegt sind oder Kurven, die einen Punkt enthalten
+oder eine andere Art von Eigenschaft haben.
+Kapitel~\ref{buch:chapter:nebenbedingungen} behandelt auch solche
+Nebenbedingungen.
 
 

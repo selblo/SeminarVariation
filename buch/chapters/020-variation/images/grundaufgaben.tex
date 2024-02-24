@@ -1,0 +1,121 @@
+%
+% grundaufgabe.tex -- Grundaufgaben der Variationsrechnung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	leftx(\h,\a) = \a*(-0.8*\h*\h-\h*0.2)+1.2;
+	lefty(\h,\a) = 1.5*\a*\h+1.6;
+	rightx(\h,\a) = \a*(0.6*\h*\h-0.4*\h)+4.1;
+	righty(\h,\a) = 1.5*\a*\h+2.6;
+	geradex(\xl,\yl,\xr,\yr,\t) = \t*\xr+(1-\t)*\xl;
+	geradey(\xl,\yl,\xr,\yr,\t) = \t*\yr+(1-\t)*\yl;
+	X(\t,\h,\al,\ar) = geradex(leftx(\h,\al),lefty(\h,\al),rightx(\h,\ar),righty(\h,\ar),\t);
+	Y(\t,\h,\al,\ar) = geradey(leftx(\h,\al),lefty(\h,\al),rightx(\h,\ar),righty(\h,\ar),\t)+\h*\t*(1-\t)-0.1*sin(360*\t);
+}]
+
+\def\kurven#1{
+	\foreach \h in {-1,-0.8,...,1}{
+		\draw[color=darkred!20,line width=1pt] plot[domain=0:1]
+			({X(\x,\h*(#1),\al,\ar)},{Y(\x,\h*(#1),\al,\ar)});
+	}
+	\draw[color=darkred,line width=1.2pt] plot[domain=0:1]
+		({X(\x,0,\al,\ar)},{Y(\x,0,\al,\ar)});
+}
+
+\def\koordinatensystem#1{
+	\draw[->] (-0.1,0) -- (5.5,0) coordinate[label={$x$}];
+	\draw[->] (0,-0.1) -- (0,4.4) coordinate[label={right:$y$}];
+	\node at (2.7,0) [below] {#1\strut};
+}
+
+\def\randlinks{
+	\begin{scope}
+	\clip (0,0) rectangle (5.2,4.2);
+	\fill[color=blue!20] (-1,-1)
+		--
+		plot[domain=-1.1:1.1] ({X(0,\x,\al,\ar)},{Y(0,\x,\al,\ar)})
+		--
+		(-1,5)
+		--
+		cycle;
+	\draw[color=blue] plot[domain=-1.1:1.1]
+		({X(0,\x,\al,\ar)},{Y(0,\x,\al,\ar)});
+	\end{scope}
+}
+
+\def\punktlinks{
+	\fill[color=blue] ({X(0,0,0,0)},{Y(0,0,0,0)}) circle[radius=0.08];
+	\node[color=blue] at ({X(0,0,0,0)},{Y(0,0,0,0)}) [left] {$(x_1,y_1)$};
+}
+
+\def\punktrechts{
+	\fill[color=blue] ({X(1,0,0,0)},{Y(1,0,0,0)}) circle[radius=0.08];
+	\node[color=blue] at ({X(1,0,0,0)},{Y(1,0,0,0)}) [right] {$(x_2,y_2)$};
+}
+
+\def\randrechts{
+	\begin{scope}
+	\clip (0,0) rectangle (5.2,4.2);
+	\fill[color=blue!20] (6,0)
+		--
+		plot[domain=-1.1:1.1] ({X(1,\x,\al,\ar)},{Y(1,\x,\al,\ar)})
+		--
+		(7,5)
+		--
+		cycle;
+	\draw[color=blue] plot[domain=-1.1:1.1]
+		({X(1,\x,\al,\ar)},{Y(1,\x,\al,\ar)});
+	\end{scope}
+}
+
+\begin{scope}
+\def\al{0}
+\def\ar{0}
+\kurven{5}
+\punktlinks
+\punktrechts
+\koordinatensystem{a)}
+\end{scope}
+
+\begin{scope}[xshift=6.7cm,yshift=0cm]
+\def\al{0}
+\def\ar{1}
+\kurven{1}
+\randrechts
+\punktlinks
+\koordinatensystem{c)}
+\end{scope}
+
+\begin{scope}[xshift=6.7cm,yshift=-5cm]
+\def\al{1}
+\def\ar{0}
+\kurven{1}
+\randlinks
+\punktrechts
+\koordinatensystem{d)}
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-5cm]
+\def\al{1}
+\def\ar{1}
+\kurven{1}
+\randrechts
+\randlinks
+\koordinatensystem{b)}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
