@@ -3,5 +3,7 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:
+all:	greenbeweis.pdf
 
+greenbeweis.pdf:	greenbeweis.tex
+	pdflatex greenbeweis.tex
