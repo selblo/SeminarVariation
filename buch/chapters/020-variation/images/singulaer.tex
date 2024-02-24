@@ -1,0 +1,73 @@
+%
+% singulaer.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{0.96}
+\def\rmax{1.8}
+
+\pgfmathparse{2*3.14159*0.82}
+\xdef\tend{\pgfmathresult}
+
+\pgfmathparse{\rmax*(\tend-sin(180*\tend/3.14159))}
+\xdef\xend{\pgfmathresult}
+
+\pgfmathparse{\rmax*(1-cos(180*\tend/3.14159))}
+\xdef\yend{\pgfmathresult}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	X(\t,\r) = \r*(\t-sin(180*\t/3.14159));
+	Y(\t,\r) = \r*(1-cos(180*\t/3.14159));
+	a(\y,\r) = 2*asin(sqrt(\y/(2*\r)));
+}]
+
+\foreach \r in {0.6,0.8,...,\rmax}{
+%\def\r{1}
+	\pgfmathparse{sqrt(\yend/(2*\r))}
+	\xdef\x{\pgfmathresult}
+
+%\node at (0,-3) [right] {$x=\x$};
+
+	\pgfmathparse{2*3.14159*atan(\x/sqrt(1-\x*\x))/180}
+	\xdef\a{\pgfmathresult}
+
+	\pgfmathparse{\r*(\a-sin(180*\a/3.14159))}
+	\xdef\deltax{\pgfmathresult}
+
+	\pgfmathparse{\xend+\deltax}
+	\xdef\Xshift{\pgfmathresult}
+
+	\draw[color=darkred,line width=1.2pt]
+		plot[domain=0:{3.14159},smooth]
+			({X(\x,\r)},{-Y(\x,\r)});
+	\draw[color=darkred,line width=1.2pt]
+		plot[domain={-3.14159}:0,smooth]
+			({X(\x,\r)+\Xshift},{-Y(\x,\r)});
+	\draw[color=blue,line width=1.2pt]
+		({X(3.14159,\r)},{-Y(3.14159,\r)})
+		--
+		({X(-3.14159,\r)+\Xshift},{-Y(-3.14159,\r)});
+}
+
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,0.1) -- (0,-4.0) coordinate[label={left:$y$}];
+
+\fill[color=darkred] (0,0) circle[radius=0.08];
+\node[color=darkred] at (0,0) [above left] {$A$};
+\fill[color=darkred] (\xend,{-\yend}) circle[radius=0.08];
+\node[color=darkred] at (\xend,{-\yend}) [below right] {$B$};
+
+
+\end{tikzpicture}
+\end{document}
+

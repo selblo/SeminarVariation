@@ -7,6 +7,7 @@ all:	bernoulli.pdf							\
 	brachistochronenproblem.pdf					\
 	f.pdf								\
 	g.pdf								\
+	singulaer.pdf							\
 	variation0.pdf							\
 	variation1.pdf							\
 	variation.pdf
@@ -31,3 +32,7 @@ variation1.pdf:	variation1.tex
 
 variation.pdf:	variation.tex
 	pdflatex variation.tex
+
+singulaer.pdf:	singulaer.tex
+	pdflatex singulaer.tex
+
