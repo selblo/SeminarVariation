@@ -3,8 +3,12 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	greenbeweis.pdf							\
+all:	2drand.pdf							\
+	greenbeweis.pdf							\
 	offen.pdf
+
+2drand.pdf:	2drand.tex
+	pdflatex 2drand.tex
 
 greenbeweis.pdf:	greenbeweis.tex
 	pdflatex greenbeweis.tex

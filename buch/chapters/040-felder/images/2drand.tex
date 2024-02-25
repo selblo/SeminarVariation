@@ -1,0 +1,127 @@
+%
+% 2drand.tex -- Rand eines zweidmensionalen Gebietes
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (P1) at (1,4);
+\coordinate (P2) at (7,1);
+\coordinate (P3) at (10,2);
+\coordinate (P4) at (6,5);
+\coordinate (P5) at (9,7);
+\coordinate (P6) at (3,7);
+
+\node at (P1) [left] {$P_1$};
+%\node at (P2) [below] {$P_2$};
+\node at (P3) [right] {$P_2$};
+\node at (P4) [right] {$P_3$};
+\node at (P5) [right] {$P_4$};
+%\node at (P6) [above] {$P_6$};
+
+\fill[color=gray!20]
+	(P1)
+	to[out=-90,in=180]
+	(P2)
+	to[out=0,in=-90]
+	(P3)
+	to[out=90,in=-90]
+	(P4)
+	to[out=90,in=-90]
+	(P5)
+	to[out=90,in=0]
+	(P6)
+	to[out=180,in=90]
+	(P1) -- cycle;
+
+\fill[color=blue!10]
+	(P1)
+	to[out=-90,in=180]
+	(P2)
+	to[out=0,in=-90]
+	(P3)
+	-- cycle;
+\fill[color=darkred!10]
+	(P1)
+	--
+	(P3)
+	to[out=90,in=-90]
+	(P4)
+	-- cycle;
+\fill[color=darkgreen!10]
+	(P1)
+	--
+	(P4)
+	to[out=90,in=-90]
+	(P5)
+	-- cycle;
+\fill[color=orange!10]
+	(P1)
+	--
+	(P5)
+	to[out=90,in=0]
+	(P6)
+	to[out=180,in=90]
+	(P1) -- cycle;
+
+\draw[line width=0.3pt] (P1) -- (P3);
+\draw[line width=0.3pt] (P1) -- (P4);
+\draw[line width=0.3pt] (P1) -- (P5);
+
+\draw[color=blue,line width=1.4pt]
+	(P1)
+	to[out=-90,in=180]
+	(P2)
+	to[out=0,in=-90]
+	(P3);
+\draw[color=darkred,line width=1.4pt]
+	(P3)
+	to[out=90,in=-90]
+	(P4);
+\draw[color=darkgreen,line width=1.4pt]
+	(P4)
+	to[out=90,in=-90]
+	(P5);
+\draw[color=orange,line width=1.4pt]
+	(P5)
+	to[out=90,in=0]
+	(P6)
+	to[out=180,in=90]
+	(P1);
+
+\fill[color=white] (P1) circle[radius=0.05];
+%\fill[color=white] (P2) circle[radius=0.05];
+\fill[color=white] (P3) circle[radius=0.05];
+\fill[color=white] (P4) circle[radius=0.05];
+\fill[color=white] (P5) circle[radius=0.05];
+%\fill[color=white] (P6) circle[radius=0.05];
+
+\draw (P1) circle[radius=0.05];
+%\draw (P2) circle[radius=0.05];
+\draw (P3) circle[radius=0.05];
+\draw (P4) circle[radius=0.05];
+\draw (P5) circle[radius=0.05];
+%\draw (P6) circle[radius=0.05];
+
+\node[color=blue]      at (P2) [below]                  {$y_{12}(x)$};
+\node[color=darkred]   at ($0.5*(P3)+0.5*(P4)$) [above] {$y_{23}(x)$};
+\node[color=darkgreen] at ($0.5*(P4)+0.5*(P5)$) [below] {$y_{34}(x)$};
+\node[color=orange]    at (P6) [above]                  {$y_{41}(x)$};
+
+\draw[->] (0,-0.1) -- (0,8.3) coordinate[label={right:$y$}];
+\draw[->] (-0.1,0) -- (11.3,0) coordinate[label={$x$}];
+
+\end{tikzpicture}
+\end{document}
+
