@@ -78,11 +78,11 @@ union {
 // from		the place where the light source is placed
 // l		the extension of the light source (for smooth shadows)
 //
-#macro lightsource(from,l)
+#macro lightsource(from, l, farbe)
 #declare d1 = l*vnormalize(vcross(e2, from));
 #declare d2 = l*vnormalize(vcross(d1, from));
 light_source {
-	from color White
+	from color farbe
 	area_light d1 d2, 10, 10
 	adaptive 1
 	jitter

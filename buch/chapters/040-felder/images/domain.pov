@@ -7,11 +7,11 @@
 #include "common.inc"
 
 place_camera(<5, 4, 10>, <0, 0.915, 0>, 16/9, 0.24)
-lightsource(<40, 50, 10>, 1)
+lightsource(<40, 50, 10>, 1, White)
 
-arrow(-1.3 * e1, 1.3 * e1, 0.015, White)
-arrow(-0.3 * e2, 2.3 * e2, 0.015, White)
-arrow(-1.3 * e3, 1.3 * e3, 0.015, White)
+arrow(-1.3 * e1, 1.3 * e1, 0.015, rot)
+arrow(-0.3 * e2, 2.3 * e2, 0.015, blau)
+arrow(-1.3 * e3, 1.3 * e3, 0.015, gruen)
 
 #declare r = 0.01;
 
