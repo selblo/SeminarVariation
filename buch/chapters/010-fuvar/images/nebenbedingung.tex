@@ -10,8 +10,14 @@
 \usepackage{pgfplots}
 \usepackage{csvsimple}
 \usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
 \begin{document}
 \def\skala{1}
+\def\h{0.2}
+\def\richtung#1{
+	\draw[color=darkred,line width=0.3pt] (0,-3) -- +(#1:12);
+	\fill[color=red] ($(0,-3)+(#1:10)$) circle[radius=0.08];
+}
 \begin{tikzpicture}[>=latex,thick,scale=\skala,
 declare function={
 	R(\t,\a) = (1+0.2*(cos(2*\t)-(cos(6*\t)/3)+(cos(10*\t)/5)))*(1+\a);
@@ -19,6 +25,11 @@ declare function={
 	Y(\t,\a) = 1+(R(\t,\a)*sin(\t-3*\a));
 	XX(\t,\a) = X(\t,\a);
 	YY(\t,\a) = Y(\t,\a);
+	sqr(\u) = (\u*\u);
+	hypot(\u,\v) = sqrt(sqr(\u)+sqr(\v));
+	nr(\t,\a) = hypot(XX(\t+\h,\a)-XX(\t,\a),YY(\t+\h,\a)-YY(\t,\a));
+	nx(\t,\a) = (YY(\t+\h,\a)-YY(\t,\a))/nr(\t,\a);
+	ny(\t,\a) = -(XX(\t+\h,\a)-XX(\t,\a))/nr(\t,\a);
 }]
 
 \begin{scope}
@@ -30,14 +41,33 @@ declare function={
 			({XX(\x,(60-\a)/6)},{YY(\x,(60-\a)/6)});
 }
 \foreach \a in {0,2,...,12}{
-	\draw[color=blue] plot[domain=0:360,samples=72]
-		({X(\x,\a)},{Y(\x,\a)});
-	\draw[color=blue] plot[domain=0:360,samples=72]
+	%\draw[color=blue] plot[domain=0:360,samples=144]
+	%	({X(\x,\a)},{Y(\x,\a)});
+	\draw[color=blue] plot[domain=0:360,samples=144,smooth]
 		({XX(\x,\a)},{YY(\x,\a)});
+}
+\def\a{6}
+\foreach \a in {4,6}{
+	\foreach \x in {0,5,...,140}{
+		\draw[->,color=blue]
+			({XX(\x,\a)},{YY(\x,\a)})
+			--
+			({XX(\x,\a)+nx(\x,\a)},{YY(\x,\a)+ny(\x,\a)});
+	}
 }
 %\draw[color=blue] plot[domain=0:360,samples=100]
 %	({0.01*\x},{R(\x)});
 \draw[color=red,line width=2pt] (0,-3) circle[radius=10];
+\foreach \x in {0,4,...,90}{
+	\draw[->,color=red] ($(0,-3)+(\x:10)$) -- +(\x:1);
+}
+
+\richtung{40}
+\richtung{50}
+\richtung{59.7}
+\richtung{69.3}
+\richtung{76}
+\richtung{87}
 \end{scope}
 
 \draw[->] (-0.1,0) -- (11.6,0) coordinate[label={$x_1$}];
