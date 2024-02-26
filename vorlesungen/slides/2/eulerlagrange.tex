@@ -1,0 +1,47 @@
+%
+% eulerlagrange.tex -- Euler-Lagrange-Differentiagleichung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Euler-Lagrange-Differentaigleichung}
+\begin{enumerate}
+\item<2-> Lagrange-Funktion: $L(x,y,y')$
+\item<3-> Ableitungen:
+\[
+\frac{\partial L}{\partial y}
+\qquad\text{und}\qquad
+\frac{\partial L}{\partial y'}
+\]
+\item<4-> $y(x)$ einsetzen:
+\[
+\frac{\partial L}{\partial y}(x,y(x),y'(x))
+\qquad\text{und}\qquad
+\frac{\partial L}{\partial y'}(x,y(x),y'(x))
+\]
+\item<5-> Nach $x$ ableiten:
+\[
+\frac{d}{dx}
+\frac{\partial L}{\partial y'}(x,y(x),y'(x))
+\]
+\item<6-> Euler-Lagrange-Differentialgleichung:
+\[
+\frac{\partial L}{\partial y}(x,y(x),y'(x))
+-
+\frac{\partial L}{\partial y'}(x,y(x),y'(x))
+=
+0
+\]
+\end{enumerate}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\end{column}
+\begin{column}{0.48\textwidth}
+\end{column}
+\end{columns}
+\end{frame}
+\egroup
