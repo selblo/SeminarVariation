@@ -17,6 +17,7 @@ CHAPTERFILES +=								\
 	chapters/020-variation/6-allgemein.tex				\
 	chapters/020-variation/fig/brachistochronenproblem.tex		\
 	chapters/020-variation/fig/f.tex				\
+	chapters/020-variation/fig/fundamentallemma.tex			\
 	chapters/020-variation/fig/g.tex				\
 	chapters/020-variation/fig/variation.tex			\
 	chapters/020-variation/fig/variation0.tex			\

@@ -6,7 +6,7 @@
 #include "../../../common/common.inc"
 
 place_camera(<-33, 20, 50>, <0, 0, 0>, 16/9, 0.2)
-lightsource(<10, 5, 40>, 1, White)
+lightsource(<10, 5, 40>, 1)
 
 arrow(-e1, e1, 0.01, White)
 arrow(-e2, e2, 0.01, White)

@@ -18,4 +18,5 @@ CHAPTERFILES +=								\
 	chapters/040-felder/fig/green-beweis.tex			\
 	chapters/040-felder/fig/garbageman.tex				\
 	chapters/040-felder/fig/mandelbrot.tex				\
+	chapters/040-felder/fig/gauss.tex				\
 	chapters/040-felder/chapter.tex
