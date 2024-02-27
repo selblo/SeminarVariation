@@ -6,6 +6,7 @@
 all:	bernoulli.pdf							\
 	brachistochronenproblem.pdf					\
 	f.pdf								\
+	fundamentallemma.pdf						\
 	g.pdf								\
 	grundaufgaben.pdf						\
 	singulaer.pdf							\
@@ -21,6 +22,9 @@ brachistochronenproblem.pdf:	brachistochronenproblem.tex
 
 f.pdf:	f.tex
 	pdflatex f.tex
+
+fundamentallemma.pdf:	fundamentallemma.tex
+	pdflatex fundamentallemma.tex
 
 g.pdf:	g.tex
 	pdflatex g.tex

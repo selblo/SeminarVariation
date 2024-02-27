@@ -58,10 +58,15 @@ randdef.pdf:	randdef.tex domain.jpg sphere.jpg
 #
 # Variation
 #
-variation.png:	variation.pov
+variationwindow = 1560x1080+280+0
+flaeche.png:	flaeche.pov variation.inc
+	povray +A0.1 -W1920 -H1080 -Oflaeche.png flaeche.pov
+flaeche.jpg:	flaeche.png Makefile
+	convert -extract $(variationwindow) flaeche.png flaeche.jpg
+variation.png:	variation.pov variation.inc
 	povray +A0.1 -W1920 -H1080 -Ovariation.png variation.pov
-variation.jpg:	variation.png
-	convert -extract 1920x1080+0+0 variation.png variation.jpg
+variation.jpg:	variation.png Makefile
+	convert -extract $(variationwindow) variation.png variation.jpg
 
-variation.pdf:	variation.tex variation.jpg
+variation.pdf:	variation.tex variation.jpg flaeche.jpg
 	pdflatex variation.tex

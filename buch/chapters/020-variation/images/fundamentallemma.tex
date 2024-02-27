@@ -1,0 +1,89 @@
+%
+% fundamentallemma.tex -- Fundamentallemma
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkgreen}{rgb}{0.0,0.6,0.0}
+\definecolor{darkred}{rgb}{0.8,0.0,0.0}
+\begin{document}
+\def\skala{1}
+\def\X{4.555}
+\def\X{4.7}
+\def\e{0.85}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	f(\t) = (-0.4*\t)+4-1.5*sin(50*\t)-1.5*cos(120*\t);
+}]
+
+\fill[color=darkred!20]
+	plot[domain=-180:180] ({\X+\e*\x/180},{cos(\x)+1})
+	--
+	cycle;
+
+\draw[color=blue!20,line width=1.2pt]
+	plot[domain=0.2:7.8,samples=100] ({\x},{f(\x)});
+\begin{scope}
+\clip ({\X-\e},0) rectangle ({\X+\e},5.4);
+\draw[color=blue,line width=1.4pt]
+	plot[domain={\X-2*\e}:{\X+2*\e},samples=100] ({\x},{f(\x)});
+\end{scope}
+\node[color=blue] at ({\X-0.8*\e},{f(\X-0.8*\e)}) [left] {$f(x)$};
+%\node[color=blue] at ({\X},{f(\X)}) [above] {$f(x_0)$};
+\draw[color=blue,line width=0.4pt] (0,{f(\X)}) -- ({\X},{f(\X)});
+\draw[color=blue] (-0.05,{f(\X)}) -- (0.05,{f(\X)});
+\node[color=blue] at (-0.05,{f(\X)}) [left] {$f(x_0)$};
+
+\draw[color=blue,line width=0.4pt] ({\X},0) -- ({\X},{f(\X)});
+\node at (\X,-0.05) [below] {$x_0\mathstrut$};
+
+\draw[color=darkgreen,line width=0.4pt] ({\X-\e},0) -- ({\X-\e},5.2);
+\draw[color=darkgreen,line width=0.4pt] ({\X+\e},0) -- ({\X+\e},5.2);
+\draw[color=darkgreen,line width=0.4pt] (0,{0.5*f(\X)}) -- ({\X},{0.5*f(\X)});
+\draw[color=darkgreen] (-0.05,{0.5*f(\X)}) -- (0.05,{0.5*f(\X)});
+\node[color=darkgreen] at (-0.05,{0.5*f(\X)})
+	[left] {$\frac12f(x_0)\mathstrut$};
+\draw[color=darkgreen,line width=1.2pt]
+	({\X+\e},{0.5*f(\X)}) 
+	-- 
+	({\X-\e},{0.5*f(\X)});
+%\node[color=darkgreen] at ({\X},{0.5*f(\X)}) [above] {$\frac12f(x_0)$};
+\draw[color=darkgreen] ({\X-\e},-0.05) -- ({\X-\e},0.05);
+\node[color=darkgreen] at ({\X-\e},-0.05) [below left] {$x_0-\delta\mathstrut$};
+\draw[color=darkgreen] ({\X+\e},-0.05) -- ({\X+\e},0.05);
+\node[color=darkgreen] at ({\X+\e},-0.05) [below right] {$x_0+\delta\mathstrut$};
+
+\fill[color=blue] ({\X},{f(\X)}) circle[radius=0.08];
+
+\draw[->] (-0.1,0) -- (8.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,5.4) coordinate[label={left:$y$}];
+
+\draw[color=darkred,line width=1.2pt]
+	(0.5,0)
+	--
+	({\X-\e},0)
+	--
+	plot[domain=-180:180] ({\X+\e*\x/180},{cos(\x)+1})
+	--
+	({\X+\e},0)
+	--
+	(7.5,0);
+\node[color=darkred] at ({\X+0.5*\e},1) [right] {$g(x)$};
+
+\draw[line width=0.4pt] (0.5,0) -- (0.5,5.2);
+\draw (0.5,-0.05) -- (0.5,0.05);
+\node at (0.5,-0.05) [below] {$x_1\mathstrut$};
+
+\draw[line width=0.4pt] (7.5,0) -- (7.5,5.2);
+\draw (7.5,-0.05) -- (7.5,0.05);
+\node at (7.5,-0.05) [below] {$x_2\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+
