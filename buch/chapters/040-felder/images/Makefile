@@ -7,7 +7,8 @@ all:	2drand.pdf							\
 	gauss.pdf							\
 	greenbeweis.pdf							\
 	offen.pdf							\
-	randdef.pdf
+	randdef.pdf							\
+	variation.pdf
 
 2drand.pdf:	2drand.tex
 	pdflatex 2drand.tex
@@ -54,3 +55,13 @@ sphere.jpg:	sphere.png Makefile
 randdef.pdf:	randdef.tex domain.jpg sphere.jpg
 	pdflatex randdef.tex
 
+#
+# Variation
+#
+variation.png:	variation.pov
+	povray +A0.1 -W1920 -H1080 -Ovariation.png variation.pov
+variation.jpg:	variation.png
+	convert -extract 1920x1080+0+0 variation.png variation.jpg
+
+variation.pdf:	variation.tex variation.jpg
+	pdflatex variation.tex
