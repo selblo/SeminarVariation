@@ -21,6 +21,9 @@ PAPERFILES = \
 	papers/schwimmen/main.tex \
 	papers/planet/main.tex \
 	papers/varalg/main.tex \
+	papers/cahnhilliard/main.tex \
+	papers/circuit/main.tex \
+	papers/luke/main.tex \
 	
 $(workdir)/buch1-blx.bbl:	$(workdir)/buch1-blx.aux
 	cd $(workdir); bibtex buch1-blx
@@ -101,10 +104,28 @@ $(workdir)/$(seminar)13-blx.bbl:	$(workdir)/$(seminar)13-blx.aux
 	cd $(workdir); bibtex $(seminar)13-blx
 
 $(workdir)/buch14-blx.bbl:	$(workdir)/buch14-blx.aux
-	cd $(workdir) bibtex buch14-blx
+	cd $(workdir); bibtex buch14-blx
 
 $(workdir)/$(seminar)14-blx.bbl:	$(workdir)/$(seminar)14-blx.aux
-	cd $(workdir) bibtex $(seminar)14-blx
+	cd $(workdir); bibtex $(seminar)14-blx
+
+$(workdir)/buch15-blx.bbl:	$(workdir)/buch15-blx.aux
+	cd $(workdir); bibtex buch15-blx
+
+$(workdir)/$(seminar)15-blx.bbl:	$(workdir)/$(seminar)15-blx.aux
+	cd $(workdir); bibtex $(seminar)15-blx
+
+$(workdir)/buch16-blx.bbl:	$(workdir)/buch16-blx.aux
+	cd $(workdir); bibtex buch16-blx
+
+$(workdir)/$(seminar)16-blx.bbl:	$(workdir)/$(seminar)16-blx.aux
+	cd $(workdir); bibtex $(seminar)16-blx
+
+$(workdir)/buch17-blx.bbl:	$(workdir)/buch17-blx.aux
+	cd $(workdir) bibtex buch17-blx
+
+$(workdir)/$(seminar)17-blx.bbl:	$(workdir)/$(seminar)17-blx.aux
+	cd $(workdir) bibtex $(seminar)17-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
@@ -121,6 +142,9 @@ BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch12-blx.bbl \
 	$(workdir)/buch13-blx.bbl \
 	$(workdir)/buch14-blx.bbl \
+	$(workdir)/buch15-blx.bbl \
+	$(workdir)/buch16-blx.bbl \
+	$(workdir)/buch17-blx.bbl \
 
 
 SBLXFILES = $(workdir)/$(seminar).bbl\
@@ -138,6 +162,9 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 	$(workdir)/$(seminar)12-blx.bbl \
 	$(workdir)/$(seminar)13-blx.bbl \
 	$(workdir)/$(seminar)14-blx.bbl \
+	$(workdir)/$(seminar)15-blx.bbl \
+	$(workdir)/$(seminar)16-blx.bbl \
+	$(workdir)/$(seminar)17-blx.bbl \
 
 
 PAPER_DIRECTORIES = \
@@ -154,6 +181,9 @@ PAPER_DIRECTORIES = \
 	schwimmen \
 	planet \
 	varalg \
+	cahnhilliard \
+	circuit \
+	luke \
 	
 PAPER_MAKEFILEINC = \
 	papers/doppelpendel/Makefile.inc \
@@ -169,4 +199,7 @@ PAPER_MAKEFILEINC = \
 	papers/schwimmen/Makefile.inc \
 	papers/planet/Makefile.inc \
 	papers/varalg/Makefile.inc \
+	papers/cahnhilliard/Makefile.inc \
+	papers/circuit/Makefile.inc \
+	papers/luke/Makefile.inc \
 	

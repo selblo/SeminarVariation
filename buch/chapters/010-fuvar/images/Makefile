@@ -83,3 +83,11 @@ richtungsabl.pdf:	richtungsabl.tex richtungsabl.jpg
 #
 nebenbedingung.pdf:	nebenbedingung.tex
 	pdflatex nebenbedingung.tex
+
+#
+# Lagrange multiplier illustration
+#
+lagrangemult.png:	lagrangemult.pov lagrangemult.inc
+	povray +A0.1 -W1920 -H1080 -Olagrangemult.png lagrangemult.pov
+lagrangedetail.png:	lagrangedetail.pov lagrangemult.inc
+	povray +A0.1 -W1920 -H1080 -Olagrangedetail.png lagrangedetail.pov
