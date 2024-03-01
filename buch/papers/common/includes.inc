@@ -12,7 +12,6 @@ include papers/schwimmen/Makefile.inc
 include papers/planet/Makefile.inc
 include papers/varalg/Makefile.inc
 include papers/cahnhilliard/Makefile.inc
-include papers/circuit/Makefile.inc
 include papers/luke/Makefile.inc
 
 TEXFILES = \
@@ -30,6 +29,5 @@ TEXFILES = \
 	$(dependencies-planet) \
 	$(dependencies-varalg) \
 	$(dependencies-cahnhilliard) \
-	$(dependencies-circuit) \
 	$(dependencies-luke) \
 

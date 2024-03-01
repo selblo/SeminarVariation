@@ -22,7 +22,6 @@ PAPERFILES = \
 	papers/planet/main.tex \
 	papers/varalg/main.tex \
 	papers/cahnhilliard/main.tex \
-	papers/circuit/main.tex \
 	papers/luke/main.tex \
 	
 $(workdir)/buch1-blx.bbl:	$(workdir)/buch1-blx.aux
@@ -182,7 +181,6 @@ PAPER_DIRECTORIES = \
 	planet \
 	varalg \
 	cahnhilliard \
-	circuit \
 	luke \
 	
 PAPER_MAKEFILEINC = \
@@ -200,6 +198,5 @@ PAPER_MAKEFILEINC = \
 	papers/planet/Makefile.inc \
 	papers/varalg/Makefile.inc \
 	papers/cahnhilliard/Makefile.inc \
-	papers/circuit/Makefile.inc \
 	papers/luke/Makefile.inc \
 	
