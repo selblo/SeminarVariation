@@ -18,4 +18,6 @@ CHAPTERFILES +=								\
 	chapters/010-fuvar/fig/richtungsableitung.tex			\
 	chapters/010-fuvar/fig/partabl.tex				\
 	chapters/010-fuvar/fig/nebenbedingung.tex			\
+	chapters/010-fuvar/fig/lagrangekurve.tex			\
+	chapters/010-fuvar/fig/lagrangezyl.tex				\
 	chapters/010-fuvar/chapter.tex
