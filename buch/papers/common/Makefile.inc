@@ -143,7 +143,6 @@ BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch14-blx.bbl \
 	$(workdir)/buch15-blx.bbl \
 	$(workdir)/buch16-blx.bbl \
-	$(workdir)/buch17-blx.bbl \
 
 
 SBLXFILES = $(workdir)/$(seminar).bbl\
@@ -163,7 +162,6 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 	$(workdir)/$(seminar)14-blx.bbl \
 	$(workdir)/$(seminar)15-blx.bbl \
 	$(workdir)/$(seminar)16-blx.bbl \
-	$(workdir)/$(seminar)17-blx.bbl \
 
 
 PAPER_DIRECTORIES = \
