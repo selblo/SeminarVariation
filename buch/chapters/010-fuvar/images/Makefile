@@ -8,7 +8,9 @@ all:	karteextremum.pdf 						\
 	fxy.pdf								\
 	richtungsabl.pdf						\
 	partabl.pdf							\
-	nebenbedingung.pdf
+	nebenbedingung.pdf						\
+	lagrangezyl.pdf							\
+	lagrangekurve.pdf
 
 karteextremum.pdf: karte.pdf karteextremum.tex
 	pdflatex karteextremum.tex
@@ -83,3 +85,28 @@ richtungsabl.pdf:	richtungsabl.tex richtungsabl.jpg
 #
 nebenbedingung.pdf:	nebenbedingung.tex
 	pdflatex nebenbedingung.tex
+
+#
+# Lagrange multiplier illustration
+#
+lagrangeimages:	lagrangezyl.jpg lagrangekurve.jpg
+
+lagrangemult.png:	lagrangemult.pov lagrangemult.inc
+	povray +A0.1 -W1920 -H1080 -Olagrangemult.png lagrangemult.pov
+
+lagrangezyl.png:	lagrangezyl.pov lagrangemult.inc
+	povray +A0.1 -W1920 -H1080 -Olagrangezyl.png lagrangezyl.pov
+lagrangezyl.jpg:	lagrangezyl.png Makefile
+	convert -extract 1720x1080+105+0 lagrangezyl.png lagrangezyl.jpg
+lagrangezyl.pdf:	lagrangezyl.tex lagrangezyl.jpg
+	pdflatex lagrangezyl.tex
+
+lagrangekurve.png:	lagrangekurve.pov lagrangemult.inc
+	povray +A0.1 -W1920 -H1080 -Olagrangekurve.png lagrangekurve.pov
+lagrangekurve.jpg:	lagrangekurve.png Makefile
+	convert -extract 1720x1080+105+0 lagrangekurve.png lagrangekurve.jpg
+lagrangekurve.pdf:	lagrangekurve.tex lagrangekurve.jpg
+	pdflatex lagrangekurve.tex
+
+lagrangedetail.png:	lagrangedetail.pov lagrangemult.inc
+	povray +A0.1 -W1920 -H1080 -Olagrangedetail.png lagrangedetail.pov

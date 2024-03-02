@@ -11,6 +11,8 @@ include papers/antennen/Makefile.inc
 include papers/schwimmen/Makefile.inc
 include papers/planet/Makefile.inc
 include papers/varalg/Makefile.inc
+include papers/cahnhilliard/Makefile.inc
+include papers/luke/Makefile.inc
 
 TEXFILES = \
 	$(dependencies-doppelpendel) \
@@ -26,4 +28,6 @@ TEXFILES = \
 	$(dependencies-schwimmen) \
 	$(dependencies-planet) \
 	$(dependencies-varalg) \
+	$(dependencies-cahnhilliard) \
+	$(dependencies-luke) \
 
