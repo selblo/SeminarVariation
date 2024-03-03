@@ -330,12 +330,13 @@ aus der zweiten und dritten Bedingung gewonnen werden.
 % Hermite-Polynome
 %
 \subsubsection{Hermite-Polynome}
+\input{chapters/030-nichtdiff/fig/hermite.tex}
 Es müssen kubische Polynome auf dem Intervall $[x_k,x_{k+1}]$ konstruiert
 werden, die vorgegebene Werte und Ableitungen in den Intervallenden haben.
 Diese Aufgabe kann auf dem Intervall $[0,1]$ sofort gelöst werden,
 wenn kubische Polynome auf dem bekannt sind, deren Werte der Funktion
 und ersten Ableitungen an den Endpunkten $0$ sind mit Ausnahme jeweils eines,
-der $1$ ist.
+der $1$ ist (Abbildung~\ref{buch:nichtdiff:splines:fig:hermitepolynome}).
 
 \begin{satz}
 \label{buch:nichtdiff:splines:satz:hermitebasis}
@@ -684,6 +685,11 @@ y_n-y_{n-2}\\
 y_n-y_{n-1}
 \end{pmatrix}
 \]
+
+\begin{beispiel}
+Wir approximieren die Sinusfunktion mit Hilfe eines Splines mit zehn
+Stützstellen.
+\end{beispiel}
 
 %
 % Fehlerformel
