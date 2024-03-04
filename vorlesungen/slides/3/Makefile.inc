@@ -6,4 +6,5 @@
 chapter3 =								\
 	../slides/3/lagrangekurve.tex					\
 	../slides/3/lagrangezyl.tex					\
+	../slides/3/wanderweg.tex					\
 	../slides/3/dido.tex
