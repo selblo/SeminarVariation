@@ -1,20 +1,18 @@
-Finden Sie die Funktion $y(x)$ zwischen den Punkten $(0,0)$ und $(1,0)$,
-das Integral
-\[
+Finden Sie die Funktion $y(x)$, deren Graph durch die Punkte $(0,0)$
+und $(1,0)$ geht, die das Integral
+\begin{align*}
 A(y)
-=
+&=
 \int_{0}^{1} y(x)^2\,dx
-\]
-maximiert und für die ausserdem die Bedingung
-\[
+\intertext{maximiert und für die ausserdem die Bedingung}
 B(y)
-=
+&=
 \int_{0}^{1}
 y'(x)^2
 \,dx
 =
 C
-\]
+\end{align*}
 erfüllt.
 
 \begin{loesung}
@@ -99,18 +97,18 @@ Folglich muss $\lambda<0$ sein.
 Wir versuchen daher den Fall $\lambda<0$, in diesem Fall sind die
 Funktionen
 \[
-\sin x/\!\sqrt{-\lambda}
+\sin(x/\!\sqrt{-\lambda})
 \qquad\text{und}\qquad
-\cos x/\!\sqrt{-\lambda}
+\cos(x/\!\sqrt{-\lambda})
 \]
 Lösungen der Differentialgleichung.
 Die allgemeine Lösung ist daher eine Linearkombination
 \[
 y(x)
 =
-A \cos  x/\!\sqrt{-\lambda}
+A \cos(x/\!\sqrt{-\lambda})
 +
-B \sin  x/\!\sqrt{-\lambda}.
+B \sin(x/\!\sqrt{-\lambda}).
 \]
 Jetzt setzen wir die Randbedingung an der Stelle $x=0$ ein und erhalten
 \[
@@ -124,7 +122,7 @@ An der Stelle $x=1$ folgt dann
 \[
 0=y(1)
 =
-B\sin 1/\!\sqrt{-\lambda}.
+B\sin(1/\!\sqrt{-\lambda}).
 \]
 Da die Nullstellen der Sinusfunktion die ganzzahligen Vielfachen von $\pi$
 sind, folgt
@@ -140,7 +138,7 @@ y(x) = B \sin k\pi x
 \]
 ist.
 Jetzt muss $B$ nur noch so bestimmt werden, dass die
-Nebenbedingung~\ref{buch:aufgabe:501:eqn:integral} erfüllt ist.
+Nebenbedingung~\eqref{buch:aufgabe:501:eqn:integral} erfüllt ist.
 Dies ist die Gleichung
 \begin{align*}
 C
