@@ -20,6 +20,6 @@ hermite.pdf:	hermite.tex
 sinspline.pdf:	sinspline.tex sinpath.tex
 	pdflatex sinspline.tex
 
-sinpath.tex:	sinspline.m
+sinpath.tex sintable.tex:	sinspline.m
 	octave sinspline.m
 

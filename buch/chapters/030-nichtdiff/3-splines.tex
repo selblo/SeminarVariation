@@ -636,9 +636,10 @@ b
 \]
 Schreibt man die Ableitungen $s_k$ als Vektor $s$, können die Steigungen
 durch Lösen der Gleichung
-\[
+\begin{equation}
 As=b
-\]
+\label{buch:nichtdiff:splines:eqn:gleichungssystem}
+\end{equation}
 bestimmt werden.
 Die spezielle {\em tridiagonale} Form der Matrix $A$
 \index{tridiagonal}%
@@ -687,12 +688,45 @@ y_n-y_{n-1}
 \]
 
 \begin{beispiel}
-Wir approximieren die Sinusfunktion mit Hilfe eines Splines mit zehn
-Stützstellen.
+\label{buch:nichtdiff:splines:bsp:sinspline}
+\input{chapters/030-nichtdiff/table/sinspline.tex}
+\input{chapters/030-nichtdiff/fig/sinspline.tex}
+Wir approximieren die Sinusfunktion $f(x)=\sin x$ mit Hilfe eines Splines
+mit elf äquidistanten Stützstellen.
+Die Stützstellen und Funktionswerte sind
+\[
+x_k = \frac{k\pi}{20}
+\quad\text{und}\quad
+y_k = \sin\frac{k\pi}{20}
+\quad\text{für}\quad
+k=0,\dots,10.
+\]
+Mit dem Gleichungssystem~\eqref{buch:nichtdiff:splines:eqn:gleichungssystem}
+können die Steigungen $s_k$ berechnet werden, mit denen schliesslich die
+Spline-Interpolationsfunktion berechnet werden kann.
+Die Resultat sind in Tabelle~\ref{buch:nichtdiff:splines:table:sinspline}
+zusammengestellt.
+Abbildung~\ref{buch:nichtdiff:splines:fig:sinspline} zeigt den Unterschied
+zwischen der Sinus-Funktion (blau) und der Spline-Interpolationsfunktion (rot),
+es ist kaum ein Unterschied erkennbar.
+Die Abweichung $y(x)-\sin x$ ist 1000-fach überhöht grün dargestellt, sie
+ist vor allem am rechten Ende des Intervalls gross, wo die Krümmung grösser
+ist.
+
+Die Genauigkeit der Interpolation hängt vor allem von der Qualität der 
+berechneten Steigungen $s_k$ ab.
+Da diese im vorliegenden Fall exakt als $f'(x_k) = \cos x_k$ berechnet
+werden können, kann man die Spline-Interpolationsfunktion mit der sogenannten
+Hermite-Interpolationsfunktion vergleichen, die die wahren Steigungen
+verwendet.
+Die Abweichung zwischen der Sinus-Funktion und der
+Hermite-Interpolationsfunktion ist 100000-fach überhöht orange dargestellt.
+Bekannte Steigungen ermöglichen also eine viel höhere Genauigkeit, als dies
+mit den geschätzten Steigungen möglich ist.
 \end{beispiel}
 
 %
 % Fehlerformel
 %
-\subsubsection{Fehlerformel}
+%\subsubsection{Fehlerformel}
 

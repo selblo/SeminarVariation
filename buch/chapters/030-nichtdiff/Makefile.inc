@@ -12,4 +12,6 @@ CHAPTERFILES +=								\
 	chapters/030-nichtdiff/fig/dbr.tex				\
 	chapters/030-nichtdiff/fig/hermite.tex				\
 	chapters/030-nichtdiff/fig/nichtdiff.tex			\
+	chapters/030-nichtdiff/fig/sinspline.tex			\
+	chapters/030-nichtdiff/table/sinspline.tex			\
 	chapters/030-nichtdiff/chapter.tex
