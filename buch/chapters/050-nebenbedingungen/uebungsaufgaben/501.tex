@@ -1,0 +1,176 @@
+Finden Sie die Funktion $y(x)$, deren Graph durch die Punkte $(0,0)$
+und $(1,0)$ geht, die das Integral
+\begin{align*}
+A(y)
+&=
+\int_{0}^{1} y(x)^2\,dx
+\intertext{maximiert und für die ausserdem die Bedingung}
+B(y)
+&=
+\int_{0}^{1}
+y'(x)^2
+\,dx
+=
+C
+\end{align*}
+erfüllt.
+
+\begin{loesung}
+Die Lagrange-Funktionen der beiden Funktionale sind
+\begin{align*}
+F(x,y,y') &= y^2          &&\text{für $A(y)$}\\
+G(x,y,y') &= y^{\prime 2} &&\text{für $B(y)$.}
+\end{align*}
+Von beiden muss jetzt der Gradient gebildet werden, also die linke
+Seite der Euler-Lagrange-Differentialgleichung.
+Für $F$ ist dies
+\[
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+=
+2y(x),
+\]
+für $G$ ist es
+\[
+\frac{\partial G}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial G}{\partial y'}(x,y(x),y'(x))
+=
+\frac{d}{dx}(2y'(x))
+=
+2y''(x).
+\]
+Nach der Methode der Lagrange-Multiplikatoren muss jetzt die Funktion
+${\color{darkred}y(x)}$ und eine Zahl ${\color{darkred}\lambda}\in\mathbb{R}$
+so gefunden werden, dass
+\begin{align}
+2{\color{darkred}y(x)}&=2{\color{darkred}\lambda y}''{\color{darkred}(x)}
+\label{buch:aufgabe:501:eqn:dgl}
+\\
+\int_{x_1}^{x_2} {\color{darkred}y(x)}^2\,dx &= C
+\label{buch:aufgabe:501:eqn:integral}
+\\
+{\color{darkred}y}(0) &= 0
+\label{buch:aufgabe:501:eqn:rb1}
+\\
+{\color{darkred}y}(1) &= 0
+\label{buch:aufgabe:501:eqn:rb2}
+\end{align}
+Als Erstes lösen wir die Differentialgleichung~\eqref{buch:aufgabe:501:eqn:dgl}
+in der Form
+\[
+y''(x) = \frac{1}{\lambda} y(x).
+\]
+Je nach Vorzeichen von $\lambda$ gibt es verschieden mögliche Lösungen.
+
+Wir versuchen zunächst den Ansatz $y(x)=e^{ax}$ und bekommen
+\[
+a^2e^{ax} = \frac{1}{\lambda} e^{ax},
+\]
+und damit $a=\pm1/\!\sqrt{\lambda}$.
+Diese Lösung existiert nur dann, wenn $\lambda>0$ ist.
+Die Funktion $y(x)$ ist daher eine Linearkombination 
+\[
+y(x) = A_+ e^{x/\!\sqrt{\lambda}} + A_- e^{-x/\!\sqrt{\lambda}}.
+\]
+Diese Funktion muss jetzt ausserdem die Randbedingungen erfüllen wir setzen
+daher $0$ und $1$ ein und erhalten das homogene lineare Gleichungssystem
+\[
+\renewcommand{\arraycolsep}{3pt}
+\begin{array}{lclcl}
+A_+                       &+& A_-                        &=& 0 \\
+A_+e^{1/\!\sqrt{\lambda}} &+& A_-e^{-1/\!\sqrt{\lambda}} &=& 0
+\end{array}
+\]
+Für die Koeffizienten $A_+$ und $A_-$.
+Es hat die Determinante
+\[
+A_+A_-(e^{1/\!\sqrt{\lambda}}-e^{-1/\!\sqrt{\lambda}}\ne 0,
+\]
+daher kann es nur die triviale Lösung $A_+=A_-=0$ haben.
+Dann ist aber die Funktion $y(x)=0$, d.~h.~die Nebenbedingung
+\eqref{buch:aufgabe:501:eqn:integral} kann nicht erfüllt werden, 
+der Ansatz mit Exponentialfunktionen führt nicht auf eine Lösung.
+Folglich muss $\lambda<0$ sein.
+
+Wir versuchen daher den Fall $\lambda<0$, in diesem Fall sind die
+Funktionen
+\[
+\sin(x/\!\sqrt{-\lambda})
+\qquad\text{und}\qquad
+\cos(x/\!\sqrt{-\lambda})
+\]
+Lösungen der Differentialgleichung.
+Die allgemeine Lösung ist daher eine Linearkombination
+\[
+y(x)
+=
+A \cos(x/\!\sqrt{-\lambda})
++
+B \sin(x/\!\sqrt{-\lambda}).
+\]
+Jetzt setzen wir die Randbedingung an der Stelle $x=0$ ein und erhalten
+\[
+0
+=
+y(0)
+=
+A.
+\]
+An der Stelle $x=1$ folgt dann
+\[
+0=y(1)
+=
+B\sin(1/\!\sqrt{-\lambda}).
+\]
+Da die Nullstellen der Sinusfunktion die ganzzahligen Vielfachen von $\pi$
+sind, folgt
+\[
+1/\!\sqrt{-\lambda} = k\pi
+\qquad\Rightarrow\qquad
+\lambda = -\frac{1}{k^2\pi^2}
+\]
+für $k\in\mathbb{N}$.
+Damit ist jetzt gefunden, dass
+\[
+y(x) = B \sin k\pi x
+\]
+ist.
+Jetzt muss $B$ nur noch so bestimmt werden, dass die
+Nebenbedingung~\eqref{buch:aufgabe:501:eqn:integral} erfüllt ist.
+Dies ist die Gleichung
+\begin{align*}
+C
+&=
+\int_0^1 y'(x)^2\,dx
+\\
+&=
+\int_0^1 B k\pi \cos^2 k\pi x\,dx
+\\
+&=
+Bk\pi \int_0^1 \cos^2 \pi x\,dx
+=
+\frac{Bk\pi}2
+\qquad
+\Rightarrow
+\qquad
+B
+=
+\frac{2C}{k\pi}.
+\end{align*}
+Der Wert des Integrals $A(y)$ kann jetzt ebenfalls bestimmt werden, es
+ist
+\begin{align*}
+A(y)
+&=
+\int_0^1 y(x)^2\,dx
+=
+\int_0^1 B\sin^2 k\pi x\,dx
+=
+\frac{2C}{k\pi} \int_0^1 \sin^2k\pi x\,dx
+=
+\frac{C}{k\pi}.
+\end{align*}
+Da $k\in\mathbb{N}$ sein muss, wird das Maximum bei $k=1$ erreicht.
+\end{loesung}

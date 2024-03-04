@@ -1,0 +1,69 @@
+%
+% zykloide.tex -- Parametrisierung der Zykloide
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\r{1.74}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	X(\t) = \r*(\t-sin(180*\t/3.14159));
+	Y(\t) = \r*(1-cos(180*\t/3.14159));
+}]
+\clip (-0.51,-4) rectangle ({2*\r*3.14159+1.1},0.5);
+
+\draw[->] (-0.1,0) -- ({2*3.14159*\r+1},0) coordinate[label={$x$}];
+\draw[->] (0,0.1) -- (0,{-2*\r-0.4}) coordinate[label={right:$y$}];
+
+\def\T{2}
+\fill[color=blue!20] ({\r*\T},{-\r})
+	-- ({\r*\T},0) arc (90:{90+180*\T/3.14159}:\r) -- cycle;
+\draw[color=blue,line width=1.4pt] ({\r*\T},0) arc (90:{90+180*\T/3.14159}:\r);
+\draw[color=blue,line width=0.5pt] ({\r*\T)},{-\r}) circle[radius=\r];
+\node[color=blue] at ($({\r*\T},{-\r})+({90+90*\T/3.14159}:{0.3*\r})$)
+	{$\varphi$};
+
+\begin{scope}
+	\clip (-0.45,{-2*\r-0.1}) rectangle ({2*\r*3.14159+0.7},0);
+	\draw[color=darkred,line width=1.4pt]
+		plot[domain=-1.9:8,samples=100] ({X(\x)},{-Y(\x)});
+\end{scope}
+
+\fill[color=blue] ({\r*\T)},{-\r}) circle[radius=0.08];
+\fill[color=blue] ({X(\T)},{-Y(\T)}) circle[radius=0.08];
+\draw[color=blue] (0,0) -- ({\r*\T},0);
+\draw[color=blue] ({\r*\T)},{-\r}) -- ({X(\T)},{-Y(\T)});
+\draw[color=blue] ({\r*\T)},{-\r}) -- ({\r*\T},0);
+\draw ({\r*\T},-0.05) -- ({\r*\T},0.05);
+\node at ({\r*\T},0.05) [above] {$r\varphi\mathstrut$};
+\node at ({\r*\T},{-0.5*\r}) [right] {$r$};
+\draw[line width=0.3pt] ({X(\T)},{-Y(\T)})
+	-- ({\r*\T},{-Y(\T)}) -- ({\r*\T},{-\r});
+\node at ({\r*\T},{-0.5*(Y(\T)+\r)}) [right] {$r\cos\varphi$};
+\node at ({0.5*(X(\T)+\r*\T)+0.3},{-Y(\T)+0.05}) [below] {$r\sin\varphi$};
+
+\draw ({2*\r*3.14159},-0.05) -- ({2*\r*3.14159},0.05);
+\node at ({2*\r*3.14159},0.05) [above] {$2\pi r\mathstrut$};
+%\node at ({\r*\T},{-\r}) [above right] {$(rt,-r)\mathstrut$};
+
+\node at (0,0.05) [above] {$0\mathstrut$};
+
+\draw (-0.05,{-\r}) -- (0.05,{-\r});
+\node at (-0.05,{-\r}) [left] {$r\mathstrut$};
+\draw (-0.05,{-2*\r}) -- (0.05,{-2*\r});
+\node at (-0.05,{-2*\r}) [left] {$2r\mathstrut$};
+
+\node at ({X(\T)},{-Y(\T)}) [below left] {$P(\varphi)\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -10,9 +10,11 @@ all:	bernoulli.pdf							\
 	g.pdf								\
 	grundaufgaben.pdf						\
 	singulaer.pdf							\
+	snellius.pdf							\
 	variation0.pdf							\
 	variation1.pdf							\
-	variation.pdf
+	variation.pdf							\
+	zykloide.pdf
 
 bernoulli.pdf:	bernoulli.tex
 	pdflatex bernoulli.tex
@@ -43,4 +45,10 @@ variation.pdf:	variation.tex
 
 singulaer.pdf:	singulaer.tex
 	pdflatex singulaer.tex
+
+snellius.pdf:	snellius.tex
+	pdflatex snellius.tex
+
+zykloide.pdf:	zykloide.tex
+	pdflatex zykloide.tex
 

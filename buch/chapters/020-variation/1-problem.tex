@@ -90,8 +90,32 @@ Koordinate abhängt.
 Bereits Fermat hat erkannt, dass das Brechnungsgesetz von Snellius
 als Lösung eines Extremalproblems verstanden werden kann.
 
-\begin{satz}[Fermat]
-Sie $c/n_i$ die Geschwindigkeit, mit der sich Licht im Medium $M_i$
+\begin{satz}[Fermat-Prinzip]
+\label{buch:variation:problem:satz:fermat-prinzip}
+Licht breitet sich immer entlang des Weges aus, der die geringste
+Zeit braucht.
+\end{satz}
+
+Die Geschwindigkeit des Lichts in einem Medium hängt vom Medium ab.
+Die Vakuumlichtgeschwindigkeit $c$ kann von der Ausbreitungsgeschwindigkeit
+in einem Medium nicht übertroffen werden, die Ausbreitungsgeschwindigkeit
+in einem Medium kann daher immer als $c/n$ geschrieben werden, wobei
+$n\ge 1$ der sogenannte {\em Brechungsindex} oder die {\em optische Dichte}
+des Mediums ist.
+\index{Brechungsindex}%
+\index{Dichte, optische}%
+\index{optische Dichte}%
+Der Brechungsindex in einem Medium hängt ausserdem von der Wellenlänge ab.
+verschiedenfarbiges Licht wird daher mehr oder weniger stark gebrochen,
+Was in Prismen zur Aufspaltung des Lichts in ein Spektrum verwendet
+werden kann, aber in einem optischen System auch zu Farbrändern an
+hellen Objekten führen kann.
+Aus dem Fermatprinzip ergibt sich jetzt das Brechungsgesetz von 
+Snellius.
+
+\begin{satz}[Snellius]
+\label{buch:variation:problem:satz:snellius}
+Sei $c/n_i$ die Geschwindigkeit, mit der sich Licht im Medium $M_i$
 ausbreitet.
 Ein Lichtstrahl von $A_1$ nach $A_2$ geht durch denjenigen Punkt $B$ 
 auf der Grenzfläche zwischen den Medien, für den sich die Sinus der
@@ -105,10 +129,12 @@ umgekehrt wie die $n_i$ verhalten, wenn also das Brechungsgesetz
 gilt.
 \end{satz}
 
+\input{chapters/020-variation/fig/snellius.tex}
+
 \begin{proof}
 Ohne der Beschränkung der Allgmeinheit können wir auf die Betrachtung
 einer Ebene beschränken, die die beiden Punkte $A_i$ enthält und senkrecht
-auf der Grenzfläche steht.
+auf der Grenzfläche steht (Abbildung~\ref{buch:variation:problem:fig:snellius}).
 Wir dürfen weiter annehmen, dass die $x$-Achse in der Grenzfläche liegt 
 und die Punkte $A_i$ die Koordinaten $(x_i,y_i)$ und der Punkt $B$ die
 Koordinaten $(x,0)$ hat.
@@ -168,24 +194,33 @@ ist gleichbedeutend mit dem Brechungsgesetz
 von Snellius.
 \end{proof}
 
-Der Satz von Fermat etabliert das Brechungsgsetz also Lösung eines
+Das Prinzip von Fermat etabliert das Brechungsgsetz also Lösung eines
 Extremalproblems.
 Die Natur wählt für einen Lichtstrahl den zeitlich kürzesten Weg.
 Der Beweis des Satzes von Fermat zeigt, dass entlang des Lichtstrahls
 an jeder Grenzfläche zwischen Medien die Bedingung
 \eqref{buch:variation:problem:eqn:snelliusinvariante}
 erfüllt.
+Dies gilt auch, wenn der Strahl durch mehrere Schichten mit
+unterschiedlichem Brechungsindex dringt.
+In jeder Schicht hat das Produkt $n\sin\alpha$ den gleichen Wert.
+
 Wenn die optische Dichte $n$ eine Funktion von $n(y)$ ist, dann
 wird der Lichtstrahl nicht nur in diskreten Punkten geknickt, sondern
 entlang des ganzen Strahles gekrümmt.
+In jedem Punkt des Strahls muss aber weiterhin $n(y)\sin\alpha(y)$
+gelten, wobei $\alpha(y)$ der Winkel zwischen der Vertikalen und
+der Tangente an den Strahl ist.
+
 Folgt der Strahl der Kurve $x(y)$, die mit der vertikalen den Winkel
-$x'(y) = \tan\alpha(y)$ einschliesst.
-Damit lässt sich auch die Sinus-Funktion ausdrücken, es gilt
+$x'(y) = \tan\alpha(y)$ einschliesst, dann lässt sich der Sinus
+auch durch die Ableitung als
 \[
 \sin\alpha(y)
 =
-\frac{x'(y)}{\pm\!\sqrt{x'(y)^2+1}}.
+\frac{x'(y)}{\pm\!\sqrt{x'(y)^2+1}}
 \]
+ausdrücken.
 Aus der Form~\eqref{buch:variation:problem:eqn:snelliusinvariante}
 des Brechungsgesetztes wird dann die Gleichung
 \begin{equation}
@@ -219,20 +254,57 @@ damit $n(y) = c/\!\sqrt{y}$.
 Eine Brachistochrone ist also eine Kurve, die die aus
 \eqref{buch:variation:eqn:fermatdgl} folgende Gleichung
 \begin{equation}
-\frac{x'(y)^2}{(1+x'(y)^2)y} = K
+\frac{(c^2/y) x'(x)^2}{(1+x'(y)^2}
+=
+C
+\qquad\Rightarrow\qquad
+\frac{x'(y)^2}{(1+x'(y)^2)y}
+=
+K
 \label{buch:variation:problem:eqn:bernoullidgl}
 \end{equation}
 erfüllen.
+Es genügt somit, eine Lösung dieser Differentialgleichung zu finden,
+die durch die beiden Punkte $A$ und $B$ geht.
+Allerdings ist die Lösung der Differentialgleichung
+\eqref{buch:variation:problem:eqn:bernoullidgl}
+nicht offensichtlich, sie wird im nächsten Abschnitt diskutiert.
+
+Bernoullis Weg zu einer Lösung des Brachistochronenproblems bestand
+also vor allem in der Erkenntnis, dass das Brachistochronenproblem mit
+Hilfe einer Analogie zur Lichtausbreitung auf die Lösung einer
+Differentialgleichung reduzieren lässt.
+Die globale Bedingung, dass die benötigte Zeit minimiert werden muss,
+konnte durch eine lokale Bedingung an die Steigung der Kurve ersetzt
+werden.
 
 %
 % Die Bernoullische Lösung
 %
 \subsubsection{Die Bernoullische Lösung}
 Bernoulli hat gefunden, dass die Brachistochrone ein Zykloidenbogen ist.
-Dies lässt sich dadurch verifizieren, dass man die Parametrisierung
-einer Zykloide in die
-Gleichung~\eqref{buch:variation:problem:eqn:bernoullidgl}
-einsetzt.
+Dies ist auch der Tatsache geschuldet, dass den Mathematikern seiner
+Zeit die Eigenschaften vieler ebener Kurven so gut bekannt waren, dass
+sie die richtige Lösung aus der Differentialgleichung mehr oder weniger
+hätten erraten können.
+In der heutigen Zeit werden diese Kurven oft eher als Kuriositäten
+im Unterricht behandelt und bald wieder vergessen.
+
+Die direkte Lösung der Differentialgleichung
+\eqref{buch:variation:problem:eqn:bernoullidgl}
+ist nicht ganz einfach.
+Statt sie hier durchzuführen, verweisen wir auf
+Abschnitt~\ref{buch:variation:eulerlagrange:subsection:brachistochrone},
+in dem das Brachistochronenproblem mit Hilfe der allgemeinen
+Theorie und der Euler-Lagrange-Differentialgleichung gelöst wird.
+
+Auch wenn wir die Lösung nicht direkt aus der Differentialgleichung
+bestimmen wollen, können wir immerhin verifizieren, dass die Zykloide
+eine Lösung der Gleichung~\eqref{buch:variation:problem:eqn:bernoullidgl}
+ist.
+Wir verwenden dazu die Parameterdarstellung einer Zykloide und
+setzten sie in die Gleichung~\eqref{buch:variation:problem:eqn:bernoullidgl}
+ein.
 Die Zykloide hat die Parametrisierung
 \[
 \left.
@@ -252,7 +324,9 @@ y &= r(1-\cos\varphi)
 \end{aligned}
 \right.
 \]
-für $\varphi\in\mathbb{R}$.
+für $\varphi\in\mathbb{R}$, wie man aus der
+\input{chapters/020-variation/fig/zykloide.tex}
+Abbildung~\ref{buch:variation:problem:fig:zykloide} ablesen kann.
 Die Ableitung ist
 \[
 x'(y)
@@ -266,27 +340,33 @@ wird daraus
 \[
 \frac{\dot{x}(\varphi)^2}{
 (\dot{y}(\varphi)^2 +\dot{x}(\varphi)^2)
-(C-r(1-\cos\varphi))
+r(1-\cos\varphi)
 }
 =
 \frac{(1-\cos\varphi)^2}{
 ((1-\cos\varphi)^2+\sin^2\varphi)
-(C-r+r\cos\varphi)
+r
+(1-\cos\varphi)
 }
 =
 K.
 \]
-Ausmultiplizieren im Nenner ergibt
-\[
+Ausmultiplizieren im Nenner und die Relation $\sin^2\varphi=1-\cos^2\varphi$
+ergibt
+\begin{align*}
+K
+&=
 \frac{(1-\cos\varphi)^2}{
-(1-2\cos\varphi+\cos^2\varphi+\sin^2\varphi)
-(C-r+r\cos\varphi)
+(1-2\cos\varphi+\cos^2\varphi+1-\cos^2\varphi)
+(r-r\cos\varphi)
 }
 =
-\frac{1-\cos\varphi}{
-2(C-r+r\cos\varphi)
-}
-\]
+\frac{(1-\cos\varphi)^2}{2r(1-\cos\varphi)^2}
+=
+\frac{1}{2r}.
+\end{align*}
+Die Zykloide mit Radius $r=K/2$ erfüllt somit die
+Differentialgleichung~\eqref{buch:variation:problem:eqn:bernoullidgl}.
 
 %
 % Das Brachistochronenproblem als Variationsproblem
