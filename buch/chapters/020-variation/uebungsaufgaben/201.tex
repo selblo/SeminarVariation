@@ -46,7 +46,7 @@ T(y)
 \frac{\!\sqrt{1+y'(x)^2}}{c/n(y(x))}
 \,dx
 =
-c
+\frac{1}{c}
 \int_{x_1}^{x_2}
 n(y(x))
 \sqrt{1+y'(x)^2}
@@ -59,6 +59,8 @@ Die Lagrange-Funktion ist
 \(
 L(x,y,y') = n(y)\sqrt{1+y^{\prime 2}}
 \).
+Dabei haben wir die Konstante $1/c$ weggelassen, die keinen
+Einfluss auf das Extremum hat.
 \item
 Die Euler-Lagrange-Differentialgleichung benötigt die partiellen
 Ableitungen der Lagrange-Funktion nach $y$ und $y'$:
@@ -69,7 +71,7 @@ n'(y) \sqrt{1+y^{\prime 2}}
 \\
 \frac{\partial L}{\partial y'}
 &=
-\frac{y'}{\!\sqrt{1+y^{\prime 2}}}
+\frac{y'}{\!\sqrt{1+y^{\prime 2}}}.
 \end{align*}
 In der Euler-Lagrange-Differentialgleichung wird in die Ableitung nach $y'$
 die Funktion $y(x)$ eingesetzt und dann nach $x$ abgeleitet, dies ergibt
@@ -95,7 +97,7 @@ n(y(x))
 y''(x)
 }{
 (1+y'(x)^2)^{\frac32}
-}
+}.
 \end{align*}
 Die Euler-Lagrange-Differentialgleichung wird damit zu
 \begin{align*}
@@ -161,14 +163,14 @@ n'(y(x))
 (1+y'(x)^2)^{\frac32}
 }.
 \end{align*}
-Da der Nenner nicht verschwinden kann muss der Zähler verschwinden,
+Da der Nenner nicht verschwinden kann, muss der Zähler verschwinden,
 die Differentialgleichung wird damit
 \[
 y''(x)
 -
 \frac{n'(y(x))}{n(y(x))} (1 + y'(x)^2)
 =
-0
+0.
 \]
 \item
 Im Falle konstanten Brechungsindexes ist $n'(y)=0$ und damit $y''(x)=0$.

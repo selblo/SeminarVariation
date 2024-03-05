@@ -1,0 +1,36 @@
+%
+% yk.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\C{20}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\foreach \k in {1,2,3,4,5,6,7}{
+	\draw[color=darkred,line width=1.2pt] plot[domain=0:1,samples=100]
+		({12*\x},{sqrt(2*\C)*sin(180*\k*\x)/(\k*3.14159)});
+}
+
+\draw[->] (-0.05,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->]
+	(0,{-sqrt(2*\C)/(2*3.14159)-0.5})
+	--
+	(0,{sqrt(2*\C)/3.14159+0.5}) coordinate[label={right:$y$}];
+\draw (12,-0.05) -- (12,0.05);
+\node at (12,-0.05) [below] {$1$};
+\node at (6,{sqrt(2*\C)/3.14159}) [above] {$y_1(x)$};
+\node at (9,{-sqrt(2*\C)/(2*3.14159)}) [below] {$y_2(x)$};
+
+\end{tikzpicture}
+\end{document}
+
