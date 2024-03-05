@@ -15,6 +15,7 @@ C
 \end{align*}
 erfüllt.
 
+
 \begin{loesung}
 Die Lagrange-Funktionen der beiden Funktionale sind
 \begin{align*}
@@ -156,7 +157,7 @@ C
 \int_0^1 b^2 k^2\pi^2 \cos^2 k\pi x\,dx
 \\
 &=
-b^2k^2\pi^2 \int_0^1 \cos^2 \pi x\,dx
+b^2k^2\pi^2 \int_0^1 \cos^2 k\pi x\,dx
 =
 \frac{B^2k^2\pi^2}2
 \qquad
@@ -166,12 +167,28 @@ b
 =
 \frac{\!\sqrt{2C}}{k\pi}.
 \end{align*}
+\input{chapters/050-nebenbedingungen/fig/cos2.tex}
+Die Berechnung des Integrals von $\cos^2 k\pi x$ ist einfach, wenn man
+berücksichtigt, dass der Graph des Integranden aus Symmetriegründen
+das Einheitsquadrat halbiert (siehe
+Abbildung~\ref{buch:nebenbedingungen:aufgabe:501:fig:cos2}).
+Die Lösungen sind jetzt also die Funktionen
+\[
+y_k(x)
+= 
+\frac{\!\sqrt{2C}}{k\pi}
+\sin k\pi x.
+\]
+\input{chapters/050-nebenbedingungen/fig/yk.tex}
+Die Lösungen sind in Abbildung~\ref{buch:nebenbedingungen:aufgabe:501:fig:yk}
+dargestellt.
+
 Der Wert des Integrals $A(y)$ kann jetzt ebenfalls bestimmt werden, es
 ist
 \begin{align*}
-A(y)
+A(y_k)
 &=
-\int_0^1 y(x)^2\,dx
+\int_0^1 y_k(x)^2\,dx
 =
 \int_0^1 b^2\sin^2 k\pi x\,dx
 =

@@ -1,0 +1,34 @@
+%
+% cos2.tex -- Integral von cos^2
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=blue!10] (0,0) rectangle (5,5);
+\fill[color=blue!20] plot[domain=0:1,samples=100]
+	({5*\x},{5*cos(540*\x)*cos(540*\x)})
+	-- (5,0) -- (0,0) -- cycle;
+\draw[color=blue] plot[domain=0:1,samples=100]
+	({5*\x},{5*cos(540*\x)*cos(540*\x)});
+\draw[->] (0,-0.05) -- (0,5.5) coordinate[label={right:$y$}];
+\draw[->] (-0.05,0) -- (5.5,0) coordinate[label={$x$}];
+\draw (5,-0.05) -- (5,0.05);
+\node at (5,-0.05) [below] {$1$};
+\node at (0,-0.05) [below] {$0$};
+\node at (-0.05,5) [left] {$1$};
+\node at (-0.05,0) [left] {$0$};
+\node[color=blue] at (2.5,5) [above] {$y(x)=\cos^2 k\pi x$};
+
+\end{tikzpicture}
+\end{document}
+
