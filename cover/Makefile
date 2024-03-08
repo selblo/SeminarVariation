@@ -33,3 +33,6 @@ lncover.png:	lncover.pdf Makefile
 	convert -density 300 -extract 2007x2834+0+0 lncover.pdf \
 		lncover.png
 
+helicoid.png:	helicoid.pov common.inc
+	povray +A0.1 -W1920 -H1080 -Ohelicoid.png helicoid.pov
+#	povray +A0.1 -W3840 -H2160 -Ohelicoid.png helicoid.pov
