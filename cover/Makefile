@@ -34,5 +34,7 @@ lncover.png:	lncover.pdf Makefile
 		lncover.png
 
 helicoid.png:	helicoid.pov common.inc
-	povray +A0.1 -W1920 -H1080 -Ohelicoid.png helicoid.pov
-#	povray +A0.1 -W3840 -H2160 -Ohelicoid.png helicoid.pov
+	povray +A0.1 -W3840 -H2160 -Ohelicoid.png helicoid.pov
+#	povray +A0.1 -W1920 -H1080 -Ohelicoid.png helicoid.pov
+#	povray +A0.1 -W960 -H540 -Ohelicoid.png helicoid.pov
+#	povray +A0.1 -W480 -H270 -Ohelicoid.png helicoid.pov
