@@ -46,15 +46,30 @@
 \hsize=13.6cm
 
 \begin{scope}
-\clip (0,{0.05*\bogenhoehe}) rectangle({\bogenbreite},{0.50*\bogenhoehe});
-\node at ({\bogenbreite/2},3.0) {\includegraphics[width=42cm]{surface.jpeg}};
-%\clip (0,0) rectangle ({\bogenbreite},20.2);
-%\node at ({\bogenbreite/2},13.0) {\includegraphics[width=42cm]{matrix.pdf}};
-%\node at ({\bogenbreite/2+5},5.0) {\includegraphics[width=42cm]{../buch/chapters/090-pde/membran/membran.png}};
-%\node at (11,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical33.png}};
-%\node at (20,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical32.png}};
-%\node at (28,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical31.png}};
-%\node at (36,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical30.png}};
+\clip (0,0) rectangle({\bogenbreite},{0.53*\bogenhoehe});
+
+\coordinate (A) at (0,0);
+\coordinate (B) at ({0.9*\bogenbreite},0);
+\coordinate (C) at (\bogenbreite,0);
+\coordinate (D) at (\bogenbreite,{0.2*\bogenhoehe});
+\coordinate (E) at (\bogenbreite,{0.55*\bogenhoehe});
+\coordinate (F) at ({0.2*\bogenbreite},{0.55*\bogenhoehe});
+\coordinate (G) at (0,{0.55*\bogenhoehe});
+\coordinate (H) at (0,{0.2*\bogenhoehe});
+
+%\begin{scope}
+%\clip (A) -- (B) -- (C) -- (D) -- (H) -- cycle;
+%\node at ({\bogenbreite/2},5.0)
+%	{\includegraphics[width=42cm]{surface-alpha.png}};
+%
+%\end{scope}
+
+\begin{scope}
+%\clip (D) -- (E) -- (F) -- (G) -- (H) -- cycle;
+\node at ({\bogenbreite/2},5.0)
+	{\includegraphics[width=42cm]{helicoid-alpha.png}};
+\end{scope}
+
 \end{scope}
 
 \node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},24.3)
@@ -162,6 +177,15 @@ Ziel war, etwas Ordnung in die vielseitigen Methoden und Anwendungen
 der Variatioinsrechnung zu bringen.
 Dieses Buch bringt das Skript des Vorlesungsteils mit den von den
 Seminarteilnehmern beigetragenen Seminararbeiten zusammen.
+
+\medskip
+
+Zum Umschlagbild: Eine Wendeltreppe entsteht aus horizontalen Treppenstufen,
+die spiralförmig um die vertikale Achse angeordnet sind.
+Sie bilden eine Wendelfläche oder Helikoide.
+In Kapitel~17 wird gezeigt, dass sie auch eine Minimalfläche ist, 
+also die Form, die eine Seifenhaut annimmt, die sich zwischen einem
+spiralförmig gebogenen Draht und einer Achse aufspannt.
 }};
 
 \def\qrbreite{3}
