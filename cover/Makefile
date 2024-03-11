@@ -5,7 +5,7 @@
 #
 all:	buchcover.jpg backcover.jpg front.pdf back.pdf lncover.png
 
-buchcover.pdf:	buchcover.tex 
+buchcover.pdf:	buchcover.tex helicoid-alpha.png surface-alpha.png
 	pdflatex buchcover.tex
 
 buchcover.png:	buchcover.pdf  Makefile
@@ -35,6 +35,10 @@ lncover.png:	lncover.pdf Makefile
 
 helicoid.png:	helicoid.pov common.inc
 	povray +A0.1 -W3840 -H2160 -Ohelicoid.png helicoid.pov
-#	povray +A0.1 -W1920 -H1080 -Ohelicoid.png helicoid.pov
 #	povray +A0.1 -W960 -H540 -Ohelicoid.png helicoid.pov
+#	povray +A0.1 -W1920 -H1080 -Ohelicoid.png helicoid.pov
 #	povray +A0.1 -W480 -H270 -Ohelicoid.png helicoid.pov
+helicoid-alpha.png:	helicoid.png Makefile
+	convert helicoid.png -alpha on -channel rgba -fill 'rgba(0,0,0,0)' \
+		-opaque '#000' helicoid-alpha.png
+

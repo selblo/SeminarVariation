@@ -15,7 +15,8 @@ global_settings {
 sky_sphere {
 	pigment {
 		//color rgb<1,1,1>
-		color rgb<0,0,1>
+		//color rgb<0,0,1>
+		color rgb<0,0,0>
 	}
 }
 

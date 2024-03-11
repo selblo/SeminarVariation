@@ -1,13 +1,25 @@
 //
-// 3dimage.pov -- -template for 3d images rendered by Povray
+// helicoid.pov -- Helicoid
 //
 // (c) 2023 Prof Dr Andreas Müller
 //
 #include "common.inc"
 #include "textures.inc"
 
-place_camera(<13, 0.3, -20>, <0.5, 0, 0>, 16/9, 0.14)
-lightsource(<10, 5, -40>, 1, White)
+place_camera(<11, 0.3, -20>, <0.3, 0, 0>, 16/9, 0.15)
+//lightsource(<10, 5, -40>, 1, White)
+lightsource(<20, 50, -10>, 1, White)
+//lightsource(<-40, 5, -10>, 1, White)
+
+light_source {
+	<50, 0, 0>, White
+	shadowless
+	looks_like {
+		cylinder {
+			<40, 0, 0>, <60, 0, 0>, 10
+		}
+	}
+}
 
 //arrow(-3.2 * e1, 3.2 * e1, 0.01, White)
 //arrow(-1.2 * e2, 1.2 * e2, 0.01, White)
@@ -24,7 +36,7 @@ lightsource(<10, 5, -40>, 1, White)
 #declare thetasteps = 200;
 #declare thetastep = (thetamax - thetamin) / thetasteps;
 #declare rhomin = 0;
-#declare rhomax = 1;
+#declare rhomax = 1.2;
 #declare rhosteps = 20;
 #declare rhostep = (rhomax - rhomin) / rhosteps;
 
@@ -39,7 +51,7 @@ lightsource(<10, 5, -40>, 1, White)
                 Shiny
                 diffuse 0.2
                 irid {
-                        3.3 thickness 0.44 turbulence 0.2
+                        2.3 thickness 0.53 turbulence 0.05
                 }
                 conserve_energy
         }
@@ -140,6 +152,7 @@ union {
 //
 // Draht
 //
+#declare drahtsteps = 5;
 union {
 	cylinder { punkt(0, thetamin), punkt(rhomax, thetamin), 0.02 }
 	sphere { punkt(0, thetamin), 0.02 }
@@ -147,13 +160,13 @@ union {
 	sphere { punkt(0, thetamax), 0.02 }
 	#declare theta = thetamin;
 	sphere { punkt(rhomax, theta), 0.02 }
-	#while (theta < thetamax - thetastep/6)
+	#while (theta < thetamax - thetastep/(2 * drahtsteps))
 		cylinder {
 			punkt(rhomax, theta),
-			punkt(rhomax, theta + thetastep/3),
+			punkt(rhomax, theta + thetastep/drahtsteps),
 			0.02
 		}
-		#declare theta = theta + thetastep/3;
+		#declare theta = theta + thetastep/drahtsteps;
 		sphere {
 			punkt(rhomax, theta), 0.02
 		}
@@ -186,7 +199,7 @@ cylinder {
 //
 union {
 	#declare r = 0.003;
-	#declare rhostep = 0.2;
+	#declare rhostep = rhomax/5;
 	#declare rho = rhostep;
 	#while (rho < rhomax + rhostep/2)
 		#declare theta = thetamin;
@@ -216,5 +229,16 @@ union {
 	finish {
 		metallic
 		specular 0.95
+	}
+}
+
+
+//
+// Lichtquelle
+//
+cylinder {
+	<40, 0, 0>, <41, 0, 0>, 10
+	pigment {
+		color 3 * White
 	}
 }
