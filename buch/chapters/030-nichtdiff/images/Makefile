@@ -3,7 +3,7 @@
 #
 # (c) 2024 Prof Dr Andreas Müller
 #
-all:	dbr.pdf brechung.pdf nichtdiff.pdf hermite.pdf sinspline.pdf
+all:	dbr.pdf brechung.pdf nichtdiff.pdf hermite.pdf sinspline.pdf interpolation.pdf
 
 dbr.pdf:	dbr.tex
 	pdflatex dbr.tex
@@ -22,4 +22,7 @@ sinspline.pdf:	sinspline.tex sinpath.tex
 
 sinpath.tex sintable.tex:	sinspline.m
 	octave sinspline.m
+
+interpolation.pdf:	interpolation.tex
+	pdflatex interpolation.tex
 
