@@ -5,3 +5,183 @@
 %
 \section{Das Verfahren von Ritz
 \label{buch:direkt:section:ritz}}
+Zu einem gegebenen Funktional
+\begin{equation}
+I(y)
+=
+\int_{x_1}^{x_2}
+L(x,y(x),y'(x))
+\,dx
+\label{buch:direkt:ritz:eqn:funktional}
+\end{equation}
+soll eine Funktion $y(x)$ gefunden werden, die das Funktional
+extremal macht.
+
+%
+% Idee der Methode
+%
+\subsection{Idee der Methode}
+
+%
+% Reduktion auf eine endlichdimensionales Problem
+%
+\subsubsection{Reduktion auf ein endlichdimensionales Problem}
+In Abschnitt~\ref{buch:direkt:section:gradient} wurde gezeigt, wie 
+Extermalprobleme für endlich viele Variablen zum Beispiel mit der
+Gradientabstiegsmethode gelöst werden können.
+Diese Methoden sind in dieser Form nicht auf das Variationsproblem
+\eqref{buch:direkt:ritz:eqn:funktional} anwendbar, da die Funktion
+$y(x)$ nicht nur die Information enthält, die in endlich vielen
+Koordinaten $x_1,\dots,x_n$ stecken kann.
+Es ist daher nötig, die in Frage kommenden Funktionen durch eine
+endlich Zahl von Parametern zu beschreiben.
+Man wählt daher Funktionen $\psi_1(x),\dots,\psi_n(x)$ und beschränkt
+sich auf Funktion $y(x)$ der Form
+\[
+y(x)
+=
+\sum_{k=1}^n
+a_k \psi_k(x).
+\]
+Der Funktionenraum 
+\[
+B_n
+=
+\biggl\{
+y(x)
+=
+\sum_{k=1}^n a_k\psi_k(x)
+\bigg|
+a_1,\dots,a_k\in\mathbb{R}
+\biggr\}
+\]
+ist endlichdimensional und kann durch die Koeffizienten $a_1,\dots,a_n$
+parametrisiert werden.
+Die Funktionen $\psi_k$ heissen auch die Koordinatenfunktionen und die
+$a_k$ die Koordinaten.
+Das Funktional $I(y)$ wird jetzt ebenfalls eine Funktion
+\[
+f(a_1,\dots,a_n)
+=
+\int_{x_1}^{x_2}
+L\biggl(x,
+\sum_{k=1}^n a_k\psi_k(x),
+\sum_{k=1}^n a_k\psi_k'(x)
+\biggr)
+\,dx
+\]
+der Variablen $a_1,\dots,a_n$.
+Die Koordinatenfunktionen ermöglichen also, das unendlichdimensionale
+Variationsproblem auf ein endlichdimensionales Problem zu reduzieren.
+
+%
+% Konvergenz
+%
+\subsubsection{Konvergenz}
+Da der Funktionenraum $B_n$ nur endlichdimensional ist, wird sich darin
+im Allgemeinen nur eine Approximation der Lösung des ursprünglichen
+Extremalproblems für das Funktional finden lassen.
+Je genauer die Koordinatenfunktionen die Lösung zu approximieren gestatten,
+desto genauer kann auch der Gradientabstieg die Lösung in $B_n$ zu finden.
+Um die Genauigkeit zu steigern, müssen weitere Funktionen zu $B_n$ hinzukommen.
+Wir gehen daher im Folgenden von einer Folge von Koordinatenfunktionen
+$\psi_k(x)$ mit $k\in \mathbb{N}$ und den Funktionenräumen
+\[
+B_n
+=
+\langle \psi_1(x),\dots,\psi_n(x)\rangle
+=
+\biggl\{
+\sum_{k=1}^n a_k^{(n)} \psi_k(x)
+\;
+\bigg|
+\;
+a_1^{(n)},\dots,a_n^{(n)}\in\mathbb{R}
+\biggr\}
+\]
+für alle $n\in\mathbb{N}$ aus.
+In jedem $B_n$ gibt es eine optimale Lösung
+\[
+y_n(x)
+=
+\sum_{k=1}^n a_k^{(n)} \psi_k(x)
+\]
+Im besten Fall konvergiert nicht nur die Folge $y_n(x)$ gegen die
+Funktion $y(x)$ die das Funktional extremal macht, sondern auch
+die Folge
+\[
+a_k^{(k)},
+a_k^{(k+1)},
+a_k^{(k+2)},
+\dots,
+a_k^{(k+n)},
+\dots
+\]
+Koeffizienten $a_k^{(k)}$ gegen den Grenzwert $a_k$.
+Durch Vergrössern von $n$ kann so eine beliebig genaue Lösung des
+ursprünglichen Problems gewonnen werden.
+Allerdings ist die Entscheidung, ob die genannten Folgen tatsächlich
+konvergieren werden, nicht immer einfach.
+
+%
+% Refraktion mit der Methode von Ritz
+%
+\subsection{Refraktion mit der Methode von Ritz
+\label{buch:direkt:ritz:subsection:refraktion}}
+In der Übungsaufgabe~\ref{201} wurde das Problem der Refraktion eines
+Lichtstrahls in der inhomogenen Atmosphäre untersucht und es wurde als
+Euler-Lagrange-Differentialgleichung eine Gleichung gefunden, die nicht
+direkt lösbar war.
+In diesem Abschnitt versuchen wir das Problem mit dem Verfahren von Ritz
+zu lösen.
+
+\begin{aufgabe}
+Man finde den Weg eines Lichtstrahls durch ein inhomogenes Medium
+in der $x$-$y$-Ebene,
+dessen Brechungsindex $n(y)=1+\nu y$ ist, der die Zeit zwischen
+den Punkten $(0,0)$ und $(\pi,0)$ minimiert.
+\end{aufgabe}
+
+Die Lichtgeschwindigkeit ist $c/n(y)$.
+Die Zeit $t$, die der Lichtstrahl entlang des Pfades $y(x)$ braucht, ist
+daher
+\[
+t
+=
+\frac{1}{c}
+\int_0^\pi n(y) \sqrt{1+y'(x)^2}.
+\]
+Dieses Funktional ist also zu minimieren.
+Als approximierende Funktionen auf dem Intervall $[0,\pi]$ verwenden 
+wir die Funktionen $\psi_n(x) = \sin nx$, die Funktion $y(x)$ wird also
+in eine Fourier-Sinus-Reihe entwickelt.
+Die Randbedingung $y(0)=y(\pi)=0$ ist automatisch immer erfüllt.
+
+Für $n=1$ wird das Extremalproblem zu der Aufgabe, den Koeffizienten $a_1$
+im Integral
+\[
+f(a_1)
+=
+\int_0^\pi (1+\nu a_1\sin x)\sqrt{1+a_1^2\sin^2 x}\,dx
+\]
+so zu wählen, dass das Minimum erreicht wird.
+Leider ist das Integral nicht elementar auswertbar, so dass die Aufgabe
+nur numerisch gelöst werden kann.
+Dasselbe gilt für die Approximation $n$-ter Ordnung
+\[
+f_n(a_1,\dots,a_n)
+=
+\int_0^\pi
+\biggl(1+\nu \sum_{k=1}^n a_k\sin kx\biggr)
+\sqrt{1+\sum_{k=1}^n a_k^2\sin^2 x}
+\,dx.
+\]
+
+%
+% Die Methode von Galerkin
+%
+\subsection{Die Methode von Galerkin
+\label{buch:direkt:ritz:subsection:galerkin}}
+
+
+
