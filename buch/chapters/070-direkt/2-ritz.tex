@@ -153,9 +153,42 @@ t
 \]
 Dieses Funktional ist also zu minimieren.
 Als approximierende Funktionen auf dem Intervall $[0,\pi]$ verwenden 
-wir die Funktionen $\psi_n(x) = \sin nx$, die Funktion $y(x)$ wird also
+wir die Funktionen $\psi_k(x) = \sin (2k-1)x$, die Funktion $y(x)$ wird also
 in eine Fourier-Sinus-Reihe entwickelt.
-Die Randbedingung $y(0)=y(\pi)=0$ ist automatisch immer erfüllt.
+Die Approximation $y_n(x)$ mit $n$ Termen ist
+\begin{align}
+y_n(x)
+&=
+a_1\sin x
++
+a_3\sin 3x
++
+\dots
++
+a_n\sin (2n-1)x
+\notag
+\\
+&=
+\sum_{k=1}^n a_k\sin(2k-1)x
+\label{buch:direkt:ritz:bsp:eqn:y}
+\intertext{und Ableitung}
+y'_n(x)
+&=
+a_1\cos x
++
+3a_3\cos 3x
++
+\dots
++
+(2n-1)a_n\cos (2n-1)x
+\notag
+\\
+&=
+\sum_{k=1}^n (2k-1)a_k\cos(2k-1)x.
+\label{buch:direkt:ritz:bsp:eqn:yp}
+\end{align}
+Die Randbedingung $y_n(0)=y_n(\pi)=0$ ist für alle $n$ automatisch immer
+erfüllt, da sie für alle Summanden bereits erfüllt ist.
 
 Für $n=1$ wird das Extremalproblem zu der Aufgabe, den Koeffizienten $a_1$
 im Integral
@@ -172,10 +205,67 @@ Dasselbe gilt für die Approximation $n$-ter Ordnung
 f_n(a_1,\dots,a_n)
 =
 \int_0^\pi
-\biggl(1+\nu \sum_{k=1}^n a_k\sin kx\biggr)
-\sqrt{1+\sum_{k=1}^n a_k^2\sin^2 x}
+(1+\nu y_n(x))
+\sqrt{1+y'_n(x)^2}
 \,dx.
 \]
+Davon wird für die Gradientabstiegsmethode der Gradient benötigt,
+also die partiellen Ableitungen nach jedem Koeffizienten $a_k$.
+Die Ableitung nach $a_k$ kann unter dem Integralzeichen ausgeführt werden
+und benötigt die Ableitungen von $y_n(x)$, $y'_n(x)$ und $\sqrt{1+y'_n(x)^2}$
+nach $a_k$, die man aus
+\eqref{buch:direkt:ritz:bsp:eqn:y}
+und
+\eqref{buch:direkt:ritz:bsp:eqn:yp}
+als
+\begin{align*}
+\frac{\partial y_n}{\partial a_k}(x)
+&=
+\sin (2k-1) x
+\\
+\frac{\partial y'_n}{\partial a_k}(x)
+&=
+(2k-1)\cos(2k-1)x
+\\
+\frac{\partial}{\partial a_k}\sqrt{1+y'_n(x)^2}
+&=
+\frac{y_n'(x)}{\sqrt{1+y_n'(x)^2}}(2k-1)\cos(2k-1)x
+\end{align*}
+finden kann.
+Damit werden die partiellen Ableitungen von $f$ mit der Produktregel
+\begin{align}
+\frac{\partial f}{\partial a_k}(a_1,\dots,a_n)
+&=
+\int_0^\pi
+\frac{\partial}{\partial a_k}\biggl(
+(1+\nu y_n(x))
+\sqrt{1+y_n'(x)^2}
+\biggr)\,dx
+\notag
+\\
+&=
+\int_0^\pi 
+\nu
+\frac{\partial y_n(x)}{\partial a_k}\sqrt{1+y_n'(x)^2}
++
+(1+\nu y_n(x))
+\frac{y_n'(x)}{\sqrt{1+y_n'(x)^2}}\frac{\partial y_n'}{\partial a_k}
+\,dx
+\notag
+\\
+&=
+\int_0^\pi
+\nu \sin(2k-1)x \sqrt{1+y_n'(x)^2}
+\notag
+\\
+&\qquad\qquad
++
+(1+\nu y_n(x))\frac{y_n'(x)}{\sqrt{1+y_n'(x)^2}}(2k-1)\cos(2k-1)x
+\,dx.
+\label{buch:direkt:ritz:bsp:eqn:grad}
+\end{align}
+Der Gradient kann also durch Berechnung der Integrale
+\eqref{buch:direkt:ritz:bsp:eqn:grad} ermittelt werden.
 
 %
 % Die Methode von Galerkin
