@@ -5,10 +5,56 @@
 %
 \section{Direkte Lösung endlichdimensionaler Optimierungsprobleme
 \label{buch:direkt:section:gradient}}
+Die direkten Methoden der Variationsrechnung beruhen darauf, dass
+sie sich auf endlichdimensionale Extremalprobleme reduzieren oder
+sich durch solche approximieren lassen, die sich viel einfacher
+mit dem Computer lösen lassen.
+Auch das Training von künstlichen neuronalen Netzwerken verlangt nach
+der Lösung eines nichtlinearen, endlichdimensionalen Optimierungsproblems,
+wenngleich die Dimension sehr hoch sein kann.
+In diesem Abschnitt soll daher Methoden zur numerischen Lösung von
+endlichdimensionalen Extremalproblemen gezeigt werden.
 
-\subsection{Aufgabenstellung}
+%
+% Aufgabenstellung
+%
+\subsection{Aufgabenstellung
+\label{buch:direkt:gradient:subsection:aufgabenstellung}}
 
-\subsection{Gradientabstieg}
+\begin{definition}
+Ein {\em relatives Maximum} einer Funktion $f\colon\Omega\to\mathbb{R}$
+ist ein Punkt $x\in\Omega$ mit einer $\varepsilon$-Umgebung
+$U$ von $x$ derart, $f(x)\ge f(x')$ für $x'\in U$.
+Ein {\em absolutes Maximum} von $f$ ist ein Punkt $x\in\Omega$ derart,
+dass $f(x)\ge f(x')$ für alle $x'\in\Omega$.
+Sinngemäss werden {\em relatives Minimum} und {\em absolutes Minimum}
+definiert.
+\index{Maximum!relativ}%
+\index{Maximum!absolut}%
+\index{Minimum!relativ}%
+\index{Minimum!absolut}%
+\index{absolutes Maximum}%
+\index{relatives Maximum}%
+\index{absolutes Minimum}%
+\index{relatives Minimum}%
+\end{definition}
 
-\subsection{Quadratische Extremalprobleme}
+\begin{aufgabe}
+\label{buch:direkt:gradient:aufgabe:extremal}
+Sei $\Omega\subset\mathbb{R}^n$ ein Gebiet in $\mathbb{R}$ und
+$f\colon\Omega\to\mathbb{R}$ eine stetig differenzierbare
+Funktion.
+\end{aufgabe}
+
+%
+% Gradientabstieg
+%
+\subsection{Gradientabstieg
+\label{buch:direkt:gradient:subsection:gradientabstieg}}
+
+%
+% Quadratische Minimalproblem
+%
+\subsection{Quadratische Extremalprobleme
+\label{buch:direkt:gradient:subsetion:quadratisch}}
 
