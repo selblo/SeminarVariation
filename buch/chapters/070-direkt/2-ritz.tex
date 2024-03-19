@@ -1,7 +1,337 @@
 %
-% ritz.tex -- Das Verfahren von Ritz
+% 2-ritz.tex -- Das Verfahren von Ritz
 %
 % (c) 2024 Prof Dr Andreas Müller
 %
 \section{Das Verfahren von Ritz
 \label{buch:direkt:section:ritz}}
+Zu einem gegebenen Funktional
+\begin{equation}
+I(y)
+=
+\int_{x_1}^{x_2}
+L(x,y(x),y'(x))
+\,dx
+\label{buch:direkt:ritz:eqn:funktional}
+\end{equation}
+soll eine Funktion $y(x)$ gefunden werden, die das Funktional
+extremal macht.
+
+%
+% Idee der Methode
+%
+\subsection{Idee der Methode}
+
+%
+% Reduktion auf eine endlichdimensionales Problem
+%
+\subsubsection{Reduktion auf ein endlichdimensionales Problem}
+In Abschnitt~\ref{buch:direkt:section:gradient} wurde gezeigt, wie 
+Extermalprobleme für endlich viele Variablen zum Beispiel mit der
+Gradientabstiegsmethode gelöst werden können.
+Diese Methoden sind in dieser Form nicht auf das Variationsproblem
+\eqref{buch:direkt:ritz:eqn:funktional} anwendbar, da die Funktion
+$y(x)$ nicht nur die Information enthält, die in endlich vielen
+Koordinaten $x_1,\dots,x_n$ stecken kann.
+Es ist daher nötig, die in Frage kommenden Funktionen durch eine
+endlich Zahl von Parametern zu beschreiben.
+Man wählt daher Funktionen $\psi_1(x),\dots,\psi_n(x)$ und beschränkt
+sich auf Funktion $y(x)$ der Form
+\[
+y(x)
+=
+\sum_{k=1}^n
+a_k \psi_k(x).
+\]
+Der Funktionenraum 
+\[
+B_n
+=
+\biggl\{
+y(x)
+=
+\sum_{k=1}^n a_k\psi_k(x)
+\bigg|
+a_1,\dots,a_k\in\mathbb{R}
+\biggr\}
+\]
+ist endlichdimensional und kann durch die Koeffizienten $a_1,\dots,a_n$
+parametrisiert werden.
+Die Funktionen $\psi_k$ heissen auch die Koordinatenfunktionen und die
+$a_k$ die Koordinaten.
+Das Funktional $I(y)$ wird jetzt ebenfalls eine Funktion
+\[
+f(a_1,\dots,a_n)
+=
+\int_{x_1}^{x_2}
+L\biggl(x,
+\sum_{k=1}^n a_k\psi_k(x),
+\sum_{k=1}^n a_k\psi_k'(x)
+\biggr)
+\,dx
+\]
+der Variablen $a_1,\dots,a_n$.
+Die Koordinatenfunktionen ermöglichen also, das unendlichdimensionale
+Variationsproblem auf ein endlichdimensionales Problem zu reduzieren.
+
+%
+% Konvergenz
+%
+\subsubsection{Konvergenz}
+Da der Funktionenraum $B_n$ nur endlichdimensional ist, wird sich darin
+im Allgemeinen nur eine Approximation der Lösung des ursprünglichen
+Extremalproblems für das Funktional finden lassen.
+Je genauer die Koordinatenfunktionen die Lösung zu approximieren gestatten,
+desto genauer kann auch der Gradientabstieg die Lösung in $B_n$ zu finden.
+Um die Genauigkeit zu steigern, müssen weitere Funktionen zu $B_n$ hinzukommen.
+Wir gehen daher im Folgenden von einer Folge von Koordinatenfunktionen
+$\psi_k(x)$ mit $k\in \mathbb{N}$ und den Funktionenräumen
+\[
+B_n
+=
+\langle \psi_1(x),\dots,\psi_n(x)\rangle
+=
+\biggl\{
+\sum_{k=1}^n a_k^{(n)} \psi_k(x)
+\;
+\bigg|
+\;
+a_1^{(n)},\dots,a_n^{(n)}\in\mathbb{R}
+\biggr\}
+\]
+für alle $n\in\mathbb{N}$ aus.
+In jedem $B_n$ gibt es eine optimale Lösung
+\[
+y_n(x)
+=
+\sum_{k=1}^n a_k^{(n)} \psi_k(x)
+\]
+Im besten Fall konvergiert nicht nur die Folge $y_n(x)$ gegen die
+Funktion $y(x)$ die das Funktional extremal macht, sondern auch
+die Folge
+\[
+a_k^{(k)},
+a_k^{(k+1)},
+a_k^{(k+2)},
+\dots,
+a_k^{(k+n)},
+\dots
+\]
+Koeffizienten $a_k^{(k)}$ gegen den Grenzwert $a_k$.
+Durch Vergrössern von $n$ kann so eine beliebig genaue Lösung des
+ursprünglichen Problems gewonnen werden.
+Allerdings ist die Entscheidung, ob die genannten Folgen tatsächlich
+konvergieren werden, nicht immer einfach.
+
+%
+% Refraktion mit der Methode von Ritz
+%
+\subsection{Refraktion mit der Methode von Ritz
+\label{buch:direkt:ritz:subsection:refraktion}}
+In der Übungsaufgabe~\ref{201} wurde das Problem der Refraktion eines
+Lichtstrahls in der inhomogenen Atmosphäre untersucht und es wurde als
+Euler-Lagrange-Differentialgleichung eine Gleichung gefunden, die nicht
+direkt lösbar war.
+In diesem Abschnitt versuchen wir das Problem mit dem Verfahren von Ritz
+zu lösen.
+
+\begin{aufgabe}
+Man finde den Weg eines Lichtstrahls durch ein inhomogenes Medium
+in der $x$-$y$-Ebene,
+dessen Brechungsindex $n(y)=1+\nu y$ ist, der die Zeit zwischen
+den Punkten $(0,0)$ und $(\pi,0)$ minimiert.
+\end{aufgabe}
+
+Die Lichtgeschwindigkeit ist $c/n(y)$.
+Die Zeit $t$, die der Lichtstrahl entlang des Pfades $y(x)$ braucht, ist
+daher
+\[
+t
+=
+\frac{1}{c}
+\int_0^\pi n(y) \sqrt{1+y'(x)^2}.
+\]
+Dieses Funktional ist also zu minimieren.
+Als approximierende Funktionen auf dem Intervall $[0,\pi]$ verwenden 
+wir die Funktionen $\psi_k(x) = \sin (2k-1)x$, die Funktion $y(x)$ wird also
+in eine Fourier-Sinus-Reihe entwickelt.
+Die Approximation $y_n(x)$ mit $n$ Termen ist
+\begin{align}
+y_n(x)
+&=
+a_1\sin x
++
+a_3\sin 3x
++
+\dots
++
+a_n\sin (2n-1)x
+\notag
+\\
+&=
+\sum_{k=1}^n a_k\sin(2k-1)x
+\label{buch:direkt:ritz:bsp:eqn:y}
+\intertext{und Ableitung}
+y'_n(x)
+&=
+a_1\cos x
++
+3a_3\cos 3x
++
+\dots
++
+(2n-1)a_n\cos (2n-1)x
+\notag
+\\
+&=
+\sum_{k=1}^n (2k-1)a_k\cos(2k-1)x.
+\label{buch:direkt:ritz:bsp:eqn:yp}
+\end{align}
+Die Randbedingung $y_n(0)=y_n(\pi)=0$ ist für alle $n$ automatisch immer
+erfüllt, da sie für alle Summanden bereits erfüllt ist.
+
+Für $n=1$ wird das Extremalproblem zu der Aufgabe, den Koeffizienten $a_1$
+im Integral
+\[
+f(a_1)
+=
+\int_0^\pi (1+\nu a_1\sin x)\sqrt{1+a_1^2\sin^2 x}\,dx
+\]
+so zu wählen, dass das Minimum erreicht wird.
+Leider ist das Integral nicht elementar auswertbar, so dass die Aufgabe
+nur numerisch gelöst werden kann.
+Dasselbe gilt für die Approximation $n$-ter Ordnung
+\[
+f_n(a_1,\dots,a_n)
+=
+\int_0^\pi
+(1+\nu y_n(x))
+\sqrt{1+y'_n(x)^2}
+\,dx.
+\]
+Davon wird für die Gradientabstiegsmethode der Gradient benötigt,
+also die partiellen Ableitungen nach jedem Koeffizienten $a_k$.
+Die Ableitung nach $a_k$ kann unter dem Integralzeichen ausgeführt werden
+und benötigt die Ableitungen von $y_n(x)$, $y'_n(x)$ und $\sqrt{1+y'_n(x)^2}$
+nach $a_k$, die man aus
+\eqref{buch:direkt:ritz:bsp:eqn:y}
+und
+\eqref{buch:direkt:ritz:bsp:eqn:yp}
+als
+\begin{align*}
+\frac{\partial y_n}{\partial a_k}(x)
+&=
+\sin (2k-1) x
+\\
+\frac{\partial y'_n}{\partial a_k}(x)
+&=
+(2k-1)\cos(2k-1)x
+\\
+\frac{\partial}{\partial a_k}\sqrt{1+y'_n(x)^2}
+&=
+\frac{y_n'(x)}{\sqrt{1+y_n'(x)^2}}(2k-1)\cos(2k-1)x
+\end{align*}
+finden kann.
+Damit werden die partiellen Ableitungen von $f$ mit der Produktregel
+\begin{align}
+\frac{\partial f}{\partial a_k}(a_1,\dots,a_n)
+&=
+\int_0^\pi
+\frac{\partial}{\partial a_k}\biggl(
+(1+\nu y_n(x))
+\sqrt{1+y_n'(x)^2}
+\biggr)\,dx
+\notag
+\\
+&=
+\int_0^\pi 
+\nu
+\frac{\partial y_n(x)}{\partial a_k}\sqrt{1+y_n'(x)^2}
++
+(1+\nu y_n(x))
+\frac{y_n'(x)}{\sqrt{1+y_n'(x)^2}}\frac{\partial y_n'}{\partial a_k}
+\,dx
+\notag
+\\
+&=
+\int_0^\pi
+\nu \sin(2k-1)x \sqrt{1+y_n'(x)^2}
+\notag
+\\
+&\qquad\qquad
++
+(1+\nu y_n(x))\frac{y_n'(x)}{\sqrt{1+y_n'(x)^2}}(2k-1)\cos(2k-1)x
+\,dx.
+\label{buch:direkt:ritz:bsp:eqn:grad}
+\end{align}
+Der Gradient kann also durch Berechnung der Integrale
+\eqref{buch:direkt:ritz:bsp:eqn:grad} ermittelt werden.
+Diese Integration ist numerisch leicht möglich.
+Damit kann der Gradientabstieg ausgeführt werden.
+Die Koeffizienten der Lösung $y_n(x)$ können jeweils als Startwerte
+für den weiteren Gradientabstieg zur Lösung $y_{n+1}(x)$ verwendet
+werden.
+Tabelle~\ref{buch:direkt:ritz:table:koeffizienten} zeigt die gefundenen
+Koeffizienten, es ist plausibel, dass sie konvergieren.
+
+Abbildung~\ref{buch:direkt:ritz:fig:ritzloesung} zeigt die visuell
+nicht von der mit der Euler-Lagrange-Differential\-glei\-chung
+gefundenen Lösung $y_\infty(x)$ unterscheidbaren Lösungen $y_n(x)$ 
+des Ritz-Verfahrens.
+Die Graphen rechts in der Abbildung zeigen die Fehler der Approximationen
+$y_n(x)$.
+Man kann ablesen, dass mit nur sechs Termen die Approximation
+$y_6(x)$ bereits Fehler $<10^{-3}$ hat.
+
+Für das Refraktionsproblem ist vor allem auch das Ausmass der Lichtbrechung
+interessant.
+Dieses ist gegeben durch die Steigung der Lösung in den Randpunkten.
+Aus Symmetriegründen ist $y'_n(0)=-y'_n(\pi)$.
+Tabelle~\ref{buch:direkt:ritz:table:anfangsbed} zeigt die Anfangsbedingung
+$y_n(0)$ für die Lösungen des Ritz-Verfahrens wie auch 
+$y_\infty(0)$ der Lösung der Euler-Lagrange-Differentialgleichung.
+Auch hier ist in Anbetracht der kleinen Anzahl Terme eine erstaunliche
+Genauigkeit erreicht worden.
+
+\begin{table}
+\input{chapters/070-direkt/experiments/refraktionpath.tex}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+k& a_k^{(1)}& a_k^{(2)}& a_k^{(3)}& a_k^{(4)}& a_k^{(5)}& a_k^{(6)}
+\rlap{\raisebox{3pt}{\strut}}\mathstrut\\[2pt]
+\hline
+\tabelleninhalt
+\hline
+\end{tabular}
+\caption{Koeffizienten für die Durchführung des Ritz-Verfahrens für
+das Refraktionsproblem
+\label{buch:direkt:ritz:table:koeffizienten}}
+\end{table}
+\input{chapters/070-direkt/fig/ritzloesung.tex}
+
+\begin{table}
+\input{chapters/070-direkt/experiments/refraktionpath.tex}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|}
+\hline
+ n & y_n'(0) \rlap{\raisebox{3pt}{\strut}}\\[3pt]
+\hline
+\steigungen
+\hline
+\end{tabular}
+\caption{Anfangsbedingung für die Näherungslösungen $y_n(x)$ des
+Refraktionsproblems mit Randwerten $y(0)=y(\pi)=0$, gefunden mit
+dem Ritz-Verfahren mit $n$ Termen und die exakte Lösung $y_\infty(x)$
+gefunden mit der Euler-Lagrange-Differentialgleichung.
+\label{buch:direkt:ritz:table:anfangsbed}}
+\end{table}
+
+%
+% Die Methode von Galerkin
+%
+\subsection{Die Methode von Galerkin
+\label{buch:direkt:ritz:subsection:galerkin}}
+
+
+

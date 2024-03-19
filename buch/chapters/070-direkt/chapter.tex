@@ -21,12 +21,26 @@ künstlicher neuronaler Netzwerke verwendet.
 Es wird in Abschnitt~\ref{buch:direkt:section:gradientabstieg}
 kurz gezeigt.
 
-Das Gradient-Verfahren kann auch auf Variationsprobleme angewendet werden.
-Dazu muss das Variationsproblem allerdings erst auf ein endlichdimensionales
-Problem reduziert werden.
+In Kapitel~\ref{buch:chapter:variation} wurde erkannt, dass die
+Euler-Lagrange-Differentialgleichung in vielfacher Beziehung als 
+der Gradient in einem Funktionenraum betrachtet werden kann.
+Die in Abschnitt~\ref{buch:direkt:section:gradient} dargestellte
+Methode des Gradient-Abstiegs ist damit potentiell auch auf Funktionen
+anwendbar.
+Die Schwierigkeit besteht aber darin, beliebige Funktionen darzustellen
+und damit die von der Methode geforderten algebraischen Operationen
+durchzuführen.
+Denkbare Methoden für diesen Zweck könnten Polynome oder Fourier-Reihen
+sein.
+Eine Funktion wird damit durch einzelne Koeffizienten dargestellt, aus
+praktischen Gründen aber nur durch endlich viele.
+Die Methode kann also nur endlichdimensionale Probleme lösen.
+Die Schwierigkeit ist daher vor allem, aus dem unendlichdimensionalen
+Raum aller Funktionen einen genügend grossen endlichdimensionalen
+Funktionenraum auszuscheiden, in dem die Aufgaben mit ausreichender
+Genauigkeit gelöst werden können.
 Das Verfahren von Ritz von Abschnitt~\ref{buch:direkt:section:ritz}
-realisiert dies durch Verwendung eines endlichdimensionalen Vektorraumes
-von Funktionen anstelle des Raumes aller Funktionen.
+realisiert dies mit ad hoc gewählten Funktionen.
 Der Nachteil dieses Verfahrens ist allerdings, dass sich Änderungen an
 den Koeffizienten typischerweise auf alle Funktionswerte auswirken.
 Die Finite-Element-Methode, kurz angedeutet in

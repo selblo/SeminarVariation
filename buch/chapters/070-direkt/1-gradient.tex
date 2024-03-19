@@ -1,5 +1,5 @@
 %
-% gradient.tex
+% 1-gradient.tex
 %
 % (c) 2024 Prof Dr Andreas Müller
 %
@@ -50,11 +50,503 @@ Funktion.
 % Gradientabstieg
 %
 \subsection{Gradientabstieg
-\label{buch:direkt:gradient:subsection:gradientabstieg}}
+\label{buch:direkt:gradient:subdsection:gradientabstieg}}
+Wir gehen in diesem Abschnitt davon aus, dass ein Minimum der Funktion
+$f(x)$ gefunden werden soll.
+Die Überlegungen sind natürlich auf den Fall eines Maximums direkt
+übertragbar.
+
+Da die Richtungsableitung der Funktion $f$ an der Stelle $x\in\mathbb{R}^n$
+in Richtung $v\in\mathbb{R}^n$ durch
+\[
+D_vf(x)
+=
+v\cdot \grad f(x)
+\]
+gebeben ist, wird die grösste Änderungsrate von $f$ in der Richtung
+$v=\grad f(x)$ erreicht.
+Für nicht allzu grosse Werte von $t$ kann man daher erwarten, dass
+\(
+f(x-t\grad f(x))
+<
+f(x)
+\)
+ist.
+Entlang der Geraden mit Richtungsvektor $\grad f(x)$ kann man also
+dem Minimum der Funktion $f$ näher kommen.
+
+\begin{definition}[Gradientabstieg]
+Ist $f\colon\mathbb{R}^n\to\mathbb{R}$ eine stetig differenzierbare
+Funktion, $x_0\in\mathbb{R}$ und $\alpha\in\mathbb{R}$, dann heisst
+die Folge $(x_n)_{n\mathbb{N}}$ definiert durch
+\[
+x_n = x_{n-1} - \alpha \grad f(x_{n-1})
+\]
+die zugehörige Gradientabstiegsfolge.
+\end{definition}
+
+Die Gradientabstiegsfolge nähert sich einer Nullstelle des Gradient
+an, es ist aber unklar, wie schnell die Konvergenz sein wird.
+Es ist auch durchaus möglich, dass die Nullstelle, gegen die die
+Gradientabstiegsfolge strebt, gar kein Extremum ist.
+
+\begin{beispiel}
+Die Gradientabstiegsfolge der Funktion $f(x)=x^2$ zu $x_0$ und $\alpha$ ist
+definiert durch
+\[
+x_n
+=
+x_{n-1}  -\alpha f'(x_{n-1})
+=
+x_{n-1}  -2\alpha x_{n-1}
+=
+(1-2\alpha)x_{n-1}
+=
+\dots
+=
+(1-2\alpha)^n x_0.
+\]
+Für $|1-2\alpha|< 1$ konvergiert die Folge tatsächlich gegen das
+Minimum bei $x=0$.
+Die Bedingung ist gleichbedeutend damit, dass $2\alpha\in(0,2)$.
+Die Anzahl der korrekten Stellen von $x_n$ kann durch den
+Logarithmus abgeschätzt werden:
+\[
+\log x_{n-1}
+=
+\log x_0 + n \log|1-2\alpha|.
+\]
+Ausser im Fall $1-2\alpha=0$ ist die Konvergenz also immer linear:
+die Anzahl korrekter Stellen vergrössert sich in jedem Iterationsschritt
+um den gleichen Betrag.
+Die Wahl $\alpha = \frac12$ ist optimal, sie liefert das Minimum in
+einer einzigen Iteration.
+\end{beispiel}
+
+\begin{beispiel}
+Die Gradientabstiegsfolge der Funktion $f(x)=x^3$ zu $x_0=1$ und $\alpha$
+ist definiert durch
+\[
+x_n
+=
+x_{n-1} - \alpha f'(x_{n-1})
+=
+x_{n-1} - \alpha (3x_{n-1}^2)
+=
+x_{n-1}(1-3\alpha x_{n-1}).
+\]
+Auch in diesem Fall konvergiert die Folge für $\alpha < \frac13$ immer
+noch gegen die Nullstelle $x=0$ des Gradienten.
+Unabhängig von der Wahl von $\alpha$ strebt der Faktor
+$(1-3\alpha x_{n-1})$ immer gegen 1, die Konvergenz der Gradientabstiegsfolge
+wird also immer langsamer.
+Falls $\alpha > \frac13$ gewählt wird, ist $x_1=x_0-3\alpha x_0^2=1-3\alpha<0$.
+Da $f'(x)>0$ ist für $x<0$, gilt für alle folgenden Glieder der
+Gradientabstiegsfolge
+\[
+x_{n} = x_n-3\alpha x_{n-1}^2 < x_{n-1} < \dots < x_1 < 0,
+\]
+die Folge divergiert also.
+\end{beispiel}
+
+\begin{beispiel}
+Sei schliesslich $f(x)=x^4$ und $x_0=1$, dann  ist die Gradientabstiegsfolge
+definiert durch
+\[
+x_n
+=
+x_n - 4\alpha x_{n-1}^3
+=
+x_n(1-4\alpha x_{n-1}^2).
+\]
+Der Faktor $1-4\alpha x_{n-1}^2$ strebt (ausser im Fall $\alpha=\frac14$) 
+gegen $1$, entsprechend langsam konvergiert $x_n$ gegen das Minimum.
+\end{beispiel}
+
+Die Wahl von $\alpha$ hat offenbar einen grossen Einfluss auf die
+Konvergenzgeschwindigkeit.
+Doch auch die Funktion selbst beeinflusst,
+wie schnell die Gradientabstiegsfolge konvergiert.
+Falls beim Extremum nicht nur die ersten Ableitungen versschwinden,
+sondern auch noch höhere Ableitungen, wird die Konvergenz besonders
+langsam.
+Da man von der Funktion $f(x)$ nur weiss, dass sie differenzierbar ist,
+aber nichts über höhere Ableitungen und ihre Grösse bekannt ist, kann
+man auch keine allgemeingültigen Aussagen darüber machen, welcher Wert
+von $\alpha$ gewählt werden soll.
+Oft sind numerische Experimente die einzige erfolgversprechende
+Strategie, geeignete Werte von $\alpha$ zu finden.
+
+Für die Funktion $f(x)=ax^2+bx+c$ mit $a>0$ hat das Minimum $x=-b/2a$.
+Die Gradientabstiegsfolge
+\[
+x_n 
+=
+x_{n-1} - 2\alpha x_{n-1}
+=
+(1-2\alpha)x_{n-1}
+\]
+kann das Minimum in einem einzigen Schritt erreichen, wenn $\alpha$
+so gewählt wird, dass
+\[
+-\frac{b}{2a}
+=
+(1-2\alpha)x_0
+\qquad
+\Rightarrow
+\qquad
+\alpha
+=
+\frac12\biggl(
+1+\frac{b}{2ax_0}
+\biggr).
+\]
+Im Fall einer quadratischen Funktion ist es also möglich, $\alpha$ so
+zu wählen, dass die Konvergenz unmittelbar ist.
+Um diese Idee auch auf Funktionen mehrere Variablen zu übertragen,
+ist zunächst notwendig, quadratische Minimalproblem genauer zu
+studieren, was im nächsten Abschnitt geschehen soll.
 
 %
-% Quadratische Minimalproblem
+% Quadratische Extremalprobleme
 %
 \subsection{Quadratische Extremalprobleme
-\label{buch:direkt:gradient:subsetion:quadratisch}}
+\label{buch:direkt:gradient:subdsection:quadratisch}}
+Eine besonders einfach Situation entsteht, wenn die Funktion
+$f\colon\mathbb{R}^n\to\mathbb{R}$ höchstens vom Grad~2 ist.
+Die Funktion lässt sich dann in der Form
+\[
+f(x)
+=
+\sum_{i,k=1}^n a_{ik}x_ix_k
++
+\sum_{i=1}^n b_ix_i
++ c
+=
+\transpose{x}Ax + \transpose{b}x + c
+\]
+schreiben, wobei $A$ eine symmetrische Matrix ist.
+
+%
+% Die Matrix $A$ ist definit
+%
+\subsubsection{Die Matrix $A$ ist definit}
+Damit eine solche Funktion ein Minimum hat, muss für jeden beliebigen
+Richtungsvektor $r$, $|r|=1$, der quadratische Term gegenüber dem
+linearen Term dominant sein, für $t\to\pm\infty$ muss also
+\[
+f(tr)
+=
+t^2
+\transpose{r}Ar
++
+t
+\transpose{b}r
++
+c
+\to \infty
+\]
+streben.
+Dies funktioniert aber nur, wenn der Koeffizient $\transpose{r}Ar$ von
+$t^2$ postiv ist.
+Dies ist aber genau die Definition einer positiv definiten Matrix.
+Ein Minimum der Funktion ist also nur zu erwarten, $A$ eine positiv
+definite Matrix ist.
+Ein positiv definite Matrix ist auch invertierbar, wie zum Beispiel
+sofort aus der Cholesky-Zerlegung $A=L\transpose{L}$ folgt, da $L$
+eine Dreiecksmatrix ist, die auf der Diagonalen keine Nullen enthält
+und damit invertierbar ist.
+
+Analog kann argumentiert werden, dass die Funktion $f$ nur dann
+ein Maximum hat, wenn $\transpose{r}Ar<0$ ist für jede Richtung
+$r\in\mathbb{R}^n$.
+In diesem Fall ist die Matrix $A$ also negativ definit und damit
+ebenfalls invertierbar.
+
+
+%
+% Nullstellen des Gradienten
+%
+\subsubsection{Nullstellen des Gradienten}
+In diesem Fall lässt sich der Gradient von $f$ direkt
+berechnen:
+\begin{align*}
+\frac{\partial f}{\partial x_l}
+&=
+\frac{\partial}{\partial x_l}
+\sum_{i,k=1}^n a_{ik}x_ix_k
++
+\frac{\partial}{\partial x_l}
+\sum_{i=1}^n b_ix_i
+\\
+&=
+\sum_{i,k=1}^n a_{ik}
+\frac{\partial x_i}{\partial x_l}
+x_k
++
+\sum_{i,k=1}^n a_{ik}
+x_i
+\frac{\partial x_k}{\partial x_l}
++
+\sum_{i=1}^n b_i
+\frac{\partial x_i}{\partial x_l}.
+\end{align*}
+Mit den partiellen Ableitungen
+\[
+\frac{\partial x_i}{\partial x_l}
+=
+\delta_{il}
+=
+\begin{cases}
+1&\qquad\text{für $i=l$}\\
+0&\qquad\text{sonst}
+\end{cases}
+\]
+wird die partielle Ableitung von $f$ zu
+\begin{align*}
+\frac{\partial f}{\partial x_l}
+&=
+\sum_{i,k=1}^n a_{ik}
+\delta_{il}
+x_k
++
+\sum_{i,k=1}^n a_{ik}
+x_i
+\delta_{kl}
+\frac{\partial x_k}{\partial x_l}
++
+\sum_{i=1}^n b_i
+\delta_{il}
+\frac{\partial x_i}{\partial x_l}
+\\
+&=
+\sum_{k=1}^n a_{lk}x_k
++
+\sum_{i=1}^n a_{il}x_i
++
+b_l.
+\intertext{Wir benennen die Summationsvariable $i$ in der zweiten Summe
+in $k$ um, und nützen die Symmetrie von $A$ aus um}
+&=
+\sum_{k=1}^n a_{lk}x_k
++
+\sum_{k=1}^n a_{kl}x_i
++
+b_l
+\\
+&=
+\sum_{k=1}^n a_{lk}x_k
++
+\sum_{k=1}^n a_{lk}x_k
++
+b_l
+\\
+&=
+2\sum_{k=1}^n a_{lk}x_k
++
+b_l
+\end{align*}
+zu erhalten.
+Der Gradient ist daher
+\[
+\grad f(x) = 2Ax + b.
+\]
+Damit lassen sich aber auch sofort eventuelle Extrema finden, indem
+Nullstellen des Gradienten gesucht werden.
+Es ist nämlich
+\begin{equation}
+0=\grad f(x) = 2Ax + b
+\qquad\Rightarrow\qquad
+Ax
+=
+-\frac12 b
+\qquad\Rightarrow\qquad
+x
+=
+-\frac12 A^{-1}b,
+\label{buch:direkt:gradient:quadratisch:eqn:loesung}
+\end{equation}
+Da die Matrix $A$ definit ist, ist sie auch invertierbar, die
+Lösung~\eqref{buch:direkt:gradient:quadratisch:eqn:loesung} existiert
+also tatsächlich.
+
+%
+% Vergleich mit dem eindimensionalen Fall
+%
+\subsubsection{Vergleich mit dem eindimensionalen Fall}
+Ein quadratisches Polynom $y = ax^2+bx+c$ von nur einer Variablen ist
+ein Spezialfall, der schon im elementaren Analysisunterricht behandelt
+wird.
+Die Ableitung ist
+\[
+y' = 2ax+b
+\]
+mit der Nullstelle
+\[
+x = -\frac{b}{2a} = -\frac12 a^{-1} b,
+\]
+also dem eindimensionalen Fall der Formel
+\eqref{buch:direkt:gradient:quadratisch:eqn:loesung}
+
+%
+% Nebenbedingungen
+%
+\subsubsection{Nebenbedingungen}
+Für ein Extremalproblem mit Nebenbedingungen $g_i(x)=0$ liefert die
+Methode der Lagrange-Multiplikatoren eine Lösung.
+Falls auch die Funktionen
+\[
+g_i(x)
+=
+\transpose{x}A^{(i)}x + b^{(i)}x + c^{(i)}
+\]
+quadratisch sind, lässt sich auch der Gradient von $g_i$ als
+\[
+2A^{(i)}x + b^{i}
+\]
+berechnen.
+Das Extremum von $f(x)$ unter den Nebenbedingungen $g_i(x)=0$ erfüllt
+daher die Gleichung
+\begin{equation}
+2Ax + b
+=
+\sum_{i=1}^m {\color{darkred}\lambda_i} (2A^{(i)}x+b^{(i)}).
+\label{buch:direkt:gradient:quadratisch:lagrange}
+\end{equation}
+Zusätzlich müssen auch noch die Nebenbedingungen $g_i(x)=0$ erfüllt sein.
+Die Vektorgleichung \eqref{buch:direkt:gradient:quadratisch:lagrange}
+umfasst $n$ Komponenten, dazu kommen die $m$ Gleichungen $g_i(x)$,
+was genügen sollte, die $n+m$ Unbekannten $x$ und ${\color{darkred}\lambda_i}$
+zu bestimmen.
+
+Man beachte, dass für die Existenz eines Extremums nicht mehr gefordert
+werden muss, dass die Matrix $A$ definit ist.
+Zum Beispiel hat die Funktion $f(x) = x_1^2 - x_2^2$, die ganz offensichtlich
+nicht definit ist,
+unter der Nebenbedingung $g(x)=x_2-1=0$ das Minimum $-1$ im Punkt $(0,1)$,
+unter der Nebenbedingung $g(x)=x_1-1=0$ das Maximum $1$ im Punkt $(1,0)$ und
+unter der Nebenbedingung $g(x)=x_1^2+x_2^2-1=0$ Minima in den Punkten
+$(0,\pm1)$ und Maxima in den Punkten $(\pm1,0)$.
+
+Besonders interessant ist der Spezialfall einer einzelnen Nebenbedingung,
+wenn gleichzeitig die beiden Vektoren $b$ und $b^{(1)}$ verschwinden.
+In diesem Fall erfüllt $x$ die Bedingung
+\[
+2Ax=2{\color{darkred}\lambda_1}A^{(i)}x.
+\]
+Ein solcher Vektor heisst ein verallgemeinerter Eigenvektor im Sinne
+der folgenden Definition.
+
+\begin{definition}[Verallgmeinerter Eigenvektor]
+Seine $A$ und $B$ $n\times n$-Matrizen.
+Ein Vektor $x\in\mathbb{R}$ heisst ein verallgemeinerter Eigenvektor,
+wenn es $\lambda\in\mathbb{R}\setminus \{0\}$ gibt derart, dass
+$Ax=\lambda Bx$.
+\end{definition}
+
+Falls $B$ invertierbar ist, kann ein verallgemeinerter Eigenvektor von $A$
+und $B$ wegen
+\[
+Ax=\lambda Bx
+\qquad\Rightarrow\qquad
+=
+B^{-1}Ax=\lambda x
+\]
+als gewöhnlicher Eigenvektor von $B^{-1}A$ gefunden werden.
+
+%
+% Gradientabstieg für annähernd quadratische Funktionen
+%
+\subsubsection{Gradientabstieg für annähernd quadratische Funktionen}
+Am Ende von Abschnitt~\ref{buch:direkt:gradient:subdsection:gradientabstieg}
+wurde darauf hingewiesen, dass sich für den Gradientabstieg bei einer
+quadratischen Funktion einer Variablen ein optimales $\alpha$ finden lässt.
+In diesem Abschnitt soll dies auf quadratische Extremalprobleme von
+mehreren Variablen erweitert werden.
+
+Sei als 
+\[
+f(x)
+=
+\transpose{x}Ax+\transpose{b}x+c
+\]
+mit $A\in M_{n\times n}(\mathbb{R})$ symmetrisch und $b\in\mathbb{R}^n$.
+Das Extremum findet man bei 
+\[
+x = -\frac12 A^{-1} b.
+\]
+Der Gradient der Funktion $f$ an der Stelle $x$ ist
+\[
+\grad f(x)
+=
+2Ax + b
+\]
+und die Gradientabstiegsfolge ist definiert durch
+\[
+x_n
+=
+x_{n-1} -\alpha \grad f(x_{n-1})
+=
+x_{n-1} - \alpha (2A x_{n-1} + b).
+\]
+Jetzt soll $\alpha$ so gewöhlt werden, dass das Extremum ausgehend von 
+$x_0$ in einem Schritt erreicht wird, also
+\[
+-\frac12 A^{-1}b
+=
+x_1
+=
+x_0 - \alpha (2A x_0 + b)
+\]
+Dies ist eine $n$-dimensionale Vektorgleichung für die einzige Unbekannt
+$\alpha$, man kann also keine Lösung erwarten.
+Dies ist auch aus geometrischen Gründen naheliegen: dazu müsste nämlich
+die Gerade durch $x_0$ mit dem Richtungsvektor $\grad f(x_0)$ durch das
+Minimum verlaufen, was unrealistisch ist.
+
+Da nur die eine Variable $\alpha$ zu bestimmen ist, muss das Problem auf
+ein eindimensionales Problem reduziert werden.
+Es ist naheliegend anzunehmen, dass man dem Minimum besonders nahe
+kommen kann, wenn man das Minimum der Funktion
+\[
+\alpha
+\mapsto
+g(\alpha)
+=
+f(x_0 - \alpha\grad f(x_0))
+\]
+sucht.
+Wir schreiben zur Abkürzung $v=\grad f(x_0)$ und erhalten
+die in $\alpha$ quadratische Funktion
+\begin{align*}
+g(\alpha)
+&=
+\transpose{(x_0 - \alpha v)}A(x_0-\alpha v) + \transpose b(x_0-\alpha v) + c.
+\\
+&=
+\alpha^2
+\transpose{v}Av
++
+\alpha
+(-\transpose{x_0}Av -\transpose{v}Ax_0 -\alpha \transpose{b}x_0)
++
+\transpose{x_0}Ax_0+\transpose{b}x_0 + c.
+\end{align*}
+Das Minimum wird erreicht für
+\[
+\alpha
+=
+-\frac{
+(-\transpose{x_0}Av -\transpose{v}Ax_0 -\alpha \transpose{b}x_0)
+}{
+\transpose{v}Av
+}
+=
+\frac{2\transpose{x_0}Av -\transpose{b}x_0}{\transpose{v}Av}
+\]
+Wenn eine Funktion ausreichend gut durch eine quadratische Funktion
+beschreibbar ist, kann man also dieser Methode versuchen, einen gut
+geeigneten Wert von $\alpha$ zu finden.
+
+
 

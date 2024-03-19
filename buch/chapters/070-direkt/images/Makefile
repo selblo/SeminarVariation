@@ -3,5 +3,8 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:
+all:	ritzloesung.pdf
+
+ritzloesung.pdf:	ritzloesung.tex
+	pdflatex ritzloesung.tex
 
