@@ -478,10 +478,10 @@ F(x,y,y')
 =
 \begin{cases}
 \displaystyle
-\frac{1}{n_-}\sqrt{1+y^{\prime 2}} &\qquad \text{für $x<0$}\\
+n_-\sqrt{1+y^{\prime 2}} &\qquad \text{für $x<0$}\\
 \\[-8pt]
 \displaystyle
-\frac{1}{n_+}\sqrt{1+y^{\prime 2}} &\qquad \text{für $x>0$.}
+n_+\sqrt{1+y^{\prime 2}} &\qquad \text{für $x>0$.}
 \end{cases}
 \]
 Gesucht ist eine Funktion $y(x)$, die $y(x_0)=y_0$ und $y(x_1)=y_1$ 
@@ -501,7 +501,7 @@ Die Ableitung der Lagrange-Funktion nach $y'$ ist
 \[
 \frac{\partial F}{\partial y'}(x,y,y')
 =
-\frac{1}{n_\pm}
+n_\pm
 \frac{y'}{\sqrt{1+y^{\prime 2}}}.
 \]
 Die weierstrass-erdmannsche Eckenbedingung ist jetzt
@@ -511,10 +511,10 @@ Die weierstrass-erdmannsche Eckenbedingung ist jetzt
 \frac{\partial F}{\partial y'}\bigl(0+,y_*,y'(0+)\bigr)
 \notag
 \intertext{oder nach Einsetzen der Ableitung}
-\frac{1}{n_-}
+n_-
 \frac{y'(0-)}{\sqrt{1+y'(0-)^2}}
 &=
-\frac{1}{n_+}
+n_+
 \frac{y'(0+)}{\sqrt{1+y'(0+)^2}}
 \label{buch:nichtdiff:eckenbedingung:eqn:steigung}
 \end{align}
@@ -531,9 +531,9 @@ dieses Winkels.
 Die Bedingung~\eqref{buch:nichtdiff:eckenbedingung:eqn:steigung}
 wird damit zu
 \[
-\frac{1}{n_-}\sin\alpha(0-)
+n_-\sin\alpha(0-)
 =
-\frac{1}{n_+}\sin\alpha(0+)
+n_+\sin\alpha(0+)
 \qquad\text{oder}\qquad
 \frac{\sin\alpha(0-)}{\sin\alpha(0+)}
 =
