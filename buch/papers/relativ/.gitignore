@@ -1,1 +1,10 @@
 .vscode/
+*.bib
+*.bbl
+*.blg
+*.fls
+*.idx
+*.toc
+*.fdb_latexmk
+*.run.xml
+*.synctex.gz
