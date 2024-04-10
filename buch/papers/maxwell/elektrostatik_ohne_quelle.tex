@@ -1,0 +1,119 @@
+% erste Maxwellgleichung ohne Quelle
+\section{Ladungsfreie Elektrostatik
+\label{maxwell:section:equation1_ohne_quelle}}
+\rhead{Problemstellung}
+Man stelle sich nun einen ladungsfreien, luftleeren , drei dimensionalen Raum vor, indem ein elektrisches Potentialfeld $\phi(x,y,z)$ existiert.
+Für diesen Raum möchten wir mittels der Varitaionsrechnung eine Gleichung entwickeln, die beschreibt, wie sich das Potentialfeld verhählt. 
+
+\subsection{Ansatz}
+Damit wir eine Gleichungen erhalten, die das Verhalten des elektrischen Potentialfeldes beschreibt, muss ganz allgemein die Energie im System minimiert werden. 
+In diesem Fall ist die Energie im System
+\[
+W
+=
+\int_V \omega_e\, dV.
+\]
+Dieses Integral gilt es zu minimieren, was die Grundlage für unser Variationsproblem darstellt.
+Die Energiedichte
+% TODO: Bei definitionen erwähnen, dass ein vektor v^2 = v dot v ist!
+\[
+\omega_e\
+=
+\frac{1}{2}\epsilon_0\vec{E}(x,y,z)^2
+\]
+ist die Energiedichte im elektrischen Feld.
+Diese Gleichung können wir nun mittels definition \ref{(???)} mit dem elektrischen Potentialfeld ausdrücken.
+somit ist
+\[
+\omega_e
+=
+\frac{1}{2}\epsilon_0\left(-\nabla\phi(x,y,z)\right)^2.
+\]
+Dies können wir in das zu minimerende Integral einsetzen und bekommen
+%TODO: eventuell underbraces weg lassen.
+\begin{equation}
+W
+=
+\int_V \underbrace{
+\frac{1}{2}\epsilon_0\left(-\nabla\phi(x,y,z)\right)^2}_{L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))}\, dV.
+\label{maxwell:section:energieintegral_quellenfrei}
+\end{equation}
+Aus dieser Gleichung können wir entnehmen, dass unsere Lagrangefunktion
+\begin{align}
+L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))
+&=
+\frac{1}{2}\epsilon_0\left(-\nabla\phi(x,y,z)\right)\cdot\left(-\nabla\phi(x,y,z)\right)
+\\
+L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))
+&=
+\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)
+\label{maxwell:section:lagrangefunktion_quellenfrei}
+\end{align}
+ist.
+Somit haben wir unsere Lagrangefunktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
+
+\subsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
+%TODO: label suchen von E-O-DGL von müller kapitel
+Nun gilt es die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die E-O-DGL \ref{???} einzusetzen.
+Nach Einsetzen wird die Differentialgleichung
+\[
+\frac{1}{2}\epsilon_0\left(\underbrace{\frac{\partial}{\partial\phi}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)}_{=0} - \frac{\partial}{\partial x}\frac{\partial}{\partial \phi_x}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - 
+\frac{\partial}{\partial y}\frac{\partial}{\partial \phi_y}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - 
+\frac{\partial}{\partial z}\frac{\partial}{\partial \phi_z}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)\right)
+=
+0.
+\]
+Man sieht, dass die partielle Ableitung nach $\phi$ verschwindet.
+Nach den partiellen Ableitungen nach $\phi_x$, $\phi_y$ und $\phi_z$ wird die Differentialgleichung
+\[
+\frac{1}{2}\epsilon_0\left(-\frac{\partial}{\partial x}2\phi_x(x,y,z) - \frac{\partial}{\partial y}2\phi_y(x,y,z) - \frac{\partial}{\partial z}2\phi_z(x,y,z)\right)
+=
+0.
+\]
+Wenn man nun noch die letzten partiellen Ableitungen macht, wird die Differentialgleichung
+\begin{equation}
+- \underbrace{\epsilon_0}_{\not{=}0}\underbrace{\left(\frac{\partial^2\phi(x,y,z)}{\partial x^2} + \frac{\partial^2\phi(x,y,z)}{\partial y^2} + \frac{\partial^2\phi(x,y,z)}{\partial z^2}\right)}_{=0}
+=
+0.
+\label{maxwell:section:laplace_gleichung_1}
+\end{equation}
+%definiton des laplace operators suchen
+An dieser Gleichung sieht man, dass die Klammer mit den partiellen Ableitungen gleich null sein muss, da die Permittivität von Vakuum nicht null sein kann.
+Zusätzlich wird nun ersichtlich, dass der Klammerterm nach definition \ref{???} mit dem Laplace-Operator angewendet auf das elektrische Potentialfeld $\phi$ ersetzt werden kann.
+Somit wird unsere schluss Differentialgleichung
+\begin{equation}
+\Delta\phi(x,y,z)
+=
+0.
+\label{maxwell:section:laplace_gleichung_2}
+\end{equation}
+Durch Anwendng der Definiton des Laplace-Operator \ref{???} und der Definiton des Elektrischenfeldes \ref{???} erhalten wird die Gleichung
+\[
+\nabla\cdot\underbrace{\nabla\phi(x,y,z)}_{-\vec{E}(x,y,z)}
+=
+0.
+\]
+Hiermit erhalten wir, dass
+\begin{equation}
+\nabla\cdot\vec{E}(x,y,z)
+=
+0
+\label{maxwell:section:e_feld_quellenfrei}
+\end{equation}
+% TODO:Bild referenz einfügen und Bild erstellen
+sein muss. Diese Differentialgleichung besagt, dass das Elektrische Feld quellenfrei ist.
+Dies bedeutet, dass Felldlinien des Elektrischenfeldes an keinem Ort im Raum enstehen oder enden können \ref{???}.
+Dies ist sehr naheliegend, da ohne Ladungen im Raum das Elektrische Feld quellenfrei sein muss.
+
+\subsubsection{Exkurs zur Laplace-Gleichung}
+Potentialfelder, die die Laplace-Gleichung
+\[
+\Delta\varphi
+=
+0
+\]
+erfüllen, 
+
+
+
+
