@@ -1,15 +1,19 @@
 % erste Maxwellgleichung ohne Quelle
-\section{Ladungsfreie Elektrostatik
-	\label{maxwell:section:equation1_ohne_quelle}}
+\section{Elektrostatik ohne Quelle
+	\label{maxwell:section:elektrostatik_ohne_quelle}}
 \rhead{Problemstellung}
-Man stelle sich nun einen ladungsfreien, luftleeren , drei dimensionalen Raum vor, indem ein elektrisches Potentialfeld $\phi(x,y,z)$ existiert.
+Man stelle sich nun einen ladungsfreien, luftleeren , drei dimensionalen Raum
+\[
+V\in\mathbb{R}^3
+\]
+vor, indem ein elektrisches Potentialfeld $\phi(x,y,z)$ existiert.
 Für diesen Raum möchten wir mittels der Varitaionsrechnung eine Gleichung entwickeln, die beschreibt, wie sich das Potentialfeld verhählt. 
 
 \subsection{Ansatz}
 Damit wir eine Gleichungen erhalten, die das Verhalten des elektrischen Potentialfeldes beschreibt, muss ganz allgemein die Energie im System minimiert werden. 
 In diesem Fall ist die Energie im System
 \[
-W
+W_e
 =
 \int_V \omega_e\, dV.
 \]
@@ -24,31 +28,47 @@ Die Energiedichte
 ist die Energiedichte im elektrischen Feld.
 Diese Gleichung können wir nun mittels definition \ref{(???)} mit dem elektrischen Potentialfeld ausdrücken.
 somit ist
-\[
+\begin{align}
 \omega_e
-=
-\frac{1}{2}\epsilon_0\left(-\nabla\phi(x,y,z)\right)^2.
-\]
+&=
+\frac{1}{2}\epsilon_0\left(-\nabla\phi(x,y,z)\right)^2
+\\
+\omega_e
+&=
+\frac{1}{2}\epsilon_0
+\begin{pmatrix}
+-\phi_x(x,y,z)\\
+-\phi_y(x,y,z)\\
+-\phi_(x,y,z)z
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+-\phi_x(x,y,z)\\
+-\phi_y(x,y,z)\\
+-\phi_z(x,y,z)
+\end{pmatrix}
+\\
+\omega_e
+&=
+\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right).
+\label{maxwell:section:energiedichte}
+\end{align}
 Dies können wir in das zu minimerende Integral einsetzen und bekommen
 %TODO: eventuell underbraces weg lassen.
 \begin{equation}
-	W
+	W_e
 	=
 	\int_V \underbrace{
-		\frac{1}{2}\epsilon_0\left(-\nabla\phi(x,y,z)\right)^2}_{L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))}\, dV.
+		\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)}_{L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))}\, dV.
 	\label{maxwell:section:energieintegral_quellenfrei}
 \end{equation}
 Aus dieser Gleichung können wir entnehmen, dass unsere Lagrangefunktion
-\begin{align}
+\begin{equation}
 	L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))
-	&=
-	\frac{1}{2}\epsilon_0\left(-\nabla\phi(x,y,z)\right)\cdot\left(-\nabla\phi(x,y,z)\right)
-	\\
-	L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))
-	&=
+	=
 	\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)
 	\label{maxwell:section:lagrangefunktion_quellenfrei}
-\end{align}
+\end{equation}
 ist.
 Somit haben wir unsere Lagrangefunktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
 
@@ -105,14 +125,18 @@ sein muss. Diese Differentialgleichung besagt, dass das Elektrische Feld quellen
 Dies bedeutet, dass Felldlinien des Elektrischenfeldes an keinem Ort im Raum enstehen oder enden können \ref{???}.
 Dies ist sehr naheliegend, da ohne Ladungen im Raum das Elektrische Feld quellenfrei sein muss.
 
+%Darf auch weggelassen werden.
 \subsubsection{Exkurs zur Laplace-Gleichung}
-Potentialfelder, die die Laplace-Gleichung
+Ein Potentialfeld, das die Laplace-Gleichung
 \[
 \Delta\varphi
 =
 0
 \]
-erfüllen, 
+erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, das rotationsfrei und quellenfrei ist.
+Diese Gleichung findet nicht nur Anwendungen in der Elektrostatik, sondern auch in stationärer Fluiddynamik und stationärer Wärmeleitung.
+
+
 
 
 

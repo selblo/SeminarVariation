@@ -1,0 +1,54 @@
+%erste Maxwell Gleichung mit Quelle
+\section{Elektrostatik mit Quelle
+\label{maxwell:section:elektrostatik_mit_quelle}}
+\rhead{Problemstellung}
+Nun betrachten wir einen luftleeren, dreidimensionalen Raum
+\[
+V\in\mathbb{R}^3
+\]
+, in dem ein elektrisches Potentialfeld $\phi(x,y,z)$ und eine Ladungsdichte $\rho(x,y,z)$ existieren.
+Auch für diesen Raum möchten wir mittels Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
+
+\subsection{Ansatz}
+\rhead{Ansatz}
+Es ist naheliegend, dass auch in diesem Szenario die Energie im System minimiert werden muss.
+Wie auch im Abschnitt \ref{maxwell:section:elektrostatik_ohne_quelle} ist die Energie im elektrischen Feld
+\[
+W_e
+=
+\iiint_V \frac{1}{2}\epsilon_0\vec{E}(x,y,z)^2\, dV.
+\]
+% TODO: referenz einfügen von definition elektrisches potential
+Jedoch ist dies nicht die einzige Komponente der gesamt Energie des Systems.
+Laut \ref{???} ist das elektrische Potential eine auf Ladung normierte potenzielle Energie.
+Somit haben wir die fehlende Komponente gefunden.
+Damit wir die, durch die Ladung
+\[
+q
+=
+\iiint_V \rho(x,y,z)\, dV
+\]
+verursachte, potenzielle Energie $W_q$ im System mit der Lasungsdichte $\rho(x,y,z)$ Ausdrücken können, müssen wir untersuchen, was eine infinitesimale potenzielle Energie verursacht.
+Wen wir diese infinitesimal kleine potenzielle Energie
+\[
+dW_q
+=
+\phi(x,y,z)dq
+\]
+unter die Lupe nehmen und das Differential von $dq$ einsetzen, erhalten wir
+\begin{align*}
+dW_q
+&=
+\phi(x,y,z)\underbrace{\frac{dq}{dV}}_{\rho(x,y,z)}dV.
+\\
+dW_q
+&=
+\phi(x,y,z)\rho(x,y,z)dV.
+\end{align*}
+Jetzt müssen die infinitesimalen potenziellen Energien im Raum $V$ zusammengezählt werden und was resultiert ist
+\begin{equation}
+W_q
+=
+\iiint_V \phi(x,y,z)\rho(x,y,z)\, dV.
+\label{maxwell:section:potenzielle_energie_ladung}
+\end{equation}
