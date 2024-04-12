@@ -16,7 +16,7 @@ Da sowohl das elektrische Feld $\vec{E}$ wie auch das magnetische Feld $\vec{B}$
 Ein Skalarfeld ist eine Funktion der Form
 \[ f:\mathbb{R}^n \rightarrow \mathbb{R}, \] 
 die jedem Punkt im Raum ein Skalar zuordnet.
-Ein alltägliches Beispiel für ein Skalarfeld ist die Temperaturverteilung in einem Raum.
+Alltägliches Beispiele für ein Skalarfelder sind Temperaturverteilungen, Ladungsdichten oder Potentiale. In \ref{maxwell:skalarGrad} ist der Querschnitt eines Skalarfeldes abgebildet.
 
 
 %Zu den wichtigsten Operationen eines Skalarfeldes gehört der Gradient, welcher dem Skalar- ein Vektorfeld zuordnet.
@@ -36,14 +36,30 @@ Ein Vektorfeld ist eine Funktion der Form \[ f: \mathbb{R}^n \rightarrow \mathbb
 Die Richtung dieses Vektors gibt hierbei an, in welche Richtung der Fluss des Feldes an diesem Punkt geht, während der Betrag die Intensität repräsentiert.
 
 
-
-Des weiteren spricht man von stationären Vektorfelder, wenn sie zeitunabhängig sind und von homogenen Vektorfelder, wenn die Richtung und der Betrag der Vektoren ortsunabhängig sind, also wenn jeder Vektor die gleiche Richtung und den gleichen Betrag haben.
+Des weiteren spricht man von stationären Vektorfelder, wenn sie zeitunabhängig sind und von homogenen Vektorfelder, wenn die Richtung und der Betrag der Vektoren ortsunabhängig sind, also wenn jeder Vektor die gleiche Richtung und den gleichen Betrag haben. 
+Wie bereits erwähnt, sind das elektrische und das magnetische Feld, wie auch andere Kraftfelder Beispiele von Vektorfelder.
+Der Querschnitt eines Vektorfeldes ist auch in \ref{maxwell:skalarGrad} abgebildet.
 
 \subsection{Operationen}
 
 \subsubsection*{Gradient}
 
+Der Gradient wurde bereit in \ref{buch:fuvar:richtungsableitung:def:gradient} definiert, dieser Operator, welcher auf ein Skalarfeld angewendet wird, resultiert in einem Vektorfeld. 
+Die Richtung der Vektoren dieses neuen Vektorfeldes zeigen demnach immer in die Richtung der grössten Zunahme.
+%Weiter unten wird ersichtlich, dass auch das elektrische Feld ein Gradientenfeld ist \[ \vec{E} = -\nabla\varphi, \] wobei $\varphi$ das elektrische Potential ist.
+
 \subsubsection*{Divergenz}
 
-\subsubsection*{Rotation}
+Die Divergenz eines Vektorfeldes $\vec{F}$ ist definiert als 
+\[ \nabla\cdot\vec{F}. \]
+Angewendet wird sie auf ein Vektorfeld und resultiert in ein Skalarfeld.
+Die Divergenz sagt aus, ob an einem Punkt mehr "hinein-" als "rausfliesst" und macht so eine Aussage über das Bestehen von Quellen und Senken.
 
+Wenn die Divergenz negativ ist, liegt eine Senke vor, wenn sie positiv ist eine Quelle. 
+
+\subsubsection*{Rotation}
+Die Rotation eines Vektorfeldes $\vec{F}$ ist definiert als,
+\[ \nabla\times\vec{F}. \]
+Mit dieser Operation wird einem Vektorfeld ein neues Vektorfeld zugeordnet, welches eine Aussage macht, wie stark das Feld sich um einen Punkt dreht bzw. rotiert.
+
+Wenn die Rotation zu null resultiert, ist das Feld wirbelfrei.
