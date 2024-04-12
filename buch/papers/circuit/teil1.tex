@@ -6,16 +6,54 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
+\section{Kirchhoff's Gesetz
 \label{circuit:section:teil1}}
 \rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+Kirchhoffs Stromgesetz besagt, dass die in einen Knoten einfließenden Ströme gleich den aus einem Knoten ausfließenden Strömen in einer Schaltung sind. Dies bedeutet auch, dass es in einem Gleichstromkreis im stationären Betrieb keine Ansammlung von Ladungen an irgendeinem Punkt geben kann. Wir betrachten nun einen dreidimensionalen Schaltkreis, in dem die Leitfähigkeit $\sigma$ im gesamten Bereich von Interesse konstant ist. Die Verallgemeinerung von Kirchhoffs Stromgesetz im dreidimensionalen Fall besagt, dass die Divergenz der Stromdichte $\vec{J}$ gleich Null ist. Daher haben wir
+\begin{equation}
+	\nabla  \vec{J}=0
+	\label{circuit:current_density_1}
+\end{equation}
+
+
+
+
+Wenn das elektrische Feld durch $\vec{E}$ dargestellt wird, können wir die Stromdichte als Produkt aus Leitfähigkeit und elektrischem Feld an einem Punkt im Raum schreiben. Daher haben wir
+$$
+\vec{J}=\sigma \vec{E}
+$$
+
+Das elektrische Feld kann als negativer Gradient der skalaren Potentialfunktion $\phi$ geschrieben werden, d.h.
+$$
+\vec{E}=-\nabla \phi
+$$
+
+Daher erhalten wir aus den Gleichungen (6), (7) und (8)
+$$
+\nabla .(\sigma \nabla \phi)=0
+$$
+
+Wenn wir annehmen, dass die Leitfähigkeit im gesamten betrachteten Raum konstant ist, erhalten wir
+$$
+\nabla^2 \phi=0
+$$
+
+Der stationäre Zustand in einem Gleichstromkreis wird erreicht, wenn Gleichung (10) an allen Punkten im Schaltkreis erfüllt ist. Als nächstes ist die Wärmeerzeugungsrate $P$ in einem von einer Grenze $S$ umgebenen Volumen $V$ gegeben durch
+$$
+P=\int_V \sigma(\nabla \phi)^2 d V
+$$
+
+Wenn wir den Divergenzsatz anwenden und Gleichung (10) verwenden, erhalten wir
+$$
+P=\int_V \nabla \cdot(\sigma \phi \nabla \phi) d V=\int_S(\sigma \phi \nabla \phi) \cdot d \vec{S}
+$$
+
+Wenn die Leitfähigkeit im gesamten Volumen $V$ konstant ist, wird die Variation der Wärmeerzeugungsrate $P$ in $V$ gegeben durch
+$$
+\delta P=\sigma \int_S(\delta \phi \nabla \phi) \cdot d \vec{S}+\sigma \int_S(\phi \nabla(\delta \phi)) \cdot d \vec{S}
+$$
+
+Aus Gleichung (13) geht hervor, dass wenn Variationen im Fluss, $\delta \phi$, an der Grenze von $V$ verschwinden, dann ist $P$ stationär, d.h. $\delta P=0$. Daher werden elektrische Ströme in der Region verteilt, mit einer angelegten Spannung an ihrer Grenze,
 \begin{equation}
 \int_a^b x^2\, dx
 =
@@ -24,6 +62,17 @@ voluptatem sequi nesciunt
 \frac{b^3-a^3}3.
 \label{circuit:equation1}
 \end{equation}
+
+
+
+
+
+\begin{align*}
+	\Delta h(x)=0
+\end{align*}
+
+
+
 Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
 consectetur, adipisci velit, sed quia non numquam eius modi tempora
 incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
