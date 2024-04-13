@@ -2,7 +2,7 @@
 \section{Elektrostatik mit Quelle
 \label{maxwell:section:elektrostatik_mit_quelle}}
 \rhead{Problemstellung}
-Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\in\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\phi(x,y,z)$ und eine Ladungsdichte $\rho(x,y,z)$ existieren.
+Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\phi(x,y,z)$ und eine Ladungsdichte $\rho(x,y,z)$ existieren.
 Auch für diesen Raum möchten wir mittels Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
 
 \subsection{Ansatz}
@@ -67,7 +67,9 @@ L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)
 % TODO: Müller fragen wegen kopplungsterme
 ablesen.
 Man bemerkt, dass die Lagrangefunktion einen zusätzlichen additiven Term erhalten hat im Verlgeich zur Lagrangefunktion \eqref{maxwell:section:lagrangefunktion_quellenfrei}.
-Solche Terme nennt man Kopplungsterme???.
+Solche Terme nennt man Kopplungsterme.
+Sie werden verwendet, um die Wechselwirkung zwischen Termen in der Lagrangefunktion zu berücksichtigen.
+Der Kopplungsterm in unserem Fall beschreibt die Wechselwirkung zwischen dem Feld und der Ladungsdichte.
 Nun können wir diese Lagrangefunktion in die Euler-Ostrogradski-Differentialgleichung einsetzen, um zu untersuchen, wie sich das elektrische Potentialfeld verhält.
 
 \subsection{Einsetzen in die Euler-Ostrogradski-DifferentialGleichung}
@@ -131,12 +133,15 @@ sein.
 Wir sehen, dass dies der ersten Maxwell-Gleichung in differentieller Schreibweise entspricht.
 
 \subsection{Interpretation des Resultates}
-% TODO: schreiben über negative und positive ladungsträger
+% TODO: Bilder einfügen von Ladungen und elektrischem Feld
 Die erste Maxwell-Gleichung \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, dass die Quelle des elektrischen Feldes eine Ladungsdichte $\rho$ ist.
 Dies bedeutet, dass elektrische Feldlinien auf Ladungen enden können.
 In anderen Worten wird das elektrostatische Feld durch Ladungen erzeugt!
 Da es sowohl positive wie auch negative Ladungen gibt, gilt dasselbe für die Ladungsdichten.
-
+Wenn die Ladungsdichte positiv ist, sagt uns die erste Maxwell-Gleichung, dass das elektrische Feld eine Quelle besitzt.
+Das heisst, salopp gesagt, die Feldvektoren zeigen weg von der Ladungsdichte \ref{???}.
+Wenn die Ladungsdichte jedoch negativ ist, besitzt das elektrische Feld eine Senke.
+Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen \ref{???}.
 
 \subsection{Exkurs zur Poisson-Gleichung}
 % Darf auch weggelassen werden.
