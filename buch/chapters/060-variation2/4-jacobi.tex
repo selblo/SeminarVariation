@@ -251,7 +251,27 @@ Die Funktion $u_1$ ist aber an der Stelle $x_*$ nicht differenzierbar,
 sie kann also nur dann ein Extremum sein, wenn sie an der Stelle
 $x_*$ die weierstrasse-erdmannsche Eckenbedingung erfüllt.
 
-XXX Nachprüfung der Eckenbedingung
+Die Eckenbedingung von
+Satz~\ref{buch:nichtdiff:splines:satz:weierstrass-erdmann}
+sagt, dass die Ableitung die Funktionen
+\[
+\frac{\partial G}{\partial u'}(x,u(x),u'(x))
+\qquad\text{und}\qquad
+G(x,u(x),u'(x))
+-
+u'(x)\frac{\partial G}{\partial u'}(x,u(x),u'(x))
+\]
+stetige Funktionen sein müssen.
+Für die Lagrange-Funktion $G$ sind dies die Funktionen
+\[
+2R(x) u'(x)
+\qquad\text{und}\qquad
+S(x)u(x)^2 + R(x)u'(x)^2 - u'(x) 2R(x)u'(x)
+=
+S(x)u(x)^2-R(x)u'(x)^2.
+\]
+Die Funktion $u(x)$ ist stetig, aber $u'(x)$ ist nicht stetig, daher
+sind beide Eckenbedingungen verletzt.
 
 Da die Eckenbedingung nicht erfüllt ist, kann $u_1(x)$ dem Funktional
 $K(u)$ nicht ein Minimum erteilen.
