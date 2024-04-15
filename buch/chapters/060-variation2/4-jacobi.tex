@@ -9,13 +9,32 @@
 Die zweite Variation in der Form
 \eqref{buch:variation2:zweitevariation:eqn:SRintegral}
 zeigt, dass es für die Beurteilung, ob tatsächlich ein Extremum 
-vorliegt, auf das Verhalten der Funktion $S(x)$ ankommt.
+vorliegt, auf das Verhalten der Funktionen $S(x)$  und $R(x)$ ankommt.
 In einem Minimum garantiert die Legendre-Bedingung bereits,
 dass $R(x)\ge 0$ ist.
 Es bleibt noch zu untersuchen, ob sich Bedinungen an die Funktion
 $S(x)$ finden lassen, die garantieren können, dass ein Minimum
 vorliegt.
-Zu diesem Zweck betrachten wir das Funktional
+
+%
+% \delta^2 I(y)\ge 0 als Variationsproblem
+%
+\subsection{$\delta^2 I(y)\ge 0$ als Variationsproblem
+\label{buch:variation2:jacobi:subsection:delta2I}}
+Wir möchten herausfinden, ob die zweite Variation negativ werden kann.
+Falls ja müsste sich eine Funktion $\eta(x)$ finden lassen, für die
+der Wert des Integrals
+\eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+negativ ist.
+Ob es so eine Funktion gibt könnten wir dadurch entscheiden, dass wir
+das Minimum des Integrals
+\eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+suchen.
+Damit ist ein Variationsproblem entstanden, auf das wir wieder die
+bereits entwickelte Theorie anwenden können.
+
+Zur Lösung des Variationsproblems scheiben wir $u(x)$ für die gesuchte
+Variationsfunktion $\eta(x)$ und betrachten das Funktional
 \begin{equation}
 K(u)
 =
@@ -31,14 +50,99 @@ Sollte es aber Funktionen $u(x)$ geben, die $K(u)$ negativ machen,
 dann kann die Funktion $y(x)$ von der ausgehen die Funktionen $S(x)$
 und $R(x)$ konstruiert wurden, kein Minimum sein.
 
-Die Euler-Lagrange-Differentialgleichung des Funktionals
+%
+% Die Jacobi-Differentialgleichung
+%
+\subsubsection{Die Jacobi-Differentialgleichung}
+Das Funktional
 \eqref{buch:variation2:jacobi:eqn:K}
-mit der Lagrange-Funk\-tion 
+hat die Lagrange-Funk\-tion 
 \[
 G(x,u,u') = S(x) u^2 + R(x) u^{\prime 2}
 \]
-können wir nach trivialen Vereinfachungen
+mit den Ableitungen
+\begin{align*}
+\frac{\partial G}{\partial u}
+&=
+2S(x) u
+&
+\frac{\partial G}{\partial u'}
+&=
+2R(x) u'.
+\end{align*}
+Daraus ergibt sich die Euler-Lagrange-Differentialgleichung
 \[
+2S(x) u(x) - 2\frac{d}{dx} R(x) u'(x) = 0.
+\]
+Der gemeinsame Faktor $2$ kann weggelassen werden.
+Ausserdem ist es üblich, die Differentialgleichung mit umgekehrtem
+Vorzeichen hinzuschreiben, also als
+\begin{equation}
+\frac{d}{dx} R(x)\frac{d}{dx} u(x) - S(x) u(x) = 0.
+\label{buch:variation2:jacobi:eqn:jacobisl}
+\end{equation}
+Dies ist eine lineare Differentialgleichung zweiter Ordnung für die Funktion
+$u(x)$.
+
+\begin{definition}[Jacobi-Differentialgleichung]
+Die Differentialgleichung
+\eqref{buch:variation2:jacobi:eqn:jacobisl}
+heisst die {\em Jacobi-Differentialgleichung}
+für die Extermale $y(x)$.
+\end{definition}
+
+\subsection{Nullstellen von Lösungen der Jacobi-Differentialgleichung
+\label{buch:variation2:jacobi:subection:nullstellen}}
+Die Jacobi-Differentialgleichung ist nahe an der Form einer
+Sturm-Liouville-Differential\-gleichung,
+wie sie in Abschnitt~\ref{buch:variation2:section:diffgl} genauer
+untersucht wurde.
+Insbesondere wurden dort Aussagen über die Lage der Nullstellen von
+Lösungen gefunden, die weiter unten nützlich sein werden.
+
+%
+% Die starke Legendre-Bedingung
+%
+\subsubsection{Die starke Legendre-Bedingung}
+Durchführung der Ableitung im ersten Term der Jacobi-Differentialgleichung
+führt auf
+\[
+R(x) u''(x) + R'(x) u'(x) - S(x) u(x) = 0,
+\]
+während eine Sturm-Liouville-Differentialgleichung bei $u''(x)$ den
+Koeffizienten $1$ hat.
+Die Form einer Sturm-Liouville-Differentialgleichung kann erreicht
+werden, wenn $R(x)>0$ ist, denn in diesem Fall kann man die
+Differentialgleichung durch $R(x)$ dividieren und die Gleichung
+\[
+u''(x) + \frac{R'(x)}{R(x)} u'(x) -\frac{S(x)}{R(x)} u(x) = 0
+\]
+erhalten.
+
+\begin{definition}[Starke Legendre-Bedingung]
+Die Lagrange-Funktion $F(x,y,y')$ erfüllt die starke Legendre-Bedingung
+für die Extremale $y(x)$, wenn gilt
+\[
+\frac{\partial^2 F}{\partial y^{\prime 2}}(x,y(x),y'(x)) > 0
+\]
+für alle $x\in [x_0,x_1]$.
+\end{definition}
+
+Unter der Voraussetzung der starken Legendre-Bedingung ist die
+Jacobi-Differential\-glei\-chung also äquivalent zu einer
+Sturm-Liouville-Differentialgleichung.
+In Abschnitt~\ref{buch:variation2:section:diffgl}
+wurde die die Vorzeichen und Nullstellen der Lösungen einer solchen
+Gleichung untersucht.
+Diese Eigenschaften gelten daher auch für die Jacobi-Differentialgleichung.
+
+%
+% Berechnung von K(u) aus L(u)
+%
+\subsubsection{Berechnung von $K(u)$ aus $L(u)$}
+Wir schreiben die linke Seite der Jacobi-Differentialgleichung auch
+in der Form
+\begin{equation}
 L(u)
 =
 \frac{d}{dx}\frac{\partial G}{\partial y'}
@@ -47,20 +151,123 @@ L(u)
 =
 \frac{d}{dx}(Ru') 
 -
-Su
-=
-0
-\]
-schreiben,
-oder auch
-\begin{equation}
-\frac{d}{dx} R(x)\frac{d}{dx} u(x) - S(x) u(x) = 0,
-\label{buch:variation2:jacobi:eqn:jacobisl}
+Su.
+\label{buch:variation2:jacobi:eqn:L}
 \end{equation}
-eine lineare Differentialgleichung zweiter Ordnung für die Funktion $u(x)$.
-Sie ist ausserdem von der Form einer Sturm-Liouville-Differentialgleichung,
-wie sie in Abschnitt~\ref{buch:variation2:section:diffgl} genauer
-untersucht wurden.
+Falls die Funktion $u(x)$, die keine Lösung der Jacobi-Differentialgleichung
+zu sein braucht, die Randbedingungen $u(x_0)=u(x_1)=0$ erfüllt,
+kann das Integral
+\begin{align}
+\int_{x_0}^{x_1} u(x) L(u(x)) \,dx
+&=
+\int_{x_0}^{x_1} u(x)
+\biggl(
+\frac{d}{dx}\bigl(R(x)u'(x)\bigr) 
+-
+S(x) u(x)
+\biggr)
+\,dx
+\notag
+\intertext{mit partieller Integration im ersten Term berechnet werden.
+Es ergibt}
+&=
+\biggl[
+u(x)R(x)u'(x)
+\biggr]_{x_0}^{x_1}
+-
+\int_{x_0}^{x_1}
+u'(x) \bigl( R(x)u'(x) \bigr)
++
+u(x) S(x) u(x)
+\,dx.
+\notag
+\intertext{Der erste Term verschwindet wegen der Randbedingung, der
+Rest kann zu}
+&=
+-
+\int_{x_0}^{x_1} R(x) u'(x)^2 + S(x) u(x)^2 \,dx
+=
+- K(u).
+\label{buch:variation2:jacobi:eqn:LK}
+\end{align}
+vereinfacht werden.
+Das Funktional $K(u)$ kann also mit der linken Seite der
+Jacobi-Diffe\-ren\-tial\-gleichung ausgedrückt werden.
+
+%
+% Nullstellen im Inneren von [x_0,x_1]
+%
+\subsubsection{Nullstellen im Inneren von $[x_0,x_1]$}
+Auf die Jacobi-Differentialgleichung sind wir gestossen, weil wir nach
+Variationsfunktionen $\eta$ gesucht haben, die die zweite Variation
+negativ machen könnten.
+Unter der Voraussetzung der starken Legendre-Bedingung sind den
+Nullstellen einer Lösung starke Einschränkungen auferlegt.
+Sei also $u_0(x)$ eine Lösung der Jacobi-Differentialgleichung mit den
+Anfangsbedingungen
+\[
+u_0(x_0) = 0
+\qquad\text{und}\qquad
+u_0'(x_0) = 1
+\]
+und sei $x_*$ die kleinste, von $x_0$ verschiedene Nullstelle von $u_0(x)$
+im Inneren von $[x_0,x_1]$.
+Insbesondere ist $u_0(x)>0$ im Teilintervall $(x_0,x_*)$.
+
+Aus der Funktion $u_0(x)$ konstruieren wir jetzt eine neue Funktion
+\[
+u_1(x)
+=
+\begin{cases}
+u_0(x) &\qquad \text{für $x\in [x_0,x_*]$}\\
+0      &\qquad \text{sonst.}
+\end{cases}
+\]
+Diese Funktion ist stetig, aber nicht differenzierbar an der Stelle
+$x_*$.
+Sie erfüllt aber die Randbedingungen $u_1(x_0)=u_1(x_1)=0$, so dass
+\eqref{buch:variation2:jacobi:eqn:LK}
+zur Berechnung von $K(u_1)$ verwendet werden kann.
+Insbesondere gilt
+\[
+K(u_1)
+=
+-
+\int_{x_0}^{x_*}
+u_0
+\underbrace{L(u_0)}_{\displaystyle=0}
+\,dx
+-
+\int_{x_*}^{x_1}
+0
+\cdot L(0)
+\,dx
+=
+0.
+\]
+
+Die Funktion $u_1$ ist aber an der Stelle $x_*$ nicht differenzierbar,
+sie kann also nur dann ein Extremum sein, wenn sie an der Stelle
+$x_*$ die weierstrasse-erdmannsche Eckenbedingung erfüllt.
+
+XXX Nachprüfung der Eckenbedingung
+
+\begin{satz}
+Erfüllt die Extremale $y(x)$ die starke Legendre-Bedingung und hat
+die Lösung $u_0(x)$ der Jacobi-Differentialgleichung mit Anfangsbedingung
+$u_0(x_0)=0$ und $u_0'(x_1)=1$ eine Nullstelle im Inneren des Intervalls
+$[x_1,x_2]$, dann ist $I(y)$ kein Minimum.
+\end{satz}
+
+%
+%
+%
+\subsubsection{}
+
+%
+%
+%
+\subsubsection{}
 
 Ist die Funktion $u(x)$ eine Lösung der
 Differentialgleichung~\eqref{buch:variation2:jacobi:eqn:jacobisl}
@@ -72,7 +279,7 @@ Variation $\ne 0$.
 Die Eigenschaft, ob ein Minimum oder Maximum vorliegt, wird also
 dadurch entschieden, ob es eine Lösung der Differentialgleichung
 \eqref{buch:variation2:jacobi:eqn:jacobisl} mit
-Randwerten $u(x_0)=u(x_1)=1$ gibt.
+Randwerten $u(x_0)=u(x_1)=0$ gibt.
 
 Ist $u(x)$ eine nichttriviale Lösung der Differentialgleichung
 \eqref{buch:variation2:jacobi:eqn:jacobisl} mit $u(x_0)=0$,
@@ -85,11 +292,6 @@ Die Frage ob ein Minimum oder Maximum vorliegt, wird also
 durch die Lage der Nullstellen von Lösungen der Differentialgleichung
 \eqref{buch:variation2:jacobi:eqn:jacobisl} bestimmt.
 
-\begin{definition}[Jacobi-Differentialgleichung]
-Die Differentialgleichung
-\eqref{buch:variation2:jacobi:eqn:jacobisl}
-heisst die {\em Jacobi-Differentialgleichung}.
-\end{definition}
 
 %Aus der Definition des Funktionals $K(u)$ erhält man durch
 %partielle Integration für Funktionen mit den Randbedingungen
