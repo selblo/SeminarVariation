@@ -91,6 +91,23 @@ heisst die {\em Jacobi-Differentialgleichung}
 für die Extermale $y(x)$.
 \end{definition}
 
+Falls die Funktion $u(x)$ nicht verschwindet, kann die Differentialgleichung
+\eqref{buch:variation2:jacobi:eqn:jacobisl}
+auch als
+\begin{equation}
+\frac{1}{u(x)}
+\frac{d}{dx} R(x)\frac{d}{dx} u(x) = S(x)
+\label{buch:variation2:jacobi:eqn:jacobisl2}
+\end{equation}
+geschrieben werden.
+Die Funktion $S(x)$ lässt sich also durch $R(x)$ und die Lösung $u(x)$
+ausdrücken, dies wird in
+Abschnitt~\ref{buch:variation2:jacobi:subsection:ohne}
+nüztlich sein.
+
+%
+% Nullstellen von Lösungen der Jacobi-Differentialgleichung
+%
 \subsection{Nullstellen von Lösungen der Jacobi-Differentialgleichung
 \label{buch:variation2:jacobi:subection:nullstellen}}
 Die Jacobi-Differentialgleichung ist nahe an der Form einer
@@ -337,12 +354,18 @@ Länge.
 
 Die Punkte $x_0$ und $x_*$ heissen {\em konjugierte} Punkte.
 \index{konjugierter Punkt}%
+Man kann das Phänomen auch so beschreiben: erweitert man den
+Definitionsbereich über einen konjugierten Punkt hinweg, wird die
+Lösung $y(x)$ ``instabil'', man kann den Wert des Funktionals
+durch kleine Änderungen weiter senken.
+Die Funktion $y(x)$ ist dann zwar immer noch ein kritischer Punkt,
+des Funktionals, aber kein Minimum mehr.
 
 %
 % Lösungen ohne Nullstellen im Inneren
 %
 \subsection{Lösungen ohne Nullstellen im Inneren
-\label{buch:variation2:jacobi:subsection:}}
+\label{buch:variation2:jacobi:subsection:ohne}}
 Wir nehmen jetzt an, dass $y(x)$ die starke Legendre-Bedingung
 erfüllt und die Lösung $u_0(x)$ der zugehörigen
 Jacobi-Differentialgleichung mit Anfangsbedingungen $u_0(x_0)=0$
@@ -380,9 +403,9 @@ R(x)
 \eta'(x)
 -\frac{u_0'(x)}{u_0(x)} \eta(x)
 \biggr)^2
-\,dx
+\,dx,
 \label{buch:variation2:jacobi:eqn:Jquadrat}
-\\
+\intertext{welches ausmultipliziert zu}
 &=
 \int_{x_0}^{x_1} 
 R(x) 
@@ -394,7 +417,9 @@ R(x)
 \biggr)
 \,dx
 \notag
-\\
+\intertext{wird.
+Die Faktoren mit $\eta$ im mittleren Term können kompakter
+als $2\eta(x)\eta'(x)=(\eta(x))'$ geschrieben werden:}
 &=
 \int_{x_0}^{x_1}
 R(x)
@@ -408,9 +433,10 @@ R(x)
 \biggr)
 \,dx.
 \notag
-\intertext{Durch partielle Integration im mittleren Term, bei der
-$(\eta(x)^2)'$ aufgeleitet und $R(x)u_0'(x)/u_0(x)$ abgeleitet wird,
-erhält man wegen der Randbedingung $\eta(x_0)=\eta(x_1)=0$}
+\intertext{Dadurch wird es jetzt möglich im mittleren Term
+partielle Integration durchzuführen, bei der
+$(\eta(x)^2)'$ aufgeleitet und $R(x)u_0'(x)/u_0(x)$ abgeleitet wird.
+Man erhält wegen der Randbedingung $\eta(x_0)=\eta(x_1)=0$}
 &=
 \int_{x_0}^{x_1}
 R(x)\eta'(x)^2
@@ -424,7 +450,7 @@ R(x)
 \biggr)
 }_{\displaystyle =A}
 \eta(x)^2
-\,dx
+\,dx.
 \notag
 \end{align}
 In der
@@ -457,7 +483,8 @@ R(x)u_0'(x)
 +
 R(x)\frac{u_0'(x)^2}{u_0(x)^2}
 \intertext{Da $u_0(x)$ eine Lösung der Jacobi-Differentialgleichung ist,
-ist der erste Term $S(x)$ und damit}
+ist nach \eqref{buch:variation2:jacobi:eqn:jacobisl2}
+der erste Term $=S(x)$ und damit}
 A
 &=
 S(x)
@@ -468,7 +495,7 @@ R(x)\frac{u_0'(x)^2}{u_0(x)^2}
 =
 S(x).
 \end{align*}
-Eingesetzt im Integral erhalten wir
+Eingesetzt im Integral erhalten wir schliesslich
 \[
 J
 =
