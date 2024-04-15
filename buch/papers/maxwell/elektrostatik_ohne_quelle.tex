@@ -1,12 +1,23 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
 % erste Maxwellgleichung ohne Quelle
-\section{Elektrostatik ohne Quelle
+\section{Elektrostatik}
+
+
+\subsection{Gausssches Gesetz quellenfrei
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
 \rhead{Problemstellung}
 Man stelle sich nun einen ladungsfreien, luftleeren , drei dimensionalen Raum $V\subset\mathbb{R}^3$
 vor, indem ein elektrisches Potentialfeld $\phi(x,y,z)$ existiert.
 Für diesen Raum möchten wir mittels der Varitaionsrechnung eine Gleichung entwickeln, die beschreibt, wie sich das Potentialfeld verhählt. 
 
-\subsection{Ansatz}
+\subsubsection{Ansatz}
 Damit wir eine Gleichungen erhalten, die das Verhalten des elektrischen Potentialfeldes beschreibt, muss ganz allgemein die Energie im System minimiert werden. 
 In diesem Fall ist die Energie im System
 \[
@@ -56,20 +67,20 @@ Dies können wir in das zu minimerende Integral einsetzen und bekommen
 	W_e
 	=
 	\iiint_V \underbrace{
-		\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)}_{L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))}\, dV.
+		\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)}_{L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)}\, dV.
 	\label{maxwell:section:energieintegral_quellenfrei}
 \end{equation}
 Aus dieser Gleichung können wir entnehmen, dass unsere Lagrangefunktion
 \begin{equation}
-	L(x,y,z,\phi(x,y,z),\phi_x(x,y,z),\phi_y(x,y,z),\phi_z(x,y,z))
+	L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)
 	=
-	\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)
+	\frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)
 	\label{maxwell:section:lagrangefunktion_quellenfrei}
 \end{equation}
 ist.
 Somit haben wir unsere Lagrangefunktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
 
-\subsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
+\subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
 %TODO: label suchen von E-O-DGL von müller kapitel
 Nun gilt es die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die E-O-DGL \ref{???} einzusetzen.
 Nach Einsetzen wird die Differentialgleichung
@@ -123,7 +134,7 @@ Dies bedeutet, dass Felldlinien des elektrischen Feldes an keinem Ort im Raum en
 Dies ist sehr naheliegend, da ohne Ladungen im Raum das elektrische Feld quellenfrei sein muss.
 
 %Darf auch weggelassen werden.
-\subsection{Exkurs zur Laplace-Gleichung}
+\subsubsection{Exkurs zur Laplace-Gleichung}
 \label{maxwell:section:laplacegleichung_exkurs}
 Ein Potentialfeld, das die Laplace-Gleichung
 \[

@@ -1,11 +1,19 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
 %erste Maxwell Gleichung mit Quelle
-\section{Elektrostatik mit Quelle
+\subsection{Gausssches Gesetz
 \label{maxwell:section:elektrostatik_mit_quelle}}
 \rhead{Problemstellung}
 Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\phi(x,y,z)$ und eine Ladungsdichte $\rho(x,y,z)$ existieren.
 Auch für diesen Raum möchten wir mittels Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
 
-\subsection{Ansatz}
+\subsubsection{Ansatz}
 \rhead{Ansatz}
 Es ist naheliegend, dass auch in diesem Szenario die Energie im System minimiert werden muss.
 Wie auch in Gleichung \eqref{maxwell:section:energieintegral_quellenfrei} ist die Energie im elektrischen Feld
@@ -72,7 +80,7 @@ Sie werden verwendet, um die Wechselwirkung zwischen Termen in der Lagrangefunkt
 Der Kopplungsterm in unserem Fall beschreibt die Wechselwirkung zwischen dem Feld und der Ladungsdichte.
 Nun können wir diese Lagrangefunktion in die Euler-Ostrogradski-Differentialgleichung einsetzen, um zu untersuchen, wie sich das elektrische Potentialfeld verhält.
 
-\subsection{Einsetzen in die Euler-Ostrogradski-DifferentialGleichung}
+\subsubsection{Einsetzen in die Euler-Ostrogradski-DifferentialGleichung}
 Nun wollen wir die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrangefunktion in die E-O-DGL einsetzten.
 Um die Rechnung übersichtlicher zu gestalten, machen wir uns die Linearität der E-O-DGL
 \begin{equation}
@@ -124,15 +132,15 @@ Mittels Anwendung der Definiton \ref{???} des Laplace-Operators und der Definito
 \]
 Somit muss
 \begin{equation}
-\nabla\cdot\vec{E}(x,y,z)
+\nabla\cdot\vec{E}
 =
-\frac{\rho(x,y,z)}{\epsilon_0}
+\frac{\rho}{\epsilon_0}
 \label{maxwell:section:erste_maxwellgleichung_2}
 \end{equation}
 sein.
 Wir sehen, dass dies der ersten Maxwell-Gleichung in differentieller Schreibweise entspricht.
 
-\subsection{Interpretation des Resultates}
+\subsubsection{Interpretation des Resultates}
 % TODO: Bilder einfügen von Ladungen und elektrischem Feld
 Die erste Maxwell-Gleichung \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, dass die Quelle des elektrischen Feldes eine Ladungsdichte $\rho$ ist.
 Dies bedeutet, dass elektrische Feldlinien auf Ladungen enden können.
@@ -143,7 +151,7 @@ Das heisst, salopp gesagt, die Feldvektoren zeigen weg von der Ladungsdichte \re
 Wenn die Ladungsdichte jedoch negativ ist, besitzt das elektrische Feld eine Senke.
 Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen \ref{???}.
 
-\subsection{Exkurs zur Poisson-Gleichung}
+\subsubsection{Exkurs zur Poisson-Gleichung}
 % Darf auch weggelassen werden.
 Die Poisson-Gleichung
 \[
