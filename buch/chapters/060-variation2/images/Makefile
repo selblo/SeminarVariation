@@ -3,7 +3,7 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	sin2.pdf legendre.pdf jacobi.pdf
+all:	sin2.pdf legendre.pdf jacobi.pdf xstern.pdf
 
 
 sin2.pdf:	sin2.tex
@@ -29,3 +29,6 @@ jacobi2.jpg:	jacobi2.png Makefile
 
 jacobi.pdf:	jacobi.tex jacobi0.jpg jacobi1.jpg jacobi2.jpg
 	pdflatex jacobi.tex
+
+xstern.pdf:	xstern.tex
+	pdflatex xstern.tex

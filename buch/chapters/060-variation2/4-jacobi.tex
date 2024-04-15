@@ -198,6 +198,7 @@ Jacobi-Diffe\-ren\-tial\-gleichung ausgedrückt werden.
 % Nullstellen im Inneren von [x_0,x_1]
 %
 \subsubsection{Nullstellen im Inneren von $[x_0,x_1]$}
+\input{chapters/060-variation2/fig/xstern.tex}
 Auf die Jacobi-Differentialgleichung sind wir gestossen, weil wir nach
 Variationsfunktionen $\eta$ gesucht haben, die die zweite Variation
 negativ machen könnten.
@@ -252,6 +253,13 @@ $x_*$ die weierstrasse-erdmannsche Eckenbedingung erfüllt.
 
 XXX Nachprüfung der Eckenbedingung
 
+Da die Eckenbedingung nicht erfüllt ist, kann $u_1(x)$ dem Funktional
+$K(u)$ nicht ein Minimum erteilen.
+Da aber $K(u_1)=0$ ist, muss es auch Funktionen $u(x)$ mit Randbedingungen
+$u(x_0)=u(x_1)=0$ geben, für die $K(u)<0$ negative Werte annimmt.
+Wenn aber die zweite Variation $\delta^2I(y)=K(u)<0$ ist, kann $y(x)$
+nicht ein Minimum sein.
+
 \begin{satz}
 Erfüllt die Extremale $y(x)$ die starke Legendre-Bedingung und hat
 die Lösung $u_0(x)$ der Jacobi-Differentialgleichung mit Anfangsbedingung
@@ -260,9 +268,50 @@ $[x_1,x_2]$, dann ist $I(y)$ kein Minimum.
 \end{satz}
 
 %
+% Konjugierte Punkte
 %
+\subsubsection{Konjugierte Punkte}
+\input{chapters/060-variation2/fig/jacobi.tex}
+
 %
-\subsubsection{}
+% Lösungen ohne Nullstellen im Inneren
+%
+\subsection{Lösungen ohne Nullstellen im Inneren
+\label{buch:variation2:jacobi:subsection:}}
+Wir nehmen jetzt an, dass $y(x)$ die starke Legendre-Bedingung
+erfüllt und die Lösung $u_0(x)$ der zugehörigen
+Jacobi-Differentialgleichung mit Anfangsbedingungen $u_0(x_0)=0$
+und $u_0'(x_0)=1$ keine Nullstellen im Inneren des Intervalls
+$[x_0,x_1]$ hat.
+Wir wollen zeigen, dass unter diesen Voraussetzungen die zweite
+Variation nicht negativ sein kann.
+
+Die zweite Variation ist das Integral
+\begin{align*}
+\delta^2 I(y)
+&=
+\int_{x_0}^{x_1}
+S(x) \eta(x)^2 + R(x) \eta'(x)^2
+\,dx.
+\intertext{Da die starke Legendre-Bedingung gilt, ist $R(x)>0$ und
+kann daher ausgeklammert werden:}
+&=
+\int_{x_0}^{x_1}
+R(x)
+\biggl(
+\eta'(x)^2 + \frac{S(x)}{R(x)}\eta(x)^2
+\biggr)
+\,dx
+\end{align*}
+Wenn man zeigen kann, dass die Klammer im Integranden ein Quadrat
+ist, dann folgt, dass das Integral $\ge 0$ sein muss.
+
+Sei jetzt $u_0(x)$ eine Lösung der Jacobi-Differentialgleichung
+ohne Nullstellen im Inneren des Intervalls $[x_0,x_1]$.
+Dann kann die Variation $\eta(x) = \alpha(x)u_0(x)$ geschrieben
+werden.
+Die Ableitung ist $\eta'(x) = \alpha'(x) u_0(x) + \alpha(x)u_0'(x)$.
+
 
 %
 %
