@@ -1,0 +1,44 @@
+%
+% seilbahn.tex -- Seilbahn
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfmathparse{sqrt(9+sinh(-1.5)*sinh(-1.5)}
+\xdef\l{\pgfmathresult}
+\draw (-4.5,{cosh(-1.5)}) -- +({sinh(-1.5)/\l},{-3/\l});
+\fill[color=gray!20] ({-4.5+sinh(-1.5)/\l},{cosh(-1.5)-3/\l}) circle[radius=1];
+
+\pgfmathparse{sqrt(9+sinh(0.5)*sinh(0.5)}
+\xdef\l{\pgfmathresult}
+\draw (1.5,{cosh(0.5)}) -- +({sinh(0.5)/\l},{-3/\l});
+\fill[color=gray!20] ({1.5+sinh(0.5)/\l},{cosh(0.5)-3/\l}) circle[radius=1];
+
+\draw[color=red,line width=1.4pt] plot[domain=-1.5:0.5] ({3*\x},{cosh(\x)});
+
+\draw[line width=0.3pt] (-7,-2) -- (-7,3);
+\draw[line width=0.3pt] (4,-2) -- (4,3);
+
+\draw[->] (-7.6,-2) -- (4.6,-2) coordinate[label={$x$}];
+\draw[->] (-7.5,-2.1) -- (-7.5,3.3) coordinate[label={right:$y$}];
+
+\draw (-7,-2.05) -- (-7,-1.95);
+\node at (-7,-2) [below] {$x_0\mathstrut$};
+\draw (4,-2.05) -- (4,-1.95);
+\node at (4,-2) [below] {$x_1\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

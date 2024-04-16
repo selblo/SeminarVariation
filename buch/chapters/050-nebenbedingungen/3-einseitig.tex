@@ -1,0 +1,135 @@
+%
+% 3-einseitig.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\section{Einseitige Bindungen
+\label{buch:nebenbedingungen:section:einseitigebindungen}}
+Die bisher untersuchten Nebenbedingungen waren alle von der
+Form einer Gleichung, zum Beispiel 
+\[
+\int_{x_0}^{x_1} G(x,y(x),y'(x))\,dx = 0
+\qquad\text{oder}\qquad
+y'(x_2) = c \quad\text{mit $x_2\in (x_0,x_1)$.}
+\]
+Im ersten Fall liefert die Idee der Lagrange-Multiplikatoren
+eine Lösungsmethode.
+Das zweite Problem kann aufgeteilt werden in zwei Probleme auf
+den Teilintervallen $[x_0,x_2]$ und $[x_2,x_1]$ mit einem zusätzlichen
+Randterm an der Stelle $x=x_2$.
+Es sind aber auch Aufgabenstellungen denkbar, in denen Nebenbedingungen
+in der Form einer Ungleichung gegeben sind.
+
+%
+% Ungleichungen als Nebenbedingungen
+%
+\subsection{Ungleichungen als Nebenbedingungen
+\label{buch:nebenbedingungen:einseitig:subsection:ungleichungen}}
+Wir motivieren die Problemstellung mit zwei Anwendungsbeispielen.
+
+%
+% Ein Seil über eine Stütze leiten
+%
+\subsubsection{Ein Seil über eine Stütze leiten}
+\input{chapters/050-nebenbedingungen/fig/seilbahn.tex}
+Das Tragseil einer Seilbahn trägt die Gondel, die vom Zugseil
+hochgezogen wird.
+Normalerweise wird das Trageseil nicht einfach zwischen Berg- und Talstation
+gespannt sondern über mehrere Zwischstützen geleitet.
+Das Seil liegt dort in einer gekrümmten Seilauflagerung, in der es sich
+in vielen Fällen in Längsrichtung bewegen kann.
+Die Gesamtlänge des Seils bleibt gleich, aber in der Seilauflagerung
+folgt es mindestens ein Stück weit deren Krümmung
+(Abbildung~\ref{buch:nebenbedingungen:fig:seilbahn}).
+
+Gesucht ist die Funktion $y(x)$, definiert auf dem Intervall $[x_0,x_1]$,
+welche das Seil beschreibt.
+Die Gesamtlänge des Seils ist 
+\[
+l(y) = \int_{x_0}^{x_1} \sqrt{1+y'(x)^2}\,dx,
+\]
+wie wir in früheren Beispielen gesehen haben.
+Im Kapitel~\ref{chapter:kettenlinie} wird dargelegt, dass das Seil
+versucht, die potentielle Energie
+\begin{equation}
+E(y) = \mu g \int_{x_0}^{x_1} y\sqrt{1+y'(x)^2}\,dx
+\label{buch:nebenbedingungen:einseitig:eqn:seilE}
+\end{equation}
+zu minimieren, wobei $g$ die Erdbeschleunigung und $\mu$ die
+lineare Massendichte ist.
+Der Faktor $\mu g$ ändert die Lösung des Extremalproblems nicht und 
+kann daher auch weggelassen werden.
+In Kapitel~\ref{chapter:kettenlinie} wird als Lösung für ein Seil
+ohne Zwischenstüzen eine Kettenlinie gefunden.
+
+Die Zwischenstützen erzwingen nun, dass sich das Seil oberhalb der 
+Auflagerungen bewegen muss.
+Es gibt daher eine zusätzliche Nebenbedingung der Form
+\[
+y(x) \ge \varphi(x),
+\]
+der die Funktion $y(x)$ genügen muss.
+
+%
+% Einen Schlauch über einen Schlauchanschluss ziehen
+%
+\subsubsection{Einen Schlauch über einen Schlauchanschluss ziehen}
+Wenn ein Schlauch über einen Schlauchanschluss gezogen wird, spannt
+er sich und versucht eine Minimalfläche zu bilden.
+Der Schlauch bildet daher eine Rotationsfläche minimalen Inhalts.
+In Kapitel~\ref{chapter:minimalflaechen} wird dieses Problem 
+studiert.
+Beschreibt man den Radius des Schlauchs in Abhängigkeit von der
+Position $x$ entlang der Achse durch die Funktion $y(x)$, dann ist
+der Flächeninhalt
+\begin{equation}
+F(y)
+=
+2\pi
+\int_{x_0}^{x_1}
+y(x)\sqrt{1+y'(x)^2}\,dx.
+\label{buch:nebenbedingungen:einseitig:eqn:schlauchF}
+\end{equation}
+Der Faktor $2\pi$ hat keinen Einfluss auf das Minimum.
+Das Funktional $F(y)$ von
+\eqref{buch:nebenbedingungen:einseitig:eqn:seilE}
+ist äquivalent zum Funktional $E(y)$ von
+\eqref{buch:nebenbedingungen:einseitig:eqn:schlauchF}
+im Seilbahnproblem,
+die Lösungsfunktion $y(x)$ ist daher eine $\cosh$-Kurve,
+die Fläche eine sogenannte {\em Katenoide}.
+\index{Katenoide}
+
+Der Schlauch muss aber auch auf Teilen der Oberfläche des
+Schlauchanschlusses aufliegen.
+Dies bedeutet, dass der Innenradius $y(x)$ des Schlauchs immer
+mindestens so gross sein muss wie der Radius $r(x)$ des Schlauchanschlusses.
+Die Funktion $y(x)$ muss daher eine Nebenbedingung der Form
+\[
+y(x) \ge r(x),\quad x\in[x_0,x_1]
+\]
+erfüllen.
+
+%
+% Einseitige Bindungen
+%
+\subsubsection{Einseitige Bindungen}
+Eine Nebenbedingung in der Form einer Ungleichung der Art
+\[
+y(x) \ge \varphi(x)
+\]
+mit einer vorgegebenen Funktion $\varphi(x)$ heisst auch
+ein {\em Problem mit einseitiger Bindung}
+\index{einseitige Bindung}%
+\index{Bindung, einseitig}%
+oder ein Problem mit einer {\em Gebietseinschränkung}.
+\index{Gebietseinschrankung@Gebietseinschränkung}%
+
+%
+% Euler-Lgrange-Differentialgleichung
+%
+\subsection{Euler-Lagrange-Differentialgleichung
+\label{buch:nebenbedingungen:einseitig:subsection:eldgl}}
+
+
+
