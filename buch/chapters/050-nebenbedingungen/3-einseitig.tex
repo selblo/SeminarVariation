@@ -128,8 +128,244 @@ oder ein Problem mit einer {\em Gebietseinschränkung}.
 %
 % Euler-Lgrange-Differentialgleichung
 %
-\subsection{Euler-Lagrange-Differentialgleichung
+\subsection{Euler-Lagrange-Differentialungleichung
 \label{buch:nebenbedingungen:einseitig:subsection:eldgl}}
+Die Euler-Lagrange-Differentialgleichung war bis anhing die Standardmethode,
+ein Variationsproblem in ein lokales Problem umzuwandeln.
+Die Herleitung verlangte aber, dass die Lösungsfunktion $y(x)$ beliebig
+variiert werden konnte, was beim Vorhandensein einseitiger Bindungen
+oder Gebietseinschränkungen nicht mehr möglich ist.
+
+%
+% Aufgabenstellung
+%
+\subsubsection{Aufgabenstellung}
+Gegeben ist ein Lagrange-Funktion
+$F\colon [x_0,x_1]\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}:(x,y,y')\mapsto F(x,y,y')$ 
+und eine Funktion $\varphi\colon[x_0,x_1]\to\mathbb{R}$.
+
+\begin{aufgabe}
+\label{buch:nebenbedingungen:einseitig:aufgabe}
+Gesucht ist eine Funktion $y(x)$, definiert auf dem Intervall $[x_0,x_1]$,
+mit Randwerten $y(x_0) = y_0$ und $y(x_1)=y_1$, welche das Integral
+\[
+I(y)
+=
+\int_{x_0}^{x_1} F(x,y(x),y'(x))\,dx
+\]
+minimiert und ausserdem die Gebietseinschränkung
+\[
+y(x) \ge \varphi(x), \quad x\in[x_0,x_1]
+\]
+erfüllt.
+\end{aufgabe}
+
+%
+% Variation mit einseitiger Bindung
+%
+\subsubsection{Variation mit einseitiger Bindung}
+Auf einer Teilmenge $A$ des Definitionsbereichs $[x_0,x_1]$ folgt
+die Lösung der Funktion $\varphi(x)$, auf dem Rest ist die Differenz
+$y(x)-\varphi(x)>0$.
+Mit einer Variationsfunktionen $\eta(x)$ wird die erste Variation
+\[
+\delta I
+=
+\frac{d}{d\varepsilon}I(y+\varepsilon\eta)\bigg|_{\varepsilon=0}
+\]
+bestimmt.
+$\eta(x)$ kann ausserhalb der Menge $A$
+beliebige, nicht zu grosse positive und negative Werte annehmen.
+Innerhalb von $A$ aber muss $\eta(x)\ge 0$ sein.
+Ausserdem kann der Parameter $\varepsilon$ nur positive Werte annehmen.
+Das Kriterium für ein Minimum ist dann aber auch nicht mehr, dass die
+Ableitung verschwinden muss, sondern dass die Ableitung $\ge 0$ ist.
+Innerhalb von $A$ muss also gelten
+\[
+\frac{d}{d\varepsilon}I(y+\varepsilon\eta)\bigg|_{\varepsilon=0} \ge 0.
+\]
+Eingesetzt in das Integral erhalten wir
+\begin{align*}
+\delta I
+&=
+\frac{d}{d\varepsilon}
+\int_{x_0}^{x_1}
+F(x,y(x)+\varepsilon \eta(x),y'(x)+\varepsilon \eta'(x))\,dx
+\bigg|_{\varepsilon=0}
+\\
+&=
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))\eta(x)
++
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))\eta'(x)
+\,dx
+\\
+&=
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
++
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\eta(x)
+\,dx
+\intertext{Dieses Integral können wir zerlegen in ein Integral über $A$
+und eines über $[x_0,x_1]\setminus A$:}
+&=
+\int_A
+\biggl(
+\frac{\partial F}{\partial y} + \frac{d}{dx}\frac{\partial F}{\partial y'}
+\biggr)
+\eta(x)
+\,dx
++
+\int_{[x_0,x_1]\setminus A}
+\biggl(
+\frac{\partial F}{\partial y} + \frac{d}{dx}\frac{\partial F}{\partial y'}
+\biggr)
+\eta(x)
+\,dx
+\ge 0.
+\end{align*}
+Durch geeignete Wahl der Funktionen $\eta$ können wir den Beitrag der
+beiden Integrale zur Variation auseinanderhalten, was in den nachfolgenden
+Abschnitten diskutiert werden soll.
+
+%
+% Variationen in $A$
+%
+\subsubsection{Variationen in $A$}
+Zunächst betrachten wir Funktionen $\eta(x)$, die ausserhalb von $A$
+verschwinden.
+Die Werte $\eta(x)$ müssen natürlich im Inneren von $A$ immmer $\ge 0$
+sein.
+Wir brauchen daher die folgende Variante des Fundamentallemmas.
+
+\begin{satz}[Einseitiges Fundamentallemma]
+Sei $f\colon A\to\mathbb{R}$ eine stetige Funktion und sei
+\[
+\int_A f(x)\eta(x)\ge 0
+\]
+für alle beliebig oft differenzierbaren Funktionen $\eta\colon A\to\mathbb{R}$
+mit $\eta(x)\ge 0$.
+\end{satz}
+
+\begin{proof}
+Wir führen den Beweis mit Widerspruch.
+Sei $x_*\in A$ eine Stelle, an der $f(x_*)<0$ ist.
+Dann gibt es wegen der Stetigkeit von $f$ auch eine kleine Umgebung $U$ von
+$x_*$, in der $f(x)$ immer noch $<\frac12f(x_*)<0$ ist.
+Mit einer deliebig oft differenzierbaren, positiven Funktion $\eta(x)$,
+die nur in der Umgebung $U$ Werte $\ge 0$ hat, folgt wie im
+Fundamentallemma \ref{buch:variation:fundamentallemma:satz:fundamentallemma},
+dass
+\[
+\int_A f(x)\eta(x)\,dx < 0
+\]
+wird, im Widerspruch zu den Voraussetzungen.
+Folglich muss $f(x)\ge 0$ sein.
+\end{proof}
+
+Aus dem Lemma folgt also, dass
+\begin{equation}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\ge 0
+\end{equation}
+gilt für $x\in A$.
+
+%
+% Variation ausserhalb von $A$
+%
+\subsubsection{Variationen ausserhalb von $A$}
+Ausserhalb von $A$ darf $\eta(x)$ positive und negative Werte annehmen.
+Wir betrachten daher jetzt Funktionen $\eta(x)$, die innerhalb von $A$
+verschwinden.
+Wir schreiben $B=[x_0,x_1]\setminus A$.
+Für eine solche Funktion muss
+\[
+\int_B \biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\eta(x)
+\,dx
+\ge 0
+\]
+gelten.
+Dasselbe muss auch für $-\eta(x)$ gelten, also
+\[
+0
+\le
+\int_B \biggl(
+\frac{\partial F}{\partial y}
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}
+\biggr)
+(-\eta(x))
+\,dx
+=
+-
+\int_B \biggl(
+\frac{\partial F}{\partial y}
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}
+\biggr)
+\eta(x)
+\,dx
+\le 0,
+\]
+dies ist nur möglich, wenn das Integral verschwindet.
+Nach dem Fundamentallemma muss dann auch der Klammerausdruck
+im Integranden verschwinden.
+Ausserhalb von $A$ gilt daher weiterhin die
+Euler-Lagrange-Differentialgleichung.
+
+\begin{satz}[Euler-Lagrange-Differentialungleichung]
+Eine Funktion $y(x)$, die die
+Aufgabe~\ref{buch:nebenbedingungen:einseitig:aufgabe}
+löst, erfüllt dort, wo $y(x)=\varphi(x)$ ist, die Ungleichung
+\begin{equation}
+\frac{\partial F}{\partial y'}(x,\varphi(x),\varphi'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,\varphi(x),\varphi'(x))
+\ge
+0
+\label{buch:nebenbedingungen:einseitig:eqn:eldglu}
+\end{equation}
+und im Rest des Definitionsbereichs die Euler-Lagrange-Differentialgleichung
+\begin{equation}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+=
+0.
+\label{buch:nebenbedingungen:einseitig:eqn:eldgl}
+\end{equation}
+\end{satz}
+
+%
+% Anschlussbedingungen
+%
+\subsection{Anschlussbedingungen
+\label{buch:nebenbedingungen:einseitig:subsection:anschluss}}
+Eine Lösung der
+Aufgabe~\ref{buch:nebenbedingungen:einseitig:aufgabe}
+setzt sich aus Teilstücken zusammen, auf denen die Lösungsfunktion mit
+$\varphi(x)$ übereinstimmt und wo die Bedingung
+\eqref{buch:nebenbedingungen:einseitig:eqn:eldglu}
+erfüllt sein muss, und ``freien'' Teilstücken, wo die
+Euler-Lagrange-Differentialgleichung
+\eqref{buch:nebenbedingungen:einseitig:eqn:eldgl} gilt.
+
 
 
 
