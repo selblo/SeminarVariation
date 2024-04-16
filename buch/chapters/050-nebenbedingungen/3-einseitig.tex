@@ -365,7 +365,143 @@ $\varphi(x)$ übereinstimmt und wo die Bedingung
 erfüllt sein muss, und ``freien'' Teilstücken, wo die
 Euler-Lagrange-Differentialgleichung
 \eqref{buch:nebenbedingungen:einseitig:eqn:eldgl} gilt.
+An einer Übergangsstelle $x_*$ muss $y(x_*)=\varphi(x_*)$ sein,
+aber die Steigung von $y(x)$ kann in $x_*$ einen Sprung
+erleiden.
+Wir suchen nach einer Bedingung für die die beiden Steigungen 
+$y'(x_*+)$ und $y'(x_*-)$ ähnlich wie die Transversalitätsbedingungen.
 
+\begin{satz}[Anschlussbedingungen]
+Ist $x_*$ ein Punkt in $[x_0,x_1]$, links von dem eine Lösung $y(x)$ der
+Aufgabe~\ref{buch:nebenbedingungen:einseitig:aufgabe}
+frei ist, während sie rechts davon an $\varphi(x)$ anliegt, also
+$y(x) = \varphi(x)$ für $x>x_*$ und nahe bei $x_*$, dann gilt
+für die linksseitige Steigung $y'(x_*-)$ von $y(x_*)$ die
+Bedingung
+\[
+F(x_*,y(x_*),y'(x_*-)) = F(x_*,\varphi(x_*),\varphi'(x_*)).
+\]
+\end{satz}
 
+\begin{proof}
+Indem wir uns nötigenfalls auf eine Umgebung von $x_*$ beschränken,
+können wir eine Variation $x(\varepsilon)=x_*+\varepsilon$ und
+$y(x,\varepsilon)$ derart wählen, dass die Funktion $x\mapsto y(x,\varepsilon)$
+für $x\in[x_0,x_*+\varepsilon]$ eine Lösung der
+Euler-Lagrange-Differentialgleichung ist, und in $x\in[x_*+\varepsilon,x_1]$
+mit der Funktion $\varphi(x)$ übereinstimmt.
+Damit $y(x,0)$ eine Extremale ist, muss die Ableitung des Funktionals
+$I(y(x,\varepsilon))$ nach $\varepsilon$ an der Stelle $0$ verschwinden.
 
+Wir berechnen jetzt das Funktional
+\begin{align}
+I(y(x,\varepsilon))
+&=
+\int_{x_0}^{x_1} F(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
+\\
+&=
+\int_{x_0}^{x_*+\varepsilon} F(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
++
+\int_{x_*+\varepsilon}^{x_1} F(x,\varphi(x),\varphi'(x))\,dx.
+\notag
+\intertext{Die Ableitung des zweiten Integrals gibt den Wert an der unteren
+Grenze, also}
+&=
+\int_{x_0}^{x_*+\varepsilon} F(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
+-
+F(x_*,\varphi(x_*),\varphi'(x_*).
+\notag
+\intertext{Die Ableitung des ersten Integrals ist durch die allgemeine
+Variationsformel von
+Satz~\ref{buch:variation:allgemein:satz:allgemeinvariation1} gegeben, die}
+&=
+\vec{r}_* \cdot \vec{f}_*
++
+\int_{x_0}^{x_*}
+\biggl(
+\frac{\partial F}{\partial y}-\frac{d}{dx}\frac{\partial F}{\partial y}
+\biggr)
+\frac{\partial y}{\partial\varepsilon}(x,0)\,dx
+-
+F(x_*,\varphi(x_*),\varphi'(x_*)
+\label{buch:nebenbedingungen:einseitig:eqn:allgvariation}
+\end{align}
+ergibt.
+Darin ist $\vec{r}_*$ der Tangentialvektor an die Randkurve, also
+\[
+\vec{r}_* 
+=
+\begin{pmatrix}
+1\\
+\varphi'(x_*)
+\end{pmatrix},
+\]
+und $\vec{f}_*$ ist gegeben durch die
+Formel~\eqref{buch:nebenbedingungen:allgemein:eqn:fi}, also
+\[
+\vec{f}_*
+=
+\begin{pmatrix}
+\displaystyle
+F(x_*,y(x_*),y'(x_*))
+-
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))
+\frac{\partial y}{\partial \varepsilon}(x_*,0)\\
+\displaystyle
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))
+\end{pmatrix}.
+\]
+Da $y(x,\varepsilon)$ links von $x_*$ eine Lösung der
+Euler-Lagrange-Differentiagleichung ist, verschwindet der Integrand
+in \eqref{buch:nebenbedingungen:einseitig:eqn:allgvariation}
+und das Integral leistet keinen Beitrag.
+Damit kann jetzt die Ableitung nach $\varepsilon$ an der Stelle
+$\varepsilon=0$ ausgerechnet werden, sie ist
+\begin{align*}
+\delta I(y)
+&=
+F(x_*,y(x_*),y'(x_*))
+-
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))
+\frac{\partial y}{\partial \varepsilon}(x_*,0)
+\\
+&\qquad
++
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))\varphi'(x_*)
+-
+F(x_*,\varphi(x_*),\varphi'(x_*)).
+\intertext{Wegen $\partial y(x_*,0)/\partial \varepsilon=\varphi'(x_*)$
+heben sich der zweite und dritte Term weg und es bleibt}
+&=
+F(x_*,y(x_*),y'(x_*))
+-
+F(x_*,\varphi(x_*),\varphi'(x_*)).
+\end{align*}
+Da die Ableitung $\delta I(y)$ verschwindet, folgt
+\[
+F(x_*,y(x_*),y'(x_*))
+=
+F(x_*,\varphi(x_*),\varphi'(x_*)),
+\]
+womit die Aussage bewiesen ist.
+\end{proof}
+
+Die Bedingung ist natürlich erfüllt, wenn $y'(x_*-)=\varphi'(x_*)$ ist.
+Dies ist der einfachste Fall, in diesem Fall ist $y'(x)$ stetig,
+die Lösungskurve $y(x)$ schmiegt sich an der Stelle $x_*$  tangential
+an die Nebenbedingung $\varphi(x)$ an.
+
+Die Lösungsfunktion kann nur dann eine Sprungstelle bei $x_*$ haben,
+wenn die Gleichung
+\[
+F(x_*\varphi(x_*),p)
+=
+F(x_*,\varphi(x_*),\varphi'(x_*))
+\]
+für $p$ mehr als eine Lösung hat.
+Falls $p$ eine weitere Lösung ist, sind auch Extremalen mit
+\(
+y'(x_*-)=p
+\)
+denkbar.
 
