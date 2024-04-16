@@ -10,3 +10,4 @@
 *.fdb_latexmk
 *.run.xml
 *.synctex.gz
+*.synctex(busy)
