@@ -3,7 +3,7 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	dido.pdf heaviside.pdf cos2.pdf yk.pdf seilbahn.pdf
+all:	dido.pdf heaviside.pdf cos2.pdf yk.pdf seilbahn.pdf einseitig.pdf
 
 dido.pdf:	dido.tex
 	pdflatex dido.tex
@@ -19,3 +19,7 @@ yk.pdf:	yk.tex
 
 seilbahn.pdf:	seilbahn.tex
 	pdflatex seilbahn.tex
+
+einseitig.pdf:	einseitig.tex
+	pdflatex einseitig.tex
+
