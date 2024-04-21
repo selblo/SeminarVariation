@@ -7,7 +7,302 @@
 \label{buch:mechanik:section:lagrange}}
 \kopfrechts{Klassische Mechanik nach Lagrange}
 
-\begin{verbatim}
-- Legendre-Funktion der klassischen Mechanik
-- Bewegungsgleichungen
-\end{verbatim}
+%
+% Ein Massepunkt in einem Potential
+%
+\subsection{Ein Massepunkt in einem Potential}
+Wir betrachten ein Teilchen mit der Masse $m$, welches sich in
+einem dreidimensionalen Koordinatensystem $\mathbb{R}^3$ bewegt.
+Die Bahn eines Teilchens ist eine Kurve
+$\mathbb{R}\to\mathbb{R}^3:t\to x(t)$.
+Die kinetische Energie hängt von der Geschwindigkeit 
+\[
+\dot{x}(t) = \frac{dx}{dt}(t)
+\]
+ab, sie ist
+\[
+T=
+E_{\text{kin}}
+=
+\frac12 m\dot{x}^2.
+\]
+Das Teilchen bewege sich ausserdem unter dem Einfluss von Kräften,
+die durch ein Potential $V(t,x)$ gegeben sind.
+Die Kräft sind dann durch den Gradienten $-\operatorname{grad}V(t,x)$ 
+gegeben.
+
+Aus der kinetischen Energie $T$ und dem Potential $V(t,x)$ lässt sich
+die Lagrange-Funktion $L(t,x,\dot{x}) = \frac12m\dot{x}^2-V(t,x)$ 
+zusammensetzen.
+Das Funktional
+\begin{equation}
+S
+=
+\int_{t_0}^{t_1}
+L(t,x(t),\dot{x}(t))
+\,dt
+\label{buch:mechanik:lagrange:eqn:wirkung}
+\end{equation}
+heisst die Wirkung, sie hat die Dimension $\text{Energie}\times\text{Zeit}$.
+Für die Euler-Lagrange-Differentialgleichung des
+Funktionals~\eqref{buch:mechanik:lagrange:eqn:wirkung} brauchen wir
+zunächst die partiellen Ableitungen
+\begin{align*}
+\frac{\partial L}{\partial x}
+&=
+-\frac{\partial V}{\partial x}(t,x)
+=
+-\operatorname{grad}V(t,x)
+&&\text{und}&
+\frac{\partial V}{\partial\dot{x}}
+&=
+m\dot{x}
+\end{align*}
+von $L$, aus denen sich dann die Bewegungsgleichung
+\[
+\frac{d}{dx}\frac{\partial L}{\partial\dot{x}}
+=
+\frac{\partial L}{\partial x}
+\qquad\Rightarrow\qquad
+\frac{d}{dt}m\dot{x}
+=
+-\operatorname{grad}V(t,x)
+\]
+ergeben. 
+Dies ist tatsächlich die Bewegungsgleichung, die sich aus dem
+zweiten newtonschen Gesetz ergibt.
+
+%
+% Verallgemeinerte Koordinaten
+%
+\subsection{Verallgemeinerte Koordinaten}
+Das Prinzip der kleinsten Wirkung ermöglicht, die Bewegungsgleichungen
+in beliebigen Koordinaten auszudrücken, solange sich die kinetische
+Energie und die potentielle Energie in diesen Koordinaten ausdrücken
+lässt.
+Dies ist oft ein einfaches Problem, wenn sich kartesische Koordinaten
+durch die verallgemeinerten Koordinaten ausdrücken lassen.
+
+Als Beispiel sei ein Massepunkt $m$ betrachtet, der sich in einem
+Schwerefeld auf auf einer Kurve $y=f(x)$ bewegen kann.
+Die Position des Punktes kann durch die Koordinaten $q=x$ beschrieben
+werden.
+Die potentielle Energie ist in diesem Fall $E_{\text{pot}} = mgf(q)$.
+Die kinetische Energie setzt sich zusammen aus den $x$- und
+$y$-Geschwindigkeiten
+\[
+E_{\text{kin}}
+=
+\frac12m(\dot{x}^2 + \dot{y}^2)
+=
+\frac12m(\dot{q}^2 + f'(q)^2 \dot{q}^2)
+=
+\frac12m(1+f'(q)^2)\dot{q}^2.
+\]
+Die Lagrange-Funktion dieses Systems ist daher 
+\[
+L(t,q,\dot{q})
+=
+\frac12m(1+f'(q)^2)\dot{q}^2 - mgf(q).
+\]
+Daraus lässt sich die Bewegungsgleichung als die
+Euler-Lagrange-Differentialgleichung aus den partiellen Ableitungen
+\begin{align*}
+\frac{\partial L}{\partial q}
+&=
+mf'(q)f''(q)\dot{q}^2 - mgf'(q)
+\\
+\frac{\partial L}{\partial\dot{q}}
+&=
+m(1+f'(q)^2)\dot{q}
+\end{align*}
+als
+\begin{align*}
+0
+=
+\frac{\partial L}{\partial q}-\frac{d}{dt}\frac{\partial L}{\partial\dot{q}}
+&=
+mf'(q)f''(q)\dot{q}^2
+-
+mgf'(q)
+-
+m(1+f'(q)^2)\ddot{q}
+-
+2mf'(q)f''(q)\dot{q}^2
+\\
+&=
+-
+mf'(q)f''(q)\dot{q}^2
+-
+mgf'(q)
+-
+m(1+f'(q)^2)\ddot{q}
+\end{align*}
+erhalten.
+Nach Division durch $m(1+f'(q)^2)$ erhält man die Form
+\begin{align*}
+\ddot{q}
+=
+-
+\frac{f'(q)(g+f''(q)\dot{q}^2)}{1+f'(q)^2}.
+\end{align*}
+
+
+%
+% Das Kapiza-Pendel
+%
+\subsection{Das Kapiza-Pendel}
+Ein invertiertes Pendel mit der Länge $l$ und Masse $m$ wird im
+Drehpunkt mit der Kreisfrequenz $\omega$ vertikal bewegt
+(Abbildung~\ref{buch:mechanik:lagrange:fig:kapiza}).
+Mit Hilfe des Prinzips der kleinsten Wirkung lässt sich die
+Bewegungsgleichung finden, indem man zunächst die Lagrange-Funktion
+aufstellt und dann die zugehörige Euler-Lagrange-Differentialgleichung
+ableitet.
+Wir werden die Bewegungsgleichungen etwas allgemeiner für eine
+vertikale Bewegung mit $h(t)$ berechnen und erst später auf eine
+Bewegung mit Kreisbewegung spezialisieren.
+
+Das Pendel kann beschrieben werden durch den Ablenkungswinkel $\varphi$
+von der Vertikalen.
+Gesucht ist eine Bewegungsgleichung für $\varphi$ als Funktion der Zeit.
+Dazu muss die Lagrange-Funktion durch den Winkel $\varphi$ und die
+Winkelgeschwindigkeit $\dot{\varphi}$ ausgedrückt werden.
+Sowohl die kinetische Energie wie auch die potentielle Energie lässt
+sich leichter in kartesischen Koordinaten ausdrücken.
+Die Koordinaten sind
+\begin{align*}
+x(t)
+&=
+l \sin\varphi(t)
+\\
+y(t)
+&=
+l \cos\varphi(t) + h(t).
+\end{align*}
+Die Geschwindigkeitskomponenten sind dann
+\begin{align*}
+\dot{x}(t) &= \phantom{-}l \cos\varphi(t)\cdot \dot{\varphi}(t) \\
+\dot{y}(t) &=          - l \sin\varphi(t)\cdot \dot{\varphi}(t) + \dot{h}(t).
+\end{align*}
+Daraus ergibt sich die kinetische Energie
+\begin{align*}
+T
+&=
+\frac12
+m(\dot{x}(t)^2 + \dot{y}(t)^2)
+\\
+&=
+\frac12m\bigl(
+l^2 \cos^2 \varphi(t)\cdot\dot{\varphi}(t)^2
++
+(-l\sin\varphi(t)\cdot\dot{\varphi}(t) + \dot{h}(t))^2
+\bigr)
+\\
+&=
+\frac12m\bigl(
+l^2 \cos^2\varphi(t)\cdot\dot{\varphi}(t)^2
++
+l^2 \sin^2\varphi(t)\cdot\dot{\varphi}(t)^2
+-
+2l\sin\varphi(t)\dot{\varphi}(t)^2
++
+\dot{h}(t)^2
+\bigr)
+\\
+&=
+\frac12m\bigl(
+l^2
+-
+l\sin \varphi(t)\cdot \dot{\varphi}(t)\dot{h}(t) + \dot{h}(t)^2
+\bigr)
+.
+\end{align*}
+Für die potentielle Energie gilt
+\[
+V(t,\varphi)
+=
+mgy(t)
+=
+mgl\cos\varphi(t) + mgh(t)
+\]
+Insbesamt erhalten wir die zeitabhängige Lagrange-Funktion
+\[
+L(t,\varphi,\dot{\varphi})
+=
+\frac12m\bigl(
+l^2\dot{\varphi}(t)^2
+-
+l\sin \varphi\cdot \dot{\varphi}\dot{h}(t) + \dot{h}(t)^2
+\bigr)
+-
+mgl\cos\varphi - mgh(t).
+\]
+
+%
+% Die Bewegungsgleichung
+%
+\subsubsection{Die Bewegungsgleichung}
+Die partiellen Ableitungen der Lagrange-Funktion nach $\varphi$ und
+$\dot{\varphi}$ sind
+\begin{align*}
+\frac{\partial L}{\partial\varphi}
+&=
+-ml
+\dot{\varphi}\dot{h}(t)
+\cos\varphi
++
+mgl\sin\varphi
+\\
+\frac{\partial L}{\partial\dot{\varphi}}
+&=
+ml^2\dot{\varphi}
+-ml\dot{h}(t)\sin\varphi.
+\end{align*}
+Für die Bewegungsgleichung brauchen wir die Ableitung des zweiten
+Ausdrucks nach $t$, dafür bekommen wir
+\begin{align*}
+\frac{d}{dt}\frac{\partial L}{\partial\dot{\varphi}}
+&=
+ml^2 \ddot{\varphi}
+-ml\ddot{h}\sin\varphi
+-ml\dot{h}\dot{\varphi}\cos\varphi
+\end{align*}
+Die Euler-Lagrange-Differentialgleichung ist jetzt
+\begin{align*}
+0
+=
+\frac{\partial L}{\partial \varphi}
+-
+\frac{d}{dt}\frac{\partial L}{\partial\dot{\varphi}}
+&=
+-ml
+\dot{\varphi}\dot{h}(t)
+\cos\varphi
++
+mgl\sin\varphi
+-
+ml^2 \ddot{\varphi}
++ml\ddot{h}\sin\varphi
++ml\dot{h}\dot{\varphi}\cos\varphi
+\intertext{Der erste und der letzte Term heben sich weg:}
+&=
+mgl\sin\varphi
+-
+ml^2 \ddot{\varphi}
++ml\ddot{h}\sin\varphi.
+\end{align*}
+Division durch $ml$ ergibt die Bewegungsgleichung
+\begin{equation}
+l\ddot{\varphi}
+=
+g\sin\varphi
++
+\ddot{h}\sin\varphi.
+\label{buch:mechanik:lagrange:eqn:kapiza-bewegungsgleichung}
+\end{equation}
+Ohne den Term $\ddot{h}\sin\varphi$ auf der rechten Seite von
+\eqref{buch:mechanik:lagrange:eqn:kapiza-bewegungsgleichung}
+entsteht wie erwartet die Bewegungsgleichung des mathematischen Pendels.
+
+
