@@ -6,11 +6,33 @@
 \section{Klassische Mechanik nach Lagrange
 \label{buch:mechanik:section:lagrange}}
 \kopfrechts{Klassische Mechanik nach Lagrange}
+Die Basis der klassischen Mechanik wurde von Newton in der
+Principia gelegt.
+Insbesondere das zweite newtonsche Gesetz
+\(
+F=ma
+\)
+definiert Kräfte die Ursache für die Beschleunigung.
+Es ermöglicht, für jedes mechanische System eine Bewegungsgleichung
+in der Form einer Differentialgleichung zweiter Ordnung für die
+Koordinaten aufzustellen.
+Der Prozess kann etwas schwerfällig sein, vor allem unter dem Einfluss
+externer Zwangskräfte.
+Das Maupertuissche Prinzip der geringsten Wirkung erlaubt, dies wesentlich
+zu vereinfachen.
+Wir führen die Vorgehensweise in
+Abschnitt~\ref{buch:mechanik:lagrange:subsection:massepunkt}
+ein und zeigen in
+Abschnitt~\ref{buch:mechanik:lagrange:subsection:koordinaten},
+wie sich damit die Bewegungsgleichungen sehr leicht in beliebigen
+Koordinaten herleiten lassen.
+
 
 %
 % Ein Massepunkt in einem Potential
 %
-\subsection{Ein Massepunkt in einem Potential}
+\subsection{Ein Massepunkt in einem Potential
+\label{buch:mechanik:lagrange:subsection:massepunkt}}
 Wir betrachten ein Teilchen mit der Masse $m$, welches sich in
 einem dreidimensionalen Koordinatensystem $\mathbb{R}^3$ bewegt.
 Die Bahn eines Teilchens ist eine Kurve
@@ -44,7 +66,7 @@ L(t,x(t),\dot{x}(t))
 \label{buch:mechanik:lagrange:eqn:wirkung}
 \end{equation}
 heisst die Wirkung, sie hat die Dimension $\text{Energie}\times\text{Zeit}$.
-Für die Euler-Lagrange-Differentialgleichung des
+Für die Euler-Lagrange-Dif\-fe\-ren\-tialgleichung des
 Funktionals~\eqref{buch:mechanik:lagrange:eqn:wirkung} brauchen wir
 zunächst die partiellen Ableitungen
 \begin{align*}
@@ -75,7 +97,8 @@ zweiten newtonschen Gesetz ergibt.
 %
 % Verallgemeinerte Koordinaten
 %
-\subsection{Verallgemeinerte Koordinaten}
+\subsection{Verallgemeinerte Koordinaten
+\label{buch:mechanik:lagrange:subsection:koordinaten}}
 Das Prinzip der kleinsten Wirkung ermöglicht, die Bewegungsgleichungen
 in beliebigen Koordinaten auszudrücken, solange sich die kinetische
 Energie und die potentielle Energie in diesen Koordinaten ausdrücken
@@ -152,6 +175,7 @@ Nach Division durch $m(1+f'(q)^2)$ erhält man die Form
 % Das Kapiza-Pendel
 %
 \subsection{Das Kapiza-Pendel}
+\input{chapters/090-mechanik/fig/kapiza.tex}
 Ein invertiertes Pendel mit der Länge $l$ und Masse $m$ wird im
 Drehpunkt mit der Kreisfrequenz $\omega$ vertikal bewegt
 (Abbildung~\ref{buch:mechanik:lagrange:fig:kapiza}).
@@ -283,14 +307,14 @@ Die Euler-Lagrange-Differentialgleichung ist jetzt
 mgl\sin\varphi
 -
 ml^2 \ddot{\varphi}
-+ml\ddot{h}\sin\varphi
-+ml\dot{h}\dot{\varphi}\cos\varphi
++ml\ddot{h}(t)\sin\varphi
++ml\dot{h}(t)\dot{\varphi}\cos\varphi
 \intertext{Der erste und der letzte Term heben sich weg:}
 &=
 mgl\sin\varphi
 -
 ml^2 \ddot{\varphi}
-+ml\ddot{h}\sin\varphi.
++ml\ddot{h}(t)\sin\varphi.
 \end{align*}
 Division durch $ml$ ergibt die Bewegungsgleichung
 \begin{equation}
@@ -304,5 +328,22 @@ g\sin\varphi
 Ohne den Term $\ddot{h}\sin\varphi$ auf der rechten Seite von
 \eqref{buch:mechanik:lagrange:eqn:kapiza-bewegungsgleichung}
 entsteht wie erwartet die Bewegungsgleichung des mathematischen Pendels.
+Allerdings ist die Kraft nicht rücktreibend, das Pendel entfernt sich
+aus der Nulllage.
+
+Wählt man für $h(t)$ eine harmonische Schwingung in der Form
+$h(t)=A\sin\omega t$, dann ist $\ddot{h}=-\omega^2 A \sin\omega t$
+und die Bewegungsgleichung wird
+\[
+l\ddot{\varphi}
+=
+(g-\omega^2 A \sin\omega t)\sin\varphi.
+\]
+Die Differentialgleichung kann mit der Mathieu-Differentialgleichung
+oder mit Floquet-Theorie behandelt werden.
+Für hohe Frequenzen kann nach Pyotr Kapiza durch zeitliche Mittelung
+gezeigt werden, dass die Lage $\varphi=0$ eine stabile Lage wird.
+
+
 
 
