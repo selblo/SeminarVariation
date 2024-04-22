@@ -68,30 +68,34 @@ Bei Biegungen, die aufgrund von Querkräfte auftreten, ist das Moment veränderl
 Das Moment hängt von der Position x ab und ist daher nicht konstant.
 Liegt also eine Querkraftbiegung vor, so ergibt sich ein anderer Moment für jeden Schnitt.
 Dies führt dazu, dass die Krümmung des Balkens bzw. Biegelinie von der Position x abhängt.
+\begin{figure}
 \begin{center}
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/BiegungBalke1.jpg}
 \end{center}
 \caption{Darstellung der Biegelinie y(x) mit den Krümmungsradius p.}
+\end{figure}
 Um die Krümmung zu bestimmen, benötigen wir den kürzesten Weg zwischen beiden Auflagern des Balkens.
-Dabei bezeichnen wir die beiden Auflagern als die Punkte (x1, y1) und (x2, y2) in der x-y-Ebene, wobei x1 ≠ x2.
+Dabei bezeichnen wir die beiden Auflagern als die Punkte $(x_1, y_1)$ und $(x_2, y_2)$ in der $x$-$y$-Ebene, wobei $x_1 \ne x_2$.
+\begin{figure}
 \begin{center}
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/BiegungBalke2.jpg}
 \end{center}
 \caption{Darstellung der Biegelinie y(x) mit der Balke (blau gezeichnet) und deren Auflagern.}
+\end{figure}
 Um die Länge dieser Kurve in der x-y-Ebene zu berechnen, berechnen wir zuerst der Länge einer Gerade auf der Kurve y(x)
 \begin{equation}
-	\(\Delta s=
-	\sqrt{\Delta x^2+\Delta y^2}\approx\sqrt{1+(y')^2\cdot\Delta x^2}\)
+	\Delta s=
+	\sqrt{\Delta x^2+\Delta y^2}\approx\sqrt{1+(y')^2\cdot\Delta x^2}
 \end{equation}
 Daraus rechnen wir mit dem Integral die Kurvenlänge.
 \begin{equation}
 	l(y)=
-	\int_{x_1}^{x_2}\sqrt{1+{y\prime(x)}^2}dx
+	\int_{x_1}^{x_2}\sqrt{1+{y'(x)}^2}dx
 \end{equation}
 Unsere Langrange-Funktion ist somit:
 \begin{equation}
-	L(x,y,y\prime)=
-	\sqrt{1+{y\prime}^2}
+	L(x,y,y')=
+	\sqrt{1+{y'}^2}
 \end{equation}
 Mittels der partiellen Ableitung von L, erhalten wir die folgende.
 \begin{equation}
@@ -99,42 +103,42 @@ Mittels der partiellen Ableitung von L, erhalten wir die folgende.
 	0
 \end{equation}
 \begin{equation}
-	\frac{\partial L}{\partial y\prime}=
-	\frac{2y\prime}{2\sqrt{1+{y\prime}^2}}=
-	\frac{y\prime}{\sqrt{1+{y\prime}^2}}
+	\frac{\partial L}{\partial y'}=
+	\frac{2y'}{2\sqrt{1+{y'}^2}}=
+	\frac{y'}{\sqrt{1+{y'}^2}}
 \end{equation}
 Jetzt setzen wir y(x) ein und leiten nach x ab.
 \begin{equation}
-	\frac{d}{dx}\frac{\partial L}{\partial y\prime}(x,y(x),y\prime(x))=
-	\frac{d}{dx}\frac{y\prime(x)}{\sqrt{1+{y\prime}^2}}=
-	\frac{y\prime\prime(x)\sqrt{1+{y\prime}^2}-y\prime(x)\left(\frac{y\prime(x)}{\sqrt{1+{y\prime}^2}}\right)y\prime\prime(x)}{1+{y\prime(x)}^2}
+	\frac{d}{dx}\frac{\partial L}{\partial y'}(x,y(x),y'(x))=
+	\frac{d}{dx}\frac{y'(x)}{\sqrt{1+{y'}^2}}=
+	\frac{y''(x)\sqrt{1+{y'}^2}-y'(x)\left(\frac{y'(x)}{\sqrt{1+{y'}^2}}\right)y''(x)}{1+{y'(x)}^2}
 \end{equation}
 \begin{equation}
-	\frac{d}{dx}\ \frac{\partial L}{\partial y\prime}(x,y(x),y\prime(x))=
-	\frac{(1+{y\prime(x)}^2-{y\prime(x)}^2)y\prime\prime(x)}{\left(1+{y\prime}^2\right)^\frac{3}{2}}=
-	\frac{y\prime\prime}{\left(1+{y\prime}^2\right)^\frac{3}{2}}
+	\frac{d}{dx}\ \frac{\partial L}{\partial y'}(x,y(x),y'(x))=
+	\frac{(1+{y'(x)}^2-{y'(x)}^2)y''(x)}{\left(1+{y'}^2\right)^\frac{3}{2}}=
+	\frac{y''}{\left(1+{y'}^2\right)^\frac{3}{2}}
 \end{equation}
 Dabei erhalten wir die Gleichung.
 \begin{equation}
 	\kappa=
 	\frac{1}{p}=
-	\pm\frac{y\prime\prime}{\left(1+{y\prime}^2\right)^\frac{3}{2}}
+	\pm\frac{y''}{\left(1+{y'}^2\right)^\frac{3}{2}}
 \end{equation}
 Da wir in unserem Fall w(x) als Funktion für die Biegelinie verwenden, müssen wir das Vorzeichen noch bestimmen.
 Da ein positives Moment eine Biegung nach unten verursacht, müssen wir ein negatives Vorzeichen verwenden. Dabei erhalten wir.
 \begin{equation}
 	\kappa=
 	\frac{1}{p}=
-	-\frac{w\prime\prime}{\left(1+{w\prime}^2\right)^\frac{3}{2}}
+	-\frac{w''}{\left(1+{w'}^2\right)^\frac{3}{2}}
 \end{equation}
 mit
 \begin{equation}
-	w\prime=
+	w'=
 	\frac{dy}{dx} 
 \end{equation}
 und
 \begin{equation}
-	w\prime\prime=
+	w''=
 	\frac{d^2y}{dx^2}
 \end{equation}
 
@@ -146,43 +150,45 @@ w’’ = Krümmung
 
 Da wir in der Baustatik den Rechtssystem verwenden, kehren wir den z-Achse so, dass nach unten das positive Vorzeichen ist
 
+\begin{figure}
 \begin{center}
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/BiegungverdrehteAchsen.jpg}
 \end{center}
 \caption{Abbildung von den verdrehten z-Achse und die positive Momenten, welche auf der Biegelinie wirken.}
+\end{figure}
 Unsere Funktion zeigt eine Krümmung nach links, jedoch durch die Spiegelung an der z-Achse ergibt sich eine Krümmung nach rechts.
 Bei Rechtskrümmungen sind die 2. Ableitungen kleiner als 0. w’’ < 0.
 Das ergibt.
 \begin{equation}
 	\kappa=
-	-\frac{w\prime\prime}{\left(1+{w\prime}^2\right)^\frac{3}{2}}=
+	-\frac{w''}{\left(1+{w'}^2\right)^\frac{3}{2}}=
 	\frac{M_y}{EI_y}
 \end{equation}
 Der Term w’ kann vernachlässigt werden, da im Betracht des Hookesche Gesetz nur kleine Verformungen vorliegen.
 Daraus ergeben sich Tangentensteigungen von w’ << 1.
 \begin{equation}
 	\kappa=
-	-\frac{w\prime\prime}{\left(1+{w\prime}^2\right)^\frac{3}{2}}=
-	-\frac{w\prime\prime}{\left(1+0\right)^\frac{3}{2}}=
-	-\frac{w\prime\prime}{1}=-w\prime\prime=
+	-\frac{w''}{\left(1+{w'}^2\right)^\frac{3}{2}}=
+	-\frac{w''}{\left(1+0\right)^\frac{3}{2}}=
+	-\frac{w''}{1}=-w''=
 	\frac{M_y}{EI_y}
 \end{equation}
 Daraus ergibt sich.
 \begin{equation}
-	w\prime\prime=
+	w''=
 	-\frac{M_y}{EI_y}
 \end{equation}
 mit
 \begin{equation}
 	\kappa=
-	-w\prime\prime
+	-w''
 \end{equation}
 Temperaturunterschiede verursachen Verformungen in der Balkenachse.
 Daher ist es wichtig, die Krümmung der Biegelinie bei Temperaturänderungen zu berücksichtigen.
 Daraus ergibt sich der Formel.
 \begin{equation}
-	w\prime\prime=
-	-\frac{M_y}{EI_y}-\alpha_{th}\frac{∆T}{h}
+	w''=
+	-\frac{M_y}{EI_y}-\alpha_{th}\frac{\Delta T}{h}
 \end{equation}
 
 αth = thermische Ausdehnungskoeffizient des Balkenmaterials
@@ -195,62 +201,62 @@ Iy = Flächenträgheitsmoment
 
 Den oben genannten Formel kann auch folgend angegeben werden.
 \begin{equation}
-	w\prime\prime\prime\prime=
-	\left(-\frac{M_y}{EI_y}-\alpha_{th}\frac{∆T}{h}\right)^{\prime\prime}
+	w''''=
+	\left(-\frac{M_y}{EI_y}-\alpha_{th}\frac{\Delta T}{h}\right)^{''}
 \end{equation}
 Bei einer linearen Temperaturverlauf ergibt sich bei der zweiten Ableitung 0.
 \begin{equation}
-	w\prime\prime\prime\prime=
-	\left(-\frac{M_y}{EI_y}\right)^{\prime\prime}
+	w''''=
+	\left(-\frac{M_y}{EI_y}\right)^{''}
 \end{equation}
 Die erste Ableitung des Biegemoments ergibt die Querkraft.
 \begin{equation}
 	\frac{dM}{dx}=
-	M\prime=
+	M'=
 	Q
 \end{equation}
 Daraus ergibt sich.
 \begin{equation}
-	w\prime\prime\prime=
-	-\frac{Q}{(EI_y)\prime}
+	w'''=
+	-\frac{Q}{(EI_y)'}
 \end{equation}
 Mit konstanter Biegesteifigkeit EI = konst. erfolgt.
 \begin{equation}
-	EIw^{\prime\prime\prime}=
+	EIw^{'''}=
 	-Q\left(x\right)
 \end{equation}
 Die 1. Ableitung der Querkraft bzw. die 2, Ableitung des Biegemoments ergibt der Linienlast entlang der x-Achse.
 \begin{equation}
 	\frac{dQ}{dx}=
-	Q\prime=
+	Q'=
 	-q(x)
 \end{equation}
 \begin{equation}
-	w\prime\prime\prime\prime=
-	\frac{-q(x)}{(EI_y)\prime\prime}
+	w''''=
+	\frac{-q(x)}{(EI_y)''}
 \end{equation}
 Mittels dieser Formel kann die Biegelinie w(x) ermittelt werden
 \begin{equation}
-	EIw^{\prime\prime\prime\prime}=
+	EIw^{''''}=
 	q\left(x\right) 
 \end{equation}
 Jetzt Integrieren wir die Formel viermal.
 
 1. Integration (Querkraft)
 \begin{equation}
-	EIw^{\prime\prime\prime}=
+	EIw^{'''}=
 	\int q_0dx=
 	q_0\cdot x+C_1
 \end{equation}
 2. Integration (Biegemoment)
 \begin{equation}
-	EIw\prime\prime=
+	EIw''=
 	\int{q_0\cdot x}dx+\int C_1dx=
 	\frac{1}{2}q_0x^2+C_1x+C_2
 \end{equation}
 3. Integration
 \begin{equation}
-	EIw\prime=
+	EIw'=
 	\int{\frac{1}{2}q_0x^2}dx+\int{C_1x}dx+\int C_2dx=
 	\frac{1}{6}q_0x^3+\frac{1}{2}C_1x^2+C_2x+C_3
 \end{equation}
@@ -266,16 +272,16 @@ Dabei gelten für den Fest- und Loslager w = 0 und M = 0, das bedeutet, dass an 
 
 Es gilt.
 \begin{equation}
-	EIw\prime\prime\ =
+	EIw'' =
 	\-M_y
 \end{equation}
 und
 \begin{equation}
-	EIw\prime\prime\prime=
+	EIw'''=
 	-Q_z
 \end{equation}
 Als erstes betrachten wir die Stelle (x1, y1) mit den Festlager.
-Dabei setzen wir den Ursprung unser Koordinatennetz bei (x1, y1), damit ergibt sich x = 0.
+Dabei setzen wir den Ursprung unser Koordinatennetz bei $(x_1, y_1)$, damit ergibt sich x = 0.
 Die Bedingungen sind: w = 0 und M = 0.
 \begin{equation}
 	EIw=
@@ -292,7 +298,7 @@ w = 0 und x = 0 einsetzen:
 \end{equation}
 Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen M = 0 ein
 \begin{equation}
-	EIw\prime\prime=
+	EIw''=
 	-M_y=
 	\frac{1}{2}q_0x^2+C_1x+C_2
 \end{equation}
@@ -311,7 +317,7 @@ Jetzt machen wir die gleichen Berechnungen an der Stelle (x2, y2) mit den Loslag
 \end{equation}
 w = 0 und x = L, sowie C2 = 0 und C4 = 0 werden eingesetzt.
 \begin{equation}
-	EIw\prime\prime=
+	EIw''=
 	-M_y=\frac{1}{2}q_0x^2+C_1x+C_2
 \end{equation}
 \begin{equation}
@@ -367,16 +373,18 @@ Die Konstanten werden in die Biegelinien-Gleichung eingesetzt.
 
 \subsection{Herleitung der Balkengleichung aus dem Baustatik}
 Die Herleitung der Balkengleichung lässt sich ebenso gut mit den konventionellen Methoden der Baustatik durchführen, indem man die Beziehung zwischen dem Biegemoment M und der Biegung w verwendet
+\begin{figure}
 \begin{center}
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/HerleitungBaustatik.jpg}
 \end{center}
 \caption{Darstellung unsere Balke mit den Auflagern A und B und der Linienlast q0.}
+\end{figure}
 Gegeben ist:
 \begin{equation}
-	w\prime\prime(x)=
+	w''(x)=
 	-\frac{M_y(x)}{EI_y}
 	\rightarrow-M_y(x)=
-	EI_y\cdot w\prime\prime(x)
+	EI_y\cdot w''(x)
 \end{equation}
 Zuerst berechnen wir die Auflagerkräfte A und B.
 \begin{equation}
@@ -391,13 +399,13 @@ Moment ist gleich Kraft mal Hebelarm.
 	A\cdot x-\frac{q_0\cdot x^2}{2}=
 	\frac{q_0\cdot L}{2}\cdot x-\frac{q_0\cdot x^2}{2}
 \end{equation}
-Jetzt setzen wir My(x) = EIy ∙ w’’(x) ein
+Jetzt setzen wir $My(x) = EIy \cdot w''(x)$ ein
 \begin{equation}
-	EI_y\cdot w\prime\prime(x)=
+	EI_y\cdot w''(x)=
 	\frac{q_0\cdot x^2}{2}-\frac{q_0\cdot L}{2}\cdot x
 \end{equation}
 \begin{equation}
-	EI_y\cdot w^\prime\left(x\right)=
+	EI_y\cdot w'\left(x\right)=
 	\frac{q_0}{2}\cdot\frac{1}{3}\cdot x^3-\frac{q_0\cdot L}{2}\cdot\frac{1}{2}\cdot x^2+C_1
 \end{equation}
 \begin{equation}
@@ -458,7 +466,9 @@ Zu den Annahmen und Randbedingungen gehören folgende Aspekte:
 	\item Es wird angenommen, dass die Temperaturdifferenz, die zu Verformungen der Balkenachse führt, konstant ist, und daher ergibt seine zweite Ableitung Null.
 	\item Die Belastungen des Balkens wirken senkrecht zur Achse.
 \end{enumerate}
+\begin{figure}
 \begin{center}
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/Randbedingungen.jpg}
 \end{center}
 \caption{Tabelle der unterschiedlichen Randbedingungen für verschiedene Auflagertypen.}
+\end{figure}
