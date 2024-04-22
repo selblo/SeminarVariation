@@ -69,15 +69,15 @@ Das Moment hängt von der Position x ab und ist daher nicht konstant.
 Liegt also eine Querkraftbiegung vor, so ergibt sich ein anderer Moment für jeden Schnitt.
 Dies führt dazu, dass die Krümmung des Balkens bzw. Biegelinie von der Position x abhängt.
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/Biegung_Balke1.jpg}
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/BiegungBalke1.jpg}
 \end{center}
-\label{Darstellung der Biegelinie y(x) mit den Krümmungsradius p.}
+\caption{Darstellung der Biegelinie y(x) mit den Krümmungsradius p.}
 Um die Krümmung zu bestimmen, benötigen wir den kürzesten Weg zwischen beiden Auflagern des Balkens.
 Dabei bezeichnen wir die beiden Auflagern als die Punkte (x1, y1) und (x2, y2) in der x-y-Ebene, wobei x1 ≠ x2.
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/Biegung_Balke2.jpg}
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/BiegungBalke2.jpg}
 \end{center}
-\label{Darstellung der Biegelinie y(x) mit der Balke (blau gezeichnet) und deren Auflagern.}
+\caption{Darstellung der Biegelinie y(x) mit der Balke (blau gezeichnet) und deren Auflagern.}
 Um die Länge dieser Kurve in der x-y-Ebene zu berechnen, berechnen wir zuerst der Länge einer Gerade auf der Kurve y(x)
 \begin{equation}
 	\(\Delta s=
@@ -147,9 +147,9 @@ w’’ = Krümmung
 Da wir in der Baustatik den Rechtssystem verwenden, kehren wir den z-Achse so, dass nach unten das positive Vorzeichen ist
 
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/Biegung_verdrehte_Achsen.jpg}
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/BiegungverdrehteAchsen.jpg}
 \end{center}
-\label{Abbildung von den verdrehten z-Achse und die positive Momenten, welche auf der Biegelinie wirken.}
+\caption{Abbildung von den verdrehten z-Achse und die positive Momenten, welche auf der Biegelinie wirken.}
 Unsere Funktion zeigt eine Krümmung nach links, jedoch durch die Spiegelung an der z-Achse ergibt sich eine Krümmung nach rechts.
 Bei Rechtskrümmungen sind die 2. Ableitungen kleiner als 0. w’’ < 0.
 Das ergibt.
@@ -368,9 +368,9 @@ Die Konstanten werden in die Biegelinien-Gleichung eingesetzt.
 \subsection{Herleitung der Balkengleichung aus dem Baustatik}
 Die Herleitung der Balkengleichung lässt sich ebenso gut mit den konventionellen Methoden der Baustatik durchführen, indem man die Beziehung zwischen dem Biegemoment M und der Biegung w verwendet
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/Herleitung_Baustatik.jpg}
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/HerleitungBaustatik.jpg}
 \end{center}
-\label{Darstellung unsere Balke mit den Auflagern A und B und der Linienlast q0.}
+\caption{Darstellung unsere Balke mit den Auflagern A und B und der Linienlast q0.}
 Gegeben ist:
 \begin{equation}
 	w\prime\prime(x)=
@@ -458,3 +458,7 @@ Zu den Annahmen und Randbedingungen gehören folgende Aspekte:
 	\item Es wird angenommen, dass die Temperaturdifferenz, die zu Verformungen der Balkenachse führt, konstant ist, und daher ergibt seine zweite Ableitung Null.
 	\item Die Belastungen des Balkens wirken senkrecht zur Achse.
 \end{enumerate}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/Randbedingungen.jpg}
+\end{center}
+\caption{Tabelle der unterschiedlichen Randbedingungen für verschiedene Auflagertypen.}
