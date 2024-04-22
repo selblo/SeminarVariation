@@ -1,0 +1,86 @@
+Man finde die kürzeste Verbindung zwischen zwei Punkten in der oberen
+Halbebene, die durch einen Punkt auf der $x$-Achse verläuft.
+\begin{figure}
+\centering
+\def\a{40}
+\begin{tikzpicture}[>=latex,thick]
+\draw[->] (-5.1,0) -- (5.5,0) coordinate[label={$x$}];
+\draw[->] (-5,-0.8) -- (-5,3.8) coordinate[label={right:$y$}];
+\fill[color=darkred!20]
+	(0,0) -- (1.5,0) arc (0:\a:1.5) -- cycle;
+\fill[color=darkred!20]
+	(0,0) -- ({180-\a}:1.5) arc ({180-\a}:180:1.5) -- cycle;
+\fill[color=blue!20] (-5,-0.7) rectangle (5,0);
+\draw[color=blue] (-5,0) -- (5,0);
+\fill (\a:5) circle[radius=0.08];
+\fill ({180-\a}:3) circle[radius=0.08];
+\fill (0,0) circle[radius=0.08];
+\draw ({180-\a}:3) -- (0,0) -- (\a:5);
+\node at (\a:5) [right] {$P_1$};
+\node at ({180-\a}:3) [left] {$P_0$};
+\node at (0,0) [below] {$P_*$};
+\end{tikzpicture}
+\caption{Reflexionsgesetz als Resultat der weierstrass-erdmannschen
+Eckenbedingung für das Funktional mit der Lagrange-Funktion
+$F(x,y,y') = \sqrt{1+y^{\prime 2}}$.
+\label{buch:301:fig:reflexion}}
+\end{figure}
+
+\begin{loesung}
+Seien die Punkt $P_0=(x_0,y_0)$ und $P_1=(x_1,y_1)$ gegeben mit $y_0>0$
+und $y_1>0$.
+Gesucht ist eine Funktion $y(x)$ mit den Randbedingungen $y(x_0)=y_0$
+und $y(x_1)=y_1)$, welche das Integral
+\begin{equation}
+I(y)
+=
+\int_{x_0}^{x_1} \sqrt{1+y'(x)^2}\,dx
+\label{buch:301:eqn:funktional}
+\end{equation}
+mit der Lagrange-Funktion $F(x,y,y') = \sqrt{1+y^{\prime 2}}$
+minimiert.
+Es ist bereits bekannt, dass die Euler-Lagrange-Differentialgleichung
+für das Funktional~\eqref{buch:301:eqn:funktional} Geraden als
+Lösungen hat.
+Die kürzeste Verbindung ist daher die Gerade durch die Punkte $P_0$ und
+$P_1$.
+Zusätzlich wird jetzt aber verlangt, dass die Kurve durch einen Punkt
+auf der $x$-Achse verläuft.
+Sei $P_*=(x_*,0)$ dieser Punkt.
+Die Funktion besteht dann aus zwei Geradensegmenten von $P_0$ nach
+$P_*$ und von dort zum Punkt $P_1$ mit einer Ecke im Punkt $P_*$.
+Die Eckenbedingung von
+Satz~\ref{buch:nichtdiff:splines:satz:weierstrass-erdmann}
+besagt, dass  die Funktion
+\begin{align}
+F(x,y(x),y'(x))
+-
+y'(x)
+\frac{\partial F}{\partial y'}
+(x,y(x),y'(x))
+&=
+\sqrt{1+y'(x)^2}
+-
+\frac{y'(x)^2}{\sqrt{1+y'(x)^2}}
+\notag
+\\
+&=
+\frac{1+y'(x)^2-y'(x)^2}{\sqrt{1+y'(x)^2}}
+=
+\frac{1}{\sqrt{1+y'(x)^2}}
+\label{buch:301:eqn:eckenbedingung}
+\end{align}
+eine stetige Funktion sein muss.
+Dies ist nur möglich, wenn die Steigungen $y'(x_*-)$ und $y'(x_*+)$ dem
+Ausdruck~\eqref{buch:301:eqn:eckenbedingung} den gleichen Wert geben.
+Dies ist nur dann möglich, wenn $y'(x_*-)^2=y'(x_*+)^2$ ist, die
+beiden Steigungen müssen also den gleichen Betrag haben.
+Dies ist das Reflexionsgesetz.
+
+Man beachte, dass die zweite Eckenbedingung, die Stetigkeit von
+$\partial F/\partial y'$ nicht erfüllt sein muss, weil die Grenzlinie,
+entlang der $x_*$ varieren kann, keine vertikale Komponente hat.
+\end{loesung}
+
+
+
