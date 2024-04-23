@@ -1,0 +1,209 @@
+Auf dem Gebiet
+$\Omega = \{ (r,\varphi) \mid 1<r<2\wedge 0<\varphi<\frac{3\pi}{2} \}$
+von Abbildung~\ref{buch:401:fig:domain} soll das Funktional
+\begin{equation}
+I(u)
+=
+\int_1^2 \int_0^\frac{3\pi}2
+a(r)
+\biggl(\frac{\partial u}{\partial r}\biggr)^2
++
+b(r)
+\biggl(\frac{\partial u}{\partial \varphi}\biggr)^2
+\,d\varphi\,dr
+\label{buch:401:eqn:funktional}
+\end{equation}
+durch die Funktion $u(r,\varphi)$ extremal gemacht werden unter den
+Randbedingungen 
+\begin{equation}
+\begin{aligned}
+u(1,\varphi)&=u_1(\varphi)&&\text{und}&
+u(2,\varphi)&=u_2(\varphi)&&\text{für alle }\varphi\in\biggl[0,\frac{3\pi}2\biggr]
+\\
+u(r,0)&=u_0(r)&&\text{und}&
+u\biggl(r,\frac{3\pi}2\biggr)&=u_3(r)&&\text{für alle }r\in[1,2],
+\end{aligned}
+\label{buch:401:eqn:rb}
+\end{equation}
+wobei $u_1$, $u_2$, $u_0$ und $u_3$ beliebige Funktionen sind.
+\begin{teilaufgaben}
+\item
+Finden Sie die Lagrange-Funktion des Funktionals
+\eqref{buch:401:eqn:funktional}.
+\item
+Finden Sie die zugehörige Euler-Ostrogradski-Differentialgleichung.
+\item
+Zeigen Sie, dass sich für $a(r)=r$ und $b(r)=1/r$ bis auf einen
+Faktor der Laplace-Operator
+\[
+\Delta
+=
+\frac{\partial^2}{\partial r^2}
++
+\frac{1}{r}\frac{\partial u}{\partial r}
++
+\frac{1}{r^2}\frac{\partial u}{\partial\varphi^2}
+\]
+in Polarkoordinaten ergibt.
+\end{teilaufgaben}
+\begin{figure}
+\centering
+\def\r{3}
+\def\w{55}
+\def\wmax{135}
+\begin{tikzpicture}[>=latex,thick]
+
+\fill[color=darkred!20] ({\r/2},0) -- (\r,0) arc(0:\wmax:\r)
+	-- (\wmax:{\r/2}) arc(\wmax:0:{\r/2}) -- cycle;
+\draw[color=darkred] ({\r/2},0) -- (\r,0) arc(0:\wmax:\r)
+	-- (\wmax:{\r/2}) arc(\wmax:0:{\r/2}) -- cycle;
+\draw[color=darkred,line width=0.3pt] (0,0) -- (\wmax:\r);
+
+\fill[color=blue!10] (0,0) -- (0:{0.4*\r}) arc(0:55:{0.4*\r}) -- cycle;
+\draw[color=blue] (0,0) -- (\w:{0.7*\r});
+\fill[color=blue] (\w:{0.7*\r}) circle[radius=0.08];
+\node[color=blue] at (\w:{0.7*\r}) [below right] {$r$};
+\node[color=blue] at ({\w/2}:{0.23*\r}) {$\varphi$};
+
+\fill (0,0) circle[radius=0.08];
+\draw[->] (0,0) -- ({\r+0.5},0) coordinate[label={$r$}];
+
+\node[color=darkred] at ({0.5*(\wmax+\w)}:{0.75*\r}) {$\Omega$};
+\node at (0:{\r/2}) [below] {$1\mathstrut$};
+\node at (0:\r) [below] {$2\mathstrut$};
+\node[color=darkred] at (\wmax:{\r/2}) [below,rotate={\wmax-180}]
+	{$\displaystyle\frac{3\pi}{2}$};
+
+\end{tikzpicture}
+\caption{Gebiet für das Funktional von Aufgabe~\ref{401}.
+\label{buch:401:fig:domain}}
+\end{figure}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Die Lagrange-Funktion des Funktionals ist
+\[
+L(r,\varphi,u,u_r,u_\varphi)
+=
+a(r)
+u_r^2
++
+b(r)u_\varphi^2.
+\]
+\item
+Für die Euler-Ostrogradski-Differentialgleichung brauchen wir die
+partiellen Ableitungen
+\begin{align*}
+\frac{\partial L}{\partial r}
+&=
+0,
+&
+\frac{\partial L}{\partial u_r}
+&=
+2
+a(r)
+u_r
+&&\text{und}
+&
+\frac{\partial L}{\partial u_\varphi}
+&=
+2b(r)
+u_\varphi
+\end{align*}
+von $L$,
+woraus sich die Euler-Ostrogradski-Differentialgleichung 
+\begin{align}
+0
+&=
+\frac{\partial L}{\partial u}
+\biggl(u,\frac{\partial u}{\partial r},\frac{\partial u}{\partial\varphi}\biggr)
+-
+\frac{\partial}{\partial r}
+\frac{\partial L}{\partial u_r}
+\biggl(u,\frac{\partial u}{\partial r},\frac{\partial u}{\partial\varphi}\biggr)
+-
+\frac{\partial}{\partial \varphi}
+\frac{\partial L}{\partial u_\varphi}
+\biggl(u,\frac{\partial u}{\partial r},\frac{\partial u}{\partial\varphi}\biggr)
+\notag
+\\
+&=
+-\frac{\partial}{\partial r}
+\biggl(
+2a(r)\frac{\partial u}{\partial r}
+\biggr)
+-\frac{\partial}{\partial\varphi}
+\biggl(
+2b(r)\frac{\partial u}{\partial\varphi}
+\biggr)
+\notag
+\\
+&=
+-
+2a(r)\frac{\partial^2 u}{\partial r^2}
+-
+2a'(r)\frac{\partial u}{\partial r}
+-
+2b(r)\frac{\partial^2 u}{\partial\varphi^2}
+\notag
+\\
+&=
+-2\biggl(
+a(r)
+\frac{\partial^2u}{\partial r^2}
++
+a'(r)
+\frac{\partial u}{\partial r}
++
+b(r)
+\frac{\partial^2u}{\partial\varphi^2}
+\biggr)
+\label{buch:401:eqn:eodgl}
+\end{align}
+ergibt.
+\item
+Mit der Ableitung $a'(r) = 1$
+ergibt sich für die Euler-Ostrogradski-Differentialgleichung
+aus
+\eqref{buch:401:eqn:eodgl}
+\begin{align*}
+0
+&=
+-2\biggl(
+r
+\frac{\partial^2u}{\partial r^2}
++
+\frac{\partial u}{\partial r}
++
+\frac{1}{r}
+\frac{\partial u}{\partial\varphi^2}
+\biggr).
+\intertext{Durch Ausklammern des gemeinsamen Faktors $r$ wird daraus}
+0
+&=
+-2r
+\biggl(
+\frac{\partial^2u}{\partial r^2}
++
+\frac{1}{r}\frac{\partial u}{\partial r}
++
+\frac{1}{r^2}\frac{\partial u}{\partial\varphi^2}
+\biggr)
+=
+-2r\Delta u.
+\qedhere
+\end{align*}
+\end{teilaufgaben}
+\end{loesung}
+
+\begin{diskussion}
+Für physikalische Anwendungen beschränken Dimensionsüberlegungen die
+mögliche Wahl der Funktionen $a(r)$ und $b(r)$.
+Wir bezeichnen die Masseinheit von $u$ mit $[u]$.
+Da $\partial^2u/\partial r^2$ die Masseinheit $[u]/[\text{Länge}]^2$
+und $\partial^2u/\partial\varphi^2$ die Masseinheit $[u]$, muss auch
+$a(r)/b(r)$ die Masseinheit $[\text{Länge}]^2$ haben.
+Für die Wahl $a(r)=r$ und $b(r)=1/r$ realisiert $a(r)/b(r)=r/(1/r)=r^2$
+dieses Verhältnis.
+\end{diskussion}
