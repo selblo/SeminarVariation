@@ -13,18 +13,20 @@ b(r)
 \,d\varphi\,dr
 \label{buch:401:eqn:funktional}
 \end{equation}
-durch die Funktion $u(r,\varphi)$ extremal gemacht werden unter den
+durch die Funktion $u(r,\varphi)$
+unter den
 Randbedingungen 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 u(1,\varphi)&=u_1(\varphi)&&\text{und}&
 u(2,\varphi)&=u_2(\varphi)&&\text{für alle }\varphi\in\biggl[0,\frac{3\pi}2\biggr]
 \\
 u(r,0)&=u_0(r)&&\text{und}&
-u\biggl(r,\frac{3\pi}2\biggr)&=u_3(r)&&\text{für alle }r\in[1,2],
+u\biggl(r,\frac{3\pi}2\biggr)&=u_3(r)&&\text{für alle }r\in[1,2]
 \end{aligned}
 \label{buch:401:eqn:rb}
-\end{equation}
+\end{equation*}
+extremal gemacht werden,
 wobei $u_1$, $u_2$, $u_0$ und $u_3$ beliebige Funktionen sind.
 \begin{teilaufgaben}
 \item
@@ -33,8 +35,8 @@ Finden Sie die Lagrange-Funktion des Funktionals
 \item
 Finden Sie die zugehörige Euler-Ostrogradski-Differentialgleichung.
 \item
-Zeigen Sie, dass sich für $a(r)=r$ und $b(r)=1/r$ bis auf einen
-Faktor der Laplace-Operator
+Zeigen Sie, dass sich in der Euler-Ostrogradski-Differentialgleichung
+für $a(r)=r$ und $b(r)=1/r$ bis auf einen Faktor der Laplace-Operator
 \[
 \Delta
 =
@@ -46,11 +48,12 @@ Faktor der Laplace-Operator
 \]
 in Polarkoordinaten ergibt.
 \end{teilaufgaben}
-\begin{figure}
+\begin{figure}[h]
 \centering
 \def\r{3}
 \def\w{55}
 \def\wmax{135}
+\definecolor{darkred}{rgb}{0.8,0,0}
 \begin{tikzpicture}[>=latex,thick]
 
 \fill[color=darkred!20] ({\r/2},0) -- (\r,0) arc(0:\wmax:\r)
