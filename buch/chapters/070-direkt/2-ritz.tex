@@ -428,6 +428,7 @@ Dazu bestimmt man die sogenannten Residuen
 \[
 \biggl\langle
 u_k,
+D
 \sum_{i=1}^n c_iu_i
 -f
 \biggr\rangle
@@ -437,7 +438,7 @@ dass der Fehler verschwindet.
 Man löst also eigentlich das lineare Gleichungssystem
 \[
 \sum_{i=1}^n
-\langle u_k,u_i\rangle
+\langle u_k,Du_i\rangle
 c_i
 =
 \langle u_k,f\rangle
@@ -446,7 +447,7 @@ mit Koeffizientenmatrix $A$ und rechter Seite $b$ mit Einträgen
 \[
 a_{ki}
 =
-\langle u_k,u_i\rangle
+\langle u_k,Du_i\rangle
 \qquad\text{und}\qquad
 b_k
 =
