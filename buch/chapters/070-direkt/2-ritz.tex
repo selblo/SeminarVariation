@@ -22,6 +22,13 @@ extremal macht.
 % Idee der Methode
 %
 \subsection{Idee der Methode}
+Die Idee des Verfahrens von Ritz
+\index{Verfahren!von Ritz}%
+\index{Ritz-Verfahren}%
+versucht das Extremalproblem für das Funktional $I(y)$ auf ein
+endlichdimensionales Problem zu reduzieren, welches dann mit der
+vertrauten Gradientmethode von
+Abschnitt~\ref{buch:direkt:section:gradient} gelöst werden kann.
 
 %
 % Reduktion auf eine endlichdimensionales Problem
@@ -52,7 +59,9 @@ B_n
 y(x)
 =
 \sum_{k=1}^n a_k\psi_k(x)
+\;
 \bigg|
+\;
 a_1,\dots,a_k\in\mathbb{R}
 \biggr\}
 \]
@@ -137,6 +146,7 @@ In diesem Abschnitt versuchen wir das Problem mit dem Verfahren von Ritz
 zu lösen.
 
 \begin{aufgabe}
+\label{buch:direkt:ritz:aufgabe:lichtstrahl}
 Man finde den Weg eines Lichtstrahls durch ein inhomogenes Medium
 in der $x$-$y$-Ebene,
 dessen Brechungsindex $n(y)=1+\nu y$ ist, der die Zeit zwischen
@@ -333,6 +343,115 @@ gefunden mit der Euler-Lagrange-Differentialgleichung.
 %
 \subsection{Die Methode von Galerkin
 \label{buch:direkt:ritz:subsection:galerkin}}
+Zum Erfolg des Verfahrens von Ritz tragen mindestens die zwei folgenden,
+nicht selbstverständliche Faktoren bei:
+\begin{enumerate}
+\item
+Es muss eine geeignete Basis von Funktionen gefunden werden können.
+\item
+Der Startpunkt für den Gradientabstieg liegt nicht allzu unglücklich.
+\item
+Der Gradient führt tatsächlich effizient zum Minimum.
+\end{enumerate}
+Die Aufgabe~\ref{buch:direkt:ritz:aufgabe:lichtstrahl} hat gezeigt,
+dass die Wahl eines guten (Punkt 2.) Startwerts alles andere als trivial ist.
+In der Lösung wurden jeweils die für $k$ Koeffizienten gefundenen
+Werte als Anfangswert für die Lösung mit $k+1$ Koeffizienten verwendet.
 
+Auch die Hoffnung auf eine schnelle Konvergenz des Gradientabstiegs ist
+nicht unbedingt gerechtfertigt.
+Zum Beispiel sind die Niveaulinien der Funktion
+\(
+f(x,y)
+=
+x^2+100 y^2
+\)
+sehr schmale Ellipsen, deren grosse Halbachse zehnmal grösser ist als
+als die kleine Halbachse.
+Der Gradient ist
+\[
+\operatorname{grad} f(x,y)
+=
+\begin{pmatrix}
+2x\\
+20y
+\end{pmatrix},
+\]
+die zweite Komponenten des Gradienten ist also zehnmal grösser als
+die erste, solange $x$ und $y$ von der gleichen Grössenordnung sind.
+Der Gradientabstieg führt daher auch vor allem Schritte in $y$-Richtung
+durch.
+Die Grösse dieser Schritte entscheidet darüber, wie erfolgreich die
+nachfolgenden Schritte sein werden.
+Nur wenn die schmale Zone nahe der $x$-Achse getroffen wird, in der
+die $y$-Koordinate etwa eine Grössenordnung kleiner ist als die
+$x$-Koordinate, wird der nachfolgende Abstiegsschritt eine bedeutende
+$x$-Komponente haben.
+Nur wenn der erste Schritt genau die grosse Halbachse der Ellipse
+trifft, wird der nächste Schritt auf der $x$-Achse bleiben.
+Die Wahl der Schrittgrösse hat daher ganz entscheidenden Einfluss
+auf die Konvergenzgeschwindigkeit.
 
+Für quadratische Extremalprobleme ist es möglich, die Abstiegsschritte
+optimal zu wählen, dies ist das gausssche Verfahren der konjugierten
+Gradienten zur Lösung linearer Gleichungssysteme.
+Für beliebige nichtlineare Problem steht dieses jedoch nicht zur
+Verfügung.
 
+Ein wichtiger Spezialfall ist die Lösung gewisser partieller
+linearer Differentialgleichungen erster Ordnung, wie sie sich als
+Euler-Ostrogradski-Differentialgleichungen ergeben.
+Solche Differentialgleichungen können in der Form
+$Du=f$ mit einem geeigneten Differentialoperator $D$
+geschrieben werden.
+Viele partiellen Differentialgleichungen der mathematischen
+Physik und in Ingenieuranwendungen sind von dieser Art.
+Statt wie im Verfahren von Ritz ein Minimum des Funktionals zu
+suchen, versucht das Verfahren von Galerkin eine Ersatzgrösse
+zu bestimmen, die Aufschluss darüber geben kann, in welche Richtung
+die Lösung verbessert werden kann.
+
+Dazu wird eine Menge von orthonormierten Funktionen $u_k$,
+$k=1,\dots,n$ gewählt und es wird eine Lösung der Gleichung
+\[
+D\biggl(\sum_{k=1}^n c_i u_i\biggr) = f
+\]
+gesucht.
+Die Differenz der beiden Seiten zeigt, wie ``falsch'' die bisher
+gefundene Näherung der Lösung ist, sie zeigt aber nicht, wie gut
+sich die Abweichung überhaupt korrigieren lässt.
+Da man aber nur eine durch die Funktionen $u_k$ darstellbare
+Lösung sucht, reicht es auch herauszufinden, wie gross die durch
+$u_k$ darstellbare Komponente der Abweichung ist.
+Dazu bestimmt man die sogenannten Residuen
+\[
+\biggl\langle
+u_k,
+\sum_{i=1}^n c_iu_i
+-f
+\biggr\rangle
+\]
+und versucht die Koeffizienten ${\color{darkred}c_i}$ so anzupassen,
+dass der Fehler verschwindet.
+Man löst also eigentlich das lineare Gleichungssystem
+\[
+\sum_{i=1}^n
+\langle u_k,u_i\rangle
+c_i
+=
+\langle u_k,f\rangle
+\]
+mit Koeffizientenmatrix $A$ und rechter Seite $b$ mit Einträgen
+\[
+a_{ki}
+=
+\langle u_k,u_i\rangle
+\qquad\text{und}\qquad
+b_k
+=
+\langle u_k,f\rangle
+\]
+für die Unbekannten ${\color{darkred}c_i}$.
+Diese Vorgehensweise ist als das {\em Verfahren von Galerkin} bekannt.
+\index{Galerkin-Verfahren}%
+\index{Verfahren!von Galerkin}%
