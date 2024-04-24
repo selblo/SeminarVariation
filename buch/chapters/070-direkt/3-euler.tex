@@ -1,0 +1,165 @@
+%
+% fem.tex -- Das FEM-Verfahren
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\section{Diskretisation nach Euler
+\label{buch:direkt:section:euler}}
+\kopfrechts{Diskretisation nach Euler}
+Leonhard Euler
+\index{Euler, Leonhard}%
+\index{Leonhard Euler}%
+hat die Euler-Lagrange auf eine Weise hergeleitet, die eher an die 
+Vorgehensweise direkter Methoden erinnert.
+In diesem Abschnitt soll das Integral
+\begin{equation}
+I(y)
+=
+\int_a^b
+F(x,y(x),y'(x))
+\,dx
+\label{buch:direkt:euler:eqn:aufgabe}
+\end{equation}
+mit den Randbedingungen $y(a)=y_a$ und $y(b)=y_b$ minimiert werden.
+
+%
+% Polygon-Approximation
+%
+\subsection{Polygon-Approximation
+\label{buch:direkt:euler:subsection:polygon}}
+\input{chapters/070-direkt/fig/euler.tex}
+Die gesuchte Funktion $y\colon[a,b]\mathbb{R}$ wird durch eine stückweise
+lineare Funktion approximiert (Abbildung~\ref{buch:direkt:euler:fig:euler}).
+Sie ist definiert durch die Werte an den $n-1$ Zwischenpunkten
+$x_k=a+kh$ mit $h=(b-a)/n$.
+Die Endpunkte des Intervalls sind $x_0=a$ und $x_n=b$.
+Zu bestimmen sind die Funktionswerte $y_k = y(x_k)$ für $k=1,\dots,n-1$.
+Die Funktionswerte $y_0=y(x_0)=y(a)=y_a$ und $y_n=y(x_n)=y(b)=y_b$ 
+sind durch die Randbedingung vorgegeben.
+
+Das Integral $I(y)$ von \eqref{buch:direkt:euler:eqn:aufgabe} muss
+jetzt durch die unbekannten Werte $y_1,\dots,y_{n-1}$ approximiert
+werden.
+Für die Ableitung an der Stelle $x_k$ kann der Differenzenquotient
+\[
+y'(x_k) 
+\approx
+y'_k
+=
+\frac{y_{k+1\mathstrut}-y_{k\mathstrut}}{h}
+\]
+verwendet werden.
+Der Wert des Integrals 
+\begin{equation}
+I(y)
+\approx
+I(y_1,\dots,y_{n-1})
+=
+\sum_{k=1}^{n-1}
+F(x_k, y_k, y'_k)\cdot h
+\label{buch:direkt:euler:eqn:summe}
+\end{equation}
+Die Aufgabenstellung wird damit zum folgenden endlichdimensionalen
+Problem.
+
+\begin{aufgabe}
+Finde die Werte $(y_1,\dots,y_{n-1})\in\mathbb{R}^{n-1}$, für die
+die Summe~\eqref{buch:direkt:euler:eqn:summe} extremal wird.
+\end{aufgabe}
+
+%
+% Notwendig Bedingung
+%
+\subsection{Euler-Lagrange-Differentialgleichung
+\label{buch:direkt:euler:subsection:eldgl}}
+Eine notwendige Bedingung dafür, dass die Funktion $I(y_1,\dots,y_{n-1})$
+ein Extremum annimmt, ist das Verschwinden der partiellen Ableitungen
+\begin{equation}
+\frac{\partial I}{\partial y_i} (y_1,\dots,y_{n-1})
+=
+0
+\end{equation}
+für $i=1,\dots,n-1$.
+In der Summe~\eqref{buch:direkt:euler:eqn:summe} kommt die Variable
+$y_i$ zunächst im Term mit $k=i$ vor.
+Da aber $y'_k$ aus $y_{k+1}$ und $y_k$ berechnet wird, kommt $y_i$
+in der Summe auch im Term mit $k=i-1$ vor.
+Die Ableitung der Summe nach $y_k$ ist daher
+\begin{align*}
+\frac{\partial I}{\partial y_i}(y_1,\dots,y_{n-1})
+&=
+\frac{\partial}{\partial y_i}
+\sum_{k=1}^{n-1}
+F(x_k, y_k, y'_k)\cdot h
+\\
+&=
+\frac{\partial}{\partial y_i}
+F(x_i, {\color{darkred}y_i}, {\color{darkred}y'_i})\cdot h
++
+\frac{\partial}{\partial y_i}
+F(x_{i-1}, y_{i-1}, {\color{darkred}y'_{i-1}})\cdot h
+\\
+&=
+\frac{\partial}{\partial y_i}
+F\biggl(x_i, {\color{darkred}y_i}, \frac{y_{i+1}-{\color{darkred}y_i}}{h}\biggr)\cdot h
++
+\frac{\partial}{\partial y_i}
+F\biggl(x_{i-1}, y_{i-1}, \frac{{\color{darkred}y_i}-y_{i-1}}{h}\biggr)\cdot h.
+\intertext{Die Ableitung kann mit der Kettenregel berechnet werden
+und ergibt}
+&=
+\frac{\partial F}{\partial y}\biggl(x_i, y_i,\frac{y_{i+1}-y_i}{h}\biggr)
+\cdot h
+\\
+&\qquad\qquad
+-
+\frac{\partial F}{\partial y'}\biggl(x_i,y_i,\frac{y_{i+1}-y_i}{h}\biggr)
++
+\frac{\partial F}{\partial y'}\biggl(x_{i-1},y_{i-1},\frac{y_i-y_{i-1}}h\biggr).
+\intertext{Im zweiten und dritten Term sind die Faktoren $h$ verschwunden,
+weil sie gegen einen von der inneren Ableitung herstammenden Faktor $1/h$ 
+gekürzt wurden.
+Die letzten beiden Terme können noch zusammengefasst werden:
+}
+&=
+h\cdot \biggl(
+\frac{\partial F}{\partial y}(x_i,y_i,y'_i)
+-
+\frac1h\biggl(
+\frac{\partial F}{\partial y'}(x_i,y_i,y'_i)
+-
+\frac{\partial F}{\partial y'}(x_{i-1},y_{i-1},y'_{i-1})
+\biggr)\biggr).
+\intertext{Die innere Klammer ist ein Differenzenquotient, der die
+Ableitung nach $x$ approximiert.
+Für genügend feine Diskretisation ist daher }
+\frac{\partial I}{\partial y_i}(y_1,\dots,y_{n-1})
+&\approx
+h\cdot\biggl(
+\frac{\partial F}{\partial y}(x_i,y_i,y'_i)
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x_{i-1}, y_{i-1}, y'_{i-1})
+\biggr)
+=
+0.
+\end{align*}
+Die Ableitungen $\partial I/\partial y_i$ verschwinden also, wenn 
+die grosse Klammer den Wert $0$ annimmt.
+Eine notwendige Bedingung dafür, dass die Lösungsfunktion $y(x)$, die in den
+Stützstellen $x_i$ die Werte $y(x_i) = y_i$ annimmt, das
+Integral $I(y)$ von \eqref{buch:direkt:euler:eqn:aufgabe} extremal macht,
+ist also, dass $y(x)$ die Euler-Lagrange-Differentialgleichung
+\[
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+=
+0
+\]
+erfüllt.
+
+
+
+
+
