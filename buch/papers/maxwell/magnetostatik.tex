@@ -33,6 +33,7 @@ Aufgrund des Fehlens magnetischer Monopole schliessen sich die Feldlinien des ma
 \centering
 % WIRE B FIELD 3D
 \begin{tikzpicture}[z={(0.8,0.28)},x={(0.58,-0.45)}]
+	
 	\def\L{6}
 	\def\W{0.10}
 	\def\R{0.9}
@@ -42,6 +43,11 @@ Aufgrund des Fehlens magnetischer Monopole schliessen sich die Feldlinien des ma
 	\coordinate (O) at (0,0,0);
 	%\draw (0,0,0) -- (2,0,0);
 	%\draw (0,0,0) -- (0,0,2);
+	
+	% Koordinatensystem
+	\draw[->] (0,0,0) -- (3,0,0) node[anchor=north east]{$x$};
+	\draw[->] (0,0,0) -- (0,3,0) node[anchor=north west]{$z$};
+	\draw[->] (0,0,0) -- (0,0,4) node[anchor=south]{$y$};
 	
 	% B FIELD BACK
 	\foreach \i [evaluate={\x=(\i-\NB/2-0.5)*\L/\NB;}] in {1,...,\NB}{
@@ -214,8 +220,7 @@ Da jede Komponente des magnetischen Vektorpotentials für sich variiert werden k
 	 j_1 - \frac{1}{\mu_0}\left( \frac{\partial}{\partial y}(A_{2x}-A_{1y})
 	 - \frac{\partial}{\partial z}(A_{1z}-A_{3x})
 	 \right)  
-	 \\
-	 
+	 \\	 
 	 \mu_0j_1
 	 =
 	 \frac{\partial}{\partial y}(A_{2x}-A_{1y})
