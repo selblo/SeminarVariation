@@ -9,7 +9,7 @@
 % erste Maxwellgleichung ohne Quelle
 \section{Elektrostatik\label{maxwell:section:elekktrostatik}}
 \rhead{Elektrostatik}
-In der Elektrostatik werden statische Felder Betrachtet.
+In der Elektrostatik werden statische Felder betrachtet.
 Dies setzt voraus, dass
 \begin{equation}
 	\frac{\partial f}{\partial t}
@@ -27,9 +27,39 @@ Dies hat zur Folge, dass keine Stromdichten existieren können, weil
 	\vec{j}(x,y,z)
 	=
 	0
+	\qquad
 	\forall x,y,z.
 \end{equation}
-Im späteren Abschnitt \ref{maxwell:magnetostatik} der Magnetostatik wird klar, dass aus diesem Grund in der Elektrostatik keine Magnetische Flussdichte existieren kann.
+Im späteren Abschnitt \ref{maxwell:magnetostatik} der Magnetostatik wird klar, dass aus diesem Grund in der Elektrostatik keine magnetische Flussdichte existieren kann.
+ 
+In der Elektrostatik geht es hauptsächlich um das elektrische Feld und um das Zusammenspiel mit Ladungen.
+Deswegen werden in den folgenden Abschnitten diese Begriffe definiert und genauer erklärt.
+
+\subsubsection{Elektrisches Potentialfeld}
+Das elektrische Potentialfeld
+\[
+\phi:\mathbb{R}^3
+\rightarrow
+\mathbb{R}
+\]
+ist als
+\begin{equation}
+	\phi(x,y,z)
+	=
+	\frac{W_{pot}(x,y,z)}{q}
+	\label{maxwell:section:definition_elektrischespotentialfeld}
+\end{equation}
+definiert.
+In Worten gefasst kann man sagen, dass das elektrische Potential eine auf Ladung normierte, potentielle Energie darstellt.
+Des Weiteren steht die elektrische Spannung eng in Verbindung mit dem elektrischen Potential.
+Die Spannung zwischen zwei Punkten $a$ und $b$ wird definiert als
+\[
+V_{ab}
+=
+\phi_a - \phi_b.
+\]
+% not sure about this
+Das heisst die Spannung ist der Potentialunterschied. 
 
 \subsection{Gausssches Gesetz quellenfrei
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
