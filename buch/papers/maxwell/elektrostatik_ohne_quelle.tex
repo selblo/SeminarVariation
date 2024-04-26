@@ -35,6 +35,7 @@ Im späteren Abschnitt \ref{maxwell:magnetostatik} der Magnetostatik wird klar, 
 In der Elektrostatik geht es hauptsächlich um das elektrische Feld und um das Zusammenspiel mit Ladungen.
 Deswegen werden in den folgenden Abschnitten diese Begriffe definiert und genauer erklärt.
 
+%TODO: Ladung noch definieren?
 \subsubsection{Elektrisches Potentialfeld}
 Das elektrische Potentialfeld
 \[
@@ -51,15 +52,74 @@ ist als
 \end{equation}
 definiert.
 In Worten gefasst kann man sagen, dass das elektrische Potential eine auf Ladung normierte, potentielle Energie darstellt.
+Somit kann die linke Abbildung in \ref{maxwell:skalarGrad} als ein Feld, das proportional zur potentiellen Energie ist, angeschaut werden.
 Des Weiteren steht die elektrische Spannung eng in Verbindung mit dem elektrischen Potential.
-Die Spannung zwischen zwei Punkten $a$ und $b$ wird definiert als
+Die Spannung $U$ zwischen zwei Punkten $a$ und $b$ wird definiert als
 \[
-V_{ab}
+U_{ab}
 =
 \phi_a - \phi_b.
 \]
 % not sure about this
-Das heisst die Spannung ist der Potentialunterschied. 
+Das heisst die Spannung ist der Potentialunterschied zwischen zwei Punkten.
+
+\subsubsection{Elektrisches Feld}
+Das elektrische Feld
+\[
+\vec{E}:\mathbb{R}^3 \rightarrow \mathbb{R}^3
+\]
+wird ganz allgemein definiert als
+\begin{equation}
+\vec{E}(x,y,z)
+=
+- \nabla\phi(x,y,z) - \frac{\partial \vec{A}}{\partial t}(x,y,z),
+\label{maxwell:section:definiton_allgemein_elektrischesFeld}
+\end{equation}
+wobei $\vec{A}$ das magnetische Vektorpotential ist \eqref{maxwell:definitionVektorpot}.
+Da wir dank Gleichung \eqref{maxwell:section:definition_statik} wissen, dass alle zeitlichen Ableitungen null sein müssen, ist die statische Definition des elektrischen Feldes
+\begin{equation}
+\vec{E}(x,y,z)
+=
+- \nabla\phi(x,y,z).
+\label{maxwell:section:definition_statisch_elektrischesFeld}
+\end{equation}
+Diese Definition besagt, dass das elektrische Feld ein statisches Gradientenfeld ist.
+Dieses Feld kann man anhand der Kraftwirkung messen, da
+% TODO: bild elektrisches Feld einer ladung einfügen
+\[
+\vec{E}(x,y,z)
+=
+\frac{\vec{F}(x,y,z)}{q}
+\]
+ist.
+Somit sind die Vektoren in Abbildung \ref{???} Kraft Vektoren, welche normiert sind mit der Ladung $q$.
+
+\subsubsection{Energiedichte im elektrischen Feld}
+Das elektrische Feld beinhaltet eine Energie und somit auch eine Energiedichte.
+Diese Energiedichte ist definiert als
+\begin{equation}
+\omega_e
+=
+\frac{1}{2} \epsilon \vec{E}^2,
+\label{maxwell:section:definiton_energiedichte_elektrischesFeld}
+\end{equation}
+wobei $\epsilon$ die Permittivität ist.
+Die Permittivität
+\[
+\epsilon
+=
+\epsilon_r \epsilon_0
+\]
+ist das Produkt der relativen Permittivität $\epsilon_r$ und der Permittivität von Vakuum $\epsilon_0$.
+Die relative Permittivität ist eine materialabhängige Grösse und hat in Vakuum den skalaren wert $1$.
+Die Permittivität von Vakuum
+\[
+\epsilon_0
+=
+8.854 \cdot 10^{-12} F/m
+\]
+ist die elektrische Feldkonstante.
+
 
 \subsection{Gausssches Gesetz quellenfrei
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
