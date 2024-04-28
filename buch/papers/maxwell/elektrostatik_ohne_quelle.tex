@@ -7,9 +7,29 @@
 % !TEX encoding = UTF-8
 %
 % erste Maxwellgleichung ohne Quelle
+
+\tikzset{>=latex} % for LaTeX arrow head
+\usetikzlibrary {arrows.meta}
+\pgfplotsset{compat=1.13}
+\usetikzlibrary{decorations.markings,intersections,calc}
+\usetikzlibrary{angles,quotes} % for pic (angle labels)
+\colorlet{Ecol}{green!90!black}
+\colorlet{EcolFL}{green!80!black}
+\colorlet{Bcol}{blue!90!black}
+\tikzstyle{EcolEP}=[blue!80!white]
+\colorlet{veccol}{green!45!black}
+\tikzstyle{charge+}=[very thin,top color=red!50,bottom color=red!90!black,shading angle=20]
+\tikzstyle{charge-}=[very thin,top color=blue!50,bottom color=blue!80,shading angle=20]
+\tikzstyle{charge_small} = [very thin,top color=red!50,bottom color=red!90,shading angle=20]
+\tikzstyle{vector}=[->,thick,veccol]
+\tikzset{EFieldLineArrow/.style={EcolFL,decoration={markings,mark=at position #1 with {\arrow{latex}}},
+		postaction={decorate}},
+	EFieldLineArrow/.default=0.5}
+
+
 \section{Elektrostatik\label{maxwell:section:elekktrostatik}}
 \rhead{Elektrostatik}
-In der Elektrostatik werden statische Felder betrachtet.
+Die Elektrostatik ist ein Spezialfall der Elektrodynamik, bei dem statische Felder betrachtet werden.
 Dies setzt voraus, dass
 \begin{equation}
 	\frac{\partial f}{\partial t}
@@ -19,23 +39,21 @@ Dies setzt voraus, dass
 	\forall f,t.
 	\label{maxwell:section:definition_statik}
 \end{equation}
-Zusätzlich dürfen sich keine Ladungen verschieben.
+Daraus folgt, dass wir nur ruhende Ladungen betrachten.
 Dies hat zur Folge, dass keine Stromdichten existieren können, weil
 \begin{equation}
 	\rho(x,y,z) \underbrace{\vec{v}}_{=0}
 	=
 	\vec{j}(x,y,z)
 	=
-	0
-	\qquad
-	\forall x,y,z.
+	0.
 \end{equation}
 Im späteren Abschnitt \ref{maxwell:magnetostatik} der Magnetostatik wird klar, dass aus diesem Grund in der Elektrostatik keine magnetische Flussdichte existieren kann.
  
-In der Elektrostatik geht es hauptsächlich um das elektrische Feld und um das Zusammenspiel mit Ladungen.
-Deswegen werden in den folgenden Abschnitten diese Begriffe definiert und genauer erklärt.
+Das Ziel ist nun das elektrische Feld im Zusammenspiel mit ruhenden Ladungen zu beschreiben.
+Dafür werden wir in den folgenden Abschnitten die nötigen Begriffe definieren und ein bisschen genauer erklären.
 
-%TODO: Ladung noch definieren?
+%TODO: Ladung noch definieren? (denke nicht)
 \subsubsection{Elektrisches Potentialfeld}
 Das elektrische Potentialfeld
 \[
@@ -84,15 +102,47 @@ Da wir dank Gleichung \eqref{maxwell:section:definition_statik} wissen, dass all
 \label{maxwell:section:definition_statisch_elektrischesFeld}
 \end{equation}
 Diese Definition besagt, dass das elektrische Feld ein statisches Gradientenfeld ist.
-Dieses Feld kann man anhand der Kraftwirkung messen, da
-% TODO: bild elektrisches Feld einer ladung einfügen
+Dieses Feld kann man anhand der Kraftwirkung an sogenannten Probeladungen $q$ messen, da
 \[
 \vec{E}(x,y,z)
 =
 \frac{\vec{F}(x,y,z)}{q}
 \]
 ist.
-Somit sind die Vektoren in Abbildung \ref{???} Kraft Vektoren, welche normiert sind mit der Ladung $q$.
+Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kraft Vektoren, welche normiert sind mit der Ladung $q$.
+%TODO: Force vector einzeichnen.
+%E-Field of point charge
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\def\R{1.8}
+		\def\NE{16}
+		\def\NV{4}
+		\contourlength{1.6pt}
+		
+		\foreach \i [evaluate={\angle=(\i-1)*360/\NE;}] in {1,...,\NE}{
+			\draw[EFieldLineArrow={0.6}] (0,0) -- (\angle:\R);
+		}
+		\draw[charge+] (0,0) circle (7pt) node[black,scale=0.8] {$+Q$};
+		%\draw[FFieldLineArrow={0.6}] (-1,1) -- (-2,2);
+		\draw[-{Stealth[black]}] (-1,1) -- (-1.8,1.8);
+		\draw[charge_small] (-1,1) circle (3pt) node[black,scale=0.8] {$q$};
+		%\draw (0,0) \node at (-1.8, 2) {$\vec{F}$};
+	\end{tikzpicture}
+	\begin{tikzpicture}
+		\def\R{1.8}
+		\def\NE{16}
+		\def\NV{4}
+		\contourlength{1.6pt}
+		
+		\foreach \i [evaluate={\angle=(\i-1)*360/\NE;}] in {1,...,\NE}{
+			\draw[EFieldLineArrow={0.5}] (\angle:\R) -- (0:0);
+		}
+		\draw[charge-] (0,0) circle (7pt) node[black,scale=0.8] {$-Q$};
+	\end{tikzpicture}
+	\caption{Elektrisches Feld einer positiven-/ negativen Punktladung}
+	\label{maxwell:section:E-Feld_punktladung}
+\end{figure}
 
 \subsubsection{Energiedichte im elektrischen Feld}
 Das elektrische Feld beinhaltet eine Energie und somit auch eine Energiedichte.
@@ -100,7 +150,7 @@ Diese Energiedichte ist definiert als
 \begin{equation}
 \omega_e
 =
-\frac{1}{2} \epsilon \vec{E}^2,
+\frac{1}{2} \epsilon \vec{E} ^2,
 \label{maxwell:section:definiton_energiedichte_elektrischesFeld}
 \end{equation}
 wobei $\epsilon$ die Permittivität ist.
@@ -137,15 +187,14 @@ W_e
 \iiint_V \omega_e\, dV.
 \]
 Dieses Integral gilt es zu minimieren, was die Grundlage für unser Variationsproblem darstellt.
-Die Energiedichte
+Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist in Vakuum
 % TODO: Bei definitionen erwähnen, dass ein vektor v^2 = v dot v ist!
 \[
 \omega_e\
 =
-\frac{1}{2}\epsilon_0\vec{E}(x,y,z)^2
+\frac{1}{2}\epsilon_0\vec{E}(x,y,z)^2.
 \]
-ist die Energiedichte im elektrischen Feld.
-Diese Gleichung können wir nun mittels definition \ref{(???)} mit dem elektrischen Potentialfeld ausdrücken.
+Diese Gleichung können wir nun mittels definition \eqref{maxwell:section:definition_statisch_elektrischesFeld} mit dem elektrischen Potentialfeld ausdrücken.
 somit ist
 \begin{align}
 \omega_e
@@ -156,20 +205,20 @@ somit ist
 &=
 \frac{1}{2}\epsilon_0
 \begin{pmatrix}
--\phi_x(x,y,z)\\
--\phi_y(x,y,z)\\
--\phi_(x,y,z)z
+-\phi_x\\
+-\phi_y\\
+-\phi_z
 \end{pmatrix}
 \cdot
 \begin{pmatrix}
--\phi_x(x,y,z)\\
--\phi_y(x,y,z)\\
--\phi_z(x,y,z)
+-\phi_x\\
+-\phi_y\\
+-\phi_z
 \end{pmatrix}
 \\
 \omega_e
 &=
-\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right).
+\frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right).
 \label{maxwell:section:energiedichte}
 \end{align}
 Dies können wir in das zu minimerende Integral einsetzen und bekommen
@@ -178,7 +227,7 @@ Dies können wir in das zu minimerende Integral einsetzen und bekommen
 	W_e
 	=
 	\iiint_V \underbrace{
-		\frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)}_{L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)}\, dV.
+		\frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)}_{L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)}\, dV.
 	\label{maxwell:section:energieintegral_quellenfrei}
 \end{equation}
 Aus dieser Gleichung können wir entnehmen, dass unsere Lagrangefunktion
@@ -205,13 +254,13 @@ Nach Einsetzen wird die Differentialgleichung
 Man sieht, dass die partielle Ableitung nach $\phi$ verschwindet.
 Nach den partiellen Ableitungen nach $\phi_x$, $\phi_y$ und $\phi_z$ wird die Differentialgleichung
 \[
-\frac{1}{2}\epsilon_0\left(-\frac{\partial}{\partial x}2\phi_x(x,y,z) - \frac{\partial}{\partial y}2\phi_y(x,y,z) - \frac{\partial}{\partial z}2\phi_z(x,y,z)\right)
+\frac{1}{2}\epsilon_0\left(-\frac{\partial}{\partial x}2\phi_x - \frac{\partial}{\partial y}2\phi_y - \frac{\partial}{\partial z}2\phi_z\right)
 =
 0.
 \]
 Wenn man nun noch die letzten partiellen Ableitungen macht, wird die Differentialgleichung
 \begin{equation}
-	- \underbrace{\epsilon_0}_{\not{=}0}\underbrace{\left(\frac{\partial^2\phi(x,y,z)}{\partial x^2} + \frac{\partial^2\phi(x,y,z)}{\partial y^2} + \frac{\partial^2\phi(x,y,z)}{\partial z^2}\right)}_{=0}
+	- \underbrace{\epsilon_0}_{\not{=}0}\underbrace{\left(\frac{\partial^2\phi}{\partial x^2} + \frac{\partial^2\phi}{\partial y^2} + \frac{\partial^2\phi}{\partial z^2}\right)}_{=0}
 	=
 	0.
 	\label{maxwell:section:laplace_gleichung_1}
@@ -221,27 +270,27 @@ An dieser Gleichung sieht man, dass die Klammer mit den partiellen Ableitungen g
 Zusätzlich wird nun ersichtlich, dass der Klammerterm nach definition \ref{???} mit dem Laplace-Operator angewendet auf das elektrische Potentialfeld $\phi$ ersetzt werden kann.
 Somit wird unsere schluss Differentialgleichung
 \begin{equation}
-	\Delta\phi(x,y,z)
+	\Delta\phi
 	=
 	0.
 	\label{maxwell:section:laplace_gleichung_2}
 \end{equation}
-Durch Anwendng der Definiton des Laplace-Operator \ref{???} und der Definiton des elektrischen Feldes \ref{???} erhalten wird die Gleichung
+Durch Anwendng der Definiton des Laplace-Operator \ref{???} und der Definiton des elektrischen Feldes \eqref{maxwell:section:definition_statisch_elektrischesFeld} erhalten wird die Gleichung
 \[
-\nabla\cdot\underbrace{\nabla\phi(x,y,z)}_{-\vec{E}(x,y,z)}
+\nabla\cdot\underbrace{\nabla\phi}_{-\vec{E}}
 =
 0.
 \]
 Hiermit erhalten wir, dass
 \begin{equation}
-	\nabla\cdot\vec{E}(x,y,z)
+	\nabla\cdot\vec{E}
 	=
 	0
 	\label{maxwell:section:e_feld_quellenfrei}
 \end{equation}
 % TODO:Bild referenz einfügen und Bild erstellen
 sein muss. Diese Differentialgleichung besagt, dass das elektrische Feld quellenfrei ist.
-Dies bedeutet, dass Felldlinien des elektrischen Feldes an keinem Ort im Raum enstehen oder enden können \ref{???}.
+Dies bedeutet, dass Felldlinien des elektrischen Feldes an keinem Ort im Raum enstehen oder enden können.
 Dies ist sehr naheliegend, da ohne Ladungen im Raum das elektrische Feld quellenfrei sein muss.
 
 %Darf auch weggelassen werden.

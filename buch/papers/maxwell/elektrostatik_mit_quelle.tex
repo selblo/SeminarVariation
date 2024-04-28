@@ -20,7 +20,7 @@ Wie auch in Gleichung \eqref{maxwell:section:energieintegral_quellenfrei} ist di
 \[
 W_e
 =
-\iiint_V \frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right)\, dV.
+\iiint_V \frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)\, dV.
 \]
 % TODO: referenz einfügen von definition elektrisches potential
 Jedoch ist dies nicht die einzige Komponente der gesamt Energie des Systems.
@@ -33,6 +33,7 @@ q
 \iiint_V \rho(x,y,z)\, dV
 \label{maxwell:ladung}
 \end{equation}
+%TODO: mathematisch korrekt machen
 verursachte, potentielle Energie $W_q$ im System mit der Ladungsdichte $\rho(x,y,z)$ ausdrücken können, müssen wir untersuchen, was eine infinitesimale potentielle Energie verursacht.
 Wenn wir diese infinitesimal kleine potentielle Energie
 \[
@@ -63,7 +64,7 @@ W_{tot}
 =
 W_e - W_q
 =
-\iiint_V \frac{1}{2}\epsilon_0\left(\phi_x(x,y,z)^2 + \phi_y(x,y,z)^2 + \phi_z(x,y,z)^2\right) - \phi(x,y,z)\rho(x,y,z)\, dV
+\iiint_V \frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\rho\, dV
 \]
 haben wir unser zu minimierendes Integral gefunden.
 Daraus können wir wieder die Lagrange funktion
@@ -103,33 +104,33 @@ Durch einsetzen von $-W_q$ in die E-O-DGL erhalten wir
 Da alle partiellen Ableitungen nach $\phi_x, \phi_y, \phi_z$ null ergeben, müssen wir nur noch die partielle Ableitung nach $\phi$ erledigen.
 Somit ist
 \begin{equation}
--\rho(x,y,z)
+-\rho
 =
 0.
 \end{equation}
 Durch additon unserer zwei Teillösungen erhalten wir die Gleichung
 \begin{align*}
--\epsilon_0\Delta\phi(x,y,z) - \rho(x,y,z)
+-\epsilon_0\Delta\phi - \rho
 &=
 0
 \\
-\epsilon_0\Delta\phi(x,y,z)
+\epsilon_0\Delta\phi
 &=
--\rho(x,y,z).
+-\rho.
 \end{align*}
 Schlussendlich erhalten wir
 \begin{equation}
-\Delta\phi(x,y,z).
+\Delta\phi.
 =
--\frac{\rho(x,y,z)}{\epsilon_0}.
+-\frac{\rho}{\epsilon_0}.
 \label{maxwell:section:erste_maxwellgleichung_1}
 \end{equation}
 % TODO: definiton des laplace-operators suchen
-Mittels Anwendung der Definiton \ref{???} des Laplace-Operators und der Definiton des elektrischen Feldes \ref{???} ist
+Mittels Anwendung der Definiton \ref{???} des Laplace-Operators und der Definiton des elektrischen Feldes \eqref{maxwell:section:definition_statisch_elektrischesFeld} ist
 \[
-\nabla\cdot\underbrace{\nabla\phi(x,y,z)}_{-\vec{E}(x,y,z)}
+\nabla\cdot\underbrace{\nabla\phi}_{-\vec{E}}
 =
--\frac{\rho(x,y,z)}{\epsilon_0}.
+-\frac{\rho}{\epsilon_0}.
 \]
 Somit muss
 \begin{equation}
@@ -148,9 +149,9 @@ Dies bedeutet, dass elektrische Feldlinien auf Ladungen enden können.
 In anderen Worten wird das elektrostatische Feld durch Ladungen erzeugt!
 Da es sowohl positive wie auch negative Ladungen gibt, gilt dasselbe für die Ladungsdichten.
 Wenn die Ladungsdichte positiv ist, sagt uns die erste Maxwell-Gleichung, dass das elektrische Feld eine Quelle besitzt.
-Das heisst, salopp gesagt, die Feldvektoren zeigen weg von der Ladungsdichte \ref{???}.
+Das heisst, salopp gesagt, die Feldvektoren zeigen weg von der Ladungsdichte.
 Wenn die Ladungsdichte jedoch negativ ist, besitzt das elektrische Feld eine Senke.
-Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen \ref{???}.
+Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen. Dies ist in Abbildung \ref{maxwell:section:E-Feld_punktladung} veranschaulicht.
 
 \subsubsection{Exkurs zur Poisson-Gleichung}
 % Darf auch weggelassen werden.
@@ -163,7 +164,7 @@ f,
 wobei $\varphi$ ein Potentialfeld und $f$ eine Quelle ist, mag zwar ein wenig fischig klingen, jedoch hat sie Anwendungen in vielen Teilen der Physik.
 Die Quelle $f$ kann wie in Gleichung \eqref{maxwell:section:erste_maxwellgleichung_1} eine Funktion des Raumes und/oder eine Funkiton der Zeit sein.
 Ein Potentialfeld, dass die Poisson-Gleichung erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, dass die Quelle $f$ besitzt und Rotationsfrei ist.
-Die homogene Gleichung, also wo $f = 0$ ist, führt uns zur Laplace-Gleichung \ref{maxwell:section:laplacegleichung_exkurs}.
+Die homogene Gleichung, also wo $f = 0$ ist, führt uns zur Laplace-Gleichung.
 
 
 
