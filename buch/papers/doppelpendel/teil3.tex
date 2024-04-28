@@ -101,7 +101,9 @@ Dies lösen wir hier unten Schritt für Schritt auf, beginnend mit
 \begin{align}
     \frac{\partial L}{\partial \dot{\theta}_1} &= m_1 \dot{\theta}_1 l_1^2
     + m_2 \dot{\theta}_1 l_1^2 + m_2 l_1 l_2 \dot{\theta}_1
-    \cos(\theta_1-\theta_2).
+    \cos(\theta_1-\theta_2)\\
+    \frac{\partial L}{\partial \dot{\theta}_2} &= m_2 \dot{\theta}_2 l_2^2
+    + m_2 l_1 l_2 \dot{\theta}_1 \cos(\theta_1-\theta_2).
 \end{align}
 Danach berechnen wir die Ableitung nach der Zeit davon
 \begin{align}
@@ -112,36 +114,48 @@ Danach berechnen wir die Ableitung nach der Zeit davon
     \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2) \nonumber \\
     \shortintertext{}
     &+ \dot{\theta}_2^2 \sin(\theta_1-\theta_2))
+    \nonumber\\
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_2}\right) &=
+    m_2 l_2^2 \ddot{\theta}_2\\
+    \shortintertext{}
+    &+ m_2 l_1 l_2 (\ddot{\theta}_1\cos(\theta_1-\theta_2)+
+    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2) \nonumber \\
+    \shortintertext{}
+    &- \dot{\theta}_1^2 \sin(\theta_1-\theta_2))
     \nonumber
 \end{align}
 und zuletzt
 \begin{align}
     \frac{\partial L}{\partial {\theta}_1} &= -m_1 l_1 l_2 \dot{\theta}_1
     \dot{\theta}_2 \sin(\theta_1-\theta_2) - m_1 g l_1 \sin(\theta_1)
-    - m_2 g l_1 \sin(\theta_1).
+    - m_2 g l_1 \sin(\theta_1)\\
+    \frac{\partial L}{\partial {\theta}_2} &= m_2 l_1 l_2 \dot{\theta}_1
+    \dot{\theta}_2 \sin(\theta_1-\theta_2) - m_2 g l_2 \sin(\theta_2).
 \end{align}
-Wir verfolgen das Ziel nach \(\ddot{\theta}_1\) aufzulösen.
-Dafür formen wir \eqref{eq:lag} folgendermassen um
+Wir verfolgen das Ziel nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\) aufzulösen.
+Dafür formen wir die Gleichung \eqref{eq:lag} folgendermassen um
 \begin{align}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_1}\right) 
-    = \frac{\partial L}{\partial \theta_1}
+    = \frac{\partial L}{\partial \theta_1}\\
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_2}\right) 
+    = \frac{\partial L}{\partial \theta_2}
 \end{align}
 Hier setzen wir nun die vorher ausgerechneten Terme ein und erhalten nach wenigen
-Umformungen bereits diese Gleichung
+Umformungen bereits diese Gleichungen.
 \begin{align}
+    \shortintertext{Gleichung für \(\theta_1\):}
     \ddot{\theta}_1 l_1^2 (m_1 + m_2) &= -m_1 g l_1 \sin(\theta_1) - m_2 g l_1 \sin(\theta_1) \\
     &- m_2 l_1 l_2 \left(\ddot{\theta}_2 \cos(\theta_1-\theta_2) 
-    + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \right).
+    + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \right) \nonumber
+    \shortintertext{Gleichung für \(\theta_2\):}
+    m_2 l_2^2 \ddot{\theta_2} &= -m_2 g l_2 \sin(\theta_2) \\
+    &- m_2 l_1 l_2 \left(\ddot{\theta}_1 \cos(\theta_1-\theta_2) 
+    - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \right). \nonumber
 \end{align}
-Nun können wir die Gleichung endlich nach \(\ddot{\theta}_1\) auflösen.
+Nun können wir die Gleichung endlich nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\) auflösen.
 \begin{align}
     \ddot{\theta}_1 &= -\frac{g}{l_1} \sin(\theta_1) - \frac{m_2}{m_1+m_2} \frac{l_2}{l_1} 
-    \left(\ddot{\theta}_2 \cos(\theta_1-\theta_2) + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \right)
-\end{align}
-
-Wenn wir das ganze Prozedere für \(\theta_2\) durchexerzieren und nach \(\ddot{\theta}_2\) auflösen
-erhalten wir.
-\begin{align}
+    \left(\ddot{\theta}_2 \cos(\theta_1-\theta_2) + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \right)\\
     \ddot{\theta}_2 &= -\frac{g}{l_2} \sin(\theta_2) - \frac{l_1}{l_2} 
     \left(\ddot{\theta}_1 \cos(\theta_1-\theta_2) - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \right)
 \end{align}
@@ -149,16 +163,18 @@ erhalten wir.
 \subsection{Anfangsbedingungen}
 Als Ergebnis erhalten wir für \(\theta\) jeweils eine Differentialgleichung zweiter Ordnung.
 Diese lassen sich nicht analytisch nach der Zielvariable auflösen,
-d.h. man erhält keine Funktion für \(\theta\) in Abhängigkeit von 
-\(x\) und \(y\). 
+d.h. man erhält keine Funktion für die Position in Abhängigkeit von \(\theta\) 
+wie beispielsweise für das einfache Pendel. 
 
 Trotzdem lassen sich mit Anfangsbedingungen für beide Winkel numerische Lösungen ermitteln.
 Dazu muss man für \(\theta_1(t=0)\) und \(\theta_2(t=0)\), welches die Anfangspositionen darstellen,
 einen Wert definieren wie z.B. jeweils 20°. Genauso für die Anfangsgeschwindigkeiten \(\dot{\theta}_1(t=0)\)
 und \(\dot{\theta}_2(t=0)\).
-Diese werden meistens als 0 festgelegt. Man kann sich das vorstellen, als würde man das Pendel
+Diese werden meistens mit 0 festgelegt. Man kann sich das vorstellen, als würde man das Pendel
 am zweiten Massepunkt fassen auf die Position ziehen wo beide Winkel 20° betragen und dann loslassen.
-Mit diesem Verfahren lassen sich Simulationen erstellen, wodurch das chaotische Verhalten
-des Pendels bei verschiedenen Anfangsbedingungen analysiert werden kann.
+Anhand der numerischen Lösungen lassen sich bereits Simulationen erstellen, da der Computer
+sowiese auf diskrete Werte angewiesen ist macht das keinen Unterschied.
+Mit den Simulationen könnte man beispielsweise das chaotische Verhalten des Pendels bei verschiedenen 
+Anfangsbedingungen genauer analysieren.
 
 
