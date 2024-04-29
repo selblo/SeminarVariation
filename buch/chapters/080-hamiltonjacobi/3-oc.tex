@@ -1,0 +1,371 @@
+%
+% 3-oc.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\section{Optimale Steuerung
+\label{buch:hamiltonjacobi:section:oc}}
+\kopfrechts{Optimale Steuerung}
+Die vorangegangenen Kapitel haben verschiedene Beispiele gezeigt,
+in denen Funktionen gesucht waren, für die ein gewisses Integral
+einen extremalen Wert annimmt.
+In der Praxis tauchen aber auch Probleme auf, in denen die
+gesuchte Funktion nicht direkt für die Berechnung des zu minimierenden
+Integrals verwendet wird.
+Stattdessen fliesst die Funktion in eine Differentialgleichung
+ein, deren Lösung dann erst das Funktional ergibt.
+Das optimale Steuerungsproblem ist ein Problem dieser Art: gesucht
+wird eine Steuerfunktion derart, dass das gesteuerte System, welches
+mit einer gewöhnlichen Differentialgleichung beschrieben ist, ein
+Kostenfunktional minimieren soll.
+
+In diesem Abschnitt wird die Lösung des optimalen Steuerungsproblem
+mit Hilfe des Minimum-Prinzips von Pontryagin skizziert.
+In Abschnitt~\ref{buch:hamiltonjacobi:oc:subsection:problem}
+wird das Problem exakt formuliert.
+Danach wird die Vorgehensweise Anhang eines Variationsproblems
+mit Nebenbedingungen motiviert und die zugehörige Hamilton-Funktion
+hergeleitet.
+In Abschnitt~\ref{buch:hamiltonjacobi:oc:subsection:minimum}
+wird dann das Minimum-Prinzip von Pontryagin hergeleitet, mit dem
+sich viele dieser Probleme lösen lassen.
+
+%
+% Das optimale Steuerungsproblem
+%
+\subsection{Das optimale Steuerungsproblem
+\label{buch:hamiltonjacobi:oc:subsection:problem}}
+Ein {\em Steuerungsproblem} ist eine Differentialgleichung der Form
+\[
+\dot{x}
+=
+f(t, x, u),
+\]
+wobei $f\colon\mathbb{R}^n\times\mathbb{R}^m\to\mathbb{R}^n$
+eine differenzierbare Funktion ist.
+Der Vektor $u$ beeinflusst die Zeitentwicklung der Lösung $x(t)$, man
+kann ihn als die Steuersignale betrachten, mit denen man die Lösung
+im Rahmen der physikalischen Grenzen des Systems beeinflussen kann.
+Durch geeignete Wahl der Funktion $u(t)$ kann man erreichen, dass 
+die Lösung mit gewissen Anfangsbedingungen $x(t_0)$ in einem
+gewählten Endpunkt $x(t_1)$ endet.
+
+%
+% Das Kostenfunktional
+%
+\subsubsection{Das Kostenfunktional}
+Wie in früher untersuchten Variationsproblemen können der Funktion $x(t)$
+Kosten in Form eines Integrals der Form
+\begin{equation}
+\int_{t_0}^{t_1}
+L(x(t), \dot{x}(t))
+\,dt
+\label{buch:hamiltonjacobi:oc:eqn:jxdotx}
+\end{equation}
+zugeordnet werden.
+Man kann jetzt fragen, für welche Funktion $u(t)$ die sich daraus
+ergebende Bahnkurve $x(t)$ das Funktional
+\eqref{buch:hamiltonjacobi:oc:eqn:jx}
+minimiert.
+
+In den meisten Fällen umfasst der Zustandsvektor $x(t)$ für die
+Systemdifferentialgleichung auch die Geschwindigkeit, so dass
+es nicht länger sinnvoll ist, dass die Funktion $L$ auch von
+$\dot{x}$ abhängig ist.
+Das Funktional wird daher
+\begin{equation}
+\int_{t_0}^{t_1}
+L(x(t))
+\,dt
+\label{buch:hamiltonjacobi:oc:eqn:jx}
+\end{equation}
+
+Dies ist aber noch nicht ganz allgemein genug, denn die Steuerung selbst
+ist oft ebenfalls mit Kosten verbunden.
+Man denke etwa an die Steuerung einer Rakete, wo jeder Steuerimpuls 
+Raketentreibstoff verbraucht, von dem man aus Gewichtsgründen möglichst
+wenig mitnehmen möchte.
+Die Lagrange-Funktion sollte daher auch noch von $u$ abhängen, die
+Kostenfunktion wird daher
+\begin{equation}
+\int_{t_0}^{t_1}
+L(x(t),u(t))
+\,dt.
+\end{equation}
+
+Doch auch dies ist noch nicht die endgültige Fassung.
+In vielen Problemen spielt es eine wichtige Rolle, wann die
+Operation abgeschlossen ist.
+Zum Beispiel können im späteren Verlauf zusätzliche Kosten entstehen,
+wenn die Steuerungsaufgabe erst später abgeschlossen wird.
+Erreicht ein Raumschiff die Umlaufbahn einer Raumstation verspätet,
+wird zusätzlicher Treibstoff für Orbitalmanöver benötigt, um die Station
+zu erreichen.
+Wir fügen dem zu minimierenden Funktional daher noch einen Randterm
+hinzu und erhalten
+\begin{equation}
+J(u)
+=
+\int_{t_0}^{t_1}
+L(x(t),u(t))
+\,dt
++
+K(t_1)
+\label{buch:hamiltonjacobi:oc:eqn:jk}
+\end{equation}
+als endgültiges Funktional, welches zu minimieren ist.
+
+%
+% Die optimale Steuerungsaufgabe
+%
+\subsubsection{Die optimale Steuerungsaufgabe}
+Damit lässt sich jetzt die Aufgabe formulieren, die in diesem
+Abschnitt gelöst werden soll.
+
+\begin{aufgabe}[optimale Steuerung]
+\label{buch:hamiltonjacobi:oc:aufgabe}
+Für das System mit der Differentialgleichung
+\begin{equation}
+\dot{x}
+=
+f(x,u), \qquad f\colon \mathbb{R}^n\times\mathbb{R}^m\to\mathbb{R}^n
+\label{buch:hamiltonjacobi:oc:eqn:dgl}
+\end{equation}
+soll eine Funktion $u\colon [t_0,t_1]\to\mathbb{R}^m$ gefunden werden,
+für die 
+\begin{equation}
+J(u)
+=
+\int_{t_0}^{t_1}
+L(x(t),u(t))
+\,dt
++
+K(t_1)
+\label{buch:hamiltonjacobi:oc:eqn:kosten}
+\end{equation}
+minimiert, wobei $x(t)$ eine Lösung der Differentialgleichung
+\eqref{buch:hamiltonjacobi:oc:eqn:dgl} ist, die die Randbedinungen
+$x(t_0)=x_0$ und $x(t_1)=x_1$ erfüllt.
+\end{aufgabe}
+
+Die Aufgabe verlangt also, eine Steuerfunktion $u(t)$ so zu bestimmen,
+dass das System der Bahn $x(t)$ mit minimalen Kosten vom Startpunkt $x_0$
+zum Zielpunkt $x_1$ folgt.
+
+%
+% Das optimale Steuerungsproblem als Variationsproblem mit Nebenbedingungen
+%
+\subsubsection{Das optimale Steuerungsproblem als Variationsproblem
+mit Nebenbedingungen}
+Die Formulierung von Aufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+betrachtet die Funktionen $x(t)$ als von $u(t)$ abhängig.
+Man muss also erst die
+Differentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}
+lösen, bevor man das
+Kostenfunktional~\eqref{buch:hamiltonjacobi:oc:eqn:kosten}
+berechnen kann.
+Diese Formulierung macht es unmöglich, die Aufgabe als 
+Variationsproblem zu sehen.
+
+Die Aufgabenstellung kann aber auch als Variationsproblem mit
+einer Nebenbedingung gesehen werden.
+Dazu werden sowohl die Variablen $x$ wie auch die Steuerinputs $u$
+als unabhängige Variablen $q=(x,u)$ betrachtet.
+Zu bestimmen ist jetzt eine Funktion $q(t)=(x(t),u(t))$, die
+das Integral
+\[
+\int_{t_0}^{t_1}
+L(x(t), u(t))
+\,dt
+\]
+minimiert.
+Jetzt sieht die Aufgabenstellung wie ein Variationsproblem aus,
+allerdings wird damit noch nicht berücksichtigt, dass $x(t)$ eine
+Lösung der Differentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}
+sein muss.
+
+Der durch die Differentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}
+gegebene Zusammenhang von $x(t)$ und $u(t)$ kann als Nebenbedingung 
+in der Form
+\begin{equation}
+G(x,\dot{x}, u)
+=
+f(x,u) - \dot{x} = 0
+\label{buch:hamiltonjacobi:oc:eqn:dglneben}
+\end{equation}
+betrachtet werden.
+Im Gegensatz zu den Problemen, die in
+Abschnitt~\ref{buch:nebenbedingungen:lagrangemult:subsection:nebenbedingungen}
+untersucht wurden, hat die
+Nebenbedingung~\eqref{buch:hamiltonjacobi:oc:eqn:dglneben}
+nicht die der Form eines Integrals.
+Es reicht also nicht, eine zusätzliche Vektorvariable $\lambda\in\mathbb{R}^n$
+einzuführen und damit ein Funktional mit einer Lagrange-Funktion der Form
+\[
+L(x,u) - \lambda \cdot G(x,\dot{x},u)
+\]
+zu minimieren, womit
+Abschnitt~\ref{buch:nebenbedingungen:lagrangemult:subsection:nebenbedingungen}
+erfolgreich gewesen war.
+
+Als Erweiterung bietet sich an, die Variable $\lambda$ durch eine
+Funktion $p(t)$ zu ersetzen.
+So entsteht ein neues Funktional
+\[
+F
+\colon
+\mathbb{R}^n\times\mathbb{R}^m\times\mathbb{R}^n
+\to\mathbb{R}
+:
+(x,u,p)
+\mapsto
+F(x,u,p)
+=
+L(x,u) + p\cdot (f(x,u) - \dot{x}),
+\]
+für welches jetzt untersucht werden soll, ob sich damit das Problem lösen
+lässt.
+
+%
+% Die Euler-Lagrange-Differentialgleichung für F
+%
+\subsubsection{Die Euler-Lagrange-Differentialgleichung für $F$}
+Gesucht ist jetzt eine Funktion $q(t)=(x(t),u(t),p(t))$ derart,
+dass das Funktional mit der Lagrange-Funktion
+\[
+F(q,\dot{q})
+=
+L(x,u) +p\cdot f(x,u) - p\cdot \dot{x}
+\]
+minimiert.
+Die Euler-Lagrange-Differentialgleichung von $F$ ist
+\[
+\frac{\partial F}{\partial q}(q(t),\dot{q}(t))
+=
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{q}}(q(t),\dot{q}(t)).
+\]
+Die partiellen Ableitungen nach $q$ und $\dot{q}$ lassen sich aufteilen
+in die Komponenten $x$, $u$ und $p$ von $q$.
+Wir berechnen nur die Komponenten für $p$, sie ist
+\begin{align*}
+\frac{\partial F}{\partial p}
+&=
+f(x,u)
+-
+\dot{x}
+&
+\frac{\partial F}{\partial \dot{p}}
+&=
+0
+&&\Rightarrow&
+f(x,u)-\dot{x}&=0
+\end{align*}
+Die letzte Gleichung ist die Nebenbedingung, eine Lösung der
+Euler-Lagrange-Differential\-gleichung erfüllt also automatisch auch die
+Systemdifferentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}.
+
+Die Funktion $F(q,\dot{q})$ hängt nicht von der unabhängigen
+Variablen $t$ ab, somit ist die Beltrami-Identität
+(Satz~\ref{buch:variation:eulerlagrange:satz:beltrami})
+anwendbar.
+Sie sagt, dass die Grösse
+\begin{align}
+F(q,\dot{q})
+-
+\dot{q}\cdot\frac{\partial F}{\partial\dot{q}}(q,\dot{q})
+&=
+F(q,\dot{q})
+-
+\dot{x}\cdot
+\underbrace{
+\frac{\partial F}{\partial\dot{x}}
+}_{\displaystyle=-p}
+-
+\dot{u}\cdot
+\underbrace{
+\frac{\partial F}{\partial\dot{u}}
+}_{\displaystyle=0}
+-
+\dot{p}\cdot
+\underbrace{
+\frac{\partial F}{\partial\dot{p}}
+}_{\displaystyle=0}
+\notag
+\\
+&=
+L(x,u)+p\cdot f(x,u)-p\cdot\dot{x}
+-
+\dot{x}\cdot
+(-p)
+\notag
+\\
+&=
+L(x,u) + p\cdot f(x,u)
+\label{buch:hamiltonjacobi:oc:hamilton}
+\end{align}
+konstant ist.
+
+%
+% Die Hamilton-Differentialgleichungen
+%
+\subsection{Die Hamilton-Differentialgleichungen
+\label{buch:hamiltonjacobi:oc:subsection:hamilton}}
+Für eine Lagrange-Funktion $L(x,u)$ haben wir gefunden, dass der
+Ausdruck~\eqref{buch:hamiltonjacobi:oc:hamilton} eine besondere
+Bedeutung hat.
+Wir geben ihm daher einen Namen.
+
+\begin{definition}[Steuerungs-Hamiltonfunktion]
+Die Funktion
+\[
+H
+\colon
+\mathbb{R}^n\times\mathbb{R}^n\times\mathbb{R}^m
+\to
+\mathbb{R}
+:
+(x,p,u)
+\mapsto
+H(x,p,u)
+=
+p\cdot f(x,u) + L(x,u)
+\]
+heisst die {\em Steuerungs-Hamilton-Funktion}
+der optimalen Steuerungsaufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}.
+\end{definition}
+
+Sei jetzt $q_*(t)=(x_*(t),u_*(t),p_*(t))$ eine Lösung der
+Euler-Lagrange-Differentialgleichung für die Lagrange-Funktion
+$F(q,\dot{q})$.
+Wir berechnen die partiellen Ableitungen von $H$ wie folgt
+\begin{align*}
+\frac{\partial H}{\partial x}(x_*(t),u_*(t),p_*(t))
+&=
+\frac{\partial L}{\partial x}(x_*(t),u_*(t))
++
+p\cdot\frac{\partial f}{\partial x}(x_*(t),u_*(t))
+\\
+\frac{\partial H}{\partial u}(x_*(t),u_*(t),p_*(t))
+&=
+p\cdot
+\frac{\partial f}{\partial u}(x_*(t),u_*(t))
++
+\frac{\partial L}{\partial u}(x_*(t),u_*(t))
+\\
+\frac{\partial H}{\partial p}(x_*(t),u_*(t),p_*(t))
+&=
+f(x_*(t),u_*(t))
+\end{align*}
+
+\begin{satz}[Hamilton-Gleichungen]
+\end{satz}
+
+%
+% Das Minimum-Prinzip
+%
+\subsection{Das Minimum-Prinzip
+\label{buch:hamiltonjacobi:oc:subsection:minimum}}
+
+
+
