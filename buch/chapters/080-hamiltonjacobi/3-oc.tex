@@ -35,7 +35,8 @@ sich viele dieser Probleme lösen lassen.
 %
 \subsection{Das optimale Steuerungsproblem
 \label{buch:hamiltonjacobi:oc:subsection:problem}}
-Ein {\em Steuerungsproblem} ist eine Differentialgleichung der Form
+Ein {\em Steuerungsproblem} für ein System mit Differentialgleichung
+der Form
 \[
 \dot{x}
 =
@@ -50,6 +51,17 @@ Durch geeignete Wahl der Funktion $u(t)$ kann man erreichen, dass
 die Lösung mit gewissen Anfangsbedingungen $x(t_0)$ in einem
 gewählten Endpunkt $x(t_1)$ endet.
 
+Da man die Zeit ebenfalls als eine Steuervariable auffassen kann, 
+kann man die Systemgleichung zu
+\begin{equation*}
+\dot{x}
+=
+f(x,u)
+\end{equation*}
+vereinfachen.
+Man darf also annehmen, dass $f$ nicht explizit von der Zeit
+abhängt.
+
 %
 % Das Kostenfunktional
 %
@@ -58,7 +70,7 @@ Wie in früher untersuchten Variationsproblemen können der Funktion $x(t)$
 Kosten in Form eines Integrals der Form
 \begin{equation}
 \int_{t_0}^{t_1}
-L(x(t), \dot{x}(t))
+L(x(t),\dot{x}(t))
 \,dt
 \label{buch:hamiltonjacobi:oc:eqn:jxdotx}
 \end{equation}
@@ -110,7 +122,7 @@ J(u)
 L(x(t),u(t))
 \,dt
 +
-K(t_1)
+K(x(t_1))
 \label{buch:hamiltonjacobi:oc:eqn:jk}
 \end{equation}
 als endgültiges Funktional, welches zu minimieren ist.
@@ -140,12 +152,12 @@ J(u)
 L(x(t),u(t))
 \,dt
 +
-K(t_1)
+K(x(t_1))
 \label{buch:hamiltonjacobi:oc:eqn:kosten}
 \end{equation}
 minimiert, wobei $x(t)$ eine Lösung der Differentialgleichung
-\eqref{buch:hamiltonjacobi:oc:eqn:dgl} ist, die die Randbedinungen
-$x(t_0)=x_0$ und $x(t_1)=x_1$ erfüllt.
+\eqref{buch:hamiltonjacobi:oc:eqn:dgl} ist, die die Anfangsbedinung
+$x(t_0)=x_0$ erfüllt.
 \end{aufgabe}
 
 Die Aufgabe verlangt also, eine Steuerfunktion $u(t)$ so zu bestimmen,
@@ -267,14 +279,39 @@ Die letzte Gleichung ist die Nebenbedingung, eine Lösung der
 Euler-Lagrange-Differential\-gleichung erfüllt also automatisch auch die
 Systemdifferentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}.
 
+%
+% Die Lösung der optimalen Steuerungsaufgaben
+%
+\subsubsection{Die Lösung der optimalen Steuerungsaufgaben}
+Die Euler-Lagrange-Differentialgleichung zusammen mit geeigneten
+Anfangsbedingungen für die gesuchten Funktionen können die
+optimale Steuerungsaufgaben lösen, wie der folgende Satz zeigt.
+
 \begin{satz}[Optimale Steuerung, Lagrange-Form]
-Eine Extremale des Funktionals mit der Lagrange-Funktion
+\label{buch:hamiltonjacobi:oc:satz:optimal-lagrange}
+Eine Extremale des Funktionals
+\begin{equation}
+I(q)
+=
+\int_{t_0}^{t_1}
+F(q(t),\dot{q}(t))
+\,dt
++
+K(x(t))
+\end{equation}
+mit der Lagrange-Funktion
 \begin{equation}
 F(q,\dot{q}) = L(x,u) + p\cdot(f(x,u) - \dot{x})
 \label{buch:hamiltonjacobi:oc:optF}
 \end{equation}
+und den Randbedingungen
+\[
+x(t_0)=x_0
+\qquad\text{und}\qquad
+p(t_1)=\frac{\partial K}{\partial x}(x(t_1))
+\]
 ist eine Lösung der optimale
-Steuerungsaufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+Steuerungsaufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}.
 \end{satz}
 
 \begin{proof}
@@ -300,8 +337,54 @@ F(q_*(t),\dot{q}_*(t))
 =
 \int_{t_0}^{t_1}
 L(x_*(t),u_*(t))
-\,dt.
+\,dt,
 \]
+Der Wert des Integrals im Funktion ändert also nicht.
+
+Am Intervallende bei $t_1$ sind die Werte von $x_*(t)$ nicht
+vorgegeben.
+Der Satz~\ref{buch:nebenbedingungen:transversal:satz:randterme}
+erklärt, wie der Randterm $K(x(t))$ sich in Randbedingungen
+\[
+\frac{\partial F}{\partial \dot{q}}(q(t),\dot{q}(t))
++
+\frac{\partial K}{\partial q}(q(t_1))
+=
+0
+\]
+für $q(t_1)$ umrechnen lässt.
+Indem man die Ableitungen nach den Komponenten von $q$ separat betrachtet,
+findet man
+\begin{align*}
+0
+&=
+\frac{\partial F}{\partial\dot{x}}(q(t_1),\dot{q}(t_1))
++
+\frac{\partial K}{\partial x}(q(t_1))
+=
+-p_*(t_1)
++
+\frac{\partial K}{\partial x}(x_*(t_1))
+&&\Rightarrow&p_*(t_1)
+&=
+\frac{\partial K}{\partial x}(x_*(t_1))
+\intertext{Dies ist die gesuchte Randbedingung für $p_*(t)$.
+Die verbleibenden Komponenten sind}
+0
+&=
+\frac{\partial F}{\partial\dot{u}}(q(t_1),\dot{q}(t_1))
++
+\frac{\partial K}{\partial u}(q(t_1))
+\\
+0
+&=
+\frac{\partial F}{\partial\dot{p}}(q(t_1),\dot{q}(t_1))
++
+\frac{\partial K}{\partial p}(q(t_1)).
+\end{align*}
+Da die Funktionen auf der rechten Seite nicht von den Variablen
+abhängen, nach denen sie abgeleitet werden, sind diese Bedingungen
+automatisch erfüllt.
 \end{proof}
 
 Die Funktion $F(q,\dot{q})$ hängt nicht von der unabhängigen
@@ -387,12 +470,16 @@ Eine solche Bedingung wird später im Minimum-Prinzip gefunden.
 Als erstes sollen jetzt die Differentialgleichungen konstruiert
 werden, die sich aus $H$ ableiten lassen.
 
+%
+% Partielle Ableitungen
+%
+\subsubsection{Partielle Ableitungen}
 Zu diesem Zweck sei $q_*(t)=(x_*(t),u_*(t),p_*(t))$ eine Lösung der
-Euler-Lagrange-Differentialgleichung
+Euler-Lagrange-Differen\-tialgleichung
 \eqref{buch:hamiltonjacobi:oc:eqn:Feulerlagrange}
 für die Lagrange-Funktion $F(q,\dot{q})$.
 Als Vorbereitung für die Berechnung der partiellen Ableitungen von $H$
-schreiben wir die Euler-Lagrange-Differen\-tialgleichungen explizit
+schreiben wir die Euler-Lagrange-Differen\-tialglei\-chungen explizit
 für die einzelnen Komponenten von $q$ hin:
 \begin{align}
 0
@@ -419,7 +506,7 @@ p_*(t)\cdot\frac{\partial f}{\partial x_k}(x_*(t),u_*(t))
 p_*(t)\cdot\frac{\partial f}{\partial x}(x_*(t),u_*(t))
 \label{buch:hamiltonjacobi:oc:eqn:Fxabl}
 \intertext{Die Variablen $\dot{u}$ und $\dot{p}$ kommen in $F$ nicht
-vor, der Zeitableitungs-Term kommt daher in den zugehörigen
+vor, der Zeitableitungsterm kommt daher in den zugehörigen
 Euler-Lagrange-Gleichungen nicht vor:}
 0
 &=
@@ -450,7 +537,7 @@ f_k(x_*(t),u_*(t))-\dot{x}_{*k}(t)
 \Rightarrow\qquad
 \dot{x}_*(t)
 &=
-f(x_*(t),u_*(t))
+f(x_*(t),u_*(t)).
 \label{buch:hamiltonjacobi:oc:eqn:Fpabl}
 \end{align}
 
@@ -492,9 +579,31 @@ f_k(x_*(t),u_*(t))
 &=&
 \dot{x}_{*k}(t)
 \end{array}
+\label{buch:hamiltonjacobi:oc:Habl}
 \end{equation}
 
+%
+% Randbedingungen
+%
+\subsubsection{Randbedingungen}
+Die Anfangsbedingung $x_*(t_0)=x_0$ für $x_*(t)$ ist bereits durch
+die Aufgabenstellung gegeben.
+Für die Funktion $p_*(t)$ wird eine weitere Randbedingung benötigt,
+damit die Differentialgleichungen~\eqref{buch:hamiltonjacobi:oc:Habl}
+Beide Funktionen $x_*(t)$ und $p_*(t)$ bestimmen können.
+Der Satz~\ref{buch:hamiltonjacobi:oc:satz:optimal-lagrange}
+definiert auch die Randbedingung $p_*(t_1)=K(x_*(t_1))$.
+
+%
+% Differentialgleichung
+%
+\subsubsection{Differentialgleichung}
+Die Differentialgleichungen~\eqref{buch:hamiltonjacobi:oc:Habl} zusammen
+mit den Randbedingungen des vorangegangenen Abschnitts ergeben jetzt
+den folgenden Satz.
+
 \begin{satz}[Hamilton-Gleichungen]
+\label{buch:hamiltonjacobi:oc:satz:hamilton-gleichungen}
 Eine Lösung $(x_*(t),u_*(t),p_*(t))$ der optimalen Steuerungsaufgabe
 erfüllt die {\em Hamilton-Differentialgleichungen}
 \begin{align*}
@@ -502,11 +611,19 @@ erfüllt die {\em Hamilton-Differentialgleichungen}
 &=
 \phantom{-}
 \frac{\partial H}{\partial p}(x_*(t),u_*(t),p_*(t))
+&
+x_*(t_0)
+&=
+x_0
 \\
 \dot{p}_*(t)
 &=
 -
 \frac{\partial H}{\partial x}(x_*(t),u_*(t),p_*(t)).
+&
+p_*(t_1)
+&=
+\frac{\partial K}{\partial x}(x_*(t_1))
 \end{align*}
 Ausserdem verschwindet die Ableitung nach $u$
 \begin{equation}
@@ -532,6 +649,36 @@ besprochen werden soll.
 %
 \subsection{Das Minimum-Prinzip
 \label{buch:hamiltonjacobi:oc:subsection:minimum}}
+In Satz~\ref{buch:hamiltonjacobi:oc:satz:hamilton-gleichungen}
+und in der daran anschliessenden Diskussion wird angedeutet, dass
+wegen der Bedingung~\eqref{buch:hamiltonjacobi:oc:eqn:ablHu0}
+die Funktion $u_*(t)$ ein Extremum der Funktion $H$ zu den gegebenen
+Werten $x_*(t)$ und $p_*(t)$ sei.
+Eine solche Bedingung vervollständigt die Lösung des optimalen
+Steuerungsproblems.
 
+\begin{satz}[Pontryagin]
+Seien die Funktionen $f(x,u)$ und $L(x,u)$ steteig differenzierbar in 
+$x$ und $u$ und sei $K(x)$ stetig differenzierbar in $x$.
+Sei die Funktion $u_*\colon[t_0,t_1]\to\mathbb{R}$ eine Lösung des
+optimalen Steuerungsproblems Aufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+und sei $x_*(t)$ die resultierende optimale Bahnkurve, dann gibt es
+eine eindeutig bestimmte Funktion $p_*\colon[t_0,t_1]\to\mathbb{R}$,
+So dass $x_*(t),u_*(t),p_*(t)$ die Hamilton-Differentialgleichungen
+von Satz~\ref{buch:hamiltonjacobi:oc:satz:hamilton-gleichungen}
+erfüllen.
+Die Funktion $u_*(t)$ erfüllt
+\begin{equation}
+u_*(t)
+=
+\operatorname{argmin}_{u\in\mathbb{R}} H(x_*(t),u,p_*(t)).
+\label{buch:hamiltonjacobi:oc:eqn:argminH}
+\end{equation}
+für alle Stellen $t\in[t_0,t_1]$, an denen $u_*(t)$ stetig ist.
+\end{satz}
+
+Dass die Bedingung \eqref{buch:hamiltonjacobi:oc:eqn:argminH} nur
+an Stellen gelten muss, an denen $u_*(t)$ stetig ist, lässt zu,
+dass die Funktion $u_*$ nicht stetig ist.
 
 
