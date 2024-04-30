@@ -630,7 +630,7 @@ p_*(t_1)
 &=
 \frac{\partial K}{\partial x}(x_*(t_1)).
 \end{align*}
-Ausserdem verschwindet die Ableitung nach $u$
+Ausserdem verschwindet die Ableitung nach $u$:
 \begin{equation}
 \frac{\partial H}{\partial u}(x_*(t),u_*(t),p_*(t))=0.
 \label{buch:hamiltonjacobi:oc:eqn:ablHu0}
@@ -687,7 +687,10 @@ an Stellen gelten muss, an denen $u_*(t)$ stetig ist, lässt zu,
 dass die Funktion $u_*$ nicht stetig ist.
 Dies wird vom folgenden Beispiel illustriert.
 
+\input{chapters/080-hamiltonjacobi/fig/oc.tex}
+
 \begin{beispiel}
+\label{buch:hamiltonjacobi:oc:bsp:simple}
 Gesucht ist die Lösung des eindimensionalen optimalen Steuerproblems
 auf dem Intervall zwischen $t_0=0$ und $t_1=1$ mit
 \begin{align*}
@@ -718,42 +721,47 @@ und ihre Ableitungen
 \begin{aligned}
 \frac{\partial H}{\partial x}
 &=
-1
-&
+1,
+&&&
 \frac{\partial H}{\partial\dot{x}}
 &=
-0
+0,
 \\
 \frac{\partial H}{\partial u}
 &=
-p
-&
+p,
+&&&
 \frac{\partial H}{\partial\dot{u}}
 &=
-0
+0,
 \\
 \frac{\partial H}{\partial p}
 &=
-u
-&
+u,
+&&&
 \frac{\partial H}{\partial\dot{p}}
 &=
 0.
 \end{aligned}
+\qquad
 \right\}
 \label{buch:hamiltonjacobi:oc:bsp:ableitungen}
 \end{equation}
-Daraus folgend die Hamilton-Differentialgleichungen mit Randbedingungen
+Daraus folgen die Hamilton-Differentialgleichungen
 \begin{align*}
+&\text{für $x(t)$:}&
 \dot{x}(t)&=u(t)
-&
+&&\text{mit Anfangsbedingung}&
 x(0)&=x_0
+\qquad\text{und}
 \\
+&\text{für $p(t)$:}&
 \dot{p}(t)&=-1
-&
-p(1)&=\frac{\partial K}{\partial x}(1) = 0
+&&\text{mit Randbedingung}&
+p(1)&=\frac{\partial K}{\partial x}(1) = 0.
 \end{align*}
-Aus der Gleichung für $p$ folgt $p_*(t)=1-t$.
+Aus der Gleichung für $p$ folgt $p_*(t)=1-t$
+(Abbildung~\ref{buch:hamiltonjacobi:oc:fig:oc} (a)).
 Das Minimumprinzip sagt jetzt, dass für $u_*(t)$ das Argument $u$
 gewählt werden muss, welches
 \[
@@ -785,12 +793,12 @@ zu minimieren.
 \end{beispiel}
 
 \begin{beispiel}
+\label{buch:hamiltonjacobi:oc:bsp:switch}
 Lösen Sie das optimale Steuerungsproblem für das System auf dem Intervall
 $[t_0,t_1]=[0,1]$ mit der Systemgleichung
 \[
-\dot{x} = f(x,u)=u,\quad x(0) = x_0
+\dot{x} = f(x,u)=u\in U=[-1,1],\quad x(0) = x_0
 \]
-mit $u\in U=[-1,1]$
 und dem Funktional
 \[
 J(u)
@@ -814,14 +822,16 @@ L(x,u) + pf(x,u)
 x + pu
 \]
 mit den Ableitungen wie in~\eqref{buch:hamiltonjacobi:oc:bsp:ableitungen}.
-Die Hamilton-Differentialgleichungen haben jetzt die Randbedingungen
+Die Hamilton-Differentialgleichungen sind jetzt
 \begin{align*}
+&\text{für $x(t)$:}&
 \dot{x}(t)&=u(t)
-&
-x(0)&=x_0
+&&\text{mit der Anfangsbedingung:}&
+x(0)&=x_0\qquad\text{und}
 \\
+&\text{für $p(t)$:}&
 \dot{p}(t)&=-1
-&
+&&\text{mit der Randbedingung:}&
 p(1)&=\frac{\partial K}{\partial x}(1) = -\frac12.
 \end{align*}
 Aus der Gleichung für $p$ folgt diesmal $p_*(t)=\frac12-t$.
@@ -837,7 +847,7 @@ betrachten.
 Welcher Werte von $u$ den kleinsten Wert von $H$ ergibt, hängt
 vom Vorzeichen von $p_*(t)=\frac12-t$.
 Für positives Vorzeichen von $p_*(t)$ muss $u=-1$ gewählt werden,
-sonst negatives.
+sonst $u=1$.
 Also ist
 \[
 u_*(t)
@@ -867,7 +877,8 @@ x_0+1-t&\qquad\text{für $t>\frac12$.}
 \end{cases}
 \]
 Die Lösungsfunktionen sind in
-Abbildung~\ref{buch:hamiltonjacobi:oc:bsp:switch:fig} dargestellt.
+Abbildung~\ref{buch:hamiltonjacobi:oc:fig:oc} (b)
+dargestellt.
 Der Wert des Funktionals kann jetzt ebenfalls berechnet werden, er ist
 \begin{align*}
 J(u_*)
