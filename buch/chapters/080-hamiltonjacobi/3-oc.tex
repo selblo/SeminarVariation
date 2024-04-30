@@ -592,7 +592,12 @@ Für die Funktion $p_*(t)$ wird eine weitere Randbedingung benötigt,
 damit die Differentialgleichungen~\eqref{buch:hamiltonjacobi:oc:Habl}
 Beide Funktionen $x_*(t)$ und $p_*(t)$ bestimmen können.
 Der Satz~\ref{buch:hamiltonjacobi:oc:satz:optimal-lagrange}
-definiert auch die Randbedingung $p_*(t_1)=K(x_*(t_1))$.
+definiert auch die Randbedingung
+\[
+p_*(t_1)
+=
+\frac{\partial K}{\partial x}(x_*(t_1)).
+\]
 
 %
 % Differentialgleichung
@@ -610,20 +615,20 @@ erfüllt die {\em Hamilton-Differentialgleichungen}
 \dot{x}_*(t)
 &=
 \phantom{-}
-\frac{\partial H}{\partial p}(x_*(t),u_*(t),p_*(t))
+\frac{\partial H}{\partial p}(x_*(t),u_*(t),p_*(t)),
 &
 x_*(t_0)
 &=
-x_0
+x_0,
 \\
 \dot{p}_*(t)
 &=
 -
-\frac{\partial H}{\partial x}(x_*(t),u_*(t),p_*(t)).
+\frac{\partial H}{\partial x}(x_*(t),u_*(t),p_*(t)),
 &
 p_*(t_1)
 &=
-\frac{\partial K}{\partial x}(x_*(t_1))
+\frac{\partial K}{\partial x}(x_*(t_1)).
 \end{align*}
 Ausserdem verschwindet die Ableitung nach $u$
 \begin{equation}
@@ -680,5 +685,217 @@ für alle Stellen $t\in[t_0,t_1]$, an denen $u_*(t)$ stetig ist.
 Dass die Bedingung \eqref{buch:hamiltonjacobi:oc:eqn:argminH} nur
 an Stellen gelten muss, an denen $u_*(t)$ stetig ist, lässt zu,
 dass die Funktion $u_*$ nicht stetig ist.
+Dies wird vom folgenden Beispiel illustriert.
 
+\begin{beispiel}
+Gesucht ist die Lösung des eindimensionalen optimalen Steuerproblems
+auf dem Intervall zwischen $t_0=0$ und $t_1=1$ mit
+\begin{align*}
+f(x,u) &= u\in U=[-1,1],
+&
+x(0) &= x_0\in\mathbb{R}
+&
+&\text{und}&
+J(u)
+=
+\int_0^1 x(t)\,dt.
+\end{align*}
+Die Lagrange-Funktion ist $L(x,u)=x$ und die Funktion $K(x)$ ist die
+Nullfunktion.
 
+Für die Lösung des Problems berechnen wird zunächst die
+Steuerungs-Hamilton-Funktion
+\[
+H(x,u,p)
+=
+L(u,x) + pf(x,u)
+=
+x + pu
+\]
+und ihre Ableitungen
+\begin{equation}
+\left.
+\begin{aligned}
+\frac{\partial H}{\partial x}
+&=
+1
+&
+\frac{\partial H}{\partial\dot{x}}
+&=
+0
+\\
+\frac{\partial H}{\partial u}
+&=
+p
+&
+\frac{\partial H}{\partial\dot{u}}
+&=
+0
+\\
+\frac{\partial H}{\partial p}
+&=
+u
+&
+\frac{\partial H}{\partial\dot{p}}
+&=
+0.
+\end{aligned}
+\right\}
+\label{buch:hamiltonjacobi:oc:bsp:ableitungen}
+\end{equation}
+Daraus folgend die Hamilton-Differentialgleichungen mit Randbedingungen
+\begin{align*}
+\dot{x}(t)&=u(t)
+&
+x(0)&=x_0
+\\
+\dot{p}(t)&=-1
+&
+p(1)&=\frac{\partial K}{\partial x}(1) = 0
+\end{align*}
+Aus der Gleichung für $p$ folgt $p_*(t)=1-t$.
+Das Minimumprinzip sagt jetzt, dass für $u_*(t)$ das Argument $u$
+gewählt werden muss, welches
+\[
+H(x_*(t),u,p_*(t))
+=
+x_*(t)+p_*(t)u
+=
+x_*(t)+(1-t)u
+\]
+minimiert.
+Da $1-t<0$ ist für alle $t<1$, wird ganz unabhängig von $x_*(t)$
+der kleinstmögliche Wert bei $u_*(t)=-1$ angenommen.
+Mit diesem $u_*(t)$ kann man jetzt auch die Lösung $x_*(t)=-t$
+berechnen.
+
+Diese Lösung ist auch plausibel, denn weil kein Randterm vorhanden ist,
+kommt es nur darauf an, dass $x_*(t)$ möglichst schnell abnimmt, um
+das Integral
+\[
+\int_0^1 x(t)\,dt
+=
+\int_0^1 -t\,dt
+=
+-\biggl[\frac12t^2\biggr]_0^1
+=
+-\frac12
+\]
+zu minimieren.
+\end{beispiel}
+
+\begin{beispiel}
+Lösen Sie das optimale Steuerungsproblem für das System auf dem Intervall
+$[t_0,t_1]=[0,1]$ mit der Systemgleichung
+\[
+\dot{x} = f(x,u)=u,\quad x(0) = x_0
+\]
+mit $u\in U=[-1,1]$
+und dem Funktional
+\[
+J(u)
+=
+\int_0^1 x(t)\,dt -\frac12 x(1)
+\]
+mit Lagrange-Funktion und Randterm
+\begin{align*}
+L(x,u)
+&=
+x
+&&\text{und}&
+K(x)&=-\frac12x.
+\end{align*}
+Die Steuerungs-Hamilton-Funktion ist
+\[
+H(x,u,p)
+=
+L(x,u) + pf(x,u)
+=
+x + pu
+\]
+mit den Ableitungen wie in~\eqref{buch:hamiltonjacobi:oc:bsp:ableitungen}.
+Die Hamilton-Differentialgleichungen haben jetzt die Randbedingungen
+\begin{align*}
+\dot{x}(t)&=u(t)
+&
+x(0)&=x_0
+\\
+\dot{p}(t)&=-1
+&
+p(1)&=\frac{\partial K}{\partial x}(1) = -\frac12.
+\end{align*}
+Aus der Gleichung für $p$ folgt diesmal $p_*(t)=\frac12-t$.
+Zur Bestimmung von $u_*(t)$ müssen wir die Hamilton-Funktion
+\[
+H(x_*(t),u,p_*(t))
+=
+x_*(t)+p_*(t)u
+=
+x_*(t)+({\textstyle\frac12}-t)u
+\]
+betrachten.
+Welcher Werte von $u$ den kleinsten Wert von $H$ ergibt, hängt
+vom Vorzeichen von $p_*(t)=\frac12-t$.
+Für positives Vorzeichen von $p_*(t)$ muss $u=-1$ gewählt werden,
+sonst negatives.
+Also ist
+\[
+u_*(t)
+=
+\left\{
+\begin{aligned}
+&\phantom{-}1&&\text{falls $p_*(t)<0$}&&\Leftrightarrow&t&>\textstyle\frac12
+\\
+&{}-1&&\text{falls $p_*(t)>0$}&&\Leftrightarrow&t&<\textstyle\frac12.
+\end{aligned}
+\right.
+\]
+Daraus kann man jetzt auch $x_*(t)$ berechnen:
+\[
+x_*(t)
+=
+\int_0^t u_*(\tau)\,d\tau
+=
+\begin{cases}
+x_0+{\displaystyle\int_0^t 1\,d\tau} = x_0+t&\qquad\text{für $t\le\frac12$}
+\\[8pt]
+x_*(\frac12)-{\displaystyle\int_{\frac12}^t 1\,d\tau}
+=
+x_0+\frac12-(t-\frac12)
+=
+x_0+1-t&\qquad\text{für $t>\frac12$.}
+\end{cases}
+\]
+Die Lösungsfunktionen sind in
+Abbildung~\ref{buch:hamiltonjacobi:oc:bsp:switch:fig} dargestellt.
+Der Wert des Funktionals kann jetzt ebenfalls berechnet werden, er ist
+\begin{align*}
+J(u_*)
+&=
+\int_0^1 x_*(t)\,dt + K(x_*(1))
+\\
+&=
+\int_0^{\frac12} x_0+t \,dt
++
+\int_{\frac12}^1 x_0+1-t\,dt
+-
+\frac12x_0
+\\
+&=
+\biggl[x_0t+\frac12t^2\biggr]_0^{\frac12}
++
+\biggl[x_0t+t-\frac12t^2\biggr]_{\frac12}^1 - \frac12x_0
+\\
+&=
+\frac12x_0 + \frac18 + x_0+1-\frac12 - \frac12x_0-\frac12 +\frac18 - \frac12x_0
+\\
+&=\frac12x_0+\frac14.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+%
+% Quadratische optimale Steuerungsprobleme
+%
+\subsection{Quadratische optimale Steuerungsprobleme
+\label{buch:hamiltonjacobi:oc:subsection:quadratisch}}
