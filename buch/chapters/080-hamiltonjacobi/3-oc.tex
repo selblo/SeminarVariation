@@ -239,16 +239,17 @@ L(x,u) +p\cdot f(x,u) - p\cdot \dot{x}
 \]
 minimiert.
 Die Euler-Lagrange-Differentialgleichung von $F$ ist
-\[
+\begin{equation}
 \frac{\partial F}{\partial q}(q(t),\dot{q}(t))
 =
 \frac{d}{dt}
 \frac{\partial F}{\partial \dot{q}}(q(t),\dot{q}(t)).
-\]
+\label{buch:hamiltonjacobi:oc:eqn:Feulerlagrange}
+\end{equation}
 Die partiellen Ableitungen nach $q$ und $\dot{q}$ lassen sich aufteilen
 in die Komponenten $x$, $u$ und $p$ von $q$.
 Wir berechnen nur die Komponenten für $p$, sie ist
-\begin{align*}
+\begin{align}
 \frac{\partial F}{\partial p}
 &=
 f(x,u)
@@ -260,10 +261,48 @@ f(x,u)
 0
 &&\Rightarrow&
 f(x,u)-\dot{x}&=0
-\end{align*}
+\label{buch:hamiltonjacobi:oc:eqn:Fsystemdgl}
+\end{align}
 Die letzte Gleichung ist die Nebenbedingung, eine Lösung der
 Euler-Lagrange-Differential\-gleichung erfüllt also automatisch auch die
 Systemdifferentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}.
+
+\begin{satz}[Optimale Steuerung, Lagrange-Form]
+Eine Extremale des Funktionals mit der Lagrange-Funktion
+\begin{equation}
+F(q,\dot{q}) = L(x,u) + p\cdot(f(x,u) - \dot{x})
+\label{buch:hamiltonjacobi:oc:optF}
+\end{equation}
+ist eine Lösung der optimale
+Steuerungsaufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+\end{satz}
+
+\begin{proof}
+Da nach
+\eqref{buch:hamiltonjacobi:oc:eqn:Fsystemdgl}
+eine Lösung der Euler-Lagrange-Differentialgleichung von $F$ immer
+auch die Systemdifferentialgleichung löst, ist 
+\begin{equation*}
+F(q_*(t),\dot{q}_*(t))
+=
+L(x_*(t),u_*(t))
++
+p_*(t)\cdot (
+\underbrace{f(x_*(t),u_*(t))-\dot{x}_*(t)}_{\displaystyle=0})
+=
+L(x_*(t),u_*(t)).
+\end{equation*}
+Insbesondere ist auch
+\[
+\int_{t_0}^{t_1}
+F(q_*(t),\dot{q}_*(t))
+\,dt
+=
+\int_{t_0}^{t_1}
+L(x_*(t),u_*(t))
+\,dt.
+\]
+\end{proof}
 
 Die Funktion $F(q,\dot{q})$ hängt nicht von der unabhängigen
 Variablen $t$ ab, somit ist die Beltrami-Identität
@@ -281,12 +320,12 @@ F(q,\dot{q})
 \underbrace{
 \frac{\partial F}{\partial\dot{x}}
 }_{\displaystyle=-p}
--
+\mathstrut-
 \dot{u}\cdot
 \underbrace{
 \frac{\partial F}{\partial\dot{u}}
 }_{\displaystyle=0}
--
+\mathstrut-
 \dot{p}\cdot
 \underbrace{
 \frac{\partial F}{\partial\dot{p}}
@@ -305,6 +344,8 @@ L(x,u) + p\cdot f(x,u)
 \label{buch:hamiltonjacobi:oc:hamilton}
 \end{align}
 konstant ist.
+Diese Funktion spielt daher in der nachfolgenden Konstruktion zur
+Lösung der optimalen Steuerungsaufgabe eine grosse Rolle.
 
 %
 % Die Hamilton-Differentialgleichungen
@@ -335,31 +376,156 @@ heisst die {\em Steuerungs-Hamilton-Funktion}
 der optimalen Steuerungsaufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}.
 \end{definition}
 
-Sei jetzt $q_*(t)=(x_*(t),u_*(t),p_*(t))$ eine Lösung der
-Euler-Lagrange-Differentialgleichung für die Lagrange-Funktion
-$F(q,\dot{q})$.
-Wir berechnen die partiellen Ableitungen von $H$ wie folgt
-\begin{align*}
-\frac{\partial H}{\partial x}(x_*(t),u_*(t),p_*(t))
+Der Name rechtfertigt sich dadurch, dass sich aus $H$ analoge
+Differentialgleichungen für die Funktionen $x(t)$ und $p(t)$ bilden
+lassen.
+Damit wird es möglich, auch die Funktion $p(t)$ zu berechnen.
+Wenn sich ausserdem eine Bedingung für $u(t)$ finden lässt, kann
+die Aufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+vollständig gelöst werden.
+Eine solche Bedingung wird später im Minimum-Prinzip gefunden.
+Als erstes sollen jetzt die Differentialgleichungen konstruiert
+werden, die sich aus $H$ ableiten lassen.
+
+Zu diesem Zweck sei $q_*(t)=(x_*(t),u_*(t),p_*(t))$ eine Lösung der
+Euler-Lagrange-Differentialgleichung
+\eqref{buch:hamiltonjacobi:oc:eqn:Feulerlagrange}
+für die Lagrange-Funktion $F(q,\dot{q})$.
+Als Vorbereitung für die Berechnung der partiellen Ableitungen von $H$
+schreiben wir die Euler-Lagrange-Differen\-tialgleichungen explizit
+für die einzelnen Komponenten von $q$ hin:
+\begin{align}
+0
 &=
-\frac{\partial L}{\partial x}(x_*(t),u_*(t))
-+
-p\cdot\frac{\partial f}{\partial x}(x_*(t),u_*(t))
+\frac{\partial F}{\partial x_k}(x_*(t),u_*(t),p_*(t))
+-
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{x}_k}(x_*(t),u_*(t),p_*(t))
+\notag
 \\
-\frac{\partial H}{\partial u}(x_*(t),u_*(t),p_*(t))
 &=
-p\cdot
-\frac{\partial f}{\partial u}(x_*(t),u_*(t))
+\frac{\partial L}{\partial x_k}(x_*(t),u_*(t))
 +
-\frac{\partial L}{\partial u}(x_*(t),u_*(t))
+p_*(t)\cdot\frac{\partial f}{\partial x_k}(x_*(t),u_*(t))
++
+\dot{p}_{*k}
+\notag
 \\
-\frac{\partial H}{\partial p}(x_*(t),u_*(t),p_*(t))
+\Rightarrow\qquad
+\dot{p}_*(t)
+&=
+-\frac{\partial L}{\partial x}(x_*(t),u_*(t))
+-
+p_*(t)\cdot\frac{\partial f}{\partial x}(x_*(t),u_*(t))
+\label{buch:hamiltonjacobi:oc:eqn:Fxabl}
+\intertext{Die Variablen $\dot{u}$ und $\dot{p}$ kommen in $F$ nicht
+vor, der Zeitableitungs-Term kommt daher in den zugehörigen
+Euler-Lagrange-Gleichungen nicht vor:}
+0
+&=
+\frac{\partial F}{\partial u_k}(x_*(t),u_*(t),p_*(t))
+-
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{u}_k}(x_*(t),u_*(t),p_*(t))
+\notag
+\\
+&=
+\frac{\partial L}{\partial u_k}(x_*(t),u_*(t))
++
+p_*(t)\cdot\frac{\partial f}{\partial u_k}(x_*(t),u_*(t))
+\label{buch:hamiltonjacobi:oc:eqn:Fuabl}
+\\
+0
+&=
+\frac{\partial F}{\partial p_k}(x_*(t),u_*(t),p_*(t))
+-
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{p}_k}(x_*(t),u_*(t),p_*(t))
+\notag
+\\
+&=
+f_k(x_*(t),u_*(t))-\dot{x}_{*k}(t)
+\notag
+\\
+\Rightarrow\qquad
+\dot{x}_*(t)
 &=
 f(x_*(t),u_*(t))
-\end{align*}
+\label{buch:hamiltonjacobi:oc:eqn:Fpabl}
+\end{align}
+
+Nach diesen Vorbereitungen können jetzt auch die partiellen Ableitungen
+von $H$ berechnet werden.
+Unter Verwendung von 
+\eqref{buch:hamiltonjacobi:oc:eqn:Fxabl},
+\eqref{buch:hamiltonjacobi:oc:eqn:Fuabl}
+und
+\eqref{buch:hamiltonjacobi:oc:eqn:Fpabl}
+Folgen die Gleichungen
+\begin{equation}
+\renewcommand{\arraycolsep}{2pt}
+\renewcommand{\arraystretch}{2.0}
+\begin{array}{rclcl}
+\displaystyle
+\frac{\partial H}{\partial x_k}(x_*(t),u_*(t),p_*(t))
+&=&
+\displaystyle
+\frac{\partial L}{\partial x}(x_*(t),u_*(t))
++
+p_*(t)\cdot\frac{\partial f}{\partial x_k}(x_*(t),u_*(t))
+&=&-\dot{p}_{*k}(t)
+\\
+\displaystyle
+\frac{\partial H}{\partial u_k}(x_*(t),u_*(t),p_*(t))
+&=&
+\displaystyle
+p_*(t)\cdot
+\frac{\partial f}{\partial u_k}(x_*(t),u_*(t))
++
+\frac{\partial L}{\partial u_k}(x_*(t),u_*(t))
+&=&0
+\\
+\displaystyle
+\frac{\partial H}{\partial p_k}(x_*(t),u_*(t),p_*(t))
+&=&
+f_k(x_*(t),u_*(t))
+&=&
+\dot{x}_{*k}(t)
+\end{array}
+\end{equation}
 
 \begin{satz}[Hamilton-Gleichungen]
+Eine Lösung $(x_*(t),u_*(t),p_*(t))$ der optimalen Steuerungsaufgabe
+erfüllt die {\em Hamilton-Differentialgleichungen}
+\begin{align*}
+\dot{x}_*(t)
+&=
+\phantom{-}
+\frac{\partial H}{\partial p}(x_*(t),u_*(t),p_*(t))
+\\
+\dot{p}_*(t)
+&=
+-
+\frac{\partial H}{\partial x}(x_*(t),u_*(t),p_*(t)).
+\end{align*}
+Ausserdem verschwindet die Ableitung nach $u$
+\begin{equation}
+\frac{\partial H}{\partial u}(x_*(t),u_*(t),p_*(t))=0.
+\label{buch:hamiltonjacobi:oc:eqn:ablHu0}
+\end{equation}
 \end{satz}
+
+Der Satz bestimmt $x_*(t)$ und $p_*(t)$ sobald $u_*(t)$ gegeben ist,
+er macht aber ausser der Bedingung, dass die
+Ableitung~\eqref{buch:hamiltonjacobi:oc:eqn:ablHu0} verschwindet,
+keine Aussage darüber, wie $u_*(t)$ gefunden werden kann.
+Ein mögliche Wahl für $u_*(t)$ könnte sein, dass $u_*(t)$ jeweils
+als das Extremum der Funktion $u\mapsto H(x_*(t),u,p_*(t))$
+gewählt wird.
+Dass dies auch die optimale Wahl sein kann, zeigt das Minimum-Prinzip
+von Pontryagin, welches im
+Abschnitt~\ref{buch:hamiltonjacobi:oc:subsection:minimum}
+besprochen werden soll.
 
 %
 % Das Minimum-Prinzip
