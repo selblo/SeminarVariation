@@ -8,16 +8,816 @@
 \kopfrechts{Kanonische Variablen}
 In den Transversalitätsbedingungen taucht immer wieder Kombination
 \[
-F - y\frac{\partial F}{\partial y'}.
+F - y'\frac{\partial F}{\partial y'}.
 \]
-Dieser Abschnitt geht daher der Frage nach, ob die Ableitung nach
-$y'$ eine besondere Bedeutung haben.
-Tatsächlich können diese Ableitungen als neue Koordinaten verwendet
+Dieser Abschnitt geht daher der Frage nach, ob die Ableitung von
+$F$ nach $y'$ eine besondere Bedeutung hat.
+Tatsächlich kann diese Ableitung als neue Koordinate verwendet
 werden, mit denen sich die Euler-Lagrange-Differentialgleichung, die
-von zweiter Ordnung ist, in eine Differentialgleichung erster Ordnung
-umwandeln lässt.
+von zweiter Ordnung ist, in ein besonders einfaches
+Differentialgleichungssystem erster Ordnung umwandeln lässt.
 
+%
+% Transversaltität und kanonische Variable
+%
+\subsection{Transversalität und kanonische Variable}
+Wir betrachten das Variationsproblem mit der Lagrange-Funktion
+$F(x,y,y')$.
+Eine Extremale durch die Punkte $(x_0,y_0)$ und $(x_1,y_1)$ ist
+eine Lösung $y(x)$ der Euler-Lagrange-Differentialgleichung, die die
+Randbedingungen $y(x_0)=y_0$ und $y(x_1)=y_1$ erfüllt.
+Da die Euler-Lagrange-Differentialgleichung von zweiter Ordnung ist,
+enthält die allgemeine Lösung zwei Konstanten, die bestimmt werden 
+müssen, um die Randbedingungen zu erfüllen.
+Diese Konstanten können der Anfangswert $y_0=y(x_0)$ und die Anfangssteigung
+$y'(x_0)$.
+Um das Randwertproblem zu lösen, muss also die Anfangssteigung gefunden
+werden, so dass die zugehörige Lösung die Randbedingung $y(x_1)=y_1$ 
+erfüllt.
 
+%
+% Die kanonischen Variablen
+%
+\subsubsection{Die kanonischen Variablen}
+Die Transversalitätsbedingung gibt der partiellen Ableitung von $F$
+nach $y'$ eine besondere Bedeutung, wir schreiben daher 
+\begin{equation}
+p = \frac{\partial F}{\partial y'}(x,y,y').
+\label{buch:hamiltonjacobi:kanonisch:eqn:pablF}
+\end{equation}
+Dies ist eine Gleichung, die in jedem Punkt $(x,y)$ eine Beziehung 
+zwischen der Steigung $y'$ und der Variablen $p$ herstellt.
+Sie ist mindestens in einer Umgebung eines Punktes der $x$-$y$-Ebene
+umkehrbar, wenn die Ableitung
+\[
+\frac{\partial^2 F}{\partial y^{\prime 2}}
+\ne 0
+\]
+ist.
+Dies ist immer dann erfüllt, wenn die starke Legendre-Bedingung
+erfüllt ist, die notwendig ist, damit Lösungen der
+Euler-Lagrange-Differentialgleichung tatsächlich das Funktional
+extremal machen.
+Wir nehmen daher im folgenden an, dass 
+\eqref{buch:hamiltonjacobi:kanonisch:eqn:pablF}
+umkehrbar ist und $y'$ durch $y$ und $p$ bestimmt werden kann.
 
+%
+% Die Hamilton-Funktion
+%
+\subsubsection{Die Hamilton-Funktion}
+Der Ausdruck der Transversalitätsbedingung kann jetzt geschrieben werden
+als 
+\[
+F(x,y,y') - y'\frac{\partial F}{\partial y'}(x,y,y')
+=
+F(x,y,y') - y'\cdot p.
+\]
+Die partielle Ableitung der rechten Seite nach $y'$ ist
+\[
+\frac{\partial}{\partial y'}
+\biggl(
+F(x,y,y') - y'\cdot p
+\biggr)
+=
+\frac{\partial F}{\partial y'}(x,y,y') - p
+=
+0,
+\]
+sie hängt also nicht von $y'$ ab.
+Somit muss sie als Funktion nur von $x$, $y$ und $p$ geschrieben werden
+können.
+
+\begin{definition}[Hamilton-Funktion]
+\label{buch:hamiltonjacobi:kanonisch:def:hamilton-funktion}
+Die Hamilton-Funktion zur Lagrange-Funktion $F$ ist die Funktion 
+\[
+H(x,y,p)
+=
+y'\cdot p - F(x,y,y')
+\]
+wobei $y'$ mit Hilfe von \eqref{buch:hamiltonjacobi:kanonisch:eqn:pablF}
+durch $p$ ausgedruckt wird.
+\end{definition}
+
+\begin{beispiel}
+\label{buch:hamiltonjacobi:kanonisch:bsp:laenge}
+Wir betrachten das Funktional mit der Lagrange-Funktion
+\[
+F(x,y,y')
+=
+\sqrt{1+y^{\prime 2}},
+\]
+welches kürzeste Verbindung in der Ebene als Extremalen hat.
+Die partielle Ableitung nach $y'$ ist
+\begin{equation}
+p
+=
+\frac{\partial F}{\partial y'}
+=
+\frac{y'}{\sqrt{1+y^{\prime 2}}}
+\label{buch:hamiltonjacobi:kanonisch:bsp:pdef}
+\end{equation}
+Ist $\alpha$ der Neigungswinkel der Tangente an den Graphen von $y(x)$,
+dann ist $y'=\tan\alpha$ und
+\[
+p
+=
+\frac{\tan\alpha}{\sqrt{1+\tan^2\alpha}}
+=
+\sin\alpha.
+\]
+Man kann also auch schreiben $p=\sin\arctan y'$ oder $y'=\tan\arcsin p$.
+
+Die zweite Ableitung von $F$ ist
+\[
+\frac{\partial^2 F}{\partial y^{\prime2}}
+=
+\frac{1}{(1+y^{\prime 2})^{\frac32}} \ne 0,
+\]
+die starke Legendre-Bedingung ist also erfüllt und $y'$ kann durch $p$
+ersetzt werden.
+In der Tat kann die Gleichung \eqref{buch:hamiltonjacobi:kanonisch:bsp:pdef}
+nach
+\begin{equation}
+y'=\frac{p}{\sqrt{1-p^2}}
+\label{buch:hamiltonjacobi:kanonisch:bsp:y'ausp}
+\end{equation}
+aufgelöst werden.
+Schon aus \eqref{buch:hamiltonjacobi:kanonisch:bsp:pdef} ist klar,
+dass $|p|<1$ sein muss, der Nenner in
+\eqref{buch:hamiltonjacobi:kanonisch:bsp:y'ausp} 
+wird also nie $0$.
+
+Die Lagrange-Funktion kann jetzt durch $p$ statt $y'$ ausgedrückt werden,
+sie ist
+\begin{align*}
+F(x,y,y')
+&=
+\sqrt{1+y^{\prime 2}}
+=
+\sqrt{1+\frac{p^2}{1-p^2}}
+=
+\frac{1}{\sqrt{1-p^2}}
+\intertext{oder ausgedrückt durch den Winkel $\alpha$}
+&=
+\frac{1}{\sqrt{1-\sin^2\alpha}}
+=
+\frac{1}{\cos\alpha}.
+\end{align*}
+Da der Winkel $|\alpha|<\frac{\pi}2$ ist, wird der Nenner nicht $0$.
+
+Die Hamilton-Funktion ist 
+\begin{align*}
+H(x,y,p)
+&=
+y'p
+-
+F(x,y,y')
+=
+y'p
+-
+\sqrt{1+y^{\prime 2}},
+\intertext{sie muss jetzt aber nur durch $p$ ausgedrückt werden, was
+unter Verwendung von \eqref{buch:hamiltonjacobi:kanonisch:bsp:y'ausp}
+auf}
+&=
+\frac{p^2}{\sqrt{1-p^2}}
+-
+\frac{1}{\sqrt{1-p^2}}
+=
+-
+\frac{1-p^2}{\sqrt{1-p^2}}
+=
+-\sqrt{1-p^2}
+\intertext{führt, oder mit Hilfe des Winkels $\alpha$ ausgedrückt:}
+&=
+-\cos\alpha.
+\end{align*}
+Die Hamilton-Funktion hat also eine einfache geometrische Interpretation.
+\end{beispiel}
+
+%
+% Die kanonischen Differentialgleichungen
+%
+\subsection{Die kanonischen Differentialgleichungen}
+Die Euler-Lagrange-Differentialgleichung für die Lagrange-Funktion $F$ ist 
+die Differentialgleichung
+\begin{equation}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+=
+0
+\label{buch:hamiltonjacobi:kanonisch:eqn:kaneldgl}
+\end{equation}
+zweiter Ordnung für die Funktion $y(x)$.
+Zu einer Lösung $y(x)$ gehört nach
+\eqref{buch:hamiltonjacobi:kanonisch:eqn:pablF}
+auch eine Funktion
+\[
+p(x)
+=
+\frac{\partial F}{\partial y'}(x,y(x),y'(x)).
+\]
+Eingesetzt in die Euler-Lagrange-Differentialgleichung
+\eqref{buch:hamiltonjacobi:kanonisch:eqn:kaneldgl}
+entsteht die Differentialgleichung
+\[
+\frac{\partial F}{\partial y}
+-
+\frac{d}{dx}p
+=
+0.
+\]
+Aus der Definition der Hamilton-Funktion folgt
+\[
+\frac{\partial H}{\partial y}
+=
+\frac{\partial y'p-F}{\partial y}
+=
+-\frac{\partial F}{\partial y}
+\qquad\Rightarrow\qquad
+\frac{dp}{dx}
+=
+-
+\frac{\partial H}{\partial y}.
+\]
+Die Ableitung von $H$ nach $p$ ist
+\[
+\frac{\partial H}{\partial p}
+=
+y',
+\]
+da $H$ nicht von $y'$ abhängt.
+Damit haben wir den folgenden Satz gefunden.
+
+\begin{satz}[Kanonische Differentialgleichungen]
+Jeder Lösung $y(x)$ der Euler-Lagrange-Differentialgleichung der
+Lagrange-Funktion $F(x,y,y')$ entspricht eine Lösung
+der {\em kanonischen Differentialgleichungen}
+\begin{equation}
+\begin{aligned}
+y'&=\phantom{-}\frac{\partial H}{\partial p}
+\\
+p'&=-\frac{\partial H}{\partial y}.
+\end{aligned}
+\end{equation}
+\end{satz}
+
+Als Differentialgleichungen erster Ordnung sind die kanonischen
+Differentialgleichungen oft leichter zu lösen als die
+Euler-Lagrange-Differentialgleichung.
+
+\begin{beispiel}
+Für die Hamilton-Funktion 
+$H(x,y,p) = -\sqrt{1-p^2}$
+des Beispiels~\ref{buch:hamiltonjacobi:kanonisch:bsp:laenge} sind
+die kanonischen Differentialgleichungen
+\begin{align}
+y'
+&=
+-\frac{\partial H}{\partial p}
+=
+\frac{p}{\sqrt{1-p^2}} = \tan\alpha,
+\notag
+\\
+p'
+&=
+\frac{\partial H}{\partial y}=0
+\notag
+\end{align}
+Aus der zweiten Gleichung folgt, dass $p$ konstant ist.
+Damit lässt sich die erste Gleichung sofort lösen, die Lösung, die
+durch den Punkt $(x_0,y_0)$ verläuft, ist
+\[
+y(x)
+=
+y_0+\frac{p}{\sqrt{1-p^2}}(x-x_0)
+=
+y_0+ (x-x_0) \tan\alpha.
+\]
+Die Lösungen sind Geraden mit Steigung $p/\sqrt{1-p^2}$
+\end{beispiel}
+
+Im Beispiel hing die Hamilton-Funktion $H(x,y,p)$ nur von $p$ ab,
+was die Lösung besonders einfach gemacht hat, weil eine der kanonischen
+Differentialgleichungen $0$ auf der rechten Seite hatte.
+Dies gilt ganz allgemein, wie der folgende Satz zeigt.
+Kommt eine der abhängigen Variablen in der Hamilton-Funktion nicht vor,
+dann kann die Differentialgleichung durch eine Stammfunktion
+gelöst werden, man sagt auch, es sei nur eine {\em Quadratur}
+erforderlich.
+
+\begin{satz}
+Sei $y(x),p(x)$ eine Lösung der kanonischen Differentialgleichungen.
+Hängt die Hamilton-Funktion nicht von $y$ ab, geschrieben als
+$H(x,y,p)=H_1(x,p)$ dann ist $p(x)=p_0$ konstant und
+$y(x)$ kann durch Quadratur bestimmt werden.
+Hängt die Hamilton-Funktion nicht von $p$ ab, geschrieben als
+$H(x,y,p)=H_2(x,y)$ dann ist $y(x)=y_0$ konstant und
+$p(x)$ kann durch Quadratur bestimmt werden.
+\end{satz}
+
+\begin{proof}
+Falls $H$ nicht von $y$ abhängt, verschwindet die rechte Seite der
+zweiten kanonischen Differentialgleichung, es gilt daher $p'=0$,
+$p$ ist konstant.
+Die erste kanonische Differentialgleichung besagt dann
+\[
+y'(x)
+=
+\frac{\partial H_1}{\partial p}(x,p_0)
+\qquad\Rightarrow\qquad
+y(x)
+=
+\int_{x_0}^x
+\frac{\partial H_1}{\partial y}(\xi,p_0)
+\,d\xi
++ y_0.
+\]
+$y(x)$ ist damit durch Quadratur bestimmt.
+
+Falls $H$ nicht von $p$ abhängt, verschwindet die rechte Seite
+der ersten kanonischen Differentialgleichung, es gilt daher $y'=0$,
+$y$ ist konstant.
+Die zweite kanonische Differentialgleichung besagt dann
+\[
+p'(x)
+=
+-
+\frac{\partial H_2}{\partial y}(x,y_0)
+\qquad\Rightarrow\qquad
+p(x)
+=
+\int_{x_0}^x
+\frac{\partial H_2}{\partial y}(\xi,y_0)
+\,d\xi
++
+p_0
+\]
+$p(x)$ ist damit durch Quadratur bestimmt.
+\end{proof}
+
+%
+% Transversalitätsbedingung
+%
+\subsection{Transversalitätsbedingung}
+Der Startpunkt für die Einführung der kanonischen Variable $p$ und
+der Hamilton-Funktion war ihr auftreten in der Transversalitätsbedingung.
+Die Lösung eines Anfangspunkt-Endkurve-Problems erfüllt am rechten 
+Intervallende die Transversalitätsbedingung
+\[
+\vec{r_1}\cdot \vec{f}_1=0,
+\]
+der Tangentialvektor $\vec{r}_1$ an die Endkurve ist orthogonal auf
+dem Vektor
+\begin{align*}
+\vec{f}_1
+&=
+\begin{pmatrix}
+\displaystyle
+F(x_1,y(x_1),y'(x_1))-y'(x_1)\frac{\partial F}{\partial y'}(x_1,y(x_1),y'(x_1))
+\\[5pt]
+\displaystyle
+\frac{\partial F}{\partial y'}(x_1,y(x_1),y'(x_1))
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+F(x_1,y(x_1),y'(x_1)) - y'(x_1) p(x_1) \\
+p(x_1)
+\end{pmatrix}
+=
+\begin{pmatrix}
+-H(x_1,y(x_1),p(x_1))\\
+p(x_1)
+\end{pmatrix}.
+\end{align*}
+
+\begin{beispiel}
+Für das Beispiel~\ref{buch:hamiltonjacobi:kanonisch:bsp:laenge}
+für kürzeste Verbindungen in der Ebene haben wir bereits gefunden,
+dass die kanonische Variable $p$ und die Hamilton-Funktion durch 
+den Neigungswinkel $\alpha$ des Graphen einer Extremalen $y(x)$
+ausgedrückt werden kann.
+Mit $y'(x)=\tan\alpha$ ist der Vektor
+\[
+\vec{f}_1
+=
+\begin{pmatrix}
+-H\\
+p
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos\alpha\\
+\sin\alpha
+\end{pmatrix}.
+\]
+Dies ist der Richtungsvektor des Einheitstangentialvektors an
+den Graphen von $y(x)$.
+Die Transversalitätsbedingung ist also genau dann erfüllt, wenn die
+Lösung orthogonal auf Endkurve trifft.
+Die kürzeste Kurve zwischen einem Punkt und einer Kurve ist eine
+Gerade durch den Punkt, die die Kurve orthogonal schneidet.
+\end{beispiel}
+
+%
+% Mehrere unabhängige Variable
+%
+\subsection{Mehrere unabhängige Variable}
+Die Transformation auf die kanonische Variable $p$ ist auch dann möglich,
+wenn $y$ eine Vektorwertige Funktion ist.
+Wir betrachten daher in diesem Abschnitt ein Variationsproblem für
+eine Funktion $y\colon \mathbb{R}\to\mathbb{R}^n$, die das Integral
+\[
+I(y)
+=
+\int_{x_0}^{x_1}
+F(x,y(x),y'(x))
+\,dx
+\]
+mit der Lagrange-Funktion
+\[
+F(x,y,y')
+=
+F(x,y_1,\dots,y_n,y_1',\dots,y'_n)
+\]
+extremal machen soll.
+Das Problem wird durch die Euler-Lagrange-Differentialgleichung
+\begin{align*}
+0
+&=
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\intertext{oder in Komponenten}
+0
+&=
+\frac{\partial F}{\partial y_k}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'_k}(x,y(x),y'(x)).
+\end{align*}
+Im Folgenden sei $y(x)$ jeweils eine Lösung dieser Differentialgleichungen.
+
+%
+% Kanonische Variablen
+%
+\subsubsection{Kanonische Variablen}
+Wie im Fall einer einzigen unabhängigen Variablen verwenden wir den
+Vektor
+\[
+p
+=
+\frac{\partial F}{\partial y'}(x,y,y')
+\qquad\text{mit Komponenten}\qquad
+p_k
+=
+\frac{\partial F}{\partial y_k'}(x,y,y')
+\]
+als neue Variable an Stelle von $y'$.
+Damit $y'$ bei festem $x$ und $y$ durch $p$ ausgedrückt werden kann,
+damit also die Abbildung 
+\[
+y'\mapsto f(y')=\frac{\partial F}{\partial y'}(x,y,y')
+\]
+mindestens in einer Umgebung eines Punktes invertiert werden kann,
+muss die Ableitung der Funktion $f\colon \mathbb{R}^n\to\mathbb{R}^n$
+nach $y'$ eine invertierbare Matrix sein.
+Die Jacobi-Matrix
+\[
+J
+=
+\frac{\partial f}{\partial y'}
+\qquad\text{mit Matrixelementen}\qquad
+\biggl(
+\frac{\partial f}{\partial y'}
+\biggr)_{ik}
+=
+\frac{\partial f_i}{\partial y_k'}
+=
+\frac{\partial^2 F}{\partial y_i'\,\partial y_k'}
+\]
+muss invertierbar sein.
+Dies ist gleichbedeutend damit, dass die Funktionaldeterminante
+$\det J\ne 0$ ist.
+Die Bedingung ist automatisch erfüllt, wenn die starke Legendre-Bedingung
+für $F$ erfüllt ist.
+Diese besagt, dass die Matrix $J$ positiv (oder negativ) definit ist, womit
+sie automatisch regulär ist.
+Da die Legendre-Bedingung notwendig ist in Variationsproblemen, in denen
+die Lösungen der Euler-Lagrange-Differentialgleichung das Funktional 
+extremal machen, können wir meist davon ausgehen,
+dass auch $y'=y'(x,y,p)$ geschrieben werden kann.
+
+%
+% Hamilton-Funktion
+%
+\subsubsection{Hamilton-Funktion}
+Die Definition der Hamilton-Funktion im Falle $n=1$ kann jetzt
+naheliegend wie folgt erweitert werden.
+Die Ableitung
+\begin{equation*}
+\frac{\partial}{\partial y'}
+\bigl(
+p\cdot y'
+-
+F(x,y,y')
+\bigr)
+=
+p
+-
+\frac{\partial F}{\partial y'}(x,y,y')
+=
+0
+\end{equation*}
+verschwindet nach Definition von $p$.
+Der Klammerausdruck hängt also nicht von $y'$ ab und kann daher 
+als Funktion $x$, $y$ und $p$ ausgedrückt werden.
+
+\begin{definition}[Hamilton-Funktion]
+Die Hamilton-Funktion zur Lagrange-Funktion $F$ ist die Funktion
+\[
+H(x,y,p)
+=
+p\cdot y' - F(x,y,y'),
+\]
+wobei $y'$ durch $x$, $y$ und $p$ ausgedrückt werden muss.
+\end{definition}
+
+Aus der Definition folgend unmittelbar die partiellen Ableitungen
+von $H$ nach $y$ und $p$, die
+\begin{equation}
+\frac{\partial H}{\partial y}
+=
+-\frac{\partial F}{\partial y}
+\qquad\text{und}\qquad
+\frac{\partial H}{\partial p}
+=
+y'
+\label{buch:hamiltonjacobi:kanonisch:eqn:Habln}
+\end{equation}
+sind.
+
+%
+% Kanonische Differentialgleichungen
+%
+\subsubsection{Kannonische Differentialgleichungen}
+Die zweite Differentialgleichung in
+\eqref{buch:hamiltonjacobi:kanonisch:eqn:Habln}
+ist bereits eine der gesuchten kanonischen Differentialgleichungen.
+Die Euler-Lagrange-Differentialgleichung
+\[
+\frac{\partial F}{\partial y}=
+\frac{d}{dx}\frac{\partial F}{\partial y'}
+\qquad\Rightarrow\qquad
+\frac{d}{dx}p
+=
+\frac{\partial F}{\partial y}
+=
+-\frac{\partial H}{\partial y}
+\]
+liefert die zweite kanonische Differentialgleichung nach der
+ersten Gleichung von \eqref{buch:hamiltonjacobi:kanonisch:eqn:Habln}.
+Damit folgt der folgende Satz.
+
+\begin{satz}[Kanonische Differentialgleichungen]
+\label{buch:hamiltonjacobi:kanonisch:satz:kandgln}
+Jeder Lösung $y(x)$ der Euler-Lagrange-Differentialgleichung der
+Lagrange-Funktion $F(x,y,y')$ entspricht eine Lösung
+der {\em kanonischen Differentialgleichungen}
+\begin{equation}
+\begin{aligned}
+y'&=\phantom{-}\frac{\partial H}{\partial p}
+\\
+p'&=-\frac{\partial H}{\partial y}.
+\end{aligned}
+\end{equation}
+\end{satz}
+
+\begin{beispiel}
+\label{buch:hamiltonjacobi:kanonisch:bsp:3dlaenge}
+Wir erweitern das Beispiel~\ref{buch:hamiltonjacobi:kanonisch:bsp:laenge}
+auf den dreidimensionalen Fall.
+Wir bezeichnen die drei Raumkoordinaten mit $x$, $y_1$ und $y_2$ und 
+verwenden die Lagrange-Funktion
+\[
+F(x,y,y')
+=
+\sqrt{1+y^{\prime 2}}
+=
+\sqrt{1+y_1^{\prime 2}+y_2^{\prime 2}}.
+\]
+Die kanonischen Variablen entstehen durch die Ableitung nach $y'$, wir
+setzen also
+\begin{align}
+p
+&=
+\frac{\partial F}{\partial y'}
+=
+\frac{y'}{\sqrt{1+y^{\prime 2}}}.
+\label{buch:hamiltonjacobi:kanonisch:bsp:py}
+\end{align}
+Die Jacobi-Matrix
+\begin{align*}
+\frac{\partial^2 F}{\partial y^{\prime 2}}
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{1+y_2^2}{(1+y^{\prime 2})^{\frac32}}
+&
+\displaystyle
+-\frac{y_1'y_2'}{(1+y^{\prime 2})^{\frac32}}
+\\[5pt]
+\displaystyle
+-\frac{y_1'y_2'}{(1+y^{\prime 2})^{\frac32}}
+&
+\displaystyle
+\frac{1+y_1^2}{(1+y^{\prime 2})^{\frac32}}
+\end{pmatrix}
+\intertext{hat die Determinante}
+\det
+\frac{\partial^2 F}{\partial y^{\prime 2}}
+&=
+\frac{1}{(1+y^{\prime 2})^3}
+\bigl(
+(1+y_1^{\prime 2})(1+y_2^{\prime 2}) - y_1^{\prime 2}y_2^{\prime 2}
+\bigr)
+=
+\frac{
+1
++
+y_1^{\prime 2} + y_2^{\prime 2}
+}{
+(1+y^{\prime 2})^3
+}
+\\
+&=
+\frac{1+y^{\prime 2}}{ (1+y^{\prime 2})^3}
+=
+\frac{1}{\sqrt{1+y^{\prime 2}}}
+>
+0,
+\\
+\operatorname{Spur}
+\frac{\partial^2 F}{\partial y^{\prime 2}}
+&=
+\frac{2+y_1^{\prime 2}+y_2^{\prime 2}}{(1+y^{\prime 2})^{\frac32}}
+>0,
+\end{align*}
+somit ist die Ableitung positiv definit, die starke Legendre-Bedingung
+ist erfüllt und $y'$ kann durch $x$, $y$ und $p$ ausgedrückt werden.
+
+Die Gleichungen~\label{buch:hamiltonjacobi:kanonisch:bsp:py} können
+invertiert werden, wenn der skalare Nenner durch $p$ ausgedrückt
+werden kann.
+Dazu multipliziert man die Gleichung mit sich selbst und erhält
+\[
+\begin{aligned}
+p^2
+&=
+\frac{y^{\prime 2}}{1+y^{\prime 2}}
+&&\Rightarrow&
+p^2(1+y^{\prime 2})&=y^{\prime2}
+\\
+&&&\Rightarrow&
+p^2
+&=
+(1-p^2)y^{\prime 2}
+\\
+&&&\Rightarrow&
+y^{\prime 2}
+&=
+\frac{p^2}{1-p^2}
+\\
+&&&\Rightarrow&
+1+y^{\prime2}
+&=
+\frac{1}{1-p^2}
+\\
+&&&\Rightarrow&
+\sqrt{1+y^{\prime2}}
+&=
+\frac{1}{\sqrt{1-p^2}}.
+\end{aligned}
+\]
+Damit kann man jetzt $y'$ durch $p$ als
+\[
+y'
+=
+\frac{p}{\sqrt{1-p^2}}
+\]
+ausdrücken.
+Auch die Legendre-Funktion kann durch $p$ ausgedrückt werden,
+da
+\[
+F(x,y,y')
+=
+\sqrt{1+y^{\prime 2}}
+=
+\frac{1}{\sqrt{1-p^2}}
+\]
+ist.
+
+Die Hamilton-Funktion ist
+\begin{align*}
+H(x,y,p)
+&=
+y'\cdot p - F(x,y,y')
+=
+\frac{p}{\sqrt{1-p^2}}\cdot p - \frac{1}{\sqrt{1-p^2}}
+=
+\frac{p^2-1}{\sqrt{1-p^2}}
+=
+-\sqrt{1-p^2},
+\end{align*}
+insbesondere hängt sie nicht von $y$ ab.
+Die Ableitung nach $p$ ist
+\[
+\frac{\partial H}{\partial p}
+=
+\frac{p}{\sqrt{1-p^2}}.
+\]
+Damit werden die kanonischen Differentialgleichungen
+\begin{align*}
+y' &= \frac{p}{\sqrt{1-p^2}} \\
+p' &= 0.
+\end{align*}
+Somit ist $p$ konstant und $y'$ kann durch Quadratur als
+\[
+y(x)
+=
+y_0 + \frac{p}{\sqrt{1-p^2}}(x-x_0)
+\]
+bestimmt werden.
+\end{beispiel}
+
+%
+% Transversalitätsbedingung
+%
+\subsubsection{Transversalitätsbedingung}
+Die Verallgemeinerung der Transversalitätsbedingungen auf mehrere
+Funktionen verlangt, dass jeder Tangentialvektor an die Randfläche
+senkrecht steht auf dem Vektor
+\[
+\vec{f}_1
+=
+\begin{pmatrix}
+\displaystyle
+F(x_1,y(x_1),y'(x_1))
+-
+y'(x_1)\cdot \frac{\partial F}{\partial y'}(x_1,y(x_1),y'(x_1))
+\\
+\displaystyle
+\frac{\partial F}{\partial y_1'}(x_1,y(x_1),y'(x_1))
+\\[9pt]
+\displaystyle
+\frac{\partial F}{\partial y_2'}(x_1,y(x_1),y'(x_1))
+\end{pmatrix}
+=
+\begin{pmatrix}
+-H(x_1,y(x_1),p(x_1)\\
+p_1(x_1)\\
+p_2(x_1)
+\end{pmatrix}.
+\]
+
+\begin{beispiel}
+In Beispiel~\ref{buch:hamiltonjacobi:kanonisch:bsp:3dlaenge} wurde
+die Hamilton-Funktion für das Variationsproblem für kürzeste Verbindungen
+im Raum bestimmt.
+Der Vektor $\vec{f}$ 
+\begin{align*}
+\vec{f}_1
+&=
+\begin{pmatrix}
+-H(x_1,y(x_1),p(x_1)\\
+p_1(x_1)\\
+p_2(x_2)
+\end{pmatrix}
+=
+\begin{pmatrix}
+\sqrt{1-p^2}\\
+p_1\\
+p_2
+\end{pmatrix}
+\end{align*}
+ist ein Vektor mit Länge
+\[
+|\vec{f}_1|
+=
+(1-p^2) + p_1^2+p_2^2
+=
+1,
+\]
+Der Vektor $\vec{f}_1$ ist also ein Tangentialeinheitsvektor an die
+durch $y(x)$ beschriebene Kurve.
+Die Transversalitätsbedingung sagt daher, dass die Kurve kürzester
+Länge von einem Punkt zu einer Fläche senkrecht auf die Fläche trifft.
+\end{beispiel}
 
 
