@@ -906,6 +906,9 @@ J(u_*)
 \end{beispiel}
 
 \begin{proof}[Beweis des Minimum-Prinzips]
+
+XXX Todo
+
 \end{proof}
 
 %
@@ -913,3 +916,238 @@ J(u_*)
 %
 \subsection{Quadratische optimale Steuerungsprobleme
 \label{buch:hamiltonjacobi:oc:subsection:quadratisch}}
+Ein spezielle Fall, in dem die Reechnungen vollständig durchführbar sind,
+ist das {\em linear quaratische optimale Steuerungsproblem}.
+\index{linear quadratisches optimales Steuerungsproblem}%
+
+\begin{aufgabe}
+\label{buch:hamiltonjacobi:oc:aufgabe:lqc}
+Das System mit der linearen Systemgleichung
+\begin{equation}
+\dot{x}
+=
+A(t)x
++
+B(t)u
+\end{equation}
+und der Anfangsbedinung $x(t_0)=x_0$ soll so gesteuert werden,
+dass das Funktional
+\begin{equation}
+J(u)
+=
+\frac12 x(t_1)^t S_1 x(t_1)
++
+\frac12
+\int_{t_0}^{t_1}
+x(t)^t Q(t) x(t)
++
+u(t)^t R(t) u(t)
+\,dt
+\end{equation}
+minimal wird.
+\end{aufgabe}
+Wir lösen das Problem hier nur für den Fall, dass die Matrizen $A$, $B$,
+$Q$ und $R$ nicht von der Zeit abhängen.
+In diesem Fall ist die Lagrange-Funktion
+\[
+L(x,u)
+=
+\frac12 x^t Qx + \frac12 u^t Ru
+\]
+dieses Funktionals ist von der Zeit unabhängig,
+ebenso die Systemgleichung $f(x,u)=Ax+bu$ wir haben also tatsächlich ein
+optimales Steuerungsproblem der Art, wie wir es studiert haben.
+
+Zur Lösung dieses Problems muss erst die Steuerungs-Hamilton-Funktion
+\[
+H(x,u,p)
+=
+L(x,u) + p\cdot f(u,x)
+=
+\frac12 x^tQx + \frac12 u^tRu + p^tAx + p^tBu
+\]
+bestimmt werden.
+Die kanonischen Differentialgleichungen sind jetzt
+\begin{align*}
+\dot{x}
+&=
+\frac{\partial H}{\partial p}
+=
+Ax
++
+Bu
+\\
+\dot{p}
+&=
+-\frac{\partial H}{\partial x}
+=
+-Qx - p^tA.
+\end{align*}
+Die zweite Gleichung ist natürlich keine Überraschung, dies ist die
+Systemgleichung.
+
+Der Randterm $K(x)$ ist ebenfalls quadratisch, es ist
+\[
+K(x) = \frac12 x^t S_1 x,
+\]
+mit der Ableitung
+\begin{equation*}
+\frac{\partial K}{\partial x}
+=
+S_1x,
+\end{equation*}
+wie sie später als Randbedingung für $p_*(t)$ gebraucht wird.
+
+Da  Minimumprinzip besagt, dass $u$ jeweils so gehält werden muss,
+dass $H(x,u,p)$ bei gegebenenm $x$ und $p$ das Minimum annimmt.
+Da $H$ quadratisch ist in $u$, muss also nach Weglassen der konstanten
+Terme in $H$ für $u$ das quadratische Minimalproblem
+\[
+f(u)
+=
+\frac12 u^t R u + p^t Bu
+\to
+\min
+\]
+gelöst werden.
+Dies ist möglich, wenn $R$ positiv definit ist.
+Die Ableitung nach $u$ ist
+\[
+0
+=
+\frac{\partial f}{\partial u}
+=
+Ru + B^tp
+\qquad\Rightarrow\qquad
+u
+=
+-
+R^{-1}B^t p.
+\]
+Damit kann $u$ aus den Differentialgleichungen eliminiert werden, 
+es bleiben die Gleichungen
+\begin{equation}
+\left.
+\begin{aligned}
+\dot{x}
+&=
+Ax-BR^{-1}B^t p
+\\
+\dot{p}
+&=
+-Qx -p^tA
+\end{aligned}
+\quad
+\right\}
+\qquad\Rightarrow\qquad
+\frac{d}{dt}
+\begin{pmatrix}
+x\\
+p
+\end{pmatrix}
+=
+\begin{pmatrix}
+A & -BR^{-1}B^t \\
+-Q & A^t
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+p
+\end{pmatrix}
+\end{equation}
+Die Anfangsbedingung für $x$ ist $x(t_0)=x_0$, die Randbedingung bei
+$t_1$ für $p$ ist mit
+$p(t_1)=S_1x(t_1)$.
+Da eine solche Beziehung für jeden denkbaren Endzeitpunkt $t$
+gelten muss, wird jetzt eine Matrix $S(t)$ gesucht derart,
+dass $p(t)=S(t)x(t)$ eine Lösung ist.
+Durch Einsetzen in die Differentialgleichung folgt
+\begin{align}
+\dot{x} &= (A - BR^{-1}B^t S)x
+\label{buch:hamiltonjacobi:oc:lqc:xdot}
+\\
+\dot{S}x+S\dot{x} &= -(Q+A^tS)x
+\label{buch:hamiltonjacobi:oc:lqc:Sdot}
+\end{align}
+Durch Einsetzen von $\dot{x}$ aus der ersten Differentialgleichung
+in die zweite entsteht die Gleichung
+\[
+\dot{S}x
+=
+(
+-Q-A^tS  - SA+BR^{-1}B S
+)
+x.
+\]
+Da der Vektor $x$ durch Veränderung der Anfangsbedingung $x_0$ beliebige
+Werte annehmen kann, muss die Matrix $S(t)$ die Matrixdifferentialgleichung
+\begin{equation}
+\dot{S}
+=
+-SA -A^tS+SBR^{-1}B^tS-Q
+\label{buch:hamiltonjacobi:oc:eqn:riccati}
+\end{equation}
+mit der Randbedingung $S(t_1)=S_1$ erfüllen.
+Die Differentialgleichung
+\eqref{buch:hamiltonjacobi:oc:eqn:riccati}
+heisst die {\em Riccati-Differentialgleichung}.
+\index{Riccati-Differentialgleichung}%
+
+Sobald $S(t)$ bestimmt ist, kann aus
+\eqref{buch:hamiltonjacobi:oc:lqc:xdot}
+durch durch Lösen der Differentialgleichung 
+\begin{align*}
+\dot{x} = (A-BR^{-1}B^tS(t)) x
+\end{align*}
+auch $x(t)$ bestimmt werden.
+Daraus ergeben sich schliesslich
+\[
+p(t)
+=
+S(t)x(t)
+\qquad
+\text{und schliesslich}
+\qquad
+u(t)
+=
+-R^{-1}B^tp(t)=-R^{-1}B^tS(t)x(t).
+\]
+Damit ist das optimale
+Steuerungsproblem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}
+vollständig gelöst.
+
+\begin{beispiel}
+Wir betrachten das eindimensionale optimale Steuerungsproblem mit
+der Systemgleichung
+\[
+\dot x
+=
+ax + bu,
+\qquad
+x(0)=x_0
+\]
+und dem Funktional
+\[
+J(u)
+=
+\frac12 s_1x(t_1)^2
++
+\frac12
+\int_{t_0}^{t_1}
+qx(t)^2 + ru(t)^2
+\,dt.
+\]
+Nach der oben erarbeiteten Lösung muss $r>0$ sein und es muss
+die Riccati-Differentialgleichung
+\[
+\dot{s}
+=
+-q-as -sa + \frac{b^2}rs
+=
+-q-2as+\frac{b^2}rs^2
+\qquad\text{mit Randbedingung}\qquad
+s(t_1)=s_1
+\]
+gelöst werden.
+
+\end{beispiel}
