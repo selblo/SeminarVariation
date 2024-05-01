@@ -736,12 +736,13 @@ y'\cdot p - F(x,y,y')
 -\sqrt{1-p^2},
 \end{align*}
 insbesondere hängt sie nicht von $y$ ab.
-Die Ableitung nach $p$ ist
-\[
+Die Ableitung nach $p$ ist tatsächlich
+\begin{equation}
 \frac{\partial H}{\partial p}
 =
 \frac{p}{\sqrt{1-p^2}}.
-\]
+\label{buch:hamiltonjacobi:kanonisch:bsp:dHdp}
+\end{equation}
 Damit werden die kanonischen Differentialgleichungen
 \begin{align*}
 y' &= \frac{p}{\sqrt{1-p^2}} \\
@@ -820,4 +821,492 @@ Die Transversalitätsbedingung sagt daher, dass die Kurve kürzester
 Länge von einem Punkt zu einer Fläche senkrecht auf die Fläche trifft.
 \end{beispiel}
 
+%
+% H als Erhaltungsgrösse
+%
+\subsection{$H$ als Erhaltungsgrösse}
+Eine besondere Situation tritt ein, wenn die Lagrange-Funktion $F(x,y,y')$
+nicht von $x$ abhängt.
+Dieser Fall soll im Folgenden untersucht werden.
+In diesem Abschnitt wird daher die
+Lagrange-Funktion vereinfachend als $F(y,y')$ geschrieben.
 
+%
+% Unabhängigkeit der Hamilton-Funktion von x
+%
+\subsubsection{Unabhängigkeit der Hamilton-Funktion von $x$}
+Da $F$ nicht explizit von $x$ abhängt, hängt auch die
+Hamilton-Funktion
+\[
+H(x,y,p)
+=
+y'\cdot p - F(y,y')
+\]
+ab.
+Wir schreiben im Folgenden auch die Hamilton-Funktion ohne $x$-Argument,
+also als $H(y,p)$.
+
+Die kanonischen Differentialgleichungen
+\[
+y' = \frac{\partial H}{\partial p}(y,p)
+\quad\text{und}\quad
+p' = -\frac{\partial H}{\partial y}(y,p)
+\]
+hängt ebenfalls nicht von $x$ ab.
+Ein solches Differentialgleichungssystem heisst {\em autonom}.
+
+\begin{definition}[Autonomes Differentialgleichungssystem]
+Ein Differentiagleichungssystem ist eine Funktion 
+\[
+f\colon \mathbb{R}\times \mathbb{R}^n\to\mathbb{R}^n
+:
+(x,y)\mapsto f(x,y).
+\]
+Eine Lösung des Differentialgleichungssystems mit der Anfangsbedingung
+$y_0$ an der Stelle $x_0$ ist eine Funktion
+$y\colon\mathbb{R}\to\mathbb{R}^n$ derart, dass 
+\[
+\frac{dy}{dx}(x)
+=
+f(x,y(x))
+\qquad\text{und}\qquad
+y(x_0)=y_0.
+\]
+Das Differentialgleichungssystem heisst {\em autonom}, wenn $f$ nicht von
+\index{autonom}%
+$x$ abhängt, wenn also
+\[
+\frac{\partial f}{\partial x} = 0
+\]
+ist.
+\end{definition}
+
+%
+% Erhaltung von H
+%
+\subsubsection{Erhaltung von $H$}
+Sei jetzt $y(x)$ und $p(x)$ eine Lösung der kanonischen
+Differentialgleichungen.
+Die Funktion $x\mapsto H(y(x),p(x))$ hat die Ableitung
+\begin{align*}
+\frac{d}{dx}H(y(x),p(x))
+&=
+\frac{\partial H}{\partial y}(y(x),p(x))\cdot y'(x)
++
+\frac{\partial H}{\partial p}(y(x),p(x))\cdot p'(x)
+\\
+&=
+-p'(x)\cdot y'(x)
++
+y'(x)\cdot p'(x)
+=
+0.
+\end{align*}
+Somit bleibt $H$ entlang einer Lösungskurve konstant.
+Lösungskurven sind in den Flächen $H(y,p)=\operatorname{const}$
+enthalten.
+
+%
+% Ableitungen beliebiger Funktionen von $x$, $y$ und $y'$
+%
+\subsubsection{Ableitungen beliebiger Funktionen von $x$, $y$ und $y'$}
+Sei $G(x,y,p)$ eine beliebige Funktion von $x$, $y$ und $p$ und $y(x)$
+und $p(x)$ eine Lösung der kanonischen Differentialgleichungen.
+Mit Hilfe der kanonischen Differentialgleichungen kann die Ableitung
+nach $x$ mit der Kettenregel
+\begin{align*}
+\frac{d}{dx}G(x,y(x),p(x))
+&=
+\frac{\partial G}{\partial x}(x,y(x),p(x))
+\\
+&\qquad
++
+\frac{\partial G}{\partial y}(x,y(x),p(x))
+\cdot
+y'(x)
++
+\frac{\partial G}{\partial p}(x,y(x),p(x))
+\cdot
+p'(x)
+\intertext{berechnen und mit Hilfe der kanonischen Differenialgleichungen
+in die Form}
+&=
+\frac{\partial G}{\partial x}(x,y(x),p(x))
+\\
+&\qquad
++
+\frac{\partial G}{\partial y}(x,y(x),p(x))
+\cdot
+\frac{\partial H}{\partial p}(x,y(x),p(x))
+\\
+&\qquad
+-
+\frac{\partial G}{\partial p}(x,y(x),p(x))
+\cdot
+\frac{\partial H}{\partial y}(x,y(x),p(x))
+\end{align*}
+bringen.
+Die letzten zwei Term auf der rechten Seite 
+
+\begin{definition}[Poisson-Klammer] Die {\em Poisson-Klammer} zweier
+Funktionen $A(x,y,p)$ und $B(x,y,p)$ von $x$, $y$ und $p$ ist die
+Funktion
+\begin{align*}
+\{ A,B\} (x,y,p)
+&=
+\frac{\partial A}{\partial y}(x,y,p)
+\frac{\partial B}{\partial p}(x,y,p)
+-
+\frac{\partial B}{\partial y}(x,y,p)
+\frac{\partial A}{\partial p}(x,y,p)
+\\
+&=
+\sum_{k=1}^n \biggl(
+\frac{\partial A}{\partial y_k}(x,y,p)
+\frac{\partial B}{\partial p_k}(x,y,p)
+-
+\frac{\partial B}{\partial y_k}(x,y,p)
+\frac{\partial A}{\partial p_k}(x,y,p)
+\biggr)
+\end{align*}
+in Komponenten.
+\end{definition}
+
+Die Poisson-Klammer ist antisymmetrisch, es gilt $\{A,B\} = -\{B,A\}$,
+wie man unmittelbar mit der Definition verifizieren kann.
+Setzt man $B=A$, filgt $\{A,A\}=-\{A,A\}$, woraus $\{A,A\}=0$ folgt.
+Die Poisson-Klammer erfüllt aber auch die die Jacobi-Identität.
+
+\begin{satz}[Jacobi-Identität]
+Für drei Funktionen $A(x,y,p)$, $B(x,y,p)$ und $C(x,y,p)$ gilt
+\begin{equation}
+\{A,\{B,C\}\}
++
+\{B,\{C,A\}\}
++
+\{C,\{A,B\}\}
+=
+0.
+\label{buch:hamiltonjacobi:kanonisch:eqn:jacobiidentitaet}
+\end{equation}
+Die Funktionen von $x$, $y$ und $p$ bilden eine Lie-Algebra mit
+der Poisson-Klammer als Lie-Klammer.
+\end{satz}
+
+\begin{proof}
+Die linke Seite von
+\eqref{buch:hamiltonjacobi:kanonisch:eqn:jacobiidentitaet}
+wird im Folgende $L(A,B,C)$ geschrieben.
+Wir berechnen die iterierte Poisson-Klammer
+\begin{align*}
+\{A,\{B,C\}\}
+&=
+\sum_{k=1}^n
+\biggl(
+\frac{\partial A}{\partial y_k} 
+\frac{\partial \{B,C\}}{\partial p_k}
+-
+\frac{\partial A}{\partial p_k} 
+\frac{\partial \{B,C\}}{\partial y_k}
+\biggr)
+\\
+&=
+\sum_{k=1}^n\sum_{i=1}^n
+\biggl(
+\frac{\partial A}{\partial y_k}
+\frac{\partial}{\partial p_k}\biggl(
+\frac{\partial B}{\partial y_i}
+\frac{\partial C}{\partial p_i}
+-
+\frac{\partial B}{\partial p_i}
+\frac{\partial C}{\partial y_i}
+\biggr)
+-
+\frac{\partial A}{\partial p_k}
+\frac{\partial}{\partial y_k}\biggl(
+\frac{\partial B}{\partial y_i}
+\frac{\partial C}{\partial p_i}
+-
+\frac{\partial B}{\partial p_i}
+\frac{\partial C}{\partial y_i}
+\biggr)
+\biggr)
+\\
+&=
+\sum_{k,i=1}^n
+\bigg(
+\frac{\partial A}{\partial y_k}
+\frac{\partial^2 B}{\partial p_k\,\partial y_i}
+\frac{\partial C}{\partial p_i}
++
+\frac{\partial A}{\partial y_k}
+\frac{\partial B}{\partial y_i}
+\frac{\partial^2 C}{\partial p_k\,\partial p_i}
+-
+\frac{\partial A}{\partial y_k}
+\frac{\partial^2 B}{\partial p_k\,\partial p_i}
+\frac{\partial C}{\partial y_i}
+-
+\frac{\partial A}{\partial y_k}
+\frac{\partial B}{\partial p_i}
+\frac{\partial^2 C}{\partial p_k\,\partial y_i}
+\\
+&\qquad
+-
+\frac{\partial A}{\partial p_k}
+\frac{\partial^2 B}{\partial y_k\,\partial y_i}
+\frac{\partial C}{\partial p_i}
+-
+\frac{\partial A}{\partial p_k}
+\frac{\partial B}{\partial y_i}
+\frac{\partial^2 C}{\partial y_k\,\partial p_i}
++
+\frac{\partial A}{\partial p_k}
+\frac{\partial^2 B}{\partial y_k\,\partial p_i}
+\frac{\partial C}{\partial y_i}
++
+\frac{\partial A}{\partial p_k}
+\frac{\partial B}{\partial p_i}
+\frac{\partial^2 C}{\partial y_k\,\partial y_i}
+\bigg).
+\end{align*}
+Um darin eine besser Übersicht zu bekommen, schreiben wir die ersten
+Ableitungen als Spaltenvektoren
+\[
+(A_y)_i = \frac{\partial A}{\partial y_i}
+\qquad\text{und}\qquad
+(A_p)_i = \frac{\partial A}{\partial p_i}.
+\]
+und die zweiten Ableitungen als die symmetrischen Matrizen
+\[
+(B_{yy})_{ki} = \frac{\partial^2 B}{\partial y_k\,\partial y_i}
+,
+\qquad
+(B_{yp})_{ki} = \frac{\partial^2 B}{\partial y_k\,\partial p_i}
+\qquad\text{und}\qquad
+(B_{pp})_{ki} = \frac{\partial^2 B}{\partial p_k\,\partial p_i}.
+\]
+Mit diesen Notationen
+kann die iterierte Poisson-Klammer mit Hilfe des Matrizenproduktes
+geschrieben werden als
+\begin{equation}
+\begin{aligned}
+\{A,\{B,C\}\}
+&=
+A_y^tB_{py}C_p
++
+A_y^tC_{pp}B_y
+-
+A_y^tB_{pp}C_y
+-
+A_y^tC_{py}B_p
+\\
+&\qquad
+-
+A_p^tB_{yy}C_p
+-
+A_p^tC_{yp}B_y
++
+A_p^tB_{yp}C_y
++
+A_p^tC_{yy}B_p
+\end{aligned}
+\label{buch:hamiltonjacobi:kanonisch:klammerschema}
+\end{equation}
+Die Vektorfaktoren können vertauscht werden, wenn gleichzeitig die
+Indizes des Matrixfaktors vertauscht werden:
+\begin{equation}
+X_a^t Y_{bc} Z_d
+=
+Z_d^t Y_{cb} X_a
+\qquad
+\text{für $a,b,c,d\in \{y,p\}$.}
+\label{buch:hamiltonjacobi:kanonisch:eqn:xyz}
+\end{equation}
+Durch zyklische Vertauschung von $A$, $B$ und $C$ in
+\eqref{buch:hamiltonjacobi:kanonisch:klammerschema} und
+Addition entsteht die linke Seite
+\begin{align*}
+L(A,B,C)
+&=
+\mathstrut\phantom{\mathstrut-\mathstrut}
+A_y^tB_{py}C_p
++
+A_y^tC_{pp}B_y
+-
+A_y^tB_{pp}C_y
+-
+A_y^tC_{py}B_p
+\\
+&\phantom{\mathstrut=\mathstrut}
+-
+A_p^tB_{yy}C_p
+-
+A_p^tC_{yp}B_y
++
+A_p^tB_{yp}C_y
++
+A_p^tC_{yy}B_p
+\\
+&\phantom{\mathstrut=\mathstrut}
++
+B_y^tC_{py}A_p
++
+B_y^tA_{pp}C_y
+-
+B_y^tC_{pp}A_y
+-
+B_y^tA_{py}C_p
+\\
+&\phantom{\mathstrut=\mathstrut}
+-
+B_p^tC_{yy}A_p
+-
+B_p^tA_{yp}C_y
++
+B_p^tC_{yp}A_y
++
+B_p^tA_{yy}C_p
+\\
+&\phantom{\mathstrut=\mathstrut}
++
+C_y^tA_{py}B_p
++
+C_y^tB_{pp}A_y
+-
+C_y^tA_{pp}B_y
+-
+C_y^tB_{py}A_p
+\\
+&\phantom{\mathstrut=\mathstrut}
+-
+C_p^tA_{yy}B_p
+-
+C_p^tB_{yp}A_y
++
+C_p^tA_{yp}B_y
++
+C_p^tB_{yy}A_p.
+\intertext{Durch Umsortieren der Terme kann man erreichen, dass auf jeder
+Zeile nur  zweite Ableitungen der gleichen Funktion stehen:}
+&= 
+\mathstrut
+-A_p^t B_{yy} C_p
++C_p^t B_{yy} A_p
+-A_y^t B_{pp} C_y
++C_y^t B_{pp} A_y
+\\
+&\phantom{\mathstrut=\mathstrut}
++A_y^t B_{py} C_p
+-C_y^t B_{yp} A_y
++A_p^t B_{yp} C_y
+-C_y^t B_{py} A_p
+\\
+&\phantom{\mathstrut=\mathstrut}
++A_p^t C_{yy} B_p
+-B_p^t C_{yy} A_p
++A_y^t C_{pp} B_y
+-B_y^t C_{pp} A_y
+\\
+&\phantom{\mathstrut=\mathstrut}
+-A_y^t C_{py} B_p
++B_p^t C_{yp} A_y
+-A_p^t C_{yp} B_y
++B_y^t C_{py} A_p
+\\
+&\phantom{\mathstrut=\mathstrut}
++B_p^t A_{yy} C_p
+-C_p^t A_{yy} B_p
++B_y^t A_{pp} C_y
+-C_y^t A_{pp} B_y
+\\
+&\phantom{\mathstrut=\mathstrut}
+-B_y^t A_{py} C_p
++C_p^t A_{yp} B_y
+-B_p^t A_{yp} C_y
++C_y^t A_{py} B_p.
+\intertext{Aufeinanderfolgende Terme lassen sich durch Anwendung von
+\eqref{buch:hamiltonjacobi:kanonisch:eqn:xyz}
+ineinander umformen und heben sich damit weg.
+Es bleibt
+}
+L(A,B,C)&=0
+\end{align*}
+übrig, damit ist die Jacobi-Identität bewiesen.
+\end{proof}
+
+Die Ableitung von $G$ kann mit der Poisson-Klammer als
+\begin{equation}
+\frac{d}{dx}G(x,y(x),p(x))
+=
+\frac{\partial G}{\partial x}(x,y(x),p(x))
++
+\{G,H\}(x,y(x),p(x))
+\label{buch:hamiltonjacobi:kanonisch:eqn:Gabl}
+\end{equation}
+geschrieben werden, sie gilt auch wenn $H$ von $x$ abhängt.
+Wendet man diese Formel auf $H$ an, folgt
+\[
+\frac{d}{dx}
+H(x,y(x),p(x))
+=
+\frac{\partial H}{\partial x}(x,y(x),p(x))
++
+\{H,H\}(x,y(x),p(x))
+=
+\frac{\partial H}{\partial x}(x,y(x),p(x)).
+\]
+Die Hamilton-Funktion ist also genau dann konstant entlang
+einer Lösung der kanonnischen Gleichungen, wenn $H$ nicht von $x$
+abhängt.
+
+\begin{beispiel}
+Für die Lagrange-Funktion $F(x,y,y')=\sqrt{1+y^{\prime 2}}$ wurde
+wir die Hamilton-Funktion $H(x,y,p)=-\sqrt{1-p^2}$ und die Lösung
+der kanonischen Differentialgleichungen bereits bestimmt.
+Die Ableitung einer Funktion $A(x,y,p)$ entlang einer Lösungskurve
+der kanonischen Differentialgleichungen ist $p(x)=p_0$ konstant
+und damit die Ableitung
+\eqref{buch:hamiltonjacobi:kanonisch:eqn:Gabl}
+\begin{align*}
+\frac{d}{dx}A(x,y(x),p(x))
+&=
+\frac{\partial A}{\partial x}(x,y(x),p_0)
++
+\{A,H\}(x,y(x),p_0)
+\\
+&=
+\frac{\partial A}{\partial x}(x,y(x),p_0)
++
+\frac{\partial A}{\partial y}(x,y(x),p_0)
+\frac{\partial H}{\partial p}(x,y(x),p_0)
+\intertext{da, die Ableitung von $H$ nach $y$ verschwindet.
+Mit \eqref{buch:hamiltonjacobi:kanonisch:bsp:dHdp} kann die Ableitung
+der Hamilton-Funktion nach $p$ ausgedrückt, die Ableitung von $A$ wird
+dann
+}
+&=
+\frac{\partial A}{\partial x}(x,y(x),p_0)
++
+\frac{\partial A}{\partial y}(x,y(x),p_0)
+\frac{p_0}{\sqrt{1-p_0^2}},
+\intertext{die man auch als Skalarprodukt}
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial A}{\partial x}\\[7pt]
+\displaystyle
+\frac{\partial A}{\partial y_1}\\[7pt]
+\displaystyle
+\frac{\partial A}{\partial y_2}
+\end{pmatrix}
+\cdot
+\frac{1}{\sqrt{1-p_0^2}}
+\begin{pmatrix}
+\sqrt{1-p_0^2}\\
+p_{10}\\
+p_{20}
+\end{pmatrix}
+\end{align*}
+schreiben kann.
+\end{beispiel}
