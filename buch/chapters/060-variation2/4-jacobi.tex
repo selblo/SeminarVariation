@@ -8,11 +8,26 @@
 \kopfrechts{Das Jacobi-Kriterium}
 Die zweite Variation in der Form
 \eqref{buch:variation2:zweitevariation:eqn:SRintegral}
-zeigt, dass es für die Beurteilung, ob tatsächlich ein Extremum 
-vorliegt, auf das Verhalten der Funktionen $S(x)$  und $R(x)$ ankommt.
+zeigt, dass es für die Beurteilung, ob die Funktion $y(x)$ tatsächlich
+ein Extremum vorliegt, auf das Verhalten der Funktionen
+\begin{align*}
+S(x)
+&=
+P(x) - Q'(x)
+=
+\frac{\partial^2F}{\partial y^2}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial^2 F}{\partial y'\,\partial y}(x,y(x),y'(x))
+\\
+\intertext{und}
+R(x)
+&=
+\frac{\partial^2F}{\partial y^{\prime2}}(x,y(x),y'(x))
+\end{align*}
+ankommt.
 In einem Minimum garantiert die Legendre-Bedingung bereits,
 dass $R(x)\ge 0$ ist.
-Es bleibt noch zu untersuchen, ob sich Bedinungen an die Funktion
+Es bleibt noch zu untersuchen, ob sich Bedingungen an die Funktion
 $S(x)$ finden lassen, die garantieren können, dass ein Minimum
 vorliegt.
 
@@ -24,11 +39,18 @@ vorliegt.
 Wir möchten herausfinden, ob die zweite Variation negativ werden kann.
 Falls ja müsste sich eine Funktion $\eta(x)$ finden lassen, für die
 der Wert des Integrals
-\eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+\begin{equation}
+\delta^2 I(y)
+=
+\int_{x_0}^{x_1}
+S(x)\eta(x)^2 + R(x)\eta'(x)^2
+\,dx
+\label{buch:variation2:zweitevariation:eqn:SRintegral2}
+\end{equation}
 negativ ist.
 Ob es so eine Funktion gibt könnten wir dadurch entscheiden, dass wir
 das Minimum des Integrals
-\eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+\eqref{buch:variation2:zweitevariation:eqn:SRintegral2}
 suchen.
 Damit ist ein Variationsproblem entstanden, auf das wir wieder die
 bereits entwickelte Theorie anwenden können.
@@ -104,6 +126,54 @@ Die Funktion $S(x)$ lässt sich also durch $R(x)$ und die Lösung $u(x)$
 ausdrücken, dies wird in
 Abschnitt~\ref{buch:variation2:jacobi:subsection:ohne}
 nüztlich sein.
+
+\begin{beispiel}
+Für das Problem des kürzesten Abstands in der Ebene ist
+die Lagrange-Funktion $L(x,y,y')=\sqrt{1+y^{\prime 2}}$ bereits
+in Beispiel~\ref{buch:variation2:legendre:bsp:ebene}
+untersucht worden, sie erfüllt die starke Legendre-Bedingung
+\[
+R(x)
+=
+\frac{\partial L}{\partial y^{\prime 2}}(x,y(x),y'(x))
+=
+\frac{1}{(1+y'(x)^2)^{\frac32}} > 0,
+\]
+wobei die zweite Ableitung von $L$ bereits in
+\eqref{buch:variation2:legendre:bsp:ebene:R}
+berechnet wurde.
+Da $L$ nicht von $y$ abhängt, ist
+\[
+\frac{\partial L}{\partial y}=0
+\qquad\Rightarrow\qquad
+\frac{\partial^2L}{\partial y^2}=0
+\quad\text{und}\quad
+\frac{\partial^2L}{\partial y\,\partial y'}=0
+\qquad\Rightarrow\qquad
+S(x)=0,
+\]
+die Jacobi-Differentialgleichung ist daher
+\begin{equation}
+\frac{d}{dx} \frac{1}{(1+y'(x)^2)^{\frac32}} \frac{d}{dx} u(x) = 0.
+\label{buch:variation2:jacobi:eqn:ebeneQ}
+\end{equation}
+Für eine Lösung $u(x)$ ist
+\[
+\frac{1}{(1+y'(x)^2)^{\frac32}}
+\frac{d}{dx} u(x) = C
+\qquad\rightarrow\qquad
+u'(x)
+=
+C(1+y'(x)^2)^{\frac32}.
+\]
+Insbesondere hat $u'(x)$ immer das gleiche Vorzeichen.
+Wenn $u(x)$ eine Lösung mit Anfangsbedingung $u(x_0)=0$ ist, dann
+kann es keine weitere Nullstelle geben, insbesondere kann es
+also keine Funktion $\eta(x)$ mit Randwerten $\eta(x_0)=\eta(x_1)=0$
+geben, die die Jacobi-Differentialgleichung erfüllt.
+Lösungen der Euler-Lagrange-Differentialgleichung sind also Minima
+des Längenfunktionals.
+\end{beispiel}
 
 %
 % Nullstellen von Lösungen der Jacobi-Differentialgleichung
