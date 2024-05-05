@@ -731,55 +731,158 @@ ist.
 % Euler-Lagrange-Differentialgleichung
 %
 \subsubsection{Euler-Lagrange-Differentialgleichung}
-Da $L$ nicht von $\varphi$ abhängt, kann anstelle der
-Euler-Lagrange-Differentialgleichung die Beltrami-Identität
-\[
-L(\varphi,z(\varphi),z'(\varphi))
--
-z'(\varphi)
-\frac{\partial L}{\partial z'}(\varphi,z(\varphi),z'(\varphi))
-=
-\operatorname{const}
-\]
-verwendet werden.
-Die Ableitung von $L$ nach $z'$ ist
-\begin{align*}
+Für die Euler-Lagrange-Differentialgleichungen werden die partiellen
+Ableitungen der Lagrange-Funktion wie folgt benötigt:
+\begin{align}
+\frac{\partial L}{\partial z}
+&=
+\frac{
+r'(z) + z^{\prime 2}r''(z)r'(z)
+}{
+\sqrt{r(z)^2 + z^{\prime 2}(1+r'(z)^2)}
+}
+\label{buch:variation2:jacobi:rot:el-links}
+\\
 \frac{\partial L}{\partial z'}
 &=
 \frac{
 z'(1+r'(z)^2)
 }{
-\sqrt{ r(z)^2 + z^{\prime 2}\bigl(1+r'(z)^2\bigr) }
-}
-\intertext{und die Beltrami-Identität wird zu}
-L-z'\frac{\partial L}{\partial z'}
-&=
-\sqrt{r(z)^2 + z^{\prime 2}\bigl(1+r'(z)^2\bigr)}
--
-\frac{
-z^{\prime 2}\bigl( 1 + r'(z)^2\bigr)
-}{
-\sqrt{ r(z)^2 + z^{\prime 2}\bigl(1+r'(z)^2\bigr) }
-}
-\\
-&=
-\frac{
-r(z)^2 + z^{\prime 2}\bigl(1+r'(z)^2\bigr) 
--
-z^{\prime 2} \bigl(1+r'(z)^2\bigr)
-}{
-\sqrt{ r(z)^2 + z^{\prime 2}\bigl(1+r'(z)^2\bigr) }
-}
-\\
-&=
-\frac{
-r(z)^2
-}{
-\sqrt{ r(z)^2 + z^{\prime 2}\bigl(1+r'(z)^2\bigr) }
+\sqrt{r(z)^2 + z^{\prime 2}(1+r'(z)^2)}
 }.
+\end{align}
+Die Ableitung nach $z'$ muss nochmals abgeleitet werden.
+Die Notation wird etwas unübersichlich, wir schreiben zunächst
+\begin{align*}
+Z(\varphi)
+&=
+z'(\varphi)\,(1+r'(z(\varphi))^2)
+\\
+N(\varphi)
+&=
+r(z(\varphi))^2
++
+z'(\varphi)^2 (1+r'(z(\varphi))^2).
 \end{align*}
-Tatsächlich ist dieser Ausdruck für konstante Funktionen
-$z(\varphi)=\operatorname{const}$ konstant.
+Die gesuchte Ableitung von $L$ kann damit geschrieben werden als
+\begin{equation}
+\frac{d}{d\varphi}\frac{\partial L}{\partial z'}
+(\varphi,z(\varphi),z'(\varphi))
+=
+\frac{d}{d\varphi}\frac{Z(\varphi)}{\sqrt{N(\varphi)}}
+=
+\frac{
+Z'(\varphi)N(\varphi)
+-
+\frac12
+Z(\varphi)N'(\varphi)
+}{
+N(\varphi)^{\frac32}
+}.
+\label{buch:variation2:jacobi:eqn:el2}
+\end{equation}
+Auch der Term~\eqref{buch:variation2:jacobi:rot:el-links}
+kann mit Hilfe von $N(\varphi)$ etwas kompakter geschrieben werden:
+\begin{align*}
+\frac{\partial L}{\partial z}
+(\varphi,z(\varphi),z'(\varphi))
+&=
+\frac{
+r'(z(\varphi)) + z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))
+}{\sqrt{N(\varphi)}}
+\\
+&=
+\frac{
+\bigl(r'(z(\varphi)) + z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))\bigr)
+\,
+N(\varphi)
+}{
+N(\varphi)^{\frac32}
+}
+\end{align*}
+Damit kann man jetzt die Euler-Lagrange-Differentialgleichung etwas
+kompakter schreiben.
+Nach Multiplikation mit $N(\varphi)^{\frac32}$ bleibt
+\begin{equation}
+\bigl(
+r'(z(\varphi)) + z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))
+\bigr)
+\,
+N(\varphi)
+-
+Z'(\varphi)N(\varphi) + \frac12 Z(\varphi)N'(\varphi)=0.
+\label{buch:variation2:jacobi:el-ZN}
+\end{equation}
+als Euler-Lagrange-Differentialgleichung.
+
+Die Ableitungen von $Z(\varphi)$ und $N(\varphi)$ sind
+\begin{align*}
+Z'(\varphi)
+&=
+z''(\varphi)\,(1+r'(z(\varphi))^2)
++
+2
+z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))
+\\
+N'(\varphi)
+&=
+2 r'(z(\varphi))\, r(z(\varphi))\, z'(\varphi)
++
+2 z''(\varphi)\,z'(\varphi)\,(1+r'(z(\varphi))^2)
+\\
+&\qquad
++
+2 z'(\varphi)^3\, r''(z(\varphi))\, r'(z(\varphi)),
+\end{align*}
+und müssen in \eqref{buch:variation2:jacobi:el-ZN} eingesetzt
+werden. 
+
+Zur Berechnung von \eqref{buch:variation2:jacobi:el-ZN} wird
+etwas übersichtlicher, wenn die geschachtelten Funktionen nicht
+mehr alle ausgeschrieben werden müssen.
+Wir kürzen daher wieder $r'(z(\varphi)) = r'$ und $z'(\varphi)=z'$
+und analog für höhere Ableitungen.
+Dann werden die Terme für $Z(\varphi)$ und $N(\varphi)$
+\begin{align*}
+Z(\varphi)
+&=
+z'\,(1+r^{\prime 2}),
+&&&
+Z'(\varphi)
+&=
+z''\,(1+r^{\prime 2}) + 2z^{\prime 2}\,r''\,r',
+\\
+N(\varphi)
+&=
+r^2 + z^{\prime 2}(1+r^{\prime 2})
+&&\text{und}&
+N'(\varphi)
+&=
+2r'\,r\,z' + 2 z''\,z'\,(1+r^{\prime 2})+2 z^{\prime 3} r''\,r'.
+\end{align*}
+
+Wir sind nur daran interessiert zu prüfen, ob die
+Euler-Lagrange-Differentialgleichung für die Funktion $z(\varphi)=0$
+erfüllt ist.
+Daher können wir $z(\varphi)=z=0$ und $z(\varphi)=z'=0$ setzen, dadurch
+vereinfachen sich die Ausdrücke zu
+\begin{align*}
+Z(\varphi) &= 0
+&
+Z'(\varphi)
+&=0
+\\
+N(\varphi) &= r(0)^2
+&
+N'(\varphi) &= 0.
+\end{align*}
+Damit wird die Euler-Lagrange-Differentialgleichung
+\eqref{buch:variation2:jacobi:el-ZN}
+\begin{equation}
+r'(0)^2 r(0)^2 = 0.
+\end{equation}
+Die Funktion $z(\varphi)=0$ ist also nur dann eine Lösung der
+Euler-Lagrange-Differential\-glei\-chung, wenn $r'(0)=0$ ist.
 
 %
 % Legendre-Bedingungen
