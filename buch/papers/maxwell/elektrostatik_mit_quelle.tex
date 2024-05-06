@@ -20,11 +20,10 @@ Wie auch in Gleichung \eqref{maxwell:section:energieintegral_quellenfrei} ist di
 \[
 W_e
 =
-\iiint_V \frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)\, dV.
+\iiint_V \frac{1}{2}\,\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)\, dV.
 \]
-% TODO: referenz einfügen von definition elektrisches potential
 Jedoch ist dies nicht die einzige Komponente der gesamt Energie des Systems.
-Laut \ref{???} ist das elektrische Potential eine auf Ladung normierte potenzielle Energie.
+Laut \ref{maxwell:section:definition_elektrischespotentialfeld} ist das elektrische Potential eine auf Ladung normierte potenzielle Energie.
 Somit haben wir die fehlende Komponente gefunden.
 Damit wir die, durch die Ladung
 \begin{equation}
@@ -34,28 +33,30 @@ q
 \label{maxwell:ladung}
 \end{equation}
 %TODO: mathematisch korrekt machen
-verursachte, potentielle Energie $W_q$ im System mit der Ladungsdichte $\rho(x,y,z)$ ausdrücken können, müssen wir untersuchen, was eine infinitesimale potentielle Energie verursacht.
+verursachte, potentielle Energie $W_q$ im System mit der Ladungsdichte $\rho$ ausdrücken können, müssen wir untersuchen, was eine infinitesimale potentielle Energie verursacht.
 Wenn wir diese infinitesimal kleine potentielle Energie
 \[
 dW_q
 =
-\phi(x,y,z)dq
+\phi\, dq
 \]
-unter die Lupe nehmen und das Differential von $dq$ einsetzen, erhalten wir
-\begin{align*}
+unter die Lupe nehmen und für die infinitesimal kleine Ladung
+\[
+dq
+=
+\rho\, dV
+\]
+einsetzen, erhalten wir
+\[
 dW_q
-&=
-\phi(x,y,z)\underbrace{\frac{dq}{dV}}_{\rho(x,y,z)}dV
-\\
-dW_q
-&=
-\phi(x,y,z)\rho(x,y,z)dV.
-\end{align*}
+=
+\phi\,\rho\, dV.
+\]
 Jetzt müssen die infinitesimalen potentiellen Energien im Raum $V$ zusammengezählt werden und was resultiert ist
 \begin{equation}
 W_q
 =
-\iiint_V \phi(x,y,z)\rho(x,y,z)\, dV.
+\iiint_V \rho\,\phi\, dV.
 \label{maxwell:section:potenzielle_energie_ladung}
 \end{equation}
 Mit der gesamt Energie des Systems
@@ -64,14 +65,14 @@ W_{tot}
 =
 W_e - W_q
 =
-\iiint_V \frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\rho\, dV
+\iiint_V \frac{1}{2}\,\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\,\rho\, dV
 \]
 haben wir unser zu minimierendes Integral gefunden.
 Daraus können wir wieder die Lagrange funktion
 \begin{equation}
 L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)
 =
-\frac{1}{2}\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\rho
+\frac{1}{2}\,\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\,\rho
 \label{maxwell:section:lagrangefunktion_mit_quelle}
 \end{equation}
 % TODO: Müller fragen wegen kopplungsterme
@@ -97,7 +98,7 @@ zu nutze.
 Die Lösung von $F\left\{W_e\right\}$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
 Durch einsetzen von $-W_q$ in die E-O-DGL erhalten wir
 \[
-\frac{\partial}{\partial\phi}\left(-\rho\phi\right) - \underbrace{\frac{\partial}{\partial x}\frac{\partial}{\partial\phi_x}\left(\rho\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial y}\frac{\partial}{\partial\phi_y}\left(\rho\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial z}\frac{\partial}{\partial\phi_z}\left(\rho\phi\right)}_{=0}
+\frac{\partial}{\partial\phi}\left(-\rho\,\phi\right) - \underbrace{\frac{\partial}{\partial x}\frac{\partial}{\partial\phi_x}\left(\rho\,\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial y}\frac{\partial}{\partial\phi_y}\left(\rho\,\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial z}\frac{\partial}{\partial\phi_z}\left(\rho\,\phi\right)}_{=0}
 =
 0.
 \]
@@ -110,11 +111,11 @@ Somit ist
 \end{equation}
 Durch additon unserer zwei Teillösungen erhalten wir die Gleichung
 \begin{align*}
--\epsilon_0\Delta\phi - \rho
+-\epsilon_0\,\Delta\phi - \rho
 &=
 0
 \\
-\epsilon_0\Delta\phi
+\epsilon_0\,\Delta\phi
 &=
 -\rho.
 \end{align*}
