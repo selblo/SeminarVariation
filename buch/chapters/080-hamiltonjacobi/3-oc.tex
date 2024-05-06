@@ -983,7 +983,7 @@ Bu
 =
 -Qx - p^tA.
 \end{align*}
-Die zweite Gleichung ist natürlich keine Überraschung, dies ist die
+Die erste Gleichung ist natürlich keine Überraschung, dies ist die
 Systemgleichung.
 
 Der Randterm $K(x)$ ist ebenfalls quadratisch, es ist
@@ -998,8 +998,8 @@ S_1x,
 \end{equation*}
 wie sie später als Randbedingung für $p_*(t)$ gebraucht wird.
 
-Da  Minimumprinzip besagt, dass $u$ jeweils so gehält werden muss,
-dass $H(x,u,p)$ bei gegebenenm $x$ und $p$ das Minimum annimmt.
+Da  Minimumprinzip besagt, dass $u$ jeweils so gewählt werden muss,
+dass $H(x,u,p)$ bei gegebenem $x$ und $p$ das Minimum annimmt.
 Da $H$ quadratisch ist in $u$, muss also nach Weglassen der konstanten
 Terme in $H$ für $u$ das quadratische Minimalproblem
 \[
@@ -1047,13 +1047,13 @@ p
 \end{pmatrix}
 =
 \begin{pmatrix}
-A & -BR^{-1}B^t \\
--Q & A^t
+ A & -BR^{-1}B^t \\
+-Q & -A^t
 \end{pmatrix}
 \begin{pmatrix}
 x\\
 p
-\end{pmatrix}
+\end{pmatrix}.
 \end{equation}
 Die Anfangsbedingung für $x$ ist $x(t_0)=x_0$, die Randbedingung bei
 $t_1$ für $p$ ist mit
@@ -1066,7 +1066,7 @@ Durch Einsetzen in die Differentialgleichung folgt
 \dot{x} &= (A - BR^{-1}B^t S)x
 \label{buch:hamiltonjacobi:oc:lqc:xdot}
 \\
-\dot{S}x+S\dot{x} &= -(Q+A^tS)x
+\dot{S}x+S\dot{x} &= -(Q+A^tS)x.
 \label{buch:hamiltonjacobi:oc:lqc:Sdot}
 \end{align}
 Durch Einsetzen von $\dot{x}$ aus der ersten Differentialgleichung
