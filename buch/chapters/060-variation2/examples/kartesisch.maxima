@@ -1,0 +1,23 @@
+/*
+ * kartesisch.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+load(ctensor);
+
+dim: 2;
+lg: matrix(
+    [  1,   0 ],
+    [  0,   1 ]
+);
+ct_coords: [x1, x2];
+
+cmetric();
+
+diagmetric;
+
+cgeodesic(true);
+
+
+
+
