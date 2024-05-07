@@ -912,13 +912,13 @@ XXX Todo
 \end{proof}
 
 %
-% Quadratische optimale Steuerungsprobleme
+% Linear-Quadratische optimale Steuerungsprobleme
 %
-\subsection{Quadratische optimale Steuerungsprobleme
+\subsection{Linear-Quadratische optimale Steuerungsprobleme
 \label{buch:hamiltonjacobi:oc:subsection:quadratisch}}
-Ein spezielle Fall, in dem die Reechnungen vollständig durchführbar sind,
-ist das {\em linear quaratische optimale Steuerungsproblem}.
-\index{linear quadratisches optimales Steuerungsproblem}%
+Ein spezielle Fall, in dem die Rechnungen vollständig durchführbar sind,
+ist das {\em linear-quaratische optimale Steuerungsproblem}.
+\index{linear-quadratisches optimales Steuerungsproblem}%
 
 \begin{aufgabe}
 \label{buch:hamiltonjacobi:oc:aufgabe:lqc}
@@ -931,7 +931,7 @@ A(t)x
 B(t)u
 \end{equation}
 und der Anfangsbedinung $x(t_0)=x_0$ soll so gesteuert werden,
-dass das Funktional
+dass das quadratische Funktional
 \begin{equation}
 J(u)
 =
@@ -996,8 +996,20 @@ mit der Ableitung
 =
 S_1x,
 \end{equation*}
-wie sie später als Randbedingung für $p_*(t)$ gebraucht wird.
+wie sie später als Randbedingung
+\[
+p_*(t_1)
+=
+\frac{\partial K}{\partial x}(x_*(t_1))
+=
+S_1x_*(t_1)
+\]
+gebraucht wird.
 
+%
+% Optimale Steuerung für das linear-quadratische Problem
+%
+\subsubsection{Optimale Steuerung für das linear-quadratische Problem}
 Da  Minimumprinzip besagt, dass $u$ jeweils so gewählt werden muss,
 dass $H(x,u,p)$ bei gegebenem $x$ und $p$ das Minimum annimmt.
 Da $H$ quadratisch ist in $u$, muss also nach Weglassen der konstanten
@@ -1054,12 +1066,13 @@ p
 x\\
 p
 \end{pmatrix}.
+\label{buch:hamiltonjacobi:oc:eqn:blockkanonisch}
 \end{equation}
 
 \begin{definition}[Hamilton-Matrix]
 Die Matrix
 \[
-H
+\mathscr{H}
 =
 \begin{pmatrix}
  A & -BR^{-1}B^t \\
@@ -1070,69 +1083,317 @@ heisst die {\em Hamilton-Matrix} für das linear-quadratische
 Problem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}.
 \end{definition}
 
-Die Anfangsbedingung für $x$ ist $x(t_0)=x_0$, die Randbedingung bei
-$t_1$ für $p$ ist mit
-$p(t_1)=S_1x(t_1)$.
-Da eine solche Beziehung für jeden denkbaren Endzeitpunkt $t$
-gelten muss, wird jetzt eine Matrix $S(t)$ gesucht derart,
-dass $p(t)=S(t)x(t)$ eine Lösung ist.
-Durch Einsetzen in die Differentialgleichung folgt
-\begin{align}
-\dot{x} &= (A - BR^{-1}B^t S)x
-\label{buch:hamiltonjacobi:oc:lqc:xdot}
-\\
-\dot{S}x+S\dot{x} &= -(Q+A^tS)x.
-\label{buch:hamiltonjacobi:oc:lqc:Sdot}
-\end{align}
-Durch Einsetzen von $\dot{x}$ aus der ersten Differentialgleichung
-in die zweite entsteht die Gleichung
-\[
-\dot{S}x
-=
-(
--Q-A^tS  - SA+BR^{-1}B S
-)
-x.
-\]
-Da der Vektor $x$ durch Veränderung der Anfangsbedingung $x_0$ beliebige
-Werte annehmen kann, muss die Matrix $S(t)$ die Matrixdifferentialgleichung
-\begin{equation}
-\dot{S}
-=
--SA -A^tS+SBR^{-1}B^tS-Q
-\label{buch:hamiltonjacobi:oc:eqn:riccati}
-\end{equation}
-mit der Randbedingung $S(t_1)=S_1$ erfüllen.
-Die Differentialgleichung
-\eqref{buch:hamiltonjacobi:oc:eqn:riccati}
-heisst die {\em Riccati-Differentialgleichung}.
-\index{Riccati-Differentialgleichung}%
-Sie kann im Allgemeinen nicht in geschlossener Form gelöst werden.
-Für konstante Matrizen ist eine Darstellung der Lösung mit Hilfe
-der Matrixexponentialfunktion möglich.
-
-Sobald $S(t)$ bestimmt ist, kann aus
-\eqref{buch:hamiltonjacobi:oc:lqc:xdot}
-durch durch Lösen der Differentialgleichung 
+%
+% Die Steuerungskosten
+%
+\subsubsection{Die Steuerungskosten}
+Sei $x_*(t)$, $p_*(t)$ und $u_*(t)$ eine Lösung des Steuerungsproblems.
+Wir möchten den optimalen Wert des Kostenfunktionals $J(u_*)$ berechnen.
+Dazu berechnen wir die Ableitung
 \begin{align*}
-\dot{x} = (A-BR^{-1}B^tS(t)) x
+\frac12
+\frac{d}{dt}(p_*(t)^t x_*(t))
+&=
+\dot{p}_*(t)^t x_*(t) + p_*(t)^t \dot{x}_*(t)
+\intertext{mit Hilfe der kanonischen Differentialgleichungen}
+&=
+\frac12
+(-Qx_*(t)-A^tp_*(t))^t x_*(t)
++
+\frac12
+p_*(t)^t (Ax_*(t)-BR^{-1}B^tp_*(t))
+\\
+&=
+-
+\frac12
+x_*(t)^tQx_*(t)
+-
+\frac12
+p_*(t)^t BR^{-1}B^t p_*(t)
+\\
+&=
+-
+\frac12
+x_*(t)^tQx_*(t)
+-
+\frac12
+\underbrace{p_*(t)^t BR^{-1}}_{\displaystyle=u_*(t)}
+R
+\underbrace{R^{-1}B^t p_*(t)}_{\displaystyle=u_*(t)^t}
+\\
+&=
+-
+\frac12
+x_*(t)^tQx_*(t)
+-
+\frac12
+u_*(t)^t Ru_*(t).
 \end{align*}
-auch $x(t)$ bestimmt werden.
-Daraus ergeben sich schliesslich
+Durch Integrieren wird die rechte Seite zum Integral im Funktional
+$J(u_*)$:
+\begin{align*}
+\biggl[
+\frac12 p_*(t)^t x_*(t)
+\biggr]_{t_0}^{t_1}
+&=
+-\int_{t_0}^{t_1} \frac12 x_*(t)^t Qx_*(t) + \frac12 u_*(t)^t Ru_*(t)\,dt
+\end{align*}
+oder
+\begin{align*}
+\frac12 p_*(t_1)^tx_*(t_1)
++
+\int_{t_0}^{t_1} \frac12 x_*(t)^t Qx_*(t) + \frac12 u_*(t)^t Ru_*(t)\,dt
+&=
+\frac12 p_*(t_0)^t x_*(t_0).
+\intertext{Die Randbedingung $p_*(t_1)=S_1x_*(t_1)$ kann ersetzt werden
+und ergibt}
+\frac12
+(S_1x_*(t_1))^t
+x_*(t_1)
++
+\int_{t_0}^{t_1} \frac12 x_*(t)^t Qx_*(t) + \frac12 u_*(t)^t Ru_*(t)\,dt
+&=
+J(u_*)
+=
+\frac12 p_*(t_0)^t x_*(t_0).
+\end{align*}
+
+\begin{satz}
+\label{buch:hamiltonjacobi:oc:satz:optimale-kosten}
+Das Kostenfunktional hat den optimalen Wert
 \[
-p(t)
+J(u_*)
 =
-S(t)x(t)
-\qquad
-\text{und schliesslich}
-\qquad
-u(t)
-=
--R^{-1}B^tp(t)=-R^{-1}B^tS(t)x(t).
+\frac12 p_*(t_0)^t x_*(t_0).
 \]
-Damit ist das optimale
-Steuerungsproblem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}
-vollständig gelöst.
+\end{satz}
+
+
+%
+% Randbedingungen
+%
+\subsubsection{Randbedingungen}
+Die Anfangsbedingung für $x$ ist $x(t_0)=x_0$, die Randbedingung bei
+$t_1$ für $p$ ist mit $p(t_1)=S_1x(t_1)$.
+Es ist nicht klar, dass eine solche Lösung tatsächlich existiert.
+Da die Matrizen $A$, $B$, $R$ und $Q$ konstant sind, kann die
+Matrixdifferentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:blockkanonisch}
+mit Hilfe der Matrixexponentialfunktion gelöst werden.
+Tatsächlich ist
+\begin{equation}
+\begin{pmatrix}
+x(t)\\
+p(t)
+\end{pmatrix}
+=
+e^{\mathscr{H}t}
+\begin{pmatrix}
+x_0\\
+p_(0)
+\end{pmatrix}.
+\label{buch:hamiltonjacobi:oc:eqn:kansol}
+\end{equation}
+Am Ende des Zeitintervalls muss die Randbedingung
+\[
+p(t_1) = S_1x(t_1)
+\qquad\Leftrightarrow\qquad
+Sx(t_1)
+-
+Ip(t_1)
+=
+0
+\]
+erfüllt sein.
+Dies kann in Matrixform als
+\begin{equation}
+\begin{pmatrix}
+S & -I
+\end{pmatrix}
+\begin{pmatrix}
+x(t_1)\\
+p(t_1)
+\end{pmatrix}
+=
+0
+\qquad\Rightarrow\qquad
+\begin{pmatrix}
+S & -I
+\end{pmatrix}
+e^{\mathscr{H}t_1}
+\begin{pmatrix}
+x_0\\
+p(0)
+\end{pmatrix}
+=
+0
+\label{buch:hamiltonjacobi:oc:p0cond}
+\end{equation}
+geschrieben werden.
+Dies ist ein lineares Gleichungssystem zur Bestimmung von $p(0)$.
+Um es in die Standardform zu bringen, schreiben wir die $2n\times 2n$-Matrix
+$e^{\mathscr{H}t_1}$ als Blockmatrix mit $n\times n$-Blöcken in der Form
+\[
+e^{\mathscr{H}t}
+=
+\Phi(t)
+=
+\begin{pmatrix}
+\Phi_{11}(t) &
+\Phi_{12}(t) \\
+\Phi_{21}(t) &
+\Phi_{22}(t) 
+\end{pmatrix}.
+\]
+Einsetzen in \eqref{buch:hamiltonjacobi:oc:p0cond} ergibt
+\[
+\begin{pmatrix}
+S & -I
+\end{pmatrix}
+e^{\mathscr{H}t_1}
+=
+\begin{pmatrix}
+S\Phi_{11}(t_1)
+-\Phi_{21}(t_1)
+&
+S\Phi_{12}(t_1)
+-\Phi_{22}(t_1)
+\end{pmatrix}.
+\]
+Die Gleichung für $p(0)$ wird damit
+\[
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t)_1)x_0
++
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))p(0)
+=
+0
+\]
+oder
+\[
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))
+p(0)
+=
+-
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t_1))
+x_0
+\]
+Sie hat sicher eine Lösung, wenn der Faktor $S\Phi_{12}(t_1)-\Phi_{22}(t_1)$
+regulär ist, in diesem Fall ist
+\[
+p(0)
+=
+-
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))^{-1}
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t_1))
+x_0.
+\]
+Das Problem ist also leicht lösbar, wenn die Matrix
+\begin{equation}
+M
+=
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))^{-1}
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t_1))
+\label{buch:hamiltonjacobi:oc:eqn:Mmatrix}
+\end{equation}
+wohldefiniert ist.
+Es stellt sich heraus, dass dies unter den gegebenen Voraussetzungen
+immer der Fall ist.
+
+\begin{satz}
+Falls $S_1$ und $Q$ positiv semidefinit sind und $R$ positiv definit,
+dann ist die Matrix $M$ von
+\eqref{buch:hamiltonjacobi:oc:eqn:Mmatrix}
+wohldefiniert.
+\end{satz}
+
+\begin{proof}
+XXX TODO
+\end{proof}
+
+Die Berechnung des Kostenfunktionals in
+Satz~\ref{buch:hamiltonjacobi:oc:satz:optimale-kosten}
+hat die Anfangsbedingung $p_*(0)$ benötigt, die jetzt mit der
+Matrix $M$ berechnen kann.
+Der Wert kann jetzt mit
+\[
+J(u_*)
+=
+\frac12 p_*(t_0)^t x_0
+=
+\frac12 (Mx_0)^t x_0
+=
+\frac12 x_0^t Mx_0
+\]
+als quadratische Funktion der Anfangsbedingung $x_0$ ausgedrückt werden.
+
+
+%Da eine solche Beziehung für jeden denkbaren Endzeitpunkt $t$
+%gelten muss, wird jetzt eine Matrix $S(t)$ gesucht derart,
+%dass $p(t)=S(t)x(t)$ eine Lösung ist.
+%Durch Einsetzen in die Differentialgleichung folgt
+%\begin{align}
+%\dot{x} &= (A - BR^{-1}B^t S)x
+%\label{buch:hamiltonjacobi:oc:lqc:xdot}
+%\\
+%\dot{S}x+S\dot{x} &= -(Q+A^tS)x.
+%\label{buch:hamiltonjacobi:oc:lqc:Sdot}
+%\end{align}
+%Durch Einsetzen von $\dot{x}$ aus der ersten Differentialgleichung
+%in die zweite entsteht die Gleichung
+%\[
+%\dot{S}x
+%=
+%(
+%-Q-A^tS  - SA+BR^{-1}B S
+%)
+%x.
+%\]
+%Da der Vektor $x$ durch Veränderung der Anfangsbedingung $x_0$ beliebige
+%Werte annehmen kann, muss die Matrix $S(t)$ die Matrixdifferentialgleichung
+%\begin{equation}
+%\dot{S}
+%=
+%-SA -A^tS+SBR^{-1}B^tS-Q
+%\label{buch:hamiltonjacobi:oc:eqn:riccati}
+%\end{equation}
+%mit der Randbedingung $S(t_1)=S_1$ erfüllen.
+%Die Differentialgleichung
+%\eqref{buch:hamiltonjacobi:oc:eqn:riccati}
+%heisst die {\em Riccati-Differentialgleichung}.
+%\index{Riccati-Differentialgleichung}%
+%Sie kann im Allgemeinen nicht in geschlossener Form gelöst werden.
+%Für konstante Matrizen ist eine Darstellung der Lösung mit Hilfe
+%der Matrixexponentialfunktion möglich.
+%
+%Sobald $S(t)$ bestimmt ist, kann aus
+%\eqref{buch:hamiltonjacobi:oc:lqc:xdot}
+%durch durch Lösen der Differentialgleichung 
+%\begin{align*}
+%\dot{x} = (A-BR^{-1}B^tS(t)) x
+%\end{align*}
+%auch $x(t)$ bestimmt werden.
+%Daraus ergeben sich schliesslich
+%\[
+%p(t)
+%=
+%S(t)x(t)
+%\qquad
+%\text{und schliesslich}
+%\qquad
+%u(t)
+%=
+%-R^{-1}B^tp(t)=-R^{-1}B^tS(t)x(t).
+%\]
+%Damit ist das optimale
+%Steuerungsproblem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}
+%vollständig gelöst.
 
 \begin{beispiel}
 \label{buch:hamiltonjacobi:oc:bsp:eindim}
@@ -1157,18 +1418,41 @@ J(u)
 qx(t)^2 + ru(t)^2
 \,dt.
 \]
-Nach der oben erarbeiteten Lösung muss $r>0$ sein und es muss
-die Riccati-Differential\-gleichung
+Die Hamilton-Matrix ist
 \[
-\dot{s}
+\mathscr{H}
 =
--q-as -sa + \frac{b^2}rs
-=
--q-2as+\frac{b^2}rs^2
-\qquad\text{mit Randbedingung}\qquad
-s(t_1)=s_1
+\begin{pmatrix}
+ a& -b^2/r \\
+-q& -a
+\end{pmatrix}
 \]
-gelöst werden.
+mit dem charakteristischen Polynom
+\[
+\det (\mathscr{H}-\lambda I)
+=
+-(a-\lambda)(a+\lambda)-qb^2/r
+=
+-(a^2+b^2q/r) + \lambda^2 
+\]
+mit den Nullstellen
+\[
+\lambda_\pm
+=
+\pm \sqrt{a^2 +b^2q/r}.
+\]
+%Nach der oben erarbeiteten Lösung muss $r>0$ sein und es muss
+%die Riccati-Differential\-gleichung
+%\[
+%\dot{s}
+%=
+%-q-as -sa + \frac{b^2}rs
+%=
+%-q-2as+\frac{b^2}rs^2
+%\qquad\text{mit Randbedingung}\qquad
+%s(t_1)=s_1
+%\]
+%gelöst werden.
 
 Abbildung~\ref{buch:hamiltonjacobi:oc:bsp:eindim} zeigt, wie die Parameter
 $q$, $r$ und $s_1$ die Konvergenzgeschwindigkeit der Steuerung beeinflussen.
