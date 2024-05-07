@@ -1055,6 +1055,21 @@ x\\
 p
 \end{pmatrix}.
 \end{equation}
+
+\begin{definition}[Hamilton-Matrix]
+Die Matrix
+\[
+H
+=
+\begin{pmatrix}
+ A & -BR^{-1}B^t \\
+-Q & -A^t
+\end{pmatrix}
+\]
+heisst die {\em Hamilton-Matrix} für das linear-quadratische
+Problem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}.
+\end{definition}
+
 Die Anfangsbedingung für $x$ ist $x(t_0)=x_0$, die Randbedingung bei
 $t_1$ für $p$ ist mit
 $p(t_1)=S_1x(t_1)$.
@@ -1120,6 +1135,8 @@ Steuerungsproblem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}
 vollständig gelöst.
 
 \begin{beispiel}
+\label{buch:hamiltonjacobi:oc:bsp:eindim}
+\input{chapters/080-hamiltonjacobi/fig/eindim.tex}
 Wir betrachten das eindimensionale optimale Steuerungsproblem mit
 der Systemgleichung
 \[
@@ -1153,4 +1170,6 @@ s(t_1)=s_1
 \]
 gelöst werden.
 
+Abbildung~\ref{buch:hamiltonjacobi:oc:bsp:eindim} zeigt, wie die Parameter
+$q$, $r$ und $s_1$ die Konvergenzgeschwindigkeit der Steuerung beeinflussen.
 \end{beispiel}
