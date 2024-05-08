@@ -7,8 +7,8 @@ load(ctensor);
 
 dim: 2;
 lg: matrix(
-    [  1,   0            ],
-    [  0,   sin(theta)^2 ]
+    [  sin(theta)^2,   0  ],
+    [             0,   1  ]
 );
 ct_coords: [phi, theta];
 
