@@ -206,11 +206,12 @@ fn = fopen("kreispfad.tex", "w");
 i = 1;
 for yp = (-0.6:0.1:1.0)
 	name = sprintf("pfad%c", char(96 + i));
-	y = theta([0;0], yp, 1);
+	y = theta([0;0], yp, 2);
 	pfadmacro(fn, name, y);
 
 	% Kreis ausgehend vom Endpunkt zeichnen
 	name = sprintf("faecher%c", char(96 + i));
+	y = theta([0;0], yp, 1);
 	range = (2 + 2 * yp) / 3;
 	faecher(fn, name, [y(N,1);y(N,2)], y(N,3), range);
 
