@@ -183,7 +183,7 @@ end
 function faecher(fn, name, anfangspunkt, steigung, range)
 	global	N;
 	fprintf(fn, "\\def\\%s{\n", name);
-	h = 2 * range / 11;
+	h = 2 * range / 10;
 	for m = (-range:h:range)
 		y = theta(anfangspunkt, steigung + m, 1);
 		fprintf(fn, "\\draw[color=blue!20] ");
@@ -221,7 +221,7 @@ end
 
 p = kreis([0;0], linspace(-0.65,1.15,41)', 1);
 kreismacro(fn, "kreiseins", p);
-p = kreis([0;0], linspace(-0.75,1.45,61)', 2);
+p = kreis([0;0], linspace(-0.75,1.45,71)', 2);
 kreismacro(fn, "kreiszwei", p);
 
 fclose(fn);

@@ -7,3 +7,736 @@
 \label{buch:hamiltonjacobi:section:jacobi}}
 \kopfrechts{Jacobi-Theorie}
 \input{chapters/080-hamiltonjacobi/fig/kreis.tex}
+In diesem Abschnitt entwickeln wir eine geometrische Beschreibung des
+Variationsproblems, die besondere Bedeutung der Hamilton-Funktion hervorhebt.
+Wir gehen dazu aus von einem Funktional
+\begin{equation}
+J(y)
+=
+\int_{x_0}^{x_1}
+F(x,y(x),y'(x))
+\,dx
+\label{buch:hamiltonjacobi:jacobi:eqn:funktionalJ}
+\end{equation}
+mit einer Lagrange-Funktion $F(x,y,y')$.
+Als Beispiel wird jeweils die Lichtausbreitung in einem inhomogenen
+Medium mit Brechungsindex $n(y) = 1+\nu y$ dienen, welches die
+Lagrange-Funktion
+\begin{equation}
+F(x,y,y')
+=
+n(y) \sqrt{1+y^{\prime 2}}
+\label{buch:hamiltonjacobi:jacobi:eqn:beispielF}
+\end{equation}
+verwendet.
+Im Übrigen verwenden wir wieder die Bezeichnungen des vorangegangenen
+Abschnitts.
+
+%
+% Quasi-Länge und Quasikreise
+%
+\subsection{Quasilänge und Quasikreise
+\label{buch:hamiltonjacobi:jacobi:subsection:quasi}}
+Der Wert des Funktionals $J(y)$ von
+\eqref{buch:hamiltonjacobi:jacobi:eqn:funktionalJ}
+kann als ein alternatives Mass für die Entfernung zwischen
+zwei Punkten verwendet werden.
+In Kapitel~\ref{chapter:geodaeten} wird das übliche Riemannsche
+Funktional zur Berechnung der Länge einer Kurve vorgestellt, mit dem
+man sowohl die Geodäten als die kürzesten Verbindungen wie auch
+den geodätischen Abstand als den Wert des Funktionals definiert.
+Die geometrische Sprechweise für das Funktional 
+\eqref{buch:hamiltonjacobi:jacobi:eqn:funktionalJ}
+verwendet werden.
+
+%
+% Quasilänge und $J$-Abstand
+%
+\subsubsection{Quasilänge und $J$-Abstand}
+Sei $y(x)$ eine Funktion, deren Graph die Punkte $P_0=(x_0,y_0)$
+und $P_1=(x_1,y_1)$ verbindet.
+Dann nennen wir den Wert des Funktionals $J(y)$ den {\em $J$-Länge}
+der verbindenden Kurve.
+Wenn es unter allen Kurven, die die Punkte $P_0$  und $P_1$ verbinden,
+auch eine Extremale $y(x)$ gibt, dann bezeichnen wir den extremalen
+Wert des Funktionals $J(y)$ den $J$-Abstand der beiden Punkte.
+Wir bezeichnen den $J$-Abstand auch mit $J(P_0,P_1)$.
+
+%
+% Quasikreise
+%
+\subsubsection{Quasikreise}
+Wir halten den Punkt $P_0=(x_0,y_0)$ weiterhin fest und betrachten die
+Menge
+\[
+K_J(P_0,\varrho)
+=
+\{
+P_1=(x_1,y_1)\in\mathbb{R}^2
+\mid
+J(P_0,P_1) = \varrho
+\}
+\]
+aller Punkte $P_1=(x_1,y_1)$, für die der $J$-Abstand zwischen
+zu $P_0$ einen vorgegebenen Wert $\varrho$ annimmt.
+$K_J(P_0,\varrho)$ heisst auch der {\em Quasikreis} oder {\em $J$-Kreis}
+mit Zentrum $P_0$ und $J$-Radius oder Quasiradius $\varrho$.
+
+\begin{beispiel}
+In Abbildung~\ref{buch:hamiltonjacobi:hamiltonjacobi:kreis} ist der
+$J$-Kreis um den Punkt $P_0=(0,0)$ mit Radius $1$ für das Funktional
+mit der Lagrange-Funktion~\eqref{buch:hamiltonjacobi:jacobi:eqn:beispielF}
+dargestellt.
+Der hellgrüne Hintergrund symbolisiert die optische Dichte des Mediums,
+in dem sich die Lichstrahlen ausbreiten.
+Die Lichtgeschwindigkeit ist also im unteren Teil des Bildes grösser,
+die Lichstrahlen krümmen sich daher nach oben.
+
+In der gleichen Zeit können die Lichstrahlen im unteren Teil auch
+eine grössere Strecke überwinden.
+Die beiden eingezeichneten Quasikreise mit Radius 1 bzw.~2 sind 
+daher vor allem dann nach rechts verzerrt, wenn die dort
+endenden Extremalen, weit im negativen Bereich der Ebene verlaufen.
+Die Extremalen mit grosser Steigung erreichen schnell Bereich höherer
+optischer Dichte, wo Lichstrahlen mehr Zeit für die gleiche Distanz
+brauchen.
+Die Quasikreise nähern sich daher für grösser werdendes $y$ an.
+\end{beispiel}
+
+%
+% Transversalitätsbedingung
+%
+\subsubsection{Transversalitätsbedingung}
+Zu jedem Punkt $P_1\in K_J(P_0,\varrho)$ gibt es eine Lösung des
+Anfangspunkt-Endpunkt-Problems mit dem Funktional
+\eqref{buch:hamiltonjacobi:jacobi:eqn:funktionalJ}.
+Jede solche Lösung ist aber auch eine Lösung des
+Anfangspunkt-Endkurve-Problems mit Anfangspunkt $P_0$ und
+Endkurve $K_J(P_0,\varrho)$.
+Insbesondere erfüllt jede solche Extremale die Transversalitätsbedingung,
+die man am einfachsten mit der Hamilton-Funktion schreiben kann.
+
+\begin{beispiel}
+\label{buch:hamiltonjacobi:jacobi:bsp:beispielFH}
+Für die Lagrange-Funktion~\eqref{buch:hamiltonjacobi:jacobi:eqn:beispielF}
+ist die konjugierte Koordinate
+\[
+p
+=
+\frac{\partial F}{\partial y}
+=
+n'(y)\sqrt{1+y^{\prime 2}}
+=
+\nu \sqrt{1+y^{\prime 2}}.
+\]
+Aufgelöst nach $y'$ ist dies
+\begin{align*}
+\frac{p}{\nu}
+&=
+\sqrt{1+y^{\prime 2}}
+\\
+y'
+&=
+\sqrt{ \frac{p^2}{\nu^2} -1 }
+\end{align*}
+Damit kann man jetzt die Hamilton-Funktion
+\[
+H(x,y,p)
+=
+y'p - F(x,y,y')
+=
+p\sqrt{\frac{p^2}{\nu^2}-1}
+-
+n(y) \frac{p}{\nu}
+\]
+durch $y$ und $p$ ausdrücken.
+Damit sind die Koeffizienten für die Transfersalitätsbedingung
+\[
+\vec{f}_1
+=
+\begin{pmatrix} 
+-H\\
+p
+\end{pmatrix}
+\]
+gefunden.
+Der Vektor $\vec{f}_1$ steht auf der Quasikugel senkrecht.
+\end{beispiel}
+
+%
+% Quasikugeln
+%
+\subsubsection{Quasikugeln}
+Die Idee der Quasilänge und der Quasikugeln ist nicht auf eine abhängige
+Variable beschränkt.
+Für die Lagrange-Funktion 
+$F\colon \mathbb{R}\times\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$
+können wir das Funktional
+\[
+J(y) = \int_{x_0}^{x_1} F(x,y(x),y'(x))\,dx
+\]
+verwenden, um den $J$-Abstand oder Quasiabstand zwischen zwei Punkten
+definieren.
+Die $(n+1)$-dimensionale Quasikugel um den Punkt $P_0$ mit Radius $\varrho$
+besteht dann aus den Punkten, die den $J$-Abstand $\varrho$ von $P_0$ haben.
+Die Extremalen zwischen $P_0$ und einem Punkt $P_1$ auf der Quasikugel
+erfüllen im Punkt $P_1$ die Transversalitätsbedingung, der Vektor
+\[
+\vec{f}_1
+=
+\begin{pmatrix}
+-H(x,y,p)\\
+p_1\\
+\vdots\\
+p_n
+\end{pmatrix}
+\]
+steht auf der Quasikugel senkrecht.
+
+%
+% Die Fundamentalfunktion $S$
+%
+\subsection{Die Fundamentalfunktion $S$}
+Wir betrachten jetzt ein Problem mit einer gegeben Anfangskurve,
+die wir mit $\gamma_0$ bezeichnen.
+
+%
+% Konstruktion der Funktion $S$
+%
+\subsubsection{Konstruktion der Funktion $S$}
+Zu jedem Punkt $P_1=(x_1,y_1)$ suchen wir eine Lösung des
+Anfangskurve-Endpunkt-Problems mit der Anfangskurve $\gamma_0$
+und dem Endpunkt $P_1$.
+Die Lösung ist eine Funktion $y(x)$, die einen Punkt $P_0=(x_0,y_0)$ auf der
+Kurve $\gamma_0$ mit dem Punkt $P_1$ verbindet.
+Wir definieren den Wert der {\em Fundamentalfunktion} $S$ auf dem
+\index{Fundamentalfunktion}%
+Punkt $P_1$ als
+\begin{equation}
+S(x_1,y_1)
+:=
+J(y).
+\label{buch:hamiltonjacobi:jacobi:eqn:Sdef}
+\end{equation}
+Die Funktion $S$ hat die Eigenschaft, dass $S(P)=0$ ist für alle
+Punkte $P$ auf der Kurve $\gamma_0$.
+Die Extremale $y(x)$ erfüllt im Punkt $P_0$ die Transversalitätsbedingung.
+
+%
+% Das huygenssche Prinzip
+%
+\subsubsection{Das huygenssche Prinzip}
+\index{Prinzip von Huygens}%
+\index{huygensches Prinzip}%
+Die Menge 
+\[
+L(\varrho)
+=
+\{
+P_1=(x_1,y_1)\in\mathbb{R}^2
+\mid
+S(P_1)=\varrho
+\}
+\]
+besteht aus den Punkten, für die es eine Extremale der Quasilänge
+$\varrho$ von der Anfangskurve $\gamma_0$ gibt.
+Eine solche Extremale erfüllt die Transversalitätsbedingung für die
+Anfangskurve im Anfangspunkt und die Transversalitätsbedingung
+für die Kurve $L(\varrho)$ für den Endpunkt $P_1$.
+
+Diese Konstruktion erinnert an das huygensche Prinzip der Wellenausbreitung.
+Die Kurve $S(\varrho)$ ist die Wellenfront zur Zeit $t=\varrho$ einer Welle,
+die sich zur Zeit $t=0$ von der Anfangskurve gelöst hat.
+Sie entsteht als Einhüllende aller Quasikreise vom Radius $\varrho$ 
+um Punkte der Anfangskurve $\gamma_0$.
+
+\begin{beispiel}
+In Abbildung~\ref{buch:hamiltonjacobi:hamiltonjacobi:kreis} sind
+ausgehend von Punkten $P$ des Kreises $K_J((0,0),1)$ die Kreise
+$K_J(P,1)$ hellrot dargestellt.
+Sie berühren alle den roten Kreis $K_J((0,0),2)$.
+\end{beispiel}
+
+%
+% Der Gradient von S
+%
+\subsubsection{Der Gradient von $S$}
+Aus der Transversalitätsbedingung, die die Extremalen bei $P_1$ erfüllen
+müssen folgt, dass die Normale auf die Kurve $L(\varrho)$ parallel
+zum Vektor $\vec{f}_1$ sein muss.
+Die Normale ist auch parallel zum Gradienten von $S$.
+In diesem Abschnitt zeigen wir, dass der Gradient sogar mit dem 
+Vektor $\vec{f}_1$ übereinstimmt.
+
+Wir untersuchen, wie sich die der Wert $S(P)$ der Funktion $S$ ändert,
+wenn man den Punkt $P$ verschiebt.
+Sei als eine Variation der Extremalen $y(x)$ gegeben, die den Punkt $P_0$
+mit $P$ verbindet.
+Wir schreiben die Variation als Vektor
+\[
+\begin{pmatrix}
+\delta x\\
+\delta y
+\end{pmatrix}
+\]
+Die allgemeine Variationsformel, die wir in 
+Abschnitt~\ref{buch:hamiltonjacobi:section:kanonisch}
+in der kanoninschen Variable und der Hamilton-Funktion ausgedrückt
+haben, liefert für diese Variation
+\[
+\delta J
+=
+\Bigl[ -H\delta x + p \delta y \Bigr]_{x_0}^{x_1}
++
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\delta y
+\,dx.
+\]
+Da $y(x)$ eine Extremale ist, trägt das Integral nichts zur
+Variation bei.
+Die Änderung von $S$ ist nach Definition die Variation $\delta J$,
+wir können daher
+\[
+\delta S
+=
+-H\delta x(x_1) + p\delta y(x_1)
+\]
+schreiben.
+Die Koeffizienten von $\delta x(x_1)$ und $\delta y(x_1)$ sind die
+partiellen Ableitungen von $S$ nach den Variablen $x$ und $y$, also
+gilt
+\[
+\operatorname{grad} S
+=
+\begin{pmatrix}
+-H\\
+p
+\end{pmatrix}.
+\]
+
+%
+% Hamilton-Jacobi-Differentialgleichung
+%
+\subsection{Hamilton-Jacobi-Differentialgleichung
+\label{buch:hamiltonjacobi:jacobi:subsection:HJ-DGL}}
+Die Fundamtenalfunktion $S(x,y)$ hat die partiellen
+Ableitungen
+\[
+\frac{\partial S}{\partial x}
+=
+-H(x,y,p)
+\qquad\text{und}\qquad
+\frac{\partial S}{\partial y}
+=
+p.
+\]
+Durch Eliminieren von $p$ entsteht die partielle Differentialgleichung
+\begin{equation}
+\frac{\partial S}{\partial x}
++
+H\biggl(x,y,\frac{\partial S}{\partial y}\biggr).
+\label{buch:hamiltonjacobi:jacobi:eqn:hamilton-jacobi-dgl}
+\end{equation}
+Dies ist im Allgemeinen eine nichtlineare Differentialgleichung
+erster Ordnung.
+
+\begin{beispiel}
+Wir betrachten das Funktional mit der Lagrange-Funktion 
+$L=\sqrt{1+y^{\prime 2}}$.
+Die zugehörige Hamilton-Funktion wurde bereits in
+Beispiel~\ref{buch:hamiltonjacobi:section:kanonisch}
+bestimmt, sie war
+\[
+H(x,y,p)
+=
+-\sqrt{1-p^2}.
+\]
+Die Hamilton-Jacobi-Differentialgleichung ist daher
+\begin{align}
+\frac{\partial S}{\partial x}
++
+H\biggl(x,y,\frac{\partial S}{\partial y}\biggr)
+&=
+0
+\notag
+\\
+\frac{\partial S}{\partial x}
+&=
+\sqrt{1-\biggl(\frac{\partial S}{\partial y}\biggr)^2}.
+\notag
+\intertext{Durch Quadrieren können alle Ableitungen von $S$ auf die
+linke Seite gebracht werden, es bleibt die Differentialgleichung}
+\biggr(\frac{\partial S}{\partial x}\biggr)^2
++
+\biggr(\frac{\partial S}{\partial y}\biggr)^2
+&=
+1.
+\label{buch:hamiltonjacobi:jacobi:eqn:eikonal}
+\end{align}
+Diese Gleichung heisst auch {\em Eikonalgleichung}.
+\index{Eikonalgleichung}%
+\end{beispiel}
+
+\begin{beispiel}
+In Beispiel~\ref{buch:hamiltonjacobi:jacobi:bsp:beispielFH} wurde
+die Hamilton-Funktion für das Funktional mit der Lagrange-Funktion
+\eqref{buch:hamiltonjacobi:jacobi:eqn:beispielF} bereits berechnet.
+Um die Hamilton-Jacobi-Differentialgleichung zu erhalten, müssen
+wir in
+\[
+\frac{\partial S}{\partial x}
+=
+\frac{1}{\nu}p\sqrt{p^2-\nu^2} -\frac{n(y)}{\nu} p
+\]
+$p$ durch $\partial S/\partial y$ ersetzen. 
+%Bevor wir dies tun, quadrieren wir die Gleichung und formen die
+%rechte Seite um:
+%\begin{align*}
+%\biggl(
+%\frac{\partial S}{\partial x}
+%\biggr)^2
+%=
+%\frac{1}{\nu^2} p^2 (p^2-\nu^2)
+%-2\frac{n(y)}{\nu^2}p^2\sqrt{p^2-\nu^2}
+%+
+%\frac{n(y)^2}{\nu^2}p^2
+%\end{align*}
+%Wir können daher die Hamilton-Jacobi-Differentialgleichung aufstellen,
+%indem wir $p$ durch $\partial S/\partial y$ ersetzen:
+und erhalten
+\begin{align*}
+\frac{\partial S}{\partial x}
+&=
+\frac{1}{\nu}
+\frac{\partial S}{\partial y}
+\sqrt{
+\bigg(\frac{\partial S}{\partial y}\biggr)^2
+-
+\nu^2
+}
+-
+\frac{n(y)}{\nu}
+\frac{\partial S}{\partial y}
+\end{align*}
+als Hamilton-Jacobi-Differentialgleichung.
+\end{beispiel}
+
+Um die Lösung der Hamilton-Jacobi-Differentialgleichung eindeutig
+festzulegen, müssen noch Randbedingungen spezifiziert werden.
+Die ausgehend von der Anfangskurve $\gamma_0$ konstruiert Funktion
+$S(x,y)$ erfüllt zusätzlich die homogene Dirichlet Randbedingung
+$S(P)=0$ für $P\in\gamma_0$.
+Umgekehrt ist eine
+beliebige Lösung der Hamilton-Jacobi-Diffe\-ren\-tial\-gleichung
+auch die Fundamentalfunktion für die Anfangskurve ist, die aus den
+Punkten $P$ mit $S(P)=0$ besteht.
+
+%
+% Lösungen der kanonischen Differentialgleichungen
+%
+\subsection{Lösungen der kanonischen Differentialgleichungen}
+Die Extremalen sind Lösungen der kanonischen Differentialgleichungen
+\begin{equation}
+\begin{aligned}
+\frac{dy}{dx}&=\phantom{-}\frac{\partial H}{\partial p}
+\\
+\frac{dp}{dx}&=-\frac{\partial H}{\partial y}.
+\end{aligned}
+\label{buch:hamiltonjacobi:jacobi:eqn:kanonisch}
+\end{equation}
+Im Punkt $(x_0,y_0)$ sei $\vec{r}_0$ der Tangentialvektor an die
+Anfangskurve.
+Wählt man $p_0$ so, dass die Transversalitätsbedingung
+\[
+\vec{r}_0
+\cdot
+\begin{pmatrix}
+-H(x_0,y_0,p_0)\\
+p_0
+\end{pmatrix}
+=
+0
+\]
+erfüllt ist, dann ist die Lösung von
+\eqref{buch:hamiltonjacobi:jacobi:eqn:kanonisch}
+mit Anfangsbedingung $y(x_0)=y_0$ und $p(x_0)=p_0$ eine Extremale.
+Der Gradient der Fundamentalfunktion ist durch $-H$ und $p$ gegeben,
+ihr Wert entlang der Lösungskurve wird daher durch das Integral
+\begin{align*}
+S(x_1,y_1)
+&=
+\int_{x_0}^{x_1}
+-H(x,y(x),p(x))
++
+p(x) y'(x)
+\,dx
+\\
+&=
+\int_{x_0}^{x_1}
+-H(x,y(x),p(x))
++
+p(x)\frac{\partial H}{\partial p}
+\,dx
+\end{align*}
+gegeben.
+Aus einer Lösung des Differentialgleichungssystems
+\eqref{buch:hamiltonjacobi:jacobi:eqn:kanonisch}
+lässt sich also immer auch die Fundamentalfunktion berechnen.
+
+%
+% Der Satz von Jacobi
+%
+\subsubsection{Der Satz von Jacobi}
+Wir untersuchen jetzt die umgekehrt Schlussrichtung: Kann man aus
+der Fundamentalfunktion $S$ eine Lösung der kanonischen Gleichungen 
+ableiten.
+Sei also $S$ eine Lösung der Differentialgleichung
+\begin{equation}
+\frac{\partial S}{\partial x}
+=
+H\biggl(x,y,\frac{\partial S}{\partial y}\biggr).
+\label{buch:hamiltonjacobi:jacobi:hjdgl1}
+\end{equation}
+In der Konstruktion der Fundamentalfunktion aus den kanonischen Gleichungen
+musste erst ein zusätzlicher Anfangswert $p_0$ gefunden werden,
+der von der Steigung der Anfangskurve abhing.
+Die Lösung $S$ der
+Differentialgleichung~\eqref{buch:hamiltonjacobi:jacobi:hjdgl1}
+soll daher zusätzlich von einem Parameter $a$ abhängen, soll also
+die Form
+\(
+S(x,y,a)
+\)
+haben.
+Eine solche Lösung heisst ein {\em vollständiges Integral} von
+\label{buch:hamiltonjacobi:jacobi:hjdgl1}.
+
+Die Gleichung
+\begin{align}
+\frac{\partial S}{\partial a}(x,y,a)
+&=
+b
+\label{buch:hamiltonjacobi:jacobi:eqn:Sa1}
+\intertext{definiert implizit eine Funktion $y(x)$, aus der mit Gleichung}
+\frac{\partial S}{\partial y}(x,y(x),a)
+= 
+p(x)
+\label{buch:hamiltonjacobi:jacobi:eqn:Sa2}
+\end{align}
+bestimmt werden kann.
+Die implizite Definition \eqref{buch:hamiltonjacobi:jacobi:eqn:Sa1}
+definiert die Funktion $y(x)$ nur dann, wenn die Ableitung der linken
+Seite nach $y$ nicht verschwindet. 
+Wir müssen also zusätzlich von der Funktion $S$ die Bedingung
+\begin{equation}
+\frac{\partial^2 S}{\partial y\,\partial a}\ne 0
+\label{buch:hamiltonjacobi:jacobi:invertierungsbedingung}
+\end{equation}
+verlangen.
+
+Wir prüfen nach, dass die Funktion $y(x)$ und $p(x)$ eine Lösung der
+kanonischen Differentialgleichungen
+\eqref{buch:hamiltonjacobi:jacobi:hjdgl1}
+sind.
+Da die Gleichung
+\label{buch:hamiltonjacobi:jacobi:eqn:Sa1}
+die Funktion implizit definiert, leiten wir die Gleichung
+\eqref{buch:hamiltonjacobi:jacobi:eqn:Sa1}
+nach $x$ und die Hamilton-Jacobi-Differentialgleichung
+\eqref{buch:hamiltonjacobi:jacobi:hjdgl1}
+nach $a$ ab und erhalten
+\begin{align*}
+\frac{\partial^2 S}{\partial x\,\partial a}
++
+\frac{\partial^2 S}{\partial y\,\partial a}
+\frac{dy}{dx}
+&=0
+\\
+\frac{\partial^2 S}{\partial a\,\partial x}
++
+\frac{\partial H}{\partial p}\frac{\partial^2 S}{\partial a\,\partial y}
+&=0.
+\intertext{Die Differenz dieser Differentialgleichungen ist}
+\frac{\partial^2 S}{\partial y\,\partial a}
+\biggl(\frac{dy}{dx}-\frac{\partial H}{\partial p}\biggr)
+&=
+0.
+\end{align*}
+Wegen der Bedingung
+\eqref{buch:hamiltonjacobi:jacobi:invertierungsbedingung} können wir
+schliessen, dass die Klammer verschwindet, dass also die erste
+der kanonischen Differentialgleichungen erfüllt ist.
+
+Ähnlich erhält man durch Ableitung von
+\eqref{buch:hamiltonjacobi:jacobi:eqn:Sa2} nach $x$ und
+der Hamilton-Jacobi-Differen\-tial\-gleichung nach $y$ die Gleichungen
+\begin{align*}
+\frac{dp}{dx}
+&=
+\frac{\partial^2 S}{\partial x\,\partial y}
++
+\frac{\partial^2 S}{\partial y^2} \frac{dy}{dx}
+\\
+0
+&=
+\frac{\partial^2 S}{\partial y\,\partial x}
++
+\frac{\partial H}{\partial y}
++
+\frac{\partial H}{\partial p}\frac{\partial^2 S}{\partial y^2}
+\intertext{mit der Differenz}
+\frac{dp}{dx}
+&=
+\frac{\partial^2 S}{\partial y^2}
+\biggl(
+\frac{dy}{dx}-\frac{\partial H}{\partial p}
+\biggr)
+-
+\frac{\partial H}{\partial y}.
+\intertext{Wir wissen bereits, dass die Klammer verschwindet, es bleibt}
+\frac{dy}{dx}
+&=
+-\frac{\partial H}{\partial y},
+\end{align*}
+die zweite der kanonischen Differentialgleichungen ist also auch erfüllt.
+Damit haben wir den einfachsten Fall des folgenden Satzes von Jacobi
+bewiesen.
+
+\begin{satz}[Jacobi]
+Ist die Funktion $S(x,y,a)$ ein vollständiges Integral der
+Hamilton-Jacobi-Differentialgleichung und ist
+\[
+\frac{\partial^2 S}{\partial a\,\partial y}\ne 0,
+\]
+dann definieren die Gleichungen
+\begin{align*}
+\frac{\partial S}{\partial a}(x,y(x),a) &= b \\
+\frac{\partial S}{\partial y}(x,y(x),a) &= p(x)
+\end{align*}
+die allgemeine Lösung der kanonischen Differentialgleichungen, die von
+den zwei Konstanten $a$ und $b$ abhängt.
+\end{satz}
+
+%
+% Der Satz on Jacobi für das $n$-dimensionale Problem
+%
+\subsubsection{Der Satz von Jacobi für das $n$-dimensionale Problem}
+Die Funktion $S(x,y,a)$ mit $a\in\mathbb{R}^n$ heisst ein
+vollständiges Integral für die Hamilton-Jacobi-Differentialgleichung
+\begin{equation}
+\frac{\partial S}{\partial x}
++
+H\biggl(x,y
+\frac{\partial S}{\partial y}
+\biggr),
+\label{buch:hamiltonjacobi:jacobi:eqn:hjn}
+\end{equation}
+wenn $(x,y)\mapsto S(x,y,a)$ ein Lösung 
+\eqref{buch:hamiltonjacobi:jacobi:eqn:hjn} ist.
+Sei ausserdem die Matrix mit den Einträgen
+\begin{equation}
+\frac{\partial^2 S}{\partial y_i\,\partial a_k}
+\label{buch:hamiltonjacobi:jacobi:eqn:regulaer}
+\end{equation}
+regulär.
+Dann gilt der folgende Satz.
+
+\begin{satz}[Jacobi]
+Ist $S$ ein vollständiges Integral der Hamilton-Jacobi-Differentialgleichung
+\eqref{buch:hamiltonjacobi:jacobi:eqn:hjn}, welches die Regularitätsbedingung
+\eqref{buch:hamiltonjacobi:jacobi:eqn:regulaer} erfüllt,
+dann definieren die Gleichungen
+\begin{align}
+\frac{\partial S}{\partial a}(x,y(x),a) &= b
+\label{buch:hamiltonjacobi:jacobi:eqn:implizit1}
+\\
+\frac{\partial S}{\partial y}(x,y(x),a) &= p(x)
+\label{buch:hamiltonjacobi:jacobi:eqn:implizit2}
+\end{align}
+für jedes $b\in\mathbb{R}^n$ zwei Funktionen $y(x)$ und $p(x)$, die
+Lösungen der kanonischen Differentialgleichungen
+\begin{align*}
+\frac{dy}{dx} &= \phantom{-}\frac{\partial H}{\partial p}
+\\
+\frac{dp}{dx} &= -\frac{\partial H}{\partial y}
+\end{align*}
+sind.
+\end{satz}
+
+\begin{proof}
+Der Beweis folgt genau der Rechnung für den eindimensionalen Fall.
+Die Ableitung der Gleichung
+\eqref{buch:hamiltonjacobi:jacobi:eqn:implizit1}
+nach $y$ und Ableitung der Hamilton-Jacobi-Differentialgleichung
+nach $a$ ergeben die Gleichungen
+\begin{align*}
+\frac{\partial^2 S}{\partial x\,\partial a_k}
++
+\sum_{i=1}^n
+\frac{\partial^2 S}{\partial y_i \partial a_k}
+\frac{dy_i}{dx}
+&= 0
+\\
+\frac{\partial^2 S}{\partial a_k\,\partial x}
++
+\sum_{i=1}^n
+\frac{\partial H}{\partial p_i}
+\frac{\partial^2 S}{\partial a_k\partial y_i}
+&=0
+\intertext{mit der Differenz}
+\frac{\partial^2 S}{\partial y_i\,\partial a_k}
+\biggl(
+\frac{dy_i}{dx}-\frac{\partial H}{\partial p_i}
+\biggr)
+&=0.
+\end{align*}
+Dank der Bedingung
+\eqref{buch:hamiltonjacobi:jacobi:eqn:regulaer}
+muss die Klammer verschwinden, die ersten kanonischen Differentialgleichungen
+sind damit erfüllt.
+
+Die Ableitung von
+\eqref{buch:hamiltonjacobi:jacobi:eqn:implizit2}
+nach $x$
+und der Hamilton-Jacobi-Differentialgleichung nach $y$
+erhalten wir
+\begin{align*}
+\frac{dp_k}{dx}
+&=
+\frac{\partial^2 S}{\partial x\,\partial y_k}
++
+\sum_{i=1}^n
+\frac{\partial^2 S}{\partial y_i\,\partial y_k}\frac{dy_i}{dx}
+\\
+0
+&=
+\frac{\partial^2 S}{\partial y_k\,\partial x}
++
+\sum_{i=1}^n
+\frac{\partial H}{\partial p_i}
+\frac{\partial^2 S}{\partial y_k\,\partial y_i}
++
+\frac{\partial H}{\partial y_k}
+\intertext{mit der Differenz}
+\frac{dp_k}{dx}
+&=
+\sum_{i=1}^n
+\frac{\partial^2 S}{\partial y_i\,\partial y_k}
+\biggl(
+\underbrace{
+\frac{dy_i}{dx}
+-
+\frac{\partial H}{\partial p_i}
+}_{\displaystyle=0}
+\biggr)
+-
+\frac{\partial H}{\partial y_k}.
+\end{align*}
+Es bleibt die zweite kanonische Differentialgleichung.
+\end{proof}
