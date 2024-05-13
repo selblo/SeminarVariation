@@ -3,11 +3,403 @@
 %
 % (c) 2023 Prof Dr Andreas Müller
 %
-\section{Hamilton-Jacobi-Differentialgleichungen
+\section{Hamilton-Jacobi-Differentialgleichung
 \label{buch:mechanik:section:jacobi}}
 \kopfrechts{Hamilton-Jacobi-Differentialgleichungen}
+In Abschnitt~\ref{buch:hamiltonjacobi:section:jacobi} wurde gezeigt,
+dass die Fundamentalfunktion $S(x,y)$ eines Variationsprinzips 
+die Hamilton-Jacobi-Differentialgleichung erfüllt, und dass umgekehrt
+aus einem allgemeinen Integral der Hamilton-Jacobi-Integral Lösungen
+der kanonischen Differentialgleichungen gefunden werden können.
+Dies ermöglicht Bahnen von mechanischen Systeme auf eine kanonische
+Art zu charakterisierugen.
+In diesem Abschnitt zeigen wir die Vorgehensweise an einer Reihe
+von Beispielen.
 
-\begin{verbatim}
-- Kontaktransformationen
-- Hamilton-Jacobi-Differentialgleichungen
-\end{verbatim}
+%
+% Der schiefe Wurf
+%
+\subsection{Der schiefe Wurf
+\label{buch:mechanik:jacobi:schieferwurf}}
+Wir betrachten einen Massepunkt, der zur Zeit $t=0$ ausgehend von einem
+Punkt $\vec{p}$ mit Anfangsgeschwindigkeit $\vec{v}_0$ abgeschossen
+wird und sich allein unter der Wirkung der in negativer $y$-Richtung
+wirkenden Gravitation bewegt.
+
+%
+% Lagrange-Funktion
+%
+\subsubsection{Lagrange-Funktion}
+Die Lagrange-Funktion dieses Systems ist
+\[
+\left.
+\begin{aligned}
+E_{\text{kin}}
+&=
+\frac12 mv^2
+\\
+E_{\text{pot}}
+&=
+mgh
+\end{aligned}
+\right\}
+\quad\Rightarrow\quad
+L(t,x,y,\dot{x},\dot{y})
+=
+\frac{m}2 (\dot{x}^2 + \dot{y}^2)
+-
+mgy.
+\]
+Für die Euler-Lagrange-Differentialgleichung erhalten wir
+\begin{equation}
+\left.
+\begin{aligned}
+\frac{\partial L}{\partial x}
+&=
+0
+&
+\frac{\partial L}{\partial \dot{x}}
+&=
+m\dot{x}
+\\
+\frac{\partial L}{\partial y}
+&=
+-g
+&
+\frac{\partial L}{\partial \dot{y}}
+&=
+m\dot{y}
+\end{aligned}
+\;\right\}
+\quad\Rightarrow\quad
+\left\{\;
+\begin{aligned}
+0
+&=
+\frac{\partial L}{\partial x}-\frac{d}{dt}\frac{\partial L}{\partial\dot{x}}
+=
+-\frac{d}{dt}m\dot{x}
+&&\Rightarrow&\frac{d}{dt}m\dot{x}&=0
+\\
+0
+&=
+\frac{\partial L}{\partial y}-\frac{d}{dt}\frac{\partial L}{\partial\dot{y}}
+=
+-g
+-\frac{d}{dt}m\dot{y}
+&&\Rightarrow&\frac{d}{dt}m\dot{y}&=-g.
+\end{aligned}
+\right.
+\label{buch:mechanik:jacobi:wurf:eqn:bewegungsgleichung}
+\end{equation}
+
+%
+% kanonische Koordinaten
+%
+\subsubsection{Konjugierte Koordinaten}
+Die konjugierten Koordinaten sind
+\begin{align*}
+p_x &= \frac{\partial L}{\partial \dot{x}} = m\dot{x}
+&
+\dot{x}
+&=
+\frac{p_x}{m}
+\\
+p_y &= \frac{\partial L}{\partial \dot{y}} = m\dot{y}
+&
+\dot{y}
+&=
+\frac{p_y}{m}.
+\end{align*}
+Dies ist der Impuls, was im Nachhinein die Notation für die
+konjugierten Koordinaten rechtfertigt.
+Mit diesen Koordinaten lassen sich die Bewegungslgeichungen 
+\eqref{buch:mechanik:jacobi:wurf:eqn:bewegungsgleichung} in der
+Form
+\begin{equation}
+\begin{aligned}
+\frac{d}{dt}p_x &= 0\\
+\frac{d}{dt}p_y &= -g
+\end{aligned}
+\label{buch:mechanik:jacobi:wurf:eqn:bewegungsgleichung2}
+\end{equation}
+schreiben.
+
+%
+% Hamilton-Funktion
+%
+\subsubsection{Hamilton-Funktion}
+Die Hamilton-Funktion ist dann
+\begin{align*}
+H(t,x,y,p_x,p_y)
+&=
+\dot{x}p_x
++
+\dot{y}p_y
+-
+L(t,x,y,\dot{x},\dot{y}
+\\
+&=
+\dot{x}p_x
++
+\dot{y}p_y
+-
+\frac{m}2(\dot{x}^2+\dot{y}^2)
++mgy
+\\
+&=
+\frac{p_x^2}{2}
++
+\frac{p_y^2}{2}
+-
+\frac{m}2\biggl(\frac{p_x^2}{m^2} + \frac{p_y^2}{m^2}\biggr) + mgy
+\\
+&=
+\frac{1}{2m}(p_x^2+p_y^2) + mgy
+=
+E_{\text{kin}} + E_{\text{pot}}.
+\end{align*}
+Die Hamilton-Funktion hängt nicht von der Zeit ab, sie ist die erhaltene
+Gesamtenergie.
+
+%
+% Bewegungsgleichungen
+%
+\subsubsection{Bewegungsgleichungen}
+Die kanonischen Differentialgleichungen werden jetzt
+\begin{align*}
+\frac{dx}{dt}
+&=
+\frac{\partial H}{\partial p_x}
+=
+\frac{p_x}{m}
+&&\text{und}&
+\frac{dy}{dt}
+&=
+\frac{\partial H}{\partial p_y}
+=
+\frac{p_y}{m},
+\\
+\frac{dp_x}{dt}
+&=
+-\frac{\partial H}{\partial x}
+=
+0
+&&\text{und}&
+\frac{dp_y}{dt}
+&=
+-\frac{\partial H}{\partial y}
+=
+-g,
+\end{align*}
+die mit den bekannten Bewegungsgleichungen
+\eqref{buch:mechanik:jacobi:wurf:eqn:bewegungsgleichung2}
+übereinstimmen.
+
+%
+% Hamilton-Jacobi-Differentialgleichung
+%
+\subsubsection{Hamilton-Jacobi-Differentialgleichung}
+Mit der Hamilton-Funktion können wir jetzt die
+Hamilton-Jacobi-Differentialgleichung 
+\begin{align*}
+\frac{\partial S}{\partial t}
+&=
+H\biggl(
+t,x,y,\frac{\partial S}{\partial x},\frac{\partial S}{\partial y}
+\biggr)
+=
+\frac1{2m}\biggl(
+\biggl(\frac{\partial S}{\partial x}\biggr)^2
++
+\biggl(\frac{\partial S}{\partial y}\biggr)^2
+\biggr)
++
+mgy
+\end{align*}
+aufstellen.
+
+Wir versuchen, die Differentialgleichung mit einem Separationsansatz
+der Form
+\[
+S(t,x,y)
+=
+X(x)
++
+Y(y)
++
+T(t),
+\]
+den wir in die Differentialgleichung einsetzen und
+\[
+T'(t)
+=
+\frac1{2m}(X'(x)^2 + Y'(y)^2)
++
+gmy
+\]
+erhalten.
+Da die rechte Seite nicht von der Zeit abhängt, muss $T'(t) = a_1$ konstant
+sein.
+
+Die Terme, die $y$ enthalten, können auf die andere Seite gebracht
+werden, es entsteht die Gleichung
+\[
+\frac{1}{2m}X'(x)^2
+=
+a_1-\frac{1}{2m}Y'(y)^2 -mgy.
+\]
+Auf der linken Seite kommt nur die Variable $x$ vor, auf der rechten
+nur die Variable $y$, also müssen beide Seiten konstant sein,
+wir bezeichnen die Konstante mit $a_2$ und erhalten die Gleichungen
+\begin{align*}
+\frac1{2m}X'(x)^2&= a_2
+&&\Rightarrow&
+X'(x) &= \sqrt{2ma_2}
+\\
+\frac1{2m}Y'(x)^2&=a_1-a_2-mgy
+&&\Rightarrow&
+Y'(y) &= \sqrt{2m(a_1-a_2-mgy)}
+\end{align*}
+mit den Lösungen
+\begin{align*}
+X(x) &= \sqrt{2ma_2}x
+\\
+Y(y) &=
+-\frac{1}{3gm^2}
+\bigl(2m(a_1-a_2-mgy)\bigr)^{\frac32}.
+\end{align*}
+Die Fundamentalfunktion ist daher
+\[
+S(t,x,y,a_1,a_2)
+=
+a_1t
++
+\sqrt{2ma_2}x
+-
+\frac{1}{3gm^2}
+\bigl(2m(a_1-a_2-mgy)\bigr)^{\frac32}
+\]
+Die beiden Konstanten $a_1$ und $a_2$ haben die Dimension einer
+Energie.
+
+%
+% Regularität
+%
+\subsubsection{Regularität}
+Wir müssen die Regularität überprüfen, dazu ist die Matrix
+\begin{align*}
+A
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial^2 S}{\partial x\,\partial a_1}
+&
+\displaystyle
+\frac{\partial^2 S}{\partial x\,\partial a_2}
+\\[8pt]
+\displaystyle
+\frac{\partial^2 S}{\partial y\,\partial a_1}
+&
+\displaystyle
+\frac{\partial^2 S}{\partial y\,\partial a_2}
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+0
+&
+\displaystyle
+\frac{m}{\sqrt{2m a_2}}
+\\[8pt]
+\displaystyle
+\frac{m}{\sqrt{2m(a_1-a_2-mgy)}}
+&
+\displaystyle
+-\frac{m}{\sqrt{2m(a_1-a_2-mgy)}}
+\end{pmatrix}
+\intertext{mit der Determinanten}
+\det A
+&=
+-\frac{m}{2\sqrt{a_2(a_1-a_2-mgy)}}
+\end{align*}
+untersuchen.
+Sie ist offenbar für $a_2\ne 0$ und $a_1-a_2-mgy\ne 0$ von $0$
+verschieden, wir können also erwarten, dass der Satz von Jacobi
+eine Lösung liefert.
+
+%
+% Lösungen
+%
+\subsubsection{Lösung}
+Zur Bestimmung der Lösung müssen jetzt die Ableitungen nach
+den Parametern berechnet werden:
+%(%i4) ratsimp(diff(S,a1))
+%                                                 2
+%                   sqrt(2) sqrt((a1 - a2) m - g m  y) - g m t
+%(%o4)            - ------------------------------------------
+%                                      g m
+%(%i5) ratsimp(diff(S,a2))
+%                                                  2         2
+%               2 sqrt(a2 m) sqrt((a1 - a2) m - g m  y) + g m  x
+%(%o5)          ------------------------------------------------
+%                            sqrt(2) g m sqrt(a2 m)
+%
+\begin{align*}
+b_1
+=
+\frac{\partial S}{\partial a_1}
+&=
+-\frac{\sqrt{2m(a_1-a_2-gmy)}}{gm}
++t
+\\
+b_2
+=
+\frac{\partial S}{\partial a_2}
+&=
+\frac{1}{\sqrt{2ma_2}}
+\biggl(
+\sqrt{2ma_2}
+\frac{\sqrt{2m(a_1-a_2-gmy)}}{gm}
++mx
+\biggr).
+\end{align*}
+Die beiden Konstanten $b_1$ und $b_2$ haben die Dimension einer Zeit.
+Die erste Gleichung können wir auch in der Form
+\begin{align*}
+t-b_1
+&=
+\frac{\sqrt{2m(a_1-a_2-gmy)}}{gm}
+\intertext{schreiben, womit wir die zweite Gleichung etwas übersichtlicher
+als}
+b_2
+&=
+t-b_1
++
+\frac{m}{\sqrt{2ma_2}}x.
+\end{align*}
+Die beiden Gleichungen können nach $x(t)$ und $y(t)$ aufgelöst werden
+und ergeben
+\begin{align*}
+x(t)
+&=
+\frac{\sqrt{2ma_2}}{m}
+(b_1 + b_2 - t)
+\\
+y(t)
+&=
+\frac{a_1-a_2}{gm}
+-
+\frac{g}{2}(t-b_1)^2.
+\end{align*}
+Die physikalische Bedeutung der Konstanten lässt sich jetzt aus den 
+Lösungsfunktionen ablesen.
+$b_1$ ist die Zeit, zu der sich der Masspunkt im Scheitelpunkt
+der Bahn befindet.
+$b_2$ ist die Zeit zwischen dem Scheitelpunkt der Bahn und dem Überqueren
+der $y$-Achse.
+Die Differenz $a_1-a_2$ ist die potentielle Energie, die der Massepunkt
+im Bahnscheitel hat und $a_2$ ist die kinetische Energie im Bahnscheitel.
+Somit ist $a_1$ die Gesamtenergie.
+
+
