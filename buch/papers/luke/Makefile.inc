@@ -6,9 +6,5 @@
 dependencies-luke =						\
 	papers/luke/packages.tex					\
 	papers/luke/main.tex					\
-	papers/luke/references.bib				\
-	papers/luke/teil0.tex					\
-	papers/luke/teil1.tex					\
-	papers/luke/teil2.tex					\
-	papers/luke/teil3.tex
+	papers/luke/references.bib
 
