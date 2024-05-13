@@ -347,6 +347,7 @@ Dies ist im Allgemeinen eine nichtlineare Differentialgleichung
 erster Ordnung.
 
 \begin{beispiel}
+\label{buch:hamiltonjacobi:jacobi:bsp:eikonal}
 Wir betrachten das Funktional mit der Lagrange-Funktion 
 $L=\sqrt{1+y^{\prime 2}}$.
 Die zugehörige Hamilton-Funktion wurde bereits in
@@ -611,17 +612,151 @@ bewiesen.
 \begin{satz}[Jacobi]
 Ist die Funktion $S(x,y,a)$ ein vollständiges Integral der
 Hamilton-Jacobi-Differentialgleichung und ist
-\[
+\begin{equation}
 \frac{\partial^2 S}{\partial a\,\partial y}\ne 0,
-\]
+\label{buch:hamiltonjacobi:jacobi:satz:jacobi:eqn:regularitaet}
+\end{equation}
 dann definieren die Gleichungen
-\begin{align*}
+\begin{equation}
+\begin{aligned}
 \frac{\partial S}{\partial a}(x,y(x),a) &= b \\
 \frac{\partial S}{\partial y}(x,y(x),a) &= p(x)
-\end{align*}
+\end{aligned}
+\label{buch:hamiltonjacobi:jacobi:satz:jacobi:eqn:equations}
+\end{equation}
 die allgemeine Lösung der kanonischen Differentialgleichungen, die von
 den zwei Konstanten $a$ und $b$ abhängt.
 \end{satz}
+
+\begin{beispiel}
+In Beispiel~\ref{buch:hamiltonjacobi:jacobi:bsp:eikonal} wurde als
+Hamilton-Jacobi-Differentialgleichung für die Lagrange-Funktion
+$L(x,y,y')=\sqrt{1+y^{\prime 2}}$ für den kürzesten Abstand in der
+Ebene bereits die Eikonal-Gleichung
+\[
+\biggl(\frac{\partial S}{\partial x}\biggr)^2
++
+\biggl(\frac{\partial S}{\partial y}\biggr)^2
+=
+1
+\]
+gefunden.
+Für die Lösung versuchen wir eine Separationsansatz der Form
+\[
+S(x,y) = X(x) + Y(y),
+\]
+setzen ihn in die Eikonal-Gleichung ein und erhalten
+\[
+X'(x)^2 + Y'(y)^2 = 1
+\qquad\Rightarrow\qquad
+X'(x)^2 = 1 - Y'(y)^2.
+\]
+Da die linke Seite nur von $x$, die rechte aber nur von $y$ abhängt,
+müssen beide Seiten konstant sein.
+Wenn aber $X'(x)$ und $Y'(x)$ konstant sind, dann sind $X(x)$ und $Y(y)$
+lineare Funktionen.
+Somit muss
+\[
+S(x,y) = k_xx + k_yy + c
+\]
+sein.
+Der konstante Term $c$ ist nicht relevant, aber auch $k_x$ und $k_y$ sind
+nicht beliebig.
+Einsetzen in die Eikonal-Gleichung ergibt
+\[
+\frac{\partial S}{\partial x} = k_x
+\,\;;
+\frac{\partial S}{\partial y} = k_y
+\quad\Rightarrow\quad
+\biggl(\frac{\partial S}{\partial x}\biggr)^2
++
+\biggl(\frac{\partial S}{\partial y}\biggr)^2
+=
+k_x^2 + k_y^2 = 1
+\quad\Rightarrow\quad
+k_x = \sqrt{1-k_y^2}.
+\]
+Wir können somit $k_y$ als Parameter $a$ wählen und
+\[
+S(x,y,a)
+=
+\sqrt{1-a^2}x+ay
+\]
+schreiben.
+
+Wir müssen die Bedingung
+\eqref{buch:hamiltonjacobi:jacobi:satz:jacobi:eqn:regularitaet}
+überprüfen:
+\[
+\frac{\partial S}{\partial y}
+=
+a,
+\quad
+\frac{\partial^2 S}{\partial a\,\partial y}
+=
+1
+>
+0,
+\]
+die Regularitätsbedingung ist also erfüllt und $S(x,y,a)$ ist ein
+vollständiges Integral der Hamilton-Jacobi-Differentialgleichung.
+Der Parameter $a$ muss im Intervall $[-1,1]$ liegen.
+
+Nach dem Satz von Jacobi können jetzt Lösungen durch die Gleichungen
+\eqref{buch:hamiltonjacobi:jacobi:satz:jacobi:eqn:equations}
+definiert werden.
+Die Ableitung von $S$ nach $a$ ist
+\begin{align*}
+\frac{\partial S}{\partial a}
+&=
+-
+\frac{a}{\sqrt{1-a^2}}
+x
++
+y
+=
+b
+\\
+\frac{\partial S}{\partial y}
+&=
+a
+=
+p
+\end{align*}
+Die erste Gleichung kann nach $y$ aufgelöst werden und ergibt
+\[
+y
+=
+\frac{a}{\sqrt{1-a^2}} x + b.
+\]
+Dies ist eine Gerade mit Steigung 
+\[
+\frac{a}{\sqrt{1-a^2}}
+=
+\tan\arcsin a
+\]
+und Achsabschnitt $b$.
+Der Parameter $a$ hat also die Bedeutung des Sinus des Winkels, den die
+Gerade mit der $x$-Achse einschliesst.
+
+Die kanonischen Differentialgleichungen sind
+\begin{align*}
+\frac{dp}{dx}
+&=
+0
+=
+\frac{\partial H}{\partial y}
+\\
+\frac{dy}{dx}
+&=
+\frac{a}{\sqrt{1-a^2}}
+=
+\frac{p}{\sqrt{1-p^2}}
+=
+-\frac{\partial H}{\partial p}(x,y(x),a),
+\end{align*}
+sie sind also tatsächlich erfüllt.
+\end{beispiel}
 
 %
 % Der Satz on Jacobi für das $n$-dimensionale Problem
