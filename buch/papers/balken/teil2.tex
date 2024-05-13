@@ -85,7 +85,7 @@ Dabei bezeichnen wir die beiden Auflagern als die Punkte $(x_1, y_1)$ und $(x_2,
 Um die Länge dieser Kurve in der x-y-Ebene zu berechnen, berechnen wir zuerst der Länge einer Gerade auf der Kurve y(x)
 \begin{equation}
 	\Delta s=
-	\sqrt{\Delta x^2+\Delta y^2}\approx\sqrt{1+(y')^2\cdot\Delta x^2}
+	\sqrt{\Delta x^2+\Delta y^2}\approx\sqrt{1+y'(x)^2}\cdot\Delta x
 \end{equation}
 Daraus rechnen wir mit dem Integral die Kurvenlänge.
 \begin{equation}
@@ -273,14 +273,14 @@ Dabei gelten für den Fest- und Loslager w = 0 und M = 0, das bedeutet, dass an 
 Es gilt.
 \begin{equation}
 	EIw'' =
-	\-M_y
+	-M_y
 \end{equation}
 und
 \begin{equation}
 	EIw'''=
 	-Q_z
 \end{equation}
-Als erstes betrachten wir die Stelle (x1, y1) mit den Festlager.
+Als erstes betrachten wir die Stelle $(x_1, y_1)$ mit den Festlager.
 Dabei setzen wir den Ursprung unser Koordinatennetz bei $(x_1, y_1)$, damit ergibt sich x = 0.
 Die Bedingungen sind: w = 0 und M = 0.
 \begin{equation}
@@ -303,19 +303,32 @@ Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen M = 0 ein
 	\frac{1}{2}q_0x^2+C_1x+C_2
 \end{equation}
 \begin{equation}
-	0=\
-	frac{1}{2}q_00^2+C_10+C_2
+	0=
+	\frac{1}{2}q_00^2+C_10+C_2
 \end{equation}
 \begin{equation}
 	C_2=
 	0
 \end{equation}
-Jetzt machen wir die gleichen Berechnungen an der Stelle (x2, y2) mit den Loslager, für x2 setzen wir L (für der Länge des Balkens) ein.
+Jetzt machen wir die gleichen Berechnungen an der Stelle $(x_2, y_2)$ mit den Loslager, für $x_2$ setzen wir L (für der Länge des Balkens) ein.
 \begin{equation}
 	EIw=
 	\frac{1}{24}q_0x^4+\frac{1}{6}C_1x^3+\frac{1}{2}C_2x^2+C_3x+C_4
 \end{equation}
-w = 0 und x = L, sowie C2 = 0 und C4 = 0 werden eingesetzt.
+w = 0 und x = L, sowie $C__2$ = 0 und $C__4$ = 0 werden eingesetzt.
+\begin{equation}
+	EI\cdot0=
+	\frac{1}{24}q_0L^4+\frac{1}{6}C_1L^3+\frac{1}{2}0\cdot L^2+C_3L+0
+\end{equation}
+\begin{equation}
+	0=
+	\frac{1}{24}q_0L^4+\frac{1}{6}C_1L^3+C_3L
+\end{equation}
+\begin{equation}
+	C_3=
+	-\frac{1}{24}q_0L^3-\frac{1}{6}C_1L^2
+\end{equation}
+Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen M = 0, x = L und $C__2$ = 0 ein.
 \begin{equation}
 	EIw''=
 	-M_y=\frac{1}{2}q_0x^2+C_1x+C_2
@@ -328,7 +341,7 @@ w = 0 und x = L, sowie C2 = 0 und C4 = 0 werden eingesetzt.
 	C_1=
 	-\frac{1}{2}q_0L
 \end{equation}
-C1 in C3 einsetzen:
+$C_1$ in $C_3$ einsetzen:
 \begin{equation}
 	C_1=
 	-\frac{1}{2}q_0L
@@ -360,7 +373,7 @@ Die Konstanten werden in die Biegelinien-Gleichung eingesetzt.
 \end{equation}
 \begin{equation}
 	EIw=
-	{1}{24}q_0x^4-\frac{1}{12}q_0Lx^3+\frac{1}{24}q_0L^3x
+	\frac{1}{24}q_0x^4-\frac{1}{12}q_0Lx^3+\frac{1}{24}q_0L^3x
 \end{equation}
 \begin{equation}
 	EIw=
@@ -424,6 +437,9 @@ Jetzt setzen wir $My(x) = EIy \cdot w''(x)$ ein
 \begin{equation}
 	0=
 	\frac{q_0}{24}\cdot0^4-\frac{q_0\cdot L}{12}\cdot0^3+C_1\cdot0+C_2
+\end{equation}
+\begin{equation}
+	C_2=0
 \end{equation}
 2. Randbedingung: Durchbiegung an der Stelle x = L ist auch 0.
 \begin{equation}
