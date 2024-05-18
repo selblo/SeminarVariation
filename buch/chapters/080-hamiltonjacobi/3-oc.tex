@@ -685,7 +685,7 @@ für alle Stellen $t\in[t_0,t_1]$, an denen $u_*(t)$ stetig ist.
 Dass die Bedingung \eqref{buch:hamiltonjacobi:oc:eqn:argminH} nur
 an Stellen gelten muss, an denen $u_*(t)$ stetig ist, lässt zu,
 dass die Funktion $u_*$ nicht stetig ist.
-Dies wird vom folgenden Beispiel illustriert.
+Dies wird von den folgenden Beispielen illustriert.
 
 \input{chapters/080-hamiltonjacobi/fig/oc.tex}
 
@@ -906,9 +906,227 @@ J(u_*)
 \end{beispiel}
 
 \begin{proof}[Beweis des Minimum-Prinzips]
+Der Beweis erfolgt durch Widerspruch.
+Wir nehmen dazu an, dass sich der Wert der Hamilton-Funktion an einer
+Stelle $\bar{t}$ durch Wahl eines von $u_*(\bar{t})$ abweichenden Wertes
+verkleinern lässt.
+Die Änderung eines einzelnen Funktionswertes beeinflusst aber $x_*(t)$ nicht.
+Nur wenn $u_*(t)$ in einem kleinen Intervall in einer Weise abgeändert
+werden kann, dass $H(x_*(t),u_*(t),p_*(t))$ verringert wird, ergibt sich
+auch eine merkliche Veränderung von $x_*(t)$ und des Kostenfunktionals $J(u)$.
+Dazu muss angenommen werden dürfen, dass $u_*(t)$ an der Stelle $\bar{t}$
+stetig ist.
+Wir nehmen daher an, dass sogar in einem kleinen Intervall 
+$[\bar{t},\bar{t}+\varepsilon]$ noch gilt
+\[
+H(x_*(t),\bar{u},p_*(t)) < H(x_*(t), u_*(t), p_*(t)).
+\]
+Dann ist für genügend kleines $\varepsilon$
+\begin{equation}
+H(x_*(t),\bar{u},p_*(t)) - H(x_*(t),u_*(t),p_*(t)) < c < 0
+\label{buch:hamiltonjacobi:oc:eqn:Hunterschied}
+\end{equation}
+mit einer negativen Konstanten $c\in\mathbb{R}$.
 
-XXX Todo
+Wir ändern $u_*(t)$ um die Funktion
+\[
+\delta u(t)
+=
+\begin{cases}
+\bar{u}&\qquad t\in [\bar{t},\bar{t}+\varepsilon] \\
+0      &\qquad\text{sonst}.
+\end{cases}
+\]
+Mit den veränderten Steuerinputs $\bar{u}(t) = u_*(t) + \delta u(t)$ ändert
+sich jetzt auch der Systemzustand $x_*(t)$.
+Wir schreiben die Änderung als Funktion $\delta x(t)$, die neue
+Zustandsfunktion ist somit $\bar{x}(t) = x_*(t)+\delta x(t)$.
+Sie erfüllt die Systemgleichungen, es gilt also
+\[
+\frac{d}{dt}\bar{x}(t)
+=
+\dot{x}_*(t) + (\delta x)^{\dot{}}(t)
+=
+f(\bar{x}(t),\bar{u}(t))
+=
+f(x_*(t)+\delta x(t), u_*(t)+\delta u(t)).
+\]
+Die zeitliche Ableitung von $\delta x(t)=\bar{x}(t)-x_*(t)$ schreiben wir als
+$(\delta x)^{\dot{}}(t)$, da $\delta\dot{x}(t)$ auch als die Differenz
+$\dot{\bar{x}}(t)-\dot{x}_*(t)$ missverstanden werden könnte.
+Nach allgemeinen Sätzen über die stetig Abhängigkeit der Lösung einer
+Differentialgleichung von $u(t)$ folgt, dass sich
+$\delta x(t)=O(\varepsilon)$ ist für $t>\bar{t}$.
 
+Wir werden zeigen, dass durch diese Änderungen das Kostenfunktional
+$J(\bar{u})$ reduziert wird im Widerspruch zur Voraussetzung, dass 
+mit $u_*(t)$ bereits das Minimum erreicht wird.
+
+Die Änderung des Kostenfunktionals ist
+\begin{align*}
+\Delta
+&=
+J(\bar{u}) - J(u_*)
+\\
+&=
+K(x_*(t_1)+\delta x(t_1)) - K(x_*(t_1))
++
+\int_{t_0}^{t_1} 
+L(x_*(t) + \delta x(t), u_*(t)+\delta u(t))
+-
+L(x_*(t), u_*(t))
+\,dt.
+\intertext{Da $K$ differenzierbar ist, können die ersten beiden Terme 
+bis auf ein $o(\varepsilon)$ durch die Ableitung approximiert werden.
+Den Integranden drücken wir mittels $L=-p\cdot f+H$ durch die
+Hamilton-Funktion aus und erhalten}
+&=
+\frac{\partial K}{\partial x}(x_*(t_1))\cdot \delta x(t_1) + o(\varepsilon)
+\\
+&\quad
+-
+\int_{t_0}^{t_1}
+p_*(t)
+\cdot
+(f(\bar{x}(t),\bar{u}(t))-f(x_*(t),u_*(t))
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(\bar{x}(t),\bar{u}(t),p_*(t)) - H(x_*(t),u_*(t),p_*(t))
+\,dt.
+\end{align*}
+Die Funktionen $\bar{x}(t)$ und $x_*(t)$ erfüllen die
+Systemgleichung für die Steuerinputs $\bar{u}(t)$ und $u_*(t)$, so dass
+die Differenz wegen der Linearität der Ableitung die Ableitung
+\[
+f(\bar{x}(t),\bar{u}(t))-f(x_*(t),u_*(t)
+=
+\dot{\bar{x}}(t) - \dot{x}_*(t)
+=
+\frac{d}{dt} (\bar{x}(t)-x_*(t))
+=
+(\delta x)^{\dot{}}(t)
+\]
+der Differenz ist.
+Durch Addieren und Subtrahieren von $H(x_*(t), \bar{u}(t),p_*(t))$ kann
+das zweite Integral in einfacher zu handhabende Integrale aufgeteilt
+werden, wir erhalten
+\begin{align*}
+\Delta
+&=
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
+-
+\int_{t_0}^{t_1}
+p_*(t)\frac{d}{dt}(\delta x)(t)\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t)+\delta x(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t), p_*(t))
+\,dt
+\intertext{Die Differenz im zweiten Integral kann durch die Ableitung nach $x$
+approximiert und mit dem ersten Integral zusammengefasst werden:}
+&=
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+-p_*(t)\frac{d}{dt}(\delta x)(t)\,dt
++
+\frac{\partial H}{\partial x}(x_*(t),u_*(t)+\delta u(t),p_*(t))
+\cdot 
+\delta x(t)
++
+o(\varepsilon)
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t), p_*(t))
+\,dt.
+\intertext{Die Funktion $\bar{u}(t)$ ist nur im Intervall
+$[\bar{t},\bar{t}+\varepsilon]$  von $u_*(t)$ verschieden, daher ist auch
+die Ableitung von $H$ im ersten Integral nur in diesem Intervall
+von $-\dot{p}_*(t)$ verschieden.
+Ausserdem ist auch $\delta x(t)$ nur von der Grössenordnung
+$o(\varepsilon)$, so dass wird das erste Integral ersetzen können:}
+&=
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
++
+\int_{t_0}^{t_1}
+-p_*(t)
+\cdot
+\frac{d}{dt}\delta x(t)\,dt
+-
+\frac{d}{dt}p_*(t)
+\cdot 
+\delta x(t)
++
+o(\varepsilon)
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t), p_*(t))
+\,dt.
+\intertext{Die ersten beiden Terme im ersten Integral sind die
+Ableitung von $-p_*(t)\cdot \delta x(t)$, mit dieser Stammfunktion
+kann das Integral ausgwertet werden.
+Der Integrand im zweiten Integral ist nur im Intervall
+$[\bar{t},\bar{t}+\varepsilon]$ von $0$ verschieden und ist nach
+\eqref{buch:hamiltonjacobi:oc:eqn:Hunterschied}
+kleiner als $c$.
+Es folgt}
+&<
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
+-
+\Bigl[
+p_*(t)\cdot \delta x(t)
+\Bigr]_{t_0}^{t_1}
++
+c\varepsilon
+\\
+&=
+\underbrace{
+p_*(t_1)\cdot \delta x(t_1)
+-
+p_*(t_1)\cdot \delta x(t_1)
+}_{\displaystyle = 0}
++
+p_*(t_0)\cdot \delta x(t_0)
++ o(\varepsilon)
++ c\varepsilon.
+\intertext{Zur Zeit $t_0$ ist $\delta x(t_0) = 0$ und damit}
+\Delta
+&<
+o(\varepsilon) + c\varepsilon
+=
+\varepsilon \biggl(c + \frac{o(\varepsilon)}{\varepsilon}\biggr).
+\end{align*}
+Der zweite Term in der Klammer konvergiert gegen $0$, für genügend
+kleines $\varepsilon$ ist die Klammer daher negativ und damit folgt,
+dass $\Delta <0$ ist.
+Damit ist der Widerspruch gezeigt, die Annahme wiederlegt und damit
+der Satz bewiesen.
 \end{proof}
 
 %
