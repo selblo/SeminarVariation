@@ -192,13 +192,16 @@
 \contentsline {subsection}{\numberline {13.2.3}Einführung in die Balkengleichung}{176}{subsection.13.2.3}%
 \contentsline {section}{\numberline {13.3}Herleitung der Balkengleichung }{176}{section.13.3}%
 \contentsline {subsection}{\numberline {13.3.1}Variationsprinzip}{176}{subsection.13.3.1}%
-\contentsline {subsection}{\numberline {13.3.2}Minimalprinzip}{176}{subsection.13.3.2}%
+\contentsline {subsection}{\numberline {13.3.2}Minimalprinzip}{177}{subsection.13.3.2}%
 \contentsline {subsection}{\numberline {13.3.3}Herleitung der Balkengleichung aus dem Variationsprinzip}{177}{subsection.13.3.3}%
-\contentsline {subsection}{\numberline {13.3.4}Herleitung der Balkengleichung aus dem Baustatik}{183}{subsection.13.3.4}%
+\contentsline {subsection}{\numberline {13.3.4}Herleitung der Balkengleichung aus dem Baustatik}{184}{subsection.13.3.4}%
 \contentsline {subsection}{\numberline {13.3.5}Erläuterung der Annahmen und Randbedingungen}{185}{subsection.13.3.5}%
 \contentsline {section}{\numberline {13.4}Anwendungen der Balkengleichung }{186}{section.13.4}%
-\contentsline {subsection}{\numberline {13.4.1}Praktische Anwendungen im Ingenieurwesen und Physik }{187}{subsection.13.4.1}%
-\contentsline {subsection}{\numberline {13.4.2}Fallstudien und Beispiele }{187}{subsection.13.4.2}%
+\contentsline {subsection}{\numberline {13.4.1}Praktische Anwendungen im Ingenieurwesen und Physik }{186}{subsection.13.4.1}%
+\contentsline {subsection}{\numberline {13.4.2}Fallstudien und Beispiele }{188}{subsection.13.4.2}%
+\contentsline {section}{\numberline {13.5}Fazit}{190}{section.13.5}%
+\contentsline {subsection}{\numberline {13.5.1}Zusammenfassung und Ausblick}{190}{subsection.13.5.1}%
+\contentsline {section}{\numberline {13.6}Literaturverzeichnis}{190}{section.13.6}%
 \contentsline {chapter}{\numberline {14}Thema}{191}{chapter.14}%
 \contentsline {section}{\numberline {14.1}Teil 0}{191}{section.14.1}%
 \contentsline {section}{\numberline {14.2}Teil 1 }{192}{section.14.2}%
