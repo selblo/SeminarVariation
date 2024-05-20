@@ -315,41 +315,38 @@ folgt
 \label{buch:nichtdiff:eckenbedingung:eqn:e2}
 \end{equation}
 Darin gehört der $\vec{f}_1$ zur Lösung auf dem Teilintervall $[x_0,x_*]$,
-wird also mit dem Funktionswert $y(x_*)$ und dem linksseitigen Grenzwert
+wird also mit dem Funktionswert $y(x_*)=y(x_*-)$ und dem linksseitigen Grenzwert
 $y'(x_*-)$ der Ableitung berechnet, während $\vec{f}_0$ zum Teilintervall
-$[x_*,x_1]$ gehört und mit $y(x_*)$ und dem rechtsseitigen Grenzwert
-$y'(x_*+)$ berechnet wird.
-Da $\vec{f}_i$ Vektoren sind, 
-Ausgeschrieben lauten die Bedingungen, entsprechen der Gleichung
+$[x_*,x_1]$ gehört und mit $y(x_*)=y(x_*+)$ und dem rechtsseitigen
+Grenzwert $y'(x_*+)$ berechnet wird.
+Da $\vec{f}_i$ Vektoren sind, entspricht die Bedingung
 \eqref{buch:nichtdiff:eckenbedingung:eqn:e2}
 die zwei Komponentengleichungen
 \begin{align*}
-F(x_*,y_*,y'(x_*-))
-- 
-\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*-)\bigr)
-\frac{\partial y}{\partial\varepsilon}(x,0)
-&=
-F(x_*,y_*,y'(x_*-))
-- 
-\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*-)\bigr)
-\frac{\partial y}{\partial\varepsilon}(x,0)
+\left.
+\begin{aligned}
+&F(x_*,y(x_*-),y'(x_*-))
 \\
-\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*-)\bigr)
+&- 
+y'(x_*-)
+\frac{\partial F}{\partial y'}\bigl(x_*,y(x_*-), y'(x_*-)\bigr)
+\end{aligned}\right\}
 &=
-\frac{\partial F}{\partial y'}\bigl(x_*,y_*, y'(x_*+)\bigr)
+\left\{
+\begin{aligned}
+&F(x_*,y(x_*+),y'(x_*+))
+\\
+&- 
+y'(x_*+)
+\frac{\partial F}{\partial y'}\bigl(x_*,y(x_*+), y'(x_*+)\bigr)
+\end{aligned}
+\right.
+\\
+\frac{\partial F}{\partial y'}\bigl(x_*,y(x_*-), y'(x_*-)\bigr)
+&=
+\frac{\partial F}{\partial y'}\bigl(x_*,y(x_*+), y'(x_*+)\bigr)
 \end{align*}
-Die zweite Bedingung bedeutet, dass die Ableitungen nach $y'$ auch
-in der ersten Bedingung gleich sind.
-Die erste Bedingung vereinfacht sich daher zu
-\[
-F(x_*,y_*,y'(x_*-))
-=
-F(x_*,y_*,y'(x_*-)).
-\]
-Die links- und rechtsseitigen Steigungen in Punkt $(x_*,y_*)$ sind
-also nicht beliebig, sie müssen zwei zusätzliche Bedingungen erfüllen.
-Für den Fall $y'(x_*+)=y'(x_*-)$ sind beide Bedingungen erfüllt.
-Diese Bedinung heisst auch die weierstrass-erdmansche Eckenbedingung.
+Diese Bedingung heisst auch die weierstrass-erdmansche Eckenbedingung.
 
 \begin{satz}[Weierstrass-Erdmann]
 \label{buch:nichtdiff:splines:satz:weierstrass-erdmann}
@@ -374,17 +371,24 @@ y'(\overline{x}_k+) = \lim_{x\to \overline{x}_k+} y'(x)
 der Funktion in jedem Punkt $\overline{x}_k$ die Bedingung
 \begin{equation}
 \begin{aligned}
-F\bigl(
-\overline{x}_k,
-y(\overline{x}_k),
+\left.
+\begin{aligned}
+&F(\overline{x}_k,y(\overline{x}_k-),y'(\overline{x}_k-))
+\\
+&- 
 y'(\overline{x}_k-)
-\bigr)
+\frac{\partial F}{\partial y'}\bigl(\overline{x}_k,y(\overline{x}_k-), y'(\overline{x}_k-)\bigr)
+\end{aligned}\right\}
 &=
-F\bigl(
-\overline{x}_k,
-y(\overline{x}_k),
+\left\{
+\begin{aligned}
+&F(\overline{x}_k,y(\overline{x}_k+),y'(\overline{x}_k+))
+\\
+&- 
 y'(\overline{x}_k+)
-\bigr)
+\frac{\partial F}{\partial y'}\bigl(\overline{x}_k,y(\overline{x}_k+), y'(\overline{x}_k+)\bigr)
+\end{aligned}
+\right.
 \\
 \frac{\partial F}{\partial y'}\bigl(
 \overline{x}_k,
@@ -396,10 +400,17 @@ y'(\overline{x}_k-)
 \overline{x}_k,
 y(\overline{x}_k),
 y'(\overline{x}_k+)
-\bigr)
+\bigr).
 \end{aligned}
 \label{buch:nichtdiff:eckenedingung:eqn:we}
 \end{equation}
+Die Bedingung ist gleichbedeutend damit, dass die Funktionen
+\[
+F(x,y(x),y'(x))-y'(x)\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\qquad\text{und}\qquad
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\]
+stetig sind.
 \end{satz}
 
 Ein interessanter Spezialfall ist, wenn der Sprung der Steigung
@@ -478,10 +489,10 @@ F(x,y,y')
 =
 \begin{cases}
 \displaystyle
-\frac{1}{n_-}\sqrt{1+y^{\prime 2}} &\qquad \text{für $x<0$}\\
+n_-\sqrt{1+y^{\prime 2}} &\qquad \text{für $x<0$}\\
 \\[-8pt]
 \displaystyle
-\frac{1}{n_+}\sqrt{1+y^{\prime 2}} &\qquad \text{für $x>0$.}
+n_+\sqrt{1+y^{\prime 2}} &\qquad \text{für $x>0$.}
 \end{cases}
 \]
 Gesucht ist eine Funktion $y(x)$, die $y(x_0)=y_0$ und $y(x_1)=y_1$ 
@@ -501,7 +512,7 @@ Die Ableitung der Lagrange-Funktion nach $y'$ ist
 \[
 \frac{\partial F}{\partial y'}(x,y,y')
 =
-\frac{1}{n_\pm}
+n_\pm
 \frac{y'}{\sqrt{1+y^{\prime 2}}}.
 \]
 Die weierstrass-erdmannsche Eckenbedingung ist jetzt
@@ -511,10 +522,10 @@ Die weierstrass-erdmannsche Eckenbedingung ist jetzt
 \frac{\partial F}{\partial y'}\bigl(0+,y_*,y'(0+)\bigr)
 \notag
 \intertext{oder nach Einsetzen der Ableitung}
-\frac{1}{n_-}
+n_-
 \frac{y'(0-)}{\sqrt{1+y'(0-)^2}}
 &=
-\frac{1}{n_+}
+n_+
 \frac{y'(0+)}{\sqrt{1+y'(0+)^2}}
 \label{buch:nichtdiff:eckenbedingung:eqn:steigung}
 \end{align}
@@ -531,9 +542,9 @@ dieses Winkels.
 Die Bedingung~\eqref{buch:nichtdiff:eckenbedingung:eqn:steigung}
 wird damit zu
 \[
-\frac{1}{n_-}\sin\alpha(0-)
+n_-\sin\alpha(0-)
 =
-\frac{1}{n_+}\sin\alpha(0+)
+n_+\sin\alpha(0+)
 \qquad\text{oder}\qquad
 \frac{\sin\alpha(0-)}{\sin\alpha(0+)}
 =

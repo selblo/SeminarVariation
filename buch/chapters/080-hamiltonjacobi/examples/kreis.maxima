@@ -1,0 +1,19 @@
+/*
+ * kreis.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+n: 1 + nu * y;
+L: n * sqrt(1 + yp^2);
+
+gradef(y(x), yp(x));
+gradef(yp(x), ypp(x));
+
+ly: diff(L,y);
+lyp: diff(L,yp);
+
+lyx: subst([yp=yp(x),y=y(x)], ly);
+lypx: subst([yp=yp(x),y=y(x)], lyp);
+dxlypx: diff(lypx, x);
+
+ratsimp(lyx - dxlypx);

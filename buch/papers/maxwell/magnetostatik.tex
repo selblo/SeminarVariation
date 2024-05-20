@@ -1,0 +1,233 @@
+%
+% magnetostatik.tex -- Herleitung Amperesches Gesetz über E-O-DGL
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Magnetostatik\label{maxwell:magnetostatik}}
+\rhead{Magnetostatik}
+
+
+
+In der Magnetostatik betrachten wir stationäre magnetische Felder.
+Die Ursache eines stationären magnetischen Feldes sind Permanentmagnete oder Gleichströme also bewegte Ladungen.
+Wir setzen also neu
+\[ 
+\frac{\partial q}{\partial t}
+=
+I
+=
+\text{const}
+\qquad
+\forall
+q,t
+\]
+voraus.
+Zusätzlich konzentrieren wir uns in diesem Abschnitt ausschliesslich auf das magnetische Feld bzw. die magnetische Flussdichte, somit wird auch 
+\[\phi(x,y,z) = 0 \qquad \forall x,y,z\] 
+angenommen.
+
+Fliesst ein konstanter Strom in einem Leiter, so erzeugt dieser ein Magnetfeld konzentrisch um den geraden Leiter, wie in Abbildung \ref{maxwell:flussdichte} abgebildet ist.
+Aufgrund des nicht existieren magnetischer Monopole schliessen sich die Feldlinien des magnetischen Feldes vollständig, was bedeutet, dass das Feld keine Quellen aufweist und somit quellenfrei ist.
+
+\begin{figure}
+\centering
+% WIRE B FIELD 3D
+\begin{tikzpicture}[z={(0.8,0.28)},x={(0.58,-0.45)}]
+	
+	\def\L{6}
+	\def\W{0.10}
+	\def\R{0.9}
+	\def\ang{-35}
+	\def\scale{1.3}
+	\def\NB{5}
+	\coordinate (O) at (0,0,0);
+	%\draw (0,0,0) -- (2,0,0);
+	%\draw (0,0,0) -- (0,0,2);
+	
+	% Koordinatensystem
+	\draw[->] (0,0,0) -- (3,0,0) node[anchor=north east]{$x$};
+	\draw[->] (0,0,0) -- (0,3,0) node[anchor=north west]{$z$};
+	\draw[->] (0,0,0) -- (0,0,4) node[anchor=south]{$y$};
+	
+	% B FIELD BACK
+	\foreach \i [evaluate={\x=(\i-\NB/2-0.5)*\L/\NB;}] in {1,...,\NB}{
+		%\draw[BField,-] (0,0,\x)++(\ang+1:\R) arc (\ang+1:\ang-181:\R);
+		\draw[BFieldLine=1] (0,0,\x)++(\ang+1:\R) arc (\ang+1:\ang-181:\R) --++ (65:0.001*\R);
+	}
+	
+	% WIRE
+	\draw[metal] (0,0,-\L/2)++(120:\W/2) --++ (0,0,\L) arc (120:-60:\W/2) --++ (0,0,-\L) arc (-60:120:\W/2);
+	\draw[metal] (0,0,-\L/2) circle (\W/2);
+	\draw[current] (0.12*\R,-0.12*\R,0.4*\L) --++ (0,0,0.2*\L) node[below=2,right] {$I$};
+	
+	% B FIELD FRONT
+	\foreach \i [evaluate={\x=(\i-\NB/2-0.5)*\L/\NB;}] in {1,...,\NB}{
+		%\draw[BFieldLine=1] (0,0,\x)++(\ang+180:\R) arc (\ang+180:\ang:\R) --++ (-116:0.001*\R);
+		\draw[BField,-] (0,0,\x)++(\ang+180:\R) arc (\ang+180:\ang:\R);
+	}
+	\node[Bcol] at (-0.9*\R,0.9*\R,-0.25*\L) {$\vec{B}$}; %++(140:1.3*\R)
+	
+\end{tikzpicture}
+	\caption{Magnetische Flussdichte um einen geraden Leiter}
+	\label{maxwell:flussdichte}
+\end{figure}
+
+
+
+
+\subsubsection{Magnetisches Vektorpotential}
+
+Das magnetische Vektorpotential ist ein Vektorfeld, mit welchem die magnetische Flussdichte als 
+\begin{equation}
+	\nabla \times \vec{A}
+	=
+	\vec{B}
+	\label{maxwell:definitionVektorpot}
+\end{equation}
+beschreiben werden kann, wobei wir für später dieses bereits konkret ausrechnen wollen 
+\begin{equation}
+	\renewcommand{\arraystretch}{1.9}
+	\begin{pmatrix}
+		\displaystyle
+		\frac{\partial}{\partial x} \\
+		\displaystyle
+		\frac{\partial}{\partial y} \\
+		\displaystyle
+		\frac{\partial}{\partial z}
+	\end{pmatrix}
+	\times
+	\begin{pmatrix}
+		\displaystyle
+		A_1 \\
+		A_2 \\
+		A_3 \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\displaystyle
+		\frac{\partial A_3}{\partial y} -\frac{\partial A_2}{\partial z}\\
+		\displaystyle
+		\frac{\partial A_1}{\partial z} -\frac{\partial A_3}{\partial x}\\
+		\displaystyle
+		\frac{\partial A_2}{\partial x} -\frac{\partial A_1}{\partial y}
+	\end{pmatrix}.
+\end{equation}
+
+Mit dem Vektorpotential können ähnlich wie beim elektrischen Potential, energetische Zustände beschrieben werden. Die Wirkgrösse hier ist allerdings eine bewegte Ladung also eine Ladung $q$, welche eine Geschwindigkeit $\vec{v}$ hat. So kann das magnetische Potential dieser Grösse an einem Punkt berechnet werden. Zusätzlich ergibt sich über das Vektorpotential so auch die potentielle Energie dieser Wirkgrösse, auf welche weiter unten noch spezifischer eingegangen wird.
+
+
+\subsection{Ampère'sches Gesetz}
+
+Wiederum betrachten wir unter den oben vorausgesetzten Bedingungen einen luftleeren, dreidimensionalen Raum $V \subset \mathbb{R}^3$ in welchem das Vektorfeld des magnetischen Vektorpotentials $\vec{A}(x,y,z)$ und eine Stromdichte $\vec{j}(x,y,z)$ existieren. Erneut versuchen wir eine Gleichung zu finden, welche das Wesen des Vektorpotential und somit nach \ref{maxwell:definitionVektorpot} die magnetische Flussdichte bzw. das magnetische Feld beschreibt. 
+
+\subsubsection{Ansatz}
+
+Wieder soll die Energie des gesamten Systems minimiert werden. 
+Die Energiedichte des magnetischen Feldes mit \ref{maxwell:definitionVektorpot} eingesetzt ist
+\[ w_m 
+= 
+\frac{1}{2\mu_0}\vec{B}(x,y,z)^2
+=
+\frac{1}{2\mu_0}\left(\nabla\times\vec{A}(x,y,z)\right)^2. \]
+Somit berechnet sich die gesamt Energie jenes zu 
+\begin{equation}
+	W_m = \iiint_V w_m\, dV.
+\end{equation}
+Wie bereits erwähnt, ergibt sich durch eine bewegte Ladung $q$ mit einer Geschwindigkeit $\vec{v}$ eine weitere potentielle Energie im System, welche sich als 
+\[ 
+W_{p}
+= 
+\vec{A}
+\cdot
+q\vec{v}
+ \]
+berechnen lässt.
+Mithilfe von $\vec{j} = \rho\vec{v}$ und \ref{maxwell:ladung} kann diese potentielle Energie zu 
+\begin{equation}
+	W_p
+	= 
+	\iiint_V \vec{A}(x,y,z)\cdot\vec{j}(x,y,z)\,dV
+\end{equation}
+umgeformt werden.
+Die beiden Komponenten welche einen Beitrag zur gesamt Energie beitragen können so als 
+\begin{align*}
+W_{tot} 
+&=
+W_m - W_p
+=
+\iiint_V \vec{A}\cdot\vec{j}
+- \frac{1}{2\mu_0}\left(\nabla\times\vec{A}\right)\cdot\left(\nabla\times\vec{A}\right)\, dV \\
+&=
+\iiint_V \left( A_1j_1 + A_2j_2 + A_3j_3\right) - 
+ \frac{1}{2\mu_0}\left( 
+ 	\left( \frac{\partial A_3}{\partial y} -\frac{\partial A_2}{\partial z}\right)^2 
+ + \left( \frac{\partial A_1}{\partial z} -\frac{\partial A_3}{\partial x}\right)^2
+ + \left(\frac{\partial A_2}{\partial x} -\frac{\partial A_1}{\partial y} \right)^2   
+ \right) \,dV
+\end{align*}
+zusammengefasst werden. 
+
+In dieser Gleichung wird sofort das zu minimierende Integral ersichtlich und die Lagrange Funktion kann als 
+
+	%\begin{align}
+	%\label{maxwell:magnetostatikLagrange}
+	%L\left(x,y,z, \vec{A}, \vec{A}_x. \vec{A}_y, \vec{A}_z\right)
+	%=&\left( A_1j_1 + A_2j_2 + A_3j_3\right) \\ \nonumber
+	% &- \frac{1}{2\mu_0}\left( 
+	%\left( \frac{\partial A_3}{\partial y} -\frac{\partial A_2}{\partial %z}\right)^2 
+	%+ \left( \frac{\partial A_1}{\partial z} -\frac{\partial A_3}{\partial x}\right)^2
+	%+ \left(\frac{\partial A_2}{\partial x} -\frac{\partial A_1}{\partial y} \right)^2   
+	%\right)	
+	%\end{align}
+	
+	\begin{align}
+	\label{maxwell:magnetostatikLagrange}
+	L\left(x,y,z, \vec{A}, \vec{A}_x. \vec{A}_y, \vec{A}_z\right)
+	=&\left( A_1j_1 + A_2j_2 + A_3j_3\right) \\ \nonumber
+	 &- \frac{1}{2\mu_0}\left( 
+	\left( A_{3y} - A_{2z}\right)^2 
+	+ \left(A_{1z} -A_{3x}\right)^2
+	+ \left(A_{2x} -A_{1y}\right)^2   
+	\right)
+	\end{align}
+definiert werden. 
+Hierbei wollen wir darauf hinweisen, dass die Lagrange Funktion in diesem Fall von einem Vektor abhängig ist. 
+Das bedeutet, dass jede Komponente des Vektorpotentials einzeln variiert werden kann, was später die Ursache für mehrere Ausführungen der E-O-DGL sein wird.
+
+Erneut stellen wir auch fest, dass ein additiver Term dazugekommen ist, wie weiter oben beschrieben handelt es sich auch hier um einem Koppelungsterm, welcher hier jedoch die Wechselwirkung zwischen dem Feld und der Wirkgrösse also der Stromdichte $\vec{j}$ beschreibt.
+
+\subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
+
+Da jede Komponente des magnetischen Vektorpotentials für sich variiert werden kann, resultieren demnach drei E-O-DGL der Form
+\[ 
+\frac{\partial L}{\partial A_i} 
+- \frac{\partial}{\partial x}\frac{\partial L}{\partial A_{ix}}
+- \frac{\partial}{\partial y}\frac{\partial L}{\partial A_{iy}}
+- \frac{\partial}{\partial z}\frac{\partial L}{\partial A_{iz}}
+= 0 \qquad \text{für } i=1,2,3
+ \]
+{\larger\textcircled{\smaller[2]1}} $i = 1$
+\begin{subequations}
+\begin{gather}
+	0
+	=
+	j_1 - \underbrace{\frac{\partial}{\partial x}\frac{\partial L}{\partial A_{1x}}}_{=0}
+	 - \left( \frac{1}{2\mu_0}(-1)\,2 \frac{\partial}{\partial y}(A_{2x}-A_{1y})\right) 
+	 - \left( \frac{1}{2\mu_0}\,2\frac{\partial}{\partial z}(A_{1z}-A_{3x})\right)
+	 \\
+	 0
+	 =
+	 j_1 - \frac{1}{\mu_0}\left( \frac{\partial}{\partial y}(A_{2x}-A_{1y})
+	 - \frac{\partial}{\partial z}(A_{1z}-A_{3x})
+	 \right)  
+	 \\	 
+	 \mu_0j_1
+	 =
+	 \frac{\partial}{\partial y}(A_{2x}-A_{1y})
+	 - \frac{\partial}{\partial z}(A_{1z}-A_{3x})	 	 	 
+\end{gather}
+\end{subequations}
+

@@ -1,0 +1,112 @@
+%
+% seilbahn.tex -- Seilbahn
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	arsinh(\t) = ln(\t + sqrt(\t*\t+1));
+	arcosh(\t) = ln(\t + sqrt(\t*\t-1));
+}]
+
+\xdef\xone{-4.5}
+\pgfmathparse{sinh(\xone/3)}
+\xdef\yone{\pgfmathresult}
+\pgfmathparse{sqrt(9+sinh(-1.5)*sinh(-1.5)}
+\xdef\lone{\pgfmathresult}
+\pgfmathparse{90+atan(sinh(-1.5)/3)}
+\xdef\aone{\pgfmathresult}
+
+\coordinate (A) at ({\xone+sinh(-1.5)/\lone},{cosh(-1.5)-3/\lone});
+
+\pgfmathparse{\xone-cos(\aone)-sin(30)}
+\xdef\Xone{\pgfmathresult}
+\pgfmathparse{cosh(-1.5)-3/\lone+cos(30)}
+\xdef\Yone{\pgfmathresult}
+\pgfmathparse{tan(30)}
+\xdef\mone{\pgfmathresult}
+\pgfmathparse{\Xone-arsinh(\mone)}
+\xdef\done{\pgfmathresult}
+\pgfmathparse{\Yone-cosh(\Xone-\done)}
+\xdef\cone{\pgfmathresult}
+
+\fill[color=darkgreen!10] (\Xone,-2) rectangle (\xone,3);
+%\fill[color=blue] (\Xone,\Yone) circle[radius=0.1];
+
+\draw (\xone,{cosh(-1.5)}) -- +({sinh(-1.5)/\lone},{-3/\lone});
+\draw (A) -- +(120:1);
+\fill[color=gray!40,opacity=0.5] (A) circle[radius=1];
+
+\xdef\xtwo{1.5}
+\pgfmathparse{sinh(\xtwo/3)}
+\xdef\ytwo{\pgfmathresult}
+\pgfmathparse{sqrt(9+sinh(0.5)*sinh(0.5)}
+\xdef\ltwo{\pgfmathresult}
+\pgfmathparse{90+atan(sinh(0.5)/3)}
+\xdef\atwo{\pgfmathresult}
+
+\coordinate (B) at ({\xtwo+sinh(0.5)/\ltwo},{cosh(0.5)-3/\ltwo});
+
+\pgfmathparse{\xtwo-cos(\atwo)+sin(60)}
+\xdef\Xtwo{\pgfmathresult}
+\pgfmathparse{cosh(0.5)-3/\ltwo+cos(60)}
+\xdef\Ytwo{\pgfmathresult}
+\pgfmathparse{tan(-60)}
+\xdef\mtwo{\pgfmathresult}
+\pgfmathparse{\Xtwo-arsinh(\mtwo)}
+\xdef\dtwo{\pgfmathresult}
+\pgfmathparse{\Ytwo-cosh(\Xtwo-\dtwo)}
+\xdef\ctwo{\pgfmathresult}
+
+\fill[color=darkgreen!10] (\Xtwo,-2) rectangle (\xtwo,3);
+%\fill[color=blue] (\Xtwo,\Ytwo) circle[radius=0.1];
+
+\draw (\xtwo,{cosh(0.5)}) -- +({sinh(0.5)/\ltwo},{-3/\ltwo});
+\draw (B) -- +(30:1);
+\fill[color=gray!40,opacity=0.5] (B) circle[radius=1];
+
+\begin{scope}
+\clip (-7,-2) rectangle (4,3);
+\draw[color=darkred,line width=1.4pt]
+	plot[domain=-7.1:\Xone] ({\x},{cosh(\x-\done)+\cone});
+\draw[color=blue,line width=1.4pt] ($(A)+(\aone:1)$) arc(\aone:120:1);
+\draw[color=darkred,line width=1.4pt] plot[domain=-1.5:0.5] ({3*\x},{cosh(\x)});
+\draw[color=blue,line width=1.4pt] ($(B)+(30:1)$) arc(30:\atwo:1);
+\draw[color=darkred,line width=1.4pt]
+	plot[domain=\Xtwo:4.1] ({\x},{cosh(\x-\dtwo)+\ctwo});
+\end{scope}
+
+\draw[line width=0.3pt] (-7,-2) -- (-7,3);
+\draw[line width=0.3pt] (4,-2) -- (4,3);
+
+\draw[->] (-7.6,-2) -- (4.6,-2) coordinate[label={$x$}];
+\draw[->] (-7.5,-2.1) -- (-7.5,3.3) coordinate[label={right:$y$}];
+
+\draw (-7,-2.05) -- (-7,-1.95);
+\node at (-7,-2) [below] {$x_0\mathstrut$};
+\draw (4,-2.05) -- (4,-1.95);
+\node at (4,-2) [below] {$x_1\mathstrut$};
+
+\node[color=darkgreen] at ({0.5*(\xone+\Xone)},-2) [above] {$A$};
+\node[color=darkgreen] at ({0.5*(\xtwo+\Xtwo)},-2) [above] {$A$};
+
+\node[color=darkred] at (-1.5,1.5) {$y(x)$};
+\node[color=blue] at ($(A)+(89:1)$) [above] {$\varphi(x)$};
+\node[color=blue] at ($(B)+(85:1)$) [above right] {$\varphi(x)$};
+
+\end{tikzpicture}
+\end{document}
+

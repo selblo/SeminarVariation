@@ -1,0 +1,28 @@
+/*
+ * rotgeo.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+load(ctensor);
+
+gradef(r(z), rp(z));
+gradef(rp(z), rpp(z));
+
+/*
+ * coordinates: x_1 = phi, x_2 = z
+ */
+dim: 2;
+lg: matrix(
+    [  r(z)^2,   0                  ],
+    [       0,   1 + diff(r(z),z)^2 ]
+);
+ct_coords: [phi, z];
+
+cmetric();
+
+diagmetric;
+
+christof(true);
+cgeodesic(true);
+geod[1];
+geod[2];

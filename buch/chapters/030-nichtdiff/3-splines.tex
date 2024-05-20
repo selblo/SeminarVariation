@@ -407,7 +407,7 @@ Ableitungen hat.
 \begin{satz}
 \label{buch:nichtdiff:splines:satz:polynom}
 Das Polynom
-\[
+\begin{equation}
 y_k(x)
 =
 y_k
@@ -421,9 +421,10 @@ m_k
 H_0^1\biggl(\frac{x-x_k}{m_k}\biggr)
 +
 s_{k+1}
-m_{k+1}
+m_{k}
 H_1^1\biggl(\frac{x-x_k}{m_k}\biggr)
-\]
+\label{buch:nichtdiff:splines:eqn:ykdarstellung}
+\end{equation}
 hat die Funktionswerte und ersten und zweiten Ableitungen
 \begin{align*}
 y_k(x_k)       &= y_k,
@@ -451,7 +452,7 @@ y_k''(x_{k+1}) &=
 %
 \subsubsection{Gleichungssystem für die Steigungen in den Stützstellen}
 Mit den im vorangegangenen Abschnitt gefundenen Polynome kann eine
-Spline-Interpolationsfunktion konstruiert werden, sobald die ersten
+Spline-Inter\-po\-la\-tions\-funktion konstruiert werden, sobald die ersten
 Ableitungen der Funktion in den Stützstellen bekannt sind.
 Diese müssen so gewählt werden, dass die daraus konstruierten
 Polynome an den Stützstellen die gleichen zweiten Ableitungen haben.
@@ -560,7 +561,7 @@ an den Intervallenden.
 Dies ist ein lineares Gleichungssystem mit $n+1$ Gleichungen
 für die $n+1$ Unbekannten $s_k$.
 Wir schreiben es in Matrixform mit der Koeffizientenmatrix
-\[
+\begin{equation}
 \renewcommand{\arraystretch}{1.9}
 A=
 \begin{pmatrix}
@@ -602,9 +603,10 @@ A=
 				&\displaystyle\frac{1}{m_{n-2}}
 					&\displaystyle\frac{2}{m_{n-1}}
 \end{pmatrix}
-\]
+\label{buch:nichtdiff:splines:eqn:matrixA}
+\end{equation}
 und der rechten Seite
-\[
+\begin{equation}
 \renewcommand{\arraystretch}{1.9}
 b
 =
@@ -633,7 +635,8 @@ b
 \displaystyle
 \frac{1}{m_{n-1}^2}(y_n-y_{n-1})
 \end{pmatrix}.
-\]
+\label{buch:nichtdiff:splines:eqn:vektorb}
+\end{equation}
 Schreibt man die Ableitungen $s_k$ als Vektor $s$, können die Steigungen
 durch Lösen der Gleichung
 \begin{equation}
@@ -724,6 +727,223 @@ Hermite-Interpolationsfunktion ist 100000-fach überhöht orange dargestellt.
 Bekannte Steigungen ermöglichen also eine viel höhere Genauigkeit, als dies
 mit den geschätzten Steigungen möglich ist.
 \end{beispiel}
+
+%
+% Finite Elemente auf einem Intervall
+%
+\subsubsection{Finite Elemente auf einem Intervall}
+In Satz~\ref{buch:nichtdiff:splines:satz:hermitebasis} konzentrierte sich
+die Aufmerksamkeit auf das Innere eines der Intervalle
+$[x_{k\mathstrut},x_{k+1\mathstrut}]$.
+Die Matrix $A$ von
+\eqref{buch:nichtdiff:splines:eqn:matrixA}
+und der Vektor $b$ von
+\eqref{buch:nichtdiff:splines:eqn:vektorb}
+lieferten dann die Koeffizienten für die Linearkombination der
+auf diesem Intervall definierten Polynome
+\[
+H_0\biggl(\frac{x-x_k}{m_k}\biggr),
+\qquad
+H_1\biggl(\frac{x-x_k}{m_k}\biggr),
+\qquad
+H_0^1\biggl(\frac{x-x_k}{m_k}\biggr)
+\qquad\text{und}\qquad
+H_1^1\biggl(\frac{x-x_k}{m_k}\biggr),
+\]
+die das Interpolationspolynom $y_k(x)$ ergaben.
+Sie heissen auch die {\em Formfunktionen}.
+\index{Formfunktion}%
+
+Jeder Wert $y_k$ und jede Steigung $m_k$ kam in der Darstellung
+\eqref{buch:nichtdiff:splines:eqn:ykdarstellung} 
+der beiden Funktionen $y_{k-1}(x)$ und $y_{k\mathstrut}(x)$ vor.
+Fügt man diese Funktionen auf dem ganzen Intervall zusammen,
+dann kann man die Interpolationsfunktion als Linearkombination
+von auf $[a,b]$ definierten, stetig differenzierbaren Funktionen
+schreiben, wobei die $y_k$ und $m_k$ die Koeffizienten sind.
+
+\input{chapters/030-nichtdiff/fig/interpolation.tex}
+
+\begin{satz}
+Die Spline-Interpolationsfunktion ist die Linearkombination
+\begin{equation}
+y(x)
+=
+\sum_{k=0}^n y_k f_k(x)
++
+\sum_{k=0}^n m_k g_k(x)
+\label{buch:nichtdiff:spline:eqn:linearkomb}
+\end{equation}
+der Funktionen
+\[
+f_k(x)
+=
+\begin{cases}
+\displaystyle
+\phantom{m_{k-1\mathstrut}}
+H_1\biggl(\frac{x-x_{k-1\mathstrut}}{m_{k-1\mathstrut}}\biggr)
+	&\quad x\in[x_{k-1\mathstrut},x_{k\mathstrut}]\\[5pt]
+\displaystyle
+\phantom{m_{k-1\mathstrut}}
+H_0\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr)
+	&\quad x\in[x_{k\mathstrut},x_{k+1\mathstrut}]\\
+\phantom{m_{k-1\mathstrut}}
+0&\quad\text{sonst}
+\end{cases}
+\]
+und
+\[
+g_k(x)
+=
+\begin{cases}
+\displaystyle
+m_{k-1\mathstrut}
+H_1^1\biggl(\frac{x-x_{k-1\mathstrut}}{m_{k-1\mathstrut}}\biggr)
+	&\quad x\in[x_{k-1\mathstrut},x_{k\mathstrut}]\\[5pt]
+\displaystyle
+\phantom{m_{k-1\mathstrut}}\llap{$m_k\mathstrut$}
+H_0^1\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr)
+	&\quad x\in[x_{k\mathstrut},x_{k+1\mathstrut}]\\
+\phantom{m_{k-1\mathstrut}}
+0&\quad\text{sonst,}
+\end{cases}
+\]
+die auf dem ganzen Intervall stetig differenzierbar sind.
+\end{satz}
+
+Die Funktionen $f_k(x)$ und $g_k(x)$ sind in
+Abbildung~\ref{buch:nichtdiff:splines:fig:interpolation}
+dargestellt.
+Die Funktion $f_k(x)$ verschwindet an allen Stützstellen ausser
+an der Stützstelle $x_k$, wo sie den Wert $1$ hat.
+Die Ableitung von $f_k(x)$ verschwindet ebenfalls in allen Stützstellen.
+Die Funktion $g_k(x)$ verschwindet in allen Sütztstellen.
+Auch verschwinden alle Ihre Ableitungen ausser in der Stützstelle $x_k$,
+wo $g_k'(x_k)=1$ ist.
+
+\begin{proof}
+Es ist zunächst zu prüfen, ob Linearkombination
+\eqref{buch:nichtdiff:spline:eqn:linearkomb},
+die wir für die Zwecke des Beweises mit $l(x)$ bezeichnen wollen,
+auf dem Teilintervall $[x_{k\mathstrut},x_{k+1\mathstrut}]$
+die Spline-Interpolationsfunktion ergibt.
+Dazu beachtet man, dass der Träger der Funktionen $f_k(x)$ und $g_k(x)$ 
+das Intervall $[x_{k-1\mathstrut},x_{k+1\mathstrut}]$ ist.
+Auf dem Teilintervall $[x_{k\mathstrut},x_{k+1\mathstrut}]$ sind von
+den Funktionen $f_l$ und $g_l$ genau die vier Funktion $f_{k\mathstrut}$,
+$g_{k\mathstrut}$, $f_{k+1\mathstrut}$ und $g_{k+1\mathstrut}$
+von $0$ verschieden.
+Auf dem Intervall $[x_{k\mathstrut},x_{k+1\mathstrut}]$ ist daher die
+Linearkombination~\eqref{buch:nichtdiff:spline:eqn:linearkomb}
+\begin{align*}
+l(x)
+&=
+y_{k\mathstrut}
+f_{k\mathstrut}(x)
++
+y_{k+1\mathstrut}
+f_{k+1\mathstrut}(x)
++
+s_{k\mathstrut}
+g_{k\mathstrut}(x)
++
+s_{k+1\mathstrut}
+g_{k+1\mathstrut}(x).
+\intertext{Ersetzen wir die Funktionen durch ihre Definition auf dem
+Teilintervall $[x_{k\mathstrut},x_{k+1\mathstrut}]$, wird daraus}
+&=
+y_{k\mathstrut}
+H_0\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr)
++
+y_{k+1\mathstrut}
+H_1\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr)
++
+s_{k\mathstrut}
+m_{k\mathstrut}
+H_0^1\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr)
++
+s_{k+1\mathstrut}
+m_{k\mathstrut}
+H_1^1\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr).
+\end{align*}
+Dies stimmt mit der Darstellung
+\eqref{buch:nichtdiff:splines:eqn:ykdarstellung}
+von Satz~\ref{buch:nichtdiff:splines:satz:polynom}
+überein.
+Damit ist gezeigt, dass die Linearkombination $l(x)$ die 
+Spline-Interpolationsfunktion $y(x)$ ist, $y(x)=l(x)$.
+
+Als Polynome sind die Funktionen $f_k(x)$ und $g_k(x)$ im Inneren der
+aller Intervalle $[x_{i\mathstrut},x_{i+1\mathstrut}]$ stetig
+differenzierbar, es ist also nur noch zu prüfen, ob die Ableitungen
+der Teilfunktionen in den Stützstellen $x_{k-1\mathstrut}$, $x_{k\mathstrut}$
+und $x_{k+1\mathstrut}$ übereinstimmen.
+Die Ableitung von $f_k(x)$ ist
+\[
+f_k'(x)
+=
+\begin{cases}
+\displaystyle
+\frac{1}{m_{k-1\mathstrut}}
+H'_1\biggl(\frac{x-x_{k-1\mathstrut}}{m_{k-1\mathstrut}}\biggr)
+&\qquad x \in [x_{k-1\mathstrut},x_{k\mathstrut}]\\
+\displaystyle
+\phantom{\frac{1}{m_{k-1\mathstrut}}}
+\llap{$\displaystyle\frac{1}{m_{k\mathstrut}}$}
+H'_0\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr)
+&\qquad x \in [x_{k\mathstrut},x_{k+1\mathstrut}]\\
+\phantom{\displaystyle\frac{1}{m_{k-1\mathstrut}}}
+0&\qquad\text{sonst.}
+\end{cases}
+\]
+Die Ableitungen $H_0'(x)$ und $H_1'(x)$ verschwinden aber in den Intervallenden
+und somit sind auch die Ableitungen $f'_k(x_i)=0$ für alle Stützstellen $x_i$.
+Die Ableitung von $g_k(x)$ ist
+\[
+g'_k(x)
+=
+\begin{cases}
+\displaystyle
+\phantom{m_{k-1}}
+H_1^{1\prime}\biggl(\frac{x-x_{k-1\mathstrut}}{m_{k-1\mathstrut}}\biggr)
+&\qquad x\in[x_{k-1\mathstrut},x_{k\mathstrut}]\\
+\displaystyle
+\phantom{m_{k-1}}
+H_0^{1\prime}\biggl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\biggr)
+&\qquad x\in[x_{k\mathstrut},x_{k+1\mathstrut}]\\
+\displaystyle
+\phantom{m_{k-1}}
+0
+&\qquad\text{sonst.}
+\end{cases}
+\]
+In den Stützstellen $x_{k-1}$ und $x_{k+1}$ verschwinden die Ableitungen
+der Teilfunktionen.
+In der Stützstelle $x_k$ gilt
+\begin{align*}
+g_k'(x_k-)
+&=
+H_1^{\prime 1}\biggl(
+\frac{x_{k\mathstrut}-x_{k-1\mathstrut}}{m_{k-1\mathstrut}}
+\biggr)
+=
+H_1^{\prime 1}(1)
+=
+1
+\\
+g_k'(x_k+)
+&=
+H_0^{\prime 1}\biggl(
+\frac{x_{k\mathstrut}-x_{k\mathstrut}}{m_{k\mathstrut}}
+\biggr)
+=
+H_0^{\prime 1}(0)
+=
+1,
+\end{align*}
+die Ableitungen der Teilfunktionen stimmen also überein.
+\end{proof}
+
 
 %
 % Fehlerformel
