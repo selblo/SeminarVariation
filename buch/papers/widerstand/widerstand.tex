@@ -1,0 +1,139 @@
+%
+% widerstand.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Widerstand\label{widerstand:section:teil0}}
+\kopfrechts{Widerstand}
+Newton hat in seiner Untersuchung zum Strömungswiderstand angenommen,
+dass dieser durch elastische Stösse mit einzelnen Teilchen entsteht.
+Er nimmt an, dass das Teilchen wie ein Ping-pong-Ball auf der Oberfläche
+reflektiert wird und der Widerstand durch den vom Geschoss auf das
+Teilchen übertragenen Impuls entsteht.
+Die Reibung zwischen Luft und Oberfläche wird also vollständig
+vernachlässigt.
+Newtons Überlegungen sind erst im Falle extrem geringer Dichte annähernd
+erfüllt.
+Für geringe Geschwindigkeiten und normale atmosphärische Dichte sind
+andere Effekte viel grösser, erst recht bei Flüssigkeiten.
+Newton war trotzdem der Meinung, dass seine Erkenntnisse für
+den Schiffbau von Bedeutung sein würden.
+
+%
+% Widerstand eines Rotationskörpers
+%
+\subsection{Widerstand eines Rotationskörpers}
+\input{papers/widerstand/fig/koerper.tex}
+Wir beschreiben einen Rotationskörper durch die Meridiankurve
+$y(x)$, wobei $x$ die Entfernung von der Achse ist.
+Die Oberfläche des Rotationskörpers besteht also aus einem kreisförmigen
+Teil mit Radius $r$ und 
+einem Teil zwischen den Radien $x=r$ und $x=R$, der durch $y(x)$
+beschrieben ist.
+
+Die Teilchen, die auf den kreisförmigen Teil auftreffen, werden vollständig
+reflektiert sie tragen daher $2\pi r^2$ zum Widerstand bei.
+
+Für die Teilchen, die auf den schrägen Teil des Mantels auftreffen
+muss zunächst die Normale auf die Mantelfläche berechnet werden.
+Sie ist der Vektor
+\[
+\vec{n}(x)
+=
+\frac{1}{\sqrt{1+y'(x)^2}}
+\begin{pmatrix}
+-y'(x)\\
+1
+\end{pmatrix}
+\]
+Die Richtung des anströmenden Teilchens ist der Vektor
+\[
+\vec{e}
+=
+\begin{pmatrix}
+ 0\\
+-1
+\end{pmatrix}.
+\]
+Die reflektierte Richtung ist
+\[
+\vec{e}'
+=
+\vec{e}
+-2\vec{n}\,\vec{n}\cdot\vec{e}
+=
+\begin{pmatrix} 0\\ -1 \end{pmatrix}
+-2
+\frac{-1}{1+y'(x)^2}
+\begin{pmatrix}
+-y'(x)\\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}0\\-1\end{pmatrix}
++
+\frac{2}{1+y'(x)^2}\begin{pmatrix}-y'(x)\\1\end{pmatrix}
+\]
+Für die Berechnung des Widerstands ist nur die Komponente der
+Impulseänderung $\Delta p$ parallel zur Achse interessant.
+Dies ist die zweite Komponente des zweiten Terms auf der rechten
+Seite relevant, nämlich
+\[
+\Delta p
+=
+\frac{2}{1+y'(x)^2}
+\]
+Der Ring zwischen den Radien $x$ und $x+\Delta x$ hat den Flächeninhalt
+\[
+\pi ((x+\Delta x)^2 - x^2)
+=
+\pi (x^2 +2x\Delta x + (\Delta x)^2 - x^2)
+=
+2\pi x \Delta x + (\Delta x)^2.
+\]
+Die Mantelfläche trägt daher den Widerstand
+\begin{equation*}
+4\pi
+\int_{r}^{R}
+\frac{x}{1+y'(x)^2}\,dx
+\end{equation*}
+bei.
+Damit bekommen wir für den gesamten Widerstand die Formel
+\[
+2\pi r^2 + 4\pi \int_r^R \frac{x}{1+y'(x)^2}\,dx.
+\]
+Der Einfachheit halber dividieren wir noch durch $2\pi$ und finden
+damit das Funktional
+\begin{equation}
+W(y)
+=
+r^2 
++
+\int_r^R \frac{2x}{1+y'(x)^2}\,dx
+\end{equation}
+mit der Lagrange-Funktion
+\[
+F(x,y')
+=
+\frac{2x}{1+y'(x)^2},
+\]
+welches zu varieren ist.
+
+\begin{aufgabe}
+\label{widerstand:aufgabe}
+Finde $r$ und die Funktion $y(x)$ definiert auf dem Intervall $[r,R]$
+derart, dass das
+\begin{equation}
+W(y)
+=
+r^2
++
+\int_r^R \frac{2x}{1+y'(x)^2}\,dx
+\label{widerstand:eqn:Wy}
+\end{equation}
+minimal wird mit den Randbedingungen
+$y(r)=L$ und $y(R)=0$.
+\end{aufgabe}
