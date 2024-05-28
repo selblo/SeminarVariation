@@ -1,0 +1,35 @@
+Optimales Laden eines Kondensators.
+Eine Spannungsquelle soll einen Kondensator $C$ innert der Zeit $t_1$
+auf eine vorgegebene Zielspannung $x_1$ aufladen.
+Durch den Innenwiderstand $R$ des Kondensators entstehen Verluste.
+Wie muss die Ladespannung $u(t)$ verlaufen, damit die Verluste minimal
+sind.
+
+\begin{loesung}
+Wir bezeichnen die Spannung am Kondensator zur Zeit $t$ mit $x(t)$ und
+die Ladespannung mit $u(t)$.
+Die am Innenwiderstand abfallende Spannung ist $u(t)-x(t)$ und der 
+Ladestrom ist nach dem ohmschen Gesetz
+\[
+i(t) = \frac{1}{R}(u(t)-x(t))
+\]
+Die durch den Ladestrom verursachte Spannungsänderung ist
+\begin{equation}
+\frac{d}{dt}x(t) = \frac{1}{C}i(t) = \frac{1}{RC}(u(t)-x(t))
+\label{buch:801:systemdgl}
+\end{equation}
+Die im Widerstand zur Zeit $t$ dissipierte Leistung ist
+\[
+p(t) = \frac{1}{R}(u(t)-x(t))^2,
+\]
+so dass die gesamte im Widerstand verlorene Energie
+\begin{equation}
+E
+=
+\int_{t_0}^{t_1}
+\frac{1}{R}(u(t)-x(t))^2\,dt
+\end{equation}
+ist.
+\end{loesung}
+
+

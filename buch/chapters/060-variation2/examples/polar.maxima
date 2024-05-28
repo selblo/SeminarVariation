@@ -1,0 +1,23 @@
+/*
+ * polar.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+load(ctensor);
+
+dim: 2;
+lg: matrix(
+    [  1,   0   ],
+    [  0,   r^2 ]
+);
+ct_coords: [r, phi];
+
+cmetric();
+
+diagmetric;
+
+cgeodesic(true);
+
+
+
+

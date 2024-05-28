@@ -1,0 +1,77 @@
+%
+% phi.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+\def\punkt#1#2{
+	\fill[color=white] #1 circle[radius=0.07];
+	\draw[color=#2] #1 circle[radius=0.06];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	fx(\t) = 3*\t*\t*\t*\t+1;
+	fy(\t) = 5*(1-sin(90*(1-\t)))+2;
+	X(\t,\s) = cos(40*\s)*fx(\t)+sin(40*\s)*fy(\t);
+	Y(\t,\s) = -sin(40*\s)*fx(\t)+cos(40*\s)*fy(\t);
+}]
+
+\foreach \s in {0.1,0.2,...,0.95}{
+	\draw[color=darkred!20,line width=1.4pt]
+		plot[domain=0:1] ({X(\x,\s)},{Y(\x,\s)});
+}
+
+\draw[color=darkred,line width=1.4pt] plot[domain=0:1] ({fx(\x)},{fy(\x)});
+\draw[color=darkred,line width=1.4pt] plot[domain=0:1] ({X(\x,1)},{Y(\x,1)});
+
+\draw[color=blue] plot[domain=0:1] ({X(1,\x)},{Y(1,\x)});
+\draw[color=blue] plot[domain=0:1] ({X(0.7,\x)},{Y(0.7,\x)});
+\draw[color=blue] plot[domain=0:1] ({X(0,\x)},{Y(0,\x)});
+
+\draw[->,color=blue] plot[domain=0.3:0.7] ({X(0.65,\x)},{Y(0.65,\x)});
+\node at ({X(0.65,0.5)},{Y(0.65,0.5)}) [below,rotate=-40] {$s$};
+
+\draw[->,color=darkred] plot[domain=0.82:0.92] ({X(\x,0.05)},{Y(\x,0.05)});
+\node[color=darkred] at ({X(0.87,0.05)},{Y(0.87,0.05)})
+	[rotate=45,below] {$t$};
+
+\punkt{({X(0,0)},{Y(0,0)})}{darkred}
+\punkt{({X(0.7,0)},{Y(0.7,0)})}{darkred}
+\punkt{({X(1,0)},{Y(1,0)})}{darkred}
+\punkt{({X(0,1)},{Y(0,1)})}{darkred}
+\punkt{({X(0.7,1)},{Y(0.7,1)})}{darkred}
+\punkt{({X(1,1)},{Y(1,1)})}{darkred}
+
+\node at ({X(0,0)},{Y(0,0)}) [left] {$x(t_0)$};
+\node at ({X(0.7,0)},{Y(0.7,0)}) [above left] {$x(t)$};
+\node at ({X(1,0)},{Y(1,0)}) [above left] {$x(t_1)$};
+
+\node[color=darkred] at ({X(0.87,0)},{Y(0.87,0)})
+	[rotate=45,above] {$x(t)$};
+\node[color=darkred] at ({X(0.87,1)},{Y(0.87,1)})
+	[rotate=6,above] {$h^s(x(t))=\Phi(s,t)$};
+
+\node at ({X(0,1)},{Y(0,1)}) [below right] {$h^s(x(t_0))$};
+\node at ({X(0.7,1)},{Y(0.7,1)}) [below right] {$h^s(x(t))$};
+\node at ({X(1,1)},{Y(1,1)}) [below] {$h^s(x(t_1))$};
+
+\node[color=blue] at ({X(1,0.5)},{Y(1,0.5)})
+	[rotate=-50,above] {$h^s(x(t_1))$};
+\node[color=blue] at ({X(0.7,0.5)},{Y(0.7,0.5)})
+	[rotate=-40,above] {$h^s(x(t))$};
+\node[color=blue] at ({X(0,0.5)},{Y(0,0.5)})
+	[rotate=-45,above] {$h^s(x(t_0))$};
+
+\end{tikzpicture}
+\end{document}
+

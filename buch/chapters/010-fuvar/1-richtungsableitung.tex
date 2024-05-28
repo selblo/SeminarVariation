@@ -155,7 +155,7 @@ Abbildung~\ref{buch:fuvar:richtungsableitung:fig:partabl} rot hervorgehoben.
 Die in Definition~\ref{buch:fuvar:richtungsbleitung:def:partielleableitung}
 eingeführte Notation ist intuitiv und erinnert an die Notation für den
 Differentialquotienten einer Funktion einer Variablen.
-Sie hat aber auch einen gravierenden Nachteil, der am Beispiel der
+Sie hat aber auch einen gravierenden Nachteil, der am Beispiel
 der Funktion $f(x,y)$ illustriert werden soll.
 Die partiellen Ableitungen der Funktion $f$ nach $x$ und $y$ sind
 \[
@@ -189,7 +189,7 @@ Die Variablen $x$ und $y$ werden nur gebraucht, wenn man zum
 Beispiel mit einer Formel wie $f(x,y)=\sin x\cdot\cos y$ 
 anzeigen will, wie ein Funktionswert berechnet werden soll.
 
-In der Form~\eqref{buch:fuvar:richtungsableitung:eqn:feingesetzt} ist
+In der Form~\eqref{buch:fuvar:richtungsableitung:eqn:feingesetzt} 
 stehen aber $x$ und $y$ für beliebige reelle Zahlen.
 Daraus müssen erst die Werte $x^2+y^2$ und $x^2-y^2$ berechnet werden,
 die dann als erstes bzw.~zweites Argument der Funktion eingesetzt
@@ -285,17 +285,18 @@ Eine Funktion $f\colon\mathbb{R}^n\to\mathbb{R}^m$ heisst differenzierbar
 im Punkt $x_0\in\mathbb{R}^n$, wenn es eine lineare Funktion
 $l\colon \mathbb{R}^n\to\mathbb{R}^m$ gibt mit der Eigenschaft, dass
 \[
-|f(x_0+x) - f(x_0) - l(x)| = o(x)h
+|f(x_0+\Delta x) - f(x_0) - l(\Delta x)| = o(\Delta x)
 \]
 ist.
 Diese Notation bedeutet, dass
 \[
-\lim_{x\to 0}
-\frac{|f(x_0+x)-f(x_0)-l(x)|}{|x|}
+\lim_{\Delta x\to 0}
+\frac{|f(x_0+\Delta x)-f(x_0)-l(\Delta x)|}{|\Delta x|}
 =
 0.
 \]
-Man sagt auch, eine $o(x)$-Funktion geht schneller gegen $0$ als $x$.
+Man sagt auch, eine $o(\Delta x)$-Funktion geht schneller gegen $0$ als
+$\Delta x$.
 \end{definition}
 
 %
@@ -596,7 +597,7 @@ v_n
 \]
 Damit kann die Richtungsableitung einer Funktion
 $f\colon\mathbb{R}^n\to\mathbb{R}$
-im Punkt $x\in\mathbb{R}^n$ kann mit der Kettenregel als
+im Punkt $x\in\mathbb{R}^n$ mit der Kettenregel als
 \begin{equation}
 D_vf(x)
 =

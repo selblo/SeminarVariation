@@ -1,0 +1,48 @@
+%
+% meniskus.tex -- Meniskus shapes
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% add image content here
+\def\dx{5}
+\def\dy{6}
+
+\input{../examples/meniskuspaths.tex}
+
+\fill[color=blue!20] \kurvefinal -- ({\dx},0) -- ({-\dx},0) -- cycle;
+
+\draw[color=darkred!20] ({-\dx},0) -- ({\dx},0);
+\draw[color=darkred!20] \kurveone;
+\draw[color=darkred!20] \kurvetwo;
+\draw[color=darkred!20] \kurvethree;
+\draw[color=darkred!20] \kurvefour;
+\draw[color=darkred!20] \kurvefive;
+\draw[color=darkred!20] \kurvesix;
+\draw[color=darkred!20] \kurveseven;
+\draw[color=darkred!20] \kurveeight;
+\draw[color=darkred,line width=1.4pt] \kurvefinal;
+
+\draw[color=blue] ({-\dx},0) -- ({-\dx},{1.5*\dy});
+\draw[color=blue] ({\dx},0) -- ({\dx},{1.5*\dy});
+
+\draw[->] ({-\dx-0.1},0) -- ({\dx+0.5},0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,{1.55*\dy}) coordinate[label={right:$y$}];
+
+\node at ({-\dx},0) [below] {$-l\mathstrut$};
+\node at ({\dx},0) [below] {$l\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

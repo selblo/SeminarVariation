@@ -1,0 +1,69 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\input{../experiments/refraktionpath.tex}
+\def\skala{1}
+\def\dx{1.6}
+\def\dy{2}
+\def\achsen#1{
+	\draw[->] (-0.1,0) -- ({3.1415*\dx+0.4},0) coordinate[label={$x$}];
+	\draw[->] (0,-1.7) -- (0,2.8) coordinate[label={right:$#1$}];
+	\draw ({0.5*3.1415*\dx},-0.05) -- ({0.5*3.1415*\dx},0.05);
+	\node at ({0.5*3.1415*\dx},-0.05) [below]
+		{$\displaystyle\frac{\pi}2\mathstrut$};
+	\draw ({3.1415*\dx},-0.05) -- ({3.1415*\dx},0.05);
+	\node at ({3.1415*\dx},-0.05) [below]
+		{$\displaystyle\pi\mathstrut$};
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% add image content here
+
+
+\begin{scope}
+\def\dy{5}
+%\draw[color=red!10,line width=1.2pt] \lone;
+%\draw[color=red!10,line width=1.2pt] \ltwo;
+%\draw[color=red!10,line width=1.2pt] \lthree;
+%\draw[color=red!10,line width=1.2pt] \lfour;
+%\draw[color=red!10,line width=1.2pt] \lfive;
+\draw[color=red,line width=1.4pt] \lsix;
+\draw[color=blue,line width=1.4pt,dashed] \dglsol;
+\draw (-0.05,{0.1*\dy}) -- (0.05,{0.1*\dy});
+\draw (-0.05,{0.2*\dy}) -- (0.05,{0.2*\dy});
+\draw (-0.05,{0.3*\dy}) -- (0.05,{0.3*\dy});
+\draw (-0.05,{0.4*\dy}) -- (0.05,{0.4*\dy});
+\draw (-0.05,{0.5*\dy}) -- (0.05,{0.5*\dy});
+\draw (-0.05,{-0.1*\dy}) -- (0.05,{-0.1*\dy});
+\draw (-0.05,{-0.2*\dy}) -- (0.05,{-0.2*\dy});
+\draw (-0.05,{-0.3*\dy}) -- (0.05,{-0.3*\dy});
+\node at (-0.05,{-0.2*\dy}) [left] {$-0.2$};
+\achsen{y}
+\end{scope}
+
+\begin{scope}[xshift=6.3cm]
+\def\dy{2}
+\draw[color=red] \eone;
+\draw[color=red] \etwo;
+\draw[color=red] \ethree;
+\draw[color=red] \efour;
+\draw[color=red] \efive;
+\draw[color=red] \esix;
+\achsen{e}
+\draw (-0.05,{1*\dy}) -- (0.05,{1*\dy});
+\node at (-0.05,{1*\dy}) [left] {$10^{-2}$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,103 @@
+%
+% eindim.tex -- optimale Regelung eines eindimensionalen Systems
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\input{paths.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dt{11}
+\def\dx{4}
+\def\dP{0.4}
+\def\du{0.4}
+
+\def\timeaxis{
+	\draw[->] (-0.1,0) -- (11.5,0) coordinate[label={$t$}];
+	\foreach \t in {0.1,0.2,...,1.0}{
+		\draw ({\t*\dt},-0.05) -- ({\t*\dt},0.05);
+	}
+	\node at ({\dt},-0.05) [below] {$1\mathstrut$};
+}
+
+\begin{scope}
+\draw[color=darkred,line width=1.2pt] \xpatheins;
+\draw[color=blue,line width=1.2pt] \xpathzwei;
+\draw[color=darkgreen,line width=1.2pt] \xpathdrei;
+\draw[color=orange,line width=1.2pt] \xpathvier;
+\draw[->] (0,-0.1) -- (0,4.4) coordinate[label={right:$x$}];
+\timeaxis
+\foreach \x in {0.1,0.2,...,1.0}{
+	\draw (-0.05,{\x*\dx}) -- (0.05,{\x*\dx});
+}
+\node at (-0.05,{1.0*\dx}) [left] {$1.0\mathstrut$};
+\node at (-0.05,{0.5*\dx}) [left] {$0.5\mathstrut$};
+\node at (-0.05,{0.0*\dx}) [left] {$0.0\mathstrut$};
+\end{scope}
+
+\begin{scope}[yshift=-5.0cm]
+\draw[color=darkred,line width=1.2pt] \ppatheins;
+\draw[color=blue,line width=1.2pt] \ppathzwei;
+\draw[color=darkgreen,line width=1.2pt] \ppathdrei;
+\draw[color=orange,line width=1.2pt] \ppathvier;
+\draw[->] (0,-0.1) -- (0,4.4) coordinate[label={right:$p$}];
+\timeaxis
+\foreach \p in {1,2,...,10}{
+	\draw (-0.05,{\p*\dP}) -- (0.05,{\p*\dP});
+}
+\node at (-0.05,{0*\dP}) [left] {$0\mathstrut$};
+\node at (-0.05,{5*\dP}) [left] {$5\mathstrut$};
+\node at (-0.05,{10*\dP}) [left] {$10\mathstrut$};
+\end{scope}
+
+\begin{scope}[yshift=-6cm]
+\draw[color=darkred,line width=1.2pt] \upatheins;
+\draw[color=blue,line width=1.2pt] \upathzwei;
+\draw[color=darkgreen,line width=1.2pt] \upathdrei;
+\draw[color=orange,line width=1.2pt] \upathvier;
+\draw[->] (0,-4.1) -- (0,0.4) coordinate[label={right:$u$}];
+\timeaxis
+\foreach \p in {1,2,...,10}{
+	\draw (-0.05,{-\p*\dP}) -- (0.05,{-\p*\dP});
+}
+\node at (-0.05,{0*\dP}) [left] {$0\mathstrut$};
+\node at (-0.05,{-5*\dP}) [left] {$-5\mathstrut$};
+\node at (-0.05,{-10*\dP}) [left] {$-10\mathstrut$};
+\end{scope}
+
+\begin{scope}[yshift=-10.2cm]
+
+\begin{scope}[xshift=2cm]
+\color{darkred}
+\parametereins
+\end{scope}
+
+\begin{scope}[xshift=4.5cm]
+\color{blue}
+\parameterzwei
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+\color{darkgreen}
+\parameterdrei
+\end{scope}
+
+\begin{scope}[xshift=9.5cm]
+\color{orange}
+\parametervier
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

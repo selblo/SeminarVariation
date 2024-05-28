@@ -15,6 +15,7 @@ C
 \end{align*}
 erfüllt.
 
+
 \begin{loesung}
 Die Lagrange-Funktionen der beiden Funktionale sind
 \begin{align*}
@@ -37,15 +38,15 @@ für $G$ ist es
 -
 \frac{d}{dx}\frac{\partial G}{\partial y'}(x,y(x),y'(x))
 =
-\frac{d}{dx}(2y'(x))
+-\frac{d}{dx}(2y'(x))
 =
-2y''(x).
+-2y''(x).
 \]
 Nach der Methode der Lagrange-Multiplikatoren muss jetzt die Funktion
 ${\color{darkred}y(x)}$ und eine Zahl ${\color{darkred}\lambda}\in\mathbb{R}$
 so gefunden werden, dass
 \begin{align}
-2{\color{darkred}y(x)}&=2{\color{darkred}\lambda y}''{\color{darkred}(x)}
+2{\color{darkred}y(x)}&=-2{\color{darkred}\lambda y}''{\color{darkred}(x)}
 \label{buch:aufgabe:501:eqn:dgl}
 \\
 \int_{x_1}^{x_2} {\color{darkred}y(x)}^2\,dx &= C
@@ -60,55 +61,62 @@ so gefunden werden, dass
 Als Erstes lösen wir die Differentialgleichung~\eqref{buch:aufgabe:501:eqn:dgl}
 in der Form
 \[
-y''(x) = \frac{1}{\lambda} y(x).
+y''(x) = -\frac{1}{\lambda} y(x).
 \]
 Je nach Vorzeichen von $\lambda$ gibt es verschieden mögliche Lösungen.
 
-Wir versuchen zunächst den Ansatz $y(x)=e^{ax}$ und bekommen
+Wir versuchen zunächst den Ansatz $y(x)=e^{\omega x}$ und bekommen
 \[
-a^2e^{ax} = \frac{1}{\lambda} e^{ax},
+\omega^2e^{\omega x} = -\frac{1}{\lambda} e^{\omega x},
 \]
-und damit $a=\pm1/\!\sqrt{\lambda}$.
-Diese Lösung existiert nur dann, wenn $\lambda>0$ ist.
+und damit $\omega=\pm1/\!\sqrt{-\lambda}$.
+Diese Lösung existiert nur dann, wenn $\lambda<0$ ist.
 Die Funktion $y(x)$ ist daher eine Linearkombination 
 \[
-y(x) = A_+ e^{x/\!\sqrt{\lambda}} + A_- e^{-x/\!\sqrt{\lambda}}.
+y(x) = a_+ e^{x/\!\sqrt{-\lambda}} + a_- e^{-x/\!\sqrt{-\lambda}}.
 \]
-Diese Funktion muss jetzt ausserdem die Randbedingungen erfüllen wir setzen
-daher $0$ und $1$ ein und erhalten das homogene lineare Gleichungssystem
-\[
+Diese Funktion muss jetzt ausserdem die Randbedingungen erfüllen.
+Wir setzen daher $0$ und $1$ ein und erhalten das homogene lineare
+Gleichungssystem
+\begin{equation}
 \renewcommand{\arraycolsep}{3pt}
 \begin{array}{lclcl}
-A_+                       &+& A_-                        &=& 0 \\
-A_+e^{1/\!\sqrt{\lambda}} &+& A_-e^{-1/\!\sqrt{\lambda}} &=& 0
+a_+                        &+& a_-                         &=& 0 \\
+a_+e^{1/\!\sqrt{-\lambda}} &+& a_-e^{-1/\!\sqrt{-\lambda}} &=& 0
 \end{array}
-\]
-Für die Koeffizienten $A_+$ und $A_-$.
-Es hat die Determinante
+\label{buch:aufgabe:501:eqn:homogen}
+\end{equation}
+Für die Koeffizienten $a_+$ und $a_-$.
+Die Koeffizientenmatrix hat die Determinante
 \[
-A_+A_-(e^{1/\!\sqrt{\lambda}}-e^{-1/\!\sqrt{\lambda}}\ne 0,
+e^{1/\!\sqrt{-\lambda}}-e^{-1/\!\sqrt{-\lambda}}
+=
+e^{1/\!\sqrt{-\lambda}}(1-e^{-2/\!\sqrt{-\lambda}}).
 \]
-daher kann es nur die triviale Lösung $A_+=A_-=0$ haben.
+Da die Exponentialfunktion $e^\xi$ nur für $\xi=0$ den Wert
+1 annimmt, verschwindet die Klammer niemals und damit auch die
+Determinante nicht.
+Das Gleichungssystem \eqref{buch:aufgabe:501:eqn:homogen}
+kann daher nur die triviale Lösung $a_+=a_-=0$ haben.
 Dann ist aber die Funktion $y(x)=0$, d.~h.~die Nebenbedingung
 \eqref{buch:aufgabe:501:eqn:integral} kann nicht erfüllt werden, 
 der Ansatz mit Exponentialfunktionen führt nicht auf eine Lösung.
-Folglich muss $\lambda<0$ sein.
+Folglich muss $\lambda>0$ sein.
 
-Wir versuchen daher den Fall $\lambda<0$, in diesem Fall sind die
-Funktionen
+Im Fall $\lambda>0$ sind die Funktionen
 \[
-\sin(x/\!\sqrt{-\lambda})
+\sin(x/\!\sqrt{\lambda})
 \qquad\text{und}\qquad
-\cos(x/\!\sqrt{-\lambda})
+\cos(x/\!\sqrt{\lambda})
 \]
 Lösungen der Differentialgleichung.
 Die allgemeine Lösung ist daher eine Linearkombination
 \[
 y(x)
 =
-A \cos(x/\!\sqrt{-\lambda})
+a \cos(x/\!\sqrt{\lambda})
 +
-B \sin(x/\!\sqrt{-\lambda}).
+b \sin(x/\!\sqrt{\lambda}).
 \]
 Jetzt setzen wir die Randbedingung an der Stelle $x=0$ ein und erhalten
 \[
@@ -116,28 +124,28 @@ Jetzt setzen wir die Randbedingung an der Stelle $x=0$ ein und erhalten
 =
 y(0)
 =
-A.
+a.
 \]
 An der Stelle $x=1$ folgt dann
 \[
 0=y(1)
 =
-B\sin(1/\!\sqrt{-\lambda}).
+b\sin(1/\!\sqrt{\lambda}).
 \]
 Da die Nullstellen der Sinusfunktion die ganzzahligen Vielfachen von $\pi$
 sind, folgt
 \[
-1/\!\sqrt{-\lambda} = k\pi
+1/\!\sqrt{\lambda} = k\pi
 \qquad\Rightarrow\qquad
-\lambda = -\frac{1}{k^2\pi^2}
+\lambda = \frac{1}{k^2\pi^2}
 \]
 für $k\in\mathbb{N}$.
 Damit ist jetzt gefunden, dass
 \[
-y(x) = B \sin k\pi x
+y(x) = b \sin k\pi x
 \]
 ist.
-Jetzt muss $B$ nur noch so bestimmt werden, dass die
+Jetzt muss $b$ nur noch so bestimmt werden, dass die
 Nebenbedingung~\eqref{buch:aufgabe:501:eqn:integral} erfüllt ist.
 Dies ist die Gleichung
 \begin{align*}
@@ -146,31 +154,48 @@ C
 \int_0^1 y'(x)^2\,dx
 \\
 &=
-\int_0^1 B k\pi \cos^2 k\pi x\,dx
+\int_0^1 b^2 k^2\pi^2 \cos^2 k\pi x\,dx
 \\
 &=
-Bk\pi \int_0^1 \cos^2 \pi x\,dx
+b^2k^2\pi^2 \int_0^1 \cos^2 k\pi x\,dx
 =
-\frac{Bk\pi}2
+\frac{B^2k^2\pi^2}2
 \qquad
 \Rightarrow
 \qquad
-B
+b
 =
-\frac{2C}{k\pi}.
+\frac{\!\sqrt{2C}}{k\pi}.
 \end{align*}
+\input{chapters/050-nebenbedingungen/fig/cos2.tex}
+Die Berechnung des Integrals von $\cos^2 k\pi x$ ist einfach, wenn man
+berücksichtigt, dass der Graph des Integranden aus Symmetriegründen
+das Einheitsquadrat halbiert (siehe
+Abbildung~\ref{buch:nebenbedingungen:aufgabe:501:fig:cos2}).
+Die Lösungen sind jetzt also die Funktionen
+\[
+y_k(x)
+= 
+\frac{\!\sqrt{2C}}{k\pi}
+\sin k\pi x.
+\]
+\input{chapters/050-nebenbedingungen/fig/yk.tex}
+Die Lösungen sind in Abbildung~\ref{buch:nebenbedingungen:aufgabe:501:fig:yk}
+dargestellt.
+
 Der Wert des Integrals $A(y)$ kann jetzt ebenfalls bestimmt werden, es
 ist
 \begin{align*}
-A(y)
+A(y_k)
 &=
-\int_0^1 y(x)^2\,dx
+\int_0^1 y_k(x)^2\,dx
 =
-\int_0^1 B\sin^2 k\pi x\,dx
+\int_0^1 b^2\sin^2 k\pi x\,dx
 =
-\frac{2C}{k\pi} \int_0^1 \sin^2k\pi x\,dx
+\frac{2C}{k^2\pi^2} \int_0^1 \sin^2k\pi x\,dx
 =
-\frac{C}{k\pi}.
+\frac{C}{k^2\pi^2}.
 \end{align*}
-Da $k\in\mathbb{N}$ sein muss, wird das Maximum bei $k=1$ erreicht.
+Da $k\in\mathbb{N}$ sein muss, wird das Maximum bei $k=1$ erreicht und
+hat den Wert $C/\pi^2$.
 \end{loesung}

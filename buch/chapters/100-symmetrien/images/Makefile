@@ -3,5 +3,8 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:
+all:	phi.pdf	
+
+phi.pdf:	phi.tex
+	pdflatex phi.tex
 

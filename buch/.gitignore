@@ -1,2 +1,10 @@
 buch.pdf
 SeminarVariation.pdf
+build/
+buch-blx.bib
+buch.bbl
+buch.blg
+buch.idx
+buch.run.xml
+buch.toc
+buch.synctex.gz
