@@ -6,45 +6,10 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Grundlage zur Berechnung der Balkengleichung
-\label{balken:section:teil1}}
-\subsection{Grundbegriffe der Mathematik}
-\textbf{Ableitung}
-Die Ableitung einer Funktion f(x) ergibt die Steigung der Funktion f(x) an der Stelle x.
-Das bedeutet, dass die Ableitung einer Funktion der Grenzwert des Differenzen-quotienten dieser Funktion f(x) ist.
-Ableitungen werden mit einem «’» gekennzeichnet (z.B. f’(x)).
-
-\textbf{Differenzialgleichung (DGL)}
-Differentialgleichungen, kurz DGL, sind mathematische Gleichungen, die die Beziehung zwischen einer unbekannten Funktion und ihren Ableitungen beschreiben.
-Mit anderen Worten, sie beschreiben, wie sich eine Funktion in Bezug auf eine oder mehrere unabhängige Variablen verändert.
-Differentialgleichungen werden in verschiedenen Bereichen der Naturwissen-schaften, Ingenieurwissenschaften und Mathematik verwendet, da sie oft Phä-nomene beschreiben, die sich im Laufe der Zeit oder im Raum ändern.
-
-\textbf{Euler-Lagrange-Differenzialgleichung}
-Die Euler-Lagrange-Differentialgleichung ist bei der Variationsrechnung, eine bedeutende Gleichung.
-Es wird verwendet, um die Extremwerte von Integralen zu finden, die eine be-stimmte Form besitzen und als Variationsprobleme bekannt sind.
-
-\textbf{Integration}
-Die Berechnung von Integralen befasst sich mit der Bestimmung von Ergebnissen über die Fläche unter beliebigen Funktionen.
-Diese Flächen können zwischen den Achsen und einer Funktion, zwischen zwei Funktionen oder auch die Oberfläche von Rotationskörpern umfassen, was zur Berechnung von Volumina führt.
-
-\textbf{Lagrange-Funktion}
-Ist einen Ansatz, um Optimierungsaufgaben mehrdimensionaler Funktionen mit Nebenbedingungen zu lösen.
-Das ursprüngliche Funktion mit Lagrange-Multiplikatoren kombiniert, dabei erhält man die Lagrange Funktion.
-Durch das Ableiten der Lagrange-Funktion und danach das Nullsetzen diese Ableitung erhält man die Lösung zu dem Problem.
-
-\textbf{Partielle Differentialgleichung (PDGL)}
-Eine partielle Differentialgleichung (PDGL) ist eine Art von Differentialgleichung, die partielle Ableitungen von unbekannten Funktionen enthält.
-Diese Gleichungen werden verwendet, um Phänomene zu erklären, die von mehreren unabhängigen Variablen abhängen.
-Im Gegensatz zu gewöhnlichen Differentialgleichungen, bei denen nur nach einer einzigen Variablen differenziert wird, wird in partiellen Differentialgleichungen eine Funktion von mehreren Variablen betrachtet und nach diesen Variablen partiell abgeleitet.
-
-\textbf{Variationsproblem}
-Variationsprobleme sind Probleme, bei denen man versucht die Extremwerte einer Funktion zu finden, die von anderen Funktionen abhängen.
-Dabei ist es wichtig zu bemerken, dass diese Problemstellung unendliche dimensionale Minimierungsaufgaben ist.
-Ein bekanntes Beispiel für Variationsprobleme ist das «Brachistochrone-Problem».
-
-\subsection{Grundbegriffe der Baustatik}
+\section{Grundbegriffe der Baustatik}
+\label{balken:section:teil1}
 \textbf{Balken}
-Einen «Balken» ist ein langer, schmaler Körper, der hauptsächlich Querkräften sowie Biegebelastungen ausgesetzt ist.
+Ein «Balken» ist ein langer, schmaler Körper, der hauptsächlich Querkräften sowie Biegebelastungen ausgesetzt ist.
 Balken können unterschiedliche Formen annehmen.
 
 \textbf{Balkengleichung}
@@ -55,13 +20,13 @@ Dieses Biegeverhaltens wird grafisch durch eine Biegelinie illustriert.
 	=-M(x)
 \end{equation}
 
-E = Elastizitätsmodul des Balkenmaterials
+$E$ Elastizitätsmodul des Balkenmaterials
 
-I = Flächenträgheitsmoment des Balkenquerschnitts
+$I$ Flächenträgheitsmoment des Balkenquerschnitts
 
-y(x) = vertikale Verschiebung des Balkens als Funktion der horizontalen Position x
+$y(x)$ vertikale Verschiebung des Balkens als Funktion der horizontalen Position x
 
-M(x) = Biegemoment entlang des Balkens
+$M(x)$ Biegemoment entlang des Balkens
 
 Diese Gleichung beschreibt die Beziehung zwischen der Biegemomentenverteilung entlang des Balkens M(x) und der daraus resultierende Verformung y(x).
 
@@ -99,13 +64,13 @@ Sie beschreibt die Fähigkeit eines Balkens, sich unter äusserliche Einwirkung 
 \frac{M(x)}{W(x)}
 \end{equation}
 
-E(x) = Elastizitätsmodul
+$E(x)$ Elastizitätsmodul
 
-I(x) = Flächenträgheitsmoment
+$I(x)$ Flächenträgheitsmoment
 
-M(x) = Moment 
+$M(x)$ Moment 
 
-W(x) = Widerstandsmoment
+$W(x)$ Widerstandsmoment
 
 \textbf{E-Modul (E)}
 Das E-Modul ist eine Materialkonstante, welches die Steifigkeit eines Materials beschreibt.
@@ -116,9 +81,9 @@ E=
 \frac{\sigma}{\varepsilon}
 \end{equation}
 
-σ = Spannung
+$σ$ Spannung
 
-ε = Dehnung
+$ε$ Dehnung
 
 \textbf{Festlager}
 Ein Festlager ist ein Lager, das fähig ist, Kräfte in horizontaler und vertikaler Rich-tung aufzunehmen, jedoch keine Momente aufnehmen kann.
@@ -152,8 +117,8 @@ Da sie Horizontalkräfte und Momenten nicht aufnehmen können, besitzen sie zwei
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil1/Loslager.jpg}
-	\caption{Festlagern werden typischerweise mit den folgenden Symbolen dargestellt.}
-	\label{fig:Loslagern werden typischerweise mit den folgenden Symbolen dargestellt.}
+	\caption{Loslagern werden typischerweise mit den Symbolen dargestellt.}
+	\label{fig:Loslagern werden typischerweise mit den Symbolen dargestellt.}
 \end{figure}
 
 \textbf{Nulllinie}
@@ -173,19 +138,19 @@ Es gibt an, welchen Widerstand ein belastetes Bauteil den inneren Spannungen ent
 W=I/c
 \end{equation}
 
-W = Widerstandsmoment
+$W$ Widerstandsmoment
 
-I = Flächenträgheitsmoment
+$I$ Flächenträgheitsmoment
 
-c = Abstand des äusseren Fasermittelpunkts zu der neutralen Faser
+$c$ Abstand des äusseren Fasermittelpunkts zu der neutralen Faser
 
 \subsection{Einführung in die Balkengleichung}
-Wirken Lasten auf einen Balken, so führt es zu einer Verformung der Balken aufgrund von auftretenden Momenten um die y-Achse.
+Wirken Lasten auf einen Balken, so führt es zu einer Verformung der Balken aufgrund von auftretenden Momenten um die $y$-Achse.
 Die Balkentheorie analysiert diese Verformungen unter verschiedenen Lastszenarien und bestimmt dadurch die Biegelinie des Balkens, welche den Verlauf der Verformung entlang seiner Länge beschreibt.
-Wir wollen nun die Balkengleichung der Biegelinie u(x) herleiten.
+Wir wollen nun die Balkengleichung der Biegelinie $u(x)$ herleiten.
 
-Wir betrachten einen schmalen Balken, welche seine Länge L entlang der x-Achse verläuft.
-Allfällige Momente wirken um den y-Achse im Uhrzeigersinn und erzeugen eine positive Biegelinie u(x) mit der Öffnung gegen oben.
-D.h. u(x) > 0.
+Wir betrachten einen schmalen Balken, welche seine Länge $L$ entlang der $x$-Achse verläuft.
+Allfällige Momente wirken um den $y$-Achse im Uhrzeigersinn und erzeugen eine positive Biegelinie u(x) mit der Öffnung gegen oben.
+D.h. $u(x) > 0$.
 Dabei verwenden wir die Euler-Bernoulli-Balkengleichung (EBB), die gültig ist, wenn reine Biegung so-wie Querkraftbiegungen auftreten.
 Für die EBB werden ausschliesslich Querschnitte betrachtet, die lotrecht zur Nulllinie liegen (im unbelasteten Zustand).
