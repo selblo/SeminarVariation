@@ -19,7 +19,21 @@ Eine Loop-Antenne hat eine simple Funktionsweise. Sie besteht aus einem geschlos
 
 \subsection{Eigenschaften\label{antennen:antennenEigenschaften}}
 \rhead{Eigenschaften}
-Der Wirkungsgrad $\eta$ , auch Effizienz genannt, kann mittels der Gesamtleistung der Antenne P\textsubscript{tot} und der abgestrahlten Leistung P\textsubscript{rad} berechnet werden.
+Der Wirkungsgrad
+\begin{equation}
+	\eta=\frac{P\textsubscript{rad}}{P\textsubscript{tot}}
+	\label{antennen:Wirkungsgrad}
+\end{equation}
+, auch Effizienz genannt, kann mittels der Gesamtleistung der Antenne P\textsubscript{tot} und der abgestrahlten Leistung P\textsubscript{rad} berechnet werden. Eine Leistung P entspricht dem elektrischen Widerstand multipliziert mit der Stromstärke im Quadrat. Nach Vereinfachung ergibt sich, dass
+\begin{equation}
+	\eta=\frac{P\textsubscript{rad}}{P\textsubscript{tot}}=\frac{R\textsubscript{rad}\cdot{I^2}}{R\textsubscript{tot}\cdot{I^2}}=\frac{R\textsubscript{rad}\cdot{I^2}}{(R\textsubscript{rad}+R\textsubscript{loss})\cdot{I^2}}=\frac{R\textsubscript{rad}}{R\textsubscript{rad}+R\textsubscript{loss}}
+	\label{antennen:Wirkungsgradkomplett}
+\end{equation}
+die Effizienz \texteta\ nur noch von vom Verlustwiderstand und dem Strahlungswiderstand abhängig ist. R\textsubscript{rad} und R\textsubscript{loss} werden wie folgt definiert:
+\begin{equation}
+	R\textsubscript{rad}=31171\Omega\cdot{\bigg(\frac{A}{\lambda^2}\bigg)^2}
+	\label{antennen:Rrad}
+\end{equation}
 \section{Anfang\label{antennen:antennenAllgemein2}}
 \rhead{Anfang}
 
