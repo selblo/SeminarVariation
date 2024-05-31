@@ -1,0 +1,34 @@
+/*
+ * rotation.maxima -- 
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+/*
+r(z) = 1 + a * z^2;
+rp(z) = 2 * a * z;
+rpp(z) = 2 * a;
+*/
+
+L: sqrt(r(z)^2 + zp^2 * (1 + rp(z)^2));
+
+/* Beltrami identity */
+B: L - zp * diff(L,zp);
+B: ratsimp(B);
+
+gradef(r(z), rp(z));
+gradef(rp(z), rpp(z));
+gradef(rpp(z), rppp(z));
+
+gradef(z(phi), zp(phi));
+gradef(zp(phi), zpp(phi));
+
+Z: zp(phi) * (1 + rp(z(phi))^2);
+N: r(z(phi))^2 + zp(phi)^2 * (1  + rp(z(phi))^2);
+A: rp(z(phi)) + zp(phi)^2 * rpp(z(phi)) * rp(z(phi));
+
+diff(Z, phi);
+diff(N, phi);
+
+B: A * N - diff(z, phi) * N + (1/2) * Z * diff(N,phi);
+factor(ratsimp(B));
+

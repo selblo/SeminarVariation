@@ -1,0 +1,50 @@
+%
+% loesung.tex -- Lösung des Variationsproblems
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Lösung des Variationsproblems
+\label{widerstand:section:loesung}}
+\kopfrechts{Lösung}
+Das Minimalproblem~\ref{widerstand:aufgabe} ist ein Variationsproblem
+mit einem Randterm.
+In diesem Abschnitt lösen wird das Problem mit den im ersten Teil
+entwickelten Methoden.
+
+%
+% Die Euler-Lagrange-Differentialgleichung
+%
+\subsection{Die Euler-Lagrange-Differentialgleichung}
+Die Lagrange-Funktion des Funktionals~\eqref{widerstand:eqn:Wy} ist 
+\[
+F(x,y')
+=
+\frac{2x}{1+y^{\prime 2}}
+\]
+mit den partiellen Ableitungen
+\begin{align*}
+\frac{\partial F}{\partial y}&=0
+\\
+\frac{\partial F}{\partial y'}
+&=
+\frac{2xy'}{(1+y^{\prime 2})^2}.
+\end{align*}
+Daraus ergibt sich die Euler-Lagrange-Differentialgleichung
+\begin{align*}
+0
+=
+\frac{d}{dx} \frac{\partial F}{\partial y'}
+&=
+\frac{d}{dx}
+\frac{2xy'(x)}{(1+y'(x)^2)^2}.
+\end{align*}
+Statt diesen Ausdruck explizit abzuleiten schliessen wir, dass die rechte
+Seite konstant sein muss, es gibt also eine Konstante $c$ derart, dass
+\[
+\frac{ 2xy'(x) }{ (1+y'(x)^2)^2 } = c.
+\]
+
+

@@ -1,0 +1,39 @@
+/*
+ * kettenlinie.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+gradef(y(x), yp(x));
+gradef(yp(x), ypp(x));
+
+F: y(x) * sqrt(1+yp(x)^2);
+dF: diff(F,y(x)) - diff(diff(F,yp(x)), x);
+ratsimp(dF);
+
+G: sqrt(1+yp(x)^2);
+dG: diff(diff(G,yp(x)), x);
+ratsimp(dG);
+
+eqn: F - lambda * G;
+
+z: cosh(a*x)*b;
+zx: diff(z, x);
+zxx: diff(zx, x);
+
+eqn: subst(z, y(x), eqn);
+eqn: subst(zx, yp(x), eqn);
+eqn: subst(zxx, ypp(x), eqn);
+eqn: ratsimp(eqn);
+
+/* Loesung */
+/*
+assume(r>0);
+assume(r>x);
+m: sqrt(r^2-1);
+z: sqrt(r^2 - x^2) - m;
+diff(z,x);
+diff(diff(z,x),x);
+
+d: diff(diff(z,x), x) / (1+diff(z,x)^2)^(3/2);
+ratsimp(expand(d));
+*/

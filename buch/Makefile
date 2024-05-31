@@ -41,7 +41,7 @@ $(workdir)/buch.idx:	$(workdir) buch.tex $(TEXFILES) images
 # Papers in einzelne PDF-Files separieren für digitales Feedback
 #
 separate:	build/buch.aux buch.pdf
-	bash splitpapers
+	bash tools/splitpapers
 
 #
 # Version mit Buchdeckeln für Release/Website
