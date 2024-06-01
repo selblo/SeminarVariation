@@ -8,6 +8,7 @@ include papers/minimalflaechen/Makefile.inc
 include papers/leo/Makefile.inc
 include papers/circuit/Makefile.inc
 include papers/antennen/Makefile.inc
+include papers/fem/Makefile.inc
 include papers/schwimmen/Makefile.inc
 include papers/planet/Makefile.inc
 include papers/varalg/Makefile.inc
@@ -26,6 +27,7 @@ TEXFILES = \
 	$(dependencies-leo) \
 	$(dependencies-circuit) \
 	$(dependencies-antennen) \
+	$(dependencies-fem) \
 	$(dependencies-schwimmen) \
 	$(dependencies-planet) \
 	$(dependencies-varalg) \

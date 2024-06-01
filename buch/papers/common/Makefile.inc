@@ -18,6 +18,7 @@ PAPERFILES = \
 	papers/leo/main.tex \
 	papers/circuit/main.tex \
 	papers/antennen/main.tex \
+	papers/fem/main.tex \
 	papers/schwimmen/main.tex \
 	papers/planet/main.tex \
 	papers/varalg/main.tex \
@@ -125,7 +126,13 @@ $(workdir)/buch17-blx.bbl:	$(workdir)/buch17-blx.aux
 	cd $(workdir); bibtex buch17-blx
 
 $(workdir)/$(seminar)17-blx.bbl:	$(workdir)/$(seminar)17-blx.aux
-	cd $(workdir) bibtex $(seminar)17-blx
+	cd $(workdir); bibtex $(seminar)17-blx
+
+$(workdir)/buch18-blx.bbl:	$(workdir)/buch18-blx.aux
+	cd $(workdir); bibtex buch18-blx
+
+$(workdir)/$(seminar)18-blx.bbl:	$(workdir)/$(seminar)18-blx.aux
+	cd $(workdir) bibtex $(seminar)18-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
@@ -145,6 +152,7 @@ BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch15-blx.bbl \
 	$(workdir)/buch16-blx.bbl \
 	$(workdir)/buch17-blx.bbl \
+	$(workdir)/buch18-blx.bbl \
 
 
 SBLXFILES = $(workdir)/$(seminar).bbl\
@@ -165,6 +173,7 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 	$(workdir)/$(seminar)15-blx.bbl \
 	$(workdir)/$(seminar)16-blx.bbl \
 	$(workdir)/$(seminar)17-blx.bbl \
+	$(workdir)/$(seminar)18-blx.bbl \
 
 
 PAPER_DIRECTORIES = \
@@ -178,6 +187,7 @@ PAPER_DIRECTORIES = \
 	leo \
 	circuit \
 	antennen \
+	fem \
 	schwimmen \
 	planet \
 	varalg \
@@ -196,6 +206,7 @@ PAPER_MAKEFILEINC = \
 	papers/leo/Makefile.inc \
 	papers/circuit/Makefile.inc \
 	papers/antennen/Makefile.inc \
+	papers/fem/Makefile.inc \
 	papers/schwimmen/Makefile.inc \
 	papers/planet/Makefile.inc \
 	papers/varalg/Makefile.inc \
