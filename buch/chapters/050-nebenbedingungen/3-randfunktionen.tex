@@ -26,24 +26,214 @@ benötigt.
 %
 \subsection{Aufgabenstellung
 \label{buch:nebenbedingungen:randfunktionen:subsection:aufgabenstellung}}
-
-\begin{equation}
-I(y)
+Wir betrachten wieder ein Variationsproblem für ein Integral mit einer
+Lagrange-Funktion $F(x,y,y')$, aber das Definitionsintervall soll
+jetzt variabel sein.
+Wir bezeichnen das Integral miut
+\begin{equation*}
+I_0(y)
 =
+\int_{x_0}^{x_1}
+F(x,y(x),y(x))\,dx
+\end{equation*}
+Wir verlangen nur dass sich die Endpunkte $(x_0,y_0=y(x_1))$ und 
+$(x_1,y_1=y(x_1))$ auf vorgegebenen Randkurven bewegen, die zum
+Beispiel durch eine Parameterdarstellung gegeben sein können.
+Zusätzlich soll aber der Wert des Funktionals nicht nur vom ``freien''
+Teil der Funktionskurve abhängen, sondern auch davon, wo die Kurve auf
+die Ränder trifft.
+Sind $\alpha\mapsto \gamma_i(\alpha) = (x_i(\alpha),y_i(\alpha))$
+Parametrisierungen der Randkurven, dann muss es Beiträge $g_i(\alpha)$
+zum Funktional geben, die von $\alpha$ abhängen.
+Es ist jedoch einfacher, wenn sich diese Beträge durch die Koordinaten
+$(x_i,y_i)$ der Endpunkte ausdrücken alssen, also durch ein Funktionen
+$g_i(x,y)$, für die
+\[
+g_i(\alpha) = g_i(x_i(\alpha), y_i(\alpha))
+\]
+gilt.
+
+\begin{aufgabe}
+\label{buch:nebenbedingungen:randfunktionen:aufgabe}
+Sei $F\colon\mathbb{R}\times\mathbb{R}^n \times\mathbb{R}^n\to\mathbb{R}$
+eine stetig differenzierbare Funktion und seien die Funktionen 
+$g_i\colon\mathbb{R}\to\mathbb{R}$ stetig differenzierbar.
+Man löse das Anfangskurve-Endkurve-Problem für das Funktional
+\begin{align}
+I(y)
+&=
+I_0(y)
++
+g_1(x_1,y(x_1))
+-
+g_0(x_0,y(x_0))
+\notag
+\\
+&=
 \int_{x_0}^{x_1}
 F(x,y(x),y'(x))
 \,dx
 +
-g_0(x_0,y(x_0))
-+
 g_1(x_1,y(x_1))
+-
+g_0(x_0,y(x_0)),
 \label{buch:nebenbedingungen:randfunktionen:eqn:funktional}
-\end{equation}
+\end{align}
+wobei die Funktion $y(x)$ die Randbedingungen
+\(
+y(x_i(\alpha)) = y_i(\alpha)
+\)
+für Parametrisierungen der $(x_i(\alpha),y_i(\alpha))$ der Anfangs-
+bzw.~Endkurve erfüllt.
+\end{aufgabe}
+
+Die Wahl der Vorzeichen in 
+\eqref{buch:nebenbedingungen:randfunktionen:eqn:funktional}
+ist so, dass sich für die Bedingungen einfachere Formeln ergeben.
 
 %
 % Lösung
 %
 \subsection{Lösung
 \label{buch:nebenbedingungen:randfunktionen:subsection:loesung}}
+Die allgemeine Varitiationsformel ermöglicht, die Veränderung des
+Integrals im Funktional
+\eqref{buch:nebenbedingungen:randfunktionen:eqn:funktional}
+zu berechnen.
+Wenn sich die Endpunkte der Funktion auf vorgegebenen
+Kurven bewegen, ergeben sich in
+Satz~\ref{buch:nebenbedingungen:transversal:satz:transversal}
+die Transversalitätsbedingungen.
+Der Einfluss der Wahl der Endpunkte kam dabei ausschliesslich vom
+Integral.
+Die zusätzlichen Terme in
+\eqref{buch:nebenbedingungen:randfunktionen:eqn:funktional}
+verlangen daher, dass die Transversalitätsbedingungen modifiziert
+werden müssen, um ihren Einfluss auf den Wert des Funktionals
+adäquat zu berücksichtigen.
+
+Sei jetzt jetzt also $y(x,\varepsilon)$ wieder eine allgemeine Variation
+einer Lösung des Extremalproblems für das
+Funktional~\eqref{buch:nebenbedingungen:randfunktionen:eqn:funktional}.
+Die Endpunkte sind wieder die Punkte
+$(x_i(\varepsilon),y(x_i(\varepsilon),\varepsilon))$ mit $i=0,1$.
+Die Variation des Integrals ist nach
+Satz~\ref{buch:variation:allgemein:satz:allgemeinvariation1} 
+gegeben durch
+\begin{align*}
+\delta I
+&=
+\vec{f}_i\cdot \vec{r}_i(0) - \vec{f}_0\cdot\vec{r}_0(0)
++
+\delta I_0(y)
+\\
+&=
+\vec{f}_i\cdot \vec{r}_i(0) - \vec{f}_0\cdot\vec{r}_0(0)
++
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\frac{\partial y}{\partial\varepsilon}(x,0)
+\,dx
+\end{align*}
+gegeben.
+Dazu kommen jetzt noch die Ableitungen der Randfunktionen nach
+$\varepsilon$ an der Stelle $\varepsilon=0$.
+Sie sind
+\begin{align*}
+\frac{\partial}{\partial\varepsilon}
+g_i(x_i(\varepsilon),y(x_i(\varepsilon),\varepsilon))
+\bigg|_{\varepsilon=0}
+&=
+\frac{\partial g_i}{\partial x}(x_i,y(x_i))
+\frac{d x_i}{d\varepsilon}\bigg|_{\varepsilon=0}
++
+\frac{\partial g_i}{\partial y}(x_i,y(x_i))
+\frac{d}{d\varepsilon}y(x_i(\varepsilon),\varepsilon)
+\bigg|_{\varepsilon=0}
+\\
+&=
+\bgroup
+\renewcommand\arraystretch{2}
+\begin{pmatrix}
+\displaystyle
+\frac{\partial g_i}{\partial x}(x_i,y(x_i))
+\\
+\displaystyle
+\frac{\partial g_i}{\partial y}(x_i,y(x_i))
+\end{pmatrix}
+\egroup
+\cdot
+\frac{d}{d\varepsilon}
+\begin{pmatrix}
+x_i(\varepsilon)\\
+y(x_i(\varepsilon),\varepsilon)
+\end{pmatrix}
+\bigg|_{\varepsilon=0}.
+\end{align*}
+Der zweite Faktor ist genau der Vektor $\vec{r}_i$. 
+Für die Variation des Funktionals muss also der Vektor $\vec{f}_i$ durch
+den Vektor
+\begin{equation}
+\vec{f}_i
+=
+\renewcommand\arraystretch{2}
+\begin{pmatrix}
+\displaystyle
+F(x_i,y(x_i),y'(x_i))
+-
+y'(x_i) \frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
++
+\frac{\partial g_i}{\partial x}(x_i,y(x_i))
+\\
+\displaystyle
+\frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
++
+\frac{\partial g_i}{\partial y}(x_i,y(x_i))
+\end{pmatrix}
+\label{buch:nebenbedingungen:randfunktionen:eqn:fnew}
+\end{equation}
+ersetzt werden.
+
+Aus der Variationsbedingung $\delta I=0$ folgt jetzt, dass eine
+Lösung des Variationsproblems im Inneren des Definitionsintervalls
+die Euler-Lagrange-Differentialgleichung erfüllt.
+Ausserdem müssen an den Endpunkten die Randbedingungen
+\begin{equation}
+\vec{f}_i\cdot\vec{r}_i
+=
+0,\quad i=0,1,
+\end{equation}
+mit den Vektoren $\vec{f}_i$ von
+\eqref{buch:nebenbedingungen:randfunktionen:eqn:fnew}
+erfüllt sein.
+
+\begin{satz}[Lösung eines Variationsproblems mit Randfunktionen]
+\label{buch:nebenbedingungen:randfunktionen:satz:loesung}
+Eine Lösung $y(x)$ der
+Aufgabe~\ref{buch:nebenbedingungen:randfunktionen:aufgabe}
+erfüllt die Euler-Lagrange-Differentialgleichung
+\begin{equation}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+=
+0
+\end{equation}
+und die Randbedingungen
+\[
+\vec{f}_i\cdot \vec{r}_i =  0
+\qquad\Rightarrow\qquad
+\vec{f}_i\perp\vec{r}_i
+\]
+mit den Vektoren $\vec{f}_i$ von
+\eqref{buch:nebenbedingungen:randfunktionen:eqn:fnew}
+und den Vektoren $\vec{r}_i$, die Tangentialvektoren an die Randkurven
+sind.
+\end{satz}
 
 
