@@ -1,3 +1,5 @@
 *.aux
 *.log
 *.swp
+buch/buch_contourtmp0.dat
+buch/buch_contourtmp0.script
