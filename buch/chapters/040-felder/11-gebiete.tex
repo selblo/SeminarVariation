@@ -132,6 +132,7 @@ Im folgenden sollen daher nur solche Gebiete betrachtet werden,
 deren Rand die zusätzliche Eigenschaft haben, dass er mit stetigen
 oder sogar differenzierbaren Funktionen beschrieben werden kann.
 Dies wird von der folgenden Definition erreicht.
+\input{chapters/040-felder/fig/randdef.tex}
 
 \begin{definition}[glatter Rand]
 \label{buch:felder:fundamentallemma:def:glatterrand}
@@ -150,7 +151,6 @@ das Bild $\varphi(x)$ eines Punktes $x=(x_1,\dots,x_{n-1},x_n)$ in $\Omega$
 liegt, wenn $x_n\ge 0$ ist, nicht in $\Omega$ liegt, wenn $x_n<0$ ist und auf
 dem Rand $\partial\Omega$ liegt, wenn $x_n=0$ ist
 (Abbildung~\ref{buch:felder:fundamentallemma:fig:randdef}).
-\input{chapters/040-felder/fig/randdef.tex}
 \end{definition}
 
 Ein Gebiet hat also einen glatten Rand, wenn er sich lokal als das
@@ -163,7 +163,7 @@ In zwei Dimensionen kann man den Rand eines Gebietes mit
 glattem Rand stückweise als Graphen von differenzierbaren Funktionen
 $y_k(x)$ beschreiben, wie dies in
 \input{chapters/040-felder/fig/2drand.tex}
-Abbildung~\ref{buch:felder:fundamtenallemma:fig:2drand}
+Abbildung~\ref{buch:felder:fundamentallemma:fig:2drand}
 dargestellt ist.
 Mit dieser Definition lassen sich aber natürlich vorkommende Gebiete
 wie ein Rechteck $(x_1,x_2)\times(y_1,y_2)$ nicht beschreiben, da
@@ -171,19 +171,154 @@ es in den Ecken des Rechtecks keine Abbildung gibt, wie sie in der
 Definition~\ref{buch:felder:fundamentallemma:def:glatterrand}
 verlangt wird.
 
-
 %
 % Integration über ein Gebiet
 %
 \subsubsection{Integration über ein Gebiet}
+Eine Funktion $f(x) = f(x_1,\dots,x_n)$ kann über beliebige
+Koordinatenrechtecke oder mehrdimensionale Quader $R$,
+die durch Ungleichungen $a_i< x_i<b_i$ gegeben sind, durch das iterierte
+Integral
+\[
+\int_R f(x)
+\,dx
+=
+\int_{a_1}^{b_1}
+\dots
+\int_{a_n}^{b_n}
+f(x_1,\dots,x_n)
+\,dx_n
+\dots
+\,dx_1
+\]
+berechnet werden.
+Kompliziertere Gebiete, wie die in
+Abbildung~\ref{buch:felder:fundamentallemma:fig:2drand}
+dargestellten zweidimensionalen Gebiete, können durch Summen von
+Integralen
+\[
+\int_{a_1}^{b_1}
+\int_{a_2(x_1)}^{b_2(x_1)}
+f(x_1,x_2)
+\,dx_2\,dx_1
+\]
+mit variablen Integrationsgrezen berechnet werden.
+Das Gebiet $G$ kann beliebig genau durch Quader $R_k$ approximiert werden,
+das Integral der Funktion $f$ wird dann durch die Summe
+\[
+\int_G f(x)\,dx
+=
+\sum_k
+\int_{R_k} f(x)\,dx
+\]
+approximiert.
+
+Unter einer Koordinatentransformation im Definitionsgebiet 
+$G$ einer Funktion ändert sich der geometrische Sachverhalt nicht,
+das Integral der Funktion sollte sich nicht ändern.
+Seien $x_i=x_i(y_1,\dots,y_n)$ Funktionen, die die alten Koordinaten
+durch die neuen Koordinaten $y_1,\dots,y_n$ ausdrücken.
+Die zusammengesetze Funktion
+\[
+f(x(y))
+=
+f(x_1(y_1,\dots,y_n),\dots,x_n(y_1,\dots,y_n))
+\]
+hat ein Gebiet $\tilde{G}$ als Definitionsgebiet.
+Approximiert man $\tilde{G}$ mit Quader $\tilde{R}_k$, dann sind
+die Bildmengen $x(\tilde{R}_k)$ keine Quader.
+Da die Funktionen $x_i$ differenzierbar, sind sie jedoch näherungsweise
+Quader.
+Durch die Abbildung $x$ werden die Kantenvektoren $e_j$ der Quader 
+$\tilde{R}_k$ auf die Vektoren $Dx\cdot e_j$ abgebildet, die ein
+Parallelepiped mit dem Volumen
+\[
+\det Dx
+=
+\left|
+\renewcommand{\arraystretch}{1.9}
+\begin{matrix}
+\displaystyle
+\frac{\partial x_1}{\partial y_1}
+&
+\displaystyle
+\frac{\partial x_1}{\partial y_2}
+&\dots&
+\displaystyle
+\frac{\partial x_1}{\partial y_n}
+\\
+\displaystyle
+\frac{\partial x_2}{\partial y_1}
+&
+\displaystyle
+\frac{\partial x_2}{\partial y_2}
+&\dots&
+\displaystyle
+\frac{\partial x_2}{\partial y_n}
+\\
+\vdots&\vdots&\ddots&\vdots\\
+\displaystyle
+\frac{\partial x_n}{\partial y_1}
+&
+\displaystyle
+\frac{\partial x_n}{\partial y_2}
+&\dots&
+\displaystyle
+\frac{\partial x_n}{\partial y_n}
+\end{matrix}
+\right|
+\]
+aufspannen.
+Mit dem zusätzlichen Faktor $\det Dx$ kann daher dem Integral einer Funktion
+über ein Gebiet eine koordinatensystemunabhängige Bedeutung gegeben werden.
 
 %
 % Integration über eine Kurve
 %
 \subsubsection{Integration über eine Kurve}
+Ein besonders einfacher Fall ist das Integral über eine Kurve.
+Mit Hilfe einer Parametrisierung $\gamma_1\colon I_1\to\mathbb{R}^n$
+einer Kurve wird ein Integral über die Werte einer Funktion $f$, die auf
+der Bildmenge $\gamma_1(I_1)$ definiert ist, zu einem Integral
+\begin{equation}
+\int_{I_1}
+f(\gamma_1(t))
+\,dt
+\label{buch:felder:gebiete:eqn:kurvenintegral}
+\end{equation}
+der Funktion $f\circ\gamma\colon I_1\to\mathbb{R}:t\mapsto f(\gamma_1(t))$
+über ein Intervall der reellen Achse.
+Dabei spielt aber offenbar die Parametrisierung eine Rolle.
+Eine alternative Parametrisierung $\gamma_2\colon I_2\to\mathbb{R}^n$,
+lässt sich immer durch eine Koordinatentransformation $u\colon I_2\to I_1$
+in $\gamma_2 = \gamma_1\circ u$ überführen.
+Dabei geht das Integral
+\eqref{buch:felder:gebiete:eqn:kurvenintegral}
+mit der Substitution $t=u(s)$
+über in das Integral
+\[
+\int_{i_1}
+f(\gamma_1(t))
+\,dt
+=
+\int_{I_2}
+f(\gamma_1(u(s)))
+\,
+u'(s)
+\,ds
+=
+\int_{I_2}
+f(\gamma_2(s))
+u'(s)
+\,ds.
+\]
+Der zusätzliche Faktor $u'(s)$ gibt wieder, wie die Umparametrisierung
+die Kurvenlänge verzerrt.
+
 
 %
 % Integration über den Rand
 %
 \subsubsection{Integration über den Rand}
+
 
