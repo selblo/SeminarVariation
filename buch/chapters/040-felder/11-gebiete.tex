@@ -41,6 +41,7 @@ Funktion nicht nur im Punkt $x$, sondern auch in einer Umgebung
 des Punktes $x$.
 Die Ableitung einer Funktion ist daher nur definiert auf einer
 offenen Menge im Sinne der folgenden Definition.
+\input{chapters/040-felder/fig/offen.tex}
 
 \begin{definition}[offene Menge, Gebiet]
 Eine Teilmenge $\Omega\subset\mathbb{R}^n$ heisst {\em offen}, wenn es für
@@ -58,7 +59,6 @@ B_r(x)
 \]
 Eine offene Menge $\Omega\subset\mathbb{R}$ heisst auch ein {\em Gebiet}.
 \index{Gebiet}%
-\input{chapters/040-felder/fig/offen.tex}
 \end{definition}
 
 %
@@ -175,6 +175,22 @@ verlangt wird.
 % Integration über ein Gebiet
 %
 \subsubsection{Integration über ein Gebiet}
+Eine Variationsaufgabe sucht eine Funktion, die ein Integral minimiert,
+dessen Integrand von der Funktion abhängt.
+Im Falle einer Funktion einer Variablen ist das Definitionsgebiet der
+Funktion ein Intervall $I=[x_0,x_1]$, die Funktion $y\colon I\to\mathbb{R}$
+wird als differenzierbar angenommen und das zu minimierende Funktional
+ist
+\[
+J(y)
+=
+\int_{x_0}^{x_1} L(x,y(x),y'(x))\,dx
+=
+\int_I L(x,y(x),y'(x))\,dx.
+\]
+Für Funktionen mehrerer Variablen muss also insbesondere der Begriff
+der Integration auf ein Integral über ein Gebiet verallgemeinert werden.
+
 Eine Funktion $f(x) = f(x_1,\dots,x_n)$ kann über beliebige
 Koordinatenrechtecke oder mehrdimensionale Quader $R$,
 die durch Ungleichungen $a_i< x_i<b_i$ gegeben sind, durch das iterierte
@@ -192,27 +208,88 @@ f(x_1,\dots,x_n)
 \,dx_1
 \]
 berechnet werden.
-Kompliziertere Gebiete, wie die in
-Abbildung~\ref{buch:felder:fundamentallemma:fig:2drand}
-dargestellten zweidimensionalen Gebiete, können durch Summen von
-Integralen
-\[
-\int_{a_1}^{b_1}
-\int_{a_2(x_1)}^{b_2(x_1)}
-f(x_1,x_2)
-\,dx_2\,dx_1
-\]
-mit variablen Integrationsgrezen berechnet werden.
-Das Gebiet $G$ kann beliebig genau durch Quader $R_k$ approximiert werden,
+
+Das Gebiet $G$ kann durch Quader $R_k$ approximiert werden
+(Abbildung~\ref{buch:felder:fig:unterteilung}),
+\input{chapters/040-felder/fig/unterteilung.tex}
 das Integral der Funktion $f$ wird dann durch die Summe
-\[
+\begin{equation}
 \int_G f(x)\,dx
-=
+\approx
 \sum_k
 \int_{R_k} f(x)\,dx
-\]
+\label{buch:felder:gebiete:eqn:GintegralR}
+\end{equation}
 approximiert.
+Durch Verfeinerung der Quader kann das Gebiet beliebig vollständig überdeckt
+werden und damit das Integral beliebig genau approximiert werden.
+Der Grenzwert der Summe~\eqref{buch:felder:gebiete:eqn:GintegralR}
+ist das Integral der Funktion $f$ über das Gebiet $G$.
 
+%
+% Integral über $G$ als iteriertes eindimensionales Integral
+%
+\subsubsection{Integral über $G$ als iteriertes eindimensionales Integral}
+Ein konvexes Gebiet $G$ wie zum Beispiel die Ellipse
+\[
+G
+=
+\biggl\{
+(x_1,x_2)
+\,
+\bigg|
+\,
+\frac{x_1^2}{a^2}+\frac{x_2^2}{b^2}< 1
+\biggr\}
+\]
+kann auch durch die Ungleichungen
+\begin{align*}
+-b\sqrt{1-\frac{x_1^2}{a^2}}
+&< x_2 <
+b\sqrt{1-\frac{x_1^2}{a^2}}
+&&\text{für $x_1\in (-a,a)$}
+\intertext{bzw.}
+-a\sqrt{1-\frac{x_2^2}{b^2}}
+&< x_1 <
+a\sqrt{1-\frac{x_2^2}{b^2}}
+&&\text{für $x_2\in (-b,b)$}
+\end{align*}
+beschrieben werden.
+Etwas allgemeiner gibt es Funktionen
+$x_{2,\pm}(x_1)$ 
+und
+$x_{1,\pm}(x_2)$ 
+derart, dass das Gebiet $G$ durch die Ungleichungen
+\begin{align*}
+x_{2,-}(x_1) &< x_2 < x_{2,+}(x_1)&& \text{für $x_1\in(x_{10},x_{11})$}
+\intertext{bzw.}
+x_{1,-}(x_2) &< x_1 < x_{1,+}(x_2)&& \text{für $x_2\in(x_{20},x_{21})$}
+\end{align*}
+gegeben ist.
+Mit diesen Bezeichnungen lässt sich das Integral über das Gebiet auch
+auf zwei verschiedene Arten als das iterierte Integral
+\[
+\int_G f(x) \,dx
+=
+\int_{x_{10}}^{x_{11}}
+\int_{x_{2,-}(x_1)}^{x_{2,+}(x_1)} f(x_1,x_2)\,dx_2\,dx_1
+=
+\int_{x_{20}}^{x_{21}}
+\int_{x_{1,-}(x_2)}^{x_{1,+}(x_2)} f(x_1,x_2)\,dx_1\,dx_2
+\]
+geschrieben werden.
+Änliche iterierte Integrale können verwenden werden, um Integrale
+über Gebiete zu berechnen, deren Dimension grösser als $2$ ist.
+
+Kompliziertere Gebiete, wie die in
+Abbildung~\ref{buch:felder:fundamentallemma:fig:2drand}
+dargestellten konvexen zweidimensionalen Gebiete, können durch Summen solcher
+Integrale berechnet werden.
+
+%
+% Integration und Koordinatentransformation
+%
+\subsubsection{Integration und Koordinatentransformationen}
 Unter einer Koordinatentransformation im Definitionsgebiet 
 $G$ einer Funktion ändert sich der geometrische Sachverhalt nicht,
 das Integral der Funktion sollte sich nicht ändern.
@@ -273,6 +350,113 @@ Mit dem zusätzlichen Faktor $\det Dx$ kann daher dem Integral einer Funktion
 über ein Gebiet eine koordinatensystemunabhängige Bedeutung gegeben werden.
 
 %
+% Volumenelement
+%
+\subsubsection{Volumenelement}
+Die Notwendigkeit, bei einer Variablentransformation den Faktor
+$\det Dx$ hinzuzufügen, zeigt, dass ein vom Koordinatensystem unabhängiges
+Integral einer Funktion über ein Gebiet $G$ erst durch eine zusätzliche
+Gewichtsfunktion $g(x)$ definiert ist, die sich beim Wechsel des
+Koordinatensystems mit der Determinanten der Ableitung $Dx$ multipliziert.
+Die Gewichtsfunktion ist im willkürlich.
+Sie wird erst eindeutig,
+wenn die Verbindung zwischen dem Volumeninhalt des Gebietes und 
+dem Integral dadurch hergestellt wird, dass das Integral der konstanten
+Funktion $1$ das Volumen
+\[
+\operatorname{vol}(G)
+=
+\int_G 1\cdot g(x)\,dx
+\]
+sein soll.
+
+Für kartesische Koordinaten ist die diese Gewichtsfunktion $g(x)=1$.
+Wählt man stattdessen Kugelkoordinaten $(r,\vartheta,\varphi)$, mit der
+Koordinatentransformation
+\begin{equation}
+\left.
+\begin{aligned}
+x&=r\sin\vartheta\cos\varphi\\
+y&=r\sin\vartheta\sin\varphi\\
+z&=r\cos\vartheta
+\end{aligned}
+\;\right\}
+\qquad
+\Rightarrow
+\qquad
+Dx
+=
+\begin{pmatrix}
+\sin\vartheta\cos\varphi
+	&  r \cos\vartheta\cos\varphi
+		& -r\sin\vartheta\sin\varphi\\
+\sin\vartheta\sin\varphi
+	&  r \cos\vartheta\sin\varphi
+		& \phantom{-}r\sin\vartheta\cos\varphi\\
+\cos\vartheta
+	& -r \sin\vartheta
+		& \phantom{-}0
+\end{pmatrix},
+\end{equation}
+deren Determinante
+\begin{align*}
+\det Dx
+&=
+r^2\bigl(
+\cos\vartheta
+(\cos\vartheta \sin\vartheta \cos^2\varphi
++
+\cos\vartheta \sin\vartheta \sin^2\varphi
+)
+\\
+&\phantom{=}
+\quad
++
+\sin\vartheta
+(
+\sin^2\vartheta \cos^2\varphi
++
+\sin^2\vartheta \sin^2\varphi
+)
+\bigr)
+\\
+&=
+r^2\bigl(
+\cos^2\vartheta\sin\vartheta
++
+\sin^3\vartheta
+\bigr)
+\\
+&=
+r^2
+\sin\vartheta
+\bigl(
+\cos^2\vartheta
++
+\sin^2\vartheta
+\bigr)
+\\
+&=
+r^2\sin\vartheta
+\end{align*}
+ist.
+In Kugelkoordinaten ist das Integral daher als
+\[
+\int_G f(r,\vartheta,\varphi)
+\,
+r^2\sin^2\varphi
+\,dr\,d\vartheta\,d\varphi
+\]
+zu berechnen.
+Die Gewichtsfunktion $g(r,\vartheta,\varphi)=r^2\sin\vartheta$ ergibt
+zusammen mit den Differentialen des Integrals das sogenannte
+{\em Volumenelement}
+\(
+r^2\sin\vartheta\,dr\,d\vartheta\,d\varphi
+\).
+\index{Volumenelement}%
+
+%
 % Integration über eine Kurve
 %
 \subsubsection{Integration über eine Kurve}
@@ -309,6 +493,7 @@ u'(s)
 =
 \int_{I_2}
 f(\gamma_2(s))
+\,
 u'(s)
 \,ds.
 \]
