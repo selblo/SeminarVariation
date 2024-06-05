@@ -20,6 +20,7 @@ Das Verfahren nach Ritz hat ergeben, dass die Antenne eine kreisförmige Abrundu
 \end{equation}
 berechnet werden.
 Der Wirkungsgrad ist nun zu einem Problem geworden, welches nur noch abhängig von der Seitenlänge s des Dreiecks und des Radius r der Kreise ist. Bildlich ist dies in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
+%TODO Erklären der Formeln l und A mittels Grafik (Formelabschnitte einfärben??)
 \begin{figure}[htpb]
 	\centering
 	\begin{tikzpicture}
@@ -61,6 +62,12 @@ Der Wirkungsgrad ist nun zu einem Problem geworden, welches nur noch abhängig v
 	\label{antennen:tikzdreieckAufteilung}
 \end{figure}
 
+Durch ableiten und null-setzten
+\begin{equation}
+	\frac{d}{dr} \bigg(\frac{l}{A^2}\bigg)=0
+	\label{antennen:Ableitung}
+\end{equation}
+wird ein für einen gegebenen Parameter s ein Radius r als Lösung erhalten. 
 \subsection{Parametrisierung Dreieck\label{antennen:param3eck}}
 
 \begin{figure}[htbp]
