@@ -236,6 +236,8 @@ G
 =
 \biggl\{
 (x_1,x_2)
+\in
+\mathbb{R}^2
 \,
 \bigg|
 \,
@@ -454,14 +456,50 @@ zusammen mit den Differentialen des Integrals das sogenannte
 \(
 r^2\sin\vartheta\,dr\,d\vartheta\,d\varphi
 \).
+
+Die Funktion $g(x)$ zusammen zusammen mit den Infinitesimalsymbolen
+im Integral heisst auch das Volumenelement.
 \index{Volumenelement}%
+Wir kürzen das Volumenelement auch einfach als $dV$ ab wie in
+\[
+\int_G f(x) \,dV
+=
+\int_G f(x)\,g(x)\,dx.
+\]
+Wenn $\varphi\colon U\to\mathbb{R}^n$ mit $U\subset\mathbb{R}^n$ ein lokales
+Koordinatensystem für eine Teilmenge eines Gebietes ist, dann muss als
+Gewichtsfunktion das Volumen eines von den Tangentialvektoren
+\[
+\vec{v}_1
+=
+\frac{\partial\varphi}{\partial x_1}
+,\dots,
+\vec{v}_n
+=
+\frac{\partial\varphi}{\partial x_n}
+\]
+aufgespannten Parallelepipeds verwendet wird, welches durch die Determinante
+\[
+g(x)
+=
+\det(\vec{v}_1,\dots,\vec{v}_n)
+\]
+mit Spaltenvektoren $\vec{v}_i$ gegeben ist.
+Es ist also wieder
+\[
+\int_G f(x)\, dV
+=
+\int_G f(x) \det(\vec{v}_1,\dots,\vec{v}_n)\,dx
+\]
+eine vom Koordinatensystem unabhängige Formel für die Berechnung des
+Integrals.
 
 %
 % Integration über eine Kurve
 %
 \subsubsection{Integration über eine Kurve}
-Ein besonders einfacher Fall ist das Integral über eine Kurve.
-Mit Hilfe einer Parametrisierung $\gamma_1\colon I_1\to\mathbb{R}^n$
+Ein besonders einfacher Fall ist das Integral über eine Kurve $C$.
+Mit Hilfe einer Parametrisierung $\gamma_1\colon I_1\to C\subset \mathbb{R}^n$
 einer Kurve wird ein Integral über die Werte einer Funktion $f$, die auf
 der Bildmenge $\gamma_1(I_1)$ definiert ist, zu einem Integral
 \begin{equation}
@@ -500,10 +538,88 @@ u'(s)
 Der zusätzliche Faktor $u'(s)$ gibt wieder, wie die Umparametrisierung
 die Kurvenlänge verzerrt.
 
+Das Volumenelement muss so gewählt werden, dass das Integral der Funktion
+$1$ entlang der Kurve die Länge der Kurve ergibt.
+Dies funktioniert genau dann, wenn die Länge des Tangentialvektors
+$|\dot{\gamma(t)}|$ der Parametrisierung verwendet wird.
+Das Integral
+\[
+\int_C f\,ds
+=
+\int_I f(\gamma(t))\,|\dot{\gamma}(t)|\,dt
+\]
+ist daher eine Grösse, die von der Parametrisierung unabhängig ist.
+
+Ist $\vec{v}$ ein entlang der Kurve $C$, dann sind im Skalarprodukt
+\[
+\vec{v}(\gamma(t))\cdot \dot{\gamma}(t)
+=
+|\vec{v}(\gamma(t))| \, |\dot{\gamma}(t)|\, \cos \alpha,
+\]
+wobei $\alpha$ der Winkel zwischen der $\vec{v}$ und der Kurventangente
+im Punkt $\gamma(t)$ ist, der Betrag $|\vec{v}|$ und der Winkel $\alpha$
+nur von der Position entlang der Kurve abhängig.
+Der Faktor $|\dot{\gamma}(t)|$ ist das Längenelement, welches das Integral
+\[
+\int_C \vec{v}\cdot d\vec{s}
+=
+\int_I \vec{v}(\gamma(t))\cdot \dot{\gamma}(t)\,dt
+\]
+zu einer Grösse macht, die von der Parametrisierung unabhängig ist.
 
 %
 % Integration über den Rand
 %
 \subsubsection{Integration über den Rand}
+Ist der Rand eines Gebietes glatt im Sinne der
+Definition~\ref{buch:felder:fundamentallemma:def:glatterrand},
+darf man einen Zusammenhang zwischen einem Integral über das Gebiet
+und einem Integral über den Rand erwarten.
+Die Sätze von Green, Stokes und Gauss, die im
+Abschnitt~\ref{buch:felder:subsection:partint} als Verallgemeinerung
+der partiellen Integration präzisiert werden.
+Die Definition~\ref{buch:felder:fundamentallemma:def:glatterrand}
+stellt sicher, dass der Rand eines Gebietes mindestens stückweise
+durch ein Koordinatensystem parametrisiert wird, welches die
+Koordinaten $(x_1,\dots,x_{n-1})$ verwendet.
+
+Sei also $\varphi\colon U\to\mathbb{R}^n$ mit $U\subset\mathbb{R}^{n-1}$
+eine Parametrisierung des Randes.
+Als Volumenelement für das Integral über den Rand muss das Volumen
+eines Parallelepipeds verwendet werden, welches von den Tangentialvektoren
+\[
+\vec{v}_1
+=
+\frac{\partial\varphi}{\partial x_1},
+\dots,
+\vec{v}_{n-1}
+\frac{\partial\varphi}{\partial x_{n-1}}
+\]
+aufgespannt wird.
+Dieses Volumen kann mit der Gram-Determinante
+\[
+\det(\vec{v}_i\cdot\vec{v}_k)
+=
+\left|
+\begin{matrix}
+\vec{v}_1\cdot\vec{v}_1
+	& \vec{v}_1\cdot\vec{v}_2
+		& \dots
+			& \vec{v}_1\cdot\vec{v}_{n-1}\\
+\vec{v}_2\cdot\vec{v}_1
+	& \vec{v}_2\cdot\vec{v}_2
+		& \dots
+			& \vec{v}_2\cdot\vec{v}_{n-1}\\
+\vdots&\vdots&\ddots&\vdots\\
+\vec{v}_{n-1}\cdot\vec{v}_1
+	& \vec{v}_{n-1}\cdot\vec{v}_2
+		& \dots
+			& \vec{v}_{n-1}\cdot\vec{v}_{n-1}
+\end{matrix}
+\right|
+\]
+berechnet werden \cite{buch:linalg}.
+
+
 
 
