@@ -65,9 +65,12 @@ gezeigt, dass
 \[
 \operatorname{grad} f(x)
 =
+\renewcommand{\arraystretch}{1.7}
 \begin{pmatrix}
+\displaystyle
 \frac{\partial f}{\partial x_1}\\
 \vdots\\
+\displaystyle
 \frac{\partial f}{\partial x_n}
 \end{pmatrix}
 \]
@@ -75,19 +78,24 @@ eine koordinatenunabhängige Bedeutung als der Vektor hat, in dessen
 Richtung die schnellste Zunahme der Funktion $f$ erfolgt.
 Und tatsächlich gilt auch für den Gradienten eine Produktformel:
 \begin{align*}
+\renewcommand{\arraystretch}{1.7}
 \operatorname{grad}(f(x)g(x))
 &=
 \begin{pmatrix}
+\displaystyle
 \frac{\partial}{\partial x_1}(f(x)g(x))\\
 \vdots\\
+\displaystyle
 \frac{\partial}{\partial x_n}(f(x)g(x))
 \end{pmatrix}
 =
 \begin{pmatrix}
+\displaystyle
 \frac{\partial f}{\partial x_1} g(x)
 +
 f(x) \frac{\partial g}{\partial x_1}\\
 \vdots\\
+\displaystyle
 \frac{\partial f}{\partial x_n} g(x)
 +
 f(x) \frac{\partial g}{\partial x_n}
@@ -100,7 +108,7 @@ f(x)(\operatorname{grad}g(x))
 \end{align*}
 Wir haben also den folgenden Satz hergeleitet.
 
-\begin{satz}[Produktformel für Gradient]
+\begin{satz}[Produktformel für den Gradienten]
 Sind $f$ und $g$ Funktionen $\mathbb{R}^n \to\mathbb{R}$, dann gilt
 \[
 \grad (fg) = (\grad f)g + f\grad g.
@@ -155,7 +163,9 @@ stetig differenzierbare Funktionen.
 Die Komponenten von $g$ schreiben wir $g_i$, $i=1,\dots,n$.
 
 \begin{satz}[Produktformel für Divergenz]
-Für 
+Für eine offene Menge $U\subset\mathbb{R}^n$und
+eine skalare Funktion $f\colon U\to\mathbb{R}$ und
+eine vektorwertige Funktion $g\colon U\to\mathbb{R}^n$ gilt
 \[
 \operatorname{div}(fg)
 =
@@ -310,18 +320,18 @@ Die Rotation $\operatorname{rot}g$ wird im englischen Sprachraum manchmal
 auch $\operatorname{curl}g$ geschrieben.
 Auch für die Rotation gibt es Produktformeln für die Ableitung.
 
-\begin{satz}[Produktformeln für Rotation]
+\begin{satz}[Produktformeln für die Rotation]
 \label{buch:felder:fundamentallemma:satz:rotprodukt}
-Sei $f\colon\mathbb{R}^3\to\mathbb{R}$ differenzierbar und
-$g,h\colon\mathbb{R}^3\to\mathbb{R}^3$ differenzierbare dreidimensionale
-Vektorfelder.
-Dann gilt
+Für $U\subset\mathbb{R}^3$ und eine skalare differenzierbare Funktion
+$f\colon U\to\mathbb{R}$ und zwei differenzierbare dreidimensionale
+Vektorfelder $g,h\colon U\to\mathbb{R}^3$ gilt
 \begin{align*}
 \operatorname{rot}(fg)(x)
 &=
-\grad f\times g(x) + f(x)\operatorname{rot}g(x).
+(\grad f(x))\times g(x) + f(x)\operatorname{rot}g(x).
+&&x\in U
 \\
-\operatorname{rot}(g\times h)(x)
+\operatorname{rot}(g\times h)
 &=
 g\operatorname{div}h
 -
@@ -1212,6 +1222,81 @@ Damit wird auch gerechtfertigt, dass der Satz von Green eine Art
 Erweiterung des Hauptsatzes auf zweidimensionale Gebiet ist.
 
 %
+% Der Satz von Green in vektorieller Schreibweise
+%
+\subsubsection{Der Satz von Green in vektorieller Schreibweise}
+Die beiden Funktionen $f$ und $g$ im Satz von Green können als
+ein dreidimensionales, differenzierbares Vektorfeld
+\[
+\vec{v}(x,y,z)
+=
+\begin{pmatrix}
+f(x,y)\\
+g(x,y)\\
+0
+\end{pmatrix}
+\]
+definiert auf der offenen Teilmenge $\Omega\times\mathbb{R}\subset\mathbb{R}^3$.
+Der Integrand auf der linken Seite von
+\eqref{buch:felder:fundamentallemma:eqn:green} ist die $z$-Komponente
+\[
+(\operatorname{rot}\vec{v})_z
+=
+\frac{\partial g}{\partial x}-\frac{\partial f}{\partial y}
+\]
+der Rotation von $\vec{v}$.
+Das Integral auf der linken Seite von
+\eqref{buch:felder:fundamentallemma:eqn:green}
+ist daher die das Flächenintegral
+\[
+\int_\Omega
+\frac{\partial g}{\partial x}-\frac{\partial f}{\partial y}\,dx\,dy
+=
+\int_\Omega
+\operatorname{rot} \vec{v}
+\cdot \,do.
+\]
+der Rotation über die Fläche $\Omega$ betrachtet als die Einbettung
+$\Omega$ in $\mathbb{R}^3$ mittels der Abbildung $(x,y)\mapsto (x,y,0)$.
+
+Die rechte Seite von
+\eqref{buch:felder:fundamentallemma:eqn:green} kann mit einer
+Parametrisierung $\gamma\colon [a,b]\to \mathbb{R}^3$ 
+als das Wegintegral
+\begin{align*}
+\int_{\partial\Omega} \bigl(f(x,y)\,dx + g(x,y)\,dy\bigr)
+&=
+\int_a^b
+f(\gamma_x(t),\gamma_y(t))\dot{\gamma}_x(x,y)
++
+g(\gamma_x(t),\gamma_y(t))\dot{\gamma}_y(x,y)
+\,dt
+\\
+&=
+\int_a^b
+\begin{pmatrix}
+f\circ\gamma(t)\\
+g\circ\gamma(t)\\
+0
+\end{pmatrix}
+\cdot
+\dot{\gamma}(t)
+\,dt
+\\
+&=
+\int_a^b
+\vec{v}\circ\gamma(t)
+\cdot
+\dot{\gamma}(t)
+\,dt
+\\
+&=
+\oint \vec{v}\cdot\,ds.
+\end{align*}
+In dieser Form wird der Satz von Green später in
+Satz~\ref{buch:felder:fundamentallemma:satz:stokes} verallgemeinert.
+
+%
 % Der Satz von Gauss
 %
 \subsubsection{Der Satz von Gauss}
@@ -1242,7 +1327,7 @@ die Randfläche ist.
 \end{satz}
 
 \begin{proof}
-Der Beweis des Satzes von Stokes war dadurch erfolgreich, dass für jeden
+Der Beweis des Satzes von Green war dadurch erfolgreich, dass für jeden
 Term des Integranden eine andere, speziell gut geeignete Zerlegung
 des Integrationsgebietes gewählt werden konnte, mit der das Integral
 mit Hilfe des Hauptsatzes der Integralrechnung vereinfacht werden konnte.
@@ -1258,7 +1343,7 @@ Der Rand einer solchen Säule besteht dann zusätzlich noch aus der
 Mantelfläche, deren Normale aber überall senkrecht auf dem Standarbasisvektor
 $\vec{e}_3$ ist.
 
-Wir im Satz von Stokes berechnen wir die linke Seite von
+Wir im Satz von Green berechnen wir die linke Seite von
 \eqref{buch:felder:fundamentallemma:eqn:gauss} für eine Säule und erhalten
 \begin{align*}
 I_l
@@ -1281,27 +1366,29 @@ Vektor $g(x,y,z)$ steht.
 Es müssen daher nur die Endflächen berücksichtigt werden.
 Das Flächenelement auf der Fläche $z(x,y)$ ist 
 \[
+\renewcommand{\arraystretch}{1.8}
 \begin{pmatrix}
 1\\
 0\\
+\displaystyle
 \frac{\partial z}{\partial x}
 \end{pmatrix}
 \times
 \begin{pmatrix}
 0\\
 1\\
+\displaystyle
 \frac{\partial z}{\partial y}
 \end{pmatrix}
 \,dx\,dy
 =
-{\renewcommand{\arraystretch}{1.8}
 \begin{pmatrix}
 \displaystyle
 -\frac{\partial z}{\partial y}\\
 \displaystyle
 -\frac{\partial z}{\partial x}\\
 1
-\end{pmatrix}}
+\end{pmatrix}
 \,dx\,dy.
 \]
 Für die untere Endfläche muss die Normale mit dem entgegegengesetzten 
@@ -1406,6 +1493,8 @@ auf, der nur von den Werten der Funktionen auf dem Rand abhängt.
 % Der Satz von Stokes
 %
 \subsubsection{Der Satz von Stokes}
+Die vektorielle Schreibweise des Satzes von Green zeigt bereits,
+wie er sich auf die dreidimensionale Situation verallgemeinert werden kann.
 
 \begin{satz}[Stokes]
 \label{buch:felder:fundamentallemma:satz:stokes}
@@ -1415,15 +1504,318 @@ Sei $g(x)$ ein stetig differenzierbares, dreidimensionales Vektorfeld
 und $S$ eine zweidimensionale Fläche, die von der geschlossenen
 Kurve $\partial S$ berandet ist.
 Dann gilt
-\[
+\begin{equation}
 \int_S \operatorname{rot} g(x)\,do(x)
 =
 \oint_{\partial S} g(x)\cdot ds,
-\]
+\label{buch:felder:fundamentallemma:eqn:stokes}
+\end{equation}
 wobei das erste Integral der Fluss des Vektorfeldes $\operatorname{rot}g$
 durch die Fläche $S$ und das zweite Integral des Pfadintegral des
 Vektorfeldes entlang der Randkurve ist.
 \end{satz}
+
+\begin{proof}
+Wir beweisen den Satz von Stokes für eine geeignete Parametrisierung
+der Fläche $S$.
+Sei also $\Omega$ ein Gebiet in $\mathbb{R}^2$ und 
+$\varphi\colon\overline{\Omega}\to\mathbb{R}^3$ eine Parametrisierung
+der Fläche $S$.
+Sei ausserdem $\gamma\colon[a,b]\to\mathbb{R}^2$ eine Parametrisierung
+des Randes von $\Omega$, so dass $\varphi\circ\gamma$ eine Parametrisierung
+des Randes $\partial S$ von $S$ ist.
+Mit Hilfe der Parametrisierung $\varphi$ können jetzt die Integrale
+im Satz von Stokes auf die zweidimensionale Situation des Satzes von
+Green zurückgeführt werden.
+
+Das Integral über den Rand von $S$ bekommt die Form
+\begin{align*}
+\int_{\partial S}g\cdot\,ds
+&=
+\int_a^b
+g\circ\varphi(\gamma(t))
+\cdot
+\biggl(
+\frac{\partial\varphi}{\partial u}
+\dot{\gamma}_u(t)
++
+\frac{\partial\varphi}{\partial v}
+\dot{\gamma}_u(t)
+\biggr)
+\,dt
+\\
+&=
+\int_a^b
+\biggl(
+\underbrace{
+g(\varphi(\gamma(t)))
+\cdot
+\frac{\partial\varphi}{\partial u}
+}_{\displaystyle P}
+\biggr)
+\dot{\gamma}_u(t)
++
+\biggl(
+\underbrace{
+g(\varphi(\gamma(t)))
+\cdot
+\frac{\partial\varphi}{\partial v}
+}_{\displaystyle Q}
+\biggr)
+\dot{\gamma}_v(t)
+\,dt
+.
+\end{align*}
+Die Funktionen $P$ und $Q$ sind die beiden Funktionen, auf die
+der Satz von Green angewendet werden soll.
+
+Der Satz von Green sagt über die beiden Funktionen $P$ und $Q$,
+dass die rechte Seite von~\eqref{buch:felder:fundamentallemma:eqn:stokes}
+mit
+\begin{equation}
+\int_\Omega
+\frac{\partial Q}{\partial u}
+-
+\frac{\partial P}{\partial v}
+\,du\,dv
+\label{buch:felder:fundamentallemma:eqn:stokesintegrand}
+\end{equation}
+übereinstimmt.
+Es müssen jetzt also die Ableitungen $P$ und $Q$ nach $u$ und $v$
+berechnet werden, sie sind
+\begin{align*}
+\frac{\partial Q}{\partial u}
+&=
+\frac{\partial g\circ\varphi}{\partial u}
+\cdot
+\frac{\partial\varphi}{\partial v}
++
+g\circ\varphi
+\cdot
+\frac{\partial^2 \varphi}{\partial u\,\partial v}
+\\
+\frac{\partial P}{\partial v}
+&=
+\frac{\partial g\circ\varphi}{\partial v}
+\cdot
+\frac{\partial \varphi}{\partial u}
++
+g\circ\varphi
+\cdot
+\frac{\partial^2\varphi}{\partial v\,\partial u}
+\end{align*}
+Da $\varphi$ stetig differenzierbar ist, stimmen die zweiten Terme auf
+der rechten Seite überein und verschwinden daher im Integranden
+\begin{align}
+\frac{\partial Q}{\partial u}
+-
+\frac{\partial P}{\partial v}
+&=
+\frac{\partial g\circ\varphi}{\partial u}
+\cdot
+\frac{\partial\varphi}{\partial v}
+-
+\frac{\partial g\circ\varphi}{\partial v}
+\cdot
+\frac{\partial \varphi}{\partial u}
+\notag
+\intertext{von \eqref{buch:felder:fundamentallemma:eqn:stokesintegrand}.
+Wir schreiben das Skalarprodukt mit Hilfe der Transposition und erhalten
+}
+&=
+\biggl(\frac{\partial\varphi}{\partial v}\biggr)^t
+\frac{\partial g\circ\varphi}{\partial u}
+-
+\biggl(\frac{\partial \varphi}{\partial u}\biggr)^t
+\frac{\partial g\circ\varphi}{\partial v}
+\notag
+\intertext{und wenden die Kettenregel auf $g\circ\varphi$ an, so entsteht}
+&=
+\biggl(\frac{\partial\varphi}{\partial v}\biggr)^t
+Dg
+\frac{\partial\varphi}{\partial u}
+-
+\biggl(\frac{\partial\varphi}{\partial u}\biggr)^t
+Dg
+\frac{\partial\varphi}{\partial v}
+\notag
+\\
+&=
+\biggl(\frac{\partial\varphi}{\partial v}\biggr)^t
+(
+Dg
+-
+Dg^t
+)
+\frac{\partial\varphi}{\partial u}.
+\label{buch:felder:fundamentallemma:eqn:produkt}
+\end{align}
+Die Matrix in Klammern auf der rechten Seite ist
+\begin{align*}
+Dg-Dg^t
+&=
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial g_1}{\partial x_1}
+	&\displaystyle \frac{\partial g_1}{\partial x_2}
+		&\displaystyle \frac{\partial g_1}{\partial x_3}
+\\
+\displaystyle \frac{\partial g_2}{\partial x_1}
+	&\displaystyle \frac{\partial g_2}{\partial x_2}
+		&\displaystyle \frac{\partial g_2}{\partial x_3}
+\\
+\displaystyle \frac{\partial g_3}{\partial x_1}
+	&\displaystyle \frac{\partial g_3}{\partial x_2}
+		&\displaystyle \frac{\partial g_3}{\partial x_3}
+\end{pmatrix}
+-
+\begin{pmatrix}
+\displaystyle\frac{\partial g_1}{\partial x_1}
+	&\displaystyle\frac{\partial g_2}{\partial x_1}
+		&\displaystyle\frac{\partial g_3}{\partial x_1}
+\\
+\displaystyle\frac{\partial g_1}{\partial x_2}
+	&\displaystyle\frac{\partial g_2}{\partial x_2}
+		&\displaystyle\frac{\partial g_3}{\partial x_2}
+\\
+\displaystyle\frac{\partial g_1}{\partial x_3}
+	&\displaystyle\frac{\partial g_2}{\partial x_3}
+		&\displaystyle\frac{\partial g_3}{\partial x_3}
+\end{pmatrix}
+\\
+&=
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+0
+&\displaystyle
+\frac{\partial g_1}{\partial x_2}-\frac{\partial g_2}{\partial x_1}
+&\displaystyle
+\frac{\partial g_1}{\partial x_3}-\frac{\partial g_3}{\partial x_1}
+\\
+\displaystyle
+\frac{\partial g_2}{\partial x_1}-\frac{\partial g_1}{\partial x_2}
+&0
+&\displaystyle
+\frac{\partial g_2}{\partial x_3}-\frac{\partial g_3}{\partial x_2}
+\\
+\displaystyle
+\frac{\partial g_3}{\partial x_1}-\frac{\partial g_1}{\partial x_3}
+&\displaystyle
+\frac{\partial g_3}{\partial x_2}-\frac{\partial g_2}{\partial x_3}
+&0
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+0
+	&(\operatorname{rot} g)_3
+		&-(\operatorname{rot} g)_2
+\\
+-(\operatorname{rot}g)_3
+	&0
+		&(\operatorname{rot}g)_1
+\\
+(\operatorname{rot}g)_2
+	&-(\operatorname{rot}g)_1
+		&0
+\end{pmatrix}.
+\end{align*}
+Damit kann man jetzt auch das Produkt
+\begin{align*}
+\biggl(\frac{\partial\varphi}{\partial v}\biggr)^t
+(
+Dg
+-
+Dg^t
+)
+\frac{\partial\varphi}{\partial u}
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial \varphi_1}{\partial v}&
+\displaystyle
+\frac{\partial \varphi_2}{\partial v}&
+\displaystyle
+\frac{\partial \varphi_3}{\partial v}
+\end{pmatrix}
+{\renewcommand{\arraystretch}{2.0}
+\begin{pmatrix}
+\displaystyle
+(\operatorname{rot}g)_3 \frac{\partial\varphi_2}{\partial u}
+-
+(\operatorname{rot}g)_2 \frac{\partial\varphi_3}{\partial u}
+\\
+\displaystyle
+(\operatorname{rot}g)_1 \frac{\partial\varphi_3}{\partial u}
+-
+(\operatorname{rot}g)_3 \frac{\partial\varphi_1}{\partial u}
+\\
+\displaystyle
+(\operatorname{rot}g)_2 \frac{\partial\varphi_1}{\partial u}
+-
+(\operatorname{rot}g)_1 \frac{\partial\varphi_2}{\partial u}
+\end{pmatrix}}
+\\
+&=
+(\operatorname{rot}g)_1
+\biggl(
+\frac{\partial\varphi_3}{\partial u}
+\frac{\partial\varphi_2}{\partial v}
+-
+\frac{\partial\varphi_2}{\partial u}
+\frac{\partial\varphi_3}{\partial v}
+\biggr)
++
+(\operatorname{rot}g)_2
+\biggl(
+\frac{\partial\varphi_1}{\partial u}
+\frac{\partial\varphi_3}{\partial v}
+-
+\frac{\partial\varphi_3}{\partial u}
+\frac{\partial\varphi_1}{\partial v}
+\biggr)
+\\
+&\qquad
++
+(\operatorname{rot}g)_3
+\biggl(
+\frac{\partial\varphi_2}{\partial u}
+\frac{\partial\varphi_1}{\partial v}
+-
+\frac{\partial\varphi_1}{\partial u}
+\frac{\partial\varphi_2}{\partial v}
+\biggr)
+\\
+&=
+\operatorname{rot}g\cdot
+\biggl(
+\frac{\partial\varphi}{\partial u}
+\times
+\frac{\partial\varphi}{\partial v}
+\biggr)
+\end{align*}
+berechnen.
+Das Integral des Satzes von Green über $\Omega$ ist jetzt
+\begin{align*}
+\int_{\partial S} g\cdot ds
+&=
+\int_\Omega
+\operatorname{rot}g
+\cdot
+\biggl(
+\frac{\partial\varphi}{\partial u}
+\times
+\frac{\partial\varphi}{\partial v}
+\biggr)\,dx\,dy
+\\
+&=
+\int_S
+\operatorname{rot} g
+\cdot
+do.
+\end{align*}
+Dies ist der Satz von Stokes bewiesen.
+\end{proof}
 
 %
 % Partielle Integration und der Satz von Stokes
