@@ -6,69 +6,72 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Kirchhoff's Gesetz
+\section{Kirchhoffs Gesetz
 \label{circuit:section:teil1}}
 \rhead{Problemstellung}
-Bevor wir die Laplace Gleichung mithilfe der Lagrange-Funktion herleiten, versuchen wir das auf konventionelle weise indem wir  das Kirchhoffische Gesetz benutzen. 
-
-Das Kirchhoffische Stromgesetz postuliert, dass die Summe der in einen Knoten einfließenden Ströme gleich der Summe der aus diesem Knoten ausfließenden Ströme in einer Schaltung ist. Dies impliziert, dass es in einem Gleichstromkreis im stationären Zustand keine Ladungsakkumulation an irgendeinem Punkt geben kann. Wir betrachten nun einen dreidimensionalen Schaltkreis, in dem die Leitfähigkeit $\sigma$ im gesamten Bereich von Interesse konstant ist. Die Verallgemeinerung des Kirchhoffischen Stromgesetzes im dreidimensionalen Fall besagt, dass die Divergenz der Stromdichte $\vec{J}$ gleich Null ist, es kann kein Strom aus dem Nichts erzeugt werden. Daher gilt \autoref{circuit:current_density_1}.
+Bevor wir die Laplace-Gleichung mithilfe der Lagrange-Funktion herleiten, versuchen wir das auf konventionelle Weise, indem wir  das Kirchhoffsche Gesetz benutzen. 
+Dafür brauchen wir aber zuerst noch ein paar Erkenntnisse, die hier aufgezeigt werden. Die Stromdichte $\vec{J}$ wird durch
 \begin{equation}
-	\nabla \cdot  \vec{J}=0
-	\label{circuit:current_density_1}
-\end{equation}
-
-Um die Laplace Gleichung auf herkömmliche weise zu finden brauche wir noch ein paar andere Erkenntnisse die hier aufgezeigt werden. Die Stromdichte wird durch \autoref{circuit:current_density_3}definiert. Diese Gleichung besagt, dass die Stromdichte das Verhältnis des Stroms ($I$) zur Flächen ($A$) ist. 
-\begin{equation}
-\vec{J}=\frac{\vec{I}}{A}
+	\vec{J}=\frac{\vec{I}}{A}
 	\label{circuit:current_density_3}
 \end{equation}
-Wenn das elektrische Feld durch $\vec{E}$ repräsentiert wird und wir ein ohmsches Material vorliegen haben, kann die Stromdichte als Produkt aus Leitfähigkeit und elektrischem Feld an einem gegebenen Punkt im Raum durch \autoref{circuit:current_density_2} beschrieben werden.
+definiert. Diese Gleichung besagt, dass die Stromdichte das Verhältnis des Stroms $I$ zur Flächen $A$ ist. 
+Das Kirchhoffsche Stromgesetz postuliert nun, dass die Summe der in einen Knoten einfliessenden Ströme gleich der Summe der aus diesem Knoten ausfliessenden Ströme in einer Schaltung ist. Dies impliziert, dass es in einem Gleichstromkreis im stationären Zustand keine Ladungsakkumulation an irgendeinem Punkt geben kann. Wir betrachten nun einen dreidimensionalen Schaltkreis, in dem die Leitfähigkeit $\sigma$ im gesamten Bereich von Interesse konstant ist. Die Verallgemeinerung des Kirchhoffschen Stromgesetzes im dreidimensionalen Fall besagt, dass die Divergenz der Stromdichte $\vec{J}$ gleich Null ist, es kann kein Strom aus dem Nichts erzeugt werden. Daher gilt 
+%\eqref{circuit:current_density_1}.
+\begin{equation}
+	\nabla \cdot  \vec{J}=0.
+	\label{circuit:current_density_1}
+\end{equation}
+Wenn das elektrische Feld durch $\vec{E}$ repräsentiert wird und wir ein ohmsches Material vorliegen haben, kann die Stromdichte auch als Produkt aus Leitfähigkeit und elektrischem Feld an einem gegebenen Punkt im Raum durch 
 \begin{equation}
 \vec{J}=\sigma \vec{E}
 \label{circuit:current_density_2}
 \end{equation}
-
-
-Das elektrische Feld kann dabei als negativer Gradient der Potential Funktion $\phi$ geschrieben werden, d.h.
+beschrieben werden.
+Das elektrische Feld kann dabei als negativer Gradient der Potentialfunktion $\phi$ geschrieben werden, d.h.
 \begin{equation}
-\vec{E}=-\nabla \phi
+\vec{E}=-\nabla \phi.
 \label{circuit:current_density_4}
 \end{equation}
-
-Daher erhalten wir aus den Gleichungen \autoref{circuit:current_density_1}, \autoref{circuit:current_density_2} und \autoref{circuit:current_density_4} \autoref{circuit:current_density_5}.
+Mit dem elektrischen Feld als Gradient von $\phi$ erhalten wir aus der Quellenfreiheit des Stromes \eqref{circuit:current_density_1} und dem ohmschen Gesetz \eqref{circuit:current_density_2} die Differentialgleichung 
 \begin{equation}
-\nabla \cdot (\sigma \nabla \phi)=0
-\label{circuit:current_density_5}
+	\nabla \cdot (\sigma \nabla \phi)=0
+	\label{circuit:current_density_5}
 \end{equation}
-
-Wenn wir annehmen, dass die Leitfähigkeit im gesamten betrachteten Raum konstant ist, gilt zudem \autoref{circuit:current_density_6} welche die Laplace gleichung darstellt.
+für das Potential $\phi$. Was auch folgendermassen geschrieben werden kann
 \begin{equation}
-\nabla^2 \phi=0
+\nabla^2 \phi=0.
 \label{circuit:current_density_6}
 \end{equation}
 
 \section{Variationsprinizip}
-Im nächsten Schritt versuchen wir, \autoref{circuit:current_density_6} mithilfe des Variationsprinzips herzuleiten. Dafür drücken wir die Wärmeerzeugungsrate $P$ in einem von einer Grenze $S$ umgebenen Volumen $V$ durch \autoref{circuit:current_density_7} aus. Aus den Prinzipien der Thermodynamik wissen wir, dass die Entropie in einem geschlossenen System zunimmt. Daher wenden wir das Variationsprinzip auf \autoref{circuit:current_density_7} an und lösen es. Dies sollte uns die minimale Energie in einem zweidimensionalen oder dreidimensionalen Raum geben. Auf den ersten Blick mag \autoref{circuit:current_density_7} nicht sehr intuitiv erscheinen. Daher könnten wir die Gleichung auch anders formulieren, wie in \autoref{circuit:current_density_8} gezeigt, wobei $U^2=\left( \nabla \phi \right)^2$ und $R=\frac{1}{\sigma}$.
-
+Im nächsten Schritt versuchen wir \eqref{circuit:current_density_6} mithilfe des Minimalprinzip herzuleiten. Dafür drücken wir die Leistung $P$ in einem von einer Grenze $S$ umgebenen Volumen $V$ durch 
+\begin{equation}
+	P=\int_V \sigma(\nabla \phi)^2 d V
+	\label{circuit:current_density_7}
+\end{equation}
+aus. Aus den Prinzipien der Thermodynamik wissen wir, dass die Entropie in einem geschlossenen System zunimmt. Daher wenden wir das Variationsprinzip auf \eqref{circuit:current_density_7} an und lösen es. Dies gibt uns die minimale Energie in einem zweidimensionalen oder dreidimensionalen Raum d.h. Das integral von \eqref{circuit:current_density_7} wird minimiert. Auf den ersten Blick mag \eqref{circuit:current_density_7} nicht sehr intuitiv erscheinen. Daher könnten wir die Gleichung auch anders formulieren, wie in 
 \begin{equation}
 	P=\frac{U^2}{R}
 	\label{circuit:current_density_8}
 \end{equation}
+gezeigt, wobei $U^2=\left( \nabla \phi \right)^2$ und $R=\frac{1}{\sigma}$.
+Für das Verständnis des Minimalprinzips können wir uns auch eine parallel Schaltung von einem ein Kilo Ohm und einem zwei Kilo Ohm Widerstand anschauen, durch welche ein Strom von einem Ampere fliesst. Der Strom nimmt dabei wie ihnen bekannt ist nicht den weg des geringsten Wiederstandes sonder den weg indem die Leistung der Schaltung minimiert wird. D.h. es fliesst nicht der ganze Strom durch den ein Kilo Ohm Widerstand was mit einer Leistung von 1000 Watt resultieren würde. Sonder es fliessen zwei drittel des Stromes durch den 1 Kilo Ohm Widerstand und ein drittel des Stroms durch den zwei Kilo Ohm Widerstand. Was in einer Leistung von $(\frac{1}{3})^2\cdot 2000+(\frac{2}{3})^2\cdot 1000 = 666.67$ Watt resultiert, wie es auch in \ref{fig:circuit_power} gesehen werden kann.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{papers/circuit/two_parrallel_resistors.png}
+	\caption{Leistung (z-Achse) von zwei parallel geschalteten Widerständen 1 Kilo Ohm (x-Achse) und 2 Kilo Ohm (y-Achse), in grau dargestellt die Schnitt flache des Stromes von einem Ampere.}
+	\label{fig:circuit_power}
+\end{figure}
 
-\section{Lösen der Lagrange Funktion}
-In folgendem Kapitel lösen wir die Lagrange-Funktion mithilfe der Euler Ostrogradsky Differentialgleichung welche auch in \autoref{buch:felder:ostrogradski:eqn:euler-ostrogradski} gefunden werden kann.
+\section{Herleitung der Lagrange-Funktion}
+In folgendem Kapitel leiten wir die Lagrange-Funktion mithilfe der Euler-Ostrogradski-Differentialgleichung her welche auch in \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} gefunden werden kann.
 
-
-\begin{equation}
-P=\int_V \sigma(\nabla \phi)^2 d V
-\label{circuit:current_density_7}
-\end{equation}
-
-Nehmen wir nun \autoref{circuit:current_density_7} und wenden Euler-Ostrogradsky auf die Gleichung an:
+Nehmen wir nun \eqref{circuit:current_density_7} und wenden Euler-Ostrogradski auf die Gleichung an:
 \begin{enumerate}
 	\item Schritt: Lagrange-Funktion des Problems ohne $\sigma$
 	\begin{equation}
-		L(x, U, U_x)= U_x^2 = \left(U_{x_1}^2+U_{x_2}^2\right)
+		L(x, U, U_x)= U_x^2 = \left(U_{x_1}^2+U_{x_2}^2\right).
 	\end{equation}
 	\item Schritt: partielle Ableitungen
 	\begin{equation}
@@ -76,26 +79,26 @@ Nehmen wir nun \autoref{circuit:current_density_7} und wenden Euler-Ostrogradsky
 			\frac{\partial L}{\partial U}=0\\
 			\frac{\partial L}{\partial U_{x_1}}=2U_{x_1}\\
 			\frac{\partial L}{\partial U_{x_2}}=2U_{x_2}\\
-		\end{aligned}
+		\end{aligned}.
 	\end{equation}
 	\item Schritt: Ableiten nach $x_1$ und $x_2$
 	\begin{equation}
 		\begin{aligned}
-			\frac{\partial}{\partial x_1}\frac{\partial L}{\partial U_{x_1}}(x,\phi,\nabla \phi)=2\frac{\partial \phi}{\partial {x_1}}\cdot \frac{\partial}{\partial x_1}\\
-			\frac{\partial}{\partial x_2}\frac{\partial L}{\partial U_{x_2}}(x,\phi,\nabla \phi)=2\frac{\partial \phi}{\partial {x_2}} \cdot \frac{\partial}{\partial x_1}\\
+			\frac{\partial}{\partial x_1}\frac{\partial L}{\partial U_{x_1}}(x,\phi,\nabla \phi)=2\frac{\partial \phi}{\partial {x_1}}\cdot \frac{\partial}{\partial x_1},\\
+			\frac{\partial}{\partial x_2}\frac{\partial L}{\partial U_{x_2}}(x,\phi,\nabla \phi)=2\frac{\partial \phi}{\partial {x_2}} \cdot \frac{\partial}{\partial x_1}.\\
 		\end{aligned}
 	\end{equation}
 	\item Schritt: Euler-Ostrogradsky Differentialgleichung
 	\begin{equation}
-		-\frac{\partial}{\partial x_1}\cdot 2\frac{\partial \phi}{\partial {x_1}}-\frac{\partial}{\partial x_2}\cdot 2\frac{\partial \phi}{\partial {x_2}}=-2\Delta\phi
+		-\frac{\partial}{\partial x_1}\cdot 2\frac{\partial \phi}{\partial {x_1}}-\frac{\partial}{\partial x_2}\cdot 2\frac{\partial \phi}{\partial {x_2}}=-2\Delta\phi.
 	\end{equation}
 	\item Schritt: Mögliche Lösungen
 	\begin{equation}
-	\sigma \cdot 2\Delta\phi=0
+	\sigma \cdot 2\Delta\phi=0.
 	\end{equation}
-Wir können nun noch durch $2\sigma$ teilen und bekommen die Laplace Gleichung aus \autoref{circuit:current_density_6}. Somit wurde gezeigt dass die Laplace Gleichung auch dem Variationsprinzip gefunden werden kann sowie auch mit den Kirchhoffischen Regeln.
+Wir können nun noch durch $2\sigma$ teilen und bekommen die Laplace-Gleichung aus \eqref{circuit:current_density_6}. Somit wurde gezeigt dass die Laplace-Gleichung auch dem Variationsprinzip gefunden werden kann sowie auch mit den Kirchhoffschen Regeln.
 	\begin{equation}
-	\Delta\phi=0=\frac{\delta^2\phi}{\delta x^2}+\frac{\delta^2\phi}{\delta y^2}
+	\Delta\phi=0=\frac{\partial^2\phi}{\partial x^2}+\frac{\partial^2\phi}{\partial y^2}
 	\label{circuit:laplace1}
 	\end{equation}
 	%\begin{equation}
@@ -104,53 +107,61 @@ Wir können nun noch durch $2\sigma$ teilen und bekommen die Laplace Gleichung a
 \end{enumerate}
 
 \section{Praktische Anwendungen}
-In diesem Kapitel schauen wir uns an wie die elliptische Differentialgleichung aus \autoref{circuit:laplace1} numerisch gelöst werden kann und was Sie eigentlich genau bedeutet.
+In diesem Kapitel schauen wir uns an, wie die elliptische Differentialgleichung aus \eqref{circuit:laplace1} numerisch gelöst werden kann und was Sie eigentlich genau bedeutet.
 
-\autoref{circuit:laplace1} kann diskretisiert werden durch die Differenz zweiter Ordnung wie sie in \autoref{circuit:second-order-central} \cite{enwiki:1220817436} gesehen werden kann.
+\eqref{circuit:laplace1} kann diskretisiert werden durch die Differenz zweiter Ordnung wie sie in 
 \begin{equation}
 	f^{\prime \prime}(x) \approx \frac{\delta_h^2[f](x)}{h^2}=\frac{\frac{f(x+h)-f(x)}{h}-\frac{f(x)-f(x-h)}{h}}{h}=\frac{f(x+h)-2 f(x)+f(x-h)}{h^2}
 	\label{circuit:second-order-central}
 \end{equation}
-Wenn wir das auf unseren Fall anwenden bekommen wir \autoref{circuit:discret_equation}.
+\cite{enwiki:1220817436} gesehen werden kann.
+
+Wenn wir das auf unseren Fall anwenden bekommen wir
 \begin{equation}
-	\frac{\phi(x_{i+1}, y_j) - 2\phi(x_i, y_j) + \phi(x_{i-1}, y_j)}{(\Delta x)^2} + \frac{\phi(x_i, y_{j+1}) - 2\phi(x_i, y_j) + \phi(x_i, y_{j-1})}{(\Delta y)^2} = 0 
+	\frac{\phi(x_{i+1}, y_j) - 2\phi(x_i, y_j) + \phi(x_{i-1}, y_j)}{(\Delta x)^2} + \frac{\phi(x_i, y_{j+1}) - 2\phi(x_i, y_j) + \phi(x_i, y_{j-1})}{(\Delta y)^2} = 0.
 	\label{circuit:discret_equation}
 \end{equation}
-Nun können wir auf $\phi(x_i, y_j)$ auflösen und bekommen \autoref{circuit:discret_equation2}.
-
+Nun können wir auf $\phi(x_i, y_j)$ auflösen und bekommen 
 \begin{equation}
-	\phi(x_i, y_j) = \frac{1}{4}(\phi(x_{i+1}, y_{j}) + \phi(x_{i-1}, y_{j}) + \phi(x_{i}, y_{j+1}) + \phi(x_{i}, y_{j-1}))
+	\phi(x_i, y_j) = \frac{1}{4}(\phi(x_{i+1}, y_{j}) + \phi(x_{i-1}, y_{j}) + \phi(x_{i}, y_{j+1}) + \phi(x_{i}, y_{j-1})).
 	\label{circuit:discret_equation2}
 \end{equation}
-Darum ist die Idee nun nacheinander \autoref{circuit:discret_equation3} auszureichen bis $\phi$ konvertiert.
-\begin{equation}
-	\phi(x_i, y_j) \to \frac{1}{4}(\phi(x_{i+1}, y_{j}) + \phi(x_{i-1}, y_{j}) + \phi(x_{i}, y_{j+1}) + \phi(x_{i}, y_{j-1}))
-	\label{circuit:discret_equation3}
-\end{equation}
-\subsubsection{Python Beispiel}
-In diesem Beispiel betrachten wir eine leitende Platte mit einer Leitfähigkeit von $0,001 \, \text{Siemens pro Meter}$ und einer Größe von einem Quadratmeter. Ein spezifischer Bereich der Platte, definiert durch $0,5 < x < 0,7$ und $0,5 < y < 0,7$, wird mit einem Potential von einem Volt belegt, während der Rand der Platte ein Potential von 0 Volt aufweist.
-\begin{figure}[h]
+mit welcher man numerisch die Potential punkte berechnen kann.
+%Darum ist die Idee nun nacheinander \eqref{circuit:discret_equation3} auszureichen bis $\phi$ konvertiert.
+%\begin{equation}
+%	\phi(x_i, y_j) \to \frac{1}{4}(\phi(x_{i+1}, y_{j}) + \phi(x_{i-1}, y_{j}) + \phi(x_{i}, y_{j+1}) + \phi(x_{i}, y_{j-1}))
+%	\label{circuit:discret_equation3}
+%\end{equation}
+\subsubsection{Numerisches Beispiel}
+In diesem Beispiel betrachten wir eine leitende Platte mit einer Leitfähigkeit von $0.001$ Siemens pro Meter und einer Grösse von einem Quadratmeter. Ein spezifischer Bereich der Platte, definiert durch $0.5 < x < 0.7$ und $0.5 < y < 0.7$, wird mit einem Potential von einem Volt belegt, während der Rand der Platte ein Potential von 0 Volt aufweist.
+\begin{figure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/potential_distribution.png}
-	\caption{Potential Distribution}
+	\caption{Potential Verteilung auf Platte}
 	\label{fig:potential_distribution}
 \end{figure}
-Unter Verwendung von Gleichung \ref{circuit:discret_equation3} zur Berechnung des Potentials erhalten wir die in Abbildung \ref{fig:potential_distribution} dargestellte Potentialverteilung. Dies ermöglicht es uns, das gesamte Potential auf der Platte zu bestimmen.
+Unter Verwendung von Gleichung \ref{circuit:discret_equation2} zur Berechnung des Potentials erhalten wir die in Abbildung \ref{fig:potential_distribution} dargestellte Potentialverteilung. Dies ermöglicht es uns, das gesamte Potential auf der Platte zu bestimmen.
 
-Sobald das Potential bekannt ist, können wir mithilfe des Gradienten und Gleichung \ref{circuit:current_density_7} die Leistungsdichte an jedem einzelnen Punkt berechnen. Dies führt zu den in Abbildung \ref{fig:power_2d} und \ref{fig:power_3d} dargestellten Leistungsdichteverteilungen, die auch im Beispielskript unter \glqq{}\textbackslash buch\textbackslash papers\textbackslash circuit\textbackslash Präsentation.ipynb\grqq{}  zu finden sind.
+Sobald das Potential bekannt ist, können wir mithilfe des Gradienten und Gleichung \ref{circuit:current_density_7} die Leistungsdichte an jedem einzelnen Punkt berechnen. Dies führt zu den in Abbildung \ref{fig:power_2d} und \ref{fig:power_3d_rectangle} dargestellten Leistungsdichte Verteilung, die auch im Beispielskript unter folgendem Link \footnote{https://github.com/AndreasFMueller/SeminarVariation/blob/master/buch/papers/circuit/Pr\%C3\%A4sentation.ipynb} gefunden werden können.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/power_distribution.png}
-	\caption{Power density 2d}
+	\caption{Leistungsdichte 2d}
 	\label{fig:power_2d}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/3d.png}
-	\caption{Power density 3d}
-	\label{fig:power_3d}
+	\caption{Leistungsdichte 3d Rechteckiges Potential}
+	\label{fig:power_3d_rectangle}
 \end{figure}
-Abbildung \ref{fig:power_3d} zeigt deutlich, dass die Leistungsdichte in den Ecken des quadratischen Potentials am höchsten ist. Dies ist der Hauptgrund, warum auf Leiterplatten oder PCBs normalerweise keine 90°-Kurven gezogen werden, sondern immer 45°-Kurven verwendet werden, um die Leistungsdichte bzw. Stromdichte in den Ecken zu minimieren.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{papers/circuit/3d_circle.png}
+	\caption{Leistungsdichte 3d Kreisförmiges Potential}
+	\label{fig:power_3d_circle}
+\end{figure}
+Abbildung \ref{fig:power_3d_rectangle} zeigt deutlich, dass die Leistungsdichte in den Ecken des quadratischen Potentials am höchsten ist. Dies ist der Grund, warum auf Leiterplatten normalerweise keine 90°-Kurven gezogen werden, sondern immer 45°-Kurven verwendet werden, um die Leistungsdichte bzw. Stromdichte in den Ecken zu minimieren. Wird zum Beispiel anstatt eines rechteckigen Potentials ein kreisförmiges Potential angelegt \ref{fig:power_3d_rectangle} ist die Leistungsdichte einiges geringer wie es in \ref{fig:power_3d_circle} gesehen werden kann.
 
 %Als erstes importieren wir alle nötigen Bibliotheken in Python.
 %\begin{lstlisting}[language=Python, caption=Python Librarys]
@@ -175,7 +186,7 @@ Abbildung \ref{fig:power_3d} zeigt deutlich, dass die Leistungsdichte in den Eck
 %"""
 %from matplotlib import cm
 %\end{lstlisting}
-%Anschließend können wir die Berechnungen anhand von \autoref{circuit:discret_equation3} durchführen, wie es in \autoref{circuit:code1} gezeigt ist \footnote{Der Code wurde mithilfe von Copilot geschrieben}. 
+%Anschliessend können wir die Berechnungen anhand von \eqref{circuit:discret_equation3} durchführen, wie es in \eqref{circuit:code1} gezeigt ist \footnote{Der Code wurde mithilfe von Copilot geschrieben}. 
 %\begin{lstlisting}[language=Python, caption=Python Librarys, label=circuit:code1]
 %def potential_block(x, y):
 %	"""
@@ -265,7 +276,7 @@ Abbildung \ref{fig:power_3d} zeigt deutlich, dass die Leistungsdichte in den Eck
 
 
 
-%Wenn wir den Divergenzsatz/Gauscher Integralsatz (\autoref{circuit:gauscher_integralsatz}) anwenden und \autoref{circuit:current_density_6} verwenden, erhalten wir \autoref{circuit:leistung_gauscher_integralsatz}, da $\sigma$ ein skalar ist und die divergenz vom feld $\phi$ auch kann man den $\nabla$ operator ausklammern und hat die Gleichung dann genau in der Form dass man den satz von Gaus anwwenden kann.
+%Wenn wir den Divergenzsatz/Gauscher Integralsatz (\eqref{circuit:gauscher_integralsatz}) anwenden und \eqref{circuit:current_density_6} verwenden, erhalten wir \eqref{circuit:leistung_gauscher_integralsatz}, da $\sigma$ ein skalar ist und die divergenz vom feld $\phi$ auch kann man den $\nabla$ operator ausklammern und hat die Gleichung dann genau in der Form dass man den satz von Gaus anwwenden kann.
 %\begin{equation}
 %	\oint_S \vec{F}_i \cdot \mathrm{d} \vec{S}=\int_V \nabla \cdot \vec{F}_i \mathrm{~d} V
 %	\label{circuit:gauscher_integralsatz}
@@ -282,7 +293,7 @@ Abbildung \ref{fig:power_3d} zeigt deutlich, dass die Leistungsdichte in den Eck
 %\label{circuit:leistung_gauscher_integralsatz}
 %\end{equation}
 %
-%Wenn die Leitfähigkeit im gesamten Volumen $V$ konstant ist, wird die Variation der Wärmeerzeugungsrate $P$ in $V$ gegeben durch \autoref{circuit:leistung_gauscher_integralsatz2}. Auf diese form der Gleichung kommt man wenn man das Kommutativgesetz und anschliessend die produkteregel  auf \autoref{circuit:leistung_gauscher_integralsatz} anwendet, wie es in \autoref{eq:produkteregel} gezeigt ist. Dabei ist zu beachten dass partielle Ableitungen für stetig differenzierbare funktionen vertauschbar sind ($\phi \nabla(\delta \phi) = \phi \delta(\nabla \phi)$).
+%Wenn die Leitfähigkeit im gesamten Volumen $V$ konstant ist, wird die Variation der Wärmeerzeugungsrate $P$ in $V$ gegeben durch \eqref{circuit:leistung_gauscher_integralsatz2}. Auf diese form der Gleichung kommt man wenn man das Kommutativgesetz und anschliessend die produkteregel  auf \eqref{circuit:leistung_gauscher_integralsatz} anwendet, wie es in \eqref{eq:produkteregel} gezeigt ist. Dabei ist zu beachten dass partielle Ableitungen für stetig differenzierbare funktionen vertauschbar sind ($\phi \nabla(\delta \phi) = \phi \delta(\nabla \phi)$).
 %\begin{equation}
 %\delta P=\sigma \oint_S(\delta \phi \nabla \phi) \cdot d \vec{S}+\sigma \oint_S(\phi \nabla(\delta \phi)) \cdot d \vec{S}
 %\label{circuit:leistung_gauscher_integralsatz2}
@@ -301,7 +312,7 @@ Abbildung \ref{fig:power_3d} zeigt deutlich, dass die Leistungsdichte in den Eck
 %	\label{eq:produkteregel}
 %\end{equation}
 %
-%Nun haben wir die Gleichung gefunden und wir können die euler ostrogradsky differentialgleichung aus \cite{circuit:paper1} welche auch in \autoref{circuit:euler_lagransky} zu finden anwenden
+%Nun haben wir die Gleichung gefunden und wir können die Euler-Ostrogradski-Differentialgleichung aus \cite{circuit:paper1} welche auch in \eqref{circuit:euler_lagransky} zu finden anwenden
 %
 %\begin{equation}
 %	\textcolor{orange}{\frac{\partial F}{\partial z}(x, y, \phi, \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial y})}-\textcolor{brown}{\frac{\partial}{\partial x} \frac{\partial F}{\partial z_x}(x, y, \phi, \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial y})}-\textcolor{violet}{\frac{\partial}{\partial y} \frac{\partial F}{\partial z_y}(x, y, \phi, \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial y})}=0
@@ -346,7 +357,7 @@ Abbildung \ref{fig:power_3d} zeigt deutlich, dass die Leistungsdichte in den Eck
 %
 %
 %
-%Aus \autoref{circuit:leistung_gauscher_integralsatz2} geht hervor, dass wenn Variationen im Fluss, $\delta \phi$, an der Grenze von $V$ verschwinden, dann ist $P$ stationär, d.h. $\delta P=0$. Daher werden elektrische Ströme in der Region verteilt, mit einer angelegten Spannung an ihrer Grenze,
+%Aus \eqref{circuit:leistung_gauscher_integralsatz2} geht hervor, dass wenn Variationen im Fluss, $\delta \phi$, an der Grenze von $V$ verschwinden, dann ist $P$ stationär, d.h. $\delta P=0$. Daher werden elektrische Ströme in der Region verteilt, mit einer angelegten Spannung an ihrer Grenze,
 %
 %
 %\begin{figure}
