@@ -12,10 +12,12 @@
 \section{Ritz Verfahren angewandt\label{antennen:ritzAnw}}
 
 
-Wie in REF erwähnt konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen in ein Koordinatensystem.
+Wie in REF erwähnt konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
+Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen 
+in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren.
 
 %TODO bild ist weit weg [htbp] ILLEGAL
-\begin{figure}[htbp]
+\begin{figure}%[htbp]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -61,7 +63,7 @@ welche klar wird, wenn man in das gleiche Koordinatensystem wie bei der Abbildun
 benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 
 %TODO bild ist weit weg [htbp] ILLEGAL
-\begin{figure}[htbp]
+\begin{figure}%[htbp]
 	\centering
 	\begin{tikzpicture}
 		\definecolor{clr1}{RGB}{0, 117, 18}
@@ -185,7 +187,7 @@ L(x,a_1,a_2,\lambda)
 f(a_1,a_2)+\lambda \: n(a_1,a_2, \ell)
 \end{equation}
 
-definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n$ addiert. 
+definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n$ addiert.
 Mehr zu der Lagrangefunktion findet man unter dem Kapitel REF %\ref{label}
 
 \subsection{Lagrange Gleichungssystem\label{antennen:lagrangeGLsys}}
@@ -215,7 +217,7 @@ Problem, in ein endlich dimensionales verwandeln.
 Konkret heisst es, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das Gleichungssystem, welches wir bei \eqref{antennen:lagrangeGrad} erhalten haben.
 
-Das Gleichungssystem \eqref{antennen:lagrangeGrad},in diesem Fall mit 
+Das Gleichungssystem \eqref{antennen:lagrangeGrad}, in diesem Fall mit 
 2 Koeffizienten kann man dann als
 \begin{equation}
 	\begin{aligned}
@@ -237,8 +239,8 @@ ausschreiben.
 
 \subsection{Das Gleichungssystem Lösen\label{antennen:glSysSolve}}
 
-Ein gutes Verfahren, welches sich zur Lösung des Gleichungssystems \eqref{antennen:lagrangeGradKonkret}, 
-anbietet, ist das Gradientenabstiegsverfahren.
+Ein gutes Verfahren, welches sich zur Lösung des Gleichungssystems 
+\eqref{antennen:lagrangeGradKonkret}, anbietet, ist das Gradientenabstiegsverfahren.
 
 Dieses iterative Verfahren eignet sich hervorragend zur Minimierung 
 einer Funktion, indem man schrittweise in Richtung des steilsten Abstiegs,
@@ -246,7 +248,7 @@ also dem Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
 fortschreitet. 
 
 % TODO nicht gute position, [htbp] illegal
-\begin{figure}[htbp]
+\begin{figure}%[htbp]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -311,7 +313,8 @@ bei \em lokalen \em minimas Stecken bleibt, obwohl ein \em globales \em gesucht 
 
 Da wir in unserer Arbeit ohnehin die Python-Bibliothek \texttt{SymPy} verwendet haben, 
 um symbolische Berechnungen durchzuführen und automatisch $n$ Koeffizienten zu berechnen, 
-konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe der Funktion \texttt{nsolve()} lösen.
+konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe der Funktion 
+\texttt{nsolve()} lösen.
 
 %TODO code im github?
 
@@ -320,7 +323,7 @@ Eventuell findet man den Code auf github?
 \subsection{Auswertung der Lösung\label{antennen:auswertung}}
 
 % TODO nicht gute position, [htbp] illegal
-\begin{figure}[htbp]
+\begin{figure}%[htbp]
 	\centering
 	
 	\definecolor{color1}{rgb}{1.0, 0.0, 1.0}
@@ -442,13 +445,13 @@ Eventuell findet man den Code auf github?
 Es wurde nun schon sehr oft erwähnt, dass wir die Fläche maximieren 
 und Länge minimieren. 
 
-Die plots sehen so aus \ref{antenenn:plotskoeff} dasdasd
+Die plots sehen so aus \ref{antenenn:plotskoeff} 
 
 % TODO in packages hinzufügen
 \usetikzlibrary{pgfplots.fillbetween}
 
 % TODO nicht gute position, [htbp] illegal
-\begin{figure}[htbp]
+\begin{figure}%[htbp]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -491,9 +494,9 @@ Die plots sehen so aus \ref{antenenn:plotskoeff} dasdasd
 	\caption{$y_n(x)$ mit 8 Koeffizienten verglichen mit Kreis}
 	\label{antennen:vergleichKreis}
 \end{figure}
-Beispiel blabla Vergleich \ref{antennen:vergleichKreis}
+Beispiel Vergleich \ref{antennen:vergleichKreis} oder \ref{antennen:vergleichKreis2} hübscher?
 
-\begin{figure}[htbp]
+\begin{figure}%[htbp]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
