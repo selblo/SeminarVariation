@@ -404,11 +404,13 @@ des Vektors
 \vec{f}_i
 =
 \begin{pmatrix}
+\displaystyle
 F(x_i,y(x_i),y'(x_i))
 -
 \frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
 \frac{\partial y(x_i(0),0)}{\partial\varepsilon}
-\\
+\\[3pt]
+\displaystyle
 \frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
 \end{pmatrix}
 \]
@@ -433,7 +435,7 @@ die Form
 \,dx.
 \end{equation}
 
-\begin{satz}
+\begin{satz}[Allgemeine Variationsformel]
 \label{buch:variation:allgemein:satz:allgemeinvariation1}
 Sei $y(x,\varepsilon)$ eine Variation der zweimal stetig differenzierbaren
 Funktion $y(x)$ und sei
@@ -469,18 +471,21 @@ Dann ist die Variation
 \label{buch:variation:allgemein:eqn:allgemeinvariation1}
 \end{equation}
 mit
-\[
+\begin{equation}
 \vec{f}_i
 =
 \begin{pmatrix}
+\displaystyle
 F(x_i,y(x_i),y'(x_i))
 -
 y'(x_i)
 \frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
-\\
+\\[3pt]
+\displaystyle
 \frac{\partial F}{\partial y'}(x_i,y(x_i),y'(x_i))
 \end{pmatrix}.
-\]
+\label{buch:nebenbedingungen:allgemein:eqn:fi}
+\end{equation}
 \end{satz}
 
 Beliebige Variationen der Endpunkte sind nicht sinnvoll, denn
@@ -542,17 +547,23 @@ Dem Vektor $\vec{f}_i$ im Falle einer Funktion entspricht der Vektor
 \[
 \vec{f}_i
 =
+\renewcommand{\arraystretch}{1.8}
 \begin{pmatrix}
-F(x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
+\displaystyle
+\biggl(
+F%(x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
 -
 \sum_{k=1}^n y'_k(x_i) \frac{\partial F}{\partial y_k'}
+\biggr)
 (x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
 \\
+\displaystyle
 \frac{\partial F}{\partial y_1}
 (x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
 \\
 \vdots
 \\
+\displaystyle
 \frac{\partial F}{\partial y_n}
 (x_i,y_1(x_i),y'_1(x_i),\dots,y_n(x_i),y_n'(x_i))
 \end{pmatrix}.
@@ -665,11 +676,11 @@ Dies bedeutet, dass die Vektoren $\vec{f}_i$ auf den erlaubten
 Tangentialvektoren $\vec{r}_i(0)$ orthogonal sind.
 
 
-%
-% Erste Variation mit höheren Ableitungen
-%
-\subsection{Erste Variation mit höheren Ableitungen
-\label{buch:variation:allgemein:subsection:var2h}}
+%%
+%% Erste Variation mit höheren Ableitungen
+%%
+%\subsection{Erste Variation mit höheren Ableitungen
+%\label{buch:variation:allgemein:subsection:var2h}}
 
 
 

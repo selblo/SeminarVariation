@@ -1,0 +1,87 @@
+%
+% euler.tex -- Herleitung der Euler-Lagrange-DGL
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\punkt#1#2{
+	\fill[color=white] #1 circle[radius=0.08];
+	\draw[color=#2] #1 circle[radius=0.07];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	f(\t) = -0.5-0.12*(\t-6)*(\t-6)-0.02*(\t-7)*(\t-7)*(\t-7)+0.8*\t;
+}]
+
+\draw[color=darkred,line width=1.4pt,smooth]
+	plot[domain=0.5:10.5] ({\x},{f(\x)});
+
+\draw (1,-0.05) -- (1,0.05);
+\node at (1,-0.05) [below] {$a\mathstrut=x_0$};
+\draw[line width=0.3pt] (1,0) -- (1,{f(1)});
+\punkt{(1,{f(1)})}{darkred}
+\node at (1,{0.7*f(1)}) [left] {$y_a=y_0\mathstrut$};
+
+\foreach \k in {1,...,3}{
+	\draw ({1+\k},-0.05) -- ({1+\k},0.05);
+	\node at ({1+\k},-0.05) [below] {$x_\k\mathstrut$};
+	\draw[line width=0.3pt] ({1+\k},0) -- ({1+\k},{f(1+\k)});
+	\punkt{({1+\k},{f(1+\k)})}{darkred}
+	\node at ({1+\k},{0.7*f(1+\k)}) [left] {$y_\k\mathstrut$};
+}
+
+\foreach \k in {6,7,8}{
+	\draw (\k,-0.05) -- (\k,0.05);
+	\draw[line width=0.3pt] (\k,0) -- (\k,{f(\k)});
+}
+\fill[color=blue!20,opacity=0.5]
+	(6,{f(6)}) -- (7,{f(6)}) -- (7,{f(7)}) -- cycle;
+\fill[color=blue!20,opacity=0.5]
+	(7,{f(7)}) -- (8,{f(7)}) -- (8,{f(8)}) -- cycle;
+\draw[color=blue,line width=1.4pt] (6,{f(6)}) -- (7,{f(7)});
+\draw[color=blue,line width=1.4pt] (7,{f(7)}) -- (8,{f(8)});
+\node[color=blue] at (6.5,{f(6.5)})
+	[above,rotate={atan(f(7)-f(6))}] {$y'_{k-1}$};
+\node[color=blue] at (7.5,{f(7.5)})
+	[above,rotate={atan(f(8)-f(7))}] {$y'_{k}$};
+\node at (6,-0.05) [below] {$x_{k-1}$};
+\node at (7,-0.05) [below] {$x_{k}$};
+\node at (8,-0.05) [below] {$x_{k+1}$};
+\punkt{(6,{f(6)})}{darkred}
+\punkt{(7,{f(7)})}{darkred}
+\punkt{(8,{f(8)})}{darkred}
+\node at (6,{0.7*f(6)}) [left] {$y_{k-1}\mathstrut$};
+\node at (7,{0.7*f(7)}) [left] {$y_{k}\mathstrut$};
+\node at (8,{0.7*f(8)}) [right] {$y_{k+1}\mathstrut$};
+
+\node at (1.5,0) [above] {$h\mathstrut$};
+\node at (2.5,0) [above] {$h\mathstrut$};
+\node at (3.5,0) [above] {$h\mathstrut$};
+\node at (6.5,0) [above] {$h\mathstrut$};
+\node at (7.5,0) [above] {$h\mathstrut$};
+
+\node at (5,{0.4*f(5)}) {$\dots$};
+\node at (9,{0.4*f(9)}) {$\dots$};
+
+\draw (10,-0.05) -- (10,0.05);
+\node at (10,-0.05) [below] {$b\mathstrut=x_n$};
+\draw[line width=0.3pt] (10,0) -- (10,{f(10)});
+\punkt{(10,{f(10)})}{darkred}
+
+\node at (10,{0.7*f(10)}) [right] {$y_b=y_n\mathstrut$};
+
+\draw[->] (-0.6,0) -- (11.5,0) coordinate[label={$x$}];
+\draw[->] (-0.5,-0.1) -- (-0.5,6.5) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+

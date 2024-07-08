@@ -1,0 +1,111 @@
+%
+% unterteilung.tex -- Unterteilung eines Gebietes
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\rechteck#1#2#3#4#5#6{
+	\fill[color=gray!20]
+		({#1*exp(-(#5)*ln(2))},{#2*exp(-(#5)*ln(2))})
+		rectangle
+		({#3*exp(-(#5)*ln(2))},{#4*exp(-(#5)*ln(2))});
+	\draw	({#1*exp(-(#5)*ln(2))},{#2*exp(-(#5)*ln(2))})
+		rectangle
+		({#3*exp(-(#5)*ln(2))},{#4*exp(-(#5)*ln(2))});
+	\node at ({0.5*(#1+#3)*exp(-(#5)*ln(2))},{0.5*(#2+#4)*exp(-(#5)*ln(2))})
+		{$#6$};
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (A) at (1,3);
+\coordinate (B) at (7,1);
+\coordinate (C) at (6,4);
+
+\fill[color=darkred!20]
+	(A)
+	to[out=-80,in=-170]
+	(B)
+	to[out=10,in=-30]
+	(C)
+	to[out=150,in=100]
+	cycle;
+
+\draw[line width=1.4pt,color=darkred]
+	(A)
+	to[out=-80,in=-170]
+	(B)
+	to[out=10,in=-30]
+	(C)
+	to[out=150,in=100]
+	cycle;
+
+\node[color=darkred] at (C) [above right] {$G$};
+
+\rechteck{2}{2}{6}{4}{0}{R_0}
+
+\rechteck{4}{3}{6}{4}{1}{R_6}
+\rechteck{6}{2}{13}{4}{1}{R_1}
+\rechteck{12}{4}{14}{6}{1}{R_2}
+\rechteck{12}{6}{13}{7}{1}{}
+\rechteck{5}{8}{9}{9}{1}{R_3}
+\rechteck{3}{4}{4}{6}{1}{R_5}
+\rechteck{2}{6}{4}{7}{1}{R_4}
+\rechteck{3}{7}{4}{8}{1}{}
+\rechteck{13}{3}{14}{4}{1}{}
+
+\rechteck{26}{5}{29}{6}{2}{}
+\rechteck{26}{4}{27}{5}{2}{}
+\rechteck{28}{6}{29}{10}{2}{}
+\rechteck{26}{12}{27}{13}{2}{}
+\rechteck{24}{14}{25}{15}{2}{}
+\rechteck{18}{16}{21}{17}{2}{}
+\rechteck{7}{16}{10}{17}{2}{}
+\rechteck{5}{14}{6}{15}{2}{}
+\rechteck{5}{10}{6}{12}{2}{}
+\rechteck{7}{7}{8}{8}{2}{}
+\rechteck{10}{5}{12}{6}{2}{}
+
+\rechteck{18}{11}{20}{12}{3}{}
+\rechteck{19}{10}{20}{11}{3}{}
+\rechteck{22}{9}{24}{10}{3}{}
+\rechteck{30}{7}{47}{8}{3}{}
+\rechteck{54}{8}{55}{10}{3}{}
+\rechteck{55}{9}{58}{10}{3}{}
+\rechteck{58}{10}{59}{18}{3}{}
+\rechteck{56}{20}{57}{22}{3}{}
+\rechteck{54}{24}{55}{25}{3}{}
+\rechteck{52}{26}{53}{27}{3}{}
+\rechteck{50}{28}{51}{29}{3}{}
+\rechteck{48}{30}{49}{31}{3}{}
+\rechteck{42}{32}{45}{33}{3}{}
+\rechteck{42}{33}{43}{34}{3}{}
+\rechteck{36}{34}{40}{35}{3}{}
+\rechteck{25}{36}{28}{37}{3}{}
+\rechteck{19}{34}{20}{36}{3}{}
+\rechteck{15}{34}{19}{35}{3}{}
+\rechteck{12}{32}{14}{33}{3}{}
+\rechteck{13}{33}{14}{34}{3}{}
+\rechteck{10}{30}{12}{31}{3}{}
+\rechteck{11}{31}{12}{32}{3}{}
+\rechteck{9}{28}{10}{30}{3}{}
+\rechteck{9}{21}{10}{24}{3}{}
+\rechteck{10}{19}{12}{20}{3}{}
+\rechteck{11}{17}{12}{19}{3}{}
+\rechteck{13}{15}{14}{16}{3}{}
+\rechteck{15}{13}{16}{14}{3}{}
+
+\draw[->] (-0.1,0) -- (8.6,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,5.6) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+

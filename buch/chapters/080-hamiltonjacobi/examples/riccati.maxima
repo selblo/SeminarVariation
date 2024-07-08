@@ -1,0 +1,11 @@
+s: k * (1 + u * exp(l*t)) / (1 + v * exp(l*t));
+g: (diff(s,t) - a * s^2 - b * s - c) * (1 + v*exp(l*t))^2;
+g: expand(ratsimp(g));
+g: subst(E, exp(l*t), g);
+g: subst(E^2, exp(2*l*t), g);
+
+coeff(g, E, 0);
+coeff(g, E, 1);
+coeff(g, E, 2);
+
+expand(coeff(g, E, 2) / v^2);

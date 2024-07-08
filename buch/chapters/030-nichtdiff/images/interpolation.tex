@@ -1,0 +1,278 @@
+%
+% interpolation.tex -- Interpolationsfunktionen für Spline-Interpolation
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0.0,0.0}
+\definecolor{darkgreen}{rgb}{0.0,0.6,0.0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	Hnull(\t) = (1+2*\t)*(1-\t)*(1-\t);
+	Hnullp(\t) = 6*\t*\t-6*\t;
+	Hnullpp(\t) = 12*\t-6;
+	Heins(\t) = (3-2*\t)*\t*\t;
+	Heinsp(\t) = -6*\t*\t+6*\t;
+	Heinspp(\t) = -12*\t+6;
+	Hnulleins(\t) = \t*(1-\t)*(1-\t);
+	Hnulleinsp(\t) = 3*\t*\t-4*\t+1;
+	Hnulleinspp(\t) = 6*\t-4;
+	Heinseins(\t) = (\t-1)*\t*\t;
+	Heinseinsp(\t) = 3*\t*\t-2*\t;
+	Heinseinspp(\t) = 6*\t-2;
+}]
+
+\def\xk{3}
+\def\xkp{4}
+\def\xkm{1.5}
+\pgfmathparse{\xkp-\xk}
+\xdef\mk{\pgfmathresult}
+\pgfmathparse{\xk-\xkm}
+\xdef\mkm{\pgfmathresult}
+\def\ablf{0.2}
+
+\def\striche{
+	\draw (\xkm,-0.07) -- (\xkm,0.07);
+	\draw (\xk,-0.07) -- (\xk,0.07);
+	\draw (\xkp,-0.07) -- (\xkp,0.07);
+}
+
+\def\fachsen{
+	\fill[color=darkgreen!10] (\xkm,1.8) rectangle (\xk,-7.0);
+	\fill[color=orange!10] (\xk,1.8) rectangle (\xkp,-7.0);
+	\draw[->] (0,-0.1) -- (0,2.3) coordinate[label={right:$y$}];
+	\draw[->] (-0.1,0) -- (5.5,0) coordinate[label={$x$}];
+	\striche
+	\node at (\xkm,-7.0) [below] {$x_{k-1\mathstrut}$};
+	\node at (\xk,-7.0) [below] {$x_{k\mathstrut}$};
+	\node at (\xkp,-7.0) [below] {$x_{k+1\mathstrut}$};
+	\draw[line width=0.3pt] (\xkm,0) -- +(0,-7.0);
+	\draw[line width=0.3pt] (\xk,0) -- +(0,-7.0);
+	\draw[line width=0.3pt] (\xkp,0) -- +(0,-7.0);
+	\draw[<->,line width=0.4pt] (\xkm,-6.9) -- (\xk,-6.9);
+	\draw[<->,line width=0.4pt] (\xkp,-6.9) -- (\xk,-6.9);
+	\node at ({0.5*\xkm+0.5*\xk},-6.73) {$m_{k-1\mathstrut}$};
+	\node at ({0.5*\xkp+0.5*\xk},-6.73) {$m_{k\mathstrut}$};
+}
+
+\def\ablachsen{
+	\draw[->] (0,-1.6) -- (0,1.5) coordinate[label={right:$y'$}];
+	\draw[->] (-0.1,0) -- (5.5,0) coordinate[label={$x$}];
+	\striche
+}
+
+\def\aablachsen{
+	\draw[->] (0,-1.3) -- (0,1.5) coordinate[label={right:$y''$}];
+	\draw[->] (-0.1,0) -- (5.5,0) coordinate[label={$x$}];
+	\striche
+}
+
+%
+% Funktion f_k(x)
+%
+\begin{scope}
+	\fachsen
+	\draw (-0.05,1) -- (0.05,1);
+	\node at (0,1) [left] {$1$};
+	\draw[line width=0.3pt] (0,1) -- (\xk,1);
+	\draw[color=darkred,line width=1.4pt]
+		(0,0)
+		--
+		(\xkm,0)
+		--
+		plot[domain=\xkm:\xk,samples=20] ({\x},{Heins((\x-\xkm)/\mkm)})
+		--
+		plot[domain=\xk:\xkp,samples=20] ({\x},{Hnull((\x-\xk)/\mk)})
+		--
+		(5,0);
+	\fill[color=blue] ({0.5*(\xkm+\xk)},{Heins(0.5)}) circle[radius=0.05];
+	\draw[color=blue,line width=0.3pt]
+		({0.5*(\xkm+\xk)},{Heins(0.5)})
+		--
+		({0.5*\xkm+0.5*\xk},-5.5);
+	\fill[color=blue] ({0.5*(\xk+\xkp)},{Hnull(0.5)}) circle[radius=0.05];
+	\draw[color=blue,line width=0.3pt]
+		({0.5*(\xk+\xkp)},{Hnull(0.5)})
+		--
+		({0.5*\xk+0.5*\xkp},-5.5);
+	\node[color=darkgreen]
+		at (\xk,1.4) [left]
+		{$H_1\bigl(\frac{x-x_{k-1\mathstrut}}{m_{k-1\mathstrut}}\bigr)$};
+	\node[color=orange]
+		at (\xk,1.4) [right]
+		{$ H_0\bigl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\bigr)$};
+	\node[color=darkred] at (\xk,1.8) [above] {$f_k(x)\mathstrut$};
+\end{scope}
+
+%
+% Ableitung f'_k(x)
+%
+\begin{scope}[yshift=-2cm]
+	\ablachsen
+	\draw[color=darkred,line width=1.4pt]
+		(0,0)
+		--
+		(\xkm,0)
+		--
+		plot[domain=\xkm:\xk,samples=20]
+			({\x},{Heinsp((\x-\xkm)/\mkm)/\mkm})
+		--
+		plot[domain=\xk:\xkp,samples=20]
+			({\x},{Hnullp((\x-\xk)/\mk)/\mk})
+		--
+		(\xkp,0)
+		--
+		(5,0);
+	\fill[color=blue] ({0.5*\xkm+0.5*\xk},{Heinsp(0.5)/\mkm})
+		circle[radius=0.05];
+	\fill[color=blue] ({0.5*\xkp+0.5*\xk},{Hnullp(0.5)/\mk})
+		circle[radius=0.05];
+	\node[color=darkred] at (5,0) [above left] {$f'_k(x)\mathstrut$};
+\end{scope}
+
+%
+% zweite Ableitung f''_k(x)
+%
+\begin{scope}[yshift=-5.5cm]
+	\aablachsen
+	\draw[color=darkred,line width=1.4pt] (0,0) -- (\xkm,0);
+	\draw[color=darkred,line width=0.5pt]
+		(\xkm,0) -- +(0,{\ablf*Heinspp(0)/(\mkm*\mkm)});
+	\draw[color=darkred,line width=1.4pt]
+		plot[domain=\xkm:\xk,samples=20]
+			({\x},{\ablf*Heinspp((\x-\xkm)/\mkm)/(\mkm*\mkm)});
+	\draw[color=darkred,line width=0.5pt]
+			({\xk},{\ablf*Heinspp(1)/(\mkm*\mkm)})
+			--
+			({\xk},{\ablf*Hnullpp(0)/(\mk*\mk)});
+	\draw[color=darkred,line width=1.4pt]
+		plot[domain=\xk:\xkp,samples=20]
+			({\x},{\ablf*Hnullpp((\x-\xk)/\mk)/(\mk*\mk)});
+	\draw[color=darkred,line width=0.5pt]
+			({\xkp},{\ablf*Hnullpp(1)/(\mk*\mk)})
+			--
+			(\xkp,0);
+	\draw[color=darkred,line width=1.4pt] (\xkp,0) -- (5,0);
+	\fill[color=blue] ({0.5*\xkm+0.5*\xk},0) circle[radius=0.05];
+	\fill[color=blue] ({0.5*\xk+0.5*\xkp},0) circle[radius=0.05];
+	\node[color=darkred] at (5,0) [above left] {$f''_k(x)\mathstrut$};
+\end{scope}
+
+\begin{scope}[xshift=6.3cm]
+
+%
+% Funktion g_k(x)
+%
+\begin{scope}
+	\fachsen
+	\draw[color=darkred,line width=1.4pt]
+		(0,0)
+		--
+		(\xkm,0)
+		--
+		plot[domain=\xkm:\xk,samples=20]
+			({\x},{\mkm*Heinseins((\x-\xkm)/\mkm)})
+		--
+		plot[domain=\xk:\xkp,samples=20]
+			({\x},{\mk*Hnulleins((\x-\xk)/\mk)})
+		--
+		(5,0);
+	\fill[color=blue] ({0.666*\xkm+0.333*\xk},{\mkm*Heinseins(0.333)})
+		circle[radius=0.05];
+	\fill[color=blue] ({0.333*\xk+0.666*\xkp},{\mk*Hnulleins(0.666)})
+		circle[radius=0.05];
+	\draw[color=blue,line width=0.3pt]
+		({0.666*\xkm+0.333*\xk},{\mkm*Heinseins(0.333)})
+		--
+		({0.666*\xkm+0.333*\xk},-5.5);
+	\draw[color=blue,line width=0.3pt]
+		({0.333*\xk+0.666*\xkp},{\mk*Hnulleins(0.666)})
+		--
+		({0.333*\xk+0.666*\xkp},-5.5);
+	\node[color=darkgreen] at (\xk,1.4) [left]
+		{$m_{k-1}H_1^1\bigl(\frac{x-x_{k-1\mathstrut}}{m_{k-1\mathstrut}}\bigr)$};
+	\node[color=orange] at (\xk,1.4) [right]
+		{$m_kH_0^1\bigl(\frac{x-x_{k\mathstrut}}{m_{k\mathstrut}}\bigr)$};
+	\node[color=darkred] at (\xk,1.8) [above] {$g_k(x)\mathstrut$};
+\end{scope}
+
+%
+% Ableitung g'_k(x)
+%
+\begin{scope}[yshift=-2cm]
+	\ablachsen
+	\draw (-0.05,1) -- (0.05,1);
+	\draw[line width=0.4pt] (0,1) -- (\xk,1);
+	\node at (0,1) [left] {$1$};
+	\draw[color=darkred,line width=1.4pt]
+		(0,0)
+		--
+		(\xkm,0)
+		--
+		plot[domain=\xkm:\xk,samples=20]
+			({\x},{\mkm*Heinseinsp((\x-\xkm)/\mkm)/\mkm})
+		--
+		plot[domain=\xk:\xkp,samples=20]
+			({\x},{\mk*Hnulleinsp((\x-\xk)/\mk)/\mk})
+		--
+		(\xkp,0)
+		--
+		(5,0);
+	\node[color=darkred] at (5,0) [above left] {$g'_k(x)\mathstrut$};
+	\fill[color=blue]
+		({0.666*\xkm+0.333*\xk},{\mkm*Heinseinsp(0.333)/\mkm})
+		circle[radius=0.05];
+	\fill[color=blue]
+		({0.666*\xkp+0.333*\xk},{\mk*Hnulleinsp(0.666)/\mk})
+		circle[radius=0.05];
+\end{scope}
+
+%
+% zweite Ableitung g''_k(x)
+%
+\begin{scope}[yshift=-5.5cm]
+	\aablachsen
+	\draw[color=darkred,line width=1.4pt]
+		(0,0)
+		--
+		(\xkm,0);
+	\draw[color=darkred,line width=0.5pt]
+		(\xkm,0)
+		--
+		+(0,{\ablf*\mkm*Heinseinspp(0)/(\mkm*\mkm)});
+	\draw[color=darkred,line width=1.4pt]
+		plot[domain=\xkm:\xk,samples=20]
+		({\x},{\ablf*\mkm*Heinseinspp((\x-\xkm)/\mkm)/(\mkm*\mkm)});
+
+	\draw[color=darkred,line width=0.5pt]
+		({\xk},{\ablf*\mkm*Heinseinspp(1)/(\mkm*\mkm)})
+		--
+		({\xk},{\ablf*\mk*Hnulleinspp(0)/(\mk*\mk)});
+	\draw[color=darkred,line width=1.4pt]
+		plot[domain=\xk:\xkp,samples=20]
+		({\x},{\ablf*\mk*Hnulleinspp((\x-\xk)/\mk)/(\mk*\mk)});
+	\draw[color=darkred,line width=0.5pt]
+		({\xkp},{\ablf*\mk*Hnulleinspp(1)/(\mk*\mk)})
+		--
+		(\xkp,0);
+	\draw[color=darkred,line width=1.4pt]
+		(\xkp,0)
+		--
+		(5,0);
+	\fill[color=blue] ({0.666*\xkm+0.333*\xk},0) circle[radius=0.05];
+	\fill[color=blue] ({0.333*\xk+0.666*\xkp},0) circle[radius=0.05];
+	\node[color=darkred] at (5,0) [above left] {$g''_k(x)\mathstrut$};
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

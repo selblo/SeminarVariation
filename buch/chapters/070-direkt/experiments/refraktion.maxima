@@ -1,0 +1,6 @@
+Y: a1 * sin(x) + a3 * sin(3 * x) + a5 * sin(5 * x) + a7 * sin(7 * x);
+f: (1 + nu * Y) * sqrt(1 + diff(Y, x)^2);
+diff(f, a1);
+diff(f, a3);
+diff(f, a5);
+diff(f, a7);

@@ -1,0 +1,23 @@
+/*
+ * kugel.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+load(ctensor);
+
+dim: 2;
+lg: matrix(
+    [  sin(theta)^2,   0  ],
+    [             0,   1  ]
+);
+ct_coords: [phi, theta];
+
+cmetric();
+
+diagmetric;
+
+cgeodesic(true);
+
+
+
+

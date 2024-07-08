@@ -1,0 +1,12 @@
+/*
+ * meniskus.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+
+gradef(z(r), zp);
+gradef(zp(r), zpp);
+
+L: r * z^2 + r * sqrt(1+zp^2);
+diff(L,z);
+diff(diff(L,zp),x);

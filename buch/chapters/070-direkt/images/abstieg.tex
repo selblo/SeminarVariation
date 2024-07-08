@@ -1,0 +1,53 @@
+%
+% abstieg.tex -- Abstieg 
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=gray] (-6.1,0) -- (6.5,0) coordinate[label={$x$}];
+\draw[color=gray] (0,-4.1) -- (0,4.5) coordinate[label={right:$y$}];
+
+\begin{scope}
+	\clip (-6,-4.05) rectangle (6,4.05);
+	\draw (0,0) ellipse (5cm and 0.5cm);
+	\draw (0,0) ellipse (10cm and 1cm);
+	\draw (0,0) ellipse (15cm and 1.5cm);
+	\draw (0,0) ellipse (20cm and 2.0cm);
+	\draw (0,0) ellipse (25cm and 2.5cm);
+	\draw (0,0) ellipse (30cm and 3.0cm);
+	\draw (0,0) ellipse (35cm and 3.5cm);
+	\draw (0,0) ellipse (40cm and 4.0cm);
+\end{scope}
+
+\def\x{3.5}
+\def\y{3.5}
+\node at (\x,\y) [above] {$(x_0,y_0)$};
+\fill[color=darkred] (\x,\y) circle[radius=0.05];
+\def\a{0.099}
+\foreach \k in {1,...,20}{
+	\pgfmathparse{\x-2*\a*\x}
+	\xdef\xnew{\pgfmathresult}
+	\pgfmathparse{\y-20*\a*\y}
+	\xdef\ynew{\pgfmathresult}
+	\draw[color=darkred] (\x,\y) -- (\xnew,\ynew);
+	\fill[color=darkred] (\xnew,\ynew) circle[radius=0.05];
+	\xdef\x{\xnew}
+	\xdef\y{\ynew}
+}
+
+\fill[color=blue] (0,0) circle[radius=0.05];
+
+\end{tikzpicture}
+\end{document}
+

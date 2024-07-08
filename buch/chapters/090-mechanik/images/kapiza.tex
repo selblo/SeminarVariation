@@ -1,0 +1,46 @@
+%
+% kapiza.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\skala{1}
+\def\a{75}
+\def\r{5}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[line width=0.3pt] (-1,0) -- (-2,0);
+\draw[<->] (-1.8,-1) -- (-1.8,1);
+\node at (-1.9,0) [left] {$h(t)$};
+
+\fill[color=brown!20] (-1,-1) rectangle (1,0);
+\draw[color=brown] (-1,0) -- (1,0);
+
+\fill[color=gray!20] (0,0) -- (\a:3) arc(\a:90:3) -- cycle;
+\draw[line width=0.3pt] (0,0) -- (0,4);
+
+\draw[->,color=darkred] (\a:\r) -- +(0,-2);
+\node[color=darkred] at ($(\a:\r)+(0,-2)$) [right] {$g$};
+
+\draw[color=blue,line width=1.4pt] (0,0) -- (\a:5);
+
+\fill[color=blue] (\a:\r) circle[radius=0.26];
+\node[color=blue] at (\a:{0.75*\r}) [left] {$l$};
+
+\node[color=white] at (\a:\r) {$m$};
+\fill (0,0) circle[radius=0.08];
+\node at ({0.5*(\a+90)}:2.5) {$\varphi$};
+
+\node at (0,0) [below] {$O$};
+
+\end{tikzpicture}
+\end{document}
+

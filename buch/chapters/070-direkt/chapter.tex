@@ -6,7 +6,51 @@
 \chapter{Direkte Methoden
 \label{buch:chapter:direkt}}
 \kopflinks{Direkte Methoden}
+Alle bisher dargestellten Lösungsverfahren haben das globale Extremalproblem
+in ein lokales Problem in der Form einer aus der Idee der Richtungsableitung
+entwickelten Differentialgleichung umgewandelt.
+Das Extremum wurde dann als Lösung der Differentialgleichung gefunden.
+Dieser Umweg ist vor allem dann problematisch, wenn die resultierenden
+Differentialgleichungen sehr schwer zu lösen sind.
 
-%\input{chapters/050-variation2/1-hinreichend.tex}
-%\input{chapters/050-variation2/2-zweiteableitung.tex}
+Endlichdimensionale Optimierungsprobleme können aber auch direkt gelöst
+werden, indem man zum Beispiel dem Gradienten folgt, kann man schrittweise
+zu immer grösseren Werten der Funktion folgen.
+Dieses Verfahren wird zum Beispiel erfolgreich beim Trainieren
+künstlicher neuronaler Netzwerke verwendet.
+Es wird in Abschnitt~\ref{buch:direkt:section:gradientabstieg}
+kurz gezeigt.
 
+In Kapitel~\ref{buch:chapter:variation} wurde erkannt, dass die
+Euler-Lagrange-Differentialgleichung in vielfacher Beziehung als 
+der Gradient in einem Funktionenraum betrachtet werden kann.
+Die in Abschnitt~\ref{buch:direkt:section:gradient} dargestellte
+Methode des Gradient-Abstiegs ist damit potentiell auch auf Funktionen
+anwendbar.
+Die Schwierigkeit besteht aber darin, beliebige Funktionen darzustellen
+und damit die von der Methode geforderten algebraischen Operationen
+durchzuführen.
+Denkbare Methoden für diesen Zweck könnten Polynome oder Fourier-Reihen
+sein.
+Eine Funktion wird damit durch einzelne Koeffizienten dargestellt, aus
+praktischen Gründen aber nur durch endlich viele.
+Die Methode kann also nur endlichdimensionale Probleme lösen.
+Die Schwierigkeit ist daher vor allem, aus dem unendlichdimensionalen
+Raum aller Funktionen einen genügend grossen endlichdimensionalen
+Funktionenraum auszuscheiden, in dem die Aufgaben mit ausreichender
+Genauigkeit gelöst werden können.
+Das Verfahren von Ritz von Abschnitt~\ref{buch:direkt:section:ritz}
+realisiert dies mit ad hoc gewählten Funktionen.
+Der Nachteil dieses Verfahrens ist allerdings, dass sich Änderungen an
+den Koeffizienten typischerweise auf alle Funktionswerte auswirken.
+
+Leonhard Euler hat die Euler-Lagrange-Differentialgleichung ursprünglich
+nicht wie im Kapitel~\ref{buch:chapter:variation} bewiesen sondern durch
+Approximation durch ein endlichdimensionales Problem, nicht ganz
+unähnlich den Ideen des Ritz-Verfahrens.
+Seine Methode wird in Abschnitt~\ref{buch:direkt:section:euler}
+vorgestellt.
+
+\input{chapters/070-direkt/1-gradient.tex}
+\input{chapters/070-direkt/2-ritz.tex}
+\input{chapters/070-direkt/3-euler.tex}

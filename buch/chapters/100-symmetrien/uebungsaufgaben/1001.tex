@@ -1,0 +1,83 @@
+Wir betrachten eine Lagrange-Funktion $L(x,\dot{x})$ im
+dreidimensionalen Raum $x\in\mathbb{R}^3$, die unter der
+Schraubensymmetrie
+\[
+h^s(x)
+=
+x
+\mapsto 
+\begin{pmatrix}
+\cos s & - \sin s & 0 \\
+\sin s &\phantom{-}\cos s& 0 \\
+ 0 & 0 & 1
+\end{pmatrix}
+x
++
+\begin{pmatrix}
+0\\
+0\\
+us
+\end{pmatrix}
+\]
+invariant ist.
+Nehmen Sie an, dass
+\[
+\frac{\partial L}{\partial\dot{x}}=p
+\]
+der Impuls ist.
+Finden Sie die Grösse, die nach dem
+Satz~\ref{buch:symmetrien:noether:satz:noether} 
+entlang einer Bahnkurve des durch $L$ definierten mechanischen
+Systems erhalten bleibt.
+
+\begin{loesung}
+Nach Satz~\ref{buch:symmetrien:noether:satz:noether} ist die Erhaltungsgrösse
+\[
+I(x,\dot{x})
+=
+\frac{\partial L}{\partial\dot{x}}
+\cdot
+\frac{d}{ds}h^s(x)\bigg|_{s=0}.
+\]
+Die Ableitung nach $s$ ist
+\[
+\frac{d}{ds} h^s(x)\bigg|_{s=0}
+=
+\begin{pmatrix}
+0&-1&0\\
+1& 0&0\\
+0& 0&0
+\end{pmatrix}
+x
++
+\begin{pmatrix}
+0\\
+0\\
+u
+\end{pmatrix}
+=
+\begin{pmatrix}
+-x_2\\
+ x_1\\
+ u
+\end{pmatrix}.
+\]
+Die Erhaltungsgrösse ist jetzt
+\begin{align*}
+\frac{\partial L}{\partial\dot{x}}]\cdot \frac{d}{ds}h^s(x)\bigg|_{s=0}
+=
+p\cdot \begin{pmatrix}-x_2\\x_1\\ux_3\end{pmatrix}
+&=
+p_2x_1-x_2p_1+up_3.
+\intertext{Die ersten zwei Terme bilden die $3$-Komponente $l_3$ des
+Drehimpulses.
+Somit ist die Erhaltungsgrösse}
+&=l_3+up_3.
+\end{align*}
+Weder die Drehimpulskomponenten in $3$-Richtung noch die Impulskomponennte
+sind also für sich genommen erhalten, aber die Linearkombination erhalten.
+Während der Bewegung kann also Drehimpuls in Impuls in der $3$-Richtung
+umgewandelt werden und umgekehrt.
+\end{loesung}
+
+

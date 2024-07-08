@@ -6,10 +6,396 @@
 \section{Quadratische Minimalprobleme
 \label{buch:fuvar:section:quadratisch}}
 \kopfrechts{Quadratische Minimalproblem}
+Die quadratische Funktion
+\begin{equation}
+y
+=
+ax^2 + bx + c
+\label{buch:fuvar:quadratisch:eqn:1dim}
+\end{equation}
+ist eines der ersten Extremalprobleme, das der Analysis-Student mit
+Hilfe der Ableitung zu lösen lernt.
+Dabei ist die Maschinerie der Differentialrechnung gar nicht nötig,
+denn quadratisches Ergänzen, wie man es zur Herleitung der Lösungsformel
+für die quadratische Gleichung ebenfalls braucht, erlaubt, die Funktion
+in der Form
+\[
+y
+=
+a\biggl(x+\frac{b}{2a}\biggr)^2
++c
+-\frac{b^2}{4a^2}
+\]
+zu schreiben.
+Aus dieser Form wird durch Lösen der linearen Gleichung
+\[
+x+\frac{b}{2a} = 0
+\qquad\Rightarrow\qquad
+x = -\frac{b}{2a}
+\]
+klar, dass das Extremum bei $-b/2a$ liegen muss.
+Diese besonders einfach Lösung des quadratischen Minimalproblems
+ist auch auf ein Minimalprobleme mit mehreren Variablen
+verallgemeinerungsfähig, dies soll in diesem Abschnitt durchgeführt
+werden.
 
-\begin{verbatim}
-- Scheitelpunkt einer Parabel
-- Minimalproblem für eine positiv definite Matrix
-- Gradientabstieg
-- quadratische Nebenbedingungen
-\end{verbatim}
+%
+% Quadratische Formen
+%
+\subsection{Quadratische Formen}
+Ein quadratisches Minimalproblem ist die Aufgabe, das Minimum der
+Funktion
+\begin{equation}
+f
+\colon
+\mathbb{R}^n \to \mathbb{R}
+:
+x\mapsto \transpose{x} A x + \transpose{b} x + c
+\label{buch:fuvar:quadratisch:eqn:ndim}
+\end{equation}
+mit $A\in M_{n\times n}(\mathbb{R})$, $b\in\mathbb{R}^n$ und $c\in\mathbb{R}$
+zu bestimmen.
+
+%
+% Symmetrische Matrizen
+%
+\subsubsection{Symmetrische Matrizen}
+Als Skalar ändert der Ausdruck $g(x) = \transpose{x}Ax$  nicht, wenn man ihn
+transponiert.
+Es ist also
+\[
+g(x)
+=
+\transpose{x}Ax
+=
+\transpose{\transpose{x}Ax}
+=
+\transpose{x}\transpose{A}x.
+\]
+Der Mittelwert hat daher ebenfalls den Wert
+\[
+g(x)
+=
+\frac12(\transpose{x}Ax+\transpose{x}\transpose{A}x)
+=
+\transpose{x}\frac12(A+\transpose{A})x.
+\]
+Die Matrix
+\[
+S=\frac12(A+\transpose{A})
+\]
+ist symmetrisch.
+Die Funktion $f(x)$ von \eqref{buch:fuvar:quadratisch:eqn:ndim}
+ändert also nicht, wenn man die Matrix $A$ durch die {\em symmetrisierte
+Matrix} $S$ ersetzt.
+
+Ist die Matrix $A$ antisymmetrisch, also $\transpose{A}=-A$, dann folgt
+\[
+g(x)
+=
+\transpose{g(x)}
+=
+\transpose{(\transpose{x}Ax)}
+=
+\transpose{x}\transpose{A} x
+=
+-\transpose{x}Ax
+=
+-g(x),
+\]
+was nur möglich ist, wenn $g(x)=0$ ist.
+Für eine antisymmetrische Matrix ist die quadratische Form $g(x)$
+identisch gleich $0$.
+
+Eine Matrix $A$ kann immer in der Form
+\[
+A
+=
+\frac12(A+\transpose{A})
++
+\frac12(A-\transpose{A})
+=
+S
++
+T
+\]
+geschrieben werden, wobei $S$ symmetrisch und $T$ antisymmetrisch ist.
+Wegen
+\[
+\transpose{x}Ax
+=
+\transpose{x}
+\frac12(A+\transpose{A})
+x
++
+\transpose{x}
+\frac12(A-\transpose{A})
+x
+=
+\transpose{x}Sx
+\]
+spielt nur der symmetrische Teil $S$ der Matrix $A$ in der quadratischen
+Form eine Rolle.
+Im Folgenden werden wir daher annehmen, dass die Matrix $A$ symmetrisch
+ist.
+
+%
+% Quadratisches Ergänzen
+%
+\subsubsection{Quadratisches Ergänzen}
+Beim quadratischen Ergänzen sucht man nach einem Wert $x_S$, der das
+quadratische Polynom auf der rechten Seite von
+\eqref{buch:fuvar:quadratisch:eqn:1dim} zu einem reinen Quadrat der Form
+\[
+a(x-x_0)^2 + C
+\]
+macht.
+Durch Ausmultiplizieren findet man eine lineare Gleichung, deren
+Lösung $x_S=b/2a$ ist.
+Diese Idee lässt sich auch für die quadratische Funktion $f(x)$ mehrere
+Variablen in \eqref{buch:fuvar:quadratisch:eqn:ndim} durchführen.
+Gesucht ist ein Vektor $x_S$ derart, dass 
+\begin{align*}
+f(x)
+&=
+\transpose{(x-x_S)}A(x-x_S) + C
+\\
+\transpose{x}Ax + \transpose{b}x + c
+&=
+\transpose{x}Ax
+-\transpose{x_S}Ax - \transpose{x}Ax_S
++
+\transpose{x_S}Ax_S + C
+\\
+\transpose{b}x + c
+&=
+-\transpose{x_S}Ax - \transpose{x}Ax_S + \transpose{x_S}Ax_S + C
+\end{align*}
+ist.
+Der Vektor $x_S$ dazu für alle $x$ die lineare Gleichung
+\[
+\transpose{b}x
+=
+-\transpose{x_S}Ax-\transpose{x_S}\transpose{A}x 
+=
+-\transpose{x_S}(A+\transpose{A}) x
+\qquad\Rightarrow\qquad
+(\transpose{x_S}(A+\transpose{A})x+\transpose{b})x
+=
+0
+\]
+erfüllen.
+Dies ist nur möglich, wenn der Klammerausdruck der Nullvektor ist, wenn also
+\begin{equation}
+(\transpose{A}+A)x_S = -b
+\label{buch:fuvar:quadratisch:eqn:xS}
+\end{equation}
+ist.
+Auch in diese Rechnung zeigt, dass für das quadratische Minimalproblem
+nur der symmetrische Teil $S=\frac12(\transpose{A}+A)$ revelant ist.
+
+Falls das Gleichungssystem \eqref{buch:fuvar:quadratisch:eqn:xS} eine Lösung
+hat, bekommt die Funktion die Form
+\begin{align*}
+f(x)
+&=
+\transpose{(x-x_S)}A(x-x_S) + \transpose{x_S}Ax_S + c
+\\
+&=
+\transpose{(x-x_S)}S(x-x_S) + \transpose{x_S}Sx_S + c.
+\end{align*}
+Im Gegensatz zum eindimensionalen Fall lässt sich daraus aber noch nicht
+schliessen, dass $x_S$ das Minimum ist, da der quadratische Term Werte
+verschiedenen Vorzeichens annehmen kann.
+
+%
+% Lösung des quadratischen Minimalproblems
+%
+\subsection{Lösung des quadratischen Minimalproblems}
+Das quaratische Minimalproblem für eine symmetrische Funktion muss nicht
+unbedingt eine Lösung haben.
+Nur für positiv definite Matrizen kann man eine Lösung erwarten.
+
+%
+% Minimalproblem für positiv definite Matrizen
+%
+\subsubsection{Positiv definite Matrizen}
+Die quadratische Funktion $g(x)=\transpose{x}Ax$ hat die Eigenschaft,
+dass
+\[
+g(tx)
+=
+t^2 \transpose{x}Ax
+=
+t^2 g(x).
+\]
+Wenn $g(x)$ negativ ist, dann nimmt $g(tx)$ daher beliebig grosse negative
+Werte an, das Minimalproblem kann keine Lösung haben.
+Damit das Minimalproblem überhaupt eine Lösung hat, muss also
+$g(x)>0$ sein.
+
+\begin{definition}
+Die symmetrische Matrix $A\in M_{n\times n}(\mathbb{R})$ heisst
+{\em positiv definit}, wenn $\transpose{x}Ax>0$ ist für alle Vektoren
+$x\in\mathbb{R}^n\setminus\{0\}$.
+Sie heisst {\em positiv semidefinit}, wenn $\transpose{x}Ax\ge 0$ für
+alle Vektor $x\in\mathbb{R}^n$.
+\end{definition}
+
+Ein quadratisches Minimalproblem mit einer positiv definiten Matrix
+hat daher eine Lösung, die durch Lösen der Gleichung
+\eqref{buch:fuvar:quadratisch:eqn:xS} als
+\[
+x_S
+=
+-
+\frac12 A^{-1}b
+\]
+bestimmt werden kann.
+
+%
+% Lösung des quadratischen Minimalproblems mit der Cholesky-Zerlegung
+%
+\subsubsection{Lösung des quadratischen Minimalproblems mit der
+Cholesky-Zerlegung}
+In der linearen Algebra lernt man, dass eine positiv definite
+symmetrische Matrix in eine Produkt $A=L\transpose{L}$ mit einer
+untern Dreiecksmatrix $L$ zerlegt werden kann, die auch regulär ist.
+Damit kann man die Funktion $f(x)$ jetzt schreiben als
+\begin{align*}
+f(x)
+&=
+\transpose{x}L\transpose{L}x
++\transpose{b}x
++
+c
+\\
+&=
+\transpose{(\transpose{L}x)} \transpose{L}x
++
+\transpose{b}
+(\transpose{L})\mathstrut^{-1}
+\transpose{L}x
++
+c.
+\intertext{Mit den Abkürzungen $y=\transpose{L}x$ und $d=\frac12L^{-1}b$
+wird dies}
+&=
+\transpose{y}y
++
+2
+\transpose{d}y
++
+c
+\\
+&=
+\transpose{y}y
++
+\transpose{d}y
++
+\transpose{y}d
++
+\transpose{d}d
+-
+\transpose{d}d
++
+c
+\\
+&=
+\transpose{(y+d)}(y+d)
+-
+\frac14\transpose{(L^{-1}b)}L^{-1}b
++c.
+\end{align*}
+Daraus kann man ablesen, dass das Minimum an der Stelle
+\[
+y
+=
+-d
+\qquad\Rightarrow\qquad
+\transpose{L}x = - \frac12 L^{-1}b
+\qquad\Rightarrow\qquad
+x
+=
+-\frac12(\transpose{L})^{-1}L^{-1} b
+=
+-\frac12 A^{-1}b
+\]
+ist.
+Das Resultat stimmt natürlich mit dem früher gefundenen Wert
+überein, aber die Inverse einer Dreiecksmatrix ist sehr viel
+einfacher zu bestimmen.
+
+%
+% Nullstellen des Gradienten
+%
+\subsubsection{Nullstellen des Gradienten}
+Natürlich kann man das Minimum auch als Nullstelle des Gradienten
+finden.
+Dazu muss die Ableitung von $f(x)$ berechnet werden.
+Wegen
+\begin{align*}
+\frac{\partial f}{\partial x_j}(x)
+&=
+\frac{\partial}{\partial x_j}\sum_{i,k=1}^n a_{ik} x_ix_k
++
+\frac{\partial}{\partial x_j}\sum_{i=1}^n b_ix_i
+\\
+&=
+\sum_{k=1}^n a_{jk}x_k
++
+\sum_{i=1}^n a_{i\!j}x_i
++
+b_j
+\\
+&=
+\sum_{k=1}^n (a_{jk}+a_{k\!j}) x_k
++
+b_j
+\\
+&=
+(2Ax)_j + b_j
+\intertext{oder in Vektorschreibweise}
+\nabla f(x)
+&=
+2Ax + b
+\end{align*}
+folgt für die Nullstelle des Gradienten
+\[
+0
+=
+\nabla f(x)
+=
+2Ax+b
+\qquad\Rightarrow\qquad
+x = -\frac12 A^{-1} b
+\]
+wie früher.
+
+%
+% Gradientabstieg
+%
+\subsubsection{Gradientabstieg}
+Die Lösung eines quadratischen Minimalproblems erfordert die Lösung eines
+linearen Gleichungssystems.
+Für grosses $n$ ist dies ziemlich Aufwendung.
+Da der Gradient sehr einfach zu bestimmen ist, kann man auch die Methode
+des Gradientabstieg verwenden, um die Extremalstellen numerisch
+anzunähern.
+Sie wird im Abschnitt~\ref{buch:direkt:section:gradient} genauer
+beschrieben.
+Auf den ersten Blick scheint es keine Verbesserung, ein Problem, für
+das ein exakter Algorithmus verfügbar ist, mit Hilfe eines iterativen
+Varfahrenes nur näherungsweise zu lösen.
+Es stellt sich allerdings heraus, dass es möglich ist, die Abstiegsschritte
+so zu dimensionieren, dass die Lösung nicht nur approximativ ist, sondern
+in genau $n$ Schritten die exakte Lösung gefunden wird.
+Dies ist bekannt das das Verfahren der konjugierten Gradienten.
+
+Der Vorteil des iterativen Verfahrens ist, dass sich eine ausreichend
+genaue Lösung mit weniger Abstiegsschritten finden lässt.
+Für grosses $n$ kann daher angemessen genaue Lösung mit wesentlich
+weniger Aufwand gefunden werden, also mit der vollständigen Lösung des
+Gleichungssystems.
+
+
