@@ -22,63 +22,90 @@ Konkret sieht unsere Problemstellung folgendermassen aus.
 	\item Da man eine runde Form erwarten werden die Berechnungen in Polarkoordinaten bzw. Kugelkoordinaten durchgeführt. Somit suchen wir die Funktion \(r(\phi)\) in 2D und \(r(\phi,\theta)\) ind 3D.
 \end{itemize}
 
+\subsection{Gravitation}
+
 Die Kraft welche Teilchen auf andere Teilchen ausüben nennt man Gravitation.
+Sie ist eine der vier Grundkräfte der Physik.
 Die Gravitation kann man sich als Feld vorstellen.
 Für die berechnung der Kraft, welche auf ein Teilchen im Gravitationsfeld wirk benötigen wir das Gravitaionspotential \(\Phi\).
 Das Gravitaionspotenzial ist definiert als
 \begin{equation}
-	\Phi(r) = -\frac{GM}{\abs{r-r'}}.
+	\Phi(r) = -\frac{GM}{r}.
+	\label{planet:equ:gravpot}
 \end{equation}
-\(G\) ist die Gravitationskonstante.
+\(G\) ist die Gravitationskonstante \((G \approx 6.6743 \cdot 10^{-11} m^3 kg^-1 s^-2)\).
 \(M\) ist die Masse des Körper, welcher das Gravitaionsfeld erzeugt.
-\(r\) der Ort ist, an dem das Potential berechnet wird.
-\(r'\)ist der Ort der Masse.
+\(r\) der Abstand vom Ursprung.
 
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+Damit man die Kraft welche auf ein Teilchen wirkt berechnen kann benötigt man den Gradienten des Gravitaionspotenzials, welcher definiert ist als
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{planet:equation1}
+	\nabla \Phi (r) = \frac{\partial \phi}{\partial r} = \frac{\partial}{\partial r} (-\frac{GM}{r^2}) = \frac{GM}{r^2}
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Um nun die Kraft auf ein Teilchen zu berechnen muss man den Gradient des Gravitaionspotenzials mit der Masse des Teilchens multiplizieren.
+\begin{equation}
+	F = -m\nabla \phi = -\frac{GMm}{r^2}
+\end{equation}
+Die Kraft ist negativ, da sie zum Zentrum der Masse zeigen muss.
 
-\subsection{De finibus bonorum et malorum
-\label{planet:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{planet:equation1}.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{planet:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{planet:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+\subsection{Hydrostatische Gleichgewichtsform in 2-D}
+Für die Berechnung der hydrostatische Gleichgewichtsform soll nun die potenzielle Energie \(U\) minimal werden.
+Als nebenbedingung haben wir die Fläche \(A\) welche mit 
+\begin{equation}
+	A = \int_{A}^{} dA
+	\label{planet:equ:A}
+\end{equation}
+berechnet wird.
+Die Formel ür die Berechung der potenziellen Energie ist
+\begin{equation*}
+	U = \int_{A} \sigma  \Phi (r) \, dA.
+	\label{planet:equ:U}
+\end{equation*}
+Wenn wir nun Gleichung \ref{planet:equ:gravpot} in Gleichung \ref{planet:equ:U} ein erhalten wir
+\begin{equation*}
+	U = \int_{0}^{2\pi}\int_{0}^{r} \frac{-GM}{r} \, \sigma r \, dr \, d\varphi.
+\end{equation*}
+Wenn wir nun das erste Integral auflösen und die Konstante aus dem Integral raus nehmen erhalten wir 
+\begin{equation}
+	U =-GM\sigma \int_{0}^{2\pi} r(\varphi) \, d\varphi .
+\end{equation}
+Aus diers Gleichung nehmen wir unser erstes Funktional
+\begin{equation}
+	L(\varphi ,r(\varphi),r(\varphi)_\varphi) = r(\varphi).
+\end{equation}
+Für das zweite Funktional muss man wissen, dass \(dA = r \, dr \, d\phi\).
+Somit können wir das Integral der Gleichung \ref{planet:equ:A} einfügen und erhalten
+\begin{equation*}
+	A = \int_{0}^{2\pi}\int_{0}^{r} r \, dr \, d\varphi
+\end{equation*}
+Das innere Integral können wir auflösen, sodass das Integral zu
+\begin{equation*}
+	A = \int_{0}^{2\pi}\frac{r^2}{2} \, d\varphi
+\end{equation*}
+vereinfacht.
+Aus diesem Integral entnehmen wir das Funktional der Nebenbedingung
+\begin{equation*}
+	N(\varphi ,r(\varphi),r(\varphi)_\varphi) = \frac{r^2}{2} 
+\end{equation*}
+
+Damit wir die Gesuchte Funktion finden müssen wir den Gradienten des Jewiligen Funktionals berechnen und anschliessend in
+\begin{equation*}
+	\nabla N \cdot \lambda = \nabla L
+\end{equation*}
+einsetzen.
+Für den Gradienten der Funktionale benötigen wir die jeweiligen partiellen Ableitungen
+\begin{equation*}
+	L(\varphi ,r(\varphi),r(\varphi)_\varphi) = r(\varphi),
+	\frac{\partial L}{\partial r(\varphi)} = 1,
+	\frac{\partial L}{\partial r(\varphi)_\varphi} = 0
+\end{equation*}
+
+
+
+
+
+
+
 
 
