@@ -9,23 +9,23 @@
 \section{Kirchhoffs Gesetz
 \label{circuit:section:teil1}}
 \rhead{Problemstellung}
-Bevor wir die Laplace-Gleichung mithilfe der Lagrange-Funktion herleiten, versuchen wir das auf konventionelle Weise, indem wir  das Kirchhoffsche Gesetz benutzen. 
+Bevor wir die Laplace-Gleichung mithilfe der Lagrange-Funktion herleiten, versuchen wir das auf konventionelle Weise, indem wir  das kirchhoffsche Gesetz benutzen. 
 Dafür brauchen wir aber zuerst noch ein paar Erkenntnisse, die hier aufgezeigt werden. Die Stromdichte $\vec{J}$ wird durch
 \begin{equation}
 	\vec{J}=\frac{\vec{I}}{A}
 	\label{circuit:current_density_3}
 \end{equation}
 definiert. Diese Gleichung besagt, dass die Stromdichte das Verhältnis des Stroms $I$ zur Flächen $A$ ist. 
-Das Kirchhoffsche Stromgesetz postuliert nun, dass die Summe der in einen Knoten einfliessenden Ströme gleich der Summe der aus diesem Knoten ausfliessenden Ströme in einer Schaltung ist. Dies impliziert, dass es in einem Gleichstromkreis im stationären Zustand keine Ladungsakkumulation an irgendeinem Punkt geben kann. Wir betrachten nun einen dreidimensionalen Schaltkreis, in dem die Leitfähigkeit $\sigma$ im gesamten Bereich von Interesse konstant ist. Die Verallgemeinerung des kirchhoffschen Stromgesetzes im dreidimensionalen Fall besagt, dass die Divergenz der Stromdichte $\vec{J}$ gleich Null ist, es kann kein Strom aus dem Nichts erzeugt werden. Daher gilt 
+Das kirchhoffsche Stromgesetz postuliert nun, dass die Summe der in einen Knoten einfliessenden Ströme gleich der Summe der aus diesem Knoten ausfliessenden Ströme in einer Schaltung ist. Dies impliziert, dass es in einem Gleichstromkreis im stationären Zustand keine Ladungsakkumulation an irgendeinem Punkt geben kann. Wir betrachten nun einen dreidimensionalen Schaltkreis, in dem die Leitfähigkeit $\sigma$ im gesamten Bereich von Interesse konstant ist. Die Verallgemeinerung des kirchhoffschen Stromgesetzes im dreidimensionalen Fall besagt, dass die Divergenz der Stromdichte $\vec{J}$ gleich Null ist, es kann kein Strom aus dem Nichts erzeugt werden. Daher gilt 
 %\eqref{circuit:current_density_1}.
 \begin{equation}
 	\nabla \cdot  \vec{J}=0.
 	\label{circuit:current_density_1}
 \end{equation}
 
-Zudem lässt sich der zusammenhing zwischen dem Elektrischen Feld $\vec{E}$ an einem gegebenen Punkt im Raum als negativer Gradient der Potentialfunktion $\phi$ 
+Zudem lässt sich der zusammenhing zwischen dem elektrischen Feld $\vec{E}$ an einem gegebenen Punkt im Raum als negativer Gradient der Potentialfunktion $\phi$ 
 \begin{equation}
-	\vec{E}=-\nabla \phi.
+	\vec{E}=-\nabla \phi
 	\label{circuit:current_density_4}
 \end{equation}
 ausdrücken.
@@ -43,56 +43,88 @@ Mit dem elektrischen Feld als Gradient von $\phi$ erhalten wir aus der Quellenfr
 \end{equation}
 für das Potential $\phi$. Dies kann auch als
 \begin{equation}
-\nabla^2 \phi=0.
+\nabla^2 \phi=0
 \label{circuit:current_density_6}
 \end{equation}
 geschrieben werden.
 
 \section{Variationsprinizip}
-Im nächsten Schritt versuchen wir \eqref{circuit:current_density_6} mithilfe des Minimalprinzip herzuleiten. Für das Verständnis des Minimalprinzips können wir uns zunächst eine parallel Schaltung von einem \SI{1}{\kilo\ohm} und einem \SI{2}{\kilo\ohm} Widerstand anschauen wie es auch in Abbildung \ref{fig:circuit_stromzweig} 
+Im nächsten Schritt versuchen wir, die Gleichung \eqref{circuit:current_density_6} mithilfe eines Minimalprinzips herzuleiten. Das Minimalprinzip besagt, dass ein physikalisches System so arbeitet, dass eine bestimmte Größe minimiert wird. In unserem Fall ist diese Größe die Leistung der Schaltung.
+Um das Prinzip zu veranschaulichen, betrachten wir eine Parallelschaltung von zwei Widerständen, einem \SI{1}{\kilo\ohm} und einem \SI{2}{\kilo\ohm} Widerstand, wie in Abbildung \ref{fig:circuit_stromzweig} dargestellt. Zudem nehmen wir an, dass der Strom $I_0$ \SI{1}{\ampere} beträgt. 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0 0 0 4.4cm},clip,width=0.7\textwidth]{papers/circuit/images/Schaltung_m-o_Stromzweig.pdf}
-	\caption{Parallelschaltung \cite{wiki:stromzweig}}
+	\begin{circuitikz}
+		\draw (0,3) to[V, v=$U_0$, i=$I_0$] (0,0);
+		\draw (0,3) to[short,-*] (3,3)
+		to[R, l=$R_1$, i=$I_1$] (3,0) -- (0,0);
+		\draw (3,3) -- (6,3)
+		to[R, l=$R_2$, i=$I_2$] (6,0) to[short,-*] (3,0);
+	\end{circuitikz}
+	\caption{Parallelschaltung von $R_1= \SI{2}{\kilo\ohm}$ und $R_2= \SI{1}{\kilo\ohm}$}
 	\label{fig:circuit_stromzweig}
 \end{figure}
-ersichtlich ist. Dabei soll der Strom $I_0$ \SI{1}{\ampere} betragen. Der Strom nimmt dabei wie ihnen bekannt ist nicht den Weg des geringsten Wiederstandes sondern den Weg indem die Leistung der Schaltung minimiert wird. D.h. es fliesst nicht der ganze Strom durch den \SI{1}{\kilo\ohm} Widerstand was mit einer Leistung von \SI{1}{\kilo\watt} resultieren würde. Sondern es fliessen zwei drittel des Stromes durch den \SI{1}{\kilo\ohm} Widerstand und ein drittel des Stroms durch den zwei Kilo Ohm Widerstand. Was in einer Leistung von $P=  I_1^2 \cdot R_1+  I_2^2 \cdot R_2 =(\SI{0.333}{\ampere})^2\cdot \SI{2}{\kilo\ohm}+(\SI{0.666}{\ampere})^2\cdot \SI{1}{\kilo\ohm} = \SI{666.67}{\watt}$ resultiert und die minimal mögliche Leistung ist, wie es auch in Abbildung \ref{fig:circuit_power} gesehen werden kann. 
+Der Strom nimmt dabei wie ihnen bekannt ist nicht den Weg des geringsten Wiederstandes sondern den Weg indem die Leistung der Schaltung minimiert wird. D.h. es fliesst nicht der ganze Strom durch den \SI{1}{\kilo\ohm} Widerstand was mit einer Leistung von \SI{1}{\kilo\watt} resultieren würde. Sondern es fliessen zwei Drittel des Stromes durch den \SI{1}{\kilo\ohm} Widerstand und ein Drittel des Stroms durch den zwei Kilo Ohm Widerstand. Was in einer Leistung von $P=  I_1^2 \cdot R_1+  I_2^2 \cdot R_2 =(\SI{0.333}{\ampere})^2\cdot \SI{2}{\kilo\ohm}+(\SI{0.667}{\ampere})^2\cdot \SI{1}{\kilo\ohm} = \SI{666.67}{\watt}$ resultiert und die minimal mögliche Leistung ist, wie es auch in Abbildung \ref{fig:circuit_power} gesehen werden kann oder Mathematisch aufgezeigt werden kann:
+Der Strom $I_2$ kann auch als $I_0-I_1$ geschrieben werden, daraus folgt 
+\begin{equation}
+	P(I_1)=  I_1^2 \cdot R_1+  (I_0-I_1)^2 \cdot R_2.
+	\label{circuit:current_circuit_power}
+\end{equation}
+Um das Minimum zu finden leiten wir nun nach $I_1$ ab und bekommen
+\begin{equation}
+	\frac{dP}{dI_1} = 2\cdot I_1\cdot R_1 - 2\cdot (I_0 - I_1) \cdot R_2.
+	\label{circuit:current_circuit_power1}
+\end{equation}
+Des weiteren zeigt die zweite Ableitung 
+\begin{equation}
+	\frac{d^2P}{dI_1^2} = 2\cdot R_1 + 2\cdot R_2
+	\label{circuit:current_circuit_power2}
+\end{equation}
+eindeutig das es sich um ein Minimum handelt da $R_1$ und $R_2$ positiv sind und daher die zweite Ableitung positiv ist. Wenn wir nun die erste Ableitung \eqref{circuit:current_circuit_power1} gleich 0 setzen und auf $I_1$ auflösen bekommen wir
+\begin{equation}
+	I_1 = \frac{I_0 \cdot R_2}{R_1 + R_2} = \frac{\SI{1}{\ampere} \cdot \SI{1}{\kilo\ohm}}{\SI{2}{\kilo\ohm}+ \SI{1}{\kilo\ohm}}=\SI{0.333}{\ampere}
+	\label{circuit:current_circuit_power3}
+\end{equation}
+und analog
+\begin{equation}
+	I_2 = I_0-I_1=\SI{1}{\ampere}-\SI{0.333}{\ampere}=\SI{0.667}{\ampere}.
+	\label{circuit:current_circuit_power4}
+\end{equation}
+Somit wurde erfolgreich demonstriert, dass die Verteilung des Stroms in der Schaltung direkt mit der Minimierung der gesamten Leistung korrespondiert.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{papers/circuit/two_parrallel_resistors.png}
 	\caption{Leistung ($z$-Achse) von zwei parallel geschalteten Widerständen 1 Kilo Ohm ($x$-Achse) und 2 Kilo Ohm ($y$-Achse), in grau dargestellt die Schnittfläche des Stromes von einem Ampere.}
 	\label{fig:circuit_power}
 \end{figure}
-
 Analog zu dem oben aufgeführten Beispiel können wir die Leistung $P$ in einem von einer Oberfläche $S$ umgebenen Volumen $V$ durch 
 \begin{equation}
 	P=\int_V \sigma(\nabla \phi)^2 d V
 	\label{circuit:current_density_7}
 \end{equation}
-ausdrücken. Aus den Prinzipien der Thermodynamik wissen wir, dass die Entropie in einem geschlossenen System zunimmt d.h. die Energie minimiert wird. Daher wenden wir das Minimalprinzip auf \eqref{circuit:current_density_7} an und lösen es. Dies gibt uns anschliessend die Lösung für die minimale Energie in einem zweidimensionalen oder dreidimensionalen Raum. D.h. um das Minimum zu finden muss das integral von \eqref{circuit:current_density_7} minimiert werden. Auf den ersten Blick mag \eqref{circuit:current_density_7} nicht sehr intuitiv erscheinen. Daher könnten wir die Gleichung auch anders formulieren, wie in 
+ausdrücken. Wenn wir nun die Euler-Ostrogradski-Differentialgleichung für \eqref{circuit:current_density_7} bestimmen und lösen gibt uns dies anschliessend die Lösung für die minimale Leistung in einem zweidimensionalen oder dreidimensionalen Raum. D.h. um das Minimum zu finden muss das Integral von \eqref{circuit:current_density_7} minimiert werden. Auf den ersten Blick mag \eqref{circuit:current_density_7} nicht sehr intuitiv erscheinen. Daher könnten wir die Gleichung auch anders formulieren, wie in 
 \begin{equation}
 	P=\frac{U^2}{R}
 	\label{circuit:current_density_8}
 \end{equation}
-formuliert, wobei $U^2=\left( \nabla \phi \right)^2$ und $R=\frac{1}{\sigma}$.
+gezeigt, wobei $U^2=\left( \nabla \phi \right)^2$ und $R=\frac{1}{\sigma}$.
 
 
-\section{Herleitung der Lagrange-Funktion}
-In folgendem Kapitel leiten wir die Lagrange-Funktion mithilfe der Euler-Ostrogradski-Differentialgleichung her welche auch in \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} gefunden werden kann.
+\section{Herleitung der Laplace Gleichung}
+In diesem Kapitel leiten wir die Laplace-Gleichung her. Die Herleitung basiert auf der Euler-Ostrogradski-Differentialgleichung, die in Gleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} dargestellt ist.
 
-Nehmen wir nun \eqref{circuit:current_density_7} und wenden Euler-Ostrogradski auf die Gleichung an:
+Wir beginnen mit Gleichung \eqref{circuit:current_density_7} und wenden darauf die genannte Differentialgleichung an:
 \begin{enumerate}
 	\item Schritt: Lagrange-Funktion des Problems ohne $\sigma$ (da wir das Minimum suchen und $\sigma$ eine Konstante ist hat $\sigma$ keinen Einfluss auf die Lösung und kann daher weggelassen werden)
 	\begin{equation}
-		L(x, U, U_x)= U_x^2 = (U_{x_1}^2+U_{x_2}^2).
+		L(U, U_x)= U_x^2 = (U_{x_1}^2+U_{x_2}^2).
 	\end{equation}
 	\item Schritt: partielle Ableitungen
 	\begin{equation}
 		\begin{aligned}
 			\frac{\partial L}{\partial U}&=0\\
 			\frac{\partial L}{\partial U_{x_1}}&=2U_{x_1}\\
-			\frac{\partial L}{\partial U_{x_2}}&=2U_{x_2}\\
-		\end{aligned}.
+			\frac{\partial L}{\partial U_{x_2}}&=2U_{x_2}.\\
+		\end{aligned}
 	\end{equation}
 	\item Schritt: Ableiten nach $x_1$ und $x_2$
 	\begin{equation}
@@ -101,41 +133,40 @@ Nehmen wir nun \eqref{circuit:current_density_7} und wenden Euler-Ostrogradski a
 			\frac{\partial}{\partial x_2}\frac{\partial L}{\partial U_{x_2}}(x,\phi,\nabla \phi)=2\frac{\partial \phi}{\partial {x_2}} \cdot \frac{\partial}{\partial x_1}.\\
 		\end{aligned}
 	\end{equation}
-	\item Schritt: Euler-Ostrogradsky Differentialgleichung
+	\item Schritt: Euler-Ostrogradski Differentialgleichung
 	\begin{equation}
 		0=-\frac{\partial}{\partial x_1}\cdot 2\frac{\partial \phi}{\partial {x_1}}-\frac{\partial}{\partial x_2}\cdot 2\frac{\partial \phi}{\partial {x_2}}=-2\Delta\phi.
 	\end{equation}
 \end{enumerate}
-\subsubsection{Lösungen}
+\subsubsection{Resultat der Anwendung der Theorie der Euler-Ostrogradski-Differentialgleichung}
 	\begin{equation}
 	\sigma \cdot 2\Delta\phi=0.
 	\end{equation}
 Wir können nun noch durch $2\sigma$ teilen und bekommen die Laplace-Gleichung aus \eqref{circuit:current_density_6}. Somit wurde gezeigt dass die Laplace-Gleichung auch dem Variationsprinzip gefunden werden kann sowie auch mit den kirchhoffschen Regeln.
-	\begin{equation}
-	\Delta\phi=0=\frac{\partial^2\phi}{\partial x^2}+\frac{\partial^2\phi}{\partial y^2}
-	\label{circuit:laplace1}
-	\end{equation}
+%	\begin{equation}
+%	\Delta\phi=0=\frac{\partial^2\phi}{\partial x^2}+\frac{\partial^2\phi}{\partial y^2}
+%	\label{circuit:laplace1}
+%	\end{equation}
 	%\begin{equation}
 	%	\Delta \phi(x,y)=\frac{\delta^2\phi}{\delta x^2}+\frac{\delta^2\phi}{\delta y^2}=0
 	%\end{equation}
 
 
 \section{Praktische Anwendungen}
-In diesem Abschnitt schauen wir uns an, wie die elliptische partielle Differentialgleichung aus \eqref{circuit:laplace1} numerisch gelöst werden kann und was sie eigentlich genau bedeutet.
+In diesem Abschnitt schauen wir uns an, wie die elliptische partielle Differentialgleichung \eqref{circuit:laplace1} numerisch gelöst werden kann und was sie eigentlich genau bedeutet. 
 
-\eqref{circuit:laplace1} kann diskretisiert werden durch die Differenz zweiter Ordnung wie sie in 
+Gleichung \eqref{circuit:laplace1} kann durch die Differenz zweiter Ordnung diskretisiert werden wie in 
 \begin{equation}
-	f^{\prime \prime}(x) \approx \frac{\delta_h^2[f](x)}{h^2}=\frac{\frac{f(x+h)-f(x)}{h}-\frac{f(x)-f(x-h)}{h}}{h}=\frac{f(x+h)-2 f(x)+f(x-h)}{h^2}
+	f^{\prime \prime}(x) \approx \frac{\delta_h^2[f](x)}{h^2}=\frac{\frac{f(x+h)-f(x)}{h}-\frac{f(x)-f(x-h)}{h}}{h}=\frac{f(x+h)-2 f(x)+f(x-h)}{h^2}.
 	\label{circuit:second-order-central}
 \end{equation}
-gesehen werden kann \cite{enwiki:1220817436}.
-
-Wenn wir das auf unseren Fall anwenden bekommen wir
+\cite{enwiki:1220817436}
+Wenn wir das auf unseren zweidimensionalen Fall anwenden benötigen wir Gitterpunkte, welche mit $x_i$ und $y_i$ dargestellt werden können, sowie die Differenz zwischen den beiden Gitterpunkten, was mit $\Delta x$ und $\Delta y$ geschrieben werden kann
 \begin{equation}
 	\frac{\phi(x_{i+1}, y_j) - 2\phi(x_i, y_j) + \phi(x_{i-1}, y_j)}{(\Delta x)^2} + \frac{\phi(x_i, y_{j+1}) - 2\phi(x_i, y_j) + \phi(x_i, y_{j-1})}{(\Delta y)^2} = 0.
 	\label{circuit:discret_equation}
 \end{equation}
-Wobei $x_i$ und $y_i$ die Koordinaten der Gitterpunkte darstellen.
+
 Nun können wir nach $\phi(x_i, y_j)$ auflösen und bekommen 
 \begin{equation}
 	\phi(x_i, y_j) = \frac{1}{4}(\phi(x_{i+1}, y_{j}) + \phi(x_{i-1}, y_{j}) + \phi(x_{i}, y_{j+1}) + \phi(x_{i}, y_{j-1})).
@@ -148,42 +179,45 @@ mit welcher man numerisch die Werte des Potentials in den Gitterpunkten berechne
 %	\label{circuit:discret_equation3}
 %\end{equation}
 \subsubsection{Numerisches Beispiel}
-In diesem Beispiel betrachten wir eine leitende Platte mit einer Leitfähigkeit von \SI{0.001}{\siemens\per\meter} und einer Grösse von einem Quadratmeter. Ein spezifischer Bereich der Platte, definiert durch $0.5 < x < 0.7$ und $0.5 < y < 0.7$, wird mit einem Potential von einem Volt belegt, während der Rand der Platte ein Potential von 0 Volt aufweist.
+In diesem Beispiel betrachten wir eine leitende Platte mit einer Leitfähigkeit von \SI{0.001}{\siemens\per\meter} und einer Grösse von einem Quadratmeter. Ein spezifischer Bereich der Platte (Quadrat), definiert durch $0.5 < x < 0.7$ und $0.5 < y < 0.7$, wird mit einem Potential von einem Volt belegt, während der Rand der Platte ein Potential von 0 Volt aufweist.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/potential_distribution.png}
 	\caption{Potential-Verteilung auf rechteckiger Platte mit rechteckigem Potential im oberen rechten Bereich und 0 Potential am Rand der Platte \cite{github:AndreasFMueller}}
 	\label{fig:potential_distribution}
 \end{figure}
-Unter Verwendung von Gleichung \eqref{circuit:discret_equation2} zur Berechnung des Potentials erhalten wir die in Abbildung \ref{fig:potential_distribution} dargestellte Potentialverteilung. Dies ermöglicht uns, das gesamte Potential auf der Platte zu bestimmen.
+Unter Verwendung von Gleichung \eqref{circuit:discret_equation2} zur Berechnung des Potentials, sowie den gegebenen Randbedingungen erhalten wir die in Abbildung \ref{fig:potential_distribution} dargestellte Potentialverteilung. Dies ermöglicht uns, das gesamte Potential auf der Platte zu bestimmen.
 
-Sobald das Potential bekannt ist, können wir mithilfe des Gradienten und Gleichung \eqref{circuit:current_density_7} die Leistungsdichte an jedem einzelnen Punkt berechnen. Dies führt zu den in Abbildung \ref{fig:power_2d} und \ref{fig:power_3d_rectangle} dargestellten Leistungsdichte-verteilung \cite{github:AndreasFMueller}
+Sobald das Potential bekannt ist, können wir mithilfe des Gradienten und Gleichung \eqref{circuit:current_density_7} die Leistungsdichte an jedem einzelnen Punkt berechnen. Dies führt zu den in Abbildung \ref{fig:power_2d} und \ref{fig:power_3d_rectangle} dargestellten Leistungsdichteverteilung.
 %die auch im Beispielskript unter folgendem Link \footnote{https://github.com/AndreasFMueller/SeminarVariation/blob/master/buch/papers/circuit/Pr\%C3\%A4sentation.ipynb} gefunden werden können.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/power_distribution.png}
-	\caption{Leistungsdichte auf rechteckiger Platte mit rechteckigem Potential im oberen rechten Bereich und 0 Potential am Rand der Platte \cite{github:AndreasFMueller}}
+	\caption{Leistungsdichte auf rechteckiger Platte mit rechteckigem Potential im oberen rechten Bereich und 0 Potential am Rand der Platte. (Code für die Generierung des Plots kann in \cite{github:AndreasFMueller} gefunden werden.)}
 	\label{fig:power_2d}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/power_distribution_circle.png}
-	\caption{Leistungsdichte auf rechteckiger Platte mit kreisförmigen Potential im oberen rechten Bereich und 0 Potential am Rand der Platte \cite{github:AndreasFMueller}}
+	\caption{Leistungsdichte auf rechteckiger Platte mit kreisförmigen Potential im oberen rechten Bereich und 0 Potential am Rand der Platte. (Code für die Generierung des Plots kann in \cite{github:AndreasFMueller} gefunden werden.) }
 	\label{fig:power_2d_circle}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/3d.png}
-	\caption{Leistungsdichte 3d auf rechteckiger Platte mit rechteckigem Potential und 0 Potential am Rand der Platte \cite{github:AndreasFMueller}}
+	\caption{Leistungsdichte 3d auf rechteckiger Platte mit rechteckigem Potential und 0 Potential am Rand der Platte. (Code für die Generierung des Plots kann in \cite{github:AndreasFMueller} gefunden werden.)}
 	\label{fig:power_3d_rectangle}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{papers/circuit/3d_circle.png}
-	\caption{Leistungsdichte 3d auf rechteckiger Platte mit kreisförmigen Potential und 0 Potential am Rand der Platte \cite{github:AndreasFMueller}}
+	\caption{Leistungsdichte 3d auf rechteckiger Platte mit kreisförmigen Potential und 0 Potential am Rand der Platte. (Code für die Generierung des Plots kann in \cite{github:AndreasFMueller} gefunden werden.)}
 	\label{fig:power_3d_circle}
 \end{figure}
-Abbildung \ref{fig:power_3d_rectangle} zeigt deutlich, dass die Leistungsdichte in den Ecken des quadratischen Potentials am höchsten ist. Dies ist der Grund, warum auf Leiterplatten normalerweise keine 90°-Kurven gezogen werden, sondern immer 45°-Kurven verwendet werden, um die Leistungsdichte bzw. Stromdichte in den Ecken zu minimieren. Wird zum Beispiel anstatt eines rechteckigen Potentials ein kreisförmiges Potential angelegt \ref{fig:power_3d_rectangle} ist die Leistungsdichte einiges geringer wie es in \ref{fig:power_3d_circle} gesehen werden kann.
+Abbildung \ref{fig:power_3d_rectangle} zeigt deutlich, dass die Leistungsdichte in den Ecken des zuvor definierten quadratischen Potentials am höchsten ist. Dies ist unter anderem ein Grund, warum auf Leiterplatten normalerweise keine 90°-Winkel für Leiterbahnen gezeichnet werden, sondern meistens 45°-Winkel verwendet werden, um die Leistungsdichte bzw. Stromdichte in den Ecken zu minimieren. 
+\subsubsection{Kreisförmiges Potential}
+Wird anstatt eines rechteckigen Potentials ein kreisförmiges Potential angelegt, so ist die Leistungsdichte einiges geringer wie es in Abbildung \ref{fig:power_3d_circle} oder Abbildung \ref{fig:power_2d_circle} gesehen werden kann. Wenn man also die Leistungsdichte auf einer Leiterbahn minimieren will verwendet man am besten abgerundete Ecken.
+%oder kleine Winkeländerungen, da so der Gradient des Potentials an den Ecken einiges geringer ist.
 
 %Als erstes importieren wir alle nötigen Bibliotheken in Python.
 %\begin{lstlisting}[language=Python, caption=Python Librarys]
