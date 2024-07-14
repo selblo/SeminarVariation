@@ -1,0 +1,47 @@
+%
+% teil2.tex -- Beispiel-File für teil2 
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Vereinfachungen und ihre Folgen 
+\label{leo:section:vereinfachungen}}
+\rhead{Vereinfachungen und ihre Folgen}
+\begin{itemize}
+	\item Werden nur \textbf{Steuerungsverluste} beachtet, würde die Rakete um das Integral zu minimieren immer weiter geradeaus fliegen.
+	Das kommt von $\sin^2\left( \frac{\alpha}{2}\right) $ welches 0 ist wen Alpha 0 ist.
+	Die Rakete würde nie auf eine Flugbahn um den Orbit einlenken das Steuern teuer ist.
+	Der Steuerungsverlust schafft Anreiz die Rakete möglichst wenig zu Steuern.
+	\begin{equation*}
+		v_f = \underbrace{v_* \ln \left(\frac{m_0}{m_f}\right)}_{\text{Raketengleichung}} 
+		- \underbrace{2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt }_{\text{Steuerverluste}}
+		- \underbrace{\Cancel[red]{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }}_{\text{Strömungswiderstand}}
+		- \underbrace{\Cancel[red]{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}}_{\text{Schwerkraftsverluste}}
+	\end{equation*}
+	
+	\item Werden nur \textbf{Strömungsverluste} beachtet, würde die Rakete möglichst Schnell aus der Atmosphäre raus fliegen wollen. Damit würde $e^{-\frac{h}{H}}$ minimiert. 
+	Sie hätte aber auch keine Anreiz in einen Orbit einzukehren.
+	Der Strömungsverlust ist der Anreiz, dass die Rakete möglichst schnell aus der Widerstandsbehafteten Atmospähre raus kommt.
+	\begin{equation*}
+		v_f = \underbrace{v_* \ln \left(\frac{m_0}{m_f}\right)}_{\text{Raketengleichung}} 
+		- \underbrace{\Cancel[red]{2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt }}_{\text{Steuerverluste}}
+		- \underbrace{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }_{\text{Strömungswiderstand}}
+		- \underbrace{\Cancel[red]{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}}_{\text{Schwerkraftsverluste}}
+	\end{equation*}
+	
+	\item Werden nur \textbf{Schwerkraftsverluste} beachte müsste $\sin(\gamma)$ minimiert werden.
+	Die Rakete würde dafür sofort bei Start sich um 90° drehen.
+	Was offensichtlich auch nicht die Lösung sein kann
+	Der Schwerkraftsverlust ist aber der Anreiz das die Rakete in einen Orbit kommt.
+	\begin{equation*}
+		v_f = \underbrace{v_* \ln \left(\frac{m_0}{m_f}\right)}_{\text{Raketengleichung}} 
+		- \underbrace{\Cancel[red]{2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt }}_{\text{Steuerverluste}}
+		- \underbrace{\Cancel[red]{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }}_{\text{Strömungswiderstand}}
+		- \underbrace{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}_{\text{Schwerkraftsverluste}}
+	\end{equation*}
+\end{itemize}
+
+Die Verluste dieser eines typische Steigungprofils für die Erdatmosphäre sind bekannt. Der Steuerverlust ist ca. 3\%, der Strömungswiderstand ist ca. 27\% und der Schwerkraftsverlust ist ca. 70\%. Das Ziel ist es deshalb vor allem die Gravitationsverluste zu reduzieren, entweder durch höhere Beschleunigungen und damit geringere Flugzeit oder durch kleinere Flugbahnwinkel (früher Horizontalflug) an der Grenze der aerodynamischen Strukturbelastung.
+
