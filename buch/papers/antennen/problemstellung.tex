@@ -37,7 +37,7 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
  und \ref{antennen:tikabgerundet_kleiner} veranschaulicht.
 
 		
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 	% Define the length of the sides of the triangles
@@ -65,7 +65,7 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 	\caption{Antenne mit abgerundeten Ecken}
 	\label{antennen:tikabgerundet}
 \end{figure}
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 		% Define the length of the sides of the triangles
@@ -93,7 +93,7 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 	\caption{Antenne mit abgeflachten Ecken}
 	\label{antennen:tikabgeflacht}
 \end{figure}
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 		% Define the length of the sides of the triangles
@@ -127,7 +127,7 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 	\caption{Antenne mit abgerundeten Ecken}
 	\label{antennen:tikabgerundet_kleiner}
 \end{figure}
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 		% Define the length of the sides of the triangles
@@ -148,8 +148,8 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 		\draw[blue, line width=0.3mm,] (1.5,0) -- (0.75,1.73 /2*1.5) -- (0.5*\sidelength-0.75, \triangleheight-1.73/2*1.5) -- (0.5*\sidelength+0.75, \triangleheight-1.73/2*1.5)--(\sidelength-0.75,1.73/2*1.5) -- (\sidelength-1.5,0) -- cycle;
 		
 		% Draw axes
-		\draw[->] (0,0) -- (4,0) node[below right] {X-Achse};
-		\draw[->] (0,0) -- (0,4) node[left] {Y-Achse};
+		\draw[->] (0,0) -- (4,0) node[below right] {};
+		\draw[->] (0,0) -- (0,4) node[left] {};
 		
 		% Add ticks and labels on axes
 		\foreach \x in {0, 1,2,3}

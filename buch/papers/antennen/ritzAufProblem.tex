@@ -9,15 +9,38 @@
 
 
 
-\section{Ritz Verfahren angewandt\label{antennen:ritzAnw}}
-
+\section{Ritz-Verfahren für das Antennenproblem\label{antennen:ritzAnw}}
 
 Wie in REF erwähnt konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
 Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen 
 in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren.
 
+\subsection{Approximationsfunktion für das Antennenproblem\label{antennen:unsereApproxFunkt}}
+
+Bei unserem Problem ist zu erwarten, dass die Lösung eine glatte und symmetrische
+Funktion sein wird, somit konnten wir uns auf
+\begin{equation}
+	y_n(x)
+	= 
+	\sum_{k=1}^n a_k\sin((2k-1)x)
+	\label{antennen:unserRitz}
+\end{equation}
+als Approximationsfunktion einigen. 
+
+Diese Entwicklung wir auch Sinus-Fourier Reihe genannt
+und wenn man diese mal für $n=2$ ausschreibt ergibt sich
+\begin{equation}
+	y_n(x)
+	=
+	a_1\sin(x)+a_2\sin(3x)
+	\label{antennen:approxFunktn2}
+\end{equation}
+als Approximationsfunktion. Im weiteren Verlauf ist $y_n(x)$ \eqref{antennen:approxFunktn2} 
+unsere endgültige Approximationsfunktion, mit welcher wir die Problemstellung angehen werden.
+	
+
 %TODO bild ist weit weg [htbp] ILLEGAL
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -63,7 +86,7 @@ welche klar wird, wenn man in das gleiche Koordinatensystem wie bei der Abbildun
 benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 
 %TODO bild ist weit weg [htbp] ILLEGAL
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 		\definecolor{clr1}{RGB}{0, 117, 18}
@@ -116,7 +139,7 @@ der ungeraden Sinus-Funktionen, die Nebenbedingungen
 	\end{aligned}
 \label{antennen:nebenbed3eck}
 \end{equation}
-\em immer \em als \em erfüllt \em zu betrachten sind. Im weiteren Verlauf werden diese 
+\em immer erfüllt \em sind. Im weiteren Verlauf werden diese 
 Nebenbedingungen somit nicht mehr beachtet.
 
 \subsection{Die Lagrangefunktion \label{antennen:lagrangeFunktionen}}
@@ -149,73 +172,67 @@ Somit sind die neu erwähnten Funktionen
 \end{aligned}
 \label{antennen:lagrangeNamen}
 \end{equation}
-
-
-auch in deren Abhängigkeit bei \eqref{antennen:lagrangeNamen} zu sehen. 
+auch in deren Abhängigkeit in \eqref{antennen:lagrangeNamen} zu sehen. 
 
 Die Fläche unter der Kurve ergibt sich aus dem Integral der Funktion, 
 während die Länge, also der obere Rand der Funktion, durch die in Kapitel REF  %\ref{label} 
 erläuterte Formel berechnet wird. 
 
-Die Nebenbedingung $n$ setzen wir nun gleich einer Konstanten Länge $\ell$
+Die Nebenbedingung $n$ setzen wir nun gleich einer Konstanten Länge $l$
 \begin{equation}
 n(a_1, a_2)
 =
-\ell
+l
 \label{antennen:constNebenbed}
 \end{equation}
-
 und wie jede gute Nebenbedingung setzen wir diese noch gleich null
 
 \begin{equation}
 \begin{aligned}
-	n(a_1, a_2) - \ell
+	n(a_1, a_2) - l
 	&=
 	0
 	\\
-	n(a_1, a_2, \ell)
+	n(a_1, a_2, l)
 	&=
 	0
 \label{antennen:fertigeNebenbed}
 \end{aligned}
 \end{equation}
+Nun kann man die Lagrange-Funktion
 
-Nun kann man die Lagrangefunktion
 \begin{equation}
 L(x,a_1,a_2,\lambda)
 = 
-f(a_1,a_2)+\lambda \: n(a_1,a_2, \ell)
+f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
-
 definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n$ addiert.
 Mehr zu der Lagrangefunktion findet man unter dem Kapitel REF %\ref{label}
 
-\subsection{Lagrange Gleichungssystem\label{antennen:lagrangeGLsys}}
+\subsection{Lagrange-Gleichungssystem\label{antennen:lagrangeGLsys}}
 
-Nun möchte man die Lagrangefunktion $L$ ableiten und 0 setzen. Nur heisst das in
-diesem Kontext
+Nun möchte man die Lagrange-Funktion $L$ ableiten und 0 setzen. Nur heisst das in diesem Kontext
 
 % TODO GLsys bisschen spacen
 \begin{equation}
-	\nabla L = \vec{0} 
-	\left\{ 
+	\nabla L = \vec{0} \quad
+	\left\{ \quad
 	\begin{aligned}
 		\frac{\partial L}{\partial a_1} = 0 \\
 		\frac{\partial L}{\partial a_2} = 0 \\
 		\frac{\partial L}{\partial \lambda} = 0
 	\end{aligned}
-	\right.
+	\quad \right.
 	\label{antennen:lagrangeGrad}
 \end{equation}
-
 den Gradienten berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
-$n+1$ dimensionales Gleichungssystem \eqref{antennen:lagrangeGrad}
+$n+1$ dimensionales Gleichungssystem \eqref{antennen:lagrangeGrad}.
 
 An dieser Stelle soll es einem bewusst werden, was dieses Kapitel von anderen 
 unterscheidet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
 Problem, in ein endlich dimensionales verwandeln. 
 Konkret heisst es, dass wir keine Differentialgleichung lösen müssen, sondern, 
-das Gleichungssystem, welches wir bei \eqref{antennen:lagrangeGrad} erhalten haben.
+das nichtlineare Gleichungssystem, welches wir bei \eqref{antennen:lagrangeGrad} erhalten haben.
 
 Das Gleichungssystem \eqref{antennen:lagrangeGrad}, in diesem Fall mit 
 2 Koeffizienten kann man dann als
@@ -229,7 +246,7 @@ Das Gleichungssystem \eqref{antennen:lagrangeGrad}, in diesem Fall mit
 		&=
 		-\lambda \int_0^\pi \frac{3\left(a_1 \cos (x)+3 a_2 \cos (3 x)\right) 
 			\cos (3 x)}{\sqrt{\left(a_1 \cos (x)+3 a_2 \cos (3 x)\right)^2+1}} \, dx \\
-		\ell
+		l
 		&=
 		\int_0^\pi \sqrt{\left(a_1 \cos (x)+3 a_2 \cos (3 x)\right)^2+1} \, dx
 	\end{aligned}
@@ -237,10 +254,10 @@ Das Gleichungssystem \eqref{antennen:lagrangeGrad}, in diesem Fall mit
 \end{equation}
 ausschreiben. 
 
-\subsection{Das Gleichungssystem Lösen\label{antennen:glSysSolve}}
+\subsection{Das Gleichungssystem lösen\label{antennen:glSysSolve}}
 
 Ein gutes Verfahren, welches sich zur Lösung des Gleichungssystems 
-\eqref{antennen:lagrangeGradKonkret}, anbietet, ist das Gradientenabstiegsverfahren.
+\eqref{antennen:lagrangeGradKonkret}, anbietet, ist das Gradientenverfahren.
 
 Dieses iterative Verfahren eignet sich hervorragend zur Minimierung 
 einer Funktion, indem man schrittweise in Richtung des steilsten Abstiegs,
@@ -248,7 +265,7 @@ also dem Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
 fortschreitet. 
 
 % TODO nicht gute position, [htbp] illegal
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -304,12 +321,12 @@ fortschreitet.
 
 Ein Beispiel dafür wie das Verfahren aussehen kann, sieht man bei der 
 Abbildung \ref{antennen:gradverfahrenBSP}. Man nimmt irgendeinen Startpunkt
-und geht Schritt für Schritt in Richtung des $-\nabla$. Mit der Funktion
+und geht Schritt für Schritt in Richtung des $-\nabla f$. Mit der Funktion
 $f(x,y)=x^2+y^2$ ist dieses Verfahren recht einfach zu implementieren und ausführen.
 
 Dieses Verfahren kommt jedoch auch mit einigen Tücken. Wenn die Funktion sehr komplex ist
 und man die Schrittgrösse und Toleranz ungeschickt wählt, ist die Gefahr gross, dass man 
-bei \em lokalen \em minimas Stecken bleibt, obwohl ein \em globales \em gesucht ist.
+bei \em lokalen \em Minimas stecken bleibt, obwohl ein \em globales \em gesucht ist.
 
 Da wir in unserer Arbeit ohnehin die Python-Bibliothek \texttt{SymPy} verwendet haben, 
 um symbolische Berechnungen durchzuführen und automatisch $n$ Koeffizienten zu berechnen, 
@@ -323,7 +340,7 @@ Eventuell findet man den Code auf github?
 \subsection{Auswertung der Lösung\label{antennen:auswertung}}
 
 % TODO nicht gute position, [htbp] illegal
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	
 	\definecolor{color1}{rgb}{1.0, 0.0, 1.0}
@@ -437,7 +454,7 @@ Eventuell findet man den Code auf github?
 		\end{tikzpicture}
 	\end{subfigure}
 	
-	\caption{Verschiedene Längen $\ell$ für $y_n(x)$ mit verschieden vielen Koeffizienten}
+	\caption{Verschiedene Längen $l$ für $y_n(x)$ mit verschieden vielen Koeffizienten}
 	\label{antenenn:plotskoeff}
 \end{figure}
 
@@ -450,53 +467,8 @@ Die plots sehen so aus \ref{antenenn:plotskoeff}
 % TODO in packages hinzufügen
 \usetikzlibrary{pgfplots.fillbetween}
 
-% TODO nicht gute position, [htbp] illegal
-\begin{figure}%[htbp]
-	\centering
-	\begin{tikzpicture}
-		\begin{axis}[
-			axis lines=middle,
-			xlabel=$x$,
-			ylabel=$y$,
-			xmin=0, xmax=3.14159, 
-			xtick={0, 1.5708, 3.14159}, 
-			xticklabels={0, $\frac{\pi}{2}$, $\pi$},
-			axis equal=true, 
-			every axis plot/.append style={thick}
-			]
-			\addplot[
-			domain=0:3.14159,
-			samples=200,
-			red
-			] 
-			{1.7956133389*sin(deg(x)) + 0.28393414605*sin(deg(3*x)) + 0.117828104002*sin(deg(5*x)) + 0.0625789829*sin(deg(7*x)) + 0.036466961219*sin(deg(9*x))};
-			
-			\addplot[name path=F, domain=0:3.14159, samples=200, blue]
-			{sqrt(1.5708^2-(x-1.5708)^2)};
-			
-			\path[name path=axis] (axis cs:0,0) -- (axis cs:3.14159,0);
-			
-			\addplot [
-			thick,
-			color=blue,
-			fill=blue, 
-			fill opacity=0.5,
-			pattern=north east lines,
-			pattern color=blue
-			]
-			fill between[
-			of=F and axis,
-			soft clip={domain=0:3.14159},
-			split, 
-			];
-		\end{axis}
-	\end{tikzpicture}
-	\caption{$y_n(x)$ mit 8 Koeffizienten verglichen mit Kreis}
-	\label{antennen:vergleichKreis}
-\end{figure}
-Beispiel Vergleich \ref{antennen:vergleichKreis} oder \ref{antennen:vergleichKreis2} hübscher?
 
-\begin{figure}%[htbp]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
