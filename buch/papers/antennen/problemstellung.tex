@@ -11,14 +11,14 @@
 \rhead{Problem}
  Es wird versucht eine Antenne zu designen, welche in einem Gerät mit der Form 
  eines Prismas mit Deckfläche eines gleichseitigen Dreiecks. Dies bedeutet, dass 
- die Antenne das Maas eines gleichseitigen Dreiecks nicht überschreiten darf.
+ die Antenne das Mass eines gleichseitigen Dreiecks nicht überschreiten darf.
  
 \subsection{Geometrie\label{antennen:Geom}}
 \rhead{Geometrie}
 Das Ziel ist nun, den Wirkungsgrad durch Formoptimierung zu erhöhen. 
-Die Faktoren k\textsubscript{1} und k\textsubscript{2} sind Konstanten, 
+Die Faktoren $k\textsubscript{1}$ und $k\textsubscript{2}$ sind Konstanten, 
 was bedeutet, dass für eine Erhöhung des Wirkungsgrads REF nur die Länge 
-l und die Fläche A veränderbar sind. In einem nächsten Schritt wird das Verhältnis
+$l$ und die Fläche $A$ veränderbar sind. In einem nächsten Schritt wird das Verhältnis
 \begin{equation}
 	\frac{l}{A^2} \rightarrow \frac{l}{A}
 	\label{antennen:Verhältnis}
@@ -29,11 +29,11 @@ erhöht. Dieses Verhältnis kann durch die Länge dividiert durch die Fläche
 vereinfacht werden. Diese Formel muss nun auf eine implizite Funktion angewendet 
 werden. Eine erste Idee besteht darin, die Ecken abzuflachen, da in den Ecken 
 mit viel zusätzlicher Länge nur wenig Fläche gewonnen wird. Zuerst muss eine 
-Funktion f(x,y) gefunden werden, welche die Ecken möglichst effizient abflacht. 
+Funktion $f(x,y)$ gefunden werden, welche die Ecken möglichst effizient abflacht. 
 Ideen für diese Abflachung sind Geraden wie in Abbildung \ref{antennen:tikabgeflacht} 
 zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} dargestellt.
  Danach muss bestimmt werden, in welcher Grössenordnung diese Funktion auf das 
- Dreieck " angewendet"  wird. Dies wird in den Abbildungen \ref{antennen:tikabgeflacht_kleiner} 
+ Dreieck ``angewendet''  wird. Dies wird in den Abbildungen \ref{antennen:tikabgeflacht_kleiner} 
  und \ref{antennen:tikabgerundet_kleiner} veranschaulicht.
 
 		
@@ -161,12 +161,12 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 	\caption{Antenne mit abgeflachten Ecken}
 	\label{antennen:tikabgeflacht_kleiner}
 \end{figure}
-Eine Eigenschaft welche das Problem vereinfacht ist die Symmetrie des Dreiecks. 
+Eine Eigenschaft, welche das Problem vereinfacht, ist die Symmetrie des Dreiecks. 
 Das Gesamtproblem kann vereinfacht werden indem nur eine Ecke betrachtet wird. 
-Wie in Abbildung... dargestellt sind die drei Eckfunktionen Äquivalent. Die drei 
+Wie in Abbildung... dargestellt sind die drei Eckfunktionen äquivalent. Die drei 
 gestrichelten Geraden spannen ein weiteres gleichseitiges Dreieck auf, welches 
-jedoch vernachlässigt werden kann, da dieses für alle gesuchten Funktionen f(x,y) 
-gleich bleibt. Somit ist das implizite Problem f(x,y) zur expliziten Funktion f(x) 
+jedoch vernachlässigt werden kann, da dieses für alle gesuchten Funktionen $f(x,y)$ 
+gleich bleibt. Somit ist das implizite Problem $f(x,y)$ zur expliziten Funktion $f(x)$ 
 geworden, welche wesentlich leichter zu optimieren ist.
 
 

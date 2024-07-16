@@ -15,7 +15,7 @@ Antennen sind in der heutigen technologisch geprägten Welt nicht mehr weg zu de
 Eine genauere Erklärung von elektromagnetischen Wechselwirkungen kann sich im \href{chapter:maxwell}{Kapitel Maxwell}, welches sich mit den Maxwell Gleichungen befasst, angeeignet werden. 
 \subsection{Loop-Antennen\label{antennen:antennenAllgemein_loop}}
 \rhead{Loop-Antennen}
-Eine Loop-Antenne hat eine simple Funktionsweise. Sie besteht aus einem geschlossenen Stück Draht wie in Abbildung... gesehen werden kann. Die Loop-Antenne kann, nicht wie der Name impliziert, verschiedenste Formen annehmen. Durch den Leiter wird ein Signal geführt, welches in der aufgespannten Fläche ein magnetisches Feld induziert. Dieses Feld wird durch Anpassung der Signalamplitude verändert. Eine solche Änderung kann als Information angesehen werden, welche sich nun im Äter, also dem freien Raum, fortbewegt.
+Eine Loop-Antenne hat eine simple Funktionsweise. Sie besteht aus einem geschlossenen Stück Draht wie in Abbildung... dargestellt. Die Loop-Antenne kann, nicht wie der Name impliziert, verschiedenste Formen annehmen. Durch den Leiter wird ein Signal geführt, welches in der aufgespannten Fläche ein magnetisches Feld induziert. Dieses Feld wird durch Anpassung der Signalamplitude verändert. Eine solche Änderung kann als Information angesehen werden, welche sich nun im freien Raum fortbewegt.
 
 
 
@@ -23,31 +23,31 @@ Eine Loop-Antenne hat eine simple Funktionsweise. Sie besteht aus einem geschlos
 \rhead{Eigenschaften}
 Der Wirkungsgrad
 \begin{equation}
-	\eta=\frac{P\textsubscript{rad}}{P\textsubscript{tot}}
+	\eta=\frac{P\textsubscript{rad}}{P\textsubscript{tot}},
 	\label{antennen:Wirkungsgrad}
 \end{equation}
-,auch Effizienz genannt, kann mittels der Gesamtleistung der Antenne P\textsubscript{tot} und der abgestrahlten Leistung P\textsubscript{rad} berechnet werden. Eine Leistung P entspricht dem elektrischen Widerstand multipliziert mit der Stromstärke im Quadrat. Nach Vereinfachung ergibt sich, dass
+auch Effizienz genannt, kann mittels der Gesamtleistung der Antenne $P\textsubscript{tot}$ und der abgestrahlten Leistung $P\textsubscript{rad}$ berechnet werden. Eine Leistung $P$ entspricht dem elektrischen Widerstand multipliziert mit der Stromstärke im Quadrat. Nach Vereinfachung ergibt sich, dass die Effizienz
 \begin{equation}
 	\eta=\frac{P\textsubscript{rad}}{P\textsubscript{tot}}=\frac{R\textsubscript{rad}\cdot{I^2}}{R\textsubscript{tot}\cdot{I^2}}=\frac{R\textsubscript{rad}\cdot{I^2}}{(R\textsubscript{rad}+R\textsubscript{loss})\cdot{I^2}}=\frac{R\textsubscript{rad}}{R\textsubscript{rad}+R\textsubscript{loss}}
 	\label{antennen:Wirkungsgradkomplett}
 \end{equation}
-die Effizienz \texteta\ nur noch von vom Verlustwiderstand und dem Strahlungswiderstand abhängig ist. R\textsubscript{rad} und R\textsubscript{loss} werden wie folgt definiert:
+nur noch vom Verlustwiderstand und dem Strahlungswiderstand abhängig ist. $R\textsubscript{rad}$ und $R\textsubscript{loss}$ werden wie folgt definiert:
 \begin{equation}
 	R\textsubscript{rad}=31171\Omega\cdot{\bigg(\frac{A}{\lambda^2}\bigg)^2}
 	\label{antennen:Rrad}
 \end{equation}
 \begin{equation}
-	R\textsubscript{loss}=\frac{\rho\cdot{l}}{r^2\cdot{\pi}}
+	R\textsubscript{loss}=\frac{\rho\cdot{l}}{r^2\cdot{\pi}}.
 	\label{antennen:Rloss}
 \end{equation}
 
-Die Formel für die Berechnung des Strahlungswiderstands \eqref{antennen:Rrad} wurde aus Fachliteratur, spezifischer aus dem Buch "Antenna theory" von Constantine A. Balanis, übernommen. Diese gilt für die verschiedensten Formen von Loop-Antennen, welche einen kleinen Umfang  l < \textlambda/10 aufweisen. A wird hierbei als aufgespannte Fläche definiert, während \textlambda\ der Wellenlänge entspricht. Eine Wellenlänge 
+Die Formel für die Berechnung des Strahlungswiderstands \eqref{antennen:Rrad} wurde aus Fachliteratur, spezifischer aus dem Buch ``Antenna theory'' von Constantine A. Balanis, übernommen. Diese gilt für die verschiedensten Formen von Loop-Antennen, welche einen kleinen Umfang  $l$ < $\lambda$/10 aufweisen. $A$ wird hierbei als aufgespannte Fläche definiert, während $\lambda$ der Wellenlänge entspricht. Eine Wellenlänge 
 \begin{equation}
 	\lambda=\frac{c}{f}
 	\label{antennen:Lambda}
 \end{equation}
-entspricht dem Verhältnis der materialspezifischen Lichtgeschwindigkeit c und der Einsatzfrequenz f.
-Der Verlustwiderstand wird aus dem spezifischen Widerstand \textrho, dem Umfang l und dem Leiterradius r berechnet. Die Formeln \eqref{antennen:Rrad} und \eqref{antennen:Rloss} können in dieser Arbeit vereinfacht werden da die Einsatzfrequenz und die Drahteigenschaften als konstant und gegeben angesehen werden können. Es resultieren die Ausdrücke 
+entspricht dem Verhältnis der materialspezifischen Lichtgeschwindigkeit $c$ und der Einsatzfrequenz $f$.
+Der Verlustwiderstand wird aus dem spezifischen Widerstand $\rho$, dem Umfang $l$ und dem Leiterradius $r$ berechnet. Die Formeln \eqref{antennen:Rrad} und \eqref{antennen:Rloss} können in dieser Arbeit vereinfacht werden da die Einsatzfrequenz und die Drahteigenschaften als konstant und gegeben angesehen werden können. Es resultieren die Ausdrücke 
 \begin{equation}
 	R\textsubscript{rad}=k\textsubscript{1}\cdot{A^2}
 	\label{antennen:Rrad_konst}
@@ -56,7 +56,7 @@ Der Verlustwiderstand wird aus dem spezifischen Widerstand \textrho, dem Umfang 
 	R\textsubscript{loss}=k\textsubscript{2}\cdot{l}
 	\label{antennen:Rloss_konst}
 \end{equation}
-für die beiden Widerstände. k\textsubscript{1} und k\textsubscript{2} werden als Konstanten betrachtet. Eingesetzt in \eqref{antennen:Wirkungsgradkomplett} ergibt sich
+für die beiden Widerstände. $k\textsubscript{1}$ und $k\textsubscript{2}$ werden als Konstanten betrachtet. Eingesetzt in \eqref{antennen:Wirkungsgradkomplett} ergibt sich
 \begin{equation}
 	\eta=\frac{k\textsubscript{1}\cdot{A^2}}{k\textsubscript{1}\cdot{A^2}+{k\textsubscript{2}\cdot{l}}}=\frac{1}{1+\frac{k\textsubscript{2}\cdot{l}}{k\textsubscript{1}\cdot{A^2}}}
 	\label{antennen:Wirkungsgradeingesetzt}
