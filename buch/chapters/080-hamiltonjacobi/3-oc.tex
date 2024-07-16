@@ -1,0 +1,1677 @@
+%
+% 3-oc.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\section{Optimale Steuerung
+\label{buch:hamiltonjacobi:section:oc}}
+\kopfrechts{Optimale Steuerung}
+Die vorangegangenen Kapitel haben verschiedene Beispiele gezeigt,
+in denen Funktionen gesucht waren, für die ein gewisses Integral
+einen extremalen Wert annimmt.
+In der Praxis tauchen aber auch Probleme auf, in denen die
+gesuchte Funktion nicht direkt für die Berechnung des zu minimierenden
+Integrals verwendet wird.
+Stattdessen fliesst die Funktion in eine Differentialgleichung
+ein, deren Lösung dann erst das Funktional ergibt.
+Das optimale Steuerungsproblem ist ein Problem dieser Art: gesucht
+wird eine Steuerfunktion derart, dass das gesteuerte System, welches
+mit einer gewöhnlichen Differentialgleichung beschrieben ist, ein
+Kostenfunktional minimieren soll.
+
+In diesem Abschnitt wird die Lösung des optimalen Steuerungsproblem
+mit Hilfe des Minimum-Prinzips von Pontryagin skizziert.
+In Abschnitt~\ref{buch:hamiltonjacobi:oc:subsection:problem}
+wird das Problem exakt formuliert.
+Danach wird die Vorgehensweise Anhang eines Variationsproblems
+mit Nebenbedingungen motiviert und die zugehörige Hamilton-Funktion
+hergeleitet.
+In Abschnitt~\ref{buch:hamiltonjacobi:oc:subsection:minimum}
+wird dann das Minimum-Prinzip von Pontryagin hergeleitet, mit dem
+sich viele dieser Probleme lösen lassen.
+
+%
+% Das optimale Steuerungsproblem
+%
+\subsection{Das optimale Steuerungsproblem
+\label{buch:hamiltonjacobi:oc:subsection:problem}}
+Ein {\em Steuerungsproblem} für ein System mit Differentialgleichung
+der Form
+\[
+\dot{x}
+=
+f(t, x, u),
+\]
+wobei $f\colon\mathbb{R}^n\times\mathbb{R}^m\to\mathbb{R}^n$
+eine differenzierbare Funktion ist.
+Der Vektor $u$ beeinflusst die Zeitentwicklung der Lösung $x(t)$, man
+kann ihn als die Steuersignale betrachten, mit denen man die Lösung
+im Rahmen der physikalischen Grenzen des Systems beeinflussen kann.
+Durch geeignete Wahl der Funktion $u(t)$ kann man erreichen, dass 
+die Lösung mit gewissen Anfangsbedingungen $x(t_0)$ in einem
+gewählten Endpunkt $x(t_1)$ endet.
+
+Da man die Zeit ebenfalls als eine Steuervariable auffassen kann, 
+kann man die Systemgleichung zu
+\begin{equation*}
+\dot{x}
+=
+f(x,u)
+\end{equation*}
+vereinfachen.
+Man darf also annehmen, dass $f$ nicht explizit von der Zeit
+abhängt.
+
+%
+% Das Kostenfunktional
+%
+\subsubsection{Das Kostenfunktional}
+Wie in früher untersuchten Variationsproblemen können der Funktion $x(t)$
+Kosten in Form eines Integrals der Form
+\begin{equation}
+\int_{t_0}^{t_1}
+L(x(t),\dot{x}(t))
+\,dt
+\label{buch:hamiltonjacobi:oc:eqn:jxdotx}
+\end{equation}
+zugeordnet werden.
+Man kann jetzt fragen, für welche Funktion $u(t)$ die sich daraus
+ergebende Bahnkurve $x(t)$ das Funktional
+\eqref{buch:hamiltonjacobi:oc:eqn:jx}
+minimiert.
+
+In den meisten Fällen umfasst der Zustandsvektor $x(t)$ für die
+Systemdifferentialgleichung auch die Geschwindigkeit, so dass
+es nicht länger sinnvoll ist, dass die Funktion $L$ auch von
+$\dot{x}$ abhängig ist.
+Das Funktional wird daher
+\begin{equation}
+\int_{t_0}^{t_1}
+L(x(t))
+\,dt
+\label{buch:hamiltonjacobi:oc:eqn:jx}
+\end{equation}
+
+Dies ist aber noch nicht ganz allgemein genug, denn die Steuerung selbst
+ist oft ebenfalls mit Kosten verbunden.
+Man denke etwa an die Steuerung einer Rakete, wo jeder Steuerimpuls 
+Raketentreibstoff verbraucht, von dem man aus Gewichtsgründen möglichst
+wenig mitnehmen möchte.
+Die Lagrange-Funktion sollte daher auch noch von $u$ abhängen, die
+Kostenfunktion wird daher
+\begin{equation}
+\int_{t_0}^{t_1}
+L(x(t),u(t))
+\,dt.
+\end{equation}
+
+Doch auch dies ist noch nicht die endgültige Fassung.
+In vielen Problemen spielt es eine wichtige Rolle, wann die
+Operation abgeschlossen ist.
+Zum Beispiel können im späteren Verlauf zusätzliche Kosten entstehen,
+wenn die Steuerungsaufgabe erst später abgeschlossen wird.
+Erreicht ein Raumschiff die Umlaufbahn einer Raumstation verspätet,
+wird zusätzlicher Treibstoff für Orbitalmanöver benötigt, um die Station
+zu erreichen.
+Wir fügen dem zu minimierenden Funktional daher noch einen Randterm
+hinzu und erhalten
+\begin{equation}
+J(u)
+=
+\int_{t_0}^{t_1}
+L(x(t),u(t))
+\,dt
++
+K(x(t_1))
+\label{buch:hamiltonjacobi:oc:eqn:jk}
+\end{equation}
+als endgültiges Funktional, welches zu minimieren ist.
+
+%
+% Die optimale Steuerungsaufgabe
+%
+\subsubsection{Die optimale Steuerungsaufgabe}
+Damit lässt sich jetzt die Aufgabe formulieren, die in diesem
+Abschnitt gelöst werden soll.
+
+\begin{aufgabe}[optimale Steuerung]
+\label{buch:hamiltonjacobi:oc:aufgabe}
+Für das System mit der Differentialgleichung
+\begin{equation}
+\dot{x}
+=
+f(x,u), \qquad f\colon \mathbb{R}^n\times\mathbb{R}^m\to\mathbb{R}^n
+\label{buch:hamiltonjacobi:oc:eqn:dgl}
+\end{equation}
+soll eine Funktion $u\colon [t_0,t_1]\to\mathbb{R}^m$ gefunden werden,
+für die 
+\begin{equation}
+J(u)
+=
+\int_{t_0}^{t_1}
+L(x(t),u(t))
+\,dt
++
+K(x(t_1))
+\label{buch:hamiltonjacobi:oc:eqn:kosten}
+\end{equation}
+minimiert, wobei $x(t)$ eine Lösung der Differentialgleichung
+\eqref{buch:hamiltonjacobi:oc:eqn:dgl} ist, die die Anfangsbedinung
+$x(t_0)=x_0$ erfüllt.
+\end{aufgabe}
+
+Die Aufgabe verlangt also, eine Steuerfunktion $u(t)$ so zu bestimmen,
+dass das System der Bahn $x(t)$ mit minimalen Kosten vom Startpunkt $x_0$
+zum Zielpunkt $x_1$ folgt.
+
+%
+% Das optimale Steuerungsproblem als Variationsproblem mit Nebenbedingungen
+%
+\subsubsection{Das optimale Steuerungsproblem als Variationsproblem
+mit Nebenbedingungen}
+Die Formulierung von Aufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+betrachtet die Funktionen $x(t)$ als von $u(t)$ abhängig.
+Man muss also erst die
+Differentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}
+lösen, bevor man das
+Kostenfunktional~\eqref{buch:hamiltonjacobi:oc:eqn:kosten}
+berechnen kann.
+Diese Formulierung macht es unmöglich, die Aufgabe als 
+Variationsproblem zu sehen.
+
+Die Aufgabenstellung kann aber auch als Variationsproblem mit
+einer Nebenbedingung gesehen werden.
+Dazu werden sowohl die Variablen $x$ wie auch die Steuerinputs $u$
+als unabhängige Variablen $q=(x,u)$ betrachtet.
+Zu bestimmen ist jetzt eine Funktion $q(t)=(x(t),u(t))$, die
+das Integral
+\[
+\int_{t_0}^{t_1}
+L(x(t), u(t))
+\,dt
+\]
+minimiert.
+Jetzt sieht die Aufgabenstellung wie ein Variationsproblem aus,
+allerdings wird damit noch nicht berücksichtigt, dass $x(t)$ eine
+Lösung der Differentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}
+sein muss.
+
+Der durch die Differentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}
+gegebene Zusammenhang von $x(t)$ und $u(t)$ kann als Nebenbedingung 
+in der Form
+\begin{equation}
+G(x,\dot{x}, u)
+=
+f(x,u) - \dot{x} = 0
+\label{buch:hamiltonjacobi:oc:eqn:dglneben}
+\end{equation}
+betrachtet werden.
+Im Gegensatz zu den Problemen, die in
+Abschnitt~\ref{buch:nebenbedingungen:lagrangemult:subsection:nebenbedingungen}
+untersucht wurden, hat die
+Nebenbedingung~\eqref{buch:hamiltonjacobi:oc:eqn:dglneben}
+nicht die der Form eines Integrals.
+Es reicht also nicht, eine zusätzliche Vektorvariable $\lambda\in\mathbb{R}^n$
+einzuführen und damit ein Funktional mit einer Lagrange-Funktion der Form
+\[
+L(x,u) - \lambda \cdot G(x,\dot{x},u)
+\]
+zu minimieren, womit
+Abschnitt~\ref{buch:nebenbedingungen:lagrangemult:subsection:nebenbedingungen}
+erfolgreich gewesen war.
+
+Als Erweiterung bietet sich an, die Variable $\lambda$ durch eine
+Funktion $p(t)$ zu ersetzen.
+So entsteht ein neues Funktional
+\[
+F
+\colon
+\mathbb{R}^n\times\mathbb{R}^m\times\mathbb{R}^n
+\to\mathbb{R}
+:
+(x,u,p)
+\mapsto
+F(x,u,p)
+=
+L(x,u) + p\cdot (f(x,u) - \dot{x}),
+\]
+für welches jetzt untersucht werden soll, ob sich damit das Problem lösen
+lässt.
+
+%
+% Die Euler-Lagrange-Differentialgleichung für F
+%
+\subsubsection{Die Euler-Lagrange-Differentialgleichung für $F$}
+Gesucht ist jetzt eine Funktion $q(t)=(x(t),u(t),p(t))$ derart,
+dass das Funktional mit der Lagrange-Funktion
+\[
+F(q,\dot{q})
+=
+L(x,u) +p\cdot f(x,u) - p\cdot \dot{x}
+\]
+minimiert.
+Die Euler-Lagrange-Differentialgleichung von $F$ ist
+\begin{equation}
+\frac{\partial F}{\partial q}(q(t),\dot{q}(t))
+=
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{q}}(q(t),\dot{q}(t)).
+\label{buch:hamiltonjacobi:oc:eqn:Feulerlagrange}
+\end{equation}
+Die partiellen Ableitungen nach $q$ und $\dot{q}$ lassen sich aufteilen
+in die Komponenten $x$, $u$ und $p$ von $q$.
+Wir berechnen nur die Komponenten für $p$, sie ist
+\begin{align}
+\frac{\partial F}{\partial p}
+&=
+f(x,u)
+-
+\dot{x}
+&
+\frac{\partial F}{\partial \dot{p}}
+&=
+0
+&&\Rightarrow&
+f(x,u)-\dot{x}&=0
+\label{buch:hamiltonjacobi:oc:eqn:Fsystemdgl}
+\end{align}
+Die letzte Gleichung ist die Nebenbedingung, eine Lösung der
+Euler-Lagrange-Differential\-gleichung erfüllt also automatisch auch die
+Systemdifferentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:dgl}.
+
+%
+% Die Lösung der optimalen Steuerungsaufgaben
+%
+\subsubsection{Die Lösung der optimalen Steuerungsaufgaben}
+Die Euler-Lagrange-Differentialgleichung zusammen mit geeigneten
+Anfangsbedingungen für die gesuchten Funktionen können die
+optimale Steuerungsaufgaben lösen, wie der folgende Satz zeigt.
+
+\begin{satz}[Optimale Steuerung, Lagrange-Form]
+\label{buch:hamiltonjacobi:oc:satz:optimal-lagrange}
+Eine Extremale des Funktionals
+\begin{equation}
+I(q)
+=
+\int_{t_0}^{t_1}
+F(q(t),\dot{q}(t))
+\,dt
++
+K(x(t))
+\end{equation}
+mit der Lagrange-Funktion
+\begin{equation}
+F(q,\dot{q}) = L(x,u) + p\cdot(f(x,u) - \dot{x})
+\label{buch:hamiltonjacobi:oc:optF}
+\end{equation}
+und den Randbedingungen
+\[
+x(t_0)=x_0
+\qquad\text{und}\qquad
+p(t_1)=\frac{\partial K}{\partial x}(x(t_1))
+\]
+ist eine Lösung der optimale
+Steuerungsaufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}.
+\end{satz}
+
+\begin{proof}
+Da nach
+\eqref{buch:hamiltonjacobi:oc:eqn:Fsystemdgl}
+eine Lösung der Euler-Lagrange-Differentialgleichung von $F$ immer
+auch die Systemdifferentialgleichung löst, ist 
+\begin{equation*}
+F(q_*(t),\dot{q}_*(t))
+=
+L(x_*(t),u_*(t))
++
+p_*(t)\cdot (
+\underbrace{f(x_*(t),u_*(t))-\dot{x}_*(t)}_{\displaystyle=0})
+=
+L(x_*(t),u_*(t)).
+\end{equation*}
+Insbesondere ist auch
+\[
+\int_{t_0}^{t_1}
+F(q_*(t),\dot{q}_*(t))
+\,dt
+=
+\int_{t_0}^{t_1}
+L(x_*(t),u_*(t))
+\,dt,
+\]
+Der Wert des Integrals im Funktion ändert also nicht.
+
+Am Intervallende bei $t_1$ sind die Werte von $x_*(t)$ nicht
+vorgegeben.
+Der Satz~\ref{buch:nebenbedingungen:transversal:satz:randterme}
+erklärt, wie der Randterm $K(x(t))$ sich in Randbedingungen
+\[
+\frac{\partial F}{\partial \dot{q}}(q(t),\dot{q}(t))
++
+\frac{\partial K}{\partial q}(q(t_1))
+=
+0
+\]
+für $q(t_1)$ umrechnen lässt.
+Indem man die Ableitungen nach den Komponenten von $q$ separat betrachtet,
+findet man
+\begin{align*}
+0
+&=
+\frac{\partial F}{\partial\dot{x}}(q(t_1),\dot{q}(t_1))
++
+\frac{\partial K}{\partial x}(q(t_1))
+=
+-p_*(t_1)
++
+\frac{\partial K}{\partial x}(x_*(t_1))
+&&\Rightarrow&p_*(t_1)
+&=
+\frac{\partial K}{\partial x}(x_*(t_1))
+\intertext{Dies ist die gesuchte Randbedingung für $p_*(t)$.
+Die verbleibenden Komponenten sind}
+0
+&=
+\frac{\partial F}{\partial\dot{u}}(q(t_1),\dot{q}(t_1))
++
+\frac{\partial K}{\partial u}(q(t_1))
+\\
+0
+&=
+\frac{\partial F}{\partial\dot{p}}(q(t_1),\dot{q}(t_1))
++
+\frac{\partial K}{\partial p}(q(t_1)).
+\end{align*}
+Da die Funktionen auf der rechten Seite nicht von den Variablen
+abhängen, nach denen sie abgeleitet werden, sind diese Bedingungen
+automatisch erfüllt.
+\end{proof}
+
+Die Funktion $F(q,\dot{q})$ hängt nicht von der unabhängigen
+Variablen $t$ ab, somit ist die Beltrami-Identität
+(Satz~\ref{buch:variation:eulerlagrange:satz:beltrami})
+anwendbar.
+Sie sagt, dass die Grösse
+\begin{align}
+F(q,\dot{q})
+-
+\dot{q}\cdot\frac{\partial F}{\partial\dot{q}}(q,\dot{q})
+&=
+F(q,\dot{q})
+-
+\dot{x}\cdot
+\underbrace{
+\frac{\partial F}{\partial\dot{x}}
+}_{\displaystyle=-p}
+\mathstrut-
+\dot{u}\cdot
+\underbrace{
+\frac{\partial F}{\partial\dot{u}}
+}_{\displaystyle=0}
+\mathstrut-
+\dot{p}\cdot
+\underbrace{
+\frac{\partial F}{\partial\dot{p}}
+}_{\displaystyle=0}
+\notag
+\\
+&=
+L(x,u)+p\cdot f(x,u)-p\cdot\dot{x}
+-
+\dot{x}\cdot
+(-p)
+\notag
+\\
+&=
+L(x,u) + p\cdot f(x,u)
+\label{buch:hamiltonjacobi:oc:hamilton}
+\end{align}
+konstant ist.
+Diese Funktion spielt daher in der nachfolgenden Konstruktion zur
+Lösung der optimalen Steuerungsaufgabe eine grosse Rolle.
+
+%
+% Die Hamilton-Differentialgleichungen
+%
+\subsection{Die Hamilton-Differentialgleichungen
+\label{buch:hamiltonjacobi:oc:subsection:hamilton}}
+Für eine Lagrange-Funktion $L(x,u)$ haben wir gefunden, dass der
+Ausdruck~\eqref{buch:hamiltonjacobi:oc:hamilton} eine besondere
+Bedeutung hat.
+Wir geben ihm daher einen Namen.
+
+\begin{definition}[Steuerungs-Hamiltonfunktion]
+Die Funktion
+\[
+H
+\colon
+\mathbb{R}^n\times\mathbb{R}^n\times\mathbb{R}^m
+\to
+\mathbb{R}
+:
+(x,p,u)
+\mapsto
+H(x,p,u)
+=
+p\cdot f(x,u) + L(x,u)
+\]
+heisst die {\em Steuerungs-Hamilton-Funktion}
+der optimalen Steuerungsaufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}.
+\end{definition}
+
+Der Name rechtfertigt sich dadurch, dass sich aus $H$ analoge
+Differentialgleichungen für die Funktionen $x(t)$ und $p(t)$ bilden
+lassen.
+Damit wird es möglich, auch die Funktion $p(t)$ zu berechnen.
+Wenn sich ausserdem eine Bedingung für $u(t)$ finden lässt, kann
+die Aufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+vollständig gelöst werden.
+Eine solche Bedingung wird später im Minimum-Prinzip gefunden.
+Als erstes sollen jetzt die Differentialgleichungen konstruiert
+werden, die sich aus $H$ ableiten lassen.
+
+%
+% Partielle Ableitungen
+%
+\subsubsection{Partielle Ableitungen}
+Zu diesem Zweck sei $q_*(t)=(x_*(t),u_*(t),p_*(t))$ eine Lösung der
+Euler-Lagrange-Differen\-tialgleichung
+\eqref{buch:hamiltonjacobi:oc:eqn:Feulerlagrange}
+für die Lagrange-Funktion $F(q,\dot{q})$.
+Als Vorbereitung für die Berechnung der partiellen Ableitungen von $H$
+schreiben wir die Euler-Lagrange-Differen\-tialglei\-chungen explizit
+für die einzelnen Komponenten von $q$ hin:
+\begin{align}
+0
+&=
+\frac{\partial F}{\partial x_k}(x_*(t),u_*(t),p_*(t))
+-
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{x}_k}(x_*(t),u_*(t),p_*(t))
+\notag
+\\
+&=
+\frac{\partial L}{\partial x_k}(x_*(t),u_*(t))
++
+p_*(t)\cdot\frac{\partial f}{\partial x_k}(x_*(t),u_*(t))
++
+\dot{p}_{*k}
+\notag
+\\
+\Rightarrow\qquad
+\dot{p}_*(t)
+&=
+-\frac{\partial L}{\partial x}(x_*(t),u_*(t))
+-
+p_*(t)\cdot\frac{\partial f}{\partial x}(x_*(t),u_*(t))
+\label{buch:hamiltonjacobi:oc:eqn:Fxabl}
+\intertext{Die Variablen $\dot{u}$ und $\dot{p}$ kommen in $F$ nicht
+vor, der Zeitableitungsterm kommt daher in den zugehörigen
+Euler-Lagrange-Gleichungen nicht vor:}
+0
+&=
+\frac{\partial F}{\partial u_k}(x_*(t),u_*(t),p_*(t))
+-
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{u}_k}(x_*(t),u_*(t),p_*(t))
+\notag
+\\
+&=
+\frac{\partial L}{\partial u_k}(x_*(t),u_*(t))
++
+p_*(t)\cdot\frac{\partial f}{\partial u_k}(x_*(t),u_*(t))
+\label{buch:hamiltonjacobi:oc:eqn:Fuabl}
+\\
+0
+&=
+\frac{\partial F}{\partial p_k}(x_*(t),u_*(t),p_*(t))
+-
+\frac{d}{dt}
+\frac{\partial F}{\partial \dot{p}_k}(x_*(t),u_*(t),p_*(t))
+\notag
+\\
+&=
+f_k(x_*(t),u_*(t))-\dot{x}_{*k}(t)
+\notag
+\\
+\Rightarrow\qquad
+\dot{x}_*(t)
+&=
+f(x_*(t),u_*(t)).
+\label{buch:hamiltonjacobi:oc:eqn:Fpabl}
+\end{align}
+
+Nach diesen Vorbereitungen können jetzt auch die partiellen Ableitungen
+von $H$ berechnet werden.
+Unter Verwendung von 
+\eqref{buch:hamiltonjacobi:oc:eqn:Fxabl},
+\eqref{buch:hamiltonjacobi:oc:eqn:Fuabl}
+und
+\eqref{buch:hamiltonjacobi:oc:eqn:Fpabl}
+Folgen die Gleichungen
+\begin{equation}
+\renewcommand{\arraycolsep}{2pt}
+\renewcommand{\arraystretch}{2.0}
+\begin{array}{rclcl}
+\displaystyle
+\frac{\partial H}{\partial x_k}(x_*(t),u_*(t),p_*(t))
+&=&
+\displaystyle
+\frac{\partial L}{\partial x}(x_*(t),u_*(t))
++
+p_*(t)\cdot\frac{\partial f}{\partial x_k}(x_*(t),u_*(t))
+&=&-\dot{p}_{*k}(t)
+\\
+\displaystyle
+\frac{\partial H}{\partial u_k}(x_*(t),u_*(t),p_*(t))
+&=&
+\displaystyle
+p_*(t)\cdot
+\frac{\partial f}{\partial u_k}(x_*(t),u_*(t))
++
+\frac{\partial L}{\partial u_k}(x_*(t),u_*(t))
+&=&0
+\\
+\displaystyle
+\frac{\partial H}{\partial p_k}(x_*(t),u_*(t),p_*(t))
+&=&
+f_k(x_*(t),u_*(t))
+&=&
+\dot{x}_{*k}(t)
+\end{array}
+\label{buch:hamiltonjacobi:oc:Habl}
+\end{equation}
+
+%
+% Randbedingungen
+%
+\subsubsection{Randbedingungen}
+Die Anfangsbedingung $x_*(t_0)=x_0$ für $x_*(t)$ ist bereits durch
+die Aufgabenstellung gegeben.
+Für die Funktion $p_*(t)$ wird eine weitere Randbedingung benötigt,
+damit die Differentialgleichungen~\eqref{buch:hamiltonjacobi:oc:Habl}
+Beide Funktionen $x_*(t)$ und $p_*(t)$ bestimmen können.
+Der Satz~\ref{buch:hamiltonjacobi:oc:satz:optimal-lagrange}
+definiert auch die Randbedingung
+\[
+p_*(t_1)
+=
+\frac{\partial K}{\partial x}(x_*(t_1)).
+\]
+
+%
+% Differentialgleichung
+%
+\subsubsection{Differentialgleichung}
+Die Differentialgleichungen~\eqref{buch:hamiltonjacobi:oc:Habl} zusammen
+mit den Randbedingungen des vorangegangenen Abschnitts ergeben jetzt
+den folgenden Satz.
+
+\begin{satz}[Hamilton-Gleichungen]
+\label{buch:hamiltonjacobi:oc:satz:hamilton-gleichungen}
+Eine Lösung $(x_*(t),u_*(t),p_*(t))$ der optimalen Steuerungsaufgabe
+erfüllt die {\em Hamilton-Differentialgleichungen}
+\begin{align*}
+\dot{x}_*(t)
+&=
+\phantom{-}
+\frac{\partial H}{\partial p}(x_*(t),u_*(t),p_*(t)),
+&
+x_*(t_0)
+&=
+x_0,
+\\
+\dot{p}_*(t)
+&=
+-
+\frac{\partial H}{\partial x}(x_*(t),u_*(t),p_*(t)),
+&
+p_*(t_1)
+&=
+\frac{\partial K}{\partial x}(x_*(t_1)).
+\end{align*}
+Ausserdem verschwindet die Ableitung nach $u$:
+\begin{equation}
+\frac{\partial H}{\partial u}(x_*(t),u_*(t),p_*(t))=0.
+\label{buch:hamiltonjacobi:oc:eqn:ablHu0}
+\end{equation}
+\end{satz}
+
+Der Satz bestimmt $x_*(t)$ und $p_*(t)$ sobald $u_*(t)$ gegeben ist,
+er macht aber ausser der Bedingung, dass die
+Ableitung~\eqref{buch:hamiltonjacobi:oc:eqn:ablHu0} verschwindet,
+keine Aussage darüber, wie $u_*(t)$ gefunden werden kann.
+Ein mögliche Wahl für $u_*(t)$ könnte sein, dass $u_*(t)$ jeweils
+als das Extremum der Funktion $u\mapsto H(x_*(t),u,p_*(t))$
+gewählt wird.
+Dass dies auch die optimale Wahl sein kann, zeigt das Minimum-Prinzip
+von Pontryagin, welches im
+Abschnitt~\ref{buch:hamiltonjacobi:oc:subsection:minimum}
+besprochen werden soll.
+
+%
+% Das Minimum-Prinzip
+%
+\subsection{Das Minimum-Prinzip
+\label{buch:hamiltonjacobi:oc:subsection:minimum}}
+In Satz~\ref{buch:hamiltonjacobi:oc:satz:hamilton-gleichungen}
+und in der daran anschliessenden Diskussion wird angedeutet, dass
+wegen der Bedingung~\eqref{buch:hamiltonjacobi:oc:eqn:ablHu0}
+die Funktion $u_*(t)$ ein Extremum der Funktion $H$ zu den gegebenen
+Werten $x_*(t)$ und $p_*(t)$ sei.
+Eine solche Bedingung vervollständigt die Lösung des optimalen
+Steuerungsproblems.
+
+\begin{satz}[Pontryagin]
+Seien die Funktionen $f(x,u)$ und $L(x,u)$ stetig differenzierbar in 
+$x$ und $u$ und sei $K(x)$ stetig differenzierbar in $x$.
+Sei die Funktion $u_*\colon[t_0,t_1]\to\mathbb{R}$ eine Lösung des
+optimalen Steuerungsproblems Aufgabe~\ref{buch:hamiltonjacobi:oc:aufgabe}
+und sei $x_*(t)$ die resultierende optimale Bahnkurve, dann gibt es
+eine eindeutig bestimmte Funktion $p_*\colon[t_0,t_1]\to\mathbb{R}$,
+So dass $x_*(t),u_*(t),p_*(t)$ die Hamilton-Differentialgleichungen
+von Satz~\ref{buch:hamiltonjacobi:oc:satz:hamilton-gleichungen}
+erfüllen.
+Die Funktion $u_*(t)$ erfüllt
+\begin{equation}
+u_*(t)
+=
+\operatorname{argmin}_{u\in\mathbb{R}} H(x_*(t),u,p_*(t)).
+\label{buch:hamiltonjacobi:oc:eqn:argminH}
+\end{equation}
+für alle Stellen $t\in[t_0,t_1]$, an denen $u_*(t)$ stetig ist.
+\end{satz}
+
+Dass die Bedingung \eqref{buch:hamiltonjacobi:oc:eqn:argminH} nur
+an Stellen gelten muss, an denen $u_*(t)$ stetig ist, lässt zu,
+dass die Funktion $u_*$ nicht stetig ist.
+Dies wird von den folgenden Beispielen illustriert.
+
+\input{chapters/080-hamiltonjacobi/fig/oc.tex}
+
+\begin{beispiel}
+\label{buch:hamiltonjacobi:oc:bsp:simple}
+Gesucht ist die Lösung des eindimensionalen optimalen Steuerproblems
+auf dem Intervall zwischen $t_0=0$ und $t_1=1$ mit
+\begin{align*}
+f(x,u) &= u\in U=[-1,1],
+&
+x(0) &= x_0\in\mathbb{R}
+&
+&\text{und}&
+J(u)
+=
+\int_0^1 x(t)\,dt.
+\end{align*}
+Die Lagrange-Funktion ist $L(x,u)=x$ und die Funktion $K(x)$ ist die
+Nullfunktion.
+
+Für die Lösung des Problems berechnen wird zunächst die
+Steuerungs-Hamilton-Funktion
+\[
+H(x,u,p)
+=
+L(u,x) + pf(x,u)
+=
+x + pu
+\]
+und ihre Ableitungen
+\begin{equation}
+\left.
+\begin{aligned}
+\frac{\partial H}{\partial x}
+&=
+1,
+&&&
+\frac{\partial H}{\partial\dot{x}}
+&=
+0,
+\\
+\frac{\partial H}{\partial u}
+&=
+p,
+&&&
+\frac{\partial H}{\partial\dot{u}}
+&=
+0,
+\\
+\frac{\partial H}{\partial p}
+&=
+u,
+&&&
+\frac{\partial H}{\partial\dot{p}}
+&=
+0.
+\end{aligned}
+\qquad
+\right\}
+\label{buch:hamiltonjacobi:oc:bsp:ableitungen}
+\end{equation}
+Daraus folgen die Hamilton-Differentialgleichungen
+\begin{align*}
+&\text{für $x(t)$:}&
+\dot{x}(t)&=u(t)
+&&\text{mit Anfangsbedingung}&
+x(0)&=x_0
+\qquad\text{und}
+\\
+&\text{für $p(t)$:}&
+\dot{p}(t)&=-1
+&&\text{mit Randbedingung}&
+p(1)&=\frac{\partial K}{\partial x}(1) = 0.
+\end{align*}
+Aus der Gleichung für $p$ folgt $p_*(t)=1-t$
+(Abbildung~\ref{buch:hamiltonjacobi:oc:fig:oc} (a)).
+Das Minimumprinzip sagt jetzt, dass für $u_*(t)$ das Argument $u$
+gewählt werden muss, welches
+\[
+H(x_*(t),u,p_*(t))
+=
+x_*(t)+p_*(t)u
+=
+x_*(t)+(1-t)u
+\]
+minimiert.
+Da $1-t<0$ ist für alle $t<1$, wird ganz unabhängig von $x_*(t)$
+der kleinstmögliche Wert bei $u_*(t)=-1$ angenommen.
+Mit diesem $u_*(t)$ kann man jetzt auch die Lösung $x_*(t)=-t$
+berechnen.
+
+Diese Lösung ist auch plausibel, denn weil kein Randterm vorhanden ist,
+kommt es nur darauf an, dass $x_*(t)$ möglichst schnell abnimmt, um
+das Integral
+\[
+\int_0^1 x(t)\,dt
+=
+\int_0^1 -t\,dt
+=
+-\biggl[\frac12t^2\biggr]_0^1
+=
+-\frac12
+\]
+zu minimieren.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:hamiltonjacobi:oc:bsp:switch}
+Lösen Sie das optimale Steuerungsproblem für das System auf dem Intervall
+$[t_0,t_1]=[0,1]$ mit der Systemgleichung
+\[
+\dot{x} = f(x,u)=u\in U=[-1,1],\quad x(0) = x_0
+\]
+und dem Funktional
+\[
+J(u)
+=
+\int_0^1 x(t)\,dt -\frac12 x(1)
+\]
+mit Lagrange-Funktion und Randterm
+\begin{align*}
+L(x,u)
+&=
+x
+&&\text{und}&
+K(x)&=-\frac12x.
+\end{align*}
+Die Steuerungs-Hamilton-Funktion ist
+\[
+H(x,u,p)
+=
+L(x,u) + pf(x,u)
+=
+x + pu
+\]
+mit den Ableitungen wie in~\eqref{buch:hamiltonjacobi:oc:bsp:ableitungen}.
+Die Hamilton-Differentialgleichungen sind jetzt
+\begin{align*}
+&\text{für $x(t)$:}&
+\dot{x}(t)&=u(t)
+&&\text{mit der Anfangsbedingung:}&
+x(0)&=x_0\qquad\text{und}
+\\
+&\text{für $p(t)$:}&
+\dot{p}(t)&=-1
+&&\text{mit der Randbedingung:}&
+p(1)&=\frac{\partial K}{\partial x}(1) = -\frac12.
+\end{align*}
+Aus der Gleichung für $p$ folgt diesmal $p_*(t)=\frac12-t$.
+Zur Bestimmung von $u_*(t)$ müssen wir die Hamilton-Funktion
+\[
+H(x_*(t),u,p_*(t))
+=
+x_*(t)+p_*(t)u
+=
+x_*(t)+({\textstyle\frac12}-t)u
+\]
+betrachten.
+Welcher Werte von $u$ den kleinsten Wert von $H$ ergibt, hängt
+vom Vorzeichen von $p_*(t)=\frac12-t$.
+Für positives Vorzeichen von $p_*(t)$ muss $u=-1$ gewählt werden,
+sonst $u=1$.
+Also ist
+\[
+u_*(t)
+=
+\left\{
+\begin{aligned}
+&\phantom{-}1&&\text{falls $p_*(t)<0$}&&\Leftrightarrow&t&>\textstyle\frac12
+\\
+&{}-1&&\text{falls $p_*(t)>0$}&&\Leftrightarrow&t&<\textstyle\frac12.
+\end{aligned}
+\right.
+\]
+Daraus kann man jetzt auch $x_*(t)$ berechnen:
+\[
+x_*(t)
+=
+\int_0^t u_*(\tau)\,d\tau
+=
+\begin{cases}
+x_0+{\displaystyle\int_0^t 1\,d\tau} = x_0+t&\qquad\text{für $t\le\frac12$}
+\\[8pt]
+x_*(\frac12)-{\displaystyle\int_{\frac12}^t 1\,d\tau}
+=
+x_0+\frac12-(t-\frac12)
+=
+x_0+1-t&\qquad\text{für $t>\frac12$.}
+\end{cases}
+\]
+Die Lösungsfunktionen sind in
+Abbildung~\ref{buch:hamiltonjacobi:oc:fig:oc} (b)
+dargestellt.
+Der Wert des Funktionals kann jetzt ebenfalls berechnet werden, er ist
+\begin{align*}
+J(u_*)
+&=
+\int_0^1 x_*(t)\,dt + K(x_*(1))
+\\
+&=
+\int_0^{\frac12} x_0+t \,dt
++
+\int_{\frac12}^1 x_0+1-t\,dt
+-
+\frac12x_0
+\\
+&=
+\biggl[x_0t+\frac12t^2\biggr]_0^{\frac12}
++
+\biggl[x_0t+t-\frac12t^2\biggr]_{\frac12}^1 - \frac12x_0
+\\
+&=
+\frac12x_0 + \frac18 + x_0+1-\frac12 - \frac12x_0-\frac12 +\frac18 - \frac12x_0
+\\
+&=\frac12x_0+\frac14.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+\begin{proof}[Beweis des Minimum-Prinzips]
+Der Beweis erfolgt durch Widerspruch.
+Wir nehmen dazu an, dass sich der Wert der Hamilton-Funktion an einer
+Stelle $\bar{t}$ durch Wahl eines von $u_*(\bar{t})$ abweichenden Wertes
+verkleinern lässt.
+Die Änderung eines einzelnen Funktionswertes beeinflusst aber $x_*(t)$ nicht.
+Nur wenn $u_*(t)$ in einem kleinen Intervall in einer Weise abgeändert
+werden kann, dass $H(x_*(t),u_*(t),p_*(t))$ verringert wird, ergibt sich
+auch eine merkliche Veränderung von $x_*(t)$ und des Kostenfunktionals $J(u)$.
+Dazu muss angenommen werden dürfen, dass $u_*(t)$ an der Stelle $\bar{t}$
+stetig ist.
+Wir nehmen daher an, dass sogar in einem kleinen Intervall 
+$[\bar{t},\bar{t}+\varepsilon]$ noch gilt
+\[
+H(x_*(t),\bar{u},p_*(t)) < H(x_*(t), u_*(t), p_*(t)).
+\]
+Dann ist für genügend kleines $\varepsilon$
+\begin{equation}
+H(x_*(t),\bar{u},p_*(t)) - H(x_*(t),u_*(t),p_*(t)) < c < 0
+\label{buch:hamiltonjacobi:oc:eqn:Hunterschied}
+\end{equation}
+mit einer negativen Konstanten $c\in\mathbb{R}$.
+
+Wir ändern $u_*(t)$ um die Funktion
+\[
+\delta u(t)
+=
+\begin{cases}
+\bar{u}&\qquad t\in [\bar{t},\bar{t}+\varepsilon] \\
+0      &\qquad\text{sonst}.
+\end{cases}
+\]
+Mit den veränderten Steuerinputs $\bar{u}(t) = u_*(t) + \delta u(t)$ ändert
+sich jetzt auch der Systemzustand $x_*(t)$.
+Wir schreiben die Änderung als Funktion $\delta x(t)$, die neue
+Zustandsfunktion ist somit $\bar{x}(t) = x_*(t)+\delta x(t)$.
+Sie erfüllt die Systemgleichungen, es gilt also
+\[
+\frac{d}{dt}\bar{x}(t)
+=
+\dot{x}_*(t) + (\delta x)^{\dot{}}(t)
+=
+f(\bar{x}(t),\bar{u}(t))
+=
+f(x_*(t)+\delta x(t), u_*(t)+\delta u(t)).
+\]
+Die zeitliche Ableitung von $\delta x(t)=\bar{x}(t)-x_*(t)$ schreiben wir als
+$(\delta x)^{\dot{}}(t)$, da $\delta\dot{x}(t)$ auch als die Differenz
+$\dot{\bar{x}}(t)-\dot{x}_*(t)$ missverstanden werden könnte.
+Nach allgemeinen Sätzen über die stetig Abhängigkeit der Lösung einer
+Differentialgleichung von $u(t)$ folgt, dass sich
+$\delta x(t)=O(\varepsilon)$ ist für $t>\bar{t}$.
+
+Wir werden zeigen, dass durch diese Änderungen das Kostenfunktional
+$J(\bar{u})$ reduziert wird im Widerspruch zur Voraussetzung, dass 
+mit $u_*(t)$ bereits das Minimum erreicht wird.
+
+Die Änderung des Kostenfunktionals ist
+\begin{align*}
+\Delta
+&=
+J(\bar{u}) - J(u_*)
+\\
+&=
+K(x_*(t_1)+\delta x(t_1)) - K(x_*(t_1))
++
+\int_{t_0}^{t_1} 
+L(x_*(t) + \delta x(t), u_*(t)+\delta u(t))
+-
+L(x_*(t), u_*(t))
+\,dt.
+\intertext{Da $K$ differenzierbar ist, können die ersten beiden Terme 
+bis auf ein $o(\varepsilon)$ durch die Ableitung approximiert werden.
+Den Integranden drücken wir mittels $L=-p\cdot f+H$ durch die
+Hamilton-Funktion aus und erhalten}
+&=
+\frac{\partial K}{\partial x}(x_*(t_1))\cdot \delta x(t_1) + o(\varepsilon)
+\\
+&\quad
+-
+\int_{t_0}^{t_1}
+p_*(t)
+\cdot
+(f(\bar{x}(t),\bar{u}(t))-f(x_*(t),u_*(t))
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(\bar{x}(t),\bar{u}(t),p_*(t)) - H(x_*(t),u_*(t),p_*(t))
+\,dt.
+\end{align*}
+Die Funktionen $\bar{x}(t)$ und $x_*(t)$ erfüllen die
+Systemgleichung für die Steuerinputs $\bar{u}(t)$ und $u_*(t)$, so dass
+die Differenz wegen der Linearität der Ableitung die Ableitung
+\[
+f(\bar{x}(t),\bar{u}(t))-f(x_*(t),u_*(t)
+=
+\dot{\bar{x}}(t) - \dot{x}_*(t)
+=
+\frac{d}{dt} (\bar{x}(t)-x_*(t))
+=
+(\delta x)^{\dot{}}(t)
+\]
+der Differenz ist.
+Durch Addieren und Subtrahieren von $H(x_*(t), \bar{u}(t),p_*(t))$ kann
+das zweite Integral in einfacher zu handhabende Integrale aufgeteilt
+werden, wir erhalten
+\begin{align*}
+\Delta
+&=
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
+-
+\int_{t_0}^{t_1}
+p_*(t)\frac{d}{dt}(\delta x)(t)\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t)+\delta x(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t), p_*(t))
+\,dt
+\intertext{Die Differenz im zweiten Integral kann durch die Ableitung nach $x$
+approximiert und mit dem ersten Integral zusammengefasst werden:}
+&=
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+-p_*(t)\frac{d}{dt}(\delta x)(t)\,dt
++
+\frac{\partial H}{\partial x}(x_*(t),u_*(t)+\delta u(t),p_*(t))
+\cdot 
+\delta x(t)
++
+o(\varepsilon)
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t), p_*(t))
+\,dt.
+\intertext{Die Funktion $\bar{u}(t)$ ist nur im Intervall
+$[\bar{t},\bar{t}+\varepsilon]$  von $u_*(t)$ verschieden, daher ist auch
+die Ableitung von $H$ im ersten Integral nur in diesem Intervall
+von $-\dot{p}_*(t)$ verschieden.
+Ausserdem ist auch $\delta x(t)$ nur von der Grössenordnung
+$o(\varepsilon)$, so dass wird das erste Integral ersetzen können:}
+&=
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
++
+\int_{t_0}^{t_1}
+-p_*(t)
+\cdot
+\frac{d}{dt}\delta x(t)\,dt
+-
+\frac{d}{dt}p_*(t)
+\cdot 
+\delta x(t)
++
+o(\varepsilon)
+\,dt
+\\
+&\quad
++
+\int_{t_0}^{t_1}
+H(x_*(t), u_*(t) + \delta u(t), p_*(t))
+-
+H(x_*(t), u_*(t), p_*(t))
+\,dt.
+\intertext{Die ersten beiden Terme im ersten Integral sind die
+Ableitung von $-p_*(t)\cdot \delta x(t)$, mit dieser Stammfunktion
+kann das Integral ausgwertet werden.
+Der Integrand im zweiten Integral ist nur im Intervall
+$[\bar{t},\bar{t}+\varepsilon]$ von $0$ verschieden und ist nach
+\eqref{buch:hamiltonjacobi:oc:eqn:Hunterschied}
+kleiner als $c$.
+Es folgt}
+&<
+p_*(t_1)\cdot \delta x(t_1) + o(\varepsilon)
+-
+\Bigl[
+p_*(t)\cdot \delta x(t)
+\Bigr]_{t_0}^{t_1}
++
+c\varepsilon
+\\
+&=
+\underbrace{
+p_*(t_1)\cdot \delta x(t_1)
+-
+p_*(t_1)\cdot \delta x(t_1)
+}_{\displaystyle = 0}
++
+p_*(t_0)\cdot \delta x(t_0)
++ o(\varepsilon)
++ c\varepsilon.
+\intertext{Zur Zeit $t_0$ ist $\delta x(t_0) = 0$ und damit}
+\Delta
+&<
+o(\varepsilon) + c\varepsilon
+=
+\varepsilon \biggl(c + \frac{o(\varepsilon)}{\varepsilon}\biggr).
+\end{align*}
+Der zweite Term in der Klammer konvergiert gegen $0$, für genügend
+kleines $\varepsilon$ ist die Klammer daher negativ und damit folgt,
+dass $\Delta <0$ ist.
+Damit ist der Widerspruch gezeigt, die Annahme wiederlegt und damit
+der Satz bewiesen.
+\end{proof}
+
+%
+% Linear-Quadratische optimale Steuerungsprobleme
+%
+\subsection{Linear-Quadratische optimale Steuerungsprobleme
+\label{buch:hamiltonjacobi:oc:subsection:quadratisch}}
+Ein spezielle Fall, in dem die Rechnungen vollständig durchführbar sind,
+ist das {\em linear-quaratische optimale Steuerungsproblem}.
+\index{linear-quadratisches optimales Steuerungsproblem}%
+
+\begin{aufgabe}
+\label{buch:hamiltonjacobi:oc:aufgabe:lqc}
+Das System mit der linearen Systemgleichung
+\begin{equation}
+\dot{x}
+=
+A(t)x
++
+B(t)u
+\end{equation}
+und der Anfangsbedinung $x(t_0)=x_0$ soll so gesteuert werden,
+dass das quadratische Funktional
+\begin{equation}
+J(u)
+=
+\frac12 x(t_1)^t S_1 x(t_1)
++
+\frac12
+\int_{t_0}^{t_1}
+x(t)^t Q(t) x(t)
++
+u(t)^t R(t) u(t)
+\,dt
+\end{equation}
+minimal wird.
+\end{aufgabe}
+Wir lösen das Problem hier nur für den Fall, dass die Matrizen $A$, $B$,
+$Q$ und $R$ nicht von der Zeit abhängen.
+In diesem Fall ist die Lagrange-Funktion
+\[
+L(x,u)
+=
+\frac12 x^t Qx + \frac12 u^t Ru
+\]
+dieses Funktionals ist von der Zeit unabhängig,
+ebenso die Systemgleichung $f(x,u)=Ax+bu$ wir haben also tatsächlich ein
+optimales Steuerungsproblem der Art, wie wir es studiert haben.
+
+Zur Lösung dieses Problems muss erst die Steuerungs-Hamilton-Funktion
+\[
+H(x,u,p)
+=
+L(x,u) + p\cdot f(u,x)
+=
+\frac12 x^tQx + \frac12 u^tRu + p^tAx + p^tBu
+\]
+bestimmt werden.
+Die kanonischen Differentialgleichungen sind jetzt
+\begin{align*}
+\dot{x}
+&=
+\frac{\partial H}{\partial p}
+=
+Ax
++
+Bu
+\\
+\dot{p}
+&=
+-\frac{\partial H}{\partial x}
+=
+-Qx - p^tA.
+\end{align*}
+Die erste Gleichung ist natürlich keine Überraschung, dies ist die
+Systemgleichung.
+
+Der Randterm $K(x)$ ist ebenfalls quadratisch, es ist
+\[
+K(x) = \frac12 x^t S_1 x,
+\]
+mit der Ableitung
+\begin{equation*}
+\frac{\partial K}{\partial x}
+=
+S_1x,
+\end{equation*}
+wie sie später als Randbedingung
+\[
+p_*(t_1)
+=
+\frac{\partial K}{\partial x}(x_*(t_1))
+=
+S_1x_*(t_1)
+\]
+gebraucht wird.
+
+%
+% Optimale Steuerung für das linear-quadratische Problem
+%
+\subsubsection{Optimale Steuerung für das linear-quadratische Problem}
+Da  Minimumprinzip besagt, dass $u$ jeweils so gewählt werden muss,
+dass $H(x,u,p)$ bei gegebenem $x$ und $p$ das Minimum annimmt.
+Da $H$ quadratisch ist in $u$, muss also nach Weglassen der konstanten
+Terme in $H$ für $u$ das quadratische Minimalproblem
+\[
+f(u)
+=
+\frac12 u^t R u + p^t Bu
+\to
+\min
+\]
+gelöst werden.
+Dies ist möglich, wenn $R$ positiv definit ist.
+Die Ableitung nach $u$ ist
+\[
+0
+=
+\frac{\partial f}{\partial u}
+=
+Ru + B^tp
+\qquad\Rightarrow\qquad
+u
+=
+-
+R^{-1}B^t p.
+\]
+Damit kann $u$ aus den Differentialgleichungen eliminiert werden, 
+es bleiben die Gleichungen
+\begin{equation}
+\left.
+\begin{aligned}
+\dot{x}
+&=
+Ax-BR^{-1}B^t p
+\\
+\dot{p}
+&=
+-Qx -p^tA
+\end{aligned}
+\quad
+\right\}
+\qquad\Rightarrow\qquad
+\frac{d}{dt}
+\begin{pmatrix}
+x\\
+p
+\end{pmatrix}
+=
+\begin{pmatrix}
+ A & -BR^{-1}B^t \\
+-Q & -A^t
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+p
+\end{pmatrix}.
+\label{buch:hamiltonjacobi:oc:eqn:blockkanonisch}
+\end{equation}
+
+\begin{definition}[Hamilton-Matrix]
+Die Matrix
+\[
+\mathscr{H}
+=
+\begin{pmatrix}
+ A & -BR^{-1}B^t \\
+-Q & -A^t
+\end{pmatrix}
+\]
+heisst die {\em Hamilton-Matrix} für das linear-quadratische
+Problem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}.
+\end{definition}
+
+%
+% Die Steuerungskosten
+%
+\subsubsection{Die Steuerungskosten}
+Sei $x_*(t)$, $p_*(t)$ und $u_*(t)$ eine Lösung des Steuerungsproblems.
+Wir möchten den optimalen Wert des Kostenfunktionals $J(u_*)$ berechnen.
+Dazu berechnen wir die Ableitung
+\begin{align*}
+\frac12
+\frac{d}{dt}(p_*(t)^t x_*(t))
+&=
+\dot{p}_*(t)^t x_*(t) + p_*(t)^t \dot{x}_*(t)
+\intertext{mit Hilfe der kanonischen Differentialgleichungen}
+&=
+\frac12
+(-Qx_*(t)-A^tp_*(t))^t x_*(t)
++
+\frac12
+p_*(t)^t (Ax_*(t)-BR^{-1}B^tp_*(t))
+\\
+&=
+-
+\frac12
+x_*(t)^tQx_*(t)
+-
+\frac12
+p_*(t)^t BR^{-1}B^t p_*(t)
+\\
+&=
+-
+\frac12
+x_*(t)^tQx_*(t)
+-
+\frac12
+\underbrace{p_*(t)^t BR^{-1}}_{\displaystyle=u_*(t)}
+R
+\underbrace{R^{-1}B^t p_*(t)}_{\displaystyle=u_*(t)^t}
+\\
+&=
+-
+\frac12
+x_*(t)^tQx_*(t)
+-
+\frac12
+u_*(t)^t Ru_*(t).
+\end{align*}
+Durch Integrieren wird die rechte Seite zum Integral im Funktional
+$J(u_*)$:
+\begin{align*}
+\biggl[
+\frac12 p_*(t)^t x_*(t)
+\biggr]_{t_0}^{t_1}
+&=
+-\int_{t_0}^{t_1} \frac12 x_*(t)^t Qx_*(t) + \frac12 u_*(t)^t Ru_*(t)\,dt
+\end{align*}
+oder
+\begin{align*}
+\frac12 p_*(t_1)^tx_*(t_1)
++
+\int_{t_0}^{t_1} \frac12 x_*(t)^t Qx_*(t) + \frac12 u_*(t)^t Ru_*(t)\,dt
+&=
+\frac12 p_*(t_0)^t x_*(t_0).
+\intertext{Die Randbedingung $p_*(t_1)=S_1x_*(t_1)$ kann ersetzt werden
+und ergibt}
+\frac12
+(S_1x_*(t_1))^t
+x_*(t_1)
++
+\int_{t_0}^{t_1} \frac12 x_*(t)^t Qx_*(t) + \frac12 u_*(t)^t Ru_*(t)\,dt
+&=
+J(u_*)
+=
+\frac12 p_*(t_0)^t x_*(t_0).
+\end{align*}
+
+\begin{satz}
+\label{buch:hamiltonjacobi:oc:satz:optimale-kosten}
+Das Kostenfunktional hat den optimalen Wert
+\[
+J(u_*)
+=
+\frac12 p_*(t_0)^t x_*(t_0).
+\]
+\end{satz}
+
+
+%
+% Randbedingungen
+%
+\subsubsection{Randbedingungen}
+Die Anfangsbedingung für $x$ ist $x(t_0)=x_0$, die Randbedingung bei
+$t_1$ für $p$ ist mit $p(t_1)=S_1x(t_1)$.
+Es ist nicht klar, dass eine solche Lösung tatsächlich existiert.
+Da die Matrizen $A$, $B$, $R$ und $Q$ konstant sind, kann die
+Matrixdifferentialgleichung~\eqref{buch:hamiltonjacobi:oc:eqn:blockkanonisch}
+mit Hilfe der Matrixexponentialfunktion gelöst werden.
+Tatsächlich ist
+\begin{equation}
+\begin{pmatrix}
+x(t)\\
+p(t)
+\end{pmatrix}
+=
+e^{\mathscr{H}t}
+\begin{pmatrix}
+x_0\\
+p_(0)
+\end{pmatrix}.
+\label{buch:hamiltonjacobi:oc:eqn:kansol}
+\end{equation}
+Am Ende des Zeitintervalls muss die Randbedingung
+\[
+p(t_1) = S_1x(t_1)
+\qquad\Leftrightarrow\qquad
+Sx(t_1)
+-
+Ip(t_1)
+=
+0
+\]
+erfüllt sein.
+Dies kann in Matrixform als
+\begin{equation}
+\begin{pmatrix}
+S & -I
+\end{pmatrix}
+\begin{pmatrix}
+x(t_1)\\
+p(t_1)
+\end{pmatrix}
+=
+0
+\qquad\Rightarrow\qquad
+\begin{pmatrix}
+S & -I
+\end{pmatrix}
+e^{\mathscr{H}t_1}
+\begin{pmatrix}
+x_0\\
+p(0)
+\end{pmatrix}
+=
+0
+\label{buch:hamiltonjacobi:oc:p0cond}
+\end{equation}
+geschrieben werden.
+Dies ist ein lineares Gleichungssystem zur Bestimmung von $p(0)$.
+Um es in die Standardform zu bringen, schreiben wir die $2n\times 2n$-Matrix
+$e^{\mathscr{H}t_1}$ als Blockmatrix mit $n\times n$-Blöcken in der Form
+\[
+e^{\mathscr{H}t}
+=
+\Phi(t)
+=
+\begin{pmatrix}
+\Phi_{11}(t) &
+\Phi_{12}(t) \\
+\Phi_{21}(t) &
+\Phi_{22}(t) 
+\end{pmatrix}.
+\]
+Einsetzen in \eqref{buch:hamiltonjacobi:oc:p0cond} ergibt
+\[
+\begin{pmatrix}
+S & -I
+\end{pmatrix}
+e^{\mathscr{H}t_1}
+=
+\begin{pmatrix}
+S\Phi_{11}(t_1)
+-\Phi_{21}(t_1)
+&
+S\Phi_{12}(t_1)
+-\Phi_{22}(t_1)
+\end{pmatrix}.
+\]
+Die Gleichung für $p(0)$ wird damit
+\[
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t)_1)x_0
++
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))p(0)
+=
+0
+\]
+oder
+\[
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))
+p(0)
+=
+-
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t_1))
+x_0
+\]
+Sie hat sicher eine Lösung, wenn der Faktor $S\Phi_{12}(t_1)-\Phi_{22}(t_1)$
+regulär ist, in diesem Fall ist
+\[
+p(0)
+=
+-
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))^{-1}
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t_1))
+x_0.
+\]
+Das Problem ist also leicht lösbar, wenn die Matrix
+\begin{equation}
+M
+=
+(S\Phi_{12}(t_1)
+-\Phi_{22}(t_1))^{-1}
+(S\Phi_{11}(t_1)
+-\Phi_{21}(t_1))
+\label{buch:hamiltonjacobi:oc:eqn:Mmatrix}
+\end{equation}
+wohldefiniert ist.
+Es stellt sich heraus, dass dies unter den gegebenen Voraussetzungen
+immer der Fall ist.
+
+\begin{satz}
+Falls $S_1$ und $Q$ positiv semidefinit sind und $R$ positiv definit,
+dann ist die Matrix $M$ von
+\eqref{buch:hamiltonjacobi:oc:eqn:Mmatrix}
+wohldefiniert.
+\end{satz}
+
+\begin{proof}
+XXX TODO
+\end{proof}
+
+Die Berechnung des Kostenfunktionals in
+Satz~\ref{buch:hamiltonjacobi:oc:satz:optimale-kosten}
+hat die Anfangsbedingung $p_*(0)$ benötigt, die jetzt mit der
+Matrix $M$ berechnen kann.
+Der Wert kann jetzt mit
+\[
+J(u_*)
+=
+\frac12 p_*(t_0)^t x_0
+=
+\frac12 (Mx_0)^t x_0
+=
+\frac12 x_0^t Mx_0
+\]
+als quadratische Funktion der Anfangsbedingung $x_0$ ausgedrückt werden.
+
+
+%Da eine solche Beziehung für jeden denkbaren Endzeitpunkt $t$
+%gelten muss, wird jetzt eine Matrix $S(t)$ gesucht derart,
+%dass $p(t)=S(t)x(t)$ eine Lösung ist.
+%Durch Einsetzen in die Differentialgleichung folgt
+%\begin{align}
+%\dot{x} &= (A - BR^{-1}B^t S)x
+%\label{buch:hamiltonjacobi:oc:lqc:xdot}
+%\\
+%\dot{S}x+S\dot{x} &= -(Q+A^tS)x.
+%\label{buch:hamiltonjacobi:oc:lqc:Sdot}
+%\end{align}
+%Durch Einsetzen von $\dot{x}$ aus der ersten Differentialgleichung
+%in die zweite entsteht die Gleichung
+%\[
+%\dot{S}x
+%=
+%(
+%-Q-A^tS  - SA+BR^{-1}B S
+%)
+%x.
+%\]
+%Da der Vektor $x$ durch Veränderung der Anfangsbedingung $x_0$ beliebige
+%Werte annehmen kann, muss die Matrix $S(t)$ die Matrixdifferentialgleichung
+%\begin{equation}
+%\dot{S}
+%=
+%-SA -A^tS+SBR^{-1}B^tS-Q
+%\label{buch:hamiltonjacobi:oc:eqn:riccati}
+%\end{equation}
+%mit der Randbedingung $S(t_1)=S_1$ erfüllen.
+%Die Differentialgleichung
+%\eqref{buch:hamiltonjacobi:oc:eqn:riccati}
+%heisst die {\em Riccati-Differentialgleichung}.
+%\index{Riccati-Differentialgleichung}%
+%Sie kann im Allgemeinen nicht in geschlossener Form gelöst werden.
+%Für konstante Matrizen ist eine Darstellung der Lösung mit Hilfe
+%der Matrixexponentialfunktion möglich.
+%
+%Sobald $S(t)$ bestimmt ist, kann aus
+%\eqref{buch:hamiltonjacobi:oc:lqc:xdot}
+%durch durch Lösen der Differentialgleichung 
+%\begin{align*}
+%\dot{x} = (A-BR^{-1}B^tS(t)) x
+%\end{align*}
+%auch $x(t)$ bestimmt werden.
+%Daraus ergeben sich schliesslich
+%\[
+%p(t)
+%=
+%S(t)x(t)
+%\qquad
+%\text{und schliesslich}
+%\qquad
+%u(t)
+%=
+%-R^{-1}B^tp(t)=-R^{-1}B^tS(t)x(t).
+%\]
+%Damit ist das optimale
+%Steuerungsproblem~\ref{buch:hamiltonjacobi:oc:aufgabe:lqc}
+%vollständig gelöst.
+
+\begin{beispiel}
+\label{buch:hamiltonjacobi:oc:bsp:eindim}
+\input{chapters/080-hamiltonjacobi/fig/eindim.tex}
+Wir betrachten das eindimensionale optimale Steuerungsproblem mit
+der Systemgleichung
+\[
+\dot x
+=
+ax + bu,
+\qquad
+x(0)=x_0
+\]
+und dem Funktional
+\[
+J(u)
+=
+\frac12 s_1x(t_1)^2
++
+\frac12
+\int_{t_0}^{t_1}
+qx(t)^2 + ru(t)^2
+\,dt.
+\]
+Die Hamilton-Matrix ist
+\[
+\mathscr{H}
+=
+\begin{pmatrix}
+ a& -b^2/r \\
+-q& -a
+\end{pmatrix}
+\]
+mit dem charakteristischen Polynom
+\[
+\det (\mathscr{H}-\lambda I)
+=
+-(a-\lambda)(a+\lambda)-qb^2/r
+=
+-(a^2+b^2q/r) + \lambda^2 
+\]
+mit den Nullstellen
+\[
+\lambda_\pm
+=
+\pm \sqrt{a^2 +b^2q/r}.
+\]
+%Nach der oben erarbeiteten Lösung muss $r>0$ sein und es muss
+%die Riccati-Differential\-gleichung
+%\[
+%\dot{s}
+%=
+%-q-as -sa + \frac{b^2}rs
+%=
+%-q-2as+\frac{b^2}rs^2
+%\qquad\text{mit Randbedingung}\qquad
+%s(t_1)=s_1
+%\]
+%gelöst werden.
+
+Abbildung~\ref{buch:hamiltonjacobi:oc:bsp:eindim} zeigt, wie die Parameter
+$q$, $r$ und $s_1$ die Konvergenzgeschwindigkeit der Steuerung beeinflussen.
+\end{beispiel}

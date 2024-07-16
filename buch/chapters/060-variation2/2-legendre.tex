@@ -1,5 +1,5 @@
 %
-% 1-legrendre.tex
+% 2-legendre.tex
 %
 % (c) 2024 Prof Dr Andreas Müller
 %
@@ -12,7 +12,7 @@ als auch $R(x)$ auf dem ganzen Intervall positiv sind.
 In diesem Abschnitt soll untersucht werden, inwieweit die
 Umkehrung auch gilt.
 
-\begin{satz}[Legendre-Bedingung]
+\begin{satz}[Legendre]
 \label{buch:variation2:legendre:satz:legendre}
 Dafür, dass $\delta^2I(y)\ge 0$ für jede Funktion $\eta(x)$ gilt, ist
 notwendig, dass
@@ -25,6 +25,32 @@ R(x)
 \]
 im ganzen Intervall $[x_0,x_1]$ ist.
 \end{satz}
+
+\begin{definition}[Legendre-Bedingung]
+Man sagt, eine Lagrange-Funktion $F(x,y,y')$ erfüllt die
+{\em Legendre-Bedingung}
+\index{Legendre-Bedingung}%
+für eine Funktion $y(x)$, wenn 
+\[
+\frac{\partial^2 F}{\partial y^{\prime 2}}(x,y(x),y'(x)) \ge 0.
+\]
+$F$ erfüllt sogar die {\em starke Legendre-Bedingung}, wenn
+\[
+\frac{\partial^2 F}{\partial y^{\prime 2}}(x,y(x),y'(x)) > 0
+\]
+gilt.
+\end{definition}
+
+Der Satz~\ref{buch:variation2:legendre:satz:legendre} besagt also,
+dass dafür, dass eine Lösung $y(x)$ der
+Euler-Lagrange-Diffe\-ren\-tial\-gleichung
+ein lokales Minimum des Funktionals ist, die Lagrange-Funktion
+die Legendre-Bedingung für die Funktion $y(x)$ erfüllt.
+Da sie auch $R(x)=0$ erlaubt, kann man nicht erwarten, dass sie auch
+hinreichend ist.
+Die später in Abschnitt~\ref{buch:variation2:section:jacobi} gezeigt wird,
+verlangt das hinreichende Jacobi-Kriterium, dass sogar die starke
+Lagrange-Bedingung erfüllt ist.
 
 \begin{proof}
 \input{chapters/060-variation2/fig/legendre.tex}
@@ -183,3 +209,37 @@ mit dem Flächeninhalt $2d$.
 Daher ist der Wert des Integrals $2d/2=d$.
 \end{proof}
 
+\begin{beispiel}
+\label{buch:variation2:legendre:bsp:ebene}
+Das Variationsproblem mit der Legendre-Funktion
+$L(x,y,y')=\sqrt{1+y^{\prime 2}}$ findet kürzeste Verbindungen in
+der Ebene.
+Zur Überprüfung der Legendre-Bedingung muss die zweite Ableitung von
+$L$ nach $y'$ berechnet werden.
+Die erste Ableitung ist
+\begin{align}
+\frac{\partial L}{\partial y'}
+&=
+\frac{y'}{\sqrt{1+y^{\prime 2}}}
+\notag
+\intertext{und die zweite mit der Quotientenregel}
+\frac{\partial^2 L}{\partial y^{\prime 2}}
+&=
+\frac{1\cdot \sqrt{1+y^{\prime 2}}}{1+y^{\prime 2}}
+-
+\frac{y'\cdot y'}{(1+y^{\prime 2})^{\frac32}}
+=
+\frac{
+(1+y^{\prime 2})  - y^{\prime 2}
+}{
+(1+y^{\prime 2})^{\frac32}
+}
+=
+\frac{1}{
+(1+y^{\prime 2})^{\frac32}
+}
+> 0.
+\label{buch:variation2:legendre:bsp:ebene:R}
+\end{align}
+Die starke Legrendre-Bedingung ist also immer erfüllt.
+\end{beispiel}

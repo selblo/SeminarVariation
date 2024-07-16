@@ -1,0 +1,36 @@
+%
+% teil2.tex -- Beispiel-File für teil2 
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Mathe
+\label{leo:section:mathe}}
+\rhead{Mathe}
+\todo{Optimale Steuerung ausführen}
+Das Problem:
+\begin{itemize}
+	\item $\mathbf{x(t)}$ und $\mathbf{u(t)}$ nicht unabhängig!
+	\item Die DGL $\dot{x} = f\left(x,u\right)$ müsste zuerst gelöst werden, jedoch ist der Steuerungsparameter in der DGL enthalten.
+\end{itemize}
+\vspace{20pt}
+Die Lösung:
+\begin{itemize}
+	\item Die DGL $\mathbf{\dot{x}} = f\left(\mathbf{x},\mathbf{u}\right)$ als Nebenbedingung betrachten und in das Problem einbauen.
+	\item Wie: Lagrange-Multiplikator-Funktion $p(t)$
+\end{itemize}
+\vspace{10pt}
+Das führt zum neuen Funktional:
+\[F\left(\mathbf{x},\mathbf{u}, p\right) = L\left(\mathbf{x},\mathbf{u}\right) + p \cdot \left(f\left(\mathbf{x},\mathbf{u}\right) - \mathbf{\dot{x}}\right)\]
+
+
+\subsubsection{Steuerungs-Hamiltonfunktion}
+Steuerungs-Hamiltonfunktion \( H(\mathbf{x},\mathbf{u}, p) = p \cdot f(\mathbf{x},\mathbf{u}) + L(\mathbf{x},\mathbf{u}) \) lösst die Bewegungsgleichungen für $\mathbf{x}$ und $p$.
+
+
+\subsubsection{Minimum-Prinzip von Pontrjagyn}
+Minimum-Prinzip von Pontrjagyn kann die Steuerungsvariable $u$ eindeutig bestimmen.
+
+

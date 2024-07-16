@@ -1,0 +1,32 @@
+/*
+ * wurf.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+T: integrate(a1, t);
+X: integrate(sqrt(2*m*a2), x);
+Y: integrate(sqrt(2*m*(a1-a2-m*g*y)), y);
+S: T + X + Y;
+
+ratsimp(
+diff(S,t)
+-
+(1/(2*m)) * (diff(S,x)^2 + diff(S,y)^2)
+- m*g*y
+);
+
+
+b1: ratsimp(diff(S, a1));
+b2: ratsimp(diff(S, a2));
+ratsimp(diff(S, x));
+ratsimp(diff(S, y));
+
+A: matrix( [
+	diff(diff(S, a1), x),
+	diff(diff(S, a2), x)
+],
+[
+	diff(diff(S, a1), y),
+	diff(diff(S, a2), y)
+]);
+ratsimp(det(A));

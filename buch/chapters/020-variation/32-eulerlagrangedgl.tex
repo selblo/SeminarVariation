@@ -32,6 +32,10 @@ y(x_1) + \varepsilon \eta(x_1) &= y_1
 gilt.
 Dies ist nur möglich, wenn $\eta(x_0)=\eta(x_1)=0$ ist.
 
+%
+% Die Richtungsableitung des Funktionals
+%
+\subsubsection{Die Richtungsableitung des Funktionals}
 Wir berechnen jetzt die Ableitung der Funktion
 $\varepsilon\mapsto I(y+\varepsilon\eta )$ an der Stelle $\varepsilon=0$.
 Da die Intervallgrenzen nicht von $\varepsilon$ abhängen, können wir
@@ -96,7 +100,7 @@ Wir integrieren den zweiten Term partiell
 \end{align*}
 Da $\eta(x_0)=\eta(x_1)=0$ verschwindet der erste Term
 auf der rechten Seite, es bleibt
-\[
+\begin{equation}
 \frac{d}{d\varepsilon}
 I(y+\varepsilon\eta)
 \bigg|_{\varepsilon=0}
@@ -112,7 +116,8 @@ I(y+\varepsilon\eta)
 \biggr)
 \eta(x)
 \,dx.
-\]
+\label{buch:variation:eulerlagrange:eqn:ableitung}
+\end{equation}
 Dies kann auch als Skalarprodukt
 \[
 \biggl\langle 
@@ -129,8 +134,15 @@ Dies kann auch als Skalarprodukt
 0
 \]
 geschrieben werden.
-Da dies für jede differenzierbare Funktion $\eta$ mit Randwerten
-$\eta(x_0)=\eta(x_1)$ gelten muss, folgt nach dem
+
+%
+% Die Differentialgleichung
+%
+\subsubsection{Die Differentialgleichung}
+Da
+\eqref{buch:variation:eulerlagrange:eqn:ableitung}
+für jede differenzierbare Funktion $\eta$ mit Randwerten
+$\eta(x_0)=\eta(x_1)$ verschwinden muss, folgt nach dem
 Fundamentallemma~\ref{buch:variation:fundamentallemma:satz:fundamentallemma},
 der folgende Satz. 
 
@@ -239,4 +251,93 @@ y(x)
 \]
 Kürzeste Verbindungen in der Ebene sind daher Geraden.
 \end{beispiel}
+
+%
+% Die Beltrami-Identität
+%
+\subsubsection{Die Beltrami-Identität}
+\index{Beltrami-Identität}%
+Falls die Lagrange-Funktion nicht explizit von $x$ abhängt, lässt sich
+die Euler-Lagrange-Differentialgleichung in die folgende besonders
+nützliche Form bringen.
+
+\begin{satz}[Beltrami-Identität]
+\label{buch:variation:eulerlagrange:satz:beltrami}
+Ist $L(y,y')$ eine Lagrange-Funktion, die nicht von $x$ abhängt, und
+$y(x)$ eine Lösung der Euler-Lagrange-Differentialgleichung, dann ist
+\begin{equation}
+H(y(x),y'(x)
+=
+L(y(x),y'(x))
+-
+y'(x)\cdot \frac{\partial L}{\partial y'}(y(x),y'(x))
+=
+\text{const}.
+\label{buch:variation:eulerlagrange:eqn:beltrami}
+\end{equation}
+\end{satz}
+
+\begin{proof}
+Wir müssen die Ableitungen nach $x$ der Grösse $H(y(x),y'(x))$ 
+berechnen:
+\begin{align*}
+\frac{d}{dx}H(y(x),y'(x))
+&=
+\frac{d}{dx}
+\biggl(
+L(y(x),y'(x))
+-
+y'(x)\cdot \frac{\partial L}{\partial y'}(y(x),y'(x))
+\biggr)
+\\
+&=
+\frac{d}{dx}L(y(x),y'(x))
+-
+\frac{d}{dx}\biggl(
+y'(x)\cdot \frac{\partial L}{\partial y'}(y(x),y'(x))
+\biggr)
+\\
+&=
+\biggl(
+y'(x)\cdot\frac{\partial L}{\partial y}(y(x),y'(x))
++
+y''(x)\cdot\frac{\partial L}{\partial y'}(y(x),y'(x))
+\biggr)
+\\
+&\qquad
+-
+\biggl(
+y''(x)\cdot \frac{\partial L}{\partial y'}(y(x),y'(x))
++
+y'(x)
+\cdot
+\frac{d}{dt}\frac{\partial L}{\partial y'}(y(x),y'(x))
+\biggr)
+\intertext{Darin heben sich die Terme mit $y''(x)$ weg und in den
+verbleibenden Termen kann der gemeinsame Faktor $y'(x)$  ausgeklammert
+werden, was auf}
+&=
+y'(x)\cdot\biggl(
+\frac{\partial L}{\partial y}(y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial L}{\partial y'}(y(x),y'(x))
+\biggr)
+\intertext{führt.
+Da $y(x)$ eine Lösung der Euler-Lagrange-Differentialgleichung
+ist, verschwindet die Klammer auf der rechten Seite und es folgt}
+\frac{d}{dx}H(y(x),y'(x))
+&=
+0.
+\end{align*}
+Somit ist $H(y(x),y'(x))$ konstant.
+\end{proof}
+
+Die Beltrami-Identität ist oft nützlich, weil Sie die
+Euler-Lagrange-Differentialgleichung als Differentialgleichung zweiter
+Ordnung auf eine Differentialgleichung erster Ordnung reduziert.
+Mit der Reduktion der Ordnung geht eine aus den Randbedingungen zu
+bestimmende Konstante einher.
+
+
 
