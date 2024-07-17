@@ -1,0 +1,39 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Oberflächenwellen im seichten Gewässer
+\label{luke:section:teil1}}
+\rhead{Problemstellung}
+
+Lassen Sie uns zunächst den Fall des Flachwassers mit konstanter Tiefe für die Klarheit der Darstellung betrachten. Wir führen einen realistischen Ansatz für diese Wellen ein und wenden dann mehrere Einschränkungen an, um verschiedene Approximationen abzuleiten, einige davon sind bekannt, andere neu.
+
+\subsection{Wahl eines einfachen Ansatzes}
+
+Für eine lange Welle in flachem Wasser, die sich in potentieller Bewegung auf einem horizontalen undurchlässigen Meeresboden bei \( y = -d \) befindet, wurde schon lange bemerkt, dass das Geschwindigkeitsfeld gut approximiert werden kann, indem man die folgende Entwicklung abschneidet (Lagrange 1781):
+
+\[ u = \check{u} - \frac{1}{2} (y + d)^2 \nabla^2 \check{u} + \frac{1}{24} (y + d)^4 \nabla^4 \check{u} + \ldots \]
+
+Alle Anhänger von Lagrange (z. B. Airy, Boussinesq, Rayleigh und viele andere) verwendeten diese Art von Entwicklungen, um ihre jeweiligen Approximationen abzuleiten (Craik 2004). Übersichten über Flachwasserapproximationen finden sich in Bona et al. (2002, 2004), Kirby (1997), Madsen und Schäffer (1999), Wu (2001), Dougalis & Mitsotakis (2008) und anderen.
+
+Wir betrachten hier einen einfachen Ansatz vom Polynomtyp, das heißt ein Polynom nullter Ordnung in \( y \) für \( \phi \) und für \( u \), und ein Polynom erster Ordnung für \( v \), d. h. wir approximieren Strömungen, die entlang der vertikalen Richtung nahezu gleichmäßig sind. Unser Ansatz lautet daher:
+
+\[ \phi \approx \bar{\phi}(x, t), \quad u \approx \bar{u}(x, t), \quad v \approx (y + d) (\eta + d)^{-1} \tilde{v}(x, t). \]
+
+Solche Ansätze bilden die Grundlage für die meisten Flachwasserapproximationen. Wir müssen auch geeignete Ansätze für die Lagrange-Multiplikatoren \( \mu \) und \( \nu \) einführen. Da \( \mu = u \) und \( \nu = v \) für die exakte Lösung gelten, sind die natürlichen Ansätze für die Multiplikatoren:
+
+\[ \mu \approx \bar{\mu}(x, t), \quad \nu \approx (y + d) (\eta + d)^{-1} \tilde{\nu}(x, t). \]
+
+Mit den Ansätzen (6) und (7) wird die Lagrangedichte (5) zu
+
+\[ L = (\eta_t + \bar{\mu} \cdot \nabla \eta) \bar{\phi} - \frac{1}{2} g \eta^2 + (\eta + d) [\bar{\mu} \cdot \bar{u} - \frac{1}{2} \bar{u}^2 + \frac{1}{3} \tilde{\nu} \tilde{v} - \frac{1}{6} \tilde{v}^2 + \bar{\phi} \nabla \cdot \bar{\mu}]. \]
+
+Durch Verwendung der Greenschen Formel kann das Variationsproblem auch so formuliert werden, dass die Lagrangedichte die folgende einfachere Form annimmt:
+
+\[ L = \bar{\phi} \eta_t - \frac{1}{2} g \eta^2 + (\eta + d) [\bar{\mu} \cdot \bar{u} - \frac{1}{2} \bar{u}^2 + \frac{1}{3} \tilde{\nu} \tilde{v} - \frac{1}{6} \tilde{v}^2 - \bar{\mu} \cdot \nabla \bar{\phi}]. \]
+
+Die beiden Lagrangedichten (8) und (9) unterscheiden sich durch einen Divergenzterm und liefern daher genau dieselben Gleichungen. Je nach den Einschränkungen verwenden wir daher die Lagrangedichte, die zu dem einfacheren Ausdruck führt. Wir untersuchen nun die Gleichungen, die durch dieses Flachwassermodell unter verschiedenen untergeordneten Beziehungen geführt werden.
