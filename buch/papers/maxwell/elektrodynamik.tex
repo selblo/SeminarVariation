@@ -16,7 +16,41 @@ In der Elektrodynamik erlauben wir es, dass
 0
 \]
 für die Funktionen, die wir betrachten, gelten darf.
-Zur Folge dessen berücksichtigen wir nun zeitabhängige skalar- und Vektorfelder.
-Wie sich später herausstellen wird, führt diese Zeitabhängigkeit dazu, dass sich das magnetische und elektrische Feld gegenseitig beeinflussen.
+Das heisst wir berücksichtigen nun zeitabhängige Skalar- und Vektorfelder.
+Bei den statischen Maxwellgleichungen fällt auf, dass das elektrische und magnetische Feld keinerlei Abhängigkeiten voneinander haben.
+Wie sich später herausstellen wird, ändert sich dies, denn die Zeitabhängigkeit führt dazu, dass sich das elektrische und magnetische Feld gegenseitig beeinflussen.
 Daraus folgen einige spannende Tatsachen, auf die wir später noch zu Sprechen kommen.
 Das Ziel dieses Abschnittes ist einen groben Weg zur Lagrange-Funktion aufzuzeigen und danach die daraus entstehenden Gleichungen zu interpretieren.
+Die genaue Herleitung über die Variationsrechnung kann als Aufgabe für den Leser angeschaut werden.
+ 
+Im den folgenden Abschnitten werden wir bekannte Vektorfelder in ihrer Definition anpassen und neue Vektorfelder einführen.
+
+\subsubsection{Elektrisches Feld dynamisch}
+Das elektrische Feld
+\(
+\vec{E}: \mathbb{R}^4 \rightarrow \mathbb{R}^3
+\)
+wird in der Elektrodynamik definiert als
+\begin{equation}
+	\vec{E}(t,x,y,z)
+	=
+	- \nabla\phi(t,x,y,z) - \frac{\partial \vec{A}}{\partial t}(t,x,y,z).
+	\label{maxwell:section:definiton_dynamisch_elektrischesFeld}
+\end{equation}
+Es fällt auf, dass das elektrische Feld, das elektrische Potentialfeld und das magnetische Vektorpotential nun einen vierdimensionalen Inputvektor besitzen, wobei die zusätzliche Dimension die Zeit ist.
+
+\subsubsection{Magnetisches Feld dynamisch}
+Das magnetische Feld
+\(
+\vec{B}: \mathbb{R}^4 \rightarrow \mathbb{R}^3
+\)
+wird in der Elektrodynamik ähnlich definiert wie in der Magnetostatik. Nämlich ist
+\begin{equation}
+	\vec{B}(t,x,y,z)
+	=
+	\nabla \times \vec{A}(t,x,y,z).
+\end{equation}
+Der Unterschied liegt einzig in der zusätzlichen Zeitkomponente im Inputvektor.
+
+
+
