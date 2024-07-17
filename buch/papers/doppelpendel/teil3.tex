@@ -25,12 +25,12 @@ und für den zweiten Massepunkt \(m_2\)
     \dot{x_2} &= \dot{\theta}_2 l_2 \cos(\theta_2) 
     + \dot{\theta}_1 l_1 \cos(\theta_1) \\
     \dot{y_2} &= \dot{\theta}_2 l_2 \sin(\theta_2) 
-    + \dot{\theta}_1 l_1 \sin(\theta_1)  
+    + \dot{\theta}_1 l_1 \sin(\theta_1)
 \end{align}
 
 \begin{figure}
     \centering
-    \includegraphics{pendel_pic.pdf}
+    \includegraphics{images/pendel_pic.pdf}
     \caption{idealisiertes Doppelpendel}
     \label{fig:pendulum}
 \end{figure}
@@ -42,13 +42,13 @@ Dafür stellen wir die Gleichungen der kinetischen und potenziellen Energie auf.
 Wir beginnen mit der Energiegleichung für die Masse \(m_1\)
 \begin{align}
     T_1 &= \frac{1}{2} m_1 
-    \overbrace{( \dot{x}_1^2 + \dot{y}_1^2 )}^{v_1}\\
+    \overbrace{( \dot{x}_1^2 + \dot{y}_1^2 )}^{v_1^2}\\
     V_1 &= g m_1 y_1
 \end{align}
 und ähnlich gilt für die Masse \(m_2\)
 \begin{align}
     T_2 &= \frac{1}{2} m_2 
-    \overbrace{( \dot{x}_2^2 + \dot{y}_2^2 )}^{v_2} \\
+    \overbrace{( \dot{x}_2^2 + \dot{y}_2^2 )}^{v_2^2} \\
     V_2 &= g m_2 y_2
 \end{align}
 wobei \(g\) die Erdbeschleunigungskonstante ist.
@@ -77,7 +77,7 @@ danach schreiben wir das in \(\theta\) um
 Anschliessend setzen wir dies in die Lagrange Funktion ein.
 \begin{align}
     L &= T_{tot} - V_{tot} \\
-    L &=  \frac{1}{2} m_1 \dot{\theta}^2_1 l_1^2 + 
+    L &= \frac{1}{2} m_1 \dot{\theta}^2_1 l_1^2 + 
     \frac{1}{2} m_2 \dot{\theta}^2_2 l_2^2 + \frac{1}{2}
     m_2 \dot{\theta}^2_1 l_1^2 + 
     m_2 \dot{\theta}_1 l_1 \dot{\theta}_2 l_2 
@@ -154,10 +154,25 @@ Umformungen bereits diese Gleichungen.
 \end{align}
 Nun können wir die Gleichung endlich nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\) auflösen.
 \begin{align}
+    \label{eq:bewegungsgleichung1}
     \ddot{\theta}_1 &= -\frac{g}{l_1} \sin(\theta_1) - \frac{m_2}{m_1+m_2} \frac{l_2}{l_1} 
     \left(\ddot{\theta}_2 \cos(\theta_1-\theta_2) + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \right)\\
     \ddot{\theta}_2 &= -\frac{g}{l_2} \sin(\theta_2) - \frac{l_1}{l_2} 
     \left(\ddot{\theta}_1 \cos(\theta_1-\theta_2) - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \right)
+\end{align}
+
+An dieser Stelle können wir unser Ergebnis plausibilisieren indem wir in
+\(\ddot{\theta}_1\) die Länge \(l_2=0\) setzen.
+Physikalisch bedeutet das eine Verkleinerung des zweiten Stabs bis dieser verschwindet und
+das Doppelpendel zu einem einfachen transformiert.
+\begin{align}
+    \lim_{l_2 \to 0} \ddot{\theta}_1 &= -\frac{g}{l_1} \sin(\theta_1)
+\end{align}
+Man sieht wie dabei der rechte Term der Gleichung \eqref{eq:bewegungsgleichung1} vollständig
+wegfällt und übrig bleibt, wie vermutet, die Bewegungsgleichung des einfachen Pendels.
+Parallel gilt das auch für \(\ddot{\theta}_2\) wenn die Länge \(l_1=0\) gesetzt wird.
+\begin{align}
+    \lim_{l_1 \to 0} \ddot{\theta}_2 &= -\frac{g}{l_2} \sin(\theta_2)
 \end{align}
 
 \subsection{Anfangsbedingungen}
@@ -176,5 +191,4 @@ Anhand der numerischen Lösungen lassen sich bereits Simulationen erstellen, da 
 sowiese auf diskrete Werte angewiesen ist macht das keinen Unterschied.
 Mit den Simulationen könnte man beispielsweise das chaotische Verhalten des Pendels bei verschiedenen 
 Anfangsbedingungen genauer analysieren.
-
 

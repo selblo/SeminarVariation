@@ -16,7 +16,7 @@ das Pendel auf den Stab oder Seil ausübt wie in Abbildung \ref{fig:pendulum1}.
 
 \begin{figure}
     \centering
-    \includegraphics{pendel_pic1.pdf}
+    \includegraphics{images/pendel_pic1.pdf}
     \caption{mathematisches Pendel}
     \label{fig:pendulum1}
 \end{figure}
@@ -25,17 +25,17 @@ Wir wissen also gemäss zweitem Newtonschen Gesetz gilt
 \begin{align}
     F = ma
     \shortintertext{wenden wir dies auf unser Problem an erhalten wir}
-    F_r = m l \ddot{\theta}.
+    F_t = m l \ddot{\theta}.
 \end{align}
 Nun betrachten wir das Ganze aus geometrischer Sicht und stellen fest, dass
 \begin{align}
-    F_r = F_g \sin(\theta)
+    F_t = F_g \sin(\theta)
     \shortintertext{umformuliert ergibt das}
-    F_r = -m g \sin(\theta)
+    F_t = -m g \sin(\theta)
     \shortintertext{setzen wir alles gleich, dann erhalten wir}
-    m l \ddot{\theta} = -m g \sin{\theta}
+    m l \ddot{\theta} = -m g \sin(\theta)
     \shortintertext{aufgelöst nach der Beschleunigung}
-    \ddot{\theta} = \frac{-g}{l} \sin{\theta}
+    \ddot{\theta} = -\frac{g}{l} \sin(\theta)
 \end{align}
 
 \subsection{Vorteile der Lagrange Methode}
@@ -44,9 +44,9 @@ aber wir geben uns hiermit schon zufrieden.
 Wir stellen fest, wenn wenig Kräfte wirken und alle bekannt sind,
 dann lässt sich die Bewegungsgleichung gut mit der Newtonschen Methode herleiten.
 Verwendet man diese Herangehensweise beim Doppelpendel wie in Abbildung \ref{fig:pendulum}
-scheint das markant schwieriger, aufgrund der zusätzlichen Zwangskräfte.
+scheint das markant schwieriger, aufgrund der zusätzlichen Zwangskräfte durch die zweite Masse.
 Sicherlich ist es auf diese Weise möglich, doch mit der Lagrange Mechanik setzt man mit der Energie an.
 Genau in Fällen wie diesen und noch komplexeren Systemen, wo sich die Krafteinwirkungen nicht einfach
 bestimmen lassen, stellt sich die Lagrange Mechanik als hilfreicher heraus.
 Dies hat sich auch in der Praxis als nützlicher erwiesen, wie beispielsweise 
-in den Gebieten der Quantenmechanik. (Zitat)
+in den Gebieten der Quantenmechanik.%(Zitat)
