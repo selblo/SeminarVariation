@@ -1,0 +1,113 @@
+%
+% kreis.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+\def\dx{4.5}
+\def\dy{4.5}
+\input{kreispfad.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\clip (-0.4,-3.60) rectangle (12.2,6.5);
+
+\begin{scope}
+	\pgfmathparse{2.12}
+	\xdef\h{\pgfmathresult}
+	\clip (0,{-0.8*\dy}) rectangle ({2.6*\dx},{1.4*\dy});
+	\foreach \k in {5,...,24}{
+		\fill[color=darkgreen!\k]
+			(0,{(-0.8+\h*(\k-5)/20)*\dy})
+			rectangle
+			({2.65*\dx},{(-0.8+\h*(\k-4)/20)*\dy+0.1});
+	}
+\end{scope}
+
+\faechera
+\faecherb
+\faecherc
+\faecherd
+\faechere
+\faecherf
+\faecherg
+\faecherh
+\faecheri
+\faecherj
+\faecherk
+\faecherl
+\faecherm
+\faechern
+\faechero
+\faecherp
+\faecherq
+
+\draw[color=blue!40] \pfada;
+\draw[color=blue!40] \pfadb;
+\draw[color=blue!40] \pfadc;
+\draw[color=blue!40] \pfadd;
+\draw[color=blue!40] \pfade;
+\draw[color=blue!40] \pfadf;
+\draw[color=blue!40] \pfadg;
+\draw[color=blue!40] \pfadh;
+\draw[color=blue!40] \pfadi;
+\draw[color=blue!40] \pfadj;
+\draw[color=blue!40] \pfadk;
+\draw[color=blue!40] \pfadl;
+\draw[color=blue!40] \pfadm;
+\draw[color=blue!40] \pfadn;
+\draw[color=blue!40] \pfado;
+\draw[color=blue!40] \pfadp;
+\draw[color=blue!40] \pfadq;
+
+\draw[color=darkred!40,line width=1.2pt] \kreisfaechera;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherb;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherc;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherd;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaechere;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherf;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherg;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherh;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecheri;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherj;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherk;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherl;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherm;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaechern;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaechero;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherp;
+\draw[color=darkred!40,line width=1.2pt] \kreisfaecherq;
+
+\draw[color=darkred,line width=1.4pt] \kreiseins;
+\draw[color=darkred,line width=1.4pt] \kreiszwei;
+
+\draw[->,color=black] (-0.05,0) -- ({2.65*\dx},0) coordinate[label={$x$}];
+\draw[->,color=black] (0,{-0.8*\dy}) -- (0,{1.40*\dy}) coordinate[label={right:$y$}];
+
+\draw ({1*\dx},{-0.05}) -- ({1*\dx},{0.05});
+\node at ({1*\dx},{-0.05}) [below] {$1\mathstrut$};
+
+\draw ({2*\dx},{-0.05}) -- ({2*\dx},{0.05});
+\node at ({2*\dx},{-0.05}) [below] {$2\mathstrut$};
+
+\draw (-0.05,{1*\dy}) -- (0.05,{1*\dy});
+\node at (-0.05,{1*\dy}) [left] {$1\mathstrut$};
+
+\node at (-0.05,0) [left] {$0\mathstrut$};
+
+\node[color=darkred] at ({1.03*\dx},{-0.6*\dy}) {$J=1$};
+\node[color=darkred] at ({1.75*\dx},{0.7*\dy}) {$J=2$};
+\node[color=darkgreen] at ({2.5*\dx},{1.25*\dy}) [left] {$n(y)\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -253,7 +253,7 @@ Die Variation ist daher}
 \biggl(
 \frac{\partial L}{\partial y_r}-\frac{d}{dx}\frac{\partial L}{\partial y'_r}
 \biggr)\eta_r(x)
-\,dx
+\,dx.
 \label{buch:variation:mehrere:eqn:summe}
 \end{align}
 Da die Funktionen $\eta_i(x)$ alle bis auf eine $=0$ gewählt werden können,
@@ -267,19 +267,25 @@ Das Integral
 \[
 \int_a^b L(x,y_1(x),y_1'(x),\dots,y_r(x),y'_r(x))\,dx
 \]
-mit einer Lagrange-Funktion für $r$-Funktionen 
-hat als stationäre Lösung Funktionen $y_1(x),\dots,y_r(x)$, welche das
-Differentialgiechungssystem
-\[
+mit einer Lagrange-Funktion für $r$ Funktionen $y_1(x),\dots,y_r(x)$
+nimmt einen stationären Wert an für Funktionen %$y_1(x),\dots,y_r(x)$,
+welche das Differentialgiechungssystem
+\begin{equation}
 \frac{\partial L}{\partial y_k}(x,y_1(x),y'_1(x),\dots,y_r(x),y'_r(x))
 -
 \frac{d}{dx}
 \frac{\partial L}{\partial y'_k}(x,y_1(x),y'_1(x),\dots,y_r(x),y'_r(x))
 =
-0
-\]
-mit $k=1,\dots,r$ erfüllen.
+0,
+\label{buch:variation:mehrerefunktionen:eqn:reulerlagrange}
+\end{equation}
+$k=1,\dots,r$ erfüllen.
 \end{satz}
+
+In einen Variationsproblem sind im Allgemeinen geeignete Randbedingungen
+notwendig, die die Lösung des Differentialgleichungssystems
+\eqref{buch:variation:mehrerefunktionen:eqn:reulerlagrange}
+eindeutig festlegen.
 
 %
 % Vektorform der Euler-Lagrange-Differentialgleichung
@@ -349,9 +355,75 @@ Satz~\ref{buch:variation:mehrere:satz:rfunktionen}.
 %
 % Parameterdarstellung von Kurven
 %
-\subsection{Parameterdarstellung von Kurven}
+\subsection{Parameterdarstellung von Kurven
+\label{buch:variation:mehrerefunktionen:subsection:kurven}}
+Ein Kurve im $r$-dimensionalen Raum $\mathbb{R}^r$ ist eine differenzierbare
+Abbildung
+\[
+\gamma
+\colon
+\mathbb{R} \to \mathbb{R}^r
+:
+t \mapsto \gamma(t).
+\]
+Die Koordinaten von $\gamma(t)$ bilden $r$ Funktionen $\gamma_i(t)$
+für $i=1,\dots,r$.
+Die Ableitung nach dem Kurvenparameter $t$ ist der Tangentialvektor
+\[
+\frac{d}{dt}\gamma(t) = \dot{\gamma}(t),
+\]
+er wird mit dem Punkt bezeichnet.
+
+Ein Variationsproblem für eine Kurve basiert auf einer Lagrange-Funktion
+\[
+L
+\colon
+\mathbb{R}\times\mathbb{R}^r\times\mathbb{R}^r
+:
+(t,x,\dot{x})
+\mapsto
+L(t,x,\dot{x}),
+\]
+aus der das Funktional
+\begin{equation}
+I(\gamma)
+=
+\int_{t_0}^{t_1}
+L(t,\gamma(t),\dot{\gamma}(t))
+\,dt
+\label{buch:variation:mehrerefunktionen:eqn:funktionalkurve}
+\end{equation}
+abgeleitet werden kann.
+Dies ist natürlich ein Variationsproblem für die $r$ Komponentenfunktionen
+des Vektors $\gamma(t)$.
+
+Die Euler-Lagrange-Differentialgleichung für das Funktional
+\eqref{buch:variation:mehrerefunktionen:eqn:funktionalkurve}
+ist die $r$-dimensionale Vektordifferentialgleichung
+\begin{equation}
+\frac{\partial L}{\partial x}(t,\gamma(t), \dot{\gamma}(t))
+-
+\frac{d}{dt}
+\frac{\partial L}{\partial \dot{x}}(t,\gamma(t),\dot{\gamma}(t))
+=
+0.
+\label{buch:variation:mehrerefunktionen:eqn:eulerlagrangekurve}
+\end{equation}
+Zusätzlich sind Randbedingungen notwendig, um die Lösung 
+eindeutig festzulegen.
+Lösungen der Differentialgleichung
+\eqref{buch:variation:mehrerefunktionen:eqn:eulerlagrangekurve}
+sind stationäre Punkte des Funktionals
+\eqref{buch:variation:mehrerefunktionen:eqn:funktionalkurve}.
 
 %
-% Das homogene Proble
+% Das homogene Problem
 %
-\subsection{Das homogene Variationsproblem}
+\subsection{Das homogene Variationsproblem
+\label{buch:variation:mehrerefunktionen:subsection:homogen}}
+
+
+
+
+
+

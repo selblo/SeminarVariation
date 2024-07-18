@@ -6,53 +6,34 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
+\section{Oberflächenwellen im seichten Gewässer
 \label{luke:section:teil1}}
 \rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{luke:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Lassen Sie uns zunächst den Fall des Flachwassers mit konstanter Tiefe für die Klarheit der Darstellung betrachten. Wir führen einen realistischen Ansatz für diese Wellen ein und wenden dann mehrere Einschränkungen an, um verschiedene Approximationen abzuleiten, einige davon sind bekannt, andere neu.
 
-\subsection{De finibus bonorum et malorum
-\label{luke:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{luke:equation1}.
+\subsection{Wahl eines einfachen Ansatzes}
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{luke:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{luke:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+Für eine lange Welle in flachem Wasser, die sich in potentieller Bewegung auf einem horizontalen undurchlässigen Meeresboden bei \( y = -d \) befindet, wurde schon lange bemerkt, dass das Geschwindigkeitsfeld gut approximiert werden kann, indem man die folgende Entwicklung abschneidet (Lagrange 1781):
 
+\[ u = \check{u} - \frac{1}{2} (y + d)^2 \nabla^2 \check{u} + \frac{1}{24} (y + d)^4 \nabla^4 \check{u} + \ldots \]
 
+Alle Anhänger von Lagrange (z. B. Airy, Boussinesq, Rayleigh und viele andere) verwendeten diese Art von Entwicklungen, um ihre jeweiligen Approximationen abzuleiten (Craik 2004). Übersichten über Flachwasserapproximationen finden sich in Bona et al. (2002, 2004), Kirby (1997), Madsen und Schäffer (1999), Wu (2001), Dougalis & Mitsotakis (2008) und anderen.
+
+Wir betrachten hier einen einfachen Ansatz vom Polynomtyp, das heißt ein Polynom nullter Ordnung in \( y \) für \( \phi \) und für \( u \), und ein Polynom erster Ordnung für \( v \), d. h. wir approximieren Strömungen, die entlang der vertikalen Richtung nahezu gleichmäßig sind. Unser Ansatz lautet daher:
+
+\[ \phi \approx \bar{\phi}(x, t), \quad u \approx \bar{u}(x, t), \quad v \approx (y + d) (\eta + d)^{-1} \tilde{v}(x, t). \]
+
+Solche Ansätze bilden die Grundlage für die meisten Flachwasserapproximationen. Wir müssen auch geeignete Ansätze für die Lagrange-Multiplikatoren \( \mu \) und \( \nu \) einführen. Da \( \mu = u \) und \( \nu = v \) für die exakte Lösung gelten, sind die natürlichen Ansätze für die Multiplikatoren:
+
+\[ \mu \approx \bar{\mu}(x, t), \quad \nu \approx (y + d) (\eta + d)^{-1} \tilde{\nu}(x, t). \]
+
+Mit den Ansätzen (6) und (7) wird die Lagrangedichte (5) zu
+
+\[ L = (\eta_t + \bar{\mu} \cdot \nabla \eta) \bar{\phi} - \frac{1}{2} g \eta^2 + (\eta + d) [\bar{\mu} \cdot \bar{u} - \frac{1}{2} \bar{u}^2 + \frac{1}{3} \tilde{\nu} \tilde{v} - \frac{1}{6} \tilde{v}^2 + \bar{\phi} \nabla \cdot \bar{\mu}]. \]
+
+Durch Verwendung der Greenschen Formel kann das Variationsproblem auch so formuliert werden, dass die Lagrangedichte die folgende einfachere Form annimmt:
+
+\[ L = \bar{\phi} \eta_t - \frac{1}{2} g \eta^2 + (\eta + d) [\bar{\mu} \cdot \bar{u} - \frac{1}{2} \bar{u}^2 + \frac{1}{3} \tilde{\nu} \tilde{v} - \frac{1}{6} \tilde{v}^2 - \bar{\mu} \cdot \nabla \bar{\phi}]. \]
+
+Die beiden Lagrangedichten (8) und (9) unterscheiden sich durch einen Divergenzterm und liefern daher genau dieselben Gleichungen. Je nach den Einschränkungen verwenden wir daher die Lagrangedichte, die zu dem einfacheren Ausdruck führt. Wir untersuchen nun die Gleichungen, die durch dieses Flachwassermodell unter verschiedenen untergeordneten Beziehungen geführt werden.

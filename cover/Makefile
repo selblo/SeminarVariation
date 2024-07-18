@@ -23,6 +23,8 @@ backcover.jpg:	backcover.png
 
 front.pdf:	front.tex buchcover.pdf
 	pdflatex front.tex
+front.jpg:	front.pdf
+	convert -density 150 front.pdf front.jpg
 
 back.pdf:	back.tex buchcover.pdf
 	pdflatex back.tex

@@ -3,14 +3,356 @@
 %
 % (c) 2023 Prof Dr Andreas Müller
 %
-\section{Der Satz von Noether
+\section{Der Satz von Emmy Noether
 \label{buch:symmetrien:section:noether}}
 \kopfrechts{Der Satz von Noether}
+\input{chapters/100-symmetrien/fig/phi.tex}
+Die Invarianz einer Lagrange-Funktion unter einer differenzierbaren
+Symmetrie hat die überraschende Konsequenz, dass es dazu eine
+Erhaltungsgrösse gibt.
 
-\begin{verbatim}
-- Erhaltungssätze
-- Der Satz von Noether
-- Impuls
-- Drehimpuls
-- Energie
-\end{verbatim}
+\begin{satz}[Emmy Noether]
+\label{buch:symmetrien:noether:satz:noether}
+Sei $L(x,\dot{x})$ eine Lagrange-Funktion, die nicht von der Zeit
+abhängt und $h^s\colon\mathbb{R}^n\to\mathbb{R}^n$ eine differenzierbare
+Symmetrie, unter der $L$ invariant bleibt.
+Dann ist die Grösse 
+\begin{equation}
+I(x,\dot{x})
+=
+\frac{\partial L}{\partial\dot{x}} (x,\dot{x})
+\cdot 
+\frac{d}{ds} h^s(x)\bigg|_{s=0}
+\end{equation}
+eine Erhaltungsgrösse.
+\end{satz}
+
+\begin{proof}
+Sei $t\mapsto x(t)$ eine Lösung der Euler-Lagrange-Differentialgleichung
+zur Lagrange-Funktion $L$.
+Die Funktion $\Phi(s,t)$, definiert durch
+\[
+\Phi(s,t) = h^s(x(t))
+\]
+(Abbildung~\ref{buch:symmetrien:noether:fig:phi}),
+kombiniert die Symmetrietransformation mit der Zeitentwicklung.
+Für jeden Wert von $s$ ist $t\mapsto \Phi(s,t)=h^s(x(t))$ eine 
+Kurve.
+Ihr Geschwindigkeitsvektor ist die Ableitung nach $t$, also
+\[
+\frac{d}{dt} \Phi(s,t)
+=
+\dot{\Phi}(s,t).
+\]
+Da die Lagrange-Funktionen unter der Symmetrietransformation $h^s$ 
+invariant ist, muss die Ableitung von $L(\Phi(s,t), \dot{\Phi}(s,t))$
+von $s$ unabhängig sein.
+Die Ableitung
+\begin{equation}
+\frac{\partial}{\partial s} L(\Phi(s,t), \dot{\Phi}(s,t))
+=
+\frac{\partial L}{\partial x}(\Phi(s,t),\dot{\Phi}(s,t))
+\cdot
+\frac{\partial \Phi}{\partial s}
++
+\frac{\partial L}{\partial \dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\cdot
+\frac{\partial \dot{\Phi}}{\partial s}
+=0
+\label{buch:symmetrioen:noether:eqn:sabl}
+\end{equation}
+muss daher verschwinden.
+
+Ist $x(t)$ eine Lösungskurve der Euler-Lagrange-Differentialgleichung,
+dann ist auch $t\mapsto h^s(x(t)) = \Phi(s,t)$ für jeden Wert von $s$
+eine Lösungskurve der Euler-Lagrange-Differentialgleichung.
+Die Euler-Lagrange-Differentialgleichung ist
+\begin{equation}
+\frac{\partial L}{\partial x}(\Phi(s,t),\dot{\Phi}(s,t))
+=
+\frac{\partial t}{\partial t}
+\frac{\partial L}{\partial \dot{x}}(\Phi(s,t),\dot{\Phi}(s,t)).
+\end{equation}
+Dies kann dazu verwendet werden, den ersten Term auf der rechten
+Seite von \eqref{buch:symmetrioen:noether:eqn:sabl} umzuformen,
+wir erhalten
+\begin{align}
+0
+&=
+\frac{\partial}{\partial t}
+\biggl(
+\frac{\partial L}{\partial \dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\biggr)
+\cdot
+\frac{\partial \Phi}{\partial s}
++
+\frac{\partial L}{\partial\dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\cdot
+\frac{\partial \dot{\Phi}}{\partial s}(s,t)
+\notag
+\intertext{im zweiten Term kann man die Ableitung nach $s$ mit der Ableitung
+nach $t$ vertauschen:}
+&=
+\frac{\partial}{\partial t}
+\biggl(
+\frac{\partial L}{\partial \dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\biggr)
+\cdot
+\frac{\partial \Phi}{\partial s}
++
+\frac{\partial L}{\partial\dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\cdot
+\frac{\partial^2\Phi}{\partial s\,\partial t}(s,t)
+\notag
+\\
+&=
+\frac{\partial}{\partial t}
+\biggl(
+\frac{\partial L}{\partial \dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\biggr)
+\cdot
+\frac{\partial \Phi}{\partial s}
++
+\frac{\partial L}{\partial\dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\cdot
+\frac{\partial}{\partial t}
+\biggl(
+\frac{\partial\Phi}{\partial s}(s,t)
+\biggr).
+\label{buch:symmetrien:noether:eqn:tindep}
+\intertext{Auf der rechten Seite kann man die Kettenregel erkennen,
+sie ist die Ableitung}
+0
+&=
+\frac{d}{dt}\biggl(
+\frac{\partial L}{\partial \dot{x}}(\Phi(s,t),\dot{\Phi}(s,t))
+\cdot
+\frac{\partial\Phi}{\partial s}(s,t)
+\biggr).
+\notag
+\end{align}
+Da die Ableitung verschwindet, ist der Klammerausdruck eine Konstante,
+er hängt also nicht von $s$ und $t$ ab.
+Setzt man $s=0$ folgt, dass
+\[
+\frac{\partial L}{\partial \dot{x}}(x,\dot{x})
+\cdot
+\frac{d}{ds}h^s(x)\bigg|_{s=0}
+=
+I(x,\dot{x})
+\]
+eine Erhaltungsgrösse ist.
+\end{proof}
+
+\begin{beispiel}
+\label{buch:symmetrien:noether:beispiel:homogen}
+Die Lagrange-Funktion $L(x,\dot{x}) = \frac12m\dot{x}^2-mgx_3$ beschreibt
+einen Massepunkt in einem homogenen vertikalen Gravitationsfeld.
+Die Lagrange-Funktion ist unter horizontalen Translationen
+\[
+h^s(x) = x + su\qquad u\perp \vec{e}_3
+\]
+invariant,
+wie in Beispiel~\ref{buch:symmetrien:symmetrie:beispiel:homogen} 
+gezeigt wurde.
+Nach Satz~\ref{buch:symmetrien:noether:satz:noether} ist 
+\[
+I(x,\dot{x})
+=
+\frac{\partial L}{\partial \dot{x}}\cdot \frac{d}{ds} h^s(x)
+\bigg|_{s=0}
+=
+m\dot{x}
+\cdot
+u
+=
+p\cdot u
+\]
+für jeden horizontalten Einheitsvektor.
+Das Skalarprodukt $p\cdot u$ ist die horizontale Komponente des Impulses,
+die horizontalen Komponenten des Impulses sind also erhalten, die
+vertikale aber natürlich nicht.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:symmetrien:noether:beispiel:drehimpuls}
+Sie $L(x) = \frac12m\dot{x}^2 - V(x)$ die Lagrange-Funktion eines Teilchens
+der Masse $m$ in einem rotationssymmetrischen Potential $V(x)$.
+Für jede beliebige Drehmatrix $A$ gilt daher $V(A(x))=V(x)$.
+Die Lagrange-Funktion ist invariant unter Drehungen, wie in Beispiel
+\ref{buch:symmetrien:symmetrie:beispiel:drehung} gezeigt wurde.
+Nach Satz~\ref{buch:symmetrien:noether:satz:noether} gehört zu jeder 
+Drehmatrix eine passende Erhaltungsgrösse.
+
+Um die Erhaltungsgrösse zu finden, betrachten wir zunächst die Drehmatrix
+\[
+D_{z,s}
+=
+\begin{pmatrix}
+\cos s &          - \sin s & 0 \\
+\sin s & \phantom{-}\cos s & 0 \\
+   0   &            0      & 1
+\end{pmatrix}
+\qquad\text{mit}\qquad
+h^s(x)
+=
+D_{z,s}x.
+\]
+Für die Ableitung an der Stelle $s=0$ finden wir
+\[
+\frac{d}{ds} D_{z,s}x
+=
+\begin{pmatrix}
+          -\sin s & -\cos s & 0 \\
+\phantom{-}\cos s & -\sin s & 0 \\
+        0         &    0    & 0
+\end{pmatrix}
+x
+\qquad\Rightarrow\qquad
+\frac{d}{ds} D_{z,s}x
+\bigg|_{s=0}
+=
+\begin{pmatrix}
+ 0 & -1 & 0 \\
+ 1 &  0 & 0 \\
+ 0 &  0 & 0
+\end{pmatrix}
+x
+=
+\begin{pmatrix}
+-x_2\\
+\phantom{-}x_1\\
+0
+\end{pmatrix}.
+\]
+Daraus ergibt sich die Erhaltungsgrösse als
+\[
+\frac{\partial L}{\partial\dot{x}}
+\cdot
+\frac{d}{ds}h^s(x)\bigg|_{s=0}
+=
+m\dot{x}\cdot
+\begin{pmatrix}
+-x_2\\
+\phantom{-}x_1\\
+0
+\end{pmatrix}
+=
+m(x_1\dot{x}_2 - x_2\dot{x}_1).
+\]
+Dies ist die dritte Komponente des Drehimpulses.
+
+Eine allgemeine Drehung um die Achse $u$ kann geschrieben werden also
+\[
+D_s
+=
+\exp s\Omega_u
+\qquad\text{mit}\qquad
+\Omega_u
+=
+\begin{pmatrix}
+\phantom{-}0   &         - u_3 & \phantom{-}u_2\\
+\phantom{-}u_3 &\phantom{-}0   &          - u_1\\
+         - u_2 &\phantom{-}u_1 & \phantom{-}0
+\end{pmatrix}.
+\]
+Die Ableitung von $D_s$ ist
+\[
+\frac{d}{ds} D_s
+=
+\frac{d}{ds} \Omega D_s
+\qquad\Rightarrow\qquad
+\frac{d}{ds}D_s\bigg|_{s=0}
+=
+\Omega_u.
+\]
+Dann folgt für die Erhaltungsgrösse
+von Satz~\ref{buch:symmetrien:noether:satz:noether} 
+\begin{align*}
+I(x,\dot{x})
+&=
+\frac{\partial L}{\partial\dot{x}}
+\cdot
+\frac{d}{ds}D_sx\bigg|_{s=0}
+\\
+&=
+m\dot{x}
+\cdot
+\Omega x
+\\
+&=
+m
+\begin{pmatrix}
+\dot{x}_1\\
+\dot{x}_2\\
+\dot{x}_3
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+\phantom{-}0   &         - u_3 & \phantom{-}u_2\\
+\phantom{-}u_3 &\phantom{-}0   &          - u_1\\
+         - u_2 &\phantom{-}u_1 & \phantom{-}0
+\end{pmatrix}
+\begin{pmatrix}
+x_1\\x_2\\x_3
+\end{pmatrix}
+\\
+&=
+m
+\begin{pmatrix}
+\dot{x}_1\\
+\dot{x}_2\\
+\dot{x}_3
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+          -u_3x_2+u_2x_3\\
+\phantom{-}u_3x_1       -u_1x_3\\
+          -u_2x_1+u_1x_2    
+\end{pmatrix}
+\\
+&=
+m(
+- u_3 \dot{x}_1 x_2
++ u_2 \dot{x}_1 x_3
++ u_3 \dot{x}_2 x_1
+- u_1 \dot{x}_2 x_3
+- u_2 \dot{x}_3 x_1
++ u_1 \dot{x}_3 x_2
+)
+\\
+&=
+m\bigl(
+u_1(x_2\dot{x}_3 - x_3\dot{x}_2)
++
+u_2(x_3\dot{x}_1-x_1\dot{x}_3)
++
+u_3(x_1\dot{x}_2-x_2\dot{x}_1)
+\bigr)
+\\
+&=
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix}
+\cdot
+(x\times m\dot{x})
+=
+u\cdot \vec{L},
+\end{align*}
+die Erhaltungsgrösse ist also die Projektion des Drehimpulses $\vec{L}$
+auf die Achsrichtung $u$.
+\end{beispiel}
+
+Der Satz von Emmy Noether setzt voraus, dass die Lagrange-Funktion
+nicht von der Zeit abhängt.
+Man kann im Allgemeinen nicht erwarten, dass es eine ähnlich einfache
+Erhaltungsgrösse gibt, wenn $L$ auch noch von der Zeit abhängt.
+Die Zeitunabhängigkeit wird in 
+\eqref{buch:symmetrien:noether:eqn:tindep}
+verwendet.
+Dieser Ausdruck wäre nicht mehr das Resultat der Kettenregel,
+es müsste noch einen Term $\partial L/\partial t$ vorhanden sein.
+In der Tat kann die Zeitabhängigkeit bedeuten, dass der Massepunkt
+äusseren Kräften unterworfen ist, die Energie und Impuls des Massepunktes
+verändern können, wodurch sie ganz offensichtlich nicht länger
+Erhaltungsgrössen sind.
+
+

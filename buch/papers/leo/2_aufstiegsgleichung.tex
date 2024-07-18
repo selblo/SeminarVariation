@@ -1,0 +1,35 @@
+%
+% teil2.tex -- Beispiel-File für teil2 
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Aufstiegsgleichung 
+\label{leo:section:aufstiegsgleichung}}
+\rhead{Aufstiegsgleichung}
+Das Ziel ist die Minimierung des Energieverbrauchs,
+\begin{equation}
+	J = \int_{0}^{t_f} F \, dt
+\end{equation}
+ausgedrückt durch den Treibstoffverbrauch.
+Dazu muss die Endgeschwindigkeit genug hoch sein um im Orbit zu bleiben.
+Das lässt sich Zusammenfassen in der Aufstiegsgleichung
+\begin{equation}
+	v_f = \underbrace{v_* \ln \left(\frac{m_0}{m_f}\right)}_{\text{Raketengleichung}} 
+	- \underbrace{2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt }_{\text{Steuerverluste}}
+	- \underbrace{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }_{\text{Strömungsverluste}}
+	- \underbrace{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}_{\text{Schwerkraftverluste}}
+	\label{leo:aufstiegsgleichung}
+\end{equation}
+durch zusammen setzen von  Formel\,\eqref{leo:raketengleichung},  Formel\,\eqref{leo:raketenluftwiderstand}, Formel\,\eqref{leo:strömungsverlust} und Formel\,\eqref{leo:schwerkraftswiderstand}.
+Die Formel\,\eqref{leo:aufstiegsgleichung} gilt es zu minimieren.
+%Sie stammt aus der Bewegungsgleichung
+%\begin{equation}
+%	\dot{v} = \frac{F_*}{m} \cos \alpha - \frac{D}{m} - g \sin \gamma
+%\end{equation}
+%und wird daraus hergeleitet.
+
+
+

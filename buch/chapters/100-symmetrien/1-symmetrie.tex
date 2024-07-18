@@ -6,11 +6,263 @@
 \section{Symmetrien und Funktionale
 \label{buch:symmetrien:section:symmetrie}}
 \kopfrechts{Symmetrie und Funktionale}
+In diesem Abschnitt betrachten wir immer eine Lagrange-Funktion
+der Form $L(t,x,\dot{x})$ und damit ein Funktional der Form
+\[
+I(x)
+=
+\int_{t_0}^{t_1}
+L(t,x(t),\dot{x}(t))\,dt,
+\]
+abhängig von einer Funktion $x\colon[t_0,t_1]\to\mathbb{R}$.
+In diesem Abschnitt soll definiert werden, was unter einer
+differenzierbare Symmetrie der Lagrange-Funktion $L$ zu verstehen
+ist.
 
-\begin{verbatim}
-- Kontinuierliche Symmetrien
-- Translation
-- Rotation
-- Zeitinvarianz
-- Lie-Gruppen
-\end{verbatim}
+%
+% Definition
+%
+\subsection{Definition}
+Eine Symmetrie der Lagrange-Funktion soll ihren Wert nicht ändern.
+Da sie aber auch von $\dot{x}$ abhängt, muss erklärt werden, wie
+der Vektor $\dot{x}$ abgebildet werden muss.
+Dazu beachtet man, dass $\dot{x}$ als die Geschwindigkeit eines
+Punktes interpretiert werden, der sich entlang einer Kurve $x(t)$
+bewegt.
+Eine Symmetrieabbildung $\varphi\colon\mathbb{R}^n\to\mathbb{R}^n$ 
+bildet die Kurve $t\mapsto x(t)$ auf die Kurve $t\mapsto \varphi(x(t))$
+ab. 
+Die Geschwindigkeit im Punkt $x(t)$ wird dabei nach der Kettenregel
+auf 
+\[
+\frac{d}{dt}\varphi(x(t))
+=
+D_{x(t)}\varphi\cdot \dot{x}(t)
+\]
+abgebildet.
+Die lineare Abbildung, die auf den Geschwindigkeitsvektor $\dot{x}(t)$
+anzuwenden ist, hängt daher vom Punkt $x(t)$ ab, an dem sich der
+Punkt gerade befindet.
+Insbesondere ist es nur für differenzierbare Abbildungen $\varphi$
+sinnvoll, von der Invarianz einer Lagrange-Funktion zu sprechen.
+
+\begin{definition}[Invarianz einer Lagrange-Funktion]
+Eine Lagrange-Funktion heisst {\em invariant} unter einer differenzierbaren
+Symmetrieabbildung $\varphi\colon\mathbb{R}^n\to\mathbb{R}^n$, wenn
+\[
+L(t,\varphi(x), D_x\varphi(\dot{x}))
+=
+L(t,x,\dot{x})
+\]
+für alle $t$, $x$ und $\dot{x}$.
+\end{definition}
+
+%
+% Extremalen
+%
+\subsection{Extremalen}
+Die Invarianz der Lagrange-Funktion hat auch zur Folge, dass der
+Wert des Funktionals nicht ändert, wenn man eine Funktion $t\mapsto x(t)$
+der Transformation $\varphi$ unterwirft, es gilt also für alle
+solchen Funktionen
+\[
+I(\varphi\circ x)
+=
+\int_{t_0}^{t_1}
+L(t,\varphi(x(t)),D_{x(t)}\varphi(\dot{x}(t)))
+\,dt
+=
+\int_{t_0}^{t_1}
+L(t,x(t),\dot{x}(t))
+\,dt.
+\]
+Daraus kann man allerdings noch nicht schliessen, dass $x(t)$ genau
+dann eine extremale ist, wenn auch $\varphi(x(t))$ eine Extremale ist.
+Dazu muss man zusätzlich verlangen, dass die Abbildung $\varphi$
+invertierbar ist.
+
+\begin{satz}
+\label{buch:symmetrien:symmetrie:satz:invarianz}
+Ist $\varphi$ eine invertierbare Symmetrieabbildung, unter der die
+Lagrange-Funktion invariant ist.
+Zudem sei auch die Umkehrabbildung $\varphi^{-1}$ differenzierbar.
+Dann ist $\varphi(x(t))$ eine Extremale genau dann, wenn $x(t)$ eine
+Extremale ist.
+\end{satz}
+
+\begin{proof}
+Sei $x(t)$ eine Extremale, also eine Funktion, für die die Ableitung
+\[
+\frac{d}{d\varepsilon}I(x(t,\varepsilon))
+\bigg|_{\varepsilon=0}
+=
+0
+\]
+für jede Variation $x(t,\varepsilon)$ verschwindet.
+Da $\varphi$ invertierbar ist, lässt sich jede Variation von
+$\varphi(x(t))$ in der Form $\varphi(x(t,\varepsilon))$ ausdrücken.
+Ist nämlich $y(t,\varepsilon)$ ein Variation von $\varphi(x(t))$
+mit $y(t,0) = \varphi(x(t))$, dann ist $\varphi^{-1}(y(t,\varepsilon))$
+eine Variation der Funktion $x(t)$.
+Die Abbildung $\varphi$ ändert aber den Wert des Funktionals nicht,
+also ändert sich dadurch auch die Ableitung nach $\varepsilon$.
+Verschwindet die Ableitung von $I(x(t,\varepsilon))$ nach $\varepsilon$
+für alle Variationen $x(t,\varepsilon)$ von $x(t)$, dann verschwindet
+auch die Ableitung von $I(y(t,\varepsilon))$ für alle Variationen
+$y(t,\varepsilon)$ von $\varphi(x(t))$.
+\end{proof}
+
+Nach Satz~\ref{buch:symmetrien:symmetrie:satz:invarianz} gehen 
+also bei einer unter $\varphi$ invarianten Lagrange-Funktion die
+Extremalen durch $\varphi$ in Extremalen über.
+
+%
+% Stetige Symmetrien
+%
+\subsection{Stetige Symmetrien}
+Drehungen oder Translationen sind invertierbare Symmetrieoperationen,
+die zusätzlich stetig oder sogar differenzierbar von einem Parameter
+abhängen.
+
+\begin{definition}[Stetige Symmetrie]
+Sei $h^s\colon \mathbb{R}^n\to\mathbb{R}^n$ für jeden Wert $s$
+eine invertierbare und differenzierbare Abbildung.
+Sie heisst eine {\em stetige Symmetrie} von $L$, wenn
+\[
+L(t, h^s(x), Dh^s(\dot{x}))
+=
+L(t,x,\dot{x})
+\]
+und $h^s$ hängt stetig von $s$ ab.
+\end{definition}
+
+\begin{definition}[Differenzierbare Symmetrie]
+Eine stetige Symmetrie 
+$h^s$ heisst {\em differenzierbar}, wenn $h^s(x)$
+eine differenzierbare Funktion von $s$ ist.
+\end{definition}
+
+\begin{beispiel}
+\label{buch:symmetrien:symmetrie:beispiel:homogen}
+Wir betrachten die Transformation
+\[
+h^s
+\colon
+\mathbb{R}^3 \to \mathbb{R}^3
+:
+x \mapsto x + su
+\]
+mit einem Vektor $u\in\mathbb{R}$.
+$h^s$ ist invertierbar, denn $(h^s)^{-1}=h^{-s}$.
+Ausserdem ist sie differenzierbar, denn
+\[
+Dh^s(v)
+=
+sv.
+\]
+In der Lagrange-Funktion
+\[
+L
+=
+\frac12m\dot{x}^2 - mgx_3
+\]
+ist $D\varphi(\dot{x})=\dot{x}$, der erste Term ändert also nicht.
+Der zweite Term dagegen wird bei der Symmetrieabbildung zu
+$mgx_3\mapsto mg(x_3+u_3)$.
+Die Lagrange-Funktion ist also nur für Translationen mit Vektoren $u$
+invariant, die senkrecht auf $\vec{e}_3$ sind oder $u_3=0$ haben.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:symmetrien:symmetrie:beispiel:drehung}
+Drehungen des dreidimensionalen Raumes $\mathbb{R}^3$ können durch
+orthogonale Matrizen $O$ beschrieben werden.
+In der Lagrange-Funktion $L=\frac12m\dot{x}^2-V(x)$ ist der erste
+Term wegen
+\[
+\frac12m (O\dot{x})(O\dot{x})
+=
+\frac12m\dot{x}^2
+\]
+invariant.
+Der zweite Term ist genau dann invariant, wenn das Potential $V(x)$
+invariant ist, wenn also $V(O(x))=V(x)$ ist.
+\end{beispiel}
+
+%
+% Zeitunabhängige Lagrange-Funktion
+%
+\subsection{Zeitinvarianz}
+Die bisher betrachteten Symmetrien betrafen nur die abhängigen
+Variablen $x$ und $\dot{x}$, nicht die unabhängige Variable $t$.
+Die unabhängige Variable spielt eine spezielle Rolle, die nicht
+direkt mit den abhängigen Variablen vergleichbar ist.
+Eine Transformation der unabhängigen Variablen ändert auch den
+Definitionsbereich, so dass eine erweiterte Theorie nötig wird, 
+die in Abschnitt~\ref{buch:symmetrien:section:kontinuitaet}
+besprochen wird.
+Ein einfacher Spezialfall ist der Fall, wo $L$ nicht von der
+Zeit abhängt, also $L(t,x,\dot{x})=L(x,\dot{x})$ geschrieben werden
+kann.
+In diesem Fall ergibt der Hamilton-Formalismus die Hamilton-Funktion
+$H=L-pq$, die ebenfalls nicht explizit von der Zeit abhängt, also
+auch in der Form $H(p,q)$ geschrieben werden kann.
+Nach den hamiltonschen Differentialgleichungen ist dann
+\begin{align*}
+\frac{d}{dt}H(p,q)
+=
+\sum_{k=1}^n
+\frac{\partial H}{\partial q_k}\dot{q}_k
++
+\sum_{k=1}^n
+\frac{\partial H}{\partial p_k}\dot{p}_k
+=
+\sum_{k=1}^n
+\bigl(
+-
+\dot{p}_k\dot{q}_k
++
+\dot{q}_k\dot{p}_k
+\bigr)
+=
+0.
+\end{align*}
+Somit ist $H(p,q)$ eine Erhaltungsgrösse.
+Im Falle einer zeitunabhängigen Lagrange-Funktion ist also die
+Energie eine Erhaltungsgrösse.
+Auch in diesem Fall ergibt sich also ein Erhaltungssatz, wie ihn
+der Satz von Emmy Noether im nächsten Abschnitt für jede differenzierbare
+Symmetrie einer Lagrange-Funktion liefern wird.
+
+%
+% Lie-Gruppen
+%
+\subsection{Lie-Gruppen}
+Der allgemeine Rahmen der differenzierbaren Symmetrien ist die
+Theorie der Lie-Gruppen.
+\index{Lie-Gruppe}%
+Sie ergeben sich auf natürliche Art und Weise als die Gruppen der
+Matrizen, die gewisse Funktionen von Vektoren invariant lassen.
+die Gruppe $\operatorname{SO}(3)$ der Drehungen des Raumes
+zum Beispiel ist die Gruppe der Matrizen, die das Skalarprodukt
+invariant lassen.
+In der relativistischen Mechanik
+\index{relativistische Mechanik}%
+sind nur Transformationen zulässig, die die Grösse
+\[
+l^2
+=
+x^2+y^2+z^2-c^2t^2
+\]
+invariant lassen.
+Sie bilden die Lie-Gruppe der Lorentz-Transformationen.
+
+Die Transformationen in einer Lie-Gruppe können wie die Drehungen
+durch die Matrixexponentialfunktion $\exp(sA)$ aus einer Matrix $A$
+gefunden werden, die als die Ableitung der Funktion $s\to\exp(sA)$
+erhalten werden können.
+Sie sind damit automatisch differenzierbare Symmetrien.
+Die Ableitungen haben die zusätzliche Struktur einer Lie-Algebra
+\cite[p.~434]{buch:linalg}, die für die weiteren Untersuchungen
+nützlich sein kann.
+
