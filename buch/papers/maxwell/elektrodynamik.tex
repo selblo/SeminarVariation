@@ -16,14 +16,12 @@ In der Elektrodynamik erlauben wir es, dass
 0
 \]
 für die Funktionen, die wir betrachten, gelten darf.
-Das heisst wir berücksichtigen nun zeitabhängige Skalar- und Vektorfelder.
+Das heisst Ladungen dürfen sich nun mit einer beliebigen Geschwindigkeit $\vec{v}$ bewegen und wir berücksichtigen zeitabhängige Skalar- und Vektorfelder.
 Bei den statischen Maxwellgleichungen fällt auf, dass das elektrische und magnetische Feld keinerlei Abhängigkeiten voneinander haben.
 Wie sich später herausstellen wird, ändert sich dies, denn die Zeitabhängigkeit führt dazu, dass sich das elektrische und magnetische Feld gegenseitig beeinflussen.
 Daraus folgen einige spannende Tatsachen, auf die wir später noch zu Sprechen kommen.
-Das Ziel dieses Abschnittes ist einen groben Weg zur Lagrange-Funktion aufzuzeigen und danach die daraus entstehenden Gleichungen zu interpretieren.
-Die genaue Herleitung über die Variationsrechnung kann als Aufgabe für den Leser angeschaut werden.
  
-Im den folgenden Abschnitten werden wir bekannte Vektorfelder in ihrer Definition anpassen und neue Vektorfelder einführen.
+Im folgenden werden wir bekannte Vektorfelder in ihrer Definition anpassen.
 
 \subsubsection{Elektrisches Feld dynamisch}
 Das elektrische Feld
@@ -50,7 +48,27 @@ wird in der Elektrodynamik ähnlich definiert wie in der Magnetostatik. Nämlich
 	=
 	\nabla \times \vec{A}(t,x,y,z).
 \end{equation}
-Der Unterschied liegt einzig in der zusätzlichen Zeitkomponente im Inputvektor.
+Der Unterschied liegt hier einzig in der zusätzlichen Zeitkomponente im Inputvektor.
+
+\subsection{Dynamische Maxwell-Gleichungen}
+Das Ziel dieses Abschnittes ist ein Variationsprinzip zu formulieren, welches uns die Verhaltensgleichungen der Elektrodynamik liefert. 
+Erneut betrachten wir den selben dreidimensionalen, luftleeren Raum $V \subset \mathbb{R}^3$. In diesem Raum existieren nun das elektrische Feld $\vec{E}(t,x,y,z)$, das magnetische Feld $\vec{B}(t,x,y,z)$, eine Stromdichte $\vec{\jmath}(t,x,y,z)$ und eine statische Ladungsdichte $\varrho(x,y,z)$.
+
+\subsubsection{Ansatz}
+Wir wählen wieder den Ansatz die Energie im Raum zu minimieren. Für die Formulierung des Energieintegrals superponieren wir die bisher gefundenen Energien und erhalten
+\begin{align*}
+	W_{\text{tot}}
+	&=
+	W_{\text{e}} - W_{\text{q}} + W_{\text{p}} - W_{\text{m}}
+				\\
+				&= \iiint_V \frac{1}{2}\,\varepsilon_0\,\vec{E}\,^2 - \varrho \, \phi
+				+ \vec{A}\cdot\vec{j} - \frac{1}{2\mu_0}\vec{B}^2 \, dV.
+\end{align*}
+Hiermit ist es uns noch nicht gelungen ein Energiefunktional zu formulieren, das von der Form
+\[
+I(f) = \int_{t_0}^{t_1} \int_{x_0}^{x_1} \int_{y_0}^{y_1} \int_{z_0}^{z_1} L(t,x,y,z,f,f_t,f_x,f_y,f_z)\,dt\,dx\,dy\,dz 
+\]
+ist.
 
 
 
