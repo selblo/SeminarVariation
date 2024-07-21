@@ -8,3 +8,7 @@
 % following example
 %\usepackage{packagename}
 
+%\usepackage[makeroom]{cancel}
+%\usepackage{xcolor}
+\newcommand{\Cancel}[2][black]{{\color{#1}\cancel{\color{black}#2}}}
+\newcommand{\todo}[1]{\textcolor{red}{\ttfamily \itshape [TODO: #1]}}
