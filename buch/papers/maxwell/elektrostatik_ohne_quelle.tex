@@ -90,7 +90,7 @@ wird in der Elektrostatik definiert als
 \begin{equation}
 	\vec{E}
 	=
-	- \nabla\phi.
+	- \nabla\varphi.
 	\label{maxwell:section:definition_statisch_elektrischesFeld}
 \end{equation}
 Diese Definition besagt, dass das elektrische Feld ein statisches Gradientenfeld ist.
@@ -123,10 +123,10 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 		\draw[-{Stealth[black]}] (-1,1) -- (-1.8,1.8) node at (-1.6, 2) {$\vec{F}$};
 		\draw[charge_small] (-1,1) circle (4pt) node[black,scale=0.8] {$q$};
 		\node[EcolFL,scale=0.8] at (1.4,-1.4) {$\vec{E}$};
-		\node[EcolEP,scale=0.8] at (1.95,0) {$\phi$};
+		\node[EcolEP,scale=0.8] at (1.95,0) {$\varphi$};
 	\end{tikzpicture}
 	%TODO: Caption anpassen
-	\caption{Elektrisches Feld einer positiven Punktladung}
+	\caption{Elektrisches Feld (grün) einer positiven Punktladung $+Q$ und Äquipotentiallinien (blau) der selben positiven Punktladung $+Q$}
 	\label{maxwell:section:E-Feld_punktladung}
 \end{figure}
 
@@ -135,7 +135,7 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 Das elektrische Feld beinhaltet eine Energie und somit auch eine Energiedichte.
 Diese Energiedichte ist definiert als
 \begin{equation}
-w_e
+w_{\text{e}}
 =
 \frac{1}{2}\,\varepsilon\,\vec{E}\,^2,
 \label{maxwell:section:definiton_energiedichte_elektrischesFeld}
@@ -162,21 +162,21 @@ ist die elektrische Feldkonstante.
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
 \rhead{Problemstellung}
 Man stelle sich nun einen ladungsfreien, luftleeren, drei dimensionalen Raum $V\subset\mathbb{R}^3$
-vor, indem ein elektrisches Potentialfeld $\phi(x,y,z)$ existiert.
-Für diesen Raum möchten wir mittels der Varitaionsrechnung eine Gleichung entwickeln, die beschreibt, wie sich das Potentialfeld verhält. 
+vor, indem ein elektrisches Potentialfeld $\varphi(x,y,z)$ existiert.
+Für diesen Raum möchten wir mittels der Varitaionsrechnung eine partielle Differentialgleichung entwickeln, die beschreibt, wie sich das Potentialfeld und somit auch das elektrische Feld verhält. 
 
 \subsubsection{Ansatz}
 Damit wir eine Gleichung erhalten, die das Verhalten des elektrischen Potentialfeldes beschreibt, muss ganz allgemein die Energie im System minimiert werden. 
 In diesem Fall ist die Energie im System
 \[
-W_e
+W_{\text{e}}
 =
 \iiint_V w_e\, dV.
 \]
 Dieses Integral gilt es zu minimieren, was die Grundlage für unser Variationsproblem darstellt.
 Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist im Vakuum
 \[
-w_e\
+w_{\text{e}}
 =
 \frac{1}{2}\,\varepsilon_0\,\vec{E}\,^2.
 \]
@@ -184,48 +184,48 @@ Diese Gleichung können wir nun mittels definition \eqref{maxwell:section:defini
 somit ist
 \begin{align}
 \renewcommand{\arraystretch}{1.9}
-w_e
+w_{\text{e}}
 &=
-\frac{1}{2}\,\varepsilon_0\left(-\nabla\phi\right)^2
+\frac{1}{2}\,\varepsilon_0\left(-\nabla\varphi\right)^2
 \\
-w_e
+w_{\text{e}}
 =
 \frac{1}{2}\,\varepsilon_0
 \begin{pmatrix}
 \displaystyle
--\phi_x\\
+-\varphi_x\\
 \displaystyle
--\phi_y\\
+-\varphi_y\\
 \displaystyle
--\phi_z
+-\varphi_z
 \end{pmatrix}
 &\cdot
 \begin{pmatrix}
 \displaystyle
--\phi_x\\
+-\varphi_x\\
 \displaystyle
--\phi_y\\
+-\varphi_y\\
 \displaystyle
--\phi_z
+-\varphi_z
 \end{pmatrix}
 =
-\frac{1}{2}\,\varepsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right).
+\frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right).
 \label{maxwell:section:energiedichte}
 \end{align}
 Dies können wir in das zu minimerende Integral einsetzen und bekommen
 %TODO: eventuell underbraces weg lassen.
 \begin{equation}
-	W_e
+	W_{\text{e}}
 	=
 	\iiint_V \underbrace{
-		\frac{1}{2}\,\varepsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)}_{\displaystyle=L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)}\, dV.
+		\frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=L(x,y,z,\varphi,\varphi_x,\varphi_y,\varphi_z)}\, dV.
 	\label{maxwell:section:energieintegral_quellenfrei}
 \end{equation}
 Aus dieser Gleichung können wir entnehmen, dass unsere Lagrange-Funktion
 \begin{equation}
-	L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)
+	L(x,y,z,\varphi,\varphi_x,\varphi_y,\varphi_z)
 	=
-	\frac{1}{2}\,\varepsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)
+	\frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)
 	\label{maxwell:section:lagrangefunktion_quellenfrei}
 \end{equation}
 ist.
@@ -236,32 +236,32 @@ Somit haben wir unsere Lagrange-Funktion gefunden, die wir in einem nächsten Sc
 Nun gilt es die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
 Nach Einsetzen wird die Differentialgleichung zu
 \[
-\frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\phi}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)}_{\displaystyle=0} - \frac{\partial}{\partial x}\frac{\partial}{\partial \phi_x}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - 
-\frac{\partial}{\partial y}\frac{\partial}{\partial \phi_y}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - 
-\frac{\partial}{\partial z}\frac{\partial}{\partial \phi_z}\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)\biggr)
+\frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} - \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
+\frac{\partial}{\partial y}\frac{\partial}{\partial \varphi_y}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
+\frac{\partial}{\partial z}\frac{\partial}{\partial \varphi_z}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\biggr)
 =
 0.
 \]
-Man sieht, dass die partielle Ableitung nach $\phi$ verschwindet.
-Nach den partiellen Ableitungen nach $\phi_x$, $\phi_y$ und $\phi_z$ wird die Differentialgleichung zu
+Man sieht, dass die partielle Ableitung nach $\varphi$ verschwindet.
+Nach den partiellen Ableitungen nach $\varphi_x$, $\varphi_y$ und $\varphi_z$ wird die Differentialgleichung zu
 \[
-\frac{1}{2}\,\varepsilon_0\left(-\frac{\partial}{\partial x}2\phi_x - \frac{\partial}{\partial y}2\phi_y - \frac{\partial}{\partial z}2\phi_z\right)
+\frac{1}{2}\,\varepsilon_0\left(-\frac{\partial}{\partial x}2\varphi_x - \frac{\partial}{\partial y}2\varphi_y - \frac{\partial}{\partial z}2\varphi_z\right)
 =
 0.
 \]
-Wenn man nun noch die letzten partiellen Ableitungen macht, wird die Differentialgleichung
+Wenn man nun noch die letzten partiellen Ableitungen macht, wird die Differentialgleichung zu
 \begin{equation}
-	- \varepsilon_0\underbrace{\left(\frac{\partial^2\phi}{\partial x^2} + \frac{\partial^2\phi}{\partial y^2} + \frac{\partial^2\phi}{\partial z^2}\right)}_{\displaystyle=0}
+	- \varepsilon_0\underbrace{\left(\frac{\partial^2\varphi}{\partial x^2} + \frac{\partial^2\varphi}{\partial y^2} + \frac{\partial^2\varphi}{\partial z^2}\right)}_{\displaystyle=0}
 	=
 	0.
 	\label{maxwell:section:laplace_gleichung_1}
 \end{equation}
 %definiton des laplace operators suchen
 An dieser Gleichung sieht man, dass die Klammer mit den partiellen Ableitungen gleich null sein muss, da die Permittivität des Vakuums nicht null sein kann.
-Zusätzlich wird nun ersichtlich, dass der Klammerterm nach Definition \eqref{???} mit dem Laplace-Operator angewendet auf das elektrische Potentialfeld $\phi$ ersetzt werden kann.
-Somit wird unsere Schlussdifferentialgleichung
+Zusätzlich wird nun ersichtlich, dass der Klammerterm nach Definition \eqref{???} mit dem Laplace-Operator angewendet auf das elektrische Potentialfeld $\varphi$ ersetzt werden kann.
+Somit wird unsere Schlussdifferentialgleichung zu
 \begin{equation}
-	\Delta\phi
+	\Delta\varphi
 	=
 	0.
 	\label{maxwell:section:laplace_gleichung_2}
@@ -269,7 +269,7 @@ Somit wird unsere Schlussdifferentialgleichung
 %TODO: Definition Laplace suchen.
 Wenn wir nun den Laplace-Operator laut seiner Definition \eqref{???} mittels Divergenz und Gradient ausdrücken, erhalten wir die Gleichung
 \begin{equation}
-\nabla\cdot\underbrace{\nabla\phi}_{\displaystyle-\vec{E}}
+\nabla\cdot\underbrace{\nabla\varphi}_{\displaystyle-\vec{E}}
 =
 0.
 \label{maxwell:section:laplace_gleichung_3}
@@ -290,11 +290,11 @@ Dies ist sehr naheliegend, da ohne Ladungen im Raum das elektrische Feld quellen
 \label{maxwell:section:laplacegleichung_exkurs}
 Ein Potentialfeld, das die Laplace-Gleichung
 \[
-\Delta\phi
+\Delta\varphi
 =
 0
 \]
-erfüllt, führt zu einem Gradientenfeld $\nabla\phi$, das rotationsfrei und quellenfrei ist.
+erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, das rotationsfrei und quellenfrei ist.
 Diese Gleichung findet nicht nur Anwendungen in der Elektrostatik, sondern auch in stationärer Fluiddynamik und stationärer Wärmeleitung.
 
 

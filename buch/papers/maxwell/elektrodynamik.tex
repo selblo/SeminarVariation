@@ -24,25 +24,31 @@ Daraus folgen einige spannende Tatsachen, auf die wir später noch zu Sprechen k
 Im folgenden werden wir unseren Raum definieren und bekannte Vektorfelder in ihrer Definition anpassen.
 
 \subsubsection{Der vierdimensionale Raum}
-Den Raum in dem wir uns nun bewegen werden definieren wir als
+Den Raum in dem wir uns nun bewegen werden wir definieren als
 \begin{equation}
 	\Omega
 	=
 	\begin{pmatrix}
-		c\,t\\
+		ct\\
 		x\\
 		y\\
 		z
 	\end{pmatrix}
 	=
-	\Omega^{\mu},
+	\Omega^{\mu} \subset \mathbb{R}^4,
 \end{equation}
-wobei $\Omega^0$ die Zeit multipliziert mit der Lichtgeschwindigkeit ist.
-Damit wir uns später Schreibaufwand sparen können schreiben wir die Ableitungen im Raum als
+wobei $\Omega^0$ die Zeit $t$ multipliziert mit der Lichtgeschwindigkeit
+\[
+c
+=
+\frac{1}{\sqrt{\varepsilon_0\,\mu_0}}
+\]
+ist.
+Damit wir uns später ein wenig Schreibaufwand sparen können, schreiben wir die Ableitungen der Raumkomponenten als
 \[
 \frac{\partial}{\partial \Omega^{\mu}}
 =
-\partial^{\mu}
+\partial^{\mu}.
 \]
 
 \subsubsection{Elektrisches Feld dynamisch}
@@ -54,7 +60,7 @@ wird in der Elektrodynamik definiert als
 \begin{equation}
 	\vec{E}(t,x,y,z)
 	=
-	- \nabla\phi(t,x,y,z) - \frac{\partial \vec{A}}{\partial t}(t,x,y,z).
+	- \nabla\varphi(t,x,y,z) - \frac{\partial \vec{A}}{\partial t}(t,x,y,z).
 	\label{maxwell:section:definiton_dynamisch_elektrischesFeld}
 \end{equation}
 Es fällt auf, dass das elektrische Feld, das elektrische Potentialfeld und das magnetische Vektorpotential nun einen vierdimensionalen Inputvektor besitzen, wobei die zusätzliche Dimension die Zeit ist. 
@@ -86,10 +92,10 @@ Durch superponierung unserer bisher gefundenen Energien erhalten wir
 \begin{align*}
 	D
 	&=
-	\int_{\Omega} W_{\text{tot}}\,d\Omega
+	\int_{(ct)_0}^{(ct)_1} W_{\text{tot}}\,d(ct)
 	=
-	\int_{\Omega} W_{\text{e}} - W_{\text{q}} + W_{\text{p}} - W_{\text{m}}\,d\Omega
-				\\
+	\int_{t_0}^{t_1} \left(W_{\text{e}} - W_{\text{q}} + W_{\text{p}} - W_{\text{m}}\right)c\,dt
+	\\
 	&= \int_{\Omega} \frac{1}{2}\,\varepsilon_0\,\vec{E}\,^2 - \varphi\,\varrho 
 	+ \vec{A}\cdot\vec{\jmath} - \frac{1}{2\mu_0}\vec{B}^2 \,d\Omega.
 \end{align*}
@@ -196,7 +202,7 @@ ein. Wir definieren sie als
 J
 =
 \begin{pmatrix}
-	-c\,\varrho\\
+	-c\varrho\\
 	j_x\\
 	j_y\\
 	j_z
@@ -247,6 +253,65 @@ Da unsere Lagrange-Funktion von einer Vektorgrösse abhängig ist erhalten wir e
 = 0 \qquad \text{für } i=0,1,2,3 \,.
 \]
 
+{\larger\textcircled{\smaller[2]1}} $i = 0$
+\[
+J^0  -\frac{1}{\mu_0}\biggl(\partial^1\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
++ \partial^2\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
++ \partial^3\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}\biggr)
+=
+0
+\]
 
+{\larger\textcircled{\smaller[2]2}} $i = 1$
+\[
+J^1  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
++ \underbrace{\partial^2\left(\partial^1 A^2 + \partial^2 A^1\right)
+	- \partial^3\left(\partial^3 A^1 + \partial^1 A^3\right)}_{\displaystyle=(\nabla\times\vec{B})_x}\biggr)
+=
+0
+\]
+
+{\larger\textcircled{\smaller[2]3}} $i = 2$
+\[
+J^2  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
++ \underbrace{\partial^3\left(\partial^2 A^3 + \partial^3 A^2\right)
+	- \partial^1\left(\partial^1 A^2 + \partial^2 A^1\right)}_{\displaystyle=(\nabla\times\vec{B})_y}\biggr)
+=
+0
+\]
+
+{\larger\textcircled{\smaller[2]4}} $i = 3$
+\[
+J^3  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}
++ \underbrace{\partial^1\left(\partial^3 A^1 + \partial^1 A^3\right)
+	- \partial^2\left(\partial^2 A^3 + \partial^3 A^2\right)}_{\displaystyle=(\nabla\times\vec{B})_z}\biggr)
+=
+0
+\]
+
+Für $i=0$ resultiert die partielle Differentialgleichung
+\begin{align}
+-c\varrho + \frac{1}{\mu_0\,c}\biggl(\frac{\partial E_x}{\partial x}
++ \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}\biggr)
+&=
+0\\[1em]
+\Leftrightarrow \qquad \nabla\cdot\vec{E}
+&=
+\frac{\varrho}{\varepsilon_0},
+\label{maxwell:section:gauss_dynamisch}
+\end{align}
+was dem dynamischen gaussschen Gesetz entspricht.
+Für $i=1,2,3$ resultiert das partielle Differentialgleichungssystem
+\begin{align}
+\vec{\jmath} + \frac{1}{\mu_0\,c^2}\frac{\partial \vec{E}}{\partial t}
+- \frac{1}{\mu_0}\nabla\times\vec{B}
+&=
+0\\[1em]
+\Leftrightarrow \qquad \varepsilon_0\,\mu_0\frac{\partial \vec{E}}{\partial t} + \mu_0\vec{\jmath}
+&=
+\nabla\times\vec{B},
+\label{maxwell:section:ampere_dynamisch}
+\end{align}
+was dem dynamischen ampereschen Gesetz entspricht.
 
 

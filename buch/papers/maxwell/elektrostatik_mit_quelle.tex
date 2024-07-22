@@ -10,7 +10,7 @@
 \subsection{Gausssches Gesetz
 \label{maxwell:section:elektrostatik_mit_quelle}}
 \rhead{Problemstellung}
-Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\phi(x,y,z)$ und eine Ladungsdichte $\varrho(x,y,z)$ existieren.
+Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\varphi(x,y,z)$ und eine Ladungsdichte $\varrho(x,y,z)$ existieren.
 Auch für diesen Raum möchten wir mittels Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
 
 \subsubsection{Ansatz}
@@ -18,9 +18,9 @@ Auch für diesen Raum möchten wir mittels Variationsrechnung eine Gleichung fin
 Es ist naheliegend, dass auch in diesem Szenario die Energie im System minimiert werden muss.
 Wie auch in Gleichung \eqref{maxwell:section:energieintegral_quellenfrei} ist die Energie im elektrischen Feld
 \[
-W_e
+W_{\text{e}}
 =
-\iiint_V \frac{1}{2}\,\varepsilon_0\,(\phi_x^2 + \phi_y^2 + \phi_z^2)\, dV.
+\iiint_V \frac{1}{2}\,\varepsilon_0\,(\varphi_x^2 + \varphi_y^2 + \varphi_z^2)\, dV.
 \]
 Jedoch ist dies nicht die einzige Komponente der Gesamtenergie des Systems.
 Laut \eqref{maxwell:section:definition_elektrischespotentialfeld} ist das elektrische Potential eine auf die Ladung normierte potentielle Energie.
@@ -32,12 +32,12 @@ q
 \iiint_V \varrho(x,y,z)\, dV
 \label{maxwell:ladung}
 \end{equation}
-verursachte potentielle Energie $W_q$ im System mit der Ladungsdichte $\varrho$ ausdrücken können, müssen wir untersuchen, was eine infinitesimale potentielle Energie verursacht.
+verursachte potentielle Energie $W_{\text{q}}$ im System mit der Ladungsdichte $\varrho$ ausdrücken können, müssen wir untersuchen, was eine infinitesimale potentielle Energie verursacht.
 Wenn wir diese infinitesimal kleine potentielle Energie
 \(
-dW_q
+dW_{\text{q}}
 =
-\phi\, dq
+\varphi\, dq
 \)
 unter die Lupe nehmen und für die infinitesimal kleine Ladung
 \(
@@ -47,31 +47,31 @@ dq
 \)
 einsetzen, erhalten wir
 \(
-dW_q
+dW_{\text{q}}
 =
-\phi\,\varrho\, dV.
+\varphi\,\varrho\, dV.
 \)
 Jetzt müssen die infinitesimalen potentiellen Energien im Raum $V$ zusammengezählt werden und es resultiert
 \begin{equation}
-W_q
+W_{\text{q}}
 =
-\iiint_V \varrho\,\phi\, dV.
+\iiint_V \varphi\,\varrho\, dV.
 \label{maxwell:section:potenzielle_energie_ladung}
 \end{equation}
 Mit der Gesamtenergie
 \[
-W_{tot}
+W_{\text{tot}}
 =
-W_e - W_q
+W_{\text{e}} - W_{\text{q}}
 =
-\iiint_V \frac{1}{2}\,\varepsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\,\varrho\, dV
+\iiint_V \frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - \varphi\,\varrho\, dV
 \]
 des Systems haben wir unser zu minimierendes Integral gefunden.
 Daraus können wir wieder die Lagrange-Funktion
 \begin{equation}
-L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)
+L(x,y,z,\varphi,\varphi_x,\varphi_y,\varphi_z)
 =
-\frac{1}{2}\,\varepsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\,\varrho
+\frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - \varphi\,\varrho
 \label{maxwell:section:lagrangefunktion_mit_quelle}
 \end{equation}
 % TODO: Müller fragen wegen kopplungsterme
@@ -86,22 +86,22 @@ Nun können wir diese Lagrangefunktion in die Euler-Ostrogradski-Differentialgle
 Nun wollen wir die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrangefunktion in die Euler-Ostrogradski-Differentialgleichung einsetzten.
 Um die Rechnung übersichtlicher zu gestalten, machen wir uns die Linearität der Euler-Ostrogradski-Differentialgleichung
 \begin{equation}
-F\left\{W_{tot}\right\}
+F\left\{W_{\text{tot}}\right\}
 =
-F\left\{W_e - W_q\right\}
+F\left\{W_{\text{e}} - W_{\text{q}}\right\}
 =
-F\left\{W_e\right\} + F\left\{-W_q\right\}
+F\left\{W_{\text{e}}\right\} + F\left\{-W_{\text{q}}\right\}
 \label{maxwell:section:linearität_von_DGL}
 \end{equation}
 zu nutze.
-Die Lösung von $F\left\{W_e\right\}$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
-Durch einsetzen von $-W_q$ in die Euler-Ostrogradski-Differentialgleichung erhalten wir
+Die Lösung von $F\left\{W_{\text{e}}\right\}$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
+Durch einsetzen von $-W_{\text{q}}$ in die Euler-Ostrogradski-Differentialgleichung erhalten wir
 \[
-\frac{\partial}{\partial\phi}\left(-\varrho\,\phi\right) - \underbrace{\frac{\partial}{\partial x}\frac{\partial}{\partial\phi_x}\left(\varrho\,\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial y}\frac{\partial}{\partial\phi_y}\left(\varrho\,\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial z}\frac{\partial}{\partial\phi_z}\left(\varrho\,\phi\right)}_{=0}
+\frac{\partial}{\partial\varphi}\left(-\varrho\,\varphi\right) - \underbrace{\frac{\partial}{\partial x}\frac{\partial}{\partial\varphi_x}\left(\varrho\,\varphi\right)}_{=0} - \underbrace{\frac{\partial}{\partial y}\frac{\partial}{\partial\varphi_y}\left(\varrho\,\varphi\right)}_{=0} - \underbrace{\frac{\partial}{\partial z}\frac{\partial}{\partial\varphi_z}\left(\varrho\,\varphi\right)}_{=0}
 =
 0.
 \]
-Da alle partiellen Ableitungen nach $\phi_x, \phi_y, \phi_z$ null ergeben, müssen wir nur noch die partielle Ableitung nach $\phi$ erledigen.
+Da alle partiellen Ableitungen nach $\varphi_x, \varphi_y, \varphi_z$ null ergeben, müssen wir nur noch die partielle Ableitung nach $\varphi$ erledigen.
 Somit ist
 \(
 -\varrho
@@ -110,17 +110,17 @@ Somit ist
 \)
 Durch Addition unserer zwei Teillösungen erhalten wir die Gleichung
 \begin{align*}
--\varepsilon_0\,\Delta\phi - \varrho
+-\varepsilon_0\,\Delta\varphi - \varrho
 &=
 0
 \\
-\Leftrightarrow \qquad \varepsilon_0\,\Delta\phi
+\Leftrightarrow \qquad \varepsilon_0\,\Delta\varphi
 &=
 -\varrho.
 \end{align*}
 Schlussendlich erhalten wir
 \begin{equation}
-\Delta\phi
+\Delta\varphi
 =
 -\frac{\varrho}{\varepsilon_0}.
 \label{maxwell:section:erste_maxwellgleichung_1}
@@ -128,7 +128,7 @@ Schlussendlich erhalten wir
 % TODO: definiton des laplace-operators suchen
 Durch gleiches Vorgehen wie in Gleichung \eqref{maxwell:section:laplace_gleichung_3} erhalten wir
 \[
-\nabla\cdot\underbrace{\nabla\phi}_{\displaystyle-\vec{E}}
+\nabla\cdot\underbrace{\nabla\varphi}_{\displaystyle-\vec{E}}
 =
 -\frac{\varrho}{\varepsilon_0}.
 \]
@@ -140,10 +140,10 @@ Somit können wir erneut die Schlussdifferentialgleichung mit dem elektrischen F
 \label{maxwell:section:erste_maxwellgleichung_2}
 \end{equation}
 gelten.
-Wir sehen, dass dies der ersten Maxwell-Gleichung in differentieller Schreibweise entspricht.
+Wir sehen, dass dies dem gaussschen Gesetz entspricht.
 
 \subsubsection{Interpretation des Resultates}
-Die erste Maxwell-Gleichung \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, dass die Quelle des elektrischen Feldes eine Ladungsdichte $\varrho$ ist.
+Das gausssche Gesetz \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, dass die Quelle des elektrischen Feldes eine Ladungsdichte $\varrho$ ist.
 Dies bedeutet, dass elektrische Feldlinien auf Ladungen enden können.
 In anderen Worten wird das elektrostatische Feld durch Ladungen erzeugt!
 Da es sowohl positive wie auch negative Ladungen gibt, gilt dasselbe für die Ladungsdichten.
@@ -156,7 +156,7 @@ Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen. D
 % Darf auch weggelassen werden.
 Die Poisson-Gleichung
 \[
-\Delta\phi
+\Delta\varphi
 =
 f,
 \]
