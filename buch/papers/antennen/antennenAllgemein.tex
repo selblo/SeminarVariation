@@ -17,6 +17,33 @@ Eine genauere Erklärung von elektromagnetischen Wechselwirkungen kann sich im \
 \rhead{Loop-Antennen}
 Eine Loop-Antenne hat eine simple Funktionsweise. Sie besteht aus einem geschlossenen Stück Draht wie in Abbildung... dargestellt. Die Loop-Antenne kann, nicht wie der Name impliziert, verschiedenste Formen annehmen. Durch den Leiter wird ein Signal geführt, welches in der aufgespannten Fläche ein magnetisches Feld induziert. Dieses Feld wird durch Anpassung der Signalamplitude verändert. Eine solche Änderung kann als Information angesehen werden, welche sich nun im freien Raum fortbewegt.
 
+\definecolor{conductorYellow}{HTML}{ffc000}
+\definecolor{cableBlue}{HTML}{00b0f0}
+\def\opening{3}
+\def\arcRadius{1.5}
+\def\wirelen{10.5}
+\def\wireampl{0.8}
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[scale=1]
+	\begin{scope}[scale=0.1]
+		\draw[shift={(-\wireampl+0.02,-\wirelen)}, rotate=90, 
+		color=cableBlue, cap=round] plot[domain=1.5:\wirelen, 
+		samples=100] (\x, {sin(\x r)*\wireampl});
+	\end{scope}
+	
+	\begin{scope}[scale=0.1]
+		\draw[shift={(-\wireampl+0.02,-\wirelen)}, rotate=90, 
+		color=red, cap=round] plot[domain=1.5:\wirelen, 
+		samples=100] (\x, {sin(\x r)*-\wireampl});
+	\end{scope}
+	
+	\draw[color=conductorYellow, thick, cap=round](0,0)  
+	arc[start angle=-90+\opening), end angle=(270-\opening), radius=\arcRadius];
+	\end{tikzpicture}
+	\caption{Darstellung Loop-Antenne}
+	\label{antennen:loopAntenne}
+\end{figure}
 
 
 \subsection{Eigenschaften\label{antennen:antennenEigenschaften}}
