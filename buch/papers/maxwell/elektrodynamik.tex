@@ -9,7 +9,7 @@
 %Elektrodynmaik
 \section{Elektrodynamik\label{section:maxwell:elektrodynmaik}}
 \rhead{Elektrodynamik}
-In der Elektrodynamik erlauben wir es, dass
+In der Elektrodynamik erlauben wirs, dass
 \[
 \frac{\partial f}{\partial t}
 \neq
@@ -51,6 +51,54 @@ Damit wir uns später ein wenig Schreibaufwand sparen können, schreiben wir die
 \partial^{\mu}.
 \]
 
+\subsubsection{4er Gradient}
+Der 4er Gradient einer Funktion $f: \mathbb{R}^4 \rightarrow \mathbb{R}$ im Raum $\Omega$ ist von der Form
+\[
+\renewcommand{\arraystretch}{1.9}
+\nabla^\mu f
+=
+\begin{pmatrix}
+	\displaystyle
+	\partial^0 f\\
+	\displaystyle
+	\partial^1 f\\
+	\displaystyle
+	\partial^2 f\\
+	\displaystyle
+	\partial^3 f
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\displaystyle
+	\frac{\partial f}{\partial (ct)}\\
+	\displaystyle
+	\frac{\partial f}{\partial x}\\
+	\displaystyle
+	\frac{\partial f}{\partial y}\\
+	\displaystyle
+	\frac{\partial f}{\partial z}
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\displaystyle
+	\frac{1}{c}\frac{\partial f}{\partial t}\\
+	\displaystyle
+	\frac{\partial f}{\partial x}\\
+	\displaystyle
+	\frac{\partial f}{\partial y}\\
+	\displaystyle
+	\frac{\partial f}{\partial z}
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\displaystyle
+	\frac{1}{c}\frac{\partial f}{\partial t}\\
+	\displaystyle
+	\nabla f
+\end{pmatrix}.
+\]
+
+
 \subsubsection{Elektrisches Feld dynamisch}
 Das elektrische Feld
 \(
@@ -88,7 +136,7 @@ In diesem Raum existieren nun das elektrische Feld $\vec{E}(t,x,y,z)$, das magne
 Wir wählen einen ähnlichen Ansatz wie bislang, nämlich ein Integral über die Zeit der Energie im Raum zu minimieren.
 Das Integral über die Zeit ist notwendig, da wir über alle Inputgrössen integrieren müssen.
 Diese neue Grösse werden wir mit $D$ bezeichnen.
-Durch superponierung unserer bisher gefundenen Energien erhalten wir
+Durch Superponierung unserer bisher gefundenen Energien erhalten wir
 \begin{align*}
 	D
 	&=
@@ -177,7 +225,7 @@ und
 	B_z
 \end{pmatrix}.
 \end{equation}
-Daraus Ergibt sich für die Feldenergiedichten
+Daraus ergibt sich für die Feldenergiedichten
 \[
 w_{\text{e}}
 =
@@ -225,7 +273,7 @@ Uns ist es nun gelungen die Grösse $D$ mit einer Funktion und ihren partiellen 
 D
 =
 \int_{\Omega}
-\frac{1}{2\mu_0}\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
+\frac{1}{2\mu_0}\,\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
 \left(\partial^0 A^3 + \partial^3 A^0\right)^2\biggr) \\
 -  \frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
 \left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr)\\
@@ -235,7 +283,7 @@ und somit die Lagrange-Funktion
 \begin{align*}
 L(\Omega^0,...,\Omega^3, A^0,...,A^3, \partial^0 A^i,...,\partial^3 A^i)
 =
-\frac{1}{2\mu_0}\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
+\frac{1}{2\mu_0}\,\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
 \left(\partial^0 A^3 + \partial^3 A^0\right)^2\biggr) \\
 -  \frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
 \left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr)\\
@@ -255,7 +303,7 @@ Da unsere Lagrange-Funktion von einer Vektorgrösse abhängig ist erhalten wir e
 
 {\larger\textcircled{\smaller[2]1}} $i = 0$
 \[
-J^0  -\frac{1}{\mu_0}\biggl(\partial^1\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
+J^0  -\frac{1}{\mu_0}\,\biggl(\partial^1\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
 + \partial^2\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
 + \partial^3\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}\biggr)
 =
@@ -264,7 +312,7 @@ J^0  -\frac{1}{\mu_0}\biggl(\partial^1\underbrace{\left(\partial^0 A^1 + \partia
 
 {\larger\textcircled{\smaller[2]2}} $i = 1$
 \[
-J^1  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
+J^1  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
 + \underbrace{\partial^2\left(\partial^1 A^2 + \partial^2 A^1\right)
 	- \partial^3\left(\partial^3 A^1 + \partial^1 A^3\right)}_{\displaystyle=(\nabla\times\vec{B})_x}\biggr)
 =
@@ -273,7 +321,7 @@ J^1  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^1 + \partia
 
 {\larger\textcircled{\smaller[2]3}} $i = 2$
 \[
-J^2  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
+J^2  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
 + \underbrace{\partial^3\left(\partial^2 A^3 + \partial^3 A^2\right)
 	- \partial^1\left(\partial^1 A^2 + \partial^2 A^1\right)}_{\displaystyle=(\nabla\times\vec{B})_y}\biggr)
 =
@@ -282,7 +330,7 @@ J^2  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^2 + \partia
 
 {\larger\textcircled{\smaller[2]4}} $i = 3$
 \[
-J^3  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}
+J^3  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}
 + \underbrace{\partial^1\left(\partial^3 A^1 + \partial^1 A^3\right)
 	- \partial^2\left(\partial^2 A^3 + \partial^3 A^2\right)}_{\displaystyle=(\nabla\times\vec{B})_z}\biggr)
 =
@@ -291,7 +339,7 @@ J^3  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^3 + \partia
 
 Für $i=0$ resultiert die partielle Differentialgleichung
 \begin{align}
--c\varrho + \frac{1}{\mu_0\,c}\biggl(\frac{\partial E_x}{\partial x}
+-c\varrho + \frac{1}{\mu_0\,c}\,\biggl(\frac{\partial E_x}{\partial x}
 + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}\biggr)
 &=
 0\\[1em]

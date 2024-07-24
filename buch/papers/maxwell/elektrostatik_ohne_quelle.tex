@@ -29,7 +29,7 @@
 
 \section{Elektrostatik\label{maxwell:section:elekktrostatik}}
 \rhead{Elektrostatik}
-Die Elektrostatik ist ein Spezialfall der Elektrodynamik, bei dem statische Felder betrachtet werden.
+Die Elektrostatik ist ein Spezialfall der Elektrodynamik, bei dem statische, das heisst zeitlich nicht veränderliche Felder betrachtet werden.
 Dies setzt voraus, dass
 \begin{equation}
 	\frac{\partial f}{\partial t}
@@ -103,6 +103,7 @@ Dieses Feld kann man anhand der Kraftwirkung an sogenannten Probeladungen $q$ me
 ist.
 Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kraftvektoren, welche normiert sind auf die Ladung $q$.
 %E-Field of point charge
+%TODO: Bild grösser oder nur nodes grösser?
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -125,7 +126,6 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 		\node[EcolFL,scale=0.8] at (1.4,-1.4) {$\vec{E}$};
 		\node[EcolEP,scale=0.8] at (1.95,0) {$\varphi$};
 	\end{tikzpicture}
-	%TODO: Caption anpassen
 	\caption{Elektrisches Feld (grün) einer positiven Punktladung $+Q$ und Äquipotentiallinien (blau) der selben positiven Punktladung $+Q$}
 	\label{maxwell:section:E-Feld_punktladung}
 \end{figure}
@@ -149,11 +149,11 @@ Die Permittivität
 \)
 ist ein Mass dafür, wie gut sich ein Material polarisieren lässt und ist das Produkt der relativen Permittivität $\varepsilon_r$ und der Permittivität von Vakuum $\varepsilon_0$.
 Die relative Permittivität ist eine materialabhängige Grösse und hat in Vakuum den skalaren Wert $1$.
-Die Permittivität des Vakuums
+Die Permittivität des Vakuums in SI-Einheiten
 \[
 \varepsilon_0
 =
-8.854 \cdot 10^{-12} F/m
+8.854 \cdot 10^{-12}\,\text{F/m}
 \]
 ist die elektrische Feldkonstante.
 
@@ -163,7 +163,7 @@ ist die elektrische Feldkonstante.
 \rhead{Problemstellung}
 Man stelle sich nun einen ladungsfreien, luftleeren, drei dimensionalen Raum $V\subset\mathbb{R}^3$
 vor, indem ein elektrisches Potentialfeld $\varphi(x,y,z)$ existiert.
-Für diesen Raum möchten wir mittels der Varitaionsrechnung eine partielle Differentialgleichung entwickeln, die beschreibt, wie sich das Potentialfeld und somit auch das elektrische Feld verhält. 
+Für diesen Raum möchten wir mittels der Variationsrechnung eine partielle Differentialgleichung entwickeln, die beschreibt, wie sich das Potentialfeld und somit auch das elektrische Feld verhält. 
 
 \subsubsection{Ansatz}
 Damit wir eine Gleichung erhalten, die das Verhalten des elektrischen Potentialfeldes beschreibt, muss ganz allgemein die Energie im System minimiert werden. 
@@ -189,7 +189,7 @@ w_{\text{e}}
 \frac{1}{2}\,\varepsilon_0\left(-\nabla\varphi\right)^2
 \\
 w_{\text{e}}
-=
+&=
 \frac{1}{2}\,\varepsilon_0
 \begin{pmatrix}
 \displaystyle
@@ -199,7 +199,7 @@ w_{\text{e}}
 \displaystyle
 -\varphi_z
 \end{pmatrix}
-&\cdot
+\cdot
 \begin{pmatrix}
 \displaystyle
 -\varphi_x\\
@@ -213,7 +213,6 @@ w_{\text{e}}
 \label{maxwell:section:energiedichte}
 \end{align}
 Dies können wir in das zu minimerende Integral einsetzen und bekommen
-%TODO: eventuell underbraces weg lassen.
 \begin{equation}
 	W_{\text{e}}
 	=
@@ -232,16 +231,15 @@ ist.
 Somit haben wir unsere Lagrange-Funktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-%TODO: label suchen von E-O-DGL von müller kapitel
 Nun gilt es die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
 Nach Einsetzen wird die Differentialgleichung zu
-\[
-\frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} - \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
-\frac{\partial}{\partial y}\frac{\partial}{\partial \varphi_y}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
+\begin{align*}
+\frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} &- \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\\
+&- \frac{\partial}{\partial y}\frac{\partial}{\partial \varphi_y}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
 \frac{\partial}{\partial z}\frac{\partial}{\partial \varphi_z}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\biggr)
 =
 0.
-\]
+\end{align*}
 Man sieht, dass die partielle Ableitung nach $\varphi$ verschwindet.
 Nach den partiellen Ableitungen nach $\varphi_x$, $\varphi_y$ und $\varphi_z$ wird die Differentialgleichung zu
 \[
@@ -267,7 +265,7 @@ Somit wird unsere Schlussdifferentialgleichung zu
 	\label{maxwell:section:laplace_gleichung_2}
 \end{equation}
 %TODO: Definition Laplace suchen.
-Wenn wir nun den Laplace-Operator laut seiner Definition \eqref{???} mittels Divergenz und Gradient ausdrücken, erhalten wir die Gleichung
+Wenn wir nun den Laplace-Operator laut seiner Definition \eqref{buch:felder:fundamentallemma:eqn:laplaceproduktformel} mittels Divergenz und Gradient ausdrücken, erhalten wir die Gleichung
 \begin{equation}
 \nabla\cdot\underbrace{\nabla\varphi}_{\displaystyle-\vec{E}}
 =
