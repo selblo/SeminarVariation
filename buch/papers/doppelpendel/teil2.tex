@@ -1,32 +1,40 @@
 \section{Lagrange-Formalismus}
-Das Prinzip der kleinsten Wirkung besagt, dass die Natur immer Trajektoren mit Minimaleigenschaften wählt.
+Das Prinzip der kleinsten Wirkung besagt, dass die Natur immer Trajektoren
+mit Minimaleigenschaften wählt.
 Beispielsweise wählt das Licht durch jedes Medium den Weg mit der kürzesten Zeit, was zur Folge hat,
 dass das Licht gebrochen wird wenn es ein Medium verlässt und in ein anderes übergeht.
-Dieses Phänomen wird auch im Brechungsgesetz von Snellius beschrieben \ref{buch:variation:problem:satz:snellius}.
+Dieses Phänomen wird auch im Brechungsgesetz von Snellius beschrieben.
+(siehe Abschnitt \ref{buch:variation:problem:satz:snellius})
 
 Die Wirkung \(S\) wird definiert als
-\begin{align}
-    S = \int_{t_0}^{t_1} L(t,q_i,\dot{q}_i) \, dt.
-\end{align}
+\begin{align*}
+    S = \int_{t_0}^{t_1} L(t,q_i,\dot{q}_i) \: dt.
+\end{align*}
 Das Ziel ist es dieses sogenannte Funktional zu minimieren.
 Der Integrand des Funktionals ist die Lagrange-Funktion.
-Um die Lagrange-Funktion zu minimieren muss sie in die Euler-Lagrange Differentialgleichung eingesetzt werden.
-(siehe Abschnitt \ref{buch:variation:section:eulerlagrange})
-\begin{equation}
-    \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_i} \right) 
-    - \frac{\partial L}{\partial q_i} = 0
-\end{equation}
-
-Der Lagrange-Formalismus verwendet die sogenannten generalisierten 
-Koordinaten \(q_i\) und ihre Ableitungen \(\dot{q}_i\), um die Bewegung eines Systems zu beschreiben.
-Der Vorteil darin ist, dass man beliebige Koordinaten verwenden kann, sofern die Energie im System in 
-den Koordinaten ausgedrückt werden kann.
+Der Lagrange-Formalismus verwendet \(q_i\) als verallgemeinerte Koordinaten
+und \(\dot{q}_i\) als ihre Ableitungen.
+Damit werden die Bewegungen eines Systems beschrieben.
+Der Vorteil besteht darin, dass man beliebige Koordinaten verwenden kann,
+sofern die Energie im System in den Koordinaten ausgedrückt werden kann.
 Die Lagrange-Funktion \(L\) ist definiert als
 \begin{equation}
     L = T - V.
     \label{eq:lagrange} 
 \end{equation}
 Dies gilt aber nur für Systeme mit generalisiertem Potential und holonomen Zwangsbedingungen.
-Holonome Zwangsbedingungen sind solche, die durch eine Gleichung beschrieben werden können.%(Zitat)
+Holonome Zwangsbedingungen sind solche, die durch eine algebraische Gleichung
+ausgedrückt werden können.%(Zitat)
+
+Um die Lagrange-Funktion anschliessend zu minimieren muss sie in die
+Euler-Lagrange Differentialgleichung
+\begin{equation*}
+    \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_i} \right) 
+    - \frac{\partial L}{\partial q_i} = 0
+\end{equation*}
+eingesetzt werden.
+(siehe Abschnitt \ref{buch:variation:section:eulerlagrange})
+
+
 
 
