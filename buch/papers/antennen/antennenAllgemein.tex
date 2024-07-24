@@ -59,31 +59,26 @@ auch Effizienz genannt, kann mittels der Gesamtleistung der Antenne $P\textsubsc
 	\label{antennen:Wirkungsgradkomplett}
 \end{equation}
 nur noch vom Verlustwiderstand und dem Strahlungswiderstand abhängig ist. $R\textsubscript{rad}$ und $R\textsubscript{loss}$ werden wie folgt definiert:
-\begin{equation}
-	R\textsubscript{rad}=31171\Omega\cdot{\bigg(\frac{A}{\lambda^2}\bigg)^2}
-	\label{antennen:Rrad}
-\end{equation}
-\begin{equation}
-	R\textsubscript{loss}=\frac{\rho\cdot{l}}{r^2\cdot{\pi}}.
-	\label{antennen:Rloss}
-\end{equation}
+\begin{align}
+	R_{\text{rad}} &= 31171 \Omega \cdot \left( \bigg( \frac{A}{\lambda^2} \bigg)^2 \right) \tag{20.3} \label{antennen:Rrad} \\
+	R_{\text{loss}} &= \frac{\rho \cdot l}{r^2 \cdot \pi} \tag{20.4} \label{antennen:Rloss}
+\end{align}
 
 Die Formel für die Berechnung des Strahlungswiderstands \eqref{antennen:Rrad} wurde aus Fachliteratur, spezifischer aus dem Buch ``Antenna theory'' von Constantine A. Balanis, übernommen. Diese gilt für die verschiedensten Formen von Loop-Antennen, welche einen kleinen Umfang  $l$ < $\lambda$/10 aufweisen. $A$ wird hierbei als aufgespannte Fläche definiert, während $\lambda$ der Wellenlänge entspricht. Eine Wellenlänge 
+\setcounter{equation}{4}
+
 \begin{equation}
-	\lambda=\frac{c}{f}
-	\label{antennen:Lambda}
+	\lambda = \frac{c}{f}
+	\label{antennen:lambda}
 \end{equation}
 entspricht dem Verhältnis der materialspezifischen Lichtgeschwindigkeit $c$ und der Einsatzfrequenz $f$.
 Der Verlustwiderstand wird aus dem spezifischen Widerstand $\rho$, dem Umfang $l$ und dem Leiterradius $r$ berechnet. Die Formeln \eqref{antennen:Rrad} und \eqref{antennen:Rloss} können in dieser Arbeit vereinfacht werden da die Einsatzfrequenz und die Drahteigenschaften als konstant und gegeben angesehen werden können. Es resultieren die Ausdrücke 
-\begin{equation}
-	R\textsubscript{rad}=k\textsubscript{1}\cdot{A^2}
-	\label{antennen:Rrad_konst}
-\end{equation}
-\begin{equation}
-	R\textsubscript{loss}=k\textsubscript{2}\cdot{l}
-	\label{antennen:Rloss_konst}
-\end{equation}
+\begin{align}
+	R_{\text{rad}} &= k_{\text{1}} \cdot A^2 \tag{20.6} \label{antennen:Rrad_konst} \\
+	R_{\text{loss}} &= k_{\text{2}} \cdot l \tag{20.7} \label{antennen:Rloss_konst}
+\end{align}
 für die beiden Widerstände. $k\textsubscript{1}$ und $k\textsubscript{2}$ werden als Konstanten betrachtet. Eingesetzt in \eqref{antennen:Wirkungsgradkomplett} ergibt sich
+\setcounter{equation}{7}
 \begin{equation}
 	\eta=\frac{k\textsubscript{1}\cdot{A^2}}{k\textsubscript{1}\cdot{A^2}+{k\textsubscript{2}\cdot{l}}}=\frac{1}{1+\frac{k\textsubscript{2}\cdot{l}}{k\textsubscript{1}\cdot{A^2}}}
 	\label{antennen:Wirkungsgradeingesetzt}
