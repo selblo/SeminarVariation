@@ -12,7 +12,7 @@
 
 Antennen sind in der heutigen technologisch geprägten Welt nicht mehr weg zu denken. Sie befinden sich in vielen alltäglichen elektronischen Geräten. Eine Antenne wandelt die in einer Leitung geführte gebundene elektromagnetische Welle in eine freie Welle im Raum um. Da eine Antenne freie Wellen ebenso in gebundene leitungsgeführte Wellen umwandeln kann hat sie reziproke Eigenschaften.
 
-Eine genauere Erklärung von elektromagnetischen Wechselwirkungen kann sich im \href{chapter:maxwell}{Kapitel Maxwell}, welches sich mit den Maxwell Gleichungen befasst, angeeignet werden. 
+Eine genauere Erklärung von elektromagnetischen Wechselwirkungen kann sich im \href{buch:chapter:maxwell}{Kapitel Maxwell}, welches sich mit den Maxwell Gleichungen befasst, angeeignet werden. 
 \subsection{Loop-Antennen\label{antennen:antennenAllgemein_loop}}
 \rhead{Loop-Antennen}
 %todo geschlossen? are u sure? wie ist das gemeint?
@@ -55,6 +55,7 @@ Der Wirkungsgrad
 	\label{antennen:Wirkungsgrad}
 \end{equation}
 auch Effizienz genannt, kann mittels der Gesamtleistung der Antenne $P\textsubscript{tot}$ und der abgestrahlten Leistung $P\textsubscript{rad}$ berechnet werden. Eine Leistung $P$ entspricht dem elektrischen Widerstand multipliziert mit der Stromstärke im Quadrat. Nach Vereinfachung ergibt sich, dass die Effizienz
+%todo DOPPELKLAMMER?
 \begin{equation}
 	\eta=\frac{P\textsubscript{rad}}{P\textsubscript{tot}}=\frac{R\textsubscript{rad}\cdot{I^2}}{R\textsubscript{tot}\cdot{I^2}}=\frac{R\textsubscript{rad}\cdot{I^2}}{(R\textsubscript{rad}+R\textsubscript{loss})\cdot{I^2}}=\frac{R\textsubscript{rad}}{R\textsubscript{rad}+R\textsubscript{loss}}
 	\label{antennen:Wirkungsgradkomplett}
@@ -65,7 +66,7 @@ nur noch vom Verlustwiderstand und dem Strahlungswiderstand abhängig ist. $R\te
 	R_{\text{loss}} &= \frac{\rho \cdot l}{r^2 \cdot \pi} \tag{20.4} \label{antennen:Rloss}
 \end{align}
 
-Die Formel für die Berechnung des Strahlungswiderstands \eqref{antennen:Rrad} wurde aus Fachliteratur, spezifischer aus dem Buch ``Antenna theory'' von Constantine A. Balanis, übernommen. Diese gilt für die verschiedensten Formen von Loop-Antennen, welche einen kleinen Umfang  $l$ < $\lambda$/10 aufweisen. $A$ wird hierbei als aufgespannte Fläche definiert, während $\lambda$ der Wellenlänge entspricht. Eine Wellenlänge 
+Die Formel für die Berechnung des Strahlungswiderstands \eqref{antennen:Rrad} wurde aus Fachliteratur, spezifischer aus dem Buch ``Antenna theory'' von Constantine A. Balanis, übernommen \cite{antennen:antennaTheory}. Diese gilt für die verschiedensten Formen von Loop-Antennen, welche einen kleinen Umfang  $l$ < $\lambda$/10 aufweisen. $A$ wird hierbei als aufgespannte Fläche definiert, während $\lambda$ der Wellenlänge entspricht. Eine Wellenlänge 
 \setcounter{equation}{4}
 
 \begin{equation}

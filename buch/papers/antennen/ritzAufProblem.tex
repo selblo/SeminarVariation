@@ -12,7 +12,7 @@
 \section{Ritz-Verfahren für das Antennenproblem\label{antennen:ritzAnw}}
 
 %todo CHAPTER REFERENZ
-Wie in REF erwähnt konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
+Wie in \ref{buch:antennen:Geom} erwähnt konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
 Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen 
 in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren.
 
@@ -77,7 +77,7 @@ $y_n(x)$, wie in REF %~\ref{an}
 erwähnt, die quadrierte Fläche $A$ maximieren und die Länge $l$ minimieren.
 
 
-\subsection{Nebenbedingungen von $y_n(x)$\label{antenennen:nebenbedRitz}}
+\subsection{Nebenbedingungen von $y_n(x)$\label{antennen:nebenbedRitz}}
 
 Eine Nebenbedingung ist es, dass bei $y_n(0)$ und $y_n(\pi)$ die Funktion null sein muss.
 Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Form die wir optimieren.
@@ -200,42 +200,43 @@ und wie jede gute Nebenbedingung setzen wir diese noch gleich null
 \label{antennen:fertigeNebenbed}
 \end{aligned}
 \end{equation}
-Nun kann man die Lagrange-Funktion
+Nun kann man die endlichdimensionale Lagrange-Funktion
 
 \begin{equation}
-L(x,a_1,a_2,\lambda)
+F(x,a_1,a_2,\lambda)
 = 
 f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
 definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n$ addiert.
 Mehr zu der Lagrangefunktion findet man unter dem Kapitel REF %\ref{label}
+%todo REF!
 
 \subsection{Lagrange-Gleichungssystem\label{antennen:lagrangeGLsys}}
 
-Nun möchte man die Lagrange-Funktion $L$ ableiten und 0 setzen. Nur heisst das in diesem Kontext
+Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und 0 setzen. Nur heisst das in diesem Kontext
 
 % TODO GLsys bisschen spacen
 \begin{equation}
-	\nabla L = \vec{0} \;
+	\nabla F = \vec{0} \;
 	\left\{ \;
 	\begin{aligned}
 		\frac{\partial L}{\partial a_1} = 0 \\
-		\frac{\partial L}{\partial a_2} = 0 \\
-		\frac{\partial L}{\partial \lambda} = 0
+		\frac{\partial L}{\partial a_2} = 0
 	\end{aligned}
 	\right.
 	\label{antennen:lagrangeGrad}
 \end{equation}
 den Gradienten berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
-$n+1$ dimensionales Gleichungssystem \eqref{antennen:lagrangeGrad}.
+$n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. Wobei $n$ die Anzahl
+der Koeffizienten ist.
 
 An dieser Stelle soll es einem bewusst werden, was dieses Kapitel von anderen 
 unterscheidet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
-Problem, in ein endlich dimensionales verwandeln. 
+Problem wie in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
 Konkret heisst es, dass wir keine Differentialgleichung lösen müssen, sondern, 
-das nichtlineare Gleichungssystem, welches wir bei \eqref{antennen:lagrangeGrad} erhalten haben.
+das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
 
-Das Gleichungssystem \eqref{antennen:lagrangeGrad}, in diesem Fall mit 
+Das Gleichungssystem, in diesem Fall mit 
 2 Koeffizienten kann man dann als
 \begin{equation}
 	\begin{aligned}
@@ -253,7 +254,8 @@ Das Gleichungssystem \eqref{antennen:lagrangeGrad}, in diesem Fall mit
 	\end{aligned}
 	\label{antennen:lagrangeGradKonkret}
 \end{equation}
-ausschreiben. 
+ausschreiben. Zu beachten ist, dass eine Gleichung sich hier
+als trivial ausgegeben hat und somit hier ein $n$ dimensionales Gleichungssystem entsteht.
 
 \subsection{Das Gleichungssystem lösen\label{antennen:glSysSolve}}
 
@@ -336,9 +338,16 @@ konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe d
 
 %TODO code im github?
 
-Eventuell findet man den Code auf github?
+\textcolor{red}{Eventuell findet man den Code auf github?}
 
-\subsection{Auswertung der Lösung\label{antennen:auswertung}}
+\subsection{Auswertung der Optimierung\label{antennen:auswertung}}
+
+Das Lösen ist eine Sache und das Verstehen des gelösten eine andere. Wie vorher erwähnt können wir beliebig viele
+Koeffizienten der Funktion für verschiedene $l$ optimieren.
+
+Um die Abbildung \ref{antennen:plotskoeff} zu verstehen muss man sich folgendes Setup vorstellen. 
+Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$ 
+``meter''. Diese Distanz ist jeweils auf der x-Achse dargestellt.
 
 % TODO nicht gute position, [htbp] illegal
 \begin{figure}[htbp]
@@ -456,18 +465,36 @@ Eventuell findet man den Code auf github?
 	\end{subfigure}
 	
 	\caption{Verschiedene Längen $l$ für $y_n(x)$ mit verschieden vielen Koeffizienten}
-	\label{antenenn:plotskoeff}
+	\label{antennen:plotskoeff}
 \end{figure}
 
-% TODO Fehler, n koeff bis unendlich, flaeche kreis vs meine FUnkt
-Es wurde nun schon sehr oft erwähnt, dass wir die Fläche maximieren 
-und Länge minimieren. 
+Dann nehme man verschiedene \emph{Seillängen} $l$, welche in
+\eqref{antennen:constNebenbed} als konstant definiert war.
+Als Seil kann man sich die jeweilige Funktionslösung vorstellen.
+Das Ergebnis ist dann die \emph{optimale Form} mit
+maximaler Fläche unter dem Seil für verschiedene \emph{Seillängen}.
 
-Die plots sehen so aus \ref{antenenn:plotskoeff} 
+Mit mehr Koeffizienten $n$ kann die Funktion, also die Art wie das Seil gelegen wird, immer mehr Fläche aufspannen. Eine sehr interessante \emph{Seillänge} sollte man jedoch genauer unter die Lupe nehmen.
+
+Es wurde nun schon oft wie im Kapitel \ref{buch:chapter:nebenbedingungen}
+erwähnt, dass wir die Fläche \emph{maximieren} und den Umfang, wie bei dem Problem von Dido \emph{minimieren} möchten. 
+
+Dort kam eine Form, mit konstanter zweiten Ableitung, also
+der Kreis als Lösung hervor. Somit ist die für uns interessante \emph{Seillänge} $l$, der Durchmesser eines Kreises. Genau diesen wichtigen Vergleich sieht man in der Abbildung \ref{antennen:vergleichKreis}. 
+
+\subsection{Vergleich mit perfekten Lösung\label{antennen:vergleich}}
+
+Das Seil ist in diesem Kontext wieder die Funktion $y_n(x)$. In der Abbildung \ref{antennen:vergleichKreis} sogar mit 8 Koeffizienten, für eine Länge $l$ des halben
+Kreisumfangs eines Kreises mit Durchmesser $\pi$. Einfacher
+ausgedrückt $l=\frac{\pi^2}{2}$.
+
+Man sieht hier schon recht gut, dass $y_n(x)$ der
+perfekten Lösung, dem Kreis, konvergiert. Dies ist
+natürlich kein wasserfester Beweis, aber ist hier völlig
+ausreichend. 
 
 % TODO in packages hinzufügen
 \usetikzlibrary{pgfplots.fillbetween}
-
 
 \begin{figure}[htbp]
 	\centering
@@ -509,8 +536,8 @@ Die plots sehen so aus \ref{antenenn:plotskoeff}
 			];
 		\end{axis}
 	\end{tikzpicture}
-	\caption{$y_n(x)$ mit 8 Koeffizienten verglichen mit Kreis}
-	\label{antennen:vergleichKreis2}
+	\caption{$y_n(x)$ mit 8 Koeffizienten verglichen mit einem Kreis mit Durchmesser $\pi$}
+	\label{antennen:vergleichKreis}
 \end{figure}
 
 
