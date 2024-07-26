@@ -24,6 +24,7 @@ PAPERFILES = \
 	papers/varalg/main.tex \
 	papers/cahnhilliard/main.tex \
 	papers/luke/main.tex \
+	papers/luke/main.tex \
 	papers/widerstand/main.tex \
 	
 $(workdir)/buch1-blx.bbl:	$(workdir)/buch1-blx.aux
@@ -193,6 +194,7 @@ PAPER_DIRECTORIES = \
 	varalg \
 	cahnhilliard \
 	luke \
+	variationsprinzip_algorithmen \
 	widerstand \
 	
 PAPER_MAKEFILEINC = \
@@ -212,5 +214,6 @@ PAPER_MAKEFILEINC = \
 	papers/varalg/Makefile.inc \
 	papers/cahnhilliard/Makefile.inc \
 	papers/luke/Makefile.inc \
+	papers/variationsprinzip_algorithmen/Makefile.inc \
 	papers/widerstand/Makefile.inc \
 	

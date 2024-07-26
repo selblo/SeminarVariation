@@ -14,6 +14,7 @@ include papers/planet/Makefile.inc
 include papers/varalg/Makefile.inc
 include papers/cahnhilliard/Makefile.inc
 include papers/luke/Makefile.inc
+include papers/variationsprinzip_algorithmen/Makefile.inc
 include papers/widerstand/Makefile.inc
 
 TEXFILES = \
@@ -33,5 +34,6 @@ TEXFILES = \
 	$(dependencies-varalg) \
 	$(dependencies-cahnhilliard) \
 	$(dependencies-luke) \
+	$(dependencies-variationsprinzip_algorithmen) \
 	$(dependencies-widerstand) \
 
