@@ -90,22 +90,48 @@ Aus diesem Integral entnehmen wir das Funktional der Nebenbedingung
 \end{equation*}
 
 Damit wir die Gesuchte Funktion finden müssen wir den Gradienten des Jewiligen Funktionals berechnen und anschliessend in
-\begin{equation*}
+\begin{equation}
 	\nabla N \cdot \lambda = \nabla L
-\end{equation*}
+	\label{planet:equ:lamdagleichung}
+\end{equation}
 einsetzen.
 Für den Gradienten der Funktionale benötigen wir die jeweiligen partiellen Ableitungen
 \begin{equation*}
 	L(\varphi ,r(\varphi),r(\varphi)_\varphi) = r(\varphi),
 	\frac{\partial L}{\partial r(\varphi)} = 1,
-	\frac{\partial L}{\partial r(\varphi)_\varphi} = 0
+	\frac{\partial L}{\partial r(\varphi)_\varphi} = 0,
+\end{equation*}
+\begin{equation*}
+	N(\varphi ,r(\varphi),r(\varphi)_\varphi) = \frac{r^2}{2} ,
+	\frac{\partial N}{\partial r(\varphi)} = r,
+	\frac{\partial N}{\partial r(\varphi)_\varphi} = 0.
 \end{equation*}
 
+Die Gradienten der Funtionale sind definiert als 
+\begin{equation*}
+	\nabla L = 
+	\frac{\partial L}{\partial r(\varphi)}-  \frac{d}{d\varphi}\left( \frac{\partial L}{\partial r(\varphi)} \right)
+\end{equation*}
+und
+\begin{equation*}
+	\nabla N = \frac{\partial N}{\partial r(\varphi)} - \frac{d}{d\varphi}\left(\frac{\partial N}{\partial r(\varphi)_\varphi}\right).
+\end{equation*}
 
+Wenn wir nun die Ableitungen der Funktionale in die Gradienten einsetzen
+\begin{equation*}
+	\left(\frac{\partial N}{\partial r(\varphi)} - \frac{d}{d\varphi}\left(\frac{\partial N}{\partial r(\varphi)_\varphi}\right)\right)\cdot \lambda = \frac{\partial L}{\partial r(\varphi)}-  \frac{d}{d\varphi}\left( \frac{\partial L}{\partial r(\varphi)} \right)
+\end{equation*} 
+und anschliessend das ganze in die Gleichung \ref{planet:equ:lamdagleichung}
+ein und erhalten
+\begin{equation*}
+	r = \frac{1}{\lambda}.
+\end{equation*}
+Was sagt nun dieses Ergebniss.
+\(\lambda\) ist eine Konstatnte.
+Folglich muss \(r\) ebenfalls eine Konstante sein.
+Da wir die Berechungen in Polarkoordinaten durchgeführt haben, bedeutet ein konstanter Raduis das die zu suchende Form ein Kreis ist.
 
-
-
-
-
-
+\subsection{Hydrostatische Gleichgewichtsform in 3-D}
+Für die Berechnung im 3-Dimensionalen Raum gehen wir ähnlich vor wie im 2-Dimensionalen Raum.
+Für die Berechnung der hydrostatische Gleichgewichtsform soll nun die potenzielle Energie \(U\) minimal werden.
 
