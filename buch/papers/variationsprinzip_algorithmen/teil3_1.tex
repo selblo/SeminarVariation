@@ -15,7 +15,7 @@ Diese wird als ein genetischer String dargestellt.
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
-        papers/variationsprinzip_algorithmen/images/teil2/01_genetic_string.png
+        papers/variationsprinzip_algorithmen/images/teil3/01_genetic_string.png
         }
 	\caption{Beispiel von möglichen genetischen String}
 	\label{fig:possible_genetic_string}
@@ -32,7 +32,7 @@ es auf die Reihenfolge ankommt. Daher wird wie im nachfolgendem Bild
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
-        papers/variationsprinzip_algorithmen/images/teil2/02_genetic_string_cities.png
+        papers/variationsprinzip_algorithmen/images/teil3/02_genetic_string_cities.png
         }
 	\caption{Beispiel von Stätten in einem genetischen String dargestellt}
 	\label{fig:cities_genetic_string}
@@ -40,4 +40,11 @@ es auf die Reihenfolge ankommt. Daher wird wie im nachfolgendem Bild
 
 Speziell an der Initialisierung ist, dass man nicht alle Möglichkeiten erstellt,
 sondern nur einen kleinen Teil (Population) und damit weiter arbeitet. Diese 
-Taktik spart Zeit. Dieser Teil nutzt noch keine Variationsprinzipien.
+Taktik spart Zeit. 
+
+Die zufällige Erzeugung der Anfangspopulation stellt ebenfalls eine Form der 
+Variation dar. Sie sorgt dafür, dass die Suche nicht von einem begrenzten 
+Bereich des Lösungsraums startet, sondern eine breite Palette von möglichen 
+Lösungen berücksichtigt wird. Dies Bezieht jedoch keine Berechnung mitein,
+sondern erstellt zufällige Lösungen und hofft eines kommt nahe an das 
+Optimale.
