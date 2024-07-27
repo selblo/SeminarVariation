@@ -8,39 +8,28 @@
 %
 \subsection{Mutation
 \label{genetic_algorithm:mutation}}
-Der Startpunkt des genetischen Algorithmus ist die Initialisierung.
-Dabei wird eine zufällige Population von möglichen Lösungen erstellt.
-Diese wird als ein genetischer String dargestellt.
+Dieser Schritt ist dafür da da sich zufällige änderungen in den 
+Genen stattfindet. Dies soll dazu führen, dass neue Gene entstehen, 
+wodurch der gesammte Lösungsraum grösser wird. Es sollte so 
+verhindert werden, dass plötzlich nur noch die gleichen 
+Genmuster entstehen sondern auch etwas neues enstehen kann. 
+Ein guten Vergleich zu maschinelles Lernen wäre es, dass man so 
+versucht aus einem Extrempunkt herauskommen.
+
+Würde der genetischer String nur aus 0 und 1 bestehen. Würden zufällig 
+Stellen einfach ein und ausgeschaltet. Dies ist daher mit den Stätten 
+auch nicht möglich, daher werden Teile mit einander vertauscht.
 
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
-        papers/variationsprinzip_algorithmen/images/teil2/01_genetic_string.png
+        papers/variationsprinzip_algorithmen/images/teil3/09_genetic_string_cities_mutation.png
         }
-	\caption{Beispiel von möglichen Genetic String}
-	\label{fig:possible_genetic_string}
+	\caption{Beispiel einer Mutation}
+	\label{fig:mutation_genetic_string}
 \end{figure}
 
-Dabei wird in jeder Position das Gen aktiviert mit 1 oder deaktiviert mit 0.
-Problematik für Stätte funktioniert dies nicht, da wir eine Stadt nicht
-einfach aus oder anschalten können. Beim Gen wie oben ändert sich die funktioniert
-an der Position nicht. Beispiel Feld 2 ist veranwortlich, dass die Farbe Grün
-dargestellt wird. Bei den Städten ändert sich aber die Reihenfolge, da wird 
-nicht einfach Ein oder ausgeschaltet. Zur einfachheit wird in den Stellen 
-die Nummer der Stadt genommen.
-
-\begin{figure} [h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{
-        papers/variationsprinzip_algorithmen/images/teil2/02_genetic_string_cities.png
-        }
-	\caption{Beispiel von Stätten in einem Genetic String dargestellt}
-	\label{fig:cities_genetic_string}
-\end{figure}
-
-
-in Geld 2 wird immer die Farbe Grün angezeigt,  Ausserdem ändern nicht die Reihenfolge
-der der Stätte, wodurch bei änderungen nicht nur die Position 
-Bei den Stätten ist dies nicht einfach so umzusetzen da Bei einem Rucksack, welches einzelne Gegenstände hat 
-
-
+Der Teil besitzt auch keine Mathematische Formel, es geht einfach um die 
+Logik welche 2 zufällig Stellen nimmt, diese Tauscht um eine neue 
+Variation von Lösungen zu erstellen. Welche bei der Kreuzung nicht enstanden
+wäre.
