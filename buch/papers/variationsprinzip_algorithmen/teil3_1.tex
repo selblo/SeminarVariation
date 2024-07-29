@@ -17,34 +17,35 @@ Diese wird als ein genetischer String dargestellt.
 	\includegraphics[width=0.8\textwidth]{
         papers/variationsprinzip_algorithmen/images/teil3/01_genetic_string.png
         }
-	\caption{Beispiel von möglichen genetischen String}
+	\caption{Beispiel eines möglichen genetischen Strings}
 	\label{fig:possible_genetic_string}
 \end{figure}
 
-Dabei wird in jeder Position das Gen aktiviert mit 1 oder deaktiviert mit 0.
-Problematik für Stätte funktioniert dies nicht, da wir eine Stadt nicht
-einfach aus oder anschalten können. Beim Gen wie oben ändert sich die funktioniert
-an der Position nicht. Beispiel Feld 2 ist veranwortlich, dass die Farbe Grün
-dargestellt wird. Das ein und auschalten der Städten ist nicht möglich, da sich
-es auf die Reihenfolge ankommt. Daher wird wie im nachfolgendem Bild 
-\cite{cities_genetic_string}, die jeweilige Nummer der Stadt verwendet.
+In jeder Position kann ein Gen aktiviert (1) oder deaktiviert (0) sein.
+Diese Darstellung eignet sich jedoch nicht für das Travelling Salesman 
+Problem (TSP), da eine Stadt nicht einfach ein- oder ausgeschaltet werden kann.
+Auf die Wege ist es auch nicht anwendbar, das dann immer nur 1 Weg der vielen Wege 
+aktiviert werden kann. Im TSP ist die Reihenfolge der Städte entscheidend. 
+Daher wird die jeweilige Nummer der Stadt verwendet, wie im folgenden Bild 
+\cite{cities_genetic_string} dargestellt:
 
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
         papers/variationsprinzip_algorithmen/images/teil3/02_genetic_string_cities.png
         }
-	\caption{Beispiel von Stätten in einem genetischen String dargestellt}
+	\caption{Beispiel von Städten in einem genetischen String dargestellt}
 	\label{fig:cities_genetic_string}
 \end{figure}
 
-Speziell an der Initialisierung ist, dass man nicht alle Möglichkeiten erstellt,
-sondern nur einen kleinen Teil (Population) und damit weiter arbeitet. Diese 
-Taktik spart Zeit. 
+Anstatt alle möglichen Lösungen zu erstellen, wird nur ein kleiner Teil 
+(Population) zufällig generiert und weiter bearbeitet. Diese Taktik 
+spart Zeit und Ressourcen.
 
-Die zufällige Erzeugung der Anfangspopulation stellt ebenfalls eine Form der 
-Variation dar. Sie sorgt dafür, dass die Suche nicht von einem begrenzten 
+Die zufällige Erzeugung der Anfangspopulation stellt ebenfalls eine Form 
+der Variation dar. Sie sorgt dafür, dass die Suche nicht von einem begrenzten 
 Bereich des Lösungsraums startet, sondern eine breite Palette von möglichen 
-Lösungen berücksichtigt wird. Dies Bezieht jedoch keine Berechnung mitein,
-sondern erstellt zufällige Lösungen und hofft eines kommt nahe an das 
-Optimale.
+Lösungen berücksichtigt. Dabei werden jedoch keine Berechnungen durchgeführt, 
+sondern zufällige Lösungen erstellt, in der Hoffnung, dass eine davon nahe 
+an das Optimum herankommt.
+
