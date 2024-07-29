@@ -6,11 +6,14 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Einfacher Bruteforce Algorithmus}
-In der Bruteforce Methode wird jede Variante durchprobiert, 
-um die beste Lösung zu finden. Dabei wird Systematisch ein 
+\section{Einfacher Bruteforce Algorithmus
+\label{variationsprinzip_algorithmen:section:bruteforce}}
+In der Bruteforce-Methode wird jede mögliche Variante durchprobiert, 
+um die beste Lösung zu finden. Dabei wird systematisch jede mögliche
+Route durchlaufen und überprüft, wie lange die Strecke ist.  
 Ablauf durchgemacht und überprüft, wie lange die Strecke ist.
-Ist die Strecke kürzer ist dies die neue Optimale Lösung.
+Ist die Strecke kürzer als die bisher kürzeste gefundene Route, 
+wird diese als neue optimale Lösung gespeichert.
 
 \begin{figure} [h]
 	\centering
@@ -21,16 +24,17 @@ Ist die Strecke kürzer ist dies die neue Optimale Lösung.
 	\label{fig:results_bruteforce}
 \end{figure}
 
-Auf dem Bild ist ersichtlich das mit jedem weiteren Knoten der Aufwand 
-exponentiell steigt oder anders ausgedrückt, mit jeder weiteren Knoten
-gibt es mehr Variationen, die durchprobiert werden müssen. Die Anzahl 
-der Möglichkeiten lässt sich mit der Formel
+Auf dem Bild \ref*{fig:results_bruteforce} ist ersichtlich, dass mit 
+jedem weiteren Knoten der Aufwand exponentiell steigt. Anders 
+ausgedrückt, mit jeder weiteren Stadt gibt es mehr Varianten, die 
+durchprobiert werden müssen. Die Anzahl der Möglichkeiten lässt sich 
+mit der Formel
 
 \begin{equation}
     (n-1)!
 \end{equation}
 
-berechnen. Dabei ist \(n\) die Anzahl der Städte.
+berechnen, wobei \(n\) die Anzahl der Städte ist.
 
 Die Berechnung der verschiedenen Kombinationen lässt sich mit folgender 
 mathematischen Formel beschreiben:
@@ -44,13 +48,15 @@ Erklärung:\\
 - \( L(\sigma) \)  repräsentiert die Gesamtlänge der Rundreise, die durch 
 die Permutation \( \sigma \) der Städte definiert ist.\\
 - \( \sigma \) ist eine Permutation der Städte \( \{1, 2, \ldots, n\} \),
- (jedes \( \sigma \) hat ein Set mit unterschiedlicher Reihenfolge der Städte).\\
-- \( d(i, j) \) die Entfernung zwischen Stadt \( i \) und Stadt \( j \).\\
+wobei jedes \( \sigma \) unterschiedliche Reihenfolge der Städte darstellt.\\
+- \( d(i, j) \) ist die Funktion, welche die Entfernung der Stadt \( i \) und 
+Stadt \( j \) zurückgibt.\\
 - \( L(\sigma) \) die Gesamtlänge der Rundreise \( \sigma \).\\
 
-\subsection{Beispiel Rechnung der Formel}
-Für Verständnis wie die Formel \ref{eq:bruteforce_min_formula} angewendet wird, 
-gibt es hier ein Beispiel, wie diese angewendet wird.
+\subsection{Kurzes Beispiel Rechnung der Formel
+\label{variationsprinzip_algorithmen:section:bruteforce_calculate}}
+Um zu verdeutlichen, wie die Formel \ref{eq:bruteforce_min_formula} 
+angewendet wird, folgt hier ein Beispiel.
 
 \begin{table}[h]
     \centering
@@ -66,34 +72,39 @@ gibt es hier ein Beispiel, wie diese angewendet wird.
     \label{tab:example_bruteforce_cities}
 \end{table}
     
-In der Beispiel Tabelle \ref{tab:example_bruteforce_cities} sind die Distanzen zwischen den Städten A, B, C und D aufgeführt.
-Zu Lesen ist beispielsweise, dass die Distanz zwischen Stadt B und D 25 beträgt.
+In der Tabelle \ref{tab:example_bruteforce_cities} sind die Distanzen 
+zwischen den Städten A, B, C und D aufgeführt. Die Tabelle ist symmetrisch, 
+da die Entfernung von Stadt A nach Stadt B gleich der Entfernung von 
+Stadt B nach Stadt A ist.
+Die Tabelle liesst sich wie folgt: Die Distanz zwischen Stadt B und D 25 beträgt.
 
 Eine mögliche Permutation wäre \(\sigma = (A, B, C, D)\) oder \(\sigma = (B, D, A, C)\).
 
-Die Permutation \(\sigma = (B, D, A, C)\) wird nun in die Formel \ref{eq:bruteforce_min_formula} eingesetzt.
+Setzt man die Permutation \(\sigma = (B, D, A, C)\) in die Formel \L(\sigma) 
+\ref{eq:bruteforce_min_formula} ein, wird die Gesamtdistanz berechnet.
 
-In der Formel \ref{eq:bruteforce_min_formula} wird nun die Distanz zwischen den Städten berechnet.
 
-\begin{equation}
-    \label{eq:bruteforce_min_formula}
-    L(\sigma) = \sum_{i=1}^{n-1} d(\sigma(i), \sigma(i+1))
-\end{equation}
-
-Mit \( L(\sigma(1)) \) würde aus dem Set das B genommen und das führt dann zu dieser aufstellung
+\(i\) und \(i+1\) definiert, welche Position in der Permutation betrachtet wird. 
+Beispeil mit \( L(\sigma(1)) \) würde aus dem Set das B genommen und das führt 
+dann zu dieser aufstellung
 \begin{equation}
     \label{eq:bruteforce_min_formula}
         L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
             = 25 + 20 + 15 + 35 = 95
 \end{equation}
-Dann werden alle mögliche Kombinationen durchgerechnet und die kürzeste Strecke wird als Lösung genommen.
+Dann werden alle möglichen Kombinationen durchgerechnet, und die kürzeste 
+Strecke wird als Lösung gewählt.
 
-\subsection{Aufwand}
-Aus den Vorherigen Abschnitten ist ersichtlich, dass der Aufwand für die Berechnung der kürzesten Strecke
-exponentiell steigt. Mit jedem weiteren Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
+\subsection{Aufwand Bruteforce
+\label{variationsprinzip_algorithmen:section:bruteforce}}
+Aus den vorherigen Abschnitten ist ersichtlich, dass der Aufwand für die 
+Berechnung der kürzesten Strecke exponentiell steigt. Mit jedem weiteren 
+Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
 
-\subsection{Bruteforce Script}
-Das ganze Bruteforce Verfahren gibt es als Script in der Programmiersprache Python auf github 
+\subsection{Bruteforce Script
+\label{variationsprinzip_algorithmen:section:bruteforce}}
+Das gesamte Bruteforce-Verfahren gibt es als Script in der Programmiersprache Python auf 
+Github
 \footnote{\url{https://github.com/feiler/math_sem_algorithm_variation_principle}}
 \cite{algorythm:repo}
 herutnerzuladen und selbstzu test.
