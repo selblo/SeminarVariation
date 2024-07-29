@@ -9,8 +9,10 @@
 
 \section{Resultat\label{antennen:resultat}}
 
-Das Verfahren nach Ritz hat ergeben, dass die Antenne eine kreisförmige Abrundung aufweist. 
-Es muss noch bestimmt werden, wie gross der Radius dieser Abrundungen ist. 
+Das Verfahren nach Ritz hat ergeben, dass die Antenne eine kreisförmige Abrundung an den Ecken 
+zur besten Effizienz führen, da sie die Gleichung \eqref{antennen:Verhältnis} optimieren. 
+Es muss jedoch noch bestimmt werden, wie gross der Radius dieser Abrundungen ist und somit wo
+genau dieser sich befindet. 
 
 \subsection{Parametrisierung Dreieck\label{antennen:param3eck}}
 Hierfür kann wiederum das Verhältnis REF verwendet werden. Die Länge l, hierbei der Umfang 
@@ -29,6 +31,7 @@ in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 \begin{figure}[htpb]
 	\centering
 	\begin{tikzpicture}
+		\definecolor{clrGreen}{RGB}{0, 117, 18}
 		% Define the length of the sides of the triangles
 		\def\sidelength{3.14}
 		
@@ -44,9 +47,9 @@ in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 		\coordinate (Bs) at ($(B) + (9pt,5pt)$);
 		\coordinate (Cs) at ($(C) + (9pt,5pt)$);
 		% Nodes with blue border and green fill
-		\node[circle, inner sep=0pt, minimum size=9pt, fill=green, draw=blue, line width=1pt] at (As) {};
-		\node[circle, inner sep=0pt, minimum size=9pt, fill=green, draw=blue, line width=1pt] at (Bs) {};
-		\node[circle, inner sep=0pt, minimum size=9pt, fill=green, draw=blue, line width=1pt] at (Cs) {};
+		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (As) {};
+		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Bs) {};
+		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Cs) {};
 		
 		% Black lines with yellow outer lines
 		\draw[line width=10pt, yellow] (As) -- (Bs) (Bs) -- (Cs) (Cs) -- (As);

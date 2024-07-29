@@ -9,64 +9,38 @@
 
 \section{Aufgabenstellung\label{antennen:problemstellung}}
 \rhead{Aufgabenstellung}
- Es wird versucht eine Antenne zu designen, welche in einem Gerät mit der Form 
+ Es soll eine Antennenform designed werden, welche in einem Gerät mit der Form 
  eines Prismas mit Deckfläche eines gleichseitigen Dreiecks. Dies bedeutet, dass 
- die Antenne das Mass eines gleichseitigen Dreiecks nicht überschreiten darf.
+ die Form das Mass eines gleichseitigen Dreiecks nicht überschreiten darf.
  
 \subsection{Geometrie\label{antennen:Geom}}
 \rhead{Geometrie}
-Das Ziel ist nun, den Wirkungsgrad durch Formoptimierung zu erhöhen. 
+Das Ziel ist nun, den Wirkungsgrad durch Formoptimierung zu erhöhen. Somit soll eine optimale Form
+gefunden werden, welche vorherige Einschränkungen einhält.
 Die Faktoren $k\textsubscript{1}$ und $k\textsubscript{2}$ sind Konstanten, 
 was bedeutet, dass für eine Erhöhung des Wirkungsgrads \eqref{antennen:Wirkungsgradeingesetzt} nur die Länge 
-$l$ und die Fläche $A$ veränderbar sind. In einem nächsten Schritt wird das Verhältnis
+$l$ und die Fläche $A$ relevant und veränderbar sind. In einem nächsten Schritt wird das Verhältnis
 \begin{equation}
 	\frac{l}{A^2} \rightarrow \frac{l}{A}
 	\label{antennen:Verhältnis}
 \end{equation}
-% TODO von l/A^2 zu l/A, (beste Fläche auch gleich beste Fläche im Quadrat) + Referenzierung zu Wirkungsgrad
-% TODO Diese Formel... danach Besprechung nötig
-erhöht. Dieses Verhältnis kann durch die Länge dividiert durch die Fläche 
-vereinfacht werden. Diese Formel muss nun auf eine implizite Funktion angewendet 
-werden. Eine erste Idee besteht darin, die Ecken abzuflachen, da in den Ecken 
-mit viel zusätzlicher Länge nur wenig Fläche gewonnen wird. Zuerst muss eine 
-Funktion $f(x,y)$ gefunden werden, welche die Ecken möglichst effizient abflacht. 
-Ideen für diese Abflachung sind Geraden wie in Abbildung \ref{antennen:tikabgeflacht} 
-zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} dargestellt.
- Danach muss bestimmt werden, in welcher Grössenordnung diese Funktion auf das 
- Dreieck ``angewendet''  wird. Dies wird in den Abbildungen \ref{antennen:tikabgeflacht_kleiner} 
- und \ref{antennen:tikabgerundet_kleiner} veranschaulicht.
+erhöht. 
+Die grösste Fläche ist auch gerade die grösste Fläche im Quadrat. Somit können wir diesen Ausdruck 
+für den weiteren Verlauf vereinfachen. Diese vereinfachte Formel kann nun auf eine implizite 
+Funktion angewendet werden. Die Funktion gibt dann Auskunft über die aufgespannte Fläche und 
+dem Umfang. Somit kann das Verhältnis \eqref{antennen:Verhältnis} gezielt optimiert werden. 
 
-		
+Eine erste, nicht mathematische, Idee besteht darin, die Ecken abzuflachen. Da sonst in den Ecken
+eines Dreiecks viel zusätzliche Länge und nur wenig Fläche gewonnen wird. Dies ist in der Abbildung
+\ref{antennen:tikabgeflacht} zu sehen. 
+
+Eine weitere Idee wäre es die Ecken wie in der Abbildung \ref{antennen:tikabgerundet} abzuflachen. Bei
+beiden Ideen muss noch bestimmt werden, wo genau die Anpassung der Eckstücke gemacht werden muss um 
+das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbildungen 
+\ref{antennen:tikabgeflacht_kleiner} und \ref{antennen:tikabgerundet_kleiner} veranschaulicht.
+
 \begin{figure}[htbp]
 	\centering
-	\begin{minipage}[t]{0.45\textwidth}
-		\centering
-		\begin{tikzpicture}
-			% Define the length of the sides of the triangles
-			\def\sidelength{3.14}
-			
-			% Calculate the height of the equilateral triangle
-			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
-			% Draw the large outer triangle (white background)
-			\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
-			
-			% Draw the rounded inner triangle
-			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
-			
-			% Draw axes
-			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
-			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
-			
-			% Add ticks and labels on axes
-			\foreach \x\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
-			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
-			\foreach \y in {1, 2, 3}
-			\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
-		\end{tikzpicture}
-		\caption{Antenne mit abgerundeten Ecken}
-		\label{antennen:tikabgerundet}
-	\end{minipage}%
-	\hfill
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
@@ -93,13 +67,10 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 			\foreach \y in {1, 2, 3}
 			\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
 		\end{tikzpicture}
-		\caption{Antenne mit abgeflachten Ecken}
+		\caption{Antennenform mit abgeflachten Ecken}
 		\label{antennen:tikabgeflacht}
 	\end{minipage}
-\end{figure}
-
-\begin{figure}[htbp]
-	\centering
+	\hfill
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
@@ -114,27 +85,28 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 			% Draw the rounded inner triangle
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			% Draw the rounded inner triangle
-			\draw[green, line width=0.3mm, rounded corners=1cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
-			
-			% Draw the rounded inner triangle
-			\draw[blue, line width=0.3mm, rounded corners=1.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
-			
 			% Draw axes
 			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
 			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
 			% Add ticks and labels on axes
-			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
+			\foreach \x\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
 			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
+			\foreach \y in {1, 2, 3}
+			\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
 		\end{tikzpicture}
-		\caption{Antenne mit abgerundeten Ecken}
-		\label{antennen:tikabgerundet_kleiner}
+		\caption{Antennenform mit abgerundeten Ecken}
+		\label{antennen:tikabgerundet}
 	\end{minipage}%
-	\hfill
+
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
+			\definecolor{clrGreen}{RGB}{0, 117, 18}
 			% Define the length of the sides of the triangles
 			\def\sidelength{3.14}
 			
@@ -147,7 +119,7 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 			\draw[red, line width=0.3mm,] (0.5,0) -- (0.25,1.73 /2*0.5) -- (0.5*\sidelength-0.25, \triangleheight-1.73/2*0.5) -- (0.5*\sidelength+0.25, \triangleheight-1.73/2*0.5)--(\sidelength-0.25,1.73/2*0.5) -- (\sidelength-0.5,0) -- cycle;
 			
 			% Draw the rounded inner triangle
-			\draw[green, line width=0.3mm,] (1,0) -- (0.5,1.73 /2*1) -- (0.5*\sidelength-0.5, \triangleheight-1.73/2*1) -- (0.5*\sidelength+0.5, \triangleheight-1.73/2*1)--(\sidelength-0.5,1.73/2*1) -- (\sidelength-1,0) -- cycle;
+			\draw[clrGreen, line width=0.3mm,] (1,0) -- (0.5,1.73 /2*1) -- (0.5*\sidelength-0.5, \triangleheight-1.73/2*1) -- (0.5*\sidelength+0.5, \triangleheight-1.73/2*1)--(\sidelength-0.5,1.73/2*1) -- (\sidelength-1,0) -- cycle;
 			
 			% Draw the rounded inner triangle
 			\draw[blue, line width=0.3mm,] (1.5,0) -- (0.75,1.73 /2*1.5) -- (0.5*\sidelength-0.75, \triangleheight-1.73/2*1.5) -- (0.5*\sidelength+0.75, \triangleheight-1.73/2*1.5)--(\sidelength-0.75,1.73/2*1.5) -- (\sidelength-1.5,0) -- cycle;
@@ -160,9 +132,42 @@ zu sehen oder eine Abrundung wie in Abbildung \ref{antennen:tikabgerundet} darge
 			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
 			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
 		\end{tikzpicture}
-		\caption{Antenne mit abgeflachten Ecken}
+		\caption{Antennenform mit variablen abgeflachten Ecken}
 		\label{antennen:tikabgeflacht_kleiner}
 	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\definecolor{clrGreen}{RGB}{0, 117, 18}
+			% Define the length of the sides of the triangles
+			\def\sidelength{3.14}
+			
+			% Calculate the height of the equilateral triangle
+			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
+			% Draw the large outer triangle (white background)
+			\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
+			% Draw the rounded inner triangle
+			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
+			% Draw the rounded inner triangle
+			\draw[clrGreen, line width=0.3mm, rounded corners=1cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
+			% Draw the rounded inner triangle
+			\draw[blue, line width=0.3mm, rounded corners=1.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
+			% Draw axes
+			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
+			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
+			
+			% Add ticks and labels on axes
+			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
+			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
+		\end{tikzpicture}
+		\caption{Antennenform mit variablen abgerundeten Ecken}
+		\label{antennen:tikabgerundet_kleiner}
+	\end{minipage}%
 \end{figure}
 \FloatBarrier
 Eine Eigenschaft, welche das Problem vereinfacht, ist die Symmetrie des Dreiecks. 
@@ -177,6 +182,7 @@ geworden, welche wesentlich leichter zu optimieren ist.
 	\begin{minipage}[b]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
+			\definecolor{clrGreen}{RGB}{0, 117, 18}
 			% Define the length of the sides of the triangles
 			\def\sidelength{3.14}
 			
@@ -197,9 +203,9 @@ geworden, welche wesentlich leichter zu optimieren ist.
 			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
 			
 			% Draw green dashed lines
-			\draw[green, dashed, line width=0.5mm] (3.14156/4, \triangleheight/2) -- (0.75*\sidelength, \triangleheight/2);
-			\draw[green, dashed, line width=0.5mm] (3.14156/4, \triangleheight/2) -- (0.5*\sidelength, 0);
-			\draw[green, dashed, line width=0.5mm] (0.5*\sidelength, 0) -- (0.75*\sidelength, \triangleheight/2);
+			\draw[clrGreen, dashed, line width=0.5mm] (3.14156/4, \triangleheight/2) -- (0.75*\sidelength, \triangleheight/2);
+			\draw[clrGreen, dashed, line width=0.5mm] (3.14156/4, \triangleheight/2) -- (0.5*\sidelength, 0);
+			\draw[clrGreen, dashed, line width=0.5mm] (0.5*\sidelength, 0) -- (0.75*\sidelength, \triangleheight/2);
 		\end{tikzpicture}
 		\caption{Symmetrie einer Antenne}
 		\label{antennen:tiksymmetrie}

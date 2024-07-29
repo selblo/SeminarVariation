@@ -15,31 +15,6 @@
 Wie in \ref{buch:antennen:Geom} erwähnt konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
 Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen 
 in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren.
-
-\subsection{Ideale Approximationsfunktion\label{antennen:unsereApproxFunkt}}
-
-Bei diesem Problem ist zu erwarten, dass die Lösung eine glatte und symmetrische
-Funktion sein wird, somit ergibt sich
-\begin{equation}
-	y_n(x)
-	= 
-	\sum_{k=1}^n a_k\sin((2k-1)x)
-	\label{antennen:unserRitz}
-\end{equation}
-als ideale Approximationsfunktion. 
-
-Diese Entwicklung wir auch Sinus-Fourier Reihe genannt
-und wenn man diese mal für $n=2$ ausschreibt ergibt sich
-\begin{equation}
-	y_n(x)
-	=
-	a_1\sin(x)+a_2\sin(3x)
-	\label{antennen:approxFunktn2}
-\end{equation}
-als Approximationsfunktion. Im weiteren Verlauf ist $y_n(x)$ \eqref{antennen:approxFunktn2} 
-unsere endgültige Approximationsfunktion, mit welcher wir die Problemstellung angehen werden.
-	
-
 %TODO bild ist weit weg [htbp] ILLEGAL
 \begin{figure}[htbp]
 	\centering
@@ -72,25 +47,48 @@ unsere endgültige Approximationsfunktion, mit welcher wir die Problemstellung a
 	\caption{Problemstellung im Koordinatensystem}
 	\label{antennen:koordSysBsp}
 \end{figure}
-Um die Effizienz $\eta$ zu optimieren, müssen wir mit der Approximationsfunktion
-$y_n(x)$, wie in REF %~\ref{an} 
-erwähnt, die quadrierte Fläche $A$ maximieren und die Länge $l$ minimieren.
 
+Um die Effizienz $\eta$ zu optimieren, müssen wir mit der Approximationsfunktion
+$y_n(x)$, wie im Kapitel \ref{antennen:Geom} erwähnt, die Fläche $A$ 
+maximieren und die Länge $l$ minimieren.
+
+\subsection{Ideale Approximationsfunktion\label{antennen:unsereApproxFunkt}}
+
+Bei diesem Problem ist zu erwarten, dass die Lösung eine glatte und symmetrische
+Funktion sein wird, somit ergibt sich
+\begin{equation}
+	y_n(x)
+	= 
+	\sum_{k=1}^n a_k\sin((2k-1)x)
+	\label{antennen:unserRitz}
+\end{equation}
+als ideale Approximationsfunktion. 
+
+Diese Entwicklung wir auch Sinus-Fourier Reihe genannt
+und wenn man diese mal für $n=2$ ausschreibt ergibt sich
+\begin{equation}
+	y_n(x)
+	=
+	a_1\sin(x)+a_2\sin(3x)
+	\label{antennen:approxFunktn2}
+\end{equation}
+als Approximationsfunktion. Im weiteren Verlauf ist $y_n(x)$ \eqref{antennen:approxFunktn2} 
+unsere endgültige Approximationsfunktion, mit welcher wir die Problemstellung angehen werden.
 
 \subsection{Nebenbedingungen von $y_n(x)$\label{antennen:nebenbedRitz}}
 
 Eine Nebenbedingung ist es, dass bei $y_n(0)$ und $y_n(\pi)$ die Funktion null sein muss.
-Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Form die wir optimieren.
+Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Antennenform die wir optimieren.
 
 Die Sinus-Fourier Reihe \eqref{antennen:unserRitz} hat eine weitere gute Eigenschaft, 
 welche klar wird, wenn man in das gleiche Koordinatensystem wie bei der Abbildung \ref{antennen:koordSysBsp}
-benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
+benutzt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 
 %TODO bild ist weit weg [htbp] ILLEGAL
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
-		\definecolor{clr1}{RGB}{0, 117, 18}
+		\definecolor{clrGreen}{RGB}{0, 117, 18}
 		\begin{axis}[
 			scale=0.75,
 			axis lines=middle,
@@ -115,7 +113,7 @@ benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 			\addplot[thick, blue, dashed, domain=0:3.14159, samples=100] {sin(deg(x))+sin(3*deg(x))};
 			\addlegendentry{$y_n(x) = sin(x)+sin(3x)$}
 			
-			\addplot[thick, clr1, dashed, domain=0:3.14159, samples=100] {sin(deg(x))};
+			\addplot[thick, clrGreen, dashed, domain=0:3.14159, samples=100] {sin(deg(x))};
 			\addlegendentry{$sin(x)$}
 			
 			\addplot[thick, orange, dashed, domain=0:3.14159, samples=100] {sin(3*deg(x))};
@@ -148,7 +146,7 @@ Nebenbedingungen somit nicht mehr beachtet.
 %Die beste Fläche ist auch gerade die beste Fläche im quadrat \qed
 
 Abstrahieren wir das Problem nun ein bisschen. Anstelle der Fläche $A$, reden wir nun von 
-der Funktion $f$ und Länge $l$ wird zur Nebenbedingung $n$. 
+der Funktion $f$ und aus der Länge $l$ wird die Nebenbedingung $n$. 
 
 An dieser Stelle sind unsere Koeffizienten $a_k$ konkret zu bestimmen. 
 Somit sind die neu erwähnten Funktionen 
@@ -169,15 +167,16 @@ Somit sind die neu erwähnten Funktionen
 	\rightarrow
 	n(a_1,a_2)
 	&=
-	\int\limits_{0}^{\pi} \sqrt{\frac{d}{d x} y_n\left(x, a_1, a_2\right)+1}\, dx
+	\int\limits_{0}^{\pi} \sqrt{1+y_n'(x, a_1, a_2)^2}\, dx
 \end{aligned}
 \label{antennen:lagrangeNamen}
 \end{equation}
-auch in deren Abhängigkeit in \eqref{antennen:lagrangeNamen} zu sehen. 
+auch in deren Abhängigkeit in \eqref{antennen:lagrangeNamen} zu sehen. Wie schon erwähnt, 
+ist das Problem hier auf 2 Koeffizienten beschränkt. 
 
 Die Fläche unter der Kurve ergibt sich aus dem Integral der Funktion, 
-während die Länge, also der obere Rand der Funktion, durch die in Kapitel REF  %\ref{label} 
-erläuterte Formel berechnet wird. 
+währenddessen man die Länge, also den oberen Rand der Funktion, die 
+erste Ableitung noch braucht.
 
 Die Nebenbedingung $n$ setzen wir nun gleich einer Konstanten Länge $l$
 \begin{equation}
@@ -196,7 +195,7 @@ und wie jede gute Nebenbedingung setzen wir diese noch gleich null
 	\\
 	n(a_1, a_2, l)
 	&=
-	0
+	0.
 \label{antennen:fertigeNebenbed}
 \end{aligned}
 \end{equation}
@@ -207,9 +206,7 @@ F(x,a_1,a_2,\lambda)
 = 
 f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
-definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n$ addiert.
-Mehr zu der Lagrangefunktion findet man unter dem Kapitel REF %\ref{label}
-%todo REF!
+definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n (a_1,a_2, l)$ addiert.
 
 \subsection{Lagrange-Gleichungssystem\label{antennen:lagrangeGLsys}}
 
@@ -226,13 +223,15 @@ Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und 0 set
 	\right.
 	\label{antennen:lagrangeGrad}
 \end{equation}
+
+
 den Gradienten berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
-$n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. Wobei $n$ die Anzahl
-der Koeffizienten ist.
+$n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. 
+Wobei $n$ die Anzahl der Koeffizienten ist.
 
 An dieser Stelle soll es einem bewusst werden, was dieses Kapitel von anderen 
 unterscheidet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
-Problem wie in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
+Problem wie z.B in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
 Konkret heisst es, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
 
@@ -260,7 +259,7 @@ als trivial ausgegeben hat und somit hier ein $n$ dimensionales Gleichungssystem
 \subsection{Das Gleichungssystem lösen\label{antennen:glSysSolve}}
 
 Ein gutes Verfahren, welches sich zur Lösung des Gleichungssystems 
-\eqref{antennen:lagrangeGradKonkret}, anbietet, ist das Gradientenverfahren.
+\eqref{antennen:lagrangeGradKonkret} anbietet, ist das Gradientenverfahren.
 
 Dieses iterative Verfahren eignet sich hervorragend zur Minimierung 
 einer Funktion, indem man schrittweise in Richtung des steilsten Abstiegs,
