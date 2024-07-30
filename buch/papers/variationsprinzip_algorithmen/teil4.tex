@@ -8,16 +8,12 @@
 %
 \section{Variationsprinzip Mathematik und Algorithmus
 \label{beispiel:section:teil4}}
-\rhead{Teil 5}
-Aus dem Vorherigen Kapitel \ref*{genetic_algorithm:section:process} wurde 
-erklärt wie der Algorithmus funktioniert, welcher das Variationsprinzip 
-anwendet.
+\rhead{Teil 4}
+Im vorherigen Kapitel \ref*{genetic_algorithm:section:process} wurde erklärt, 
+wie der Algorithmus funktioniert, der das Variationsprinzip anwendet. Dies 
+passt jedoch nicht genau zu dem Variationsprinzip, das in der Mathematik 
+verwendet wird. In diesem Kapitel wird genauer darauf eingegangen.
 
---removable--
-Mit den Variationsrechnungen werden Funktionale optimiert. Dabei ist das 
-Ziel eine Funktion zu finden, welche das Funktional minimiert oder maximiert.
-
-TODO unterschiede aufzeigen
 Woran unterscheiden sich die beiden Prinzipien?
 
 \begin{table}[h]
@@ -26,82 +22,50 @@ Woran unterscheiden sich die beiden Prinzipien?
    \hline
       & Mathematik  & Algorithmus   \\ \hline
    Ziele  
-   & Wie im Kapitel Funktionale 
-   \ref*{buch:variation:problem:subsection:funktionale} ist das Ziel mit 
-   der Variationsrechnung die Optimierung von Funktionalen mit der Findung
-   einer optimalen Funktion.
-   & Im Algorithmus ist mit der Variationen gemeint, dass es eine Menge mit
-   möglichen Lösungen gibt, aus welchen die besten Lösungen genommen werden 
-   und diese dann weiter verarbeitet werden, in der Hoffnung, dass die 
-   neuen Lösungen besser werden.
+   & Wie im Kapitel Funktionale \ref*{buch:variation:problem:subsection:funktionale} 
+   beschrieben, ist das Ziel der Variationsrechnung die Optimierung von Funktionalen 
+   durch die Findung einer optimalen Funktion.
+   & Im Algorithmus bedeutet Variation, dass es eine Menge möglicher Lösungen gibt, 
+   aus denen die besten Lösungen ausgewählt und weiterverarbeitet werden, in der 
+   Hoffnung, dass die neuen Lösungen besser sind.
    \\ \hline
    Techniken  
-   & Hier werden analytische Technicken wie die Euler-Lagrange-Gleichung 
-   verwendet, um die Optimierungsprobleme zu lösen. (Verschiedenen Techniken 
-   sind in den Kapiteln vom Kapitel 2-10 beschrieben)
-   & Im Algorithmus werden Mechanismen verwendet, welche stochastische
+   & Hier werden analytische Techniken wie die Euler-Lagrange-Gleichung verwendet, 
+   um Optimierungsprobleme zu lösen. (Verschiedene Techniken sind in den Kapiteln 
+   2-10 beschrieben)
+   & Im Algorithmus werden Mechanismen verwendet, die stochastische 
    \footnote{
-      Im Fall von Algorithmus ist mit stochastischen Methoden gemeint, dass
-      eine Anzahl an Zufallsereignise oder -Kombinationen erstellt werden 
-      und diese ausgewerted oder weiterverarbeitet werden. 
+      Im Fall des Algorithmus sind stochastische Methoden gemeint, bei denen 
+      eine Anzahl an Zufallsereignissen oder -kombinationen erstellt und 
+      diese anschließend ausgewertet oder weiterverarbeitet werden.
    }
- Methoden wie Kreuzung und Mutation sind, dadurch wird die Vielfalt zu 
- erzeugen und aufrechtzuerhalten. 
+   Methoden wie Kreuzung und Mutation beinhalten, um Vielfalt zu erzeugen und aufrechtzuerhalten.
+   \\ \hline
+   Nachbarlösungen
+   & Sind nicht direkt ein primäres Konzept und eher implizit \footnote{
+      Untersuchung von Nachbarlösungen ist implizit, da die Variationen 
+      von Funktionen und deren Einfluss auf das Funktional nicht direkt 
+      als Nachbarlösung bezeichnet werden kann.
+   }. Man untersucht die kleinen Variationen einer Funktion und wie sich 
+   die Funktionale verändern, aber am Ende ist das Ziel die Optimierung 
+   der Funktionale.
+   & Die Nachbarlösungen sind ein primäres Konzept, da die Variationen
+   von Lösungen direkt untersucht, gekreuzt und mutiert werden, um die 
+   besten Lösungen zu finden.
+   \\ \hline
+   Lösung
+   & Die Lösung ist eine Funktion, mit der das Optimum errechnet werden kann.
+   & Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
    \\ \hline
    \end{tabular}
    \caption{Vergleich auf den begriff Variationen}
    \label{tab:example_bruteforce_cities}
 \end{table}
 
-
-
-Die Hauptmerkmale davon sind:
-
-
-
-haben das Ziel die Optimierung der Funktionalen. Durch 
-die
-
-In diesem Kapitel gehen wir genauer darauf ein. 
-Jetzt das wir wissen wie die Mechanik funktioniert und das wir hier keine 
-Mathematische Rechnungen haben. 
-
-TODO vor text muss noch angepasst werden
-Der Begriff "Variationsberechnung" und die "Variation" in einem genetischen Algorithmus beziehen sich auf unterschiedliche Konzepte und Anwendungen in der Mathematik und Informatik. Hier sind die Unterschiede im Detail:
-
-### Variationsberechnung
-Die Variationsberechnung, auch bekannt als Variationsrechnung (englisch "calculus of variations"), ist ein Bereich der mathematischen Analyse. Sie befasst sich mit der Optimierung von Funktionalen, die Abhängigkeiten von Funktionen haben. Das Ziel ist es, eine Funktion zu finden, die ein gegebenes Funktional minimiert oder maximiert.
-
-#### Hauptmerkmale der Variationsberechnung:
-- **Problemtyp**: Optimierung von Funktionalen, die oft Integrale sind, über Funktionen.
-- **Typische Probleme**: Bestimmung von Kurven oder Oberflächen, die bestimmte physikalische oder geometrische Eigenschaften optimieren (z.B. die Brachistochrone Kurve, die Form einer Seifenblase).
-- **Mathematische Techniken**: Euler-Lagrange-Gleichung, Lagrange-Multiplikatoren, Hamiltonsches Prinzip.
-- **Anwendungsbereiche**: Physik (z.B. Prinzip der kleinsten Wirkung), Ingenieurwissenschaften, Wirtschaftswissenschaften.
-
-### Variation im genetischen Algorithmus
-Die Variation im Kontext eines genetischen Algorithmus bezieht sich auf die Mechanismen, die genetische Vielfalt innerhalb der Population erzeugen und aufrechterhalten. Diese Mechanismen, wie Kreuzung und Mutation, sind entscheidend, um eine effektive Suche und Optimierung im Lösungsraum zu gewährleisten.
-
-#### Hauptmerkmale der Variation im genetischen Algorithmus:
-- **Problemtyp**: Optimierung von diskreten oder kontinuierlichen Problemen durch Simulation der natürlichen Evolution.
-- **Mechanismen**: 
-  - **Kreuzung (Crossover)**: Kombiniert Gene von zwei Eltern, um neue Nachkommen zu erzeugen.
-  - **Mutation**: Verändert zufällig Gene innerhalb eines Chromosoms, um neue genetische Informationen einzuführen.
-- **Anwendungsbereiche**: Künstliche Intelligenz, maschinelles Lernen, Optimierungsprobleme in verschiedensten Bereichen (z.B. Designoptimierung, Routenplanung).
-
-### Unterschiede im Detail:
-
-1. **Ziel und Anwendungsbereich**:
-   - **Variationsberechnung**: Zielt auf die Optimierung von Funktionalen durch Bestimmung optimaler Funktionen. Hauptsächlich in der Mathematik und theoretischen Physik angewendet.
-   - **Genetische Algorithmen**: Nutzen Variation, um eine Population von Lösungen für Optimierungsprobleme in der Informatik und Ingenieurwissenschaften zu verbessern.
-
-2. **Methoden und Techniken**:
-   - **Variationsberechnung**: Verwendet analytische Methoden wie die Euler-Lagrange-Gleichung zur Lösung von Optimierungsproblemen.
-   - **Genetische Algorithmen**: Setzen auf stochastische Methoden wie Kreuzung und Mutation zur Erzeugung und Aufrechterhaltung genetischer Vielfalt.
-
-3. **Art der Optimierung**:
-   - **Variationsberechnung**: Fokus auf kontinuierliche Probleme und Funktionale.
-   - **Genetische Algorithmen**: Anwendbar auf diskrete und kontinuierliche Probleme durch evolutionäre Strategien.
-
-### Zusammenfassung:
-Die Variationsberechnung ist ein analytisches Werkzeug zur Optimierung von Funktionalen in der Mathematik, während die Variation im genetischen Algorithmus eine Methode zur Erzeugung und Aufrechterhaltung genetischer Vielfalt in evolutionären Optimierungsverfahren ist. Beide Konzepte dienen der Optimierung, jedoch in sehr unterschiedlichen Kontexten und mit unterschiedlichen Methoden.
-
+Die Aussage, dass das Variationsprinzip im Algorithmus das gleiche ist, 
+stimmt nicht. Beide suchen zwar das Optimum, aber in der Mathematik findet 
+man eine Funktion, mit der das Optimum berechnet werden kann, wie z.B. 
+die Durchbiegung einer Kette. Im Algorithmus wird versucht, das Optimum 
+durch Zufall und Variationen (neue Kombinationen) zu finden. Am Ende 
+hat man eine Lösung, die das Optimum sein könnte, sehr nahe dran ist 
+oder komplett daneben liegt.
