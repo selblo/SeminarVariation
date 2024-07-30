@@ -9,7 +9,7 @@
 \section{Teil 1
 \label{planet:section:teil1}}
 \rhead{Problemstellung}
-Damit wir die hydrostatische Gleichgewichtsform werden ein paar annahmen getroffen.
+Damit man die hydrostatische Gleichgewichtsform einfacher berechnen kann werden ein paar Annahmen getroffen.
 \begin{itemize}
 	\item Unser Himmelskörper besteht aus einer idealen Flüssigkeit, das heisst sie ist Inkompressibel und hat keine inneren Reibungen.
 	\item Die Massenverteilungsdichte \(\sigma\) und die Dichte \(\rho\) der flüssigkeit sind konstant.	
@@ -27,7 +27,7 @@ Konkret sieht unsere Problemstellung folgendermassen aus.
 Die Kraft welche Teilchen auf andere Teilchen ausüben nennt man Gravitation.
 Sie ist eine der vier Grundkräfte der Physik.
 Die Gravitation kann man sich als Feld vorstellen.
-Für die berechnung der Kraft, welche auf ein Teilchen im Gravitationsfeld wirk benötigen wir das Gravitaionspotential \(\Phi\).
+Für die berechnung der Kraft, welche auf ein Teilchen im Gravitationsfeld wirk benötigen man das Gravitaionspotential \(\Phi\).
 Das Gravitaionspotenzial ist definiert als
 \begin{equation}
 	\Phi(r) = -\frac{GM}{r}.
@@ -51,7 +51,7 @@ Die Kraft ist negativ, da sie zum Zentrum der Masse zeigen muss.
 
 \subsection{Hydrostatische Gleichgewichtsform in 2-D}
 Für die Berechnung der hydrostatische Gleichgewichtsform soll nun die potenzielle Energie \(U\) minimal werden.
-Als nebenbedingung haben wir die Fläche \(A\) welche mit 
+Als nebenbedingung hat man die Fläche \(A\) welche mit 
 \begin{equation}
 	A = \int_{A}^{} dA
 	\label{planet:equ:A}
@@ -62,40 +62,40 @@ Die Formel ür die Berechung der potenziellen Energie ist
 	U = \int_{A} \sigma  \Phi (r) \, dA.
 	\label{planet:equ:U}
 \end{equation*}
-Wenn wir nun Gleichung \ref{planet:equ:gravpot} in Gleichung \ref{planet:equ:U} ein erhalten wir
+Wenn man nun Gleichung \ref{planet:equ:gravpot} in Gleichung \ref{planet:equ:U} ein erhält man
 \begin{equation*}
 	U = \int_{0}^{2\pi}\int_{0}^{r} \frac{-GM}{r} \, \sigma r \, dr \, d\varphi.
 \end{equation*}
-Wenn wir nun das erste Integral auflösen und die Konstante aus dem Integral raus nehmen erhalten wir 
+Wenn man nun das erste Integral auflösen und die Konstante aus dem Integral raus nehmen resultiert 
 \begin{equation}
 	U =-GM\sigma \int_{0}^{2\pi} r(\varphi) \, d\varphi .
 \end{equation}
-Aus diers Gleichung nehmen wir unser erstes Funktional
+Aus dieser Gleichung entnimmt man das erste Funktional
 \begin{equation}
 	L(\varphi ,r(\varphi),r(\varphi)_\varphi) = r(\varphi).
 \end{equation}
 Für das zweite Funktional muss man wissen, dass \(dA = r \, dr \, d\phi\).
-Somit können wir das Integral der Gleichung \ref{planet:equ:A} einfügen und erhalten
+Somit kann man das Integral der Gleichung \ref{planet:equ:A} einfügen und erhalten
 \begin{equation*}
 	A = \int_{0}^{2\pi}\int_{0}^{r} r \, dr \, d\varphi
 \end{equation*}
-Das innere Integral können wir auflösen, sodass das Integral zu
+Das innere Integral kann man auflösen, sodass das Integral zu
 \begin{equation*}
 	A = \int_{0}^{2\pi}\frac{r^2}{2} \, d\varphi
 \end{equation*}
 vereinfacht.
-Aus diesem Integral entnehmen wir das Funktional der Nebenbedingung
+Aus diesem Integral entnimmt man das Funktional der Nebenbedingung
 \begin{equation*}
 	N(\varphi ,r(\varphi),r(\varphi)_\varphi) = \frac{r^2}{2} 
 \end{equation*}
 
-Damit wir die Gesuchte Funktion finden müssen wir den Gradienten des Jewiligen Funktionals berechnen und anschliessend in
+Damit man die Gesuchte Funktion finden muss man den Gradienten des jewiligen Funktionals berechnen und anschliessend in
 \begin{equation}
 	\nabla N \cdot \lambda = \nabla L
 	\label{planet:equ:lamdagleichung}
 \end{equation}
 einsetzen.
-Für den Gradienten der Funktionale benötigen wir die jeweiligen partiellen Ableitungen
+Für den Gradienten der Funktionale benötigt man die jeweiligen partiellen Ableitungen
 \begin{equation*}
 	L(\varphi ,r(\varphi),r(\varphi)_\varphi) = r(\varphi),
 	\frac{\partial L}{\partial r(\varphi)} = 1,
@@ -117,26 +117,26 @@ und
 	\nabla N = \frac{\partial N}{\partial r(\varphi)} - \frac{d}{d\varphi}\left(\frac{\partial N}{\partial r(\varphi)_\varphi}\right).
 \end{equation*}
 
-Wenn wir nun die Ableitungen der Funktionale in die Gradienten einsetzen
+Wenn man nun die Ableitungen der Funktionale in die Gradienten einsetzen
 \begin{equation*}
 	\left(\frac{\partial N}{\partial r(\varphi)} - \frac{d}{d\varphi}\left(\frac{\partial N}{\partial r(\varphi)_\varphi}\right)\right)\cdot \lambda = \frac{\partial L}{\partial r(\varphi)}-  \frac{d}{d\varphi}\left( \frac{\partial L}{\partial r(\varphi)} \right)
 \end{equation*} 
 und anschliessend das ganze in die Gleichung \ref{planet:equ:lamdagleichung}
-ein und erhalten
+einseztt und erhält man
 \begin{equation*}
-	r = \frac{1}{\lambda}.s
+	r = \frac{1}{\lambda}.
 \end{equation*}
 Was sagt nun dieses Ergebniss.
 \(\lambda\) ist eine Konstatnte.
 Folglich muss \(r\) ebenfalls eine Konstante sein.
-Da wir die Berechungen in Polarkoordinaten durchgeführt haben, bedeutet ein konstanter Raduis das die zu suchende Form ein Kreis ist.
+Da die Berechungen in Polarkoordinaten durchgeführt wurden, bedeutet ein konstanter Raduis das die zu suchende Form ein Kreis ist.
 
 \subsection{Hydrostatische Gleichgewichtsform in 3-D}
-Für die Berechnung im 3-Dimensionalen Raum gehen wir ähnlich vor wie im 2-Dimensionalen Raum.
-Der Unterschied ist, das wir eine weitere Variable \(\Thetha\) haben.
-Da wir nun mehr als 1 Varbiable haben müssen wir die Aufgabe mit der Euler-Ostrogadski Diffrentialgleichung lösen
+Für die Berechnung im 3-Dimensionalen Raum geht man ähnlich vor wie im 2-Dimensionalen Raum.
+Der Unterschied ist, das man eine weitere Variable \(\Thetha\) habt.
+Da man nun mehr als 1 Varbiable habt muss man die Aufgabe mit der Euler-Ostrogadski Diffrentialgleichung lösen.
 Für die Berechnung der hydrostatische Gleichgewichtsform soll nun wieder die potenzielle Energie \(U\) minimal werden.
-Als Nebenbedingung haben wir in 3-D das Volumen \(V\) welches mit 
+Als Nebenbedingung hat man in 3-D das Volumen \(V\) welches mit 
 \begin{equation}
 	V = \int_{V}^{} dV
 	\label{planet:equ:V}
@@ -155,11 +155,11 @@ Mit ein wenig umstelle und dem auflösen des ersten Integrals erhält man
 \begin{equation*}
 	U =-GM\sigma \int_{0}^{2\pi}\int_{0}^{\pi}\frac{r^2}{2}  \sin (\theta) \, d\theta \, d\varphi.
 \end{equation*}
-Wiederrum entnehem wir aus diesem Intergal unser erstes Funktional
+Wiederrum entnimmt man aus diesem Intergal das erste Funktional
 \begin{equation*}
 	L(\varphi,\theta ,r(\varphi,\theta),r(\varphi,\theta)_\varphi,r(\varphi,\theta)_\theta) = \frac{r^2}{2}  \sin (\theta).
 \end{equation*}
-Da die Berechenungen in 3-D durchgeführt werden benötigen wir für die Berechung des Funktionals der neben bedingung die Formel für ein Volumenteilchen \(dV = r^2 \sin (\theta) \, dr \, d\theta \, d\varphi \).
+Da die Berechenungen in 3-D durchgeführt werden benötigt man für die Berechung des Funktionals der Nebenbedingung die Formel für ein Volumenteilchen \(dV = r^2 \sin (\theta) \, dr \, d\theta \, d\varphi \).
 Mit diesem Wissen kann man \ref{planet:equ:V} zu
 \begin{equation*}
 	V = \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{r} r^2 \sin (\theta) \, dr \, d\theta \, d\varphi.
@@ -210,3 +210,5 @@ Wenn man diese Gleichung weiter vereinfacht erhält man
 \end{equation*}
 Man sieht, das Ergebniss ist das selbe wie man in 2-D erhält.
 In 3-D bedeutet ein Konstanter Radius, das die gesuchte Form eine Kugel ist.
+\subsection{Interpretation der Ergebnisse}
+
