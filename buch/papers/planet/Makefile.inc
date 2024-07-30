@@ -10,5 +10,6 @@ dependencies-planet =						\
 	papers/planet/0_Einleitung.tex				\
 	papers/planet/teil1.tex					\
 	papers/planet/2_Multipol.tex				\
-	papers/planet/3_Arrokoth.tex
+	papers/planet/3_Arrokoth.tex				\
+	papers/planet/4_Goce.tex
 
