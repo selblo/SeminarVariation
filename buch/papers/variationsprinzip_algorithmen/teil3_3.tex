@@ -8,53 +8,59 @@
 %
 \subsection{Selektion 
 \label{genetic_algorithm:selection}}
-In diesem Schritt werden Elternpaare ausgesucht, welche 
-in einem späteren schritt neue Kinderpaare erzeugen. Die 
-Selektion soll aber so seine, dass in der Regel nur aus 
-den Fittesten neue Kinder erzeugen werden.
+In diesem Schritt werden Elternpaare ausgesucht, die später 
+neue Nachkommen erzeugen. Die Selektion erfolgt so, dass in der 
+Regel nur die Fittesten neue Kinder erzeugen.
 
-Die Idee dahinter ist, dass man eine Reihe von verschiedenen 
-Teile und diese sind mal fitter und weniger. Dabei Paaren sich
-die Fitteren eher und die schwächeren seltener. Die Paare werden 
-im System zufällig gewählt, aber die Wahrscheinlichkeiten das 
-sich die fitteren eher nachwuchs erzeugen.
+Die Idee dahinter ist, dass es verschiedene Individuen gibt, 
+die unterschiedlich fit sind. Die fitteren Individuen paaren 
+sich eher, während die schwächeren seltener Nachwuchs erzeugen. 
+So ähnlich wie in der Natur. Die Paare werden im System zufällig 
+gewählt, aber die Wahrscheinlichkeit, dass die fitteren 
+Individuen Nachkommen zeugen, ist höher.
 
-TODO add bild mit verschieden und unterschiedlichen Wahrscheinlichkeiten,
-dabei aufzeigen die 
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{
+        papers/variationsprinzip_algorithmen/images/teil3/04_offspring_probability.png
+        }
+	\caption{Eltern die Ausgewählt werden für Nachkommen}
+	\label{fig:selection_of_parents}
+\end{figure}
 
+Auf dem Bild \ref{fig:selection_of_parents} sind eltern mit unterschiedlichem
+Weg länge. Dabei ist die Wahrscheinlichkeiten das sich die Blaue Linie ereignet 
+viel grösser als die Rote Linie. Diese ist aber trotzdem möglich.
+\\
+Für die Selektion gibt es verschiedene Möglichkeiten.
+\\
+1. **Roulette-Rad-Selektion:** 
+    - Individuen werden zufällig und proportional zu ihrer 
+    Fitness ausgewählt. Die Wahrscheinlichkeit wird anhand ihrer 
+    Fitness definiert. Kürzere Strecken haben eine höhere Chance, 
+    ausgewählt zu werden. Die Wahrscheinlichkeit wird mit einer 
+    entsprechenden Formel berechnet.
 
+    \begin{equation}
+        \label{eq:probability_fittest}
+        P_i = \frac{f_i}{\sum_{j=1}^{N} f_j}
+    \end{equation}
 
-Für die Selektion
-gibt es verschiedene Möglichkeiten.
+2. **Rangselektion:**
+    - Individuen werden nach ihrer Fitness sortiert und basierend 
+    auf ihrem Rang ausgewählt. Die Wahrscheinlichkeit wird anhand 
+    des Rangs definiert.
 
-- Roulette-Rad-Selektion: Individuen werden zufällig und proportional 
-zu ihrer Fitness ausgewählt. Die Wahrscheinlickeit wird Anhand der 
-der Fitness definiert.Im Fall mit den Stätten haben kürzere 
-Strecken eine höhere Chance ausgesucht zu werden.
-Die Wahrscheinlickeit wird mit dieser Formel berechnet
+    \begin{equation}
+        \label{eq:probability_rating}
+        P_i = \frac{r_i}{\sum_{j=1}^{N} r_j}
+    \end{equation}
 
-\begin{equation}
-    \label{eq:probability_fittest}
-    P_i = \frac{f_i}{\sum_{j=1}^{N} f_j}
-\end{equation}
+3. **Turnierselektion:**
+    - Eine Gruppe von Individuen wird zufällig ausgewählt, und 
+    das fitteste Individuum dieser Gruppe wird als Elternteil gewählt.
 
-- Rangselektion: Individuen werden nach ihrer Fitness sortiert 
-und basierend auf ihrem Rang ausgewählt. Die Wahrscheinlickeit 
-wird anahnd des Rangs definiert.
-
-\begin{equation}
-    \label{eq:probability_rating}
-    P_i = \frac{r_i}{\sum_{j=1}^{N} r_j}
-\end{equation}
-
-- Turnierselektion: Eine Gruppe von Individuen wird zufällig 
-ausgewählt, und das fitteste Individuum dieser Gruppe wird 
-als Elternteil gewählt.
-
-Grundsätzlich lässt sich ein eigenes System entwickeln, wobei
-es ein Ausscheidungsverfahren braucht, aus welchem dann ein 
-Elternpaare herauskommt.
-
-Das System ist ein logisches Ablauf und mathematisch wird nur 
-die Wahrscheinlickeit berechnet.
-
+Es gibt auch die Möglichkeit, ein eigenes Selektionssystem zu entwickeln, 
+das ein Ausscheidungsverfahren beinhaltet, aus dem schließlich ein 
+Elternpaar hervorgeht. Das System folgt einem logischen Ablauf, wobei 
+die Wahrscheinlichkeit mathematisch berechnet wird.
