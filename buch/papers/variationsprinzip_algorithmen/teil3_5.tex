@@ -8,28 +8,31 @@
 %
 \subsection{Mutation
 \label{genetic_algorithm:mutation}}
-Dieser Schritt ist dafür da da sich zufällige änderungen in den 
-Genen stattfindet. Dies soll dazu führen, dass neue Gene entstehen, 
-wodurch der gesammte Lösungsraum grösser wird. Es sollte so 
-verhindert werden, dass plötzlich nur noch die gleichen 
-Genmuster entstehen sondern auch etwas neues enstehen kann. 
-Ein guten Vergleich zu maschinelles Lernen wäre es, dass man so 
-versucht aus einem Extrempunkt herauskommen.
-
-Würde der genetischer String nur aus 0 und 1 bestehen. Würden zufällig 
-Stellen einfach ein und ausgeschaltet. Dies ist daher mit den Stätten 
-auch nicht möglich, daher werden Teile mit einander vertauscht.
+Dieser Schritt sorgt dafür, dass zufällige Änderungen in 
+den Genen stattfinden. Dadurch entstehen neue Gene, was den 
+gesamten Lösungsraum vergrößert. Dies soll verhindern, 
+dass nur noch gleiche Genmuster entstehen und ermöglicht 
+die Erzeugung neuer Varianten. Ein guter Vergleich zum 
+maschinellen Lernen ist der Versuch, aus einem lokalen 
+Extrempunkt herauszukommen und nicht stecken zu bleiben.
+Die Mutation findet auch nicht bei jedem Kind statt. Wie 
+in der Natur können sie perzufall ausgelösst werden.
+\\
+Würde der genetische String nur aus 0 und 1 bestehen, 
+würden zufällig Stellen ein- und ausgeschaltet. Dies 
+ist mit den Städten jedoch nicht möglich, daher werden 
+Teile miteinander vertauscht.
 
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
         papers/variationsprinzip_algorithmen/images/teil3/09_genetic_string_cities_mutation.png
         }
-	\caption{Beispiel einer Mutation}
+	\caption{Beispiel einer Mutation mit Städten}
 	\label{fig:mutation_genetic_string}
 \end{figure}
 
-Der Teil besitzt auch keine Mathematische Formel, es geht einfach um die 
-Logik welche 2 zufällig Stellen nimmt, diese Tauscht um eine neue 
-Variation von Lösungen zu erstellen. Welche bei der Kreuzung nicht enstanden
-wäre.
+Dieser Teil besitzt keine mathematische Formel. Es geht einfach 
+um die Logik, zwei zufällige Stellen zu nehmen und diese zu 
+tauschen, um eine neue Variation von Lösungen zu erstellen, die 
+bei der Kreuzung nicht entstanden wäre.
