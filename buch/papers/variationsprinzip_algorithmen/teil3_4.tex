@@ -8,7 +8,7 @@
 %
 \subsection{Kreuzung
 	\label{genetic_algorithm:crossover}}
-	\rhead{Kreuzung}
+\rhead{Kreuzung}
 In diesem Teil des Algorithmus werden die gewählten Elternpaare 
 neu kombiniert, um Nachkommen zu erzeugen. Bei der Kreuzung 
 werden Teile des genetischen String ausgetauscht.
@@ -30,20 +30,23 @@ stammen vom ersten Elternteil, die Gene nach diesem Punkt
 vom zweiten Elternteil. Mathematische:\\
 Wähle einen zufälligen Punkt \( k \) (1 \leq k < n).\\
 Erzeuge die Nachkommen durch:
+\begin{equation}
 \[ O_1 = (P_1[1], P_1[2], \ldots, P_1[k], P_2[k+1], \ldots, P_2[n]) \]
 \[ O_2 = (P_2[1], P_2[2], \ldots, P_2[k], P_1[k+1], \ldots, P_1[n]) \]
-\\
+\end{equation}
 - **Zweipunkt-Kreuzung:** Zwei Punkte werden ausgewählt und 
 der Genabschnitt zwischen diesen Punkten wird zwischen 
 den Eltern getauscht.\\
 Wähle zwei zufällige Punkte \( k_1 \) und \( k_2 \) (1 \leq k_1 < k_2 < n).\\
 Erzeuge die Nachkommen durch:
+\begin{equation}
 \[
-O_1 = (P_1[1], \ldots, P_1[k_1], P_2[k_1+1], \ldots, P_2[k_2], P_1[k_2+1], \ldots, P_1[n])
+	O_1 = (P_1[1], \ldots, P_1[k_1], P_2[k_1+1], \ldots, P_2[k_2], P_1[k_2+1], \ldots, P_1[n])
 \]
 \[
-O_2 = (P_2[1], \ldots, P_2[k_1], P_1[k_1+1], \ldots, P_1[k_2], P_2[k_2+1], \ldots, P_2[n])
+	O_2 = (P_2[1], \ldots, P_2[k_1], P_1[k_1+1], \ldots, P_1[k_2], P_2[k_2+1], \ldots, P_2[n])
 \]
+\end{equation}
 - Uniforme Kreuzung: Jedes Gen wird mit einer bestimmten 
 Wahrscheinlichkeit vom ersten oder zweiten Elternteil 
 übernommen, was zu einer zufälligeren Kombination führt.
@@ -53,21 +56,21 @@ Wähle eine zufällige Zahl \( r_i \) im Intervall [0, 1].\\
 Wenn \( r_i \) kleiner als die vordefinierte Wahrscheinlichkeit 
 \( p \) ist, dann wird das Gen von \( P_1 \) übernommen, 
 ansonsten von \( P_2 \).
-
+\begin{equation}
 \[ O_1[i] =
 	\begin{cases} 
 		P_1[i] & \text{wenn } r_i < p      
 		P_2[i] & \text{wenn } r_i \geq p 
-	\end{cases} 
+	\end{cases}
 \]
 
 \[ O_2[i] =
 	\begin{cases} 
 		P_2[i] & \text{wenn } r_i < p      
 		P_1[i] & \text{wenn } r_i \geq p 
-	\end{cases} 
+	\end{cases}
 \]
-
+\end{equation}
 Hier wird die Variation aufrechterhalten (Grösse der Population
 bleibt gleich gross) und gleichzeitig wird aus den besten Genen 
 neue erstellt, mit dem Versuch noch besseres Resultat zu bekommen.
