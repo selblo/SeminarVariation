@@ -1,0 +1,153 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Luke's Lagrangian\label{luke:section:teil0}}
+\rhead{Teil 0}
+
+1967 veröffentlichte J.C. Luke (HIER CITE) den Luke`s Lagrangian mit welchem über das Variationsprinzip die Bewegungen von Oberflächenwellen auf einer freien Fluid Oberfläche unter Einwirkung der Schwerkraft berechnet werden kann.
+Genau gesagt lässt sich durch die Minimierung des Lagrangian über das Variationsprinzip, Gleichungen für Oberflächengravitationswellen eines Potentialflusses mit einer undurchlässigen freien Oberfläche sowie Boden, bei konstanten Druck, hergeleitet.
+
+Die Formel \eqref{luke:Luke_Variation_Formel} zeigt Luke´s Variationsformel in welcher Luke´s Lagrangian \eqref{luke:Luke_Lagrangian_Allgemein} vorkommt.
+
+\begin{equation}
+	\mathcal{L} 
+	=
+	\int_{t_0}^{t_1} \int_{\Omega}^{} \mathscr{L} \rho \, d^2\bm{x}\, dt
+	\label{luke:Luke_Variation_Formel}
+\end{equation}
+
+\begin{equation}
+	\mathscr{L}
+	=
+	-\int_{-h}^{\eta} g z + \frac{\partial\phi}{\partial t}+ \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}(\frac{\partial\phi}{\partial z})^2\, dz
+	\label{luke:Luke_Lagrangian_Allgemein}
+\end{equation}
+
+\begin{itemize}
+	\item
+	$\phi(\bm{x},z,t)$ ist das Geschwindigkeitspotential
+	\item
+	$\rho$ Dichte der Flüssigkeit
+	\item
+	$g$ Erdbeschleunigung
+	\item
+	$t$ Zeit
+	\item 
+	$\bm{x}$ horizontale Koordinatenvektor mit $x$ und $y$ als Komponenten
+	\item 
+	$z$ vertikale Koordinate
+	\item 
+	$\Omega$ horizontale Achse 
+	\item 
+	$\nabla$ horizontaler Gradient
+	\item 
+	$\eta(\bm{x},t)$ freie Oberfläche der Flüssigkeit
+	\item 
+	$h(\bm{x},t)$ Gewässergrund 
+	
+\end{itemize}
+
+\subsection{Erweitern des Luke`s Lagrangian
+	\label{luke:subsection:Erweitern}}
+Im sinne der Vereinfachung wird die Oberflächenspannung vernachlässigt sowie die Flüssigkeitsdichte $\rho$ konstant auf $\rho = 1\frac{g}{ml}$ gesetzt. Das entspricht der Dichte von Wasser und sollte somit nicht die weiteren Berechnungen beeinflussen.
+
+Das Integral \eqref{luke:Luke_Lagrangian_Allgemein} kann umgeschrieben und Integriert werden. Dabei wird das Integral teilweise integriert.
+ \begin{equation}
+ 	\mathscr{L}
+ 	=
+ 	-\int_{-h}^{\eta} g z\, dz - \int_{-h}^{\eta} \frac{\partial\phi}{\partial t}\, dz -\int_{-h}^{\eta} \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}(\frac{\partial\phi}{\partial z})^2 dz
+ \end{equation}
+ \begin{equation}
+ 	\mathscr{L}
+ 	=
+ 	-\frac{1}{2}g\eta^2 + \frac{1}{2}h^2g +\tilde{\phi} \frac{\partial\eta}{\partial t} + \check{\phi} \frac{\partial h}{\partial t} -\int_{-h}^{\eta} \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}(\frac{\partial\phi}{\partial z})^2 dz
+ 	\label{luke:Luke_Lagrangian_allgemein_vereinfacht}
+ \end{equation}
+Dabei ist $\tilde{\phi} = \phi(\bm{x},\eta,t)$ das Geschwindigkeitspotential auf der Oberfläche und $\check{\phi} = \phi(\bm{x},-h,t)$ das Geschwindigkeitspotential am Gewässergrund.
+
+Beim Variationsprinziep wird die Veränderung der Funktion unter Variation ihrer Parameter betrachtet.
+Da aber die Tiefe $h$ vorgegeben ist, verändert diese sich nicht während des Minimierungsprozesses.
+Daher hat der dieser Term $\frac{1}{2}h^2g$ keinen Einfluss auf die Variation und kann weggelassen werden.
+
+Um denn Freiheitsgrad der Variation zu erhöhen, wird die horizontale Geschwindikeit $\bm{u} = \nabla\phi $ entspricht $\frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial y}$ und die vertikale Geschwindigkeit $v = \frac{\partial \phi}{\partial z}$ eingeführt. 
+Luke`s Lagrangian setzt vorraus das die approximation rotationsfrei ist.
+Das implementiert, dass bei der Wahl des Ansatzes für $\phi$ rotationsfrei sein muss.
+Weil es sich bei der Rotationsfreiheit des Geschwindigkeitspotentials um eine Nebenbedingungen im Variationsproblem handelt, müssen die Lagrange-Multiplikatoren $\bm{\mu}$ und $\upsilon$ für $\bm{u}$ und $v$ eingesetzt werden.
+Somit kann der Lagrangian umformuliert werden.
+
+\begin{equation}
+	\mathscr{L}
+	=
+	-
+	\frac{1}{2} g \eta^2
+	+
+	\widetilde{\phi} \frac{\partial\eta}{\partial t}
+	+
+	\check{\phi} \frac{\partial h}{\partial t}
+	-
+	\int_{-h}^{\eta} \left[ \frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} \cdot (\nabla\phi - \bm{u}) + \upsilon \cdot (\frac{\partial\phi}{\partial z} - v) \right] dz
+	\label{luke:Luke_Lagrangian_mit_Multi}
+\end{equation}
+
+Die Lagrange-Multiplikatoren müssen über Variation bestimmt werden.
+Dafür betrachten wir die Variation der Lagrangefunktion \eqref{luke:Luke_Lagrangian_mit_Multi} bezogen auf die Geschwindigkeiten $\bm{u}$ und $v$.
+Diese Variation liefert uns die Gleichungen um die stationären Punkte der Lagrangefunktion zu charakterisieren. 
+Die Variation von \(\mathscr{L}\) nach $\bm{u}$ und $v$ ergibt:
+
+\begin{equation}
+	\frac{\partial \mathscr{L}}{\partial \bm{u}} = 0	
+\end{equation}
+\begin{equation}
+	\frac{\partial \mathscr{L}}{\partial v} = 0	
+\end{equation}
+Setzen wir $\mathscr{L}$ ein und führen die Variation durch:
+
+\begin{equation}
+	\frac{\partial}{\partial u} \left( -\frac{1}{2} g \eta^2 + \widetilde{\phi} \frac{\partial\eta}{\partial t} + \check{\phi} \frac{\partial h}{\partial t} - \int_{-h}^{\eta} \left[ \frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} \cdot (\nabla\phi - \bm{u}) + \upsilon \cdot \left(\frac{\partial\phi}{\partial z} - v\right) \right] dz \right) = 0	
+\end{equation}
+\begin{equation}
+	\frac{\partial}{\partial v} \left( -\frac{1}{2} g \eta^2 + \widetilde{\phi} \frac{\partial\eta}{\partial t} + \check{\phi} \frac{\partial h}{\partial t} - \int_{-h}^{\eta} \left[ \frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} \cdot (\nabla\phi - \bm{u}) + \upsilon \cdot \left(\frac{\partial\phi}{\partial z} - v\right) \right] dz \right) = 0
+\end{equation}
+
+Um $\bm{\mu}$ und $\upsilon$ zu bestimmen, damit die Lagrangefunktion ein Minimum oder Maximum annimmt, werden die Variationen darauf umgeformt. Dabei wird berechnet, dass $\bm{\mu} = \bm{u}$ und $\upsilon = v$ sein muss.
+Diese erkenntniss kann wiederum in \eqref{luke:Luke_Lagrangian_mit_Multi} eingesetzt werden. Damit ergibt sich folgende Lagrangefunktion:
+
+\begin{equation}
+	\mathscr{L}
+	=
+	-
+	\frac{1}{2} g \eta^2
+	+
+	\widetilde{\phi} \frac{\partial\eta}{\partial t}
+	+
+	\check{\phi} \frac{\partial h}{\partial t}
+	-
+	\int_{\eta}^{-d} \left[ \frac{1}{2} u^2 + \frac{1}{2} v^2 - u \cdot \nabla \phi - v \phi_y \right] dy 
+	\label{luke:Luke_Lagrangian_mit_Multi_verkuerzt}
+\end{equation}
+
+Somit haben wir drei Lagrangefunktionen mit unterschiedlich vielen Variablen.
+Die Ursprüngliche Luke`s Lagrangian \eqref{luke:Luke_Lagrangian_allgemein_vereinfacht} hat zwei Variablen $(\phi, \eta)$.
+Die angepasste Lagrangefunktion mit den Lagrange-Multiplikatoren \eqref{luke:Luke_Lagrangian_mit_Multi} hat sechs Variablen $(\phi, \eta, \bm{u}, v, \bm{\mu}, \upsilon)$ und die vereinfachte Form davon \eqref{luke:Luke_Lagrangian_mit_Multi_verkuerzt} hat vier Variablen $(\phi, \eta, \bm{u}, v)$.
+Diese zusätzlichen Variablen bringen zusätzliche Freiheitsgrade. Damit kann bei der Konstruktion von Approximationen für verschiedener Oberflächenwasserwellen mehrere untergeordnete Beziehungen erfüllt werden.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
