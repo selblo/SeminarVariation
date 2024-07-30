@@ -8,6 +8,7 @@
 %
 \section{Einfacher Bruteforce Algorithmus
 \label{variationsprinzip_algorithmen:section:bruteforce}}
+\rhead{Einfacher Bruteforce Algorithmus}
 In der Bruteforce-Methode wird jede mögliche Variante durchprobiert, 
 um die beste Lösung zu finden. Dabei wird systematisch jede mögliche
 Route durchlaufen und überprüft, wie lange die Strecke ist.  
@@ -15,13 +16,13 @@ Ablauf durchgemacht und überprüft, wie lange die Strecke ist.
 Ist die Strecke kürzer als die bisher kürzeste gefundene Route, 
 wird diese als neue optimale Lösung gespeichert.
 
-\begin{figure} [h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{
-        papers/variationsprinzip_algorithmen/images/teil2/02_bruteforce_methode.jpg
-        }
-	\caption{Resultate von verschiedener Durchgänge mit steigender Anzahl von Städten}
-	\label{fig:results_bruteforce}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{
+        papers/variationsprinzip_algorithmen/images/teil2/02_bruteforce_methode.png
+    }
+    \caption{Resultate von verschiedener Durchgänge mit steigender Anzahl von Städten}
+    \label{fig:results_bruteforce}
 \end{figure}
 
 Auf dem Bild \ref*{fig:results_bruteforce} ist ersichtlich, dass mit 
@@ -55,32 +56,33 @@ Stadt \( j \) zurückgibt.\\
 
 \subsection{Kurzes Beispiel Rechnung der Formel
 \label{variationsprinzip_algorithmen:section:bruteforce_calculate}}
-Um zu verdeutlichen, wie die Formel \ref{eq:bruteforce_min_formula} 
+\rhead{Kurzes Beispiel Rechnung der Formel}
+Um zu verdeutlichen, wie die Formel \ref{eq:bruteforce_min_formula}
 angewendet wird, folgt hier ein Beispiel.
 
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|}
-    \hline
-       & A  & B  & C  & D  \\ \hline
-    A  & 0  & 10 & 15 & 20 \\ \hline
-    B  & 10 & 0  & 35 & 25 \\ \hline
-    C  & 15 & 35 & 0  & 30 \\ \hline
-    D  & 20 & 25 & 30 & 0  \\ \hline
+        \hline
+          & A  & B  & C  & D  \\ \hline
+        A & 0  & 10 & 15 & 20 \\ \hline
+        B & 10 & 0  & 35 & 25 \\ \hline
+        C & 15 & 35 & 0  & 30 \\ \hline
+        D & 20 & 25 & 30 & 0  \\ \hline
     \end{tabular}
     \caption{Beispiel Tabele mit möglicher Distanz der Städten}
     \label{tab:example_bruteforce_cities}
 \end{table}
-    
+
 In der Tabelle \ref{tab:example_bruteforce_cities} sind die Distanzen 
 zwischen den Städten A, B, C und D aufgeführt. Die Tabelle ist symmetrisch, 
 da die Entfernung von Stadt A nach Stadt B gleich der Entfernung von 
 Stadt B nach Stadt A ist.
 Die Tabelle liesst sich wie folgt: Die Distanz zwischen Stadt B und D 25 beträgt.
 
-Eine mögliche Permutation wäre \(\sigma = (A, B, C, D)\) oder \(\sigma = (B, D, A, C)\).
+Eine mögliche Permutation wäre $\sigma = (A, B, C, D)$ oder $\sigma = (B, D, A, C)$.
 
-Setzt man die Permutation \(\sigma = (B, D, A, C)\) in die Formel \L(\sigma) 
+Setzt man die Permutation $\sigma = (B, D, A, C)$ in die Formel $\L(\sigma)$
 \ref{eq:bruteforce_min_formula} ein, wird die Gesamtdistanz berechnet.
 
 
@@ -89,24 +91,68 @@ Beispeil mit \( L(\sigma(1)) \) würde aus dem Set das B genommen und das führt
 dann zu dieser aufstellung
 \begin{equation}
     \label{eq:bruteforce_min_formula}
-        L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
-            = 25 + 20 + 15 + 35 = 95
+    L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
+    = 25 + 20 + 15 + 35 = 95
 \end{equation}
 Dann werden alle möglichen Kombinationen durchgerechnet, und die kürzeste 
 Strecke wird als Lösung gewählt.
 
 \subsection{Aufwand Bruteforce
 \label{variationsprinzip_algorithmen:section:bruteforce}}
+\rhead{Aufwand Bruteforce}
 Aus den vorherigen Abschnitten ist ersichtlich, dass der Aufwand für die 
 Berechnung der kürzesten Strecke exponentiell steigt. Mit jedem weiteren 
-Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
+Knoten gibt es mehr Variationen, die durchprobiert werden müssen. 
 
-\subsection{Bruteforce Script
-\label{variationsprinzip_algorithmen:section:bruteforce}}
-Das gesamte Bruteforce-Verfahren gibt es als Script in der Programmiersprache Python auf 
-Github
-\footnote{\url{https://github.com/feiler/math_sem_algorithm_variation_principle}}
-\cite{algorythm:repo}
-herutnerzuladen und selbstzu test.
+% Tabelle
+\begin{table}[ht]
+    \centering
+    \caption{Zeitverlauf mit steigender Anzahl von Städten}
+    \begin{tabular}{cc}
+        \toprule
+        Punkte & Zeit \\
+        \midrule
+        1 & 0,6880 \\
+        2 & 0,6905 \\
+        3 & 0,7666 \\
+        4 & 1,2817 \\
+        5 & 3,0601 \\
+        6 & 15,0940 \\
+        7 & 103,1691 \\
+        8 & 1.068,3832 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
+TODO: not working
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Punkte},
+            ylabel={Zeit},
+            title={Datenpunkte und Zeiten},
+            grid=both,
+            minor tick num=1,
+            width=0.8\textwidth,
+            height=6cm,
+            legend pos=north west,
+        ]
+        \addplot[only marks, mark=*] coordinates {
+            (1, 0.6880)
+            (2, 0.6905)
+            (3, 0.7666)
+            (4, 1.2817)
+            (5, 3.0601)
+            (6, 15.0940)
+            (7, 103.1691)
+            (8, 1068.3832)
+        };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Zeitverlauf mit steigender Anzahl von Städten}
+\end{figure}
 
+Aus der Tabelle und dem Graphen ist ersichtlich, dass der Aufwand mit 
+jeder weiteren Stadt exponentiell steigt. Mit 8 Städten dauert die
+Berechnung bereits über 17 Minuten.

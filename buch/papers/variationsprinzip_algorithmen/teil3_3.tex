@@ -6,8 +6,9 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\subsection{Selektion 
-\label{genetic_algorithm:selection}}
+\subsection{Selektion
+    \label{genetic_algorithm:selection}}
+    \rhead{Selektion}
 In diesem Schritt werden Elternpaare ausgesucht, die später 
 neue Nachkommen erzeugen. Die Selektion erfolgt so, dass in der 
 Regel nur die Fittesten neue Kinder erzeugen.
@@ -20,12 +21,12 @@ gewählt, aber die Wahrscheinlichkeit, dass die fitteren
 Individuen Nachkommen zeugen, ist höher.
 
 \begin{figure} [h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{
+    \centering
+    \includegraphics[width=0.8\textwidth]{
         papers/variationsprinzip_algorithmen/images/teil3/04_offspring_probability.png
-        }
-	\caption{Eltern die Ausgewählt werden für Nachkommen}
-	\label{fig:selection_of_parents}
+    }
+    \caption{Eltern die Ausgewählt werden für Nachkommen}
+    \label{fig:selection_of_parents}
 \end{figure}
 
 Auf dem Bild \ref{fig:selection_of_parents} sind eltern mit unterschiedlichem
@@ -35,30 +36,30 @@ viel grösser als die Rote Linie. Diese ist aber trotzdem möglich.
 Für die Selektion gibt es verschiedene Möglichkeiten.
 \\
 1. **Roulette-Rad-Selektion:** 
-    - Individuen werden zufällig und proportional zu ihrer 
-    Fitness ausgewählt. Die Wahrscheinlichkeit wird anhand ihrer 
-    Fitness definiert. Kürzere Strecken haben eine höhere Chance, 
-    ausgewählt zu werden. Die Wahrscheinlichkeit wird mit einer 
-    entsprechenden Formel berechnet.
+- Individuen werden zufällig und proportional zu ihrer 
+Fitness ausgewählt. Die Wahrscheinlichkeit wird anhand ihrer 
+Fitness definiert. Kürzere Strecken haben eine höhere Chance, 
+ausgewählt zu werden. Die Wahrscheinlichkeit wird mit einer 
+entsprechenden Formel berechnet.
 
-    \begin{equation}
-        \label{eq:probability_fittest}
-        P_i = \frac{f_i}{\sum_{j=1}^{N} f_j}
-    \end{equation}
+\begin{equation}
+    \label{eq:probability_fittest}
+    P_i = \frac{f_i}{\sum_{j=1}^{N} f_j}
+\end{equation}
 
 2. **Rangselektion:**
-    - Individuen werden nach ihrer Fitness sortiert und basierend 
-    auf ihrem Rang ausgewählt. Die Wahrscheinlichkeit wird anhand 
-    des Rangs definiert.
+- Individuen werden nach ihrer Fitness sortiert und basierend 
+auf ihrem Rang ausgewählt. Die Wahrscheinlichkeit wird anhand 
+des Rangs definiert.
 
-    \begin{equation}
-        \label{eq:probability_rating}
-        P_i = \frac{r_i}{\sum_{j=1}^{N} r_j}
-    \end{equation}
+\begin{equation}
+    \label{eq:probability_rating}
+    P_i = \frac{r_i}{\sum_{j=1}^{N} r_j}
+\end{equation}
 
 3. **Turnierselektion:**
-    - Eine Gruppe von Individuen wird zufällig ausgewählt, und 
-    das fitteste Individuum dieser Gruppe wird als Elternteil gewählt.
+- Eine Gruppe von Individuen wird zufällig ausgewählt, und 
+das fitteste Individuum dieser Gruppe wird als Elternteil gewählt.
 
 Es gibt auch die Möglichkeit, ein eigenes Selektionssystem zu entwickeln, 
 das ein Ausscheidungsverfahren beinhaltet, aus dem schließlich ein 
