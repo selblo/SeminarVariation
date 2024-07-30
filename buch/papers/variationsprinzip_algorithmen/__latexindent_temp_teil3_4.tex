@@ -13,7 +13,7 @@ In diesem Teil des Algorithmus werden die gewählten Elternpaare
 neu kombiniert, um Nachkommen zu erzeugen. Bei der Kreuzung 
 werden Teile des genetischen String ausgetauscht.
 
-\begin{figure}
+\begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
 		papers/variationsprinzip_algorithmen/images/teil3/05_genetic_string_cross.png
@@ -37,13 +37,14 @@ Erzeuge die Nachkommen durch:
 der Genabschnitt zwischen diesen Punkten wird zwischen 
 den Eltern getauscht.\\
 Wähle zwei zufällige Punkte \( k_1 \) und \( k_2 \) (1 \leq k_1 < k_2 < n).\\
-Erzeuge die Nachkommen durch:
+Erzeuge die Nachkommen durch: \begin{refsection}
 \[
 O_1 = (P_1[1], \ldots, P_1[k_1], P_2[k_1+1], \ldots, P_2[k_2], P_1[k_2+1], \ldots, P_1[n])
 \]
 \[
 O_2 = (P_2[1], \ldots, P_2[k_1], P_1[k_1+1], \ldots, P_1[k_2], P_2[k_2+1], \ldots, P_2[n])
 \]
+\\
 - Uniforme Kreuzung: Jedes Gen wird mit einer bestimmten 
 Wahrscheinlichkeit vom ersten oder zweiten Elternteil 
 übernommen, was zu einer zufälligeren Kombination führt.
@@ -56,17 +57,15 @@ ansonsten von \( P_2 \).
 
 \[ O_1[i] =
 	\begin{cases} 
-		P_1[i] & \text{wenn } r_i < p      
+		P_1[i] & \text{wenn } r_i < p      \\
 		P_2[i] & \text{wenn } r_i \geq p 
-	\end{cases} 
-\]
+	\end{cases} \]
 
 \[ O_2[i] =
 	\begin{cases} 
-		P_2[i] & \text{wenn } r_i < p      
+		P_2[i] & \text{wenn } r_i < p      \\
 		P_1[i] & \text{wenn } r_i \geq p 
-	\end{cases} 
-\]
+	\end{cases} \]
 
 Hier wird die Variation aufrechterhalten (Grösse der Population
 bleibt gleich gross) und gleichzeitig wird aus den besten Genen 
@@ -77,7 +76,7 @@ genetischer String \ref{fig:one_point_crossover} mit An und
 Aus verwendet werden. Dies würde zu einem Resultat wie in der Abbildung 
 \ref{fig:one_point_crossover_cities} führen.
 
-\begin{figure}
+\begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
 		papers/variationsprinzip_algorithmen/images/teil3/07_genetic_string_cities_crossover_standard.png
@@ -94,7 +93,9 @@ Teil des Strings, wie bei in den vorherigen Kreuzungen, aber es fügt nach
 der Reihenfolge des zweiten Elternteils alle nicht vorhandenen 
 Städte hinzu, bis der herausgeschnittene String wieder vollständig ist.
 
-\begin{figure}
+\begin{figure} [h]
+
+\begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{
 		papers/variationsprinzip_algorithmen/images/teil3/08_genetic_string_cities_crossover_simple.png

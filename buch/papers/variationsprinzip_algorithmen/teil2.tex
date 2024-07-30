@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8
 %
 \section{Einfacher Bruteforce Algorithmus
-\label{variationsprinzip_algorithmen:section:bruteforce}}
+  \label{variationsprinzip_algorithmen:section:bruteforce}}
 \rhead{Einfacher Bruteforce Algorithmus}
 In der Bruteforce-Methode wird jede mögliche Variante durchprobiert, 
 um die beste Lösung zu finden. Dabei wird systematisch jede mögliche
@@ -55,7 +55,7 @@ Stadt \( j \) zurückgibt.\\
 - \( L(\sigma) \) die Gesamtlänge der Rundreise \( \sigma \).\\
 
 \subsection{Kurzes Beispiel Rechnung der Formel
-\label{variationsprinzip_algorithmen:section:bruteforce_calculate}}
+    \label{variationsprinzip_algorithmen:section:bruteforce_calculate}}
 \rhead{Kurzes Beispiel Rechnung der Formel}
 Um zu verdeutlichen, wie die Formel \ref{eq:bruteforce_min_formula}
 angewendet wird, folgt hier ein Beispiel.
@@ -98,7 +98,7 @@ Dann werden alle möglichen Kombinationen durchgerechnet, und die kürzeste
 Strecke wird als Lösung gewählt.
 
 \subsection{Aufwand Bruteforce
-\label{variationsprinzip_algorithmen:section:bruteforce}}
+    \label{variationsprinzip_algorithmen:section:bruteforce}}
 \rhead{Aufwand Bruteforce}
 Aus den vorherigen Abschnitten ist ersichtlich, dass der Aufwand für die 
 Berechnung der kürzesten Strecke exponentiell steigt. Mit jedem weiteren 
@@ -110,16 +110,16 @@ Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
     \caption{Zeitverlauf mit steigender Anzahl von Städten}
     \begin{tabular}{cc}
         \toprule
-        Punkte & Zeit \\
+        Punkte & Zeit       \\
         \midrule
-        1 & 0,6880 \\
-        2 & 0,6905 \\
-        3 & 0,7666 \\
-        4 & 1,2817 \\
-        5 & 3,0601 \\
-        6 & 15,0940 \\
-        7 & 103,1691 \\
-        8 & 1.068,3832 \\
+        1      & 0,6880     \\
+        2      & 0,6905     \\
+        3      & 0,7666     \\
+        4      & 1,2817     \\
+        5      & 3,0601     \\
+        6      & 15,0940    \\
+        7      & 103,1691   \\
+        8      & 1.068,3832 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -129,25 +129,25 @@ TODO: not working
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={Punkte},
-            ylabel={Zeit},
-            title={Datenpunkte und Zeiten},
-            grid=both,
-            minor tick num=1,
-            width=0.8\textwidth,
-            height=6cm,
-            legend pos=north west,
-        ]
-        \addplot[only marks, mark=*] coordinates {
-            (1, 0.6880)
-            (2, 0.6905)
-            (3, 0.7666)
-            (4, 1.2817)
-            (5, 3.0601)
-            (6, 15.0940)
-            (7, 103.1691)
-            (8, 1068.3832)
-        };
+                xlabel={Punkte},
+                ylabel={Zeit},
+                title={Datenpunkte und Zeiten},
+                grid=both,
+                minor tick num=1,
+                width=0.8\textwidth,
+                height=6cm,
+                legend pos=north west,
+            ]
+            \addplot[only marks, mark=*] coordinates {
+                    (1, 0.6880)
+                    (2, 0.6905)
+                    (3, 0.7666)
+                    (4, 1.2817)
+                    (5, 3.0601)
+                    (6, 15.0940)
+                    (7, 103.1691)
+                    (8, 1068.3832)
+                };
         \end{axis}
     \end{tikzpicture}
     \caption{Zeitverlauf mit steigender Anzahl von Städten}
