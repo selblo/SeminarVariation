@@ -6,53 +6,171 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{minimalflaechen:section:teil1}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+\section{Das Katenoid
+	\label{minimalflaechen:section:Das Katenoid}}
+\rhead{Das Katenoid}
+Da im Kapitel XY bereits die Kettenlinie behandelt wurde, wird hier das Katenoid als Erweiterung der Erkenntnisse aus der Kettenlinie näher erläutert. 
+
+\subsection{Mathematische Analyse des Katenoids
+	\label{Das Katenoid:subsection:Mathematische Analyse des Katenoids}}
+Die Form eines Katenoids kann durch die Lösung der Euler-Lagrange-Gleichung für Minimalflächen bestimmt werden.
+Diese Gleichung ergibt sich aus der Bedingung, dass die erste Variation des Flächeninhalts null ist.
+Die Euler-Lagrange-Gleichung lautet
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{minimalflaechen:equation1}
+	\frac{\partial L}{\partial y} - \frac{\mathrm{d}}{\mathrm{d}x} \frac{\partial L}{\partial y'} = 0.
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Die Lösung dieser Gleichung ergibt die bekannte Gleichung der Kettenlinie
+\begin{equation}
+	y(x) = a \cdot \cosh \left( \frac{x - x_0}{a} \right) + y_0,
+\end{equation}
 
-\subsection{De finibus bonorum et malorum
-\label{minimalflaechen:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{minimalflaechen:equation1}.
+wobei
+\begin{itemize}
+	\item \(a\) = Krümmungsradius im Scheitelpunkt,
+	\item \(x_0\) = Verschiebung in x-Richtung,
+	\item \(y_0\) = Verschiebung in y-Richtung
+\end{itemize}
+bedeutet.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{minimalflaechen:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{minimalflaechen:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+Diese Gleichung beschreibt die Form der Kettenlinie, die durch die Schwerkraft beeinflusst wird und eine Minimalfläche bildet.
+Für detaillierte Berechnung siehe Kapitel xy.
 
+Mit den folgenden Schritten werden wir überprüfen, ob die Funktion  \( y(x) = a \cdot \cosh \left( \frac{x}{a} \right) \)
+in der Euler-Lagrange DGL eingesetzt dazu führt, dass diese null ergibt und somit die Bedingung für Minimalflächen erfüllt ist.
+Zuerst brauchen wir das Flächenintegral der Rotationsfläche, die durch die Drehung einer Kurve um die $x$ Achse entsteht
+\begin{equation}
+	A = 2\pi \int_{a}^{b} y(x) \sqrt{1 + (y'(x))^2} \, \mathrm{d}x, 
+\end{equation}
+somit lautet die Lagrange Funktion 
+\begin{equation}
+	L(x, y, y') = y \sqrt{1 + (y')^2}.	
+\end{equation}
+Folgende Bedingung muss erfüllt sein 
+\begin{equation}
+	\frac{\partial L}{\partial y} - \frac{\mathrm{d}}{\mathrm{d}x} \frac{\partial L}{\partial y'} = 0.
+\end{equation}
+An dieser Stelle brauchen wir folgende partielle Ableitungen
+
+\begin{equation}
+	\frac{\partial L}{\partial y} = \sqrt{1 + (y')^2}
+\end{equation}
+und 
+\begin{equation}
+	\frac{\partial L}{\partial y'} = y \frac{y'}{\sqrt{1 + (y')^2}}.
+\end{equation}
+Damit es sich um eine Minimalfläche handelt, muss folgende Gleichung erfüllt sein 
+\begin{equation}
+	\sqrt{1 + (y')^2} = \frac{\mathrm{d}}{\mathrm{d}x} \left( y \frac{y'}{\sqrt{1 + (y')^2}} \right).
+\end{equation}
+Wenn wir in der Gleichung 17.12 die Funktion der Kettenlinie einsetzen, erhalten wir 
+\begin{equation}
+	\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 } = \frac{\mathrm{d}}{\mathrm{d}x} \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\left( a \cosh \left( \frac{x}{a} \right) \right)'}{\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 }},
+\end{equation}
+nach der Ableitung ergibt sich 
+\begin{equation}
+	\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} = \frac{\mathrm{d}}{\mathrm{d}x} \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\sinh \left( \frac{x}{a} \right)}{\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)}}.
+\end{equation}
+Weil
+\begin{equation}
+	\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} = \cosh \left( \frac{x}{a} \right),
+\end{equation}
+gilt 
+\begin{equation}
+	\cosh \left( \frac{x}{a} \right) = \frac{\mathrm{d}}{\mathrm{d}x} \left( \frac{a \cosh \left( \frac{x}{a} \right) \sinh \left( \frac{x}{a} \right)}{\cosh \left( \frac{x}{a} \right)} \right).
+\end{equation}	
+Nach dem Kürzen und Ableiten erhalten wir 
+\begin{equation}
+	\cosh \left( \frac{x}{a} \right) = \cosh \left( \frac{x}{a} \right)
+\end{equation}	
+und somit ist unsere Bedingung erfüllt und es handelt sich tatsächlich um eine Minimalfläche. 
+
+Um die Fläche des Katenoids zu berechnen, setzen wir die Funktion der Kettenlinie im Flächenintegral ein und erhalten 
+\begin{equation}
+	A = 2\pi \int_{c}^{d} a \cosh \left( \frac{x}{a} \right) \sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} \, \mathrm{d}x
+\end{equation}
+\begin{equation}
+	A = 2\pi \cdot a \int_{c}^{d} \cosh^2 \left( \frac{x}{a} \right) \, \mathrm{d}x.
+\end{equation}
+\subsection{Beispiele
+	\label{Das Katenoid:subsection:Beispiele}}
+Um die Fläche eines spezifischen Katenoids zu berechnen, setzen wir die Grenzen $c$ und $d$ in das Integral ein.
+Nehmen wir an, die Grenzen sind $c$ =-1, $d$=1 und die Konstante $a$=1.
+Dann lautet das Integral	
+\[
+A = 2\pi \int_{-1}^{1} \cosh^2 (x) \, \mathrm{d}x.
+\]
+
+Durch Anwenden der Identität \(\cosh^2 (x) = \frac{1}{2} (\cosh (2x) + 1)\) kann das Integral vereinfacht werden
+\[
+A = 2\pi \int_{-1}^{1} \frac{1}{2} (\cosh (2x) + 1) \, \mathrm{d}x
+\]
+
+\[
+= \pi \int_{-1}^{1} (\cosh (2x) + 1) \, \mathrm{d}x
+\]
+
+\[
+= \pi \left[ \frac{1}{2} \sinh (2x) + x \right]_{-1}^{1}
+\]
+
+\[
+= \pi \left( \left[ \frac{1}{2} \sinh (2) + 1 \right] - \left[ \frac{1}{2} \sinh (-2) - 1 \right] \right)
+\]
+
+\[
+= \pi \left( \frac{1}{2} \sinh (2) + 1 - \left( \frac{1}{2} \sinh (-2) - 1 \right) \right)
+\]
+
+\[
+= \pi \left( \sinh (2) + 2 \right)
+\]
+
+Das Endergebnis lautet somit
+\[
+A = \pi (\sinh (2) + 2).
+\]
+Diese Berechnung zeigt, wie die Fläche eines Katenoids analytisch bestimmt werden kann.
+In vielen Fällen ist es jedoch praktischer, numerische Methoden zur Berechnung solcher Integrale zu verwenden, insbesondere wenn die Grenzen oder die Funktionen komplexer sind.
+Dies beinhaltet die Diskretisierung der Funktion und die Anwendung von Algorithmen zur approximativen Lösung des Integrals.
+In der Praxis werden Softwaretools wie MATLAB oder Mathematica verwendet, um solche Berechnungen durchzuführen.
+Diese Tools bieten leistungsstarke Funktionen zur numerischen Integration und können komplexe Flächenberechnungen effizient und genau durchführen.
+
+Dieses Beispiel können wir mit den folgenden Befehlen in MATLAB berechnen
+
+\begin{lstlisting}
+	% Grenzen und Konstante
+	a = 1;
+	c = -1;
+	d = 1;
+	
+	% Integrand
+	integrand = @(x) cosh(x/a).^2;
+	
+	% Berechnung des Integrals
+	A= 2 * pi * integral(integrand, c, d);
+\end{lstlisting}
+
+und erhalten die Fläche des Katenoids, die in diesem Fall 17.6773 beträgt.
+
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=0.7\linewidth]{../../../../../../../Downloads/Katenoid}
+	\caption{MATLAB Darstellung Katenoid}
+	\label{fig:katenoid}
+\end{figure}
+
+\subsection{Unterschied zwischen Katenoid und Hyperboloid
+	\label{Das Katenoid:subsection:Unterschied zwischen Katenoid und Hyperboloid}}
+Das Katenoid und das Hyperboloid sind beides Rotationsflächen, unterscheiden sich jedoch wesentlich in ihren geometrischen und physikalischen Eigenschaften.
+Das Hyperboloid entsteht durch die Rotation einer Hyperbel und das Katenoid durch die Rotation der Kettenlinie. 
+Das Katenoid ist eine Minimalfläche mit mittlerer Krümmung von Null, während das Hyperboloid eine Fläche mit konstanter negativer Krümmung ist.
+Diese Unterschiede führen zu unterschiedlichen Anwendungen und strukturellen Eigenschaften.
+\begin{figure}
+	\centering
+	%\includegraphics[width=0.7\linewidth]{../../../../../../../Downloads/Bild1}
+	\caption{Unterschied Katenoid zu Hyperbolid}
+	\label{fig:bild1}
+\end{figure}
 
