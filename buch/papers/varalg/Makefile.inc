@@ -9,6 +9,5 @@ dependencies-varalg =						\
 	papers/varalg/references.bib				\
 	papers/varalg/teil0.tex					\
 	papers/varalg/teil1.tex					\
-	papers/varalg/teil2.tex					\
-	papers/varalg/teil3.tex
+	papers/varalg/teil2.tex		
 

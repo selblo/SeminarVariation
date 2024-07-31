@@ -56,19 +56,17 @@ Wenn \( r_i \) kleiner als die vordefinierte Wahrscheinlichkeit
 \( p \) ist, dann wird das Gen von \( P_1 \) übernommen, 
 ansonsten von \( P_2 \).
 \begin{align*}
-O_1[i] =
+O_1[i] &=
 	\begin{cases} 
-		P_1[i] & \text{wenn } r_i < p      
+		P_1[i] & \text{wenn } r_i < p       \\
 		P_2[i] & \text{wenn } r_i \geq p 
 	\end{cases}
-
-
-O_2[i] =
+\\
+O_2[i] &=
 	\begin{cases} 
-		P_2[i] & \text{wenn } r_i < p      
+		P_2[i] & \text{wenn } r_i < p       \\
 		P_1[i] & \text{wenn } r_i \geq p 
 	\end{cases}
-
 \end{align*}
 Hier wird die Variation aufrechterhalten (Grösse der Population
 bleibt gleich gross) und gleichzeitig wird aus den besten Genen 
