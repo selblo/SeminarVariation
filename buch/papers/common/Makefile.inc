@@ -24,7 +24,6 @@ PAPERFILES = \
 	papers/varalg/main.tex \
 	papers/cahnhilliard/main.tex \
 	papers/luke/main.tex \
-	papers/luke/main.tex \
 	papers/widerstand/main.tex \
 	
 $(workdir)/buch1-blx.bbl:	$(workdir)/buch1-blx.aux
