@@ -6,6 +6,8 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
+%TODO check
+\usepackage{pgfplots}
 \section{Einfacher Bruteforce Algorithmus
 \label{buch:paper:varalg:section:bruteforce}}
 \rhead{Einfacher Bruteforce Algorithmus}
@@ -103,6 +105,36 @@ Strecke wird als Lösung gewählt.
 Aus den vorherigen Abschnitten ist ersichtlich, dass der Aufwand für die 
 Berechnung der kürzesten Strecke exponentiell steigt. Mit jedem weiteren 
 Knoten gibt es mehr Variationen, die durchprobiert werden müssen. 
+% Graph
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel=$Punkte$,
+            ylabel=$Zeit in Sekunden$,
+            grid=major,
+            width=10cm,
+            height=8cm
+        ]
+        \addplot[
+            color=blue,
+            mark=*
+        ] coordinates {
+            (0,0)
+            (1,0.6880)
+            (2,0.6905)
+            (3,0.7666)
+            (4,1.2817)
+            (5,3.0601)
+            (6,15.0940)
+            (7,103.1691)
+            (8,1068.3832)
+        };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Der Graph zeigt den Zeitverlauf mit steigender Anzahl von Städten}
+    \label{fig:bruteforce_graph_time}
+\end{figure}
 
 % Tabelle
 \begin{table}[ht]
@@ -110,21 +142,19 @@ Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
     \caption{Zeitverlauf mit steigender Anzahl von Städten}
     \begin{tabular}{cc}
         \toprule
-        Punkte & Zeit       \\
+        Punkte & Zeit in Sekunden      \\
         \midrule
-        1      & 0,6880     \\
-        2      & 0,6905     \\
-        3      & 0,7666     \\
-        4      & 1,2817     \\
-        5      & 3,0601     \\
-        6      & 15,0940    \\
-        7      & 103,1691   \\
-        8      & 1.068,3832 \\
+        1      & 0.6880     \\
+        2      & 0.6905     \\
+        3      & 0.7666     \\
+        4      & 1.2817     \\
+        5      & 3.0601     \\
+        6      & 15.0940    \\
+        7      & 103.1691   \\
+        8      & 1'068.3832 \\
         \bottomrule
     \end{tabular}
 \end{table}
-
-%TODO: find out how to make a diagram
 
 Aus der Tabelle und dem Graphen ist ersichtlich, dass der Aufwand mit 
 jeder weiteren Stadt exponentiell steigt. Mit 8 Städten dauert die
