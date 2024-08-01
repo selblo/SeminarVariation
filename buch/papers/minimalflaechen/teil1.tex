@@ -9,7 +9,7 @@
 \section{Das Katenoid
 	\label{minimalflaechen:section:Das Katenoid}}
 \rhead{Das Katenoid}
-Da im Kapitel XY bereits die Kettenlinie behandelt wurde, wird hier das Katenoid als Erweiterung der Erkenntnisse aus der Kettenlinie näher erläutert. 
+Da im Kapitel \ref{chapter:kettenlinie} bereits die Kettenlinie behandelt wurde, wird hier das Katenoid als Erweiterung der Erkenntnisse über die Kettenlinie näher erläutert. 
 
 \subsection{Mathematische Analyse des Katenoids
 	\label{Das Katenoid:subsection:Mathematische Analyse des Katenoids}}
@@ -17,14 +17,14 @@ Die Form eines Katenoids kann durch die Lösung der Euler-Lagrange-Gleichung fü
 Diese Gleichung ergibt sich aus der Bedingung, dass die erste Variation des Flächeninhalts null ist.
 Die Euler-Lagrange-Gleichung lautet
 \begin{equation}
-	\frac{\partial L}{\partial y} - \frac{\mathrm{d}}{\mathrm{d}x} \frac{\partial L}{\partial y'} = 0.
+	\frac{\partial L}{\partial y} - \frac{d}{dx} \frac{\partial L}{\partial y'} = 0.
 \end{equation}
-
+%
 Die Lösung dieser Gleichung ergibt die bekannte Gleichung der Kettenlinie
 \begin{equation}
 	y(x) = a \cdot \cosh \left( \frac{x - x_0}{a} \right) + y_0,
 \end{equation}
-
+%
 wobei
 \begin{itemize}
 	\item \(a\) = Krümmungsradius im Scheitelpunkt,
@@ -34,23 +34,22 @@ wobei
 bedeutet.
 
 Diese Gleichung beschreibt die Form der Kettenlinie, die durch die Schwerkraft beeinflusst wird und eine Minimalfläche bildet.
-Für detaillierte Berechnung siehe Kapitel xy.
-
-Mit den folgenden Schritten werden wir überprüfen, ob die Funktion  \( y(x) = a \cdot \cosh \left( \frac{x}{a} \right) \)
-in der Euler-Lagrange DGL eingesetzt dazu führt, dass diese null ergibt und somit die Bedingung für Minimalflächen erfüllt ist.
-Zuerst brauchen wir das Flächenintegral der Rotationsfläche, die durch die Drehung einer Kurve um die $x$ Achse entsteht
+Für detaillierte Berechnung siehe Kapitel \ref{chapter:kettenlinie}.
+\subsubsection{Bediengung der Minimalflächen}
+Mit den folgenden Schritten werden wir überprüfen, ob die Funktion  \( y(x) = a \cdot \cosh \left( \frac{x}{a} \right) \) der Euler-Lagrange DGL genügt und somit die Bedingung für Minimalflächen erfüllt ist.
+Zuerst brauchen wir das Flächenintegral der Rotationsfläche, die durch die Drehung einer Kurve um die $x$ Achse entsteht:
 \begin{equation}
-	A = 2\pi \int_{a}^{b} y(x) \sqrt{1 + (y'(x))^2} \, \mathrm{d}x, 
+	A = 2\pi \int_{a}^{b} y(x) \sqrt{1 + (y'(x))^2} \,dx.
 \end{equation}
-somit lautet die Lagrange Funktion 
+Somit lautet die Lagrange Funktion 
 \begin{equation}
 	L(x, y, y') = y \sqrt{1 + (y')^2}.	
 \end{equation}
-Folgende Bedingung muss erfüllt sein 
+Folgende Bedingung muss erfüllt sein: 
 \begin{equation}
-	\frac{\partial L}{\partial y} - \frac{\mathrm{d}}{\mathrm{d}x} \frac{\partial L}{\partial y'} = 0.
+	\frac{\partial L}{\partial y} - \frac{d}{dx}  \frac{\partial L}{\partial y'} = 0.
 \end{equation}
-An dieser Stelle brauchen wir folgende partielle Ableitungen
+An dieser Stelle brauchen wir die partiellen Ableitungen
 
 \begin{equation}
 	\frac{\partial L}{\partial y} = \sqrt{1 + (y')^2}
@@ -59,17 +58,18 @@ und
 \begin{equation}
 	\frac{\partial L}{\partial y'} = y \frac{y'}{\sqrt{1 + (y')^2}}.
 \end{equation}
-Damit es sich um eine Minimalfläche handelt, muss folgende Gleichung erfüllt sein 
+Damit es sich um eine Minimalfläche handelt, muss Gleichung
 \begin{equation}
-	\sqrt{1 + (y')^2} = \frac{\mathrm{d}}{\mathrm{d}x} \left( y \frac{y'}{\sqrt{1 + (y')^2}} \right).
+	\sqrt{1 + (y')^2} = \frac{d}{dx} \left( y \frac{y'}{\sqrt{1 + (y')^2}} \right)
 \end{equation}
+erfüllt sein.
 Wenn wir in der Gleichung 17.12 die Funktion der Kettenlinie einsetzen, erhalten wir 
 \begin{equation}
-	\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 } = \frac{\mathrm{d}}{\mathrm{d}x} \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\left( a \cosh \left( \frac{x}{a} \right) \right)'}{\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 }},
+	\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 } = \frac{d}{dx} \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\left( a \cosh \left( \frac{x}{a} \right) \right)'}{\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 }},
 \end{equation}
 nach der Ableitung ergibt sich 
 \begin{equation}
-	\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} = \frac{\mathrm{d}}{\mathrm{d}x} \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\sinh \left( \frac{x}{a} \right)}{\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)}}.
+	\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} = \frac{d}{dx}  \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\sinh \left( \frac{x}{a} \right)}{\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)}}.
 \end{equation}
 Weil
 \begin{equation}
@@ -77,55 +77,39 @@ Weil
 \end{equation}
 gilt 
 \begin{equation}
-	\cosh \left( \frac{x}{a} \right) = \frac{\mathrm{d}}{\mathrm{d}x} \left( \frac{a \cosh \left( \frac{x}{a} \right) \sinh \left( \frac{x}{a} \right)}{\cosh \left( \frac{x}{a} \right)} \right).
+	\cosh \left( \frac{x}{a} \right) = \frac{d}{dx} \left( \frac{a \cosh \left( \frac{x}{a} \right) \sinh \left( \frac{x}{a} \right)}{\cosh \left( \frac{x}{a} \right)} \right).
 \end{equation}	
 Nach dem Kürzen und Ableiten erhalten wir 
 \begin{equation}
 	\cosh \left( \frac{x}{a} \right) = \cosh \left( \frac{x}{a} \right)
 \end{equation}	
+%
 und somit ist unsere Bedingung erfüllt und es handelt sich tatsächlich um eine Minimalfläche. 
 
 Um die Fläche des Katenoids zu berechnen, setzen wir die Funktion der Kettenlinie im Flächenintegral ein und erhalten 
-\begin{equation}
-	A = 2\pi \int_{c}^{d} a \cosh \left( \frac{x}{a} \right) \sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} \, \mathrm{d}x
-\end{equation}
-\begin{equation}
-	A = 2\pi \cdot a \int_{c}^{d} \cosh^2 \left( \frac{x}{a} \right) \, \mathrm{d}x.
-\end{equation}
+\begin{align}
+	A &= 2\pi \int_{c}^{d} a \cosh \left( \frac{x}{a} \right) \sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} \,dx \\
+	&= 2\pi \cdot a \int_{c}^{d} \cosh^2 \left( \frac{x}{a} \right) \,dx.
+\end{align}
 \subsection{Beispiele
 	\label{Das Katenoid:subsection:Beispiele}}
 Um die Fläche eines spezifischen Katenoids zu berechnen, setzen wir die Grenzen $c$ und $d$ in das Integral ein.
-Nehmen wir an, die Grenzen sind $c$ =-1, $d$=1 und die Konstante $a$=1.
+Nehmen wir an, die Grenzen sind $c =-1$, $d=1$ und die Konstante $a=1$.
 Dann lautet das Integral	
 \[
-A = 2\pi \int_{-1}^{1} \cosh^2 (x) \, \mathrm{d}x.
+A = 2\pi \int_{-1}^{1} \cosh^2 (x) \, dx.
 \]
 
 Durch Anwenden der Identität \(\cosh^2 (x) = \frac{1}{2} (\cosh (2x) + 1)\) kann das Integral vereinfacht werden
-\[
-A = 2\pi \int_{-1}^{1} \frac{1}{2} (\cosh (2x) + 1) \, \mathrm{d}x
-\]
-
-\[
-= \pi \int_{-1}^{1} (\cosh (2x) + 1) \, \mathrm{d}x
-\]
-
-\[
-= \pi \left[ \frac{1}{2} \sinh (2x) + x \right]_{-1}^{1}
-\]
-
-\[
-= \pi \left( \left[ \frac{1}{2} \sinh (2) + 1 \right] - \left[ \frac{1}{2} \sinh (-2) - 1 \right] \right)
-\]
-
-\[
-= \pi \left( \frac{1}{2} \sinh (2) + 1 - \left( \frac{1}{2} \sinh (-2) - 1 \right) \right)
-\]
-
-\[
-= \pi \left( \sinh (2) + 2 \right)
-\]
-
+\begin{align*}
+	A &= 2\pi \int_{-1}^{1} \frac{1}{2} (\cosh (2x) + 1) \, dx \\
+	&= \pi \int_{-1}^{1} (\cosh (2x) + 1) \,dx \\
+	&= \pi \left[ \frac{1}{2} \sinh (2x) + x \right]_{-1}^{1} \\
+	&= \pi \left( \left[ \frac{1}{2} \sinh (2) + 1 \right] - \left[ \frac{1}{2} \sinh (-2) - 1 \right] \right) \\
+	&= \pi \left( \frac{1}{2} \sinh (2) + 1 - \left( \frac{1}{2} \sinh (-2) - 1 \right) \right) \\
+	&= \pi \left( \sinh (2) + 2 \right).
+\end{align*}
+%
 Das Endergebnis lautet somit
 \[
 A = \pi (\sinh (2) + 2).
@@ -150,27 +134,29 @@ Dieses Beispiel können wir mit den folgenden Befehlen in MATLAB berechnen
 	% Berechnung des Integrals
 	A= 2 * pi * integral(integrand, c, d);
 \end{lstlisting}
-
+%
 und erhalten die Fläche des Katenoids, die in diesem Fall 17.6773 beträgt.
 
 
 \begin{figure}
 	\centering
-	%\includegraphics[width=0.7\linewidth]{../../../../../../../Downloads/Katenoid}
+	\includegraphics[width=0.7\linewidth]{papers/minimalflaechen/Katenoid}
+
 	\caption{MATLAB Darstellung Katenoid}
 	\label{fig:katenoid}
 \end{figure}
 
+
 \subsection{Unterschied zwischen Katenoid und Hyperboloid
 	\label{Das Katenoid:subsection:Unterschied zwischen Katenoid und Hyperboloid}}
-Das Katenoid und das Hyperboloid sind beides Rotationsflächen, unterscheiden sich jedoch wesentlich in ihren geometrischen und physikalischen Eigenschaften.
+Das Katenoid und das Hyperboloid sind beide Rotationsflächen, unterscheiden sich jedoch wesentlich in ihren geometrischen und physikalischen Eigenschaften.
 Das Hyperboloid entsteht durch die Rotation einer Hyperbel und das Katenoid durch die Rotation der Kettenlinie. 
 Das Katenoid ist eine Minimalfläche mit mittlerer Krümmung von Null, während das Hyperboloid eine Fläche mit konstanter negativer Krümmung ist.
 Diese Unterschiede führen zu unterschiedlichen Anwendungen und strukturellen Eigenschaften.
 \begin{figure}
 	\centering
-	%\includegraphics[width=0.7\linewidth]{../../../../../../../Downloads/Bild1}
-	\caption{Unterschied Katenoid zu Hyperbolid}
+	\includegraphics[width=0.7\linewidth]{papers/minimalflaechen/Bild1}
+	\caption{Hyperboloid}
 	\label{fig:bild1}
 \end{figure}
 
