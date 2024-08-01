@@ -25,34 +25,30 @@ wird diese als neue optimale Lösung gespeichert.
     \label{fig:results_bruteforce}
 \end{figure}
 
-Auf dem Bild \ref{fig:resultsbruteforce} ist ersichtlich, dass mit 
+Auf dem Bild \ref{fig:results_bruteforce} ist ersichtlich, dass mit 
 jedem weiteren Knoten der Aufwand exponentiell steigt. Anders 
 ausgedrückt, mit jeder weiteren Stadt gibt es mehr Varianten, die 
 durchprobiert werden müssen. Die Anzahl der Möglichkeiten lässt sich 
 mit der Formel
-
 \begin{equation}
     (n-1)!
 \end{equation}
-
 berechnen, wobei \(n\) die Anzahl der Städte ist.
 
-Die Berechnung der verschiedenen Kombinationen lässt sich mit folgender 
-mathematischen Formel beschreiben:
-
+Die Berechnung der verschiedenen Kombinationen lässt sich mit der
+Formel 
 \begin{equation}
     \label{eq:bruteforce_min_formula}
     L(\sigma) = \sum_{i=1}^{n-1} d(\sigma(i), \sigma(i+1)) + d(\sigma(n), \sigma(1))
 \end{equation}
+beschreiben.
 
 \begin{itemize}
-    \item \( L(\sigma) \) repräsentiert die Gesamtlänge der Rundreise, die durch
-          die Permutation \( \sigma \) der Städte definiert ist.
+    \item \( L(\sigma) \) repräsentiert die Gesamtlänge der Rundreise.
     \item \( \sigma \) ist eine Permutation der Städte \( \{1, 2, \ldots, n\} \),
           wobei jede \( \sigma \) unterschiedliche Reihenfolge der Städte darstellt.
     \item \( d(i, j) \) ist die Funktion, welche die Entfernung der Stadt \( i \) und
           Stadt \( j \) zurückgibt.
-    \item \( L(\sigma) \) ist die Gesamtlänge der Rundreise \( \sigma \).
 \end{itemize}
 
 \subsection{Kurzes Beispiel Rechnung der Formel
@@ -61,7 +57,7 @@ mathematischen Formel beschreiben:
 Um zu verdeutlichen, wie die Formel \ref{eq:bruteforce_min_formula}
 angewendet wird, folgt hier ein Beispiel.
 
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
@@ -109,7 +105,7 @@ Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
     \begin{tikzpicture}
         \begin{axis}[
             xlabel=$Punkte$,
-            ylabel=$Zeit in Sekunden$,
+            ylabel=\text{Zeit in Sekunden},
             grid=major,
             width=10cm,
             height=8cm
@@ -137,10 +133,9 @@ Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
 % Tabelle
 \begin{table}[ht]
     \centering
-    \caption{Zeitverlauf mit steigender Anzahl von Städten}
-    \begin{tabular}{cc}
+    \begin{tabular}{c d{4.4}}
         \toprule
-        Punkte & Zeit in Sekunden      \\
+        Punkte & \multicolumn{1}{c}{Zeit in Sekunden} \\
         \midrule
         1      & 0.6880     \\
         2      & 0.6905     \\
@@ -149,9 +144,11 @@ Knoten gibt es mehr Variationen, die durchprobiert werden müssen.
         5      & 3.0601     \\
         6      & 15.0940    \\
         7      & 103.1691   \\
-        8      & 1'068.3832 \\
+        8      & 1068.3832 \\
         \bottomrule
     \end{tabular}
+    \caption{Zeitverlauf mit steigender Anzahl von Städten}
+    \label{tab:bruteforce_tabelle_time}
 \end{table}
 
 Aus der Tabelle und dem Graphen ist ersichtlich, dass der Aufwand mit 
