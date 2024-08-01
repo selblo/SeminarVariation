@@ -61,6 +61,8 @@ $(workdir)/$(buch).idx:	$(workdir) $(buch).tex $(TEXFILES) images
 $(workdir)/$(buch).ind:	$(workdir)/$(buch).idx
 	cd $(workdir); $(makeindex) $(buch).idx
 
+prod:	$(buch).pdf
+
 #
 # This Makefile can also construct the short tests
 #

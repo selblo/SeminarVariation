@@ -8,4 +8,78 @@
 % Glatte Funktionen mit kompaktem Träger
 %
 \subsection{Glatte Funktionen mit kompaktem Träger}
+Für das Fundamtentallemma müssen glatte Funktionen konstruiert werden, die
+höchstens innerhalb einer vorgegenen offenen Menge $>0$ sind.
+Solche Funktionen können leicht mit den Funktion $g_{a,b}(x)$
+konstruiert werden, die in Satz~\ref{buch:variation:fundamentallemma:satz:gab}
+eingeführt worden sind.
+
+\begin{satz}
+\label{buch:felder:fundamentallemma:glatt:satz:glatt}
+Ist $U\subset \mathbb{R}^n$ eine offene Umgebung des Punktes
+$x\in\mathbb{R}^n$, dann gibt es eine beliebig oft stetig
+differenzierbare, nicht negative Funktion $g\colon \mathbb{R}^n\to\mathbb{R}$,
+deren Träger $\operatorname{supp}g$ in $U$ enthalten ist,
+und deren Integral $1$ ist.
+\end{satz}
+
+\begin{proof}
+Da $U$ eine offene Umgebung des Punktes ist, gibt es ein $\varepsilon>0$
+derart, dass $y\in U$ für alle $y\in\mathbb{R}^n$ mit $|y-x|<\varepsilon$.
+Dann gilt auch für alle Punkte $y\in\mathbb{R}^n$ mit
+\[
+|y_i-x_i|< \frac{\varepsilon}{n}
+\qquad
+\forall i=1,\dots,n,
+\]
+dass 
+\begin{equation}
+|y-x|
+=
+\sqrt{
+(y_1-x_1)^2
++
+\dots
++
+(y_n-x_n)^2
+}
+\le
+|y_1-x_1|+\dots+|y_n-x_n|
+<
+n\cdot \frac{\varepsilon}n
+=
+\varepsilon.
+\label{buch:felder:fundamentallemma:glatt:eqn:eps}
+\end{equation}
+Der Punkt $y$ ist also wieder in $U$.
+Wir definieren jetzt die Funktion $g(y)$ 
+\[
+g_0(y)
+=
+g_{x_1-\frac{\varepsilon}n,x_1+\frac{\varepsilon}n}(y_1)
+\cdot
+\ldots
+\cdot
+g_{x_n-\frac{\varepsilon}n,x_n+\frac{\varepsilon}n}(y_n).
+\]
+Sie ist beliebig oft stetig differenzierbar und nicht negativ,
+weil die Faktoren $g_{x_i-\frac{\varepsilon}n,x_i+\frac{\varepsilon}n}(y_i)$
+beliebig oft stetig differenzierbar und nicht negativ sind.
+Der Funktionswert $g_0(y)$ ist nur dann von $0$ verschieden, wenn
+$|y_i-x_i|\le \frac{\varepsilon}n$ für alle $i=1,\dots,n$ gilt.
+Nach
+\eqref{buch:felder:fundamentallemma:glatt:eqn:eps}
+impliziert dies, dass $y\in U$, als folgt
+$\operatorname{supp}g_0\subset U$.
+Die normierte Funktion
+\[
+g(x) = \frac{1}{N}g_0(x),\quad\text{mit }
+N=\int_{\mathbb{R}^n} g_0(x)\,dx,
+\]
+hat alle im Satz versprochenen Eigenschaften.
+\end{proof}
+
+
+
+
 

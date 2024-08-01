@@ -350,18 +350,14 @@ $w = 0$ und $x = L$, sowie $C_2 = 0$ und $C_4 = 0$ werden eingesetzt.
 \end{equation}
 Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen $M = 0$, $x = L$ und $C__2 = 0$ ein.
 \begin{align}
-	\begin{equation}
 		EIw''&=
 		-M_y=\frac{1}{2}q_0x^2+C_1x+C_2
-	\end{equation}
-	\begin{equation}
+    \\
 		0 &=
 		\frac{1}{2}q_0L^2+C_1L+0
-	\end{equation}
-	\begin{equation}
+    \\
 		C_1&=
 		-\frac{1}{2}q_0L
-	\end{equation}
 \end{align}
 $C_1$ in $C_3$ einsetzen:
 \begin{equation}
@@ -373,26 +369,20 @@ $C_1$ in $C_3$ einsetzen:
 \end{equation}
 Die Konstanten werden in die Biegelinien-Gleichung eingesetzt.
 \begin{align}
-	\begin{equation}
 	EIw&=
 	\frac{1}{24}q_0x^4+\frac{1}{6}\left(-\frac{1}{2}q_0L\right)x^3+\frac{1}{2}\cdot0\cdot x^2+\left(\frac{1}{24}q_0L^3\right)x+0
-	\end{equation}
-	\begin{equation}
+  \\
 	EIw&=
 	\frac{1}{24}q_0x^4+\frac{1}{6}\left(-\frac{1}{2}q_0L\right)x^3+\left(\frac{1}{24}q_0L^3\right)x
-	\end{equation}
-	\begin{equation}
+	\\
 	EIw&=
 	\frac{1}{24}q_0x^4-\frac{1}{12}q_0Lx^3+\frac{1}{24}q_0L^3x
-	\end{equation}
-	\begin{equation}
+	\\
 	EIw&=
 	\frac{1}{12}q_0\left(\frac{1}{2}x^4-Lx^3+\frac{1}{2}L^3x\right)
-	\end{equation}
-	\begin{equation}
+	\\
 	w&=
 	\frac{1}{12EI}q_0\left(\frac{1}{2}x^4-Lx^3+\frac{1}{2}L^3x\right)
-	\end{equation}
 \end{align}
 
 \subsection{Herleitung der Balkengleichung aus dem Baustatik}
@@ -425,62 +415,46 @@ benötigen wir um die Schnittmomente an der Stelle $x$ zu berechnen,
 Moment ist gleich Kraft mal Hebelarm.
 Jetzt setzen wir $My(x) = EIy \cdot w''(x)$ ein
 \begin{align}
-	\begin{equation}
 		EI_y\cdot w''(x)&=
 		\frac{q_0\cdot x^2}{2}-\frac{q_0\cdot L}{2}\cdot x
-	\end{equation}
-	\begin{equation}
+	\\
 		EI_y\cdot w'\left(x\right)&=
 		\frac{q_0}{2}\cdot\frac{1}{3}\cdot x^3-\frac{q_0\cdot 	L}{2}\cdot\frac{1}{2}\cdot x^2+C_1
-	\end{equation}
-	\begin{equation}
+	\\
 		EI_y\cdot w\left(x\right)&=
 		\frac{q_0}{6}\cdot\frac{1}{4}\cdot x^4-\frac{q_0\cdot 	L}{4}\cdot\frac{1}{3}\cdot x^3+C_1\cdot x+C_2
-	\end{equation}
-	\begin{equation}
+	\\
 		EI_y\cdot w\left(x\right)&=
 		\frac{q_0}{24}\cdot x^4-\frac{q_0\cdot L}{12}\cdot x^3+C_1\cdot x+C_2
-	\end{equation}
 \end{align}
 1. Randbedingung: Durchbiegung an der Stelle $x = 0$ ist 0.
 \begin{align}
-	\begin{equation}
 		EI_y\cdot w\left(x\right)&=
 		\frac{q_0}{24}\cdot x^4-\frac{q_0\cdot L}{12}\cdot x^3+C_1\cdot x+C_2
-	\end{equation}
-	\begin{equation}
+	\\
 		0&=
 		\frac{q_0}{24}\cdot0^4-\frac{q_0\cdot L}{12}\cdot0^3+C_1\cdot0+C_2
-	\end{equation}
-	\begin{equation}
+	\\
 		C_2=&0
-\end{equation}
 \end{align}
 2. Randbedingung: Durchbiegung an der Stelle $x = L$ ist auch 0.
 \begin{align}
-	\begin{equation}
 		EI_y\cdot w\left(x\right)&=
 		\frac{q_0}{24}\cdot x^4-\frac{q_0\cdot L}{12}\cdot x^3+C_1\cdot x+C_2
-	\end{equation}
-	\begin{equation}
+	\\
 		0&=
 		\frac{q_0}{24}\cdot L^4-\frac{q_0\cdot L}{12}\cdot L^3+C_1\cdot L+0
-	\end{equation}
-	\begin{equation}
+	\\
 		C_1&=
 		\frac{q_0\cdot L^3}{24}
-	\end{equation}
 \end{align}
 Daraus ergibt sich der Formel:
 \begin{align}
-	\begin{equation}
 		EI_y\cdot w\left(x\right)&=
 		\frac{q_0}{24}\cdot x^4-\frac{q_0\cdot L}{12}\cdot x^3+\frac{q_0\cdot L^3}{24}\cdot x
-	\end{equation}
-	\begin{equation}
+	\\
 		w&=
 		\frac{1}{12EI_y}q_0\left(\frac{1}{2}x^4-Lx^3+\frac{1}{2}L^3x\right)
-	\end{equation}
 \end{align}
 Das ist äquivalent zu dem, was wir bei der mathematischen Herleitung erhalten haben.
 

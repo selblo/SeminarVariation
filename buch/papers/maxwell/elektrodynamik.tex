@@ -1,0 +1,317 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+%Elektrodynmaik
+\section{Elektrodynamik\label{section:maxwell:elektrodynmaik}}
+\rhead{Elektrodynamik}
+In der Elektrodynamik erlauben wir es, dass
+\[
+\frac{\partial f}{\partial t}
+\neq
+0
+\]
+für die Funktionen, die wir betrachten, gelten darf.
+Das heisst Ladungen dürfen sich nun mit einer beliebigen Geschwindigkeit $\vec{v}$ bewegen und wir berücksichtigen zeitabhängige Skalar- und Vektorfelder.
+Bei den statischen Maxwell-Gleichungen fällt auf, dass das elektrische und magnetische Feld keinerlei Abhängigkeiten voneinander haben.
+Wie sich später herausstellen wird, ändert sich dies, denn die Zeitabhängigkeit führt dazu, dass sich das elektrische und magnetische Feld gegenseitig beeinflussen.
+Daraus folgen einige spannende Tatsachen, auf die wir später noch zu Sprechen kommen.
+ 
+Im folgenden werden wir unseren Raum definieren und bekannte Vektorfelder in ihrer Definition anpassen.
+
+\subsubsection{Der vierdimensionale Raum}
+Den Raum in dem wir uns nun bewegen werden wir definieren als
+\begin{equation}
+	\Omega
+	=
+	\begin{pmatrix}
+		ct\\
+		x\\
+		y\\
+		z
+	\end{pmatrix}
+	=
+	\Omega^{\mu} \subset \mathbb{R}^4,
+\end{equation}
+wobei $\Omega^0$ die Zeit $t$ multipliziert mit der Lichtgeschwindigkeit
+\[
+c
+=
+\frac{1}{\sqrt{\varepsilon_0\,\mu_0}}
+\]
+ist.
+Damit wir uns später ein wenig Schreibaufwand sparen können, schreiben wir die Ableitungen der Raumkomponenten als
+\[
+\frac{\partial}{\partial \Omega^{\mu}}
+=
+\partial^{\mu}.
+\]
+
+\subsubsection{Elektrisches Feld dynamisch}
+Das elektrische Feld
+\(
+\vec{E}: \mathbb{R}^4 \rightarrow \mathbb{R}^3
+\)
+wird in der Elektrodynamik definiert als
+\begin{equation}
+	\vec{E}(t,x,y,z)
+	=
+	- \nabla\varphi(t,x,y,z) - \frac{\partial \vec{A}}{\partial t}(t,x,y,z).
+	\label{maxwell:section:definiton_dynamisch_elektrischesFeld}
+\end{equation}
+Es fällt auf, dass das elektrische Feld, das elektrische Potentialfeld und das magnetische Vektorpotential nun einen vierdimensionalen Inputvektor besitzen, wobei die zusätzliche Dimension die Zeit ist. 
+
+\subsubsection{Magnetisches Feld dynamisch}
+Das magnetische Feld
+\(
+\vec{B}: \mathbb{R}^4 \rightarrow \mathbb{R}^3
+\)
+wird in der Elektrodynamik ähnlich definiert wie in der Magnetostatik. Nämlich ist
+\begin{equation}
+	\vec{B}(t,x,y,z)
+	=
+	\nabla \times \vec{A}(t,x,y,z).
+	\label{maxwell:section:definition_dynamisch_magnetischesFeld}
+\end{equation}
+Der Unterschied liegt hier einzig in der zusätzlichen Zeitkomponente im Inputvektor.
+
+\subsection{Dynamische Maxwell-Gleichungen}
+Das Ziel dieses Abschnittes ist ein Variationsprinzip zu formulieren, welches uns die Verhaltensgleichungen der Elektrodynamik liefert. 
+Wir betrachten nun den luftleeren, vierdimensionalen Raum $\Omega$.
+In diesem Raum existieren nun das elektrische Feld $\vec{E}(t,x,y,z)$, das magnetische Feld $\vec{B}(t,x,y,z)$, eine Stromdichte $\vec{\jmath}(t,x,y,z)$ und eine statische Ladungsdichte $\varrho(x,y,z)$.
+
+\subsubsection{Ansatz}
+Wir wählen einen ähnlichen Ansatz wie bislang, nämlich ein Integral über die Zeit der Energie im Raum zu minimieren.
+Das Integral über die Zeit ist notwendig, da wir über alle Inputgrössen integrieren müssen.
+Diese neue Grösse werden wir mit $D$ bezeichnen.
+Durch superponierung unserer bisher gefundenen Energien erhalten wir
+\begin{align*}
+	D
+	&=
+	\int_{(ct)_0}^{(ct)_1} W_{\text{tot}}\,d(ct)
+	=
+	\int_{t_0}^{t_1} \left(W_{\text{e}} - W_{\text{q}} + W_{\text{p}} - W_{\text{m}}\right)c\,dt
+	\\
+	&= \int_{\Omega} \frac{1}{2}\,\varepsilon_0\,\vec{E}\,^2 - \varphi\,\varrho 
+	+ \vec{A}\cdot\vec{\jmath} - \frac{1}{2\mu_0}\vec{B}^2 \,d\Omega.
+\end{align*}
+Man sieht hier sehr schön, wie die Feldenergie aus dem Term
+\[
+w_{\text{e}} - w_{\text{m}}
+=
+\frac{1}{2}\,\varepsilon_0\,\vec{E}^2 - \frac{1}{2\,\mu_0}\vec{B}^2
+\]
+besteht und die Kopplungsterme 
+\(
+\varphi\,\varrho
+\)
+und
+\(
+\vec{A}\cdot\vec{\jmath}
+\)
+sind.
+Hiermit ist es uns noch nicht gelungen ein Energiefunktional zu formulieren, das von der Form
+\[
+I(f) = \int_{t_0}^{t_1} \int_{z_0}^{z_1} \int_{y_0}^{y_1} \int_{x_0}^{x_1} L(t,x,y,z,f,f_t,f_x,f_y,f_z)\,dx\,dy\,dz\,dt 
+\]
+ist, weil das elektrische und magnetische Feld von unterschiedlichen Potentialen abhängig sind.
+
+\subsubsection{Elektromagnetisches 4er Potential}
+An dieser Stelle führen wir ein neues Vektorfeld ein, welches die Potentiale des elektrischen und magnetischen Feldes beinhaltet.
+Dieses neue Vektorfeld heisst elektromagnetisches 4er Potential
+\(
+A:\mathbb{R}^4 \rightarrow \mathbb{R}^4
+\)
+und wird definiert als
+\begin{equation}
+	A
+	=
+	\begin{pmatrix}
+		\varphi / c\\
+		A_x\\
+		A_y\\
+		A_z
+	\end{pmatrix}
+	=
+	A^{\mu},
+\end{equation}
+wobei $A_x$, $A_y$, $A_z$ die Komponenten des magnetischen Vektorpotentiales $\vec{A}$ sind.
+Mittels dieser Grösse können wir nun das elektrische und magnetische Feld ausdrücken.
+Also
+\begin{equation}
+\frac{1}{c}\, \vec{E}
+=
+-\frac{1}{c}\, \nabla\,\varphi - \frac{1}{c}\,\frac{\partial \vec{A}}{\partial t}
+=
+\begin{pmatrix}
+	-\partial^1 A^0 - \partial^0 A^1\\
+	-\partial^2 A^0 - \partial^0 A^2\\
+	-\partial^3 A^0 - \partial^0 A^3
+\end{pmatrix}
+=
+\begin{pmatrix}
+	E_x / c\\
+	E_y / c\\
+	E_z / c
+\end{pmatrix}
+\end{equation}
+und
+\begin{equation}
+\vec{B}
+=
+\nabla \times \vec{A}
+=
+\begin{pmatrix}
+	\partial^2 A^3 - \partial^3 A^2\\
+	\partial^3 A^1 - \partial^1 A^3\\
+	\partial^1 A^2 - \partial^2 A^1
+\end{pmatrix}
+=
+\begin{pmatrix}
+	B_x\\
+	B_y\\
+	B_z
+\end{pmatrix}.
+\end{equation}
+Daraus Ergibt sich für die Feldenergiedichten
+\[
+w_{\text{e}}
+=
+\frac{1}{2}\underbrace{\varepsilon_0\,c^2}_{\displaystyle=1/\mu_0} \biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
+\left(\partial^0 A^3 + \partial^3 A^0\right)^2\biggr)
+\]
+und 
+\[
+w_{\text{m}}
+=
+\frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
+\left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr).
+\]
+
+\subsubsection{4er Stromdichte}
+Damit wir nun auch die Kopplungsterme mit dem elektromagnetischen 4er Potential ausdrücken können führen wir die 4er Stromdichte
+\(
+J:\mathbb{R}^4 \rightarrow \mathbb{R}^4
+\)
+ein. Wir definieren sie als
+\begin{equation}
+J
+=
+\begin{pmatrix}
+	-c\varrho\\
+	j_x\\
+	j_y\\
+	j_z
+\end{pmatrix}
+=
+J^{\mu},
+\end{equation}
+wobei $j_x$, $j_y$ und $j_z$ die Komponenten der Stromdichte $\vec{\jmath}$ sind.
+Somit können wir unsere beiden Kopplungsterme schön kompakt  als
+\begin{equation}
+	w_{\text{p}} - w_{\text{q}}
+	=
+	J\cdot A
+\end{equation}
+schreiben.
+
+\subsubsection{Formulierung der Lagrange-Funktion}
+Uns ist es nun gelungen die Grösse $D$ mit einer Funktion und ihren partiellen Ableitungen zu formulieren. Nämlich ist 
+\begin{align*}
+D
+=
+\int_{\Omega}
+\frac{1}{2\mu_0}\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
+\left(\partial^0 A^3 + \partial^3 A^0\right)^2\biggr) \\
+-  \frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
+\left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr)\\
++ J^0 A^0 + J^1 A^1 + J^2 A^2 + J^3 A^3 \,d\Omega
+\end{align*}
+und somit die Lagrange-Funktion
+\begin{align*}
+L(\Omega^0,...,\Omega^3, A^0,...,A^3, \partial^0 A^i,...,\partial^3 A^i)
+=
+\frac{1}{2\mu_0}\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
+\left(\partial^0 A^3 + \partial^3 A^0\right)^2\biggr) \\
+-  \frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
+\left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr)\\
++ J^0 A^0 + J^1 A^1 + J^2 A^2 + J^3 A^3.
+\end{align*}
+
+\subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
+Da unsere Lagrange-Funktion von einer Vektorgrösse abhängig ist erhalten wir eine Euler-Ostrogradski-Differentialgleichung von der Form
+\[
+\frac{\partial L}{\partial A^i} 
+- \frac{\partial}{\partial \Omega^0}\frac{\partial L}{\partial(\partial^0 A^i)}
+- \frac{\partial}{\partial \Omega^1}\frac{\partial L}{\partial(\partial^1 A^i)}
+- \frac{\partial}{\partial \Omega^2}\frac{\partial L}{\partial(\partial^2 A^i)}
+- \frac{\partial}{\partial \Omega^3}\frac{\partial L}{\partial(\partial^3 A^i)}
+= 0 \qquad \text{für } i=0,1,2,3 \,.
+\]
+
+{\larger\textcircled{\smaller[2]1}} $i = 0$
+\[
+J^0  -\frac{1}{\mu_0}\biggl(\partial^1\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
++ \partial^2\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
++ \partial^3\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}\biggr)
+=
+0
+\]
+
+{\larger\textcircled{\smaller[2]2}} $i = 1$
+\[
+J^1  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
++ \underbrace{\partial^2\left(\partial^1 A^2 + \partial^2 A^1\right)
+	- \partial^3\left(\partial^3 A^1 + \partial^1 A^3\right)}_{\displaystyle=(\nabla\times\vec{B})_x}\biggr)
+=
+0
+\]
+
+{\larger\textcircled{\smaller[2]3}} $i = 2$
+\[
+J^2  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
++ \underbrace{\partial^3\left(\partial^2 A^3 + \partial^3 A^2\right)
+	- \partial^1\left(\partial^1 A^2 + \partial^2 A^1\right)}_{\displaystyle=(\nabla\times\vec{B})_y}\biggr)
+=
+0
+\]
+
+{\larger\textcircled{\smaller[2]4}} $i = 3$
+\[
+J^3  -\frac{1}{\mu_0}\biggl(\partial^0\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}
++ \underbrace{\partial^1\left(\partial^3 A^1 + \partial^1 A^3\right)
+	- \partial^2\left(\partial^2 A^3 + \partial^3 A^2\right)}_{\displaystyle=(\nabla\times\vec{B})_z}\biggr)
+=
+0
+\]
+
+Für $i=0$ resultiert die partielle Differentialgleichung
+\begin{align}
+-c\varrho + \frac{1}{\mu_0\,c}\biggl(\frac{\partial E_x}{\partial x}
++ \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}\biggr)
+&=
+0\\[1em]
+\Leftrightarrow \qquad \nabla\cdot\vec{E}
+&=
+\frac{\varrho}{\varepsilon_0},
+\label{maxwell:section:gauss_dynamisch}
+\end{align}
+was dem dynamischen gaussschen Gesetz entspricht.
+Für $i=1,2,3$ resultiert das partielle Differentialgleichungssystem
+\begin{align}
+\vec{\jmath} + \frac{1}{\mu_0\,c^2}\frac{\partial \vec{E}}{\partial t}
+- \frac{1}{\mu_0}\nabla\times\vec{B}
+&=
+0\\[1em]
+\Leftrightarrow \qquad \varepsilon_0\,\mu_0\frac{\partial \vec{E}}{\partial t} + \mu_0\vec{\jmath}
+&=
+\nabla\times\vec{B},
+\label{maxwell:section:ampere_dynamisch}
+\end{align}
+was dem dynamischen ampereschen Gesetz entspricht.
+
+

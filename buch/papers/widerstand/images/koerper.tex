@@ -1,0 +1,68 @@
+%
+% koeper.tex -- Rotationskörper nach Newton
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	y(\t) = 5*(1-(\t/4)*(\t/4));
+	yprime(\t) = -(5/8)*\t;
+	nlength(\t) = sqrt(1 + yprime(\t)*yprime(\t));
+	xn(\t) = -yprime(\t) / nlength(\t);
+	yn(\t) = 1 / nlength(\t);
+	rx(\t) = -2 * xn(\t) * yn(\t);
+	ry(\t) = 1 - 2 * yn(\t) * yn(\t);
+}]
+
+\draw (-4,-0.05) -- (-4,0.05);
+\draw (4,-0.05) -- (4,0.05);
+\node at (4,-0.05) [below] {$R\mathstrut$};
+\draw[line width=0.3pt] (1,0) -- (1,5);
+\draw (1,-0.05) -- (1,0.05);
+\node at (1,-0.05) [below] {$r\mathstrut$};
+\node at (0,{y(1)}) [above left] {$y=L$};
+
+\draw[color=darkred,line width=1.2pt]
+	plot[domain=-4:-1] (\x,{y(\x)})
+	--
+	plot[domain=1:4] (\x,{y(\x)});
+
+\def\x{2}
+\draw[->,color=darkgreen,line width=1.4pt] (\x,{y(\x)}) -- +({xn(\x)},{yn(\x)});
+\node[color=darkgreen] at ({\x+xn(\x)},{y(\x)+yn(\x)}) [above right] {$\vec{n}$};
+
+\draw[color=blue,line width=0.3pt] (\x,0) -- (\x,5.5);
+\draw[color=blue,line width=1pt]
+	(\x,5.5)
+	--
+	(\x,{y(\x)})
+	--
+	+({-2*rx(\x)},{-2*ry(\x)})
+	;
+
+\draw[->,color=blue,line width=1.4pt] (\x,5.5) -- (\x,4.5);
+\node[color=blue] at (\x,5) [left] {$\vec{e}$};
+\fill[color=darkgreen] (\x,{y(\x)}) circle[radius=0.08];
+
+\def\x{-2.5}
+\draw[line width=0.3pt,color=darkred] (\x,0) -- (\x,{y(\x)});
+\fill[color=darkred] (\x,{y(\x)}) circle[radius=0.08];
+\node[color=darkred] at (\x,{y(\x)}) [above left] {$y(x)$};
+
+\draw[->] (-4.1,0) -- (4.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,5.9) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+

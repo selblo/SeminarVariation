@@ -40,49 +40,32 @@ f(x_1,\dots,x_n) > \frac{a}2
 \]
 Da $(x^*_1,\dots,x^*_n)$ im Inneren des Gebietes liegt, kann 
 $\delta$ sogar so klein gewählt werden, dass alle Punkte
-$(x_1,\dots,x_n)$ mit $|x^*_i-x_n|<\delta$ immer noch in
+$x=(x_1,\dots,x_n)$ mit $|x^*_i-x_i|<\delta$ immer noch in
 $\Omega$ liegen.
 
-Sei $h(\xi)$ eine beliebig oft differenzierbare Funktion einer Variablen,
-die nur im Intervall $(-\delta,\delta)$ von $0$ verschieden ist und
-deren Integral über das Intervall $(-\delta,\delta)$ den Wert $1$ hat.
-Mit der Funktion
-\[
-g(x_1,\dots,x_n)
-=
-h(x_1-x^*_1)\cdot\ldots\cdot h(x_n-x^*_n),
-\]
-deren Träger nach Konstruktion in $\Omega$ enthalten ist, wird jetzt das
+Nach Satz~\ref{buch:felder:fundamentallemma:glatt:satz:glatt}
+gibt es eine beliebig oft stetig differenzierbare Funktion $g(x)$,
+die nur $x\in\Omega$ mit $|x^*_i-x_i|<\delta$ von $0$ verschieden ist,
+und deren Integral $1$ ist.
+Damit wird das 
 Integral
 \begin{align*}
 \int_{\Omega} f(x)\,g(x)\,dx
-&=
-\int_{\operatorname{supp} g}
-f(x)\,h(x_1-x^*_1)\cdots h(x_n-x^*_n)
-\,dx_1,\dots,dx_n
-\\
 &>
-\int_{x^*_1-\delta}^{x^*_1+\delta}
-\dots
-\int_{x^*_n-\delta}^{x^*_n+\delta}
-\frac{a}{2}
-h(x_n-x^*_n) \,dx_n
-\,\dots
-h(x_1-x^*_1) \,dx_1
-\\
-&=
+\int_{\operatorname{supp}g}
 \frac{a}2
-\int_{x^*_1-\delta}^{x^*_1+\delta}
-h(x_1-x^*_1) \,dx_1
 \cdot
-\ldots
-\cdot
-\int_{x^*_n-\delta}^{x^*_n+\delta}
-h(x_n-x^*_n) \,dx_n
+g(x)
+\,dx
+=
+\frac{a}2
+\int_{\operatorname{supp}g}
+g(x)
+\,dx
 =
 \frac{a}2>0.
 \end{align*}
-Mit dem konstruierten $g(x)$ ist also eine Funktion gefunden, die
+Mit $g(x)$ ist also eine Funktion gefunden, die
 Bedingung~\eqref{buch:felder:fundamentallemma:eqn:bedfundamentallemma}
 des Fundamentallemmas nicht erfüllt.
 Dieser Widerspruch zeigt, dass die Annahme, $f$ verschwinde nicht überall,

@@ -12,26 +12,26 @@
 
 In diesem Abschnitt werden wir den Fall betrachten, dass wir eine Oberflächenwelle im seichten Gewässer haben. 
 Jedoch variiert die Definition von seichten Gewässer je nach Kontext. 
-Im allgemeinen nennt man Gewässer seicht, wenn diese eine große horizontale Ausdehnung in Relation zur tiefe haben. 
-Dabei gibt es keine maximale Tiefe bis dort ein Gewässer als seicht angenommen wird.
+Im allgemeinen nennt man Gewässer seicht, wenn diese eine große horizontale Ausdehnung im Vergleich zur Tiefe haben. 
+Dabei gibt es keine maximale Tiefe bis zu der ein Gewässer als seicht angenommen wird.
 In der Hydrodynamik wird von seichtem bzw. flachem Wasser gesprochen, wenn die Wellenlänge der betrachteten Wasserwelle relativ groß im Vergleich zur Tiefe ist.
-Im folgendem wird ein Ansatz hergeleitet welcher aus Vereinfachungen und bekannter Formeln für seichten Gewässer besteht.
+Im folgendem wird ein Ansatz hergeleitet, welcher aus Vereinfachungen und bekannter Formeln für seichten Gewässer besteht.
 Mit dem Ansatz wird eine unbeschränkte Lösung berechnet, welche die Saint-Venant-Gleichungen ergeben.
 Durch Vereinfachung der Saint-Venant-Gleichungen wird die nichtlineare partielle Differenzialgleichung von Burger hergeleitet, sowie Rückschlüsse auf die Lösung der allgemeinen nichtlinearen eindimensionalen Wellengleichung werden gezogen. 
 
 \subsection{Wahl eines einfachen Ansatzes}
-Zuerst definieren wir das Geschwindigkeitsfeld $\bm{u}(\bm{x},z,t)$ bzw. die Ausbreitung der Welle entlang der Horizontale.
-Dabei stößt man in der Literatur auf folgende Reihenentwicklung welche sich dafür bewährt hat:
+Zuerst definieren wir das Geschwindigkeitsfeld $\bm{u}(\bm{x},z,t)$ bzw. die Ausbreitung der Welle entlang der Horizontalen.
+Dabei stößt man in der Literatur auf folgende Reihenentwicklung, welche sich dafür bewährt hat:
 \[
 \bm{u}(\bm{x},z,t) = \check{\bm{u}}(\bm{x},z,t) - \frac{1}{2} (z + h)^2 \nabla^2 \check{\bm{u}}(\bm{x},z,t) + \frac{1}{24} (z + h)^4 \nabla^4 \check{\bm{u}}(\bm{x},z,t) + \ldots
 \]
 Die Entwicklung beschreibt eine lange Welle in seichten Wasser welche sich entlang eines horizontalen undurchlässigen Boden bei $z = -h$ ausbreitet.
 
-Um die Berechnungen einfach zu halten wird für die Funktionen $\phi (\bm{x},z,t)$ und $\bm{u} (\bm{x},z,t)$, in Bezug auf die vertikale Richtung $z$, als konstant angenähert, durch die mittelung über die Wassertiefe \eqref{luke:Mittelung_Wassertiefe}.
+Um die Berechnungen einfach zu halten wird für die Funktionen $\phi (\bm{x},z,t)$ und $\bm{u} (\bm{x},z,t)$, in Bezug auf die vertikale Richtung $z$, als konstant angenähert, durch die Mittelung über die Wassertiefe \eqref{luke:Mittelung_Wassertiefe}.
 Die Funktion $v$ wird auch als lineare in Bezug auf $z$ angenähert. 
 Konkret erhalten wir dadurch folgenden Ansatz für die Geschwindigkeit:
 \begin{equation}
-	\phi(\bm{x},z,t) \approx \bar{\phi}(\bm{x}, t), \quad \bm{u}(\bm{x},z,t) \approx \bar{\bm{u}}(\bm{x}, t), \quad v(\bm{x},z,t) \approx \left(\frac{z + h}{\eta + h}\right) \tilde{v}(\bm{x}, t).
+	\phi(\bm{x},z,t) \approx \bar{\phi}(\bm{x}, t), \quad \bm{u}(\bm{x},z,t) \approx \bar{\bm{u}}(\bm{x}, t), \quad v(\bm{x},z,t) \approx \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right) \tilde{v}(\bm{x}, t).
 	\label{luke:Ansatz_Geschw}
 \end{equation}
 Dieser Ansatz findet oft in der Modellierung von seichten Gewässern Verwendung, weil dieser gut die Bewegung des Wassers in der Nähe der Oberfläche beschreibt.
@@ -42,206 +42,230 @@ Die Lagrange-Multiplikatoren $\mu(\bm{x},z,t)$ und $\nu(\bm{x},z,t)$ werden eben
 \end{equation}
 Die beiden Ansätze \eqref{luke:Ansatz_Geschw} und \eqref{luke:Ansatz_Multiplikatoren} werden in die Lagrange-Funktion \eqref{luke:Luke_Lagrangian_umgeschrieben} eingefügt.
 Damit wird die Lagrange-Funktion zu:
-\[
-L(x,y,z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
-=
-\]
-\[
-\left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
-+
-\bar{\bm{\mu}}  \nabla \eta(\bm{x}, t)
--
-\widetilde{\upsilon}\right) \bar{\phi}
--
-\frac{1}{2} g \eta(\bm{x}, t)^2
-\]
-\[
-+
-\int_{-h}^{\eta(\bm{x}, t)} \Bigg[ \bar{\bm{\mu}}  \bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2 +\left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{v} - \frac{1}{2} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{v}^2 
-\]
-\[
-+\left(\nabla \bar{\bm{\mu}} + \frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon}\right) \bar{\phi} \Bigg] dz.
-\]
-
+\begin{align*}
+	L&=
+	L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
+	\\
+	&=
+	\left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
+	+
+	\bar{\bm{\mu}}  \nabla \eta(\bm{x}, t)
+	-
+	\widetilde{\upsilon}\right)\rho \bar{\phi}
+	-
+	\frac{1}{2} \rho g \eta(\bm{x}, t)^2
+	\\
+	&+
+	\rho\int_{-h}^{\eta(\bm{x}, t)} \Bigg[ \bar{\bm{\mu}}  \bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2 +\left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{v} - \frac{1}{2} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{v}^2 
+	\\
+	&+\left(\nabla \bar{\bm{\mu}} + \frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon}\right) \bar{\phi} \Bigg] dz.
+\end{align*}
 Das Integral wird umgeformt und für das vereinfachte Verständnis auf drei Teile aufgeteilt:
-\[
-=
-\left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
-+
-\bar{\bm{\mu}}  \nabla \eta(\bm{x}, t)
--
-\widetilde{\upsilon}\right) \bar{\phi}
--
-\frac{1}{2} g \eta(\bm{x}, t)^2
-\]
-\[
-+
-\int_{-h}^{\eta(\bm{x}, t)} \left[ \nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right] dz
-+
-\int_{-h}^{\eta(\bm{x}, t)} \left[ \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)^2 \left(\tilde{\upsilon}\tilde{v} - \frac{1}{2} \tilde{v}^2\right)\right] dz
-\]
-\[
-+
-\int_{-h}^{\eta(\bm{x}, t)} \left[ \left(\frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \bar{\phi} \right)\right] dz.
-\]
-Die drei Integrale werden aufgelöst wobei $\left(\frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \bar{\phi} \right) = \frac{\tilde{\upsilon} \bar{\phi}}{\eta(\bm{x}, t) + h}$ ist:
+\begin{align*}
+	L&=
+	\left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
+	+
+	\bar{\bm{\mu}}  \nabla \eta(\bm{x}, t)
+	-
+	\widetilde{\upsilon}\right)\rho \bar{\phi}
+	-
+	\frac{1}{2}\rho g \eta(\bm{x}, t)^2
+	\\
+	&+
+	\rho\int_{-h}^{\eta(\bm{x}, t)} \left[ \nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right] dz
+	+
+	\rho\int_{-h}^{\eta(\bm{x}, t)} \left[ \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)^2 \left(\tilde{\upsilon}\tilde{v} - \frac{1}{2} \tilde{v}^2\right)\right] dz
+	\\
+	&+
+	\rho\int_{-h}^{\eta(\bm{x}, t)} \left[ \left(\frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \bar{\phi} \right)\right] dz.
+\end{align*}
+Die drei Integrale werden aufgelöst, wobei $\left(\frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \bar{\phi} \right) = \frac{\tilde{\upsilon} \bar{\phi}}{\eta(\bm{x}, t) + h}$ ist:
 \[
 =
 \left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
 +
 \bar{\bm{\mu}} \nabla \eta(\bm{x}, t)
 -
-\widetilde{\upsilon}\right) \bar{\phi}
+\widetilde{\upsilon}\right)\rho \bar{\phi}
 -
-\frac{1}{2} g \eta(\bm{x}, t)^2
+\frac{1}{2}\rho g \eta(\bm{x}, t)^2
 +
-(\eta(\bm{x}, t) + h) \left(\nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right)
+\rho(\eta(\bm{x}, t) + h) \left(\nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right)
 \]
 \[
 +
-(\eta(\bm{x}, t) + h) \left(\frac{1}{3}\tilde{\upsilon}\tilde{v} - \frac{1}{6}\tilde{v}^2 \right)
+\rho(\eta(\bm{x}, t) + h) \left(\frac{1}{3}\tilde{\upsilon}\tilde{v} - \frac{1}{6}\tilde{v}^2 \right)
 +
-\tilde{\upsilon} \bar{\phi}.
+\rho\tilde{\upsilon} \bar{\phi}.
 \]
-Somit erhalten wir folgende einfache Lagrangian-Funktion für eine Oberflächenwasserwelle in seichten Gewässer:
+Somit erhalten wir die einfache Lagrange-Funktion für eine Oberflächenwasserwelle in seichten Gewässer:
 \[
-L(x,y,z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
+L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
 =
 \]
 \[
 \left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
 +
-\bar{\bm{\mu}} \nabla \eta(\bm{x}, t) \right) \bar{\phi}
+\bar{\bm{\mu}} \nabla \eta(\bm{x}, t) \right)\rho \bar{\phi}
 -
-\frac{1}{2} g \eta(\bm{x}, t)^2
+\frac{1}{2}\rho g \eta(\bm{x}, t)^2
+\]
+\[
++
+\rho(\eta(\bm{x}, t) + h) \left(\nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2 + \frac{1}{3} \tilde{\upsilon}\tilde{v} - \frac{1}{6}\tilde{v}^2\right).
+\]
+Diese Funktion kann mittels des Satzes von Green umgeformt werden.
+Diese Umformung wurde von Didier Clamond und Denys Dutykh \cite{luke:CLAMOND201225} durchgeführt.
+Dabei ergibt sich folgende äquivalente Lagrange-Funktion:
+\[
+L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
+=
 \]
 \begin{equation}
+	\rho\bar{\phi}\frac{\partial \eta(\bm{x}, t)}{\partial t}
+	-
+	\frac{1}{2} \rho g \eta(\bm{x}, t)^2
 	+
-	(\eta(\bm{x}, t) + h) \left(\nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2 + \frac{1}{3} \tilde{\upsilon}\tilde{v} - \frac{1}{6}\tilde{v}^2\right)
+	\rho(\eta(\bm{x}, t) + h)
+	\left(
+	\bar{\bm{\mu}}\bar{\bm{u}}
+	-
+	\frac{1}{2} \bar{\bm{u}}^2 
+	+
+	\frac{1}{3} \tilde{\upsilon}\tilde{v}
+	-
+	\frac{1}{6}\tilde{v}^2
+	-
+	\bar{\bm{\mu}}\nabla \bar{\phi}
+	\right).
 	\label{luke:Lagrangian_mit_Ansatz}
 \end{equation}
-
-Im nächsten Schritt werden wir diesen Lagrangian \eqref{luke:Lagrangian_mit_Ansatz} nehmen und das Variationsprinzip anwenden.
+Im nächsten Schritt werden wir diese Lagrange-Funktion \eqref{luke:Lagrangian_mit_Ansatz} nehmen und das Variationsprinzip anwenden.
 
 \subsection{Berechnung der unbeschränkte Lösung}
 
 Ohne weitere Einschränkungen werden wir nun die Minimierung über das Variationsprinzip durchführen und folgende Euler-Lagrange-Gleichungen aufstellen:
 
 \[
-\frac{\partial \mathscr{L}}{\partial \bar{\bm{u}}} = 0
+\frac{\partial L}{\partial \bar{\bm{u}}} = 0
 ,\quad
-\frac{\partial \mathscr{L}}{\partial \bar{\bm{\mu}}} = 0
+\frac{\partial L}{\partial \bar{\bm{\mu}}} = 0
 ,\quad
-\frac{\partial \mathscr{L}}{\partial \tilde{v}} = 0
+\frac{\partial L}{\partial \tilde{v}} = 0
 ,\quad
-\frac{\partial \mathscr{L}}{\partial \tilde{\upsilon}} = 0
+\frac{\partial L}{\partial \tilde{\upsilon}} = 0
 ,\quad
-\frac{\partial \mathscr{L}}{\partial \bar{\phi}} = 0
+\frac{\partial L}{\partial \bar{\phi}} = 0
 ,\quad
-\frac{\partial \mathscr{L}}{\partial \eta} = 0
+\frac{\partial L}{\partial \eta} = 0
 \]
 %Variation nach u
-\[
-\frac{\partial \mathscr{L}}{\partial \bar{\bm{u}}}
-=
-\frac{\partial \mathscr{}}{\partial \bar{\bm{u}}}\left((\eta + h) (\bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2)\right)
-= 0
-\]
-
-\begin{equation}
-	\frac{\partial \mathscr{L}}{\partial \bar{\bm{u}}}
-	=
+\begin{align}
+	\frac{\partial L}{\partial \bar{\bm{u}}}
+	&=
+	\frac{\partial \mathscr{}}{\partial \bar{\bm{u}}}\left(\bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right)
+	= 0
+	\nonumber \\ 
+	\frac{\partial L}{\partial \bar{\bm{u}}}
+	&=
 	\bar{\bm{\mu}} - \bar{\bm{u}}
 	= 0
-	\label{luke:Variation_nach_u}
-\end{equation}
-
+	\label{luke:Variation_nach_u} 
+	\\
 %Variation nach mu
-\[
-\frac{\partial \mathscr{L}}{\partial \bar{\bm{\mu}}}
-=
-\frac{\partial \mathscr{}}{\partial \bar{\bm{\mu}}} \left( \bar{\bm{\mu}} \nabla \eta \bar{\phi}+(\eta + h) (\nabla \bar{\bm{\mu}}\bar{\phi}+\bar{\bm{\mu}}\bar{\bm{u}}) \right)
-= 0
-\]
-
-\begin{equation}
-	\frac{\partial \mathscr{L}}{\partial \bar{\bm{\mu}}}
-	=
-	???
+	\frac{\partial L}{\partial \bar{\bm{\mu}}}
+	&=
+	\frac{\partial L}{\partial \bar{\bm{\mu}}} \left( \bar{\bm{\mu}}\bar{\bm{u}}-\bar{\bm{\mu}}\nabla \bar{\phi} \right)
+	= 0
+	\nonumber \\
+	\frac{\partial L}{\partial \bar{\bm{\mu}}}
+	&=
+	\bar{\bm{u}}-\nabla \bar{\phi}
 	= 0
 	\label{luke:Variation_nach_mu}
-\end{equation}
-
+	\\
 %Variation nach v
-\[
-\frac{\partial \mathscr{L}}{\partial \tilde{v}}
-=
-\frac{\partial \mathscr{}}{\partial \tilde{v}}\left((\eta + h) (\frac{1}{3} \tilde{\upsilon}\tilde{v} - \frac{1}{6} \tilde{v}^2)\right)
-= 0
-\]
-
-\begin{equation}
-	\frac{\partial \mathscr{L}}{\partial \tilde{v}}
-	=
+	\frac{\partial L}{\partial \tilde{v}}
+	&=
+	\frac{\partial \mathscr{}}{\partial \tilde{v}}\left(\frac{1}{3} \tilde{\upsilon}\tilde{v} - \frac{1}{6} \tilde{v}^2\right)
+	= 0
+	\nonumber \\
+	\frac{\partial L}{\partial \tilde{v}}
+	&=
 	\tilde{\upsilon}-\tilde{v}
 	= 0
 	\label{luke:Variation_nach_v}
-\end{equation}
-
+	\\
 %Variation nach upsilon
-\[
-\frac{\partial \mathscr{L}}{\partial \tilde{\upsilon}}
-=
-\frac{\partial \mathscr{}}{\partial \tilde{\upsilon}}\left((\eta + h) (\frac{1}{3} \tilde{\upsilon}\tilde{v})\right)
-= 0
-\]
-
-\begin{equation}
-	\frac{\partial \mathscr{L}}{\partial \tilde{\upsilon}}
-	=
+	\frac{\partial L}{\partial \tilde{\upsilon}}
+	&=
+	\frac{\partial \mathscr{}}{\partial \tilde{\upsilon}}\left(\frac{1}{3} \tilde{\upsilon}\tilde{v}\right)
+	= 0
+	\nonumber \\	
+	\frac{\partial L}{\partial \tilde{\upsilon}}
+	&=
 	\tilde{v}
 	= 0
 	\label{luke:Variation_nach_upsilon}
-\end{equation}
-
+	\\
 %Variation nach phi
-\[
-\frac{\partial \mathscr{L}}{\partial \bar{\phi}}
-=
-\frac{\partial \mathscr{}}{\partial \bar{\phi}}\left( (\frac{\partial \eta}{\partial t} + \bar{\bm{\mu}} \nabla \eta) \bar{\phi} + (\eta + h) \nabla \bar{\bm{\mu}}\bar{\phi}\right)
-= 0
-\]
-\begin{equation}
-	\frac{\partial \mathscr{L}}{\partial \bar{\phi}}
-	=
-	\frac{\partial \eta}{\partial t} + \bar{\bm{\mu}} \nabla \eta + (\eta + h) \nabla \bar{\bm{\mu}}
+	\frac{\partial L}{\partial \bar{\phi}}
+	&=
+	\frac{\partial \mathscr{}}{\partial \bar{\phi}}\left(
+	\rho\bar{\phi}\frac{\partial \eta(\bm{x}, t)}{\partial t}
+	-
+	\rho(\eta(\bm{x}, t) + h)\bar{\bm{\mu}}\nabla \bar{\phi}
+	\right)
+	= 0
+	\nonumber \\
+	\frac{\partial L}{\partial \bar{\phi}}
+	&=
+	\frac{\partial \eta(\bm{x}, t)}{\partial t} -  \nabla\left((\eta(\bm{x}, t)+ h)\bm{\bar{\mu}}\right)
 	= 0
 	\label{luke:Variation_nach_phi}
-\end{equation}
-
+	\\
 %Variation nach eta
-\[
-\frac{\partial \mathscr{L}}{\partial \eta}
-=
-\frac{\partial \mathscr{}}{\partial \eta}
-\left(
-\frac{\partial \eta}{\partial t} \bar{\phi}
-+
-\bar{\bm{\mu}}\nabla\eta\bar{\phi}
--
-\frac{1}{2} g \eta^2
-+
-\eta \left(\nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2 + \frac{1}{3} \tilde{\upsilon}\tilde{v} - \frac{1}{6}\tilde{v}^2\right)
-\right)
-= 0
-\]
-\begin{equation}
-	\frac{\partial \mathscr{L}}{\partial \eta}
-	=
-	???
+	\frac{\partial L}{\partial \eta}
+	&=
+	\frac{\partial \mathscr{}}{\partial \eta}
+	\left(\rho\bar{\phi}\frac{\partial \eta(\bm{x}, t)}{\partial t}
+	-
+	\frac{1}{2} \rho g \eta(\bm{x}, t)^2
+	+
+	\rho(\eta(\bm{x}, t) + h)
+	\left(
+	\bar{\bm{\mu}}\bar{\bm{u}}
+	-
+	\frac{1}{2} \bar{\bm{u}}^2 
+	+
+	\frac{1}{3} \tilde{\upsilon}\tilde{v}
+	-
+	\frac{1}{6}\tilde{v}^2
+	-
+	\bar{\bm{\mu}}\nabla \bar{\phi}
+	\right)
+	\right)
+	= 0
+	\nonumber \\
+	\frac{\partial L}{\partial \eta}
+	&=
+	-
+	\frac{\partial \bar{\phi}}{\partial t}
+	-
+	g\eta(\bm{x}, t)
+	+
+	\bar{\bm{\mu}}\bar{\bm{u}}
+	-
+	\frac{1}{2} \bar{\bm{u}}^2 
+	+
+	\frac{1}{3} \tilde{\upsilon}\tilde{v}
+	-
+	\frac{1}{6}\tilde{v}^2
+	-
+	\bar{\bm{\mu}}\nabla \bar{\phi}
 	= 0.
 	\label{luke:Variation_nach_eta}
-\end{equation}
+\end{align}
 
 Wie zu erwarten ergibt die Gleichung \eqref{luke:Variation_nach_u} und \eqref{luke:Variation_nach_v} das $\bar{\bm{\mu}} = \bar{\bm{u}}$ und $\tilde{\upsilon} = \tilde{v}$ ist.
 Dieser Zusammenhang wurde bereits schon beim Variieren der Lagrangian-Funktion \eqref{luke:Luke_Lagrangian_mit_Multi} gezeigt.
@@ -256,14 +280,14 @@ Diese lassen sich nämlich umschreiben zu:
 	\frac{\partial \bar{\bm{u}}}{\partial t} + (\bar{\bm{u}} \cdot \nabla) \bar{\bm{u}} + g \nabla H = 0,
 	\label{luke:Variation_loesung_2}
 \end{equation}
-wobei $H = \eta + h$ die Gesamtwassertiefe ist.
+wobei $H = \eta(\bm{x},t) + h$ die Gesamtwassertiefe ist.
 
-Gleichung \eqref{luke:Variation_loesung_1} und \eqref{luke:Variation_loesung_2} ergeben die Saint-Venant-Gleichungen.
+Gleichung \eqref{luke:Variation_loesung_1} und \eqref{luke:Variation_loesung_2} ergeben die Saint-Venant-Gleichungen, wobei die Gleichung \eqref{luke:Variation_loesung_1} die Kontinuitätsgleichung ist.
 Diese finden Verwendung bei der Modellierung von langen Wellen in unbeschränkten seichten Gewässern.
 Meistens für das beschreiben von Wasserströmungen in offenen Kanälen und Flüssen.
 Bei diesen Gleichungen handelt es sich um nichtlineare Differenzialgleichungen welche über verschiedene nummerischen Methoden berechnet werden können.
 Da es in dieser Arbeit nicht um das numerische lösen von Differenzialgleichungen handelt, sondern um die Demonstrierung der Anwendung und Vorteile des Variationsprinzip, wird im nächsten Kapitel die Gleichung \eqref{luke:Variation_loesung_2} genauer betrachtet.
-Durch Vereinfachung ergibt nämlich diese die nicht viskose Burglers-Gleichung sowie Ähnlichkeiten zur Lösung der nichtlinearen Wellengleichung im eindimensionalen Fall.
+Durch Vereinfachung ergibt nämlich diese die nicht viskose Burgers-Gleichung sowie Ähnlichkeiten zur Lösung der linearen Wellengleichung im eindimensionalen Fall.
 
 \subsection{Interpretation und Anwendung der unbeschränkten Lösung}
 Wenn für die Gleichung \eqref{luke:Variation_loesung_2} angenommen wird das sich über die gesamte Zeit $t$ keine Änderung der Gesamtwassertiefe $ \nabla H = 0 $ sowie die horizontale Koordinate $y$ konstant ist $\frac{\partial \bar{\bm{u}}}{\partial y} = 0$, ergibt sich daraus die Burgers-Gleichung für ein nicht-viskoses Fluid:
@@ -279,16 +303,16 @@ Dabei entsteht folgende Lösung:
 \]
 wobei $\xi$ der Punkt auf der x-Achse ist bei $t = 0$ von dort aus die charakteristischen Kurve aus startet.
 Diese Lösung beschreibt eine nichtlineare Wellenbewegung in welcher sich die Anfangsform der Welle im Laufe der Zeit ändert.
-Sozusagen stellt dies eine Stoßwelle in x-Richtung dar.
+Sozusagen stellt dies eine Stoßwelle in $x$-Richtung dar.
 Damit lässt sich Verhaltensweisen wie Stoßwellenbildung, Singularitäten und Schockwellen beschreiben.
 \begin{figure}
 	\includegraphics[width=\textwidth]{papers/luke/fig/Burger_Loesung_Welle.jpg}
 	\caption{Lösung der Burgers Differenzialgleichung \eqref{luke:Burgers_DG} mit einem $sin(x)^2$ als Welle
 		\label{luke:fig:Loesung_Burgers}}
 \end{figure}
-Graphik \ref{luke:fig:Loesung_Burgers} zeigt die Lösung der Burger-Gleichung mit einer fortlaufenden Welle welche zu einem Überschlag der Welle führt.
+Abbildung \ref{luke:fig:Loesung_Burgers} zeigt die Lösung der Burgers-Gleichung mit einer nach rechts laufenden Welle, welche zu einem Überschlag der Welle führt.
 
-Die allgemeine nichtlineare Wellengleichung in einer Dimension lautet:
+Die allgemeine lineare Wellengleichung in einer Dimension lautet:
 \[
 \partial_t^2 u - a^2 \partial_x^2 u  = 0.
 \]

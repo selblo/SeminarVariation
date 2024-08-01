@@ -15,11 +15,17 @@ then
 	mkdir separata
 fi
 
+timestamp=`date +%Y%m%d`
+
 awk 'BEGIN {
-	offsetpage = 10
+	offsetpage = 12
 	startpage = 0
 	identifier = ""
 	chapterno = 0
+	timestamp = '"${timestamp}"'
+}
+/@cref/ {
+	next
 }
 /newlabel{chapter:/ {
 	s = substr($0, 19, length($0) - 19)
@@ -32,14 +38,14 @@ awk 'BEGIN {
 	i = match(s, "}{")
 	newpage = int(substr(s, 1, i))
 	if (chapterno > 7) {
-		printf("pdfjam --outfile separata/%s.pdf buch.pdf %d-%d\n", identifier, startpage + offsetpage, newpage + offsetpage - 1)
+		printf("pdfjam --outfile separata/%s-%s.pdf buch.pdf %d-%d\n", identifier, timestamp, startpage + offsetpage, newpage + offsetpage - 1)
 	}
 	startpage = newpage
 	chapterno = newchapterno
 	identifier = newidentifier
 }
 END {
-	printf("pdfjam --outfile separata/%s.pdf buch.pdf %d-\n", identifier, startpage + offsetpage)
+	printf("pdfjam --outfile separata/%s-%s.pdf buch.pdf %d-\n", identifier, timestamp, startpage + offsetpage)
 }' build/buch.aux | bash
 
 
