@@ -90,13 +90,11 @@ Die Lagrange-Funktion lautet daher:
 \end{equation}
 
 Die Ableitungen der Lagrange-Funktion ergeben:
-\begin{equation}
-	\begin{align}
-		\frac{\partial L}{\partial w} &= q \\
-		\frac{\partial L}{\partial w'} &= 0 \\
-		\frac{\partial L}{\partial w''} &= -E I w''
-	\end{align}
-\end{equation}
+\begin{align}
+	\frac{\partial L}{\partial w} &= q \\
+	\frac{\partial L}{\partial w'} &= 0 \\
+	\frac{\partial L}{\partial w''} &= -E I w''
+\end{align}
 
 Da die Lagrange-Funktion eine höhere Ableitung enthält, erweitert sich die Euler-Lagrange-Differentialgleichung zu:
 \begin{equation}
@@ -104,12 +102,10 @@ Da die Lagrange-Funktion eine höhere Ableitung enthält, erweitert sich die Eul
 \end{equation}
 
 Einsetzen der Ableitungen ergibt:
-\begin{equation}
 	\begin{align}
 		q - \frac{d^2}{dx^2}(E I w'') &= 0 \\
 		\Rightarrow w''''(x) &= \frac{q}{E I}
 	\end{align}
-\end{equation}
 
 Unsere Lagrange-Funktion ist somit:
 \begin{equation}
@@ -159,9 +155,9 @@ und
 \end{equation}
 $w$ = Funktion der Durchbiegung
 
-$w’$ = Neigung der Durchbiegung
+$w'$ = Neigung der Durchbiegung
 
-$w’’$ = Krümmung
+$w''$ = Krümmung
 
 Da wir in der Baustatik dem Rechtssystem verwenden, kehren wir den $z$-Achse so, dass nach unten das positive Vorzeichen ist.
 \begin{figure}
@@ -172,7 +168,7 @@ Da wir in der Baustatik dem Rechtssystem verwenden, kehren wir den $z$-Achse so,
 \end{figure}
 
 Unsere Funktion zeigt eine Krümmung nach links, jedoch durch die Spiegelung an der $z$-Achse ergibt sich eine Krümmung nach rechts.
-Bei Rechtskrümmungen sind die 2. Ableitungen kleiner als 0. $w’’ < 0$.
+Bei Rechtskrümmungen sind die 2. Ableitungen kleiner als 0. $w'' < 0$.
 Das ergibt
 \begin{equation}
 	\kappa=
@@ -348,7 +344,7 @@ $w = 0$ und $x = L$, sowie $C_2 = 0$ und $C_4 = 0$ werden eingesetzt.
 	C_3=
 	-\frac{1}{24}q_0L^3-\frac{1}{6}C_1L^2
 \end{equation}
-Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen $M = 0$, $x = L$ und $C__2 = 0$ ein.
+Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen $M = 0$, $x = L$ und $C_2 = 0$ ein.
 \begin{align}
 		EIw''&=
 		-M_y=\frac{1}{2}q_0x^2+C_1x+C_2
