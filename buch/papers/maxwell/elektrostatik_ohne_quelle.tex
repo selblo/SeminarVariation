@@ -157,10 +157,8 @@ Die Permittivität des Vakuums in SI-Einheiten
 \]
 ist die elektrische Feldkonstante.
 
-%TODO: Anderer Titelname
 \subsection{Laplace-Gleichung
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
-\rhead{Problemstellung}
 Man stelle sich nun einen ladungsfreien, luftleeren, drei dimensionalen Raum $V\subset\mathbb{R}^3$
 vor, indem ein elektrisches Potentialfeld $\varphi(x,y,z)$ existiert.
 Für diesen Raum möchten wir mittels der Variationsrechnung eine partielle Differentialgleichung entwickeln, die beschreibt, wie sich das Potentialfeld und somit auch das elektrische Feld verhält. 
@@ -216,8 +214,7 @@ Dies können wir in das zu minimerende Integral einsetzen und bekommen
 \begin{equation}
 	W_{\text{e}}
 	=
-	\iiint_V \underbrace{
-		\frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=L(x,y,z,\varphi,\varphi_x,\varphi_y,\varphi_z)}\, dV.
+	\iiint_V \frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\, dV.
 	\label{maxwell:section:energieintegral_quellenfrei}
 \end{equation}
 Aus dieser Gleichung können wir entnehmen, dass unsere Lagrange-Funktion

@@ -44,16 +44,16 @@ In Abbildung \ref{maxwell:skalarGrad} ist ein Vektorfeld abgebildet.
 
 \subsubsection{Gradient}
 
-Der Gradient einer Funktion $f(x)$ ist als 
+Der Gradient einer Funktion $f:\mathbb{R}^3 \rightarrow \mathbb{R}$ ist als 
 \[
 \renewcommand{\arraystretch}{1.9} 
-\operatorname{grad}f(x) = \nabla f(x) = \begin{pmatrix}
+\operatorname{grad}f = \nabla f = \begin{pmatrix}
 \displaystyle
-\frac{\partial f(x)}{\partial x} \\
+\frac{\partial f}{\partial x} \\
 \displaystyle
-\frac{\partial f(x)}{\partial y} \\
+\frac{\partial f}{\partial y} \\
 \displaystyle
-\frac{\partial f(x)}{\partial z} \\
+\frac{\partial f}{\partial z} \\
 \end{pmatrix}\] 
 definiert und wurde bereits in Abschnitt \ref{buch:fuvar:richtungsableitung:def:gradient} genauer behandelt. Dieser Operator wird auf ein Skalarfeld angewendet und resultiert in einem Vektorfeld. 
 Die Richtung der Vektoren dieses neuen Vektorfeldes zeigen immer in die Richtung der grössten bzw. steilsten Zunahme, wobei der Betrag die Steilheit des Anstiegs repräsentiert.
@@ -61,7 +61,7 @@ Die Richtung der Vektoren dieses neuen Vektorfeldes zeigen immer in die Richtung
 
 \subsubsection{Divergenz}
 %TODO: Link auf Kapitel von Müller
-Die Divergenz eines Vektorfeldes $\vec{F}$ ist definiert als 
+Die Divergenz eines Vektorfeldes $\vec{F}:\mathbb{R}^3 \rightarrow \mathbb{R}^3$ ist definiert als 
 \[ \operatorname{div}\vec{F} = \nabla\cdot\vec{F} 
 = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}. \]
 Angewendet wird sie auf ein Vektorfeld und resultiert in ein Skalarfeld.
@@ -71,7 +71,7 @@ Ein Vektorfeld wird als quellenfrei bezeichnet, wenn seine Divergenz gleich null
 
 \subsubsection{Rotation}
 %TODO: Link auf Kapitel von Müller
-Die Rotation eines Vektorfeldes $\vec{F}$ ist definiert als
+Die Rotation eines Vektorfeldes $\vec{F}:\mathbb{R}^3 \rightarrow \mathbb{R}^3$ ist definiert als
 \[
 \renewcommand{\arraystretch}{1.9} 
 \operatorname{rot}\vec{F} = 
