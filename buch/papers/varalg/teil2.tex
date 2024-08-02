@@ -28,14 +28,14 @@ durchprobiert werden müssen. Die Anzahl der Möglichkeiten lässt sich
 mit der Formel \((n-1)!\) berechnen, wobei \(n\) die Anzahl der Städte ist.
 Die Berechnung der verschiedenen Kombinationen lässt sich mit der
 Formel
-\begin{align*}
+\begin{align}
 \[
 L(\sigma)
 =
 \sum_{i=1}^{n-1} d(\sigma(i), \sigma(i+1)) + d(\sigma(n), \sigma(1))
 \]
 \label{eq:bruteforce_min_formula}
-\end{align*}
+\end{align}
 beschreiben.
 \begin{itemize}
     \item \( L(\sigma) \) repräsentiert die Gesamtlänge der Rundreise.
@@ -75,14 +75,14 @@ angewendet wird, folgt hier ein Beispiel.
 Die Beispieltabelle \ref{tab:example_bruteforce_cities} wird genutzt, um aufzuzeigen, wie
 die Formel \ref{eq:bruteforce_min_formula} angewendet wird. In der Rechnung nutzen wir die
 Permutation $\sigma = (B, D, A, C)$. Diese setzen wir in die Formel ein 
-\begin{align*}
+\begin{align}
     \[
     L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
     =
     25 + 20 + 15 + 35 = 95
     \]
     \label{eq:bruteforce_min_formula}
-\end{align*}
+\end{align}
 und erhalten für die Permutation die Gesammtlänge 95. Um die kürzeste Strecke zu finden,
 müssen alle möglichen Permutationen durchgerechnet werden. Die kürzeste Strecke ist dann
 das Optimum. 
@@ -92,10 +92,10 @@ das Optimum.
 \rhead{Aufwand Bruteforce}
 Aus den vorherigen Abschnitten \ref{buch:paper:varalg:section:bruteforce} ist 
 ersichtlich, dass der Aufwand für die Berechnung der kürzesten Strecke exponentiell steigt.
-Mit jedem weiteren Knoten gibt es mehr Permutation, die Berechnet und verglichen wernden 
-müssen. Aus einem Testversuch erhält man die Tabelle \ref{tab:bruteforce_tabelle_time} oder 
-graphisch dargestellt in der Abbildung \ref{fig:bruteforce_graph_time}. Daraus ist ersichtlich,
-dass es bei 8 Stäten einen Zeitaufwand von 17 Minuten braucht.
+Mit jedem weiteren Knoten gibt es mehr Permutation, die berechnet und verglichen werden 
+müssen. Aus dem Testversuch erhält man die Tabelle \ref{tab:bruteforce_tabelle_time} oder 
+graphisch dargestellt die Abbildung \ref{fig:bruteforce_graph_time}. Daraus ist ersichtlich,
+dass es bei 8 Städten einen Zeitaufwand von 17 Minuten braucht.
 % Tabelle
 \begin{table}
     \centering

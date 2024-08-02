@@ -6,12 +6,11 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Anwendung des genetische Algorithmus
+\section{Variationsprinzip beim genetische Algorithmus
 \label{buch:paper:varalg:section:genetic_algorithm_process}}
-\rhead{Teil 3}
+\rhead{Variationsprinzip beim genetische Algorithmus}
 Der Genetische Algorithmus nutzt nach ChatGPT das Variationsprinzip, 
 das wie folgt definiert wird:
-
 \begin{quote}
 Das Variationsprinzip ist ein grundlegendes Konzept in der 
 evolutionären Computertechnik, insbesondere in genetischen 
@@ -24,11 +23,20 @@ Der genetische Algorithmus nutzt dieses Variationsprinzip, um eine
 Population von möglichen Lösungen zu einem Problem zu entwickeln 
 und zu verfeinern\cite{chatgpt2024}.
 \end{quote}
-
-In den nächsten Abschnitt wird der Ablauf des genetischen Algorithmus 
-auf das Travelling Salesman Problem angepasst und angeschaut, das Kapitel
-konzentiert sich eher auf den logischen Ablauf und weniger, um die 
-mathematischen Berechnung.
+In diesem Kapitel werden die einzelnen Schritte des genetischen Algorithmus 
+erläutert. Da der Algorithmus nicht 1 zu 1 auf das Travelling Salesman
+Problem angewendet werden kann, wird in den Unterkapiteln zuerst beschrieben,
+was in jedem Schritt passiert und anschließend, wie diese auf das Travelling 
+Salesman Problem angepasst werden. Der Ablauf besteht aus den folgenden Schritten:
+%TODO beschreibung mit Lösung und Permutation beschreiben
+\begin{enumerate}
+    \item Initialisierung: Erstellung der Anfangspopulation
+    \item Selektion: Auswahl der Individuen für die Weiterentwicklung
+    \item Kreuzung: Erzeugung neuer Individuen
+    \item Mutation: Veränderung der Individuen
+    \item Evaluation: Bewertung der Individuen
+    \item Abbruchkriterium: Festlegung, wann der Algorithmus beendet wird
+\end{enumerate}
 
 \input{papers/varalg/teil3u1.tex}
 \input{papers/varalg/teil3u2.tex}
