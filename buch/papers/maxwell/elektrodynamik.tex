@@ -468,9 +468,9 @@ Diese partielle Differentialgleichungen sagen uns, dass eine zeitliche Veränder
 		\def\xOffset{{(\nNodes-2)*pi/2}}
 		\def\yOffset{\A*1.1}
 		\def\zOffset{\A*1.1}
-		\draw[axis,very thick,vcol] (\xOffset,\yOffset,-\zOffset) -- ++(\A*0.6,0,0) node[right,align=center] {$\vb{v}$}; %\\propagation
-		\draw[axis,very thick,Ecol]  (\xOffset,\yOffset,-\zOffset) -- ++(0,\A*0.6,0) node[right] {$\vb{E}$};
-		\draw[axis,very thick,Bcol]   (\xOffset,\yOffset,-\zOffset) -- ++(0,0,\A*0.6) node[left] {$\vb{B}$};
+		\draw[axis,very thick,vcol] (\xOffset,\yOffset,-\zOffset) -- ++(\A*0.6,0,0) node[right,align=center] {$\vec{v}$}; %\\propagation
+		\draw[axis,very thick,Ecol]  (\xOffset,\yOffset,-\zOffset) -- ++(0,\A*0.6,0) node[right] {$\vec{E}$};
+		\draw[axis,very thick,Bcol]   (\xOffset,\yOffset,-\zOffset) -- ++(0,0,\A*0.6) node[left] {$\vec{B}$};
 		
 		% draw (anti-)nodes
 		\foreach \iNode [evaluate={\iOffset=\iNode-1;}] in {1,...,\nNodes}{
