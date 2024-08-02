@@ -126,7 +126,7 @@ Das magnetische Feld
 \(
 \vec{B}: \mathbb{R}^4 \rightarrow \mathbb{R}^3
 \)
-wird in der Elektrodynamik ähnlich definiert wie in der Magnetostatik. Nämlich ist
+wird in der Elektrodynamik ähnlich definiert wie in der Magnetostatik. Nämlich als
 \begin{equation}
 	\vec{B}(t,x,y,z)
 	=
@@ -182,7 +182,7 @@ Dieses neue Vektorfeld heisst elektromagnetisches 4er Potential
 \(
 A:\mathbb{R}^4 \rightarrow \mathbb{R}^4
 \)
-und wird definiert als
+und wird als
 \begin{equation}
 	A
 	=
@@ -195,7 +195,7 @@ und wird definiert als
 	=
 	A^{\mu},
 \end{equation}
-wobei $A_x$, $A_y$, $A_z$ die Komponenten des magnetischen Vektorpotentiales $\vec{A}$ sind.
+definiert, wobei $A_x$, $A_y$, $A_z$ die Komponenten des magnetischen Vektorpotentiales $\vec{A}$ sind.
 Mittels dieser Grösse können wir nun das elektrische und magnetische Feld ausdrücken.
 Also
 \begin{equation}
@@ -299,7 +299,7 @@ L(\Omega^0,...,\Omega^3, A^0,...,A^3, \partial^0 A^i,...,\partial^3 A^i)
 \end{align*}
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-Da unsere Lagrange-Funktion wiederum von einer Vektorgrösse abhängig ist erhalten wir diesmal vier Euler-Ostrogradski-Differentialgleichung von der Form
+Da unsere Lagrange-Funktion wiederum von einer vektoriellen Grösse abhängig ist, erhalten wir diesmal vier Euler-Ostrogradski-Differentialgleichungen von der Form
 \[
 \frac{\partial L}{\partial A^i} 
 - \frac{\partial}{\partial \Omega^0}\frac{\partial L}{\partial(\partial^0 A^i)}
@@ -377,7 +377,7 @@ Eine wunderschöne Tatsache, denn einmal mehr wurden wir Zeuge davon, dass wenn 
 Was können wir aus diesen zwei partiellen Differentialgleichungen entnehmen?
 In der Gleichung \eqref{maxwell:section:gauss_dynamisch} sehen wir, dass das gausssche Gesetz im statischen wie auch im dynamischen Fall von der gleichen Form ist.
 Das heisst die Quelle des elektrischen Feldes ist eine Ladungsdichte $\varrho$.
-In der Gleichung \eqref{maxwell:section:ampere_dynamisch} fällt auf, dass das dynamische ampersche Gesetz, im Vergleich zum statischen, einen zusätzlichen Term erhalten hat, der eine zeitliche Veränderung des elektrischen Feldes beinhaltet.
+In der Gleichung \eqref{maxwell:section:ampere_dynamisch} fällt auf, dass das dynamische ampèrsche Gesetz, im Vergleich zum statischen, einen zusätzlichen Term erhalten hat, der eine zeitliche Veränderung des elektrischen Feldes beinhaltet.
 Also verursacht nicht nur eine Stromdichte, sondern auch eine zeitliche Veränderung im elektrischen Feld eine Rotation im magnetischen Feld.
 An dieser Stelle bemerken wir zum ersten Mal, dass das magnetische Feld vom elektrischen Feld beeinflusst werden kann.
 
@@ -401,7 +401,7 @@ Da die Divergenz eines Rotationsfeldes immer null ist folgt direkt, dass
 \end{equation}
 gelten muss.
 Dies entspricht dem gaussschen Gesetz des magnetischen Feldes.
-Es besagt, dass das magnetische Feld quellenfrei ist oder anders ausgedrückt, dass keine magnetische Monopole existieren. Das Bedeutet auch, dass die magnetischen Feldlinien immer in sich geschlossen sein müssen.
+Es besagt, dass das magnetische Feld quellenfrei ist oder anders ausgedrückt, dass keine magnetische Monopole existieren. Was wiederum auch bedeutet, dass die magnetischen Feldlinien immer in sich geschlossen sein müssen.
  
 Wenn wir in Gleichung \eqref{maxwell:section:definiton_dynamisch_elektrischesFeld} auf beiden Seiten die Rotation anwenden, erhalten wir
 \[
@@ -419,7 +419,7 @@ Da die partielle Ableitung nach der Zeit eine lineare Operation ist, können wir
 - \frac{\partial \vec{B}}{\partial t}.
 \end{equation}
 Was wir erhalten ist das faradaysche Gesetz der Induktion.
-Diese partielle Differentialgleichungen sagen uns, dass eine zeitliche Veränderung des magnetischen Feldes eine Rotation des elektrischen Feldes verursacht. Also sehen wir, dass auch das elektrische Feld vom magnetischen Feld beeinflusst werden kann. Da sich in der Elektrodynamik eine zeitliche Veränderung in einem Feld eine Rotation im anderen Feld zur Folge hat, ist die Existenz von elektromagnetischen Wellen gar nicht so weit hergeholt. 
+Diese partielle Differentialgleichungen sagen uns, dass eine zeitliche Veränderung des magnetischen Feldes eine Rotation des elektrischen Feldes verursacht. Also sehen wir, dass auch das elektrische Feld vom magnetischen Feld beeinflusst werden kann. Da sich in der Elektrodynamik eine zeitliche Veränderung in einem Feld eine Rotation im anderen Feld zur Folge hat, ist die Existenz von elektromagnetischen Wellen auch intuitiv erklärbar. 
 
 
 \subsubsection{Exkurs zu elektromagnetischen Wellen}
@@ -482,7 +482,7 @@ Diese partielle Differentialgleichungen sagen uns, dass eine zeitliche Veränder
 	\caption{Elektromagnetische Welle im Vakuum}
 	\label{maxwell:section:bild_em_welle}
 \end{figure}
-In einem luftleeren Raum, wo keine Stromdichte $\vec{\jmath}$ und keine Ladungsdichte $\varrho$ existieren, gilt
+In einem luftleeren Raum, in welchem keine Stromdichte $\vec{\jmath}$ und keine Ladungsdichte $\varrho$ existieren, gilt
 \begin{align}
 \nabla \times \vec{B}
 &=
