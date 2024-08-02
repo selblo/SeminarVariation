@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8
 %
 \section{Einfacher Bruteforce Algorithmus
-\label{buch:paper:varalg:section:bruteforce}}
+  \label{buch:paper:varalg:section:bruteforce}}
 \rhead{Einfacher Bruteforce Algorithmus}
 In der Bruteforce-Methode wird jede mögliche Variante durchprobiert,
 um die beste Lösung zu finden. Dabei wird systematisch jede mögliche
@@ -19,7 +19,7 @@ wird diese als neue optimale Lösung gespeichert.
     \centering
     \includegraphics[width=0.8\textwidth]{papers/varalg/images/teil2/02BruteforceMethode.png}
     \caption{Resultate von verschiedener Durchgänge mit steigender Anzahl von Städten.
-    \label{fig:results_bruteforce}}
+        \label{fig:results_bruteforce}}
 \end{figure}
 Auf dem Bild \ref{fig:results_bruteforce} ist ersichtlich, dass mit
 jedem weiteren Knoten der Aufwand exponentiell steigt. Anders
@@ -29,30 +29,30 @@ mit der Formel \((n-1)!\) berechnen, wobei \(n\) die Anzahl der Städte ist.
 Die Berechnung der verschiedenen Kombinationen lässt sich mit der
 Formel
 \begin{align}
-\[
-L(\sigma)
-=
-\sum_{i=1}^{n-1} d(\sigma(i), \sigma(i+1)) + d(\sigma(n), \sigma(1))
-\]
-\label{eq:bruteforce_min_formula}
+    \[
+        L(\sigma)
+        =
+        \sum_{i=1}^{n-1} d(\sigma(i), \sigma(i+1)) + d(\sigma(n), \sigma(1))
+    \]
+    \label{eq:bruteforce_min_formula}
 \end{align}
 beschreiben.
 \begin{itemize}
     \item \( L(\sigma) \) repräsentiert die Gesamtlänge der Rundreise.
-    \item \( \sigma \) ist eine Permutation 
-    \footnote{
-        Eine Permutation ist eine Anordnung von Objekten in einer bestimmten Reihenfolge.
-        Zum Beispiel, wenn wir die Menge {1,2,3} haben, können daraus alle möglichen 
-        Permutationen dieser Mengen gebildet werden 123, 132, 213, 231, 312, 321 
-    }
-    der Städte \( \{1, 2, \ldots, n\} \),
-        wobei jede \( \sigma \) unterschiedliche Reihenfolge der Städte darstellt.
+    \item \( \sigma \) ist eine Permutation
+          \footnote{
+              Eine Permutation ist eine Anordnung von Objekten in einer bestimmten Reihenfolge.
+              Zum Beispiel, wenn wir die Menge {1,2,3} haben, können daraus alle möglichen 
+              Permutationen dieser Mengen gebildet werden 123, 132, 213, 231, 312, 321 
+          }
+          der Städte \( \{1, 2, \ldots, n\} \),
+          wobei jede \( \sigma \) unterschiedliche Reihenfolge der Städte darstellt.
     \item \( d(i, j) \) ist die Funktion, welche die Entfernung der Stadt \( i \) und
-        Stadt \( j \) zurückgibt.
+          Stadt \( j \) zurückgibt.
 \end{itemize}
 
 \subsection{Kurzes Beispiel Rechnung der Formel
-\label{buch:paper:varalg:subsection:bruteforce_calculate}}
+    \label{buch:paper:varalg:subsection:bruteforce_calculate}}
 \rhead{Kurzes Beispiel Rechnung der Formel}
 Um zu verdeutlichen, wie die Formel \ref{eq:bruteforce_min_formula}
 angewendet wird, folgt hier ein Beispiel.
@@ -60,16 +60,16 @@ angewendet wird, folgt hier ein Beispiel.
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-          & $A$  & $B$  & $C$  & $D$  \\ \hline
-        $A$ & 0  & 10 & 15 & 20 \\ \hline
-        $B$ & 10 & 0  & 35 & 25 \\ \hline
-        $C$ & 15 & 35 & 0  & 30 \\ \hline
-        $D$ & 20 & 25 & 30 & 0  \\ \hline
+            & $A$ & $B$ & $C$ & $D$ \\ \hline
+        $A$ & 0   & 10  & 15  & 20  \\ \hline
+        $B$ & 10  & 0   & 35  & 25  \\ \hline
+        $C$ & 15  & 35  & 0   & 30  \\ \hline
+        $D$ & 20  & 25  & 30  & 0   \\ \hline
     \end{tabular}
     \caption{
         Beispieltabelle mit möglicher Distanz der Städten, diese liesst sich wie folgt:
         Die Distanz zwischen Stadt $B$ und $D$ beträgt 25.
-        }
+    }
     \label{tab:example_bruteforce_cities}
 \end{table}
 Die Beispieltabelle \ref{tab:example_bruteforce_cities} wird genutzt, um aufzuzeigen, wie
@@ -77,9 +77,9 @@ die Formel \ref{eq:bruteforce_min_formula} angewendet wird. In der Rechnung nutz
 Permutation $\sigma = (B, D, A, C)$. Diese setzen wir in die Formel ein 
 \begin{align}
     \[
-    L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
-    =
-    25 + 20 + 15 + 35 = 95
+        L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
+        =
+        25 + 20 + 15 + 35 = 95
     \]
     \label{eq:bruteforce_min_formula}
 \end{align}
@@ -88,7 +88,7 @@ müssen alle möglichen Permutationen durchgerechnet werden. Die kürzeste Strec
 das Optimum. 
 
 \subsection{Aufwand Bruteforce
-\label{buch:paper:varalg:subsection:bruteforce_efforts}}
+    \label{buch:paper:varalg:subsection:bruteforce_efforts}}
 \rhead{Aufwand Bruteforce}
 Aus den vorherigen Abschnitten \ref{buch:paper:varalg:section:bruteforce} ist 
 ersichtlich, dass der Aufwand für die Berechnung der kürzesten Strecke exponentiell steigt.
@@ -103,14 +103,14 @@ dass es bei 8 Städten einen Zeitaufwand von 17 Minuten braucht.
         \toprule
         Punkte & \multicolumn{1}{c}{Zeit in Sekunden} \\
         \midrule
-        1      & 0.6880     \\
-        2      & 0.6905     \\
-        3      & 0.7666     \\
-        4      & 1.2817     \\
-        5      & 3.0601     \\
-        6      & 15.0940    \\
-        7      & 103.1691   \\
-        8      & 1068.3832 \\
+        1      & 0.6880                               \\
+        2      & 0.6905                               \\
+        3      & 0.7666                               \\
+        4      & 1.2817                               \\
+        5      & 3.0601                               \\
+        6      & 15.0940                              \\
+        7      & 103.1691                             \\
+        8      & 1068.3832                            \\
         \bottomrule
     \end{tabular}
     \caption{Zeitverlauf mit steigender Anzahl von Städten}
@@ -121,26 +121,26 @@ dass es bei 8 Städten einen Zeitaufwand von 17 Minuten braucht.
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel=$Punkte$,
-            ylabel=\text{Zeit in Sekunden},
-            grid=major,
-            width=10cm,
-            height=8cm
-        ]
-        \addplot[
-            color=blue,
-            mark=*
-        ] coordinates {
-            (0,0)
-            (1,0.6880)
-            (2,0.6905)
-            (3,0.7666)
-            (4,1.2817)
-            (5,3.0601)
-            (6,15.0940)
-            (7,103.1691)
-            (8,1068.3832)
-        };
+                xlabel=$Punkte$,
+                ylabel=\text{Zeit in Sekunden},
+                grid=major,
+                width=10cm,
+                height=8cm
+            ]
+            \addplot[
+                color=blue,
+                mark=*
+            ] coordinates {
+                    (0,0)
+                    (1,0.6880)
+                    (2,0.6905)
+                    (3,0.7666)
+                    (4,1.2817)
+                    (5,3.0601)
+                    (6,15.0940)
+                    (7,103.1691)
+                    (8,1068.3832)
+                };
         \end{axis}
     \end{tikzpicture}
     \caption{Der Graph zeigt den Zeitverlauf mit steigender Anzahl von Städten}
