@@ -44,24 +44,44 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
-			% Define the length of the sides of the triangles
+
 			\def\sidelength{3.14}
 			
-			% Calculate the height of the equilateral triangle
 			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
-			% Draw the large outer triangle (white background)
+
 			\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			% Draw the flattened inner triangle
+			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
+			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
+			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
+			
+			\foreach \x\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
+			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
+			\foreach \y in {1, 2, 3}
+			\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
+		\end{tikzpicture}
+		\caption{Antenne mit abgerundeten Ecken}
+		\label{antennen:tikabgerundet}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}
+
+			\def\sidelength{3.14}
+			
+			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
+
+			\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
 			\draw[red, line width=0.3mm] 
 			(0.5,0) -- (0.25,1.73/2*0.5) -- (0.5*\sidelength-0.25, \triangleheight-1.73/2*0.5) -- 
 			(0.5*\sidelength+0.25, \triangleheight-1.73/2*0.5) -- (\sidelength-0.25,1.73/2*0.5) -- (\sidelength-0.5,0) -- cycle;
 			
-			% Draw axes
 			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
 			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
-			% Add ticks and labels on axes
 			\foreach \x\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
 			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
 			\foreach \y in {1, 2, 3}
@@ -74,23 +94,23 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
-			% Define the length of the sides of the triangles
+
 			\def\sidelength{3.14}
 			
-			% Calculate the height of the equilateral triangle
 			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
-			% Draw the large outer triangle (white background)
+
 			\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			% Draw the rounded inner triangle
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			% Draw axes
+			\draw[green, line width=0.3mm, rounded corners=1cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
+			\draw[blue, line width=0.3mm, rounded corners=1.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
+			
 			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
 			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
-			% Add ticks and labels on axes
-			\foreach \x\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
+			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
 			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
 			\foreach \y in {1, 2, 3}
 			\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
@@ -108,27 +128,23 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 		\begin{tikzpicture}
 			\definecolor{clrGreen}{RGB}{0, 117, 18}
 			% Define the length of the sides of the triangles
+
 			\def\sidelength{3.14}
 			
-			% Calculate the height of the equilateral triangle
 			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
-			% Draw the large outer triangle (white background)
+
 			\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			% Draw the rounded inner triangle
 			\draw[red, line width=0.3mm,] (0.5,0) -- (0.25,1.73 /2*0.5) -- (0.5*\sidelength-0.25, \triangleheight-1.73/2*0.5) -- (0.5*\sidelength+0.25, \triangleheight-1.73/2*0.5)--(\sidelength-0.25,1.73/2*0.5) -- (\sidelength-0.5,0) -- cycle;
 			
 			% Draw the rounded inner triangle
 			\draw[clrGreen, line width=0.3mm,] (1,0) -- (0.5,1.73 /2*1) -- (0.5*\sidelength-0.5, \triangleheight-1.73/2*1) -- (0.5*\sidelength+0.5, \triangleheight-1.73/2*1)--(\sidelength-0.5,1.73/2*1) -- (\sidelength-1,0) -- cycle;
 			
-			% Draw the rounded inner triangle
 			\draw[blue, line width=0.3mm,] (1.5,0) -- (0.75,1.73 /2*1.5) -- (0.5*\sidelength-0.75, \triangleheight-1.73/2*1.5) -- (0.5*\sidelength+0.75, \triangleheight-1.73/2*1.5)--(\sidelength-0.75,1.73/2*1.5) -- (\sidelength-1.5,0) -- cycle;
 			
-			% Draw axes
 			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
 			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
-			% Add ticks and labels on axes
 			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
 			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
 		\end{tikzpicture}
@@ -186,19 +202,15 @@ geworden, welche wesentlich leichter zu optimieren ist.
 			% Define the length of the sides of the triangles
 			\def\sidelength{3.14}
 			
-			% Calculate the height of the equilateral triangle
 			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
-			% Draw the large outer triangle (white background)
+
 			\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			% Draw the rounded inner triangle
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			% Draw axes
 			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
 			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
-			% Add ticks and labels on axes
 			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
 			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
 			
@@ -214,13 +226,11 @@ geworden, welche wesentlich leichter zu optimieren ist.
 	\begin{minipage}[b]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
-			% Define the length of the sides of the triangles
+
 			\def\sidelength{3.14}
-			
-			% Calculate the height of the equilateral triangle
+
 			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
 			
-			% Draw the rounded inner triangle
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (0.5*\sidelength, \triangleheight) -- (\sidelength,0);
 		\end{tikzpicture}
 		\caption{Ecke der Antenne}
