@@ -11,7 +11,7 @@
 \rhead{Problemstellung}
 Damit die hydrostatische Gleichgewichtsform einfacher berechnet werden kann, werden ein paar Annahmen getroffen.
 \begin{itemize}
-	\item Unser Himmelskörper besteht aus einer idealen Flüssigkeit, das heisst sie ist Inkompressibel und hat keine innere Reibung.
+	\item Unser Himmelskörper besteht aus einer idealen Flüssigkeit, das heisst sie ist inkompressibel und hat keine innere Reibung.
 	\item Die Massenverteilungsdichte \(\sigma\) für 2D und die Dichte \(\rho\) für 3D der Flüssigkeit sind konstant.
 	Dies ist eine Idealisierung der Bedingung 2 für die Definition eines Planeten.
 \end{itemize}
@@ -58,7 +58,7 @@ Die Kraft ist negativ, da sie zum Zentrum der Masse zeigen muss.
 	\caption{Visualisierung Polarkoordinaten}
 	\label{planet:fig:2d}
 \end{figure}
-Für die Berechnung der hydrostatische Gleichgewichtsform soll nun die potenzielle Energie \(U\) minimal werden.
+Für die Berechnung der hydrostatischen Gleichgewichtsform soll nun die potenzielle Energie \(U\) minimal werden.
 Für die Berechnung der Fläche in 2D muss man wissen, dass \(dA = r \, dr \, d\varphi\) ist.
 Dies sieht man in Abbildung \ref{planet:fig:2d}.
 Als Nebenbedingung hat man die Fläche \(A\), welche mit 
@@ -98,17 +98,17 @@ Aus diesem Integral entnimmt man die Lagrange-Funktion der Nebenbedingung
 	N(\varphi ,r,r\,') = \frac{r^2}{2}.
 \end{equation*}
 
-Um die gesuchte Lösung zu finden, nutzt man die Methode der Lagrange-Muliplikatoren.
+Um die gesuchte Lösung zu finden, nutzt man die Methode der Lagrange-Muliplika\-to\-ren.
 Genaueres über die Methode der Lagrange-Muliplikatoren findet man in \cref{buch:nebenbedingungen:lagrangemult:subsection:einzeln}.
-Die wichtigsten Punkte, welche man für die Lösung dieser Problemstellung braucht, sind, dass man die Euler-Lagrange-Differentialgleichung als Gradienten ansehen kann.
+Für die Lösung dieser Problemstellung kann man die Euler-Lagrange-Differentialgleichung als Gradienten ansehen.
 Mit diesen Gradienten kann man anschliessend ein Gleichungssystem aufstellen und die gesuchte Funktion finden.
-Damit man die gesuchte Funktion finden kann, muss man den Gradienten bzw. die Euler-Lagrange-Differentialgleichung der jeweiligen Lagrange-Funktionen berechnen und anschliessend in
+Damit man die gesuchte Funktion finden kann, muss man den Gradienten bzw. die Euler-Lagrange-Differentialgleichung der jeweiligen Lagrange-Funktion berechnen und anschliessend in
 \begin{equation}
 	\nabla N \cdot \lambda = \nabla L
 	\label{planet:equ:lamdagleichung}
 \end{equation}
 einsetzen.
-Für den „Gradienten“ der Lagrange-Funktionen benötigt man die jeweiligen partiellen Ableitungen
+Für die „Gradienten“ der Lagrange-Funktionen benötigt man die jeweiligen partiellen Ableitungen
 \begin{equation*}
 	L(\varphi ,r(\varphi),r(\varphi)_\varphi) = r(\varphi),
 	\frac{\partial L}{\partial r} = 1,
@@ -133,17 +133,16 @@ und
 \end{equation*}
 
 \noindent
-Wenn man nun die Ableitungen der Lagrange-Funktionen in die „Gradienten“ einsetzen
+Wenn man nun die Ableitungen der Lagrange-Funktionen in die „Gradienten“ einsetzt
 \begin{equation*}
 	\left(\frac{\partial N}{\partial r} - \frac{d}{d\varphi}\left(\frac{\partial N}{\partial r'}\right)\right)\cdot \lambda = \frac{\partial L}{\partial r}-  \frac{d}{d\varphi}\left( \frac{\partial L}{\partial r'} \right)
 \end{equation*} 
-und anschliessend das Ganze in die Gleichung \eqref{planet:equ:lamdagleichung}
-einsetzt und erhält man
+und anschliessend das Ganze in die Gleichung \eqref{planet:equ:lamdagleichung} einsetzt, erhält man
 \begin{equation*}
 	r = \frac{1}{\lambda}.
 \end{equation*}
 Was sagt nun dieses Ergebnis?
-Da \(\lambda\) eine Konstante ist muss \(r\) ebenfalls eine Konstante sein.
+Da \(\lambda\) eine Konstante ist, muss \(r\) ebenfalls eine Konstante sein.
 Da die Berechungen in Polarkoordinaten durchgeführt wurden, bedeutet ein konstanter Radius, dass die gesuchte Form ein Kreis ist.
 
 \subsection{Hydrostatische Gleichgewichtsform in 3D}
@@ -153,10 +152,10 @@ Da die Berechungen in Polarkoordinaten durchgeführt wurden, bedeutet ein konsta
 	\caption{Visualisierung Kugelkoordinaten}
 	\label{planet:fig:3d}
 \end{figure}
-Für die Berechnung im 3-dimensionalen Raum geht man ähnlich vor wie im 2-dimensionalen Raum.
+Für die Berechnung im dreidimensionalen Raum geht man ähnlich vor wie im zweidimensionalen Raum.
 Der Unterschied ist, dass man eine weitere Variable \(\theta\) hat.
-Da man nun mehr als eine Variable hat, muss man die Aufgabe mit der Euler-Ostrogadski-Differentialgleichung lösen.
-Für die Berechnung der hydrostatische Gleichgewichtsform soll nun wieder die potenzielle Energie \(U\) minimal werden.
+Da man nun mehr als eine Variable hat, muss man die Aufgabe mit der Euler-Ostrogradski-Differentialgleichung lösen.
+Für die Berechnung der hydrostatischen Gleichgewichtsform soll nun wieder die potenzielle Energie \(U\) minimal werden.
 Da die Berechnungen in 3D durchgeführt werden, benötigt man für die Berechung die Formel für ein Volumenteilchen \(dV = r^2 \sin (\theta) \, dr \, d\theta \, d\varphi \).
 Zu sehen ist dies in Abbildung \ref{planet:fig:3d}
 Als Nebenbedingung hat man in 3D das Volumen \(V\) welches mit 
@@ -186,7 +185,7 @@ Wiederum entnimmt man aus diesem Interal die Lagrange-Funktion
 \begin{equation*}
 	L(\varphi,\theta ,r,r_\varphi,r_\theta) = \frac{r^2}{2}  \sin (\theta).
 \end{equation*}
-Mit dem Wissen, dass \(dV = r^2 \sin (\theta) \, dr \, d\theta \, d\varphi \) kann man \eqref{planet:equ:V} als
+Mit dem Wissen, dass \(dV = r^2 \sin (\theta) \, dr \, d\theta \, d\varphi \) ist kann man \eqref{planet:equ:V} als
 \begin{equation*}
 	V = \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{r(\varphi,\theta)} r^2 \sin (\theta) \, dr \, d\theta \, d\varphi
 \end{equation*}
@@ -199,14 +198,14 @@ Aus dieser Gleichung entnimmt man die Lagrange-Funktion der Nebenbedingung
 \begin{equation*}
 	N(\varphi,\theta ,r,r_\varphi,r_\theta) = \frac{r^3}{3} \sin (\theta).
 \end{equation*}
-Wie in 2D findet man die gesuchte Funktion wenn man die Gleichung \eqref{planet:equ:lamdagleichung} löst.
+Wie in 2D findet man die gesuchte Funktion, wenn man die Gleichung \eqref{planet:equ:lamdagleichung} löst.
 Da man in der Berechung im 3D zwei Variablen hat (\(\varphi,\theta\)), muss man die partiellen Ableitungen nach beiden Variablen berechnen.
-Konkret benutzt man die Euler-Ostrogradski-Differentialgleichung als Gradient wenn die gesuchte Funktion von mehr als einer Varbiable abhängig ist.
+Konkret benutzt man die Euler-Ostrogradski-Differentialgleichung als Gradient, wenn die gesuchte Funktion von mehr als einer Variablen abhängig ist.
 Die Ableitungen sehen folgendermassen aus:
 \begin{align*}
 	\frac{\partial L}{\partial r} &= r  \sin (\theta)& \frac{\partial L}{\partial r_\varphi} &= 0& \frac{\partial L}{\partial r_\theta} &= 0 \\
 \intertext{und}
-	\frac{\partial N}{\partial r} &= r^2\sin (\theta)&	\frac{\partial N}{\partial r_\varphi} &= 0&	\frac{\partial N}{\partial r_\theta} &= 0
+	\frac{\partial N}{\partial r} &= r^2\sin (\theta)&	\frac{\partial N}{\partial r_\varphi} &= 0&	\frac{\partial N}{\partial r_\theta} &= 0.
 \end{align*}
 Glücklicherweise werden viele der Ableitungen 0.
 Die „Gradienten“ sind definiert als
@@ -229,8 +228,8 @@ Wenn man diese Gleichung weiter vereinfacht erhält man
 \begin{equation*}
 	r = \frac{1}{\lambda}.
 \end{equation*}
-Man sieht, das Ergebnis ist dasselbe wie man in 2D erhält.
-In 3D bedeutet ein Konstanter Radius, das die gesuchte Form eine Kugel ist.
+Man erhält dasselbe Ergebnis wie in 2D.
+In 3D bedeutet ein konstanter Radius, das die gesuchte Form eine Kugel ist.
 
 \subsection{Interpretation der Ergebnisse}
 Sowohl in 2D als auch in 3D erhält man das Ergebnis, dass die Form in welcher die potenzielle Energie eines Planeten minimiert wird, ein Kreis bzw. eine Kugel ist.
