@@ -1,7 +1,7 @@
 \section{Chaotisches Verhalten}
 Wie im vorherigen Kapitel angedeutet, wurde mithilfe der Gleichungen eine Simulation erstellt,
 um das chaotische Verhalten näher zu analysieren.
-Diese Simulation wurde von Alex Krieg, einem Studenten der <<Fachhochschule OST>>, entwickelt.
+Diese Simulation wurde von Alex Krieg, einem Studenten der Fachhochschule OST, entwickelt.
 Die daraus gewonnenen Erkenntnisse werden in diesem Abschnitt erläutert.
 
 \subsection{Physikalisches Chaos}
@@ -11,18 +11,29 @@ Aperiodisches Langzeitverhalten bedeutet, wenn sich das System nach langer zeitl
 nicht periodisch wird.
 Das einfache Pendel weist ein periodisches Langzeitverhalten auf,
 denn es schwingt immer im gleichen Muster.
-Deterministisch heisst, dass das Verhalten des Systems vorherbestimmbar ist.
-Dies mag zunächst verwirrend erscheinen, da chaotisches Verhalten grundsätzlich nicht
-berechenbar ist.
-Was aber gemeint ist, man kann vorhersagen ob das System in einen chaotischen Zustand 
-verfällt oder stabil bleibt.
+Deterministisch heisst im übertragenen Sinn, dass das Verhalten des Systems gleich bleibt,
+sofern die Anfangsbedingungen die Gleichen sind.
+Trotzdem kann sich bei der kleinsten Abweichung eine völlig andere Trajektorie bilden.
+Dies rührt daher, dass die immer vorhandenen kleinen Störungen, wie z.B. thermisches Rauschen,
+bei empfindlicher Abhängigkeit der Anfangsbedingung, die Bahn deutlich beeinflussen.
 
 \subsection{Simulationsanalyse}
-Im ersten Experiment wollen wir uns ansehen wie der Trajektor eines Pendels aussieht,
-welcher aus der horizontalen Lage bzw. Anfangsbedingung 90° startet.
-(siehe Abbildung \ref{fig:pendel_bei_90})
+Im ersten Experiment wollen wir uns ansehen, wie die Trajektorie eines Pendels aussieht,
+welche aus der horizontalen Lage bzw. Anfangsbedingung 90° startet
+(siehe Abbildung \ref{fig:pendel_bei_90}).
 Beim Wiederholen dieses Experiment lässt sich feststellen, dass für exakt dieselben Anfangsbedingungen
 das gleiche Ergebnis resultiert und daher deterministisch ist.
+
+Im zweiten Experiment (Abbildung \ref{fig:pendel_bei_weniger_90}), wurde die vorherige
+Anfangsbedingung marginal verändert.
+Die beiden Winkel wurden um ca. ein Zehntel Grad verringert.
+Nichtsdestotrotz lässt sich am Resultat nichts wiedererkennen.
+
+Im letzten Experiment (Abbildung \ref{fig:pendel_nichtchaotisch}) wird gezeigt,
+wie das Pendel bei kleineren Winkeln nicht chaotisch wird.
+Es lässt bereits vermuten, dass die Pendel mit hoher potentieller Energie eine stärkere Tendenz haben,
+in den chaotischen Zustand überzugehen.
+Das zeigen auch die Trajektoren aus diesen Versuchen.
 \begin{figure}
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -34,15 +45,8 @@ das gleiche Ergebnis resultiert und daher deterministisch ist.
         \centering
         \includegraphics[width=\textwidth]{papers/doppelpendel/images/pendel_spur_90.png}
     \end{minipage}
-    \caption{Pendel mit der Anfangsbedinung 90°.}
+    \caption{Pendel mit der Anfangsbedingung 90°.}
     \label{fig:pendel_bei_90}
-\end{figure}
-
-Im zweiten Experiment (Abbildung \ref{fig:pendel_bei_weniger_90}), wurde die vorherige
-Anfangsbedingung marginal verändert.
-Die beiden Winkel wurden um ca. Zehntel Grad verringert.
-Nichtsdestotrotz lässt sich am Resultat nichts wiedererkennen.
-\begin{figure}
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
@@ -55,14 +59,6 @@ Nichtsdestotrotz lässt sich am Resultat nichts wiedererkennen.
     \end{minipage}
     \caption{Anfangsbedingung der Winkel ist kaum sichtbar kleiner als 90°.}
     \label{fig:pendel_bei_weniger_90}
-\end{figure}
-
-Im letzten Experiment (Abbildung \ref{fig:pendel_nichtchaotisch}) wird gezeigt,
-wie das Pendel bei kleineren Winkeln nicht chaotisch wird.
-Es lässt bereits vermuten, dass die Pendel mit hoher potentieller Energie eine stärkere Tendenz haben,
-in den chaotischen Zustand überzugehen.
-Das zeigen auch die Trajektoren aus diesen Versuchen.
-\begin{figure}
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
@@ -77,11 +73,12 @@ Das zeigen auch die Trajektoren aus diesen Versuchen.
     \label{fig:pendel_nichtchaotisch}
 \end{figure}
 
-Was wir hier für drei verschiedene Anfangsbedingungen durchgeführt haben, kann man natürlich
+Was wir hier für drei verschiedene Anfangsbedingungen durchgeführt haben,kann man selbstverständlich
 für etliche Winkel durchrechnen lassen und beeurteilen ob bei gegebenem Winkel das System chaotisch wird.
-Das wurde durch einen Schüler im <<Schweizer Jugend forscht>> mithilfe eines Programms untersucht.
+Das wurde durch einen Schüler im <<Schweizer Jugend forscht>> mithilfe eines Programms untersucht
+\cite{doppelpendel:wettbewerbsarbeit}.
 Das Resultat wurde im sogenannten Parameterraum ausgegeben
-ersichtlich in Abblildung \ref{fig:Parameterraum}.
+ersichtlich in Abbildung \ref{fig:Parameterraum}.
 \begin{figure}
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -95,11 +92,12 @@ ersichtlich in Abblildung \ref{fig:Parameterraum}.
     \end{minipage}
     \caption{Winkelpaare im Parameterraum (links) und stabile Inseln im Parameterraum (rechts)}
     \label{fig:Parameterraum}
+    \cite{doppelpendel:wettbewerbsarbeit}
 \end{figure}
-Auf der horizantalen Achse sind Anfangswinkel von \(\theta_1\) und
+Auf der horizontalen Achse sind Anfangswinkel von \(\theta_1\) und
 auf der vertikalen diejenigen von \(\theta_2\).
 Schwarz bildet die Winkelpaare ab, die nicht ins Chaos übergehen.
 Die farbigen Punkte sind daher kritische Winkelpaare.
 Es wird unterschieden zwischen dunkelroten Punkten,
-das sind Winkelpaare die schnell chaotisch werden, und
-gelben Punkten, die eine kritische Zeit nah an 30 Sekunden haben. %Zitat Davide
+das sind Winkelpaare, die schnell chaotisch werden, und
+gelben Punkten, die eine kritische Zeit nahe an 30 Sekunden haben. 
