@@ -103,11 +103,10 @@ Dieses Feld kann man anhand der Kraftwirkung an sogenannten Probeladungen $q$ me
 ist.
 Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kraftvektoren, welche normiert sind auf die Ladung $q$.
 %E-Field of point charge
-%TODO: Bild grösser oder nur nodes grösser?
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
-		\def\R{1.8}
+		\def\R{2.2}
 		\def\NE{16}
 		\def\NV{4}
 		\contourlength{1.6pt}
@@ -119,12 +118,12 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 		\foreach \i [evaluate={\angle=(\i-1)*360/\NE;}] in {1,...,\NE}{
 			\draw[EFieldLineArrow={0.6}] (0,0) -- (\angle:\R);
 		}
-		\draw[charge+] (0,0) circle (7pt) node[black,scale=0.8] {$+Q$};
+		\draw[charge+] (0,0) circle (8pt) node[black,scale=1] {$+Q$};
 		%\draw[FFieldLineArrow={0.6}] (-1,1) -- (-2,2);
-		\draw[-{Stealth[black]}] (-1,1) -- (-1.8,1.8) node at (-1.6, 2) {$\vec{F}$};
-		\draw[charge_small] (-1,1) circle (4pt) node[black,scale=0.8] {$q$};
-		\node[EcolFL,scale=0.8] at (1.4,-1.4) {$\vec{E}$};
-		\node[EcolEP,scale=0.8] at (1.95,0) {$\varphi$};
+		\draw[-{Stealth[black]}] (-1.2,1.2) -- (-2,2) node at (-1.6, 2) {$\vec{F}$};
+		\draw[charge_small] (-1.2,1.2) circle (5pt) node[black,scale=1] {$q$};
+		\node[EcolFL,scale=1] at (1.8,-1.8) {$\vec{E}$};
+		\node[EcolEP,scale=1] at (2.5,0) {$\varphi$};
 	\end{tikzpicture}
 	\caption{Elektrisches Feld (grün) einer positiven Punktladung $+Q$ und Äquipotentiallinien (blau) der selben positiven Punktladung $+Q$}
 	\label{maxwell:section:E-Feld_punktladung}
@@ -172,7 +171,7 @@ W_{\text{e}}
 \iiint_V w_e\, dV.
 \]
 Dieses Integral gilt es zu minimieren, was die Grundlage für unser Variationsproblem darstellt.
-Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist im Vakuum
+Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist in Vakuum
 \[
 w_{\text{e}}
 =
@@ -244,7 +243,7 @@ Nachdem wir die partiellen Ableitungen nach $\varphi_x$, $\varphi_y$ und $\varph
 =
 0.
 \]
-Wenn man nun noch die letzten partiellen Ableitungen macht, wird die Differentialgleichung zu
+Wenn man nun noch die letzten partiellen Ableitungen macht, resultiert
 \begin{equation}
 	- \varepsilon_0\underbrace{\left(\frac{\partial^2\varphi}{\partial x^2} + \frac{\partial^2\varphi}{\partial y^2} + \frac{\partial^2\varphi}{\partial z^2}\right)}_{\displaystyle=0}
 	=
