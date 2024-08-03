@@ -1,0 +1,75 @@
+%
+% teil3.tex -- Beispiel-File für Teil 3
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Variationsprinzip Mathematik und Algorithmus
+\label{buch:paper:varalg:section:variations_math_algorithm_result}}
+\rhead{Variationsprinzip Mathematik und Algorithmus}
+Im vorherigen Kapitel \ref{buch:paper:varalg:section:geneticalgorithmprocess} wurde erklärt, 
+wie der Algorithmus funktioniert, der das Variationsprinzip anwendet. Dies 
+passt jedoch nicht genau zu dem Variationsprinzip, das in der Mathematik 
+verwendet wird. In diesem Kapitel wird genauer darauf eingegangen.
+
+Woran unterscheiden sich die beiden Prinzipien?
+
+\begin{table}[h]
+   \centering
+   \begin{tabularx}{\textwidth}{|X|X|X|}
+      \hline
+       & Mathematik 
+       & Algorithmus 
+       \\ \hline
+      Ziele  
+       & Wie im Kapitel Funktionale \ref{buch:variation:problem:subsection:funktionale}
+
+      beschrieben, ist das Ziel der Variationsrechnung die Optimierung von Funktionalen 
+      durch die Findung einer optimalen Funktion.
+       & Im Algorithmus bedeutet Variation, dass es eine Menge möglicher Lösungen gibt, 
+      aus denen die besten Lösungen ausgewählt und weiterverarbeitet werden, in der 
+      Hoffnung, dass die neuen Lösungen besser sind.
+      \\ \hline
+      Techniken  
+       & Hier werden analytische Techniken wie die Euler-Lagrange-Gleichung verwendet, 
+      um Optimierungsprobleme zu lösen. (Verschiedene Techniken sind in den Kapiteln 
+      2-10 beschrieben)
+       & Im Algorithmus werden Mechanismen verwendet, die stochastische 
+      \footnote{
+         Im Fall des Algorithmus sind stochastische Methoden gemeint, bei denen 
+         eine Anzahl an Zufallsereignissen oder -kombinationen erstellt und 
+         diese anschließend ausgewertet oder weiterverarbeitet werden.
+      }
+      Methoden wie Kreuzung und Mutation beinhalten, um Vielfalt zu erzeugen und aufrechtzuerhalten.
+      \\ \hline
+      Nachbarlösungen
+       & Sind nicht direkt ein primäres Konzept und eher implizit \footnote{
+
+         Untersuchung von Nachbarlösungen ist implizit, da die Variationen 
+         von Funktionen und deren Einfluss auf das Funktional nicht direkt 
+         als Nachbarlösung bezeichnet werden kann.
+      }. Man untersucht die kleinen Variationen einer Funktion und wie sich 
+      die Funktionale verändern, aber am Ende ist das Ziel die Optimierung 
+      der Funktionale.
+       & Die Nachbarlösungen sind ein primäres Konzept, da die Variationen
+      von Lösungen direkt untersucht, gekreuzt und mutiert werden, um die 
+      besten Lösungen zu finden.
+      \\ \hline
+      Lösung
+       & Die Lösung ist eine Funktion, mit der das Optimum errechnet werden kann.
+       & Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
+      \\ \hline
+   \end{tabularx}
+   \caption{Vergleich auf den begriff Variationen}
+   \label{tab:example_bruteforce_cities}
+\end{table}
+
+Die Aussage, dass das Variationsprinzip im Algorithmus das gleiche ist, 
+stimmt nicht. Beide suchen zwar das Optimum, aber in der Mathematik findet 
+man eine Funktion, mit der das Optimum berechnet werden kann, wie z.B. 
+die Durchbiegung einer Kette. Im Algorithmus wird versucht, das Optimum 
+durch Zufall und Variationen (neue Kombinationen) zu finden. Am Ende 
+hat man eine Lösung, die das Optimum sein könnte, sehr nahe dran ist 
+oder komplett daneben liegt.

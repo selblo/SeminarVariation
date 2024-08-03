@@ -85,12 +85,13 @@ $y_i$ zunächst im Term mit $k=i$ vor.
 Da aber $y'_k$ aus $y_{k+1}$ und $y_k$ berechnet wird, kommt $y_i$
 in der Summe auch im Term mit $k=i-1$ vor.
 Die Ableitung der Summe nach $y_k$ ist daher
-\begin{align*}
+\begin{align}
 \frac{\partial I}{\partial y_i}(y_1,\dots,y_{n-1})
 &=
 \frac{\partial}{\partial y_i}
 \sum_{k=1}^{n-1}
 F(x_k, y_k, y'_k)\cdot h
+\notag
 \\
 &=
 \frac{\partial}{\partial y_i}
@@ -98,6 +99,7 @@ F(x_i, {\color{darkred}y_i}, {\color{darkred}y'_i})\cdot h
 +
 \frac{\partial}{\partial y_i}
 F(x_{i-1}, y_{i-1}, {\color{darkred}y'_{i-1}})\cdot h
+\notag
 \\
 &=
 \frac{\partial}{\partial y_i}
@@ -105,6 +107,7 @@ F\biggl(x_i, {\color{darkred}y_i}, \frac{y_{i+1}-{\color{darkred}y_i}}{h}\biggr)
 +
 \frac{\partial}{\partial y_i}
 F\biggl(x_{i-1}, y_{i-1}, \frac{{\color{darkred}y_i}-y_{i-1}}{h}\biggr)\cdot h.
+\notag
 \intertext{Die Ableitung kann mit der Kettenregel berechnet werden
 und ergibt}
 &=
@@ -130,6 +133,7 @@ h\cdot \biggl(
 -
 \frac{\partial F}{\partial y'}(x_{i-1},y_{i-1},y'_{i-1})
 \biggr)\biggr).
+\notag
 \intertext{Die innere Klammer ist ein Differenzenquotient, der die
 Ableitung nach $x$ approximiert.
 Für genügend feine Diskretisation ist daher }
@@ -142,7 +146,8 @@ h\cdot\biggl(
 \biggr)
 =
 0.
-\end{align*}
+\label{buch:direkt:euler:eqn:approx}
+\end{align}
 Die Ableitungen $\partial I/\partial y_i$ verschwinden also, wenn 
 die grosse Klammer den Wert $0$ annimmt.
 Eine notwendige Bedingung dafür, dass die Lösungsfunktion $y(x)$, die in den
@@ -150,16 +155,31 @@ Stützstellen $x_i$ die Werte $y(x_i) = y_i$ annimmt, das
 Integral $I(y)$ von \eqref{buch:direkt:euler:eqn:aufgabe} extremal macht,
 ist also, dass $y(x)$ die Euler-Lagrange-Differentialgleichung
 \[
-\frac{\partial F}{\partial y}(x,y(x),y'(x))
+\frac{\partial F}{\partial y}\bigl(x,y(x),y'(x)\bigr)
 -
 \frac{d}{dx}
-\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\frac{\partial F}{\partial y'}\bigl(x,y(x),y'(x)\bigr)
 =
 0
 \]
 erfüllt.
 
-
-
+Das Argument passt zum Stil, wie solche Beweise zu Eulers Zeit 
+formuliert wurden.
+Es ist aber nicht ganz vollständig.
+Zum Beispiel ist die rechte Seite von \eqref{buch:direkt:euler:eqn:approx}
+auch dann klein, wenn die grosse Klammer nur beschränkt ist.
+Die Begründung, dass sich im Grenzwert $n\to\infty$ oder $h\to 0$ die
+Klammer verschwinden müsse, ist also nicht ganz schlüssig.
+Gerade solche Schwächen oder Lücken in Beweisen haben später im
+im 19.~Jahrhundert eine Weiterentwicklung der Definitionen und
+Beweistechniken der Analysis vor allem durch Weierstrass provoziert.
+Auch die Begründung der Euler-Lagrange-Differentialgleichung als Grundlage
+der Variationsrechnung sah sich im 19.~Jahrhundert dieser methodischen
+Kritik durch Weierstrass und andere ausgesetzt.
+Die sich daraus entwickelnde Diskussion hat zu den heute akzeptierten
+Beweisen, dem Fundamentallemma oder auch dem in 
+Abschnitt~\ref{buch:nichtdiff:section:duboisreymond} 
+erklärten Lemma von Dubois-Reymond geführt.
 
 

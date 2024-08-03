@@ -1,0 +1,106 @@
+%
+% unserRitz.tex 
+%
+% 
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Ritz Verfahren Grundsätzlich\label{antennen:ritzGrundsätzlich}}
+
+Wie schon sehr oft in diesem Buch erwähnt, gibt es das Problem, dass man für ein Funktional
+\begin{equation}
+I(y)
+=
+\int_{x_1}^{x_2}L(x,y(x),y'(x))\,dx
+\label{antennen:normalesFunktional}
+\end{equation}
+eine Funktion $y(x)$ finden muss, welche das Funktional extremal macht.
+Solch eine Funktion ist die Lösung der
+\begin{equation}
+\frac{\partial L}{\partial y} - \frac{d}{dx} \left( \frac{\partial L}{\partial y'} \right) = 0
+\label{antennen:el-DGL}
+\end{equation}
+Euler-Lagrange Differentialgleichung.
+
+Wenn diese Gleichung \eqref{antennen:el-DGL} jedoch analytisch unlösbar ist 
+kommt das Verfahren nach Ritz ins Spiel.
+
+\subsection{Approximationsfunktion nach Ritz\label{antennen:approxFunkt}}
+
+Eine kleine Erinnerung der Fourier-Theorie, aus dieser weiss man dass 
+periodische Funktionen $f(t)$ als Linearkombination von anderen Funktionen, 
+im Sinne der Fourierreihe als
+\begin{equation}
+FR[f(t)]
+=
+\frac{a_0}{2}+\sum_{n=1}^{\infty}\left[a_n\cdot\cos\left
+(n\omega_f t\right)+b_n\cdot\sin\left(n\omega_f t\right)\right]
+\label{antennen:fourier}
+\end{equation}
+beschrieben werden können.
+
+Eine ähnliche Idee wird beim Verfahren nach Ritz angewendet.
+Es wird eine Approximationsfunktion in der Form
+\begin{equation}
+y(x)=\sum_{k=1}^n a_k \psi_k(x)
+\label{antennen:ritzFunkt}
+\end{equation}
+definiert. Die Funktionen $\psi_k(x)$ und Koeffizienten $a_k$, oder
+wie in der Welt des Verfahrens nach Ritz,  
+\em Koordinatenfunktionen $\psi_k(x)$ \em und \em Koordinaten $a_k$ \em.
+Im weiteren Verlauf jedoch behalten wir die intuitiveren, zuerst genannten Namen.
+
+\subsection{Mögliche Approximationsfunktionen\label{antennen:approxBsp}}
+
+Je nach Problemstellung gibt es bessere oder schlechtere Approximationsfunktionen.
+Mögliche ausgeschriebene Funktionen können so aussehen:
+\begin{equation}
+	\begin{aligned}
+		\text{Exponential-Entwicklung: }
+		y(x)
+		&=
+		a_0+a_1 x+a_2 x^2+\cdots+a_n x^n \\
+		\text{Fourier-Entwicklung: } 
+		y(x)
+		&=
+		a_0+a_1\cos(x)+b_1\sin(x)+\cdots+a_n\cos(n x)+b_n\sin(n x)\\
+		\text{Hyperbolische-Entwicklung: } 
+		y(x)
+		&=
+		a_1 e^{\lambda x}+a_2 e^{-\lambda x}+\cdots+a_n e^{(-1)^n \lambda}
+	\end{aligned}
+\label{antennen:approxFunktBsp}
+\end{equation}
+
+Das Ziel ist es schlussendlich das Problem so genau wie nötig, mit so wenig
+Koeffizienten wie möglich auszudrücken.
+
+
+\subsection{Unsere Approximationsfunktion\label{antennen:unsereApproxFunkt}}
+
+Bei unserem Problem ist zu erwarten, dass die Lösung eine glatte und symmetrische
+Funktion sein wird, somit konnten wir uns auf
+\begin{equation}
+y_n(x)
+= 
+\sum_{k=1}^n a_k\sin((2k-1)x)
+\label{antennen:unserRitz}
+\end{equation}
+als Approximationsfunktion einigen. 
+
+Diese Entwicklung wir auch Sinus-Fourier Reihe genannt
+und wenn man diese mal für $n=2$ ausschreibt ergibt sich
+\begin{equation}
+y_n(x)
+=
+a_1\sin(x)+a_2\sin(3x)
+\label{antennen:approxFunktn2}
+\end{equation}
+als Approximationsfunktion. Im weiteren Verlauf ist $y_n(x)$ \eqref{antennen:approxFunktn2} 
+unsere endgültige Approximationsfunktion, mit welcher wir die Problemstellung angehen werden.
+
+
+
+

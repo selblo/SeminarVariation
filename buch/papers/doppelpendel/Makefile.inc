@@ -4,7 +4,7 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 dependencies-doppelpendel =						\
-	papers/doppelpendel/packages.tex					\
+	papers/doppelpendel/packages.tex				\
 	papers/doppelpendel/main.tex					\
 	papers/doppelpendel/references.bib				\
 	papers/doppelpendel/teil0.tex					\

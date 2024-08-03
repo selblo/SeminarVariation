@@ -10,7 +10,8 @@ all:	karteextremum.pdf 						\
 	partabl.pdf							\
 	nebenbedingung.pdf						\
 	lagrangezyl.pdf							\
-	lagrangekurve.pdf
+	lagrangekurve.pdf						\
+	tangential.pdf
 
 karteextremum.pdf: karte.pdf karteextremum.tex
 	pdflatex karteextremum.tex
@@ -110,3 +111,19 @@ lagrangekurve.pdf:	lagrangekurve.tex lagrangekurve.jpg
 
 lagrangedetail.png:	lagrangedetail.pov lagrangemult.inc
 	povray +A0.1 -W1920 -H1080 -Olagrangedetail.png lagrangedetail.pov
+
+#
+# Tangentialebene und lineare Ersatzfunktion
+#
+tangential.pdf:	tangential.tex tangential.jpg
+	pdflatex tangential.tex
+
+tangential.jpg:	tangential.png Makefile
+	convert -extract 1920x1080+0+0 tangential.png \
+		-units PixelsPerInch -density 300 tangential.jpg
+
+tangential.png:	tangential.pov
+	povray +A0.1 -W1920 -H1080 -Otangential.png tangential.pov
+
+
+

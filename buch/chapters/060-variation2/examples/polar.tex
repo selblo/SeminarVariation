@@ -1,0 +1,48 @@
+%
+% polar.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\dx{4}
+\def\dy{4}
+\input{polarpfade.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=darkred,line width=1.4pt] \pfada;
+\draw[color=darkred,line width=1.4pt] \pfadb;
+\draw[color=darkred,line width=1.4pt] \pfadc;
+\draw[color=darkred,line width=1.4pt] \pfadd;
+\draw[color=darkred,line width=1.4pt] \pfade;
+\draw[color=darkred,line width=1.4pt] \pfadf;
+\draw[color=darkred,line width=1.4pt] \pfadg;
+\draw[color=darkred,line width=1.4pt] \pfadh;
+\draw[color=darkred,line width=1.4pt] \pfadi;
+\draw[color=darkred,line width=1.4pt] \pfadj;
+\draw[color=darkred,line width=1.4pt] \pfadk;
+\draw[color=darkred,line width=1.4pt] \pfadl;
+\draw[color=darkred,line width=1.4pt] \pfadm;
+\draw[color=darkred,line width=1.4pt] \pfadn;
+\draw[color=darkred,line width=1.4pt] \pfado;
+\draw[color=darkred,line width=1.4pt] \pfadp;
+\draw[color=darkred,line width=1.4pt] \pfadq;
+\draw[color=darkred,line width=1.4pt] \pfadr;
+
+\draw[->] (0,0) -- (8.4,0) coordinate[label={$r$}];
+\fill (0,0) circle[radius=0.05];
+\fill (4,0) circle[radius=0.05];
+\node at (4,0) [below] {$1$};
+\node at (0,0) [below] {$0$};
+
+\end{tikzpicture}
+\end{document}
+

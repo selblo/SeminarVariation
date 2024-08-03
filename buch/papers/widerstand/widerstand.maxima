@@ -1,0 +1,26 @@
+/*
+ * widerstand.maxima
+ *
+ * (c) 2024 Prof Dr Andreas Müller
+ */
+f: 4 * x / (1 + yp^2);
+fyp: diff(f,yp);
+
+gradef(y(x),yp(x));
+gradef(yp(x),ypp(x));
+
+fypx: subst([yp=yp(x),y=y(x)], fyp);
+
+dxfypx: diff(fypx, x);
+ratsimp(dxfypx);
+
+H: ratsimp(c * (1+p^2)^2/(4*p));
+
+Hp: ratsimp(diff(H, p));
+
+yp: ratsimp(p * diff(H, p));
+y: ratsimp(integrate(yp,p));
+
+xp: yp / p;
+x: ratsimp(integrate(xp,p));
+

@@ -1,0 +1,291 @@
+%
+% loesung.tex -- Lösung des Variationsproblems
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Lösung des Variationsproblems
+\label{widerstand:section:loesung}}
+\kopfrechts{Lösung}
+Das Minimalproblem~\ref{widerstand:aufgabe} ist ein Variationsproblem
+mit einem Randterm.
+In diesem Abschnitt lösen wird das Problem mit den im
+Abschnitt~\ref{buch:nebenbedingungen:section:randfunktionen}
+entwickelten Methoden.
+
+%
+% Die Euler-Lagrange-Differentialgleichung
+%
+\subsection{Die Euler-Lagrange-Differentialgleichung}
+Die Lagrange-Funktion des Funktionals~\eqref{widerstand:eqn:Wy} ist 
+\[
+F(x,y')
+=
+\frac{2x}{1+y^{\prime 2}}
+\]
+mit den partiellen Ableitungen
+\begin{align*}
+\frac{\partial F}{\partial y}&=0
+\\
+\frac{\partial F}{\partial y'}
+&=
+\frac{4xy'}{(1+y^{\prime 2})^2}.
+\end{align*}
+Daraus ergibt sich die Euler-Lagrange-Differentialgleichung
+\begin{align*}
+0
+=
+\frac{d}{dx} \frac{\partial F}{\partial y'}
+&=
+\frac{d}{dx}
+\frac{4xy'(x)}{(1+y'(x)^2)^2}.
+\end{align*}
+Statt diesen Ausdruck explizit abzuleiten schliessen wir, dass die rechte
+Seite konstant sein muss, es gibt also eine Konstante $c$ derart, dass
+\begin{equation}
+\frac{ 4xy'(x) }{ (1+y'(x)^2)^2 } = c.
+\label{widerstand:dgl:eqn:implizit}
+\end{equation}
+Die Konstante $c$ muss aus den Randbedingungen ermittelt werden.
+
+%
+% Lösung der Differentialgleichung
+%
+\subsection{Lösung der Differentialgleichung}
+Die implizite Form der Differentialgleichung
+\eqref{widerstand:dgl:eqn:implizit}
+kann leider nicht auf einfache Art in explizite Form gebracht und damit
+einer numerischen Lösung zugeführt werden.
+Die rechte Seite von \eqref{widerstand:dgl:eqn:implizit} lässt sich
+aber nach $x$ auflösen, womit das folgende Verfahren anwendbar ist.
+
+%
+% Lösung einer Differentialgleichung $F(x,y,y')=0$, die nach $x$ auflösbra ist
+%
+\subsubsection{Lösung einer Differentialgleichung $F(x,y,y')=0$,
+die nach $x$ auflösbar ist}
+Da die Funktion $F(x,y,y')$ in 
+einer Umgebung der Anfangsbedinung $(x_0,y_0)$ nach $x$ auflösbar ist,
+gibt es eine Funktion $x=H(y,p)$, wobei wir $p$ für die Variable schreiben,
+für die die Ableitung $y'$ eingsetzt werden soll.
+In einer Umgebung der Anfangsbedingung lässt sich $x$ durch die Variable $p$
+ausdrücken, also als Funktion $x=x(p)$.
+Die Ableitung von $y$ nach $x$ ist dann nach der Kettenregel
+\begin{equation}
+p
+=
+\frac{dy}{dx}
+=
+\frac{dy}{dp}\frac{dp}{dx}
+\qquad\Rightarrow\qquad
+\frac{dx}{dp}
+=
+\frac{1}{p}
+\frac{dy}{dp}.
+\label{widerstand:eqn:p}
+\end{equation}
+Damit ist die Ableitung on $x$ nach dem Parameter $p$ ist also festgelegt,
+sobald die Ableitung $y$ nach dem Parameter $p$ bekannt ist.
+
+Sei $y=u(x)$ ein Lösung, dann gilt $p=u'(x)$ oder
+\[
+x(p)
+=
+H(y(p),p).
+\]
+Durch Ableitung nach $p$ erhalten wir
+\begin{align}
+\frac{dx}{dp}
+&=
+\frac{\partial H}{\partial y}(y,p)
+\frac{dy}{dp}
++
+\frac{\partial H}{\partial p}(y,p)
+\intertext{und unter Verwendung
+\eqref{widerstand:eqn:p}}
+\frac{1}{p}\frac{dy}{dp}
+&=
+\frac{\partial H}{\partial y}(y,p)
+\frac{dy}{dp}
++
+\frac{\partial H}{\partial p}(y,p)
+\notag
+\\
+\frac{dy}{dp}
+&=
+p\frac{\partial H}{\partial y}(y(p),p)
+\frac{dy}{dp}
++
+p\frac{\partial H}{\partial p}(y(p),p)
+\notag
+\\
+\frac{dy}{dp}
+\biggl(
+1
+-
+p\frac{\partial H}{\partial y}(y(p),p)
+\biggr)
+&=
+p\frac{\partial H}{\partial p}(y(p),p)
+\notag
+\intertext{oder}
+\frac{dy}{dp}
+&=
+-
+\frac{
+\displaystyle
+p\frac{\partial H}{\partial p}(y(p),p)
+}{
+\displaystyle
+p\frac{\partial H}{\partial y}(y(p),p)
+-
+1
+}.
+\label{widerstand:loesung:eqn:dglyp}
+\end{align}
+Dies ist eine Differentialgleichung für die Funktion $y(p)$ in expliziter
+Form.
+
+Zur Lösung der Differentialgleichung $F(x,y,y')=0$ 
+muss also erst die Differentialgleichung
+\eqref{widerstand:loesung:eqn:dglyp}
+gelöst werden, um die Funktion $y(p)$ zu bestimmen.
+Anschliessend kann $x(p)$ als Lösung der Differentialgleichung
+\eqref{widerstand:eqn:p}
+gefunden werden.
+
+%
+% Anwendung auf die Differentialgleichung ()
+%
+\subsubsection{Anwendung auf die Differentialgleichung
+\eqref{widerstand:dgl:eqn:implizit}}
+Die Differentialgleichung
+\eqref{widerstand:dgl:eqn:implizit}
+ist nach $x$ aufgelöst
+\[
+x
+=
+c
+\frac{(1+y^{\prime 2})^2}{4y'}.
+\]
+Die Funktion $H(y,p)$ hängt also nicht von $y$ ab und ist nur
+\[
+H(p)
+=
+c
+\frac{(1+p^2)^2}{4p}
+=
+c
+\frac{p^4+2p^2+1}{4p}
+.
+\]
+Da $H$ nicht von $y$ abhängt vereinfacht sich der Nenner der
+Differentialgleichung \eqref{widerstand:loesung:eqn:dglyp}, es bleibt
+nur noch die Ableitung von $H$ nach $p$ zu bestimmen:
+\begin{align*}
+\frac{\partial H}{\partial p}
+&=
+c\frac{3p^4+2p^2+1}{4p^2}.
+\intertext{Daraus entstehen  aus \eqref{widerstand:loesung:eqn:dglyp}
+und \eqref{widerstand:eqn:p} die Differentialgleichungen}
+\frac{dy}{dp}
+&=
+p\frac{\partial H}{\partial p}(p)
+=
+c\frac{3p^4+2p^2-1}{4p}
+&&\Rightarrow&
+\frac{dx}{dp}
+&=
+c
+\frac{3p^4+2p^2-1}{4p^2},
+\intertext{die durch Quadratur gelöst werden können.
+Die Lösungen sind}
+y(p)
+&=
+c\frac{3p^4+4p^2}{16}
+-\frac14\log |p|
++
+C
+&&\text{und}&
+x(p)
+&=
+c
+\frac{(1+p^2)^2}{4p}
++
+D.
+\end{align*}
+Damit ist eine Parameterdarstellung der Lösungskurve gefunden.
+Die Integrationskonstanten $C$ und $D$ müssen aus den Randbedingungen
+ermittelt werden.
+Da auch die Konstanten $c$ aus den Randbedingungen ermittelt werden muss,
+sind zusätzliche Randbedingungen benötigt, die sich aus den Bedingungen
+an die Randfunktionen ergeben.
+
+%
+% Die Randbedingungen
+%
+\subsection{Die Randbedingungen}
+Am rechten Rand erfüllt die Lösung $y(x)$ die Randbedingung $y(R)=0$.
+Für die Randbedingung am linken Rand muss $r$ so gewählt werden, dass
+$\vec{f}_0\perp\vec{r}_0$ ist.
+Da der Tangentialvektor $\vec{r}_0$ horizontal ist, muss der Vektor
+$\vec{f}_0$ vertikal sein, seine $x$-Komponente muss daher verschwinden.
+Aus \eqref{buch:nebenbedingungen:randfunktionen:eqn:fnew}
+folgt daher, dass
+\begin{align*}
+0
+=
+\vec{f}_{0,x}
+&=
+F(x_0,y(x_0),y'(x_0))
+-
+y'(x_0)
+\frac{\partial F}{\partial y'}(x_0,y(x_0),y'(x_0))
++
+\frac{\partial g_0}{\partial x}(x_i,y(x_i))
+\\
+&=
+F(r,L,y'(r))
+-
+y'(r)
+\frac{\partial F}{\partial y'}(r,L,y'(r))
++
+\frac{\partial g_0}{\partial x}(r,L)
+\\
+&=
+\frac{2r}{1+y'(r)^2}
+-
+y'(r)
+\frac{4ry'(r)}{(1+y'(r)^2)^2}
+-
+2r
+\\
+&=
+2r
+\frac{1+y'(r)^2 -2y'(r)^2
+-
+1
+-2y'(r)^2
+-y'(r)^4
+}{(1+y'(r)^2)^2}
+\\
+&=
+\frac{2r}{(1+y'(r)^2)^2}
+y'(r)^2
+(
+-3
+-y'(r)^2
+)
+\\
+&=
+-
+\frac{2ry'(r)^2}{(1+y'(r)^2)^2}
+(3+y'(r)^2).
+\end{align*}
+
+
+
+
+

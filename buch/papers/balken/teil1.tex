@@ -6,53 +6,133 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{balken:section:teil1}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+\section{Grundbegriffe der Baustatik}
+\label{balken:section:teil1}
+\begin{description}
+\item[\textbf{Balken}] Ein «Balken» ist ein langer, schmaler Körper, der hauptsächlich Querkräften sowie Biegebelastungen ausgesetzt ist.
+Balken können unterschiedliche Formen annehmen.
+\item[\textbf{Balkengleichung}] Die Balkengleichung (auch als Euler-Bernoulli-Balkengleichung (EBB) bekannt) beschreibt das Biegeverhalten eines Balkens unter der Einwirkung von Querkräften und / oder Momenten.
+Dieses Biegeverhaltens wird grafisch durch eine Biegelinie illustriert. \ref{balken:Biegelinie}
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{balken:equation1}
+	\frac{d^2}{{dx}^2}\left(EI\frac{d^2y}{{dx}^2}\right)
+	=-M(x)
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+$E$ = Elastizitätsmodul des Balkenmaterials
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+$I$ = Flächenträgheitsmoment des Balkenquerschnitts
 
-\subsection{De finibus bonorum et malorum
-\label{balken:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{balken:equation1}.
+$y(x)$ = vertikale Verschiebung des Balkens als Funktion der horizontalen Position x
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{balken:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{balken:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+$M(x)$ = Biegemoment entlang des Balkens
 
+Diese Gleichung beschreibt die Beziehung zwischen der Biegemomentenverteilung entlang des Balkens M(x) und der daraus resultierende Verformung y(x).
+\item[\textbf{Biegelinie $u(x)$}] Eine visuelle Darstellung, die das Verhalten eines Balkens unter Einwirkung von Querkräften und/oder Momenten veranschaulicht und die Krümmung des Balkens entlang seiner Länge darstellt. \ref{balken:Biegelinie}
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil1/Biegelinie1.jpg}
+	\caption{Abbildung der Biegelinie aufgrund einer Einzellast}
+	\label{fig:Abbildung der Biegelinie aufgrund einer Einzellast}
+\end{figure}
+\item[\textbf{Biegemoment ($M$)}] Das Biegemoment, auch Schnittmoment genannt, ist eine Beanspruchung, bei dem ein Drehmoment erzeugt wird.
+Diese Beanspruchung kann entweder durch eine vertikale Kraft mit einem Hebelarm ausgelöst werden
+\begin{equation}
+	M=
+	F\cdot\ s
+\end{equation}
+oder durch ein bereits vorhandenes Drehmoment selbst.
+Biegemomente entstehen, wenn eine Kraft auf einen Körper einwirkt und eine Biegung oder Drehung auszulösen versucht.
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil1/Biegemoment.jpg}
+	\caption{Die Abbildung zeigt einen Balken, der von einer einzigen Last belastet wird, was zu auftretenden Momenten führt.}
+	\label{fig:Die Abbildung zeigt einen Balken, der von einer einzigen Last belastet wird, was zu auftretenden Momenten führt.}
+\end{figure}
+\item[\textbf{Biegesteifigkeit ($σ_B$, $R$)}] Die Biegesteifigkeit besagt wie widerstandsfähig ein Material und Form gegen eine Biegebeanspruchung ist.
+Sie beschreibt die Fähigkeit eines Balkens, sich unter äusserliche Einwirkung eines Biegemomentes zu verformen.
+\begin{equation}
+\sigma_{B,R}=E
+\left(x\right)\cdot\ I\left(x\right)=
+\frac{M(x)}{W(x)}
+\end{equation}
+$E(x)$ = Elastizitätsmodul
 
+$I(x)$ = Flächenträgheitsmoment
+
+$M(x)$ = Moment 
+
+$W(x)$ = Widerstandsmoment
+
+\item[\textbf{E-Modul ($E$)}] Das E-Modul ist eine Materialkonstante, welches die Steifigkeit eines Materials beschreibt.
+Er gibt an, wie viel Spannung ein Material aushalten kann, bis das Material eine bestimmte Dehnung erfährt. \ref{balken:Elastizitätsmodul}
+Der E-Modul wird definiert als
+\begin{equation}
+E=
+\frac{\sigma}{\varepsilon}
+\end{equation}
+$σ$ = Spannung
+
+$ε$ = Dehnung
+
+\item[\textbf{Festlager}] Ein Festlager ist ein Lager, das fähig ist, Kräfte in horizontaler und vertikaler Rich-tung aufzunehmen, jedoch keine Momente aufnehmen kann.
+Aufgrund dieser Eigenschaften werden Festlager als 2-wertige Auflager bezeich-net, da sie zwei Auflagerreaktionen haben (Querkräfte und Horizontalkräfte) und nur einen Freiheitsgrad (Momente) besitzen.
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil1/Festlager.jpg}
+	\caption{Die Abbildung zeigt verschiedene Darstellungsweisen eines Festlagers in der Baustatik.}
+	\label{fig:Die Abbildung zeigt verschiedene Darstellungsweisen eines Festlagers in der Baustatik.}
+\end{figure}
+\item[\textbf{Flächenträgheitsmoment ($I$)}] Das Flächenträgheitsmoment gibt die Trägheit eines Körpers an gegenüber einer Änderung seiner Drehbewegung.
+Anders ausgedrückt gibt es an, wie widerstandsfähig ein Bauteil gegen Biegung ist.
+Diese Trägheit wird ausschliesslich durch die Form des Körpers bestimmt, weshalb das Flächenträgheitsmoment von der Geometrie des Querschnittes abhängt.
+\item[\textbf{Lasten}] Lasten sind Kräfte oder Belastungen, die auf einen Körper bzw. statischen System wirken.
+Sie können aufgrund von Gewichtskräfte, externe Kräfte, thermische Belastungen und vieles mehr auftreten.
+Lasten gibt es in vier verschiedene Arten.
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil1/Lasten.jpg}
+	\caption{Die Abbildung zeigt verschiedene Lasttypen, die in der Baustatik vorkommen.}
+	\label{fig:Die Abbildung zeigt verschiedene Lasttypen, die in der Baustatik vorkommen.}
+\end{figure}
+\item[\textbf{Loslager}] Loslager besitzen die Fähigkeit Querkräfte aufzunehmen und werden deshalb als statisch 1-wertige Auflagern genannt.
+Da sie Horizontalkräfte und Momenten nicht aufnehmen können, besitzen sie zwei Freiheitsgrade.
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil1/Loslager.jpg}
+	\caption{Das Bild zeigt unterschiedliche Arten, ein Loslager in der Baustatik darzustellen.}
+	\label{fig:Das Bild zeigt unterschiedliche Arten, ein Loslager in der Baustatik darzustellen.}
+\end{figure}
+\begin{figure} [h]
+\centering
+\includegraphics[width=0.8\textwidth]{papers/balken/images/teil1/Gegenueberstellung.png}
+\caption{Diese Abbildung zeigt die unterschiedlichen Darstellungsweisen von Festlagern und Loslagern. Oben das Festlager abgebildetet und unten das Loslager.}
+\label{fig:Diese Abbildung zeigt die unterschiedlichen Darstellungsweisen von Festlagern und Loslagern. Oben das Festlager abgebildetet und unten das Loslager.}
+\end{figure}
+\item[\textbf{Nulllinie}] Die Nulllinie ist eine Referenzlinie, von der Berechnungen durchgeführt werden. Sie dient als Bezugspunkt für Abständen und Winkeln.
+Die Nulllinie ist dort wo die Fasern des Baumaterials neutral, sprich unbelastet sind.
+Bei einachsigen Beanspruchungen liegt die Nulllinie typischerweise in der Mitte des Querschnitts.
+Bei schräger Biegung verläuft die Nulllinie jedoch schräg durch den Querschnitt.
+\item[\textbf{Querkraft ($Q$)}] Querkräfte sind Kräfte, die senkrecht zur Längsrichtung eines Bauteils wirken.
+Sie üben Druck- und Zugkräfte seitlich auf den Bauteil aus, was zu Biegungen führen kann.
+\item[\textbf{Widerstandsmoment ($W$)}] Das Widerstandsmoment
+\begin{equation}
+W=I/c
+\end{equation}
+$W$ = Widerstandsmoment
+
+$I$ = Flächenträgheitsmoment
+
+$c$ = Abstand des äusseren Fasermittelpunkts zu der neutralen Faser
+
+kann mithilfe des Flächenträgheitsmoments berechnet werden.
+Es gibt an, welchen Widerstand ein belastetes Bauteil den inneren Spannungen entgegensetzt.
+\end{description}
+\subsection{Einführung in die Balkengleichung}
+Wirken Lasten auf einen Balken, so führt es zu einer Verformung der Balken aufgrund von auftretenden Momenten um die $y$-Achse.
+Die Balkentheorie analysiert diese Verformungen unter verschiedenen Lastszenarien und bestimmt dadurch die Biegelinie des Balkens, welche den Verlauf der Verformung entlang seiner Länge beschreibt.
+Wir wollen nun die Balkengleichung der Biegelinie $u(x)$ herleiten. \ref{balken:Balkentheorie}
+
+Wir betrachten einen schmalen Balken, welche seine Länge $L$ entlang der $x$-Achse verläuft.
+Allfällige Momente wirken um den $y$-Achse im Uhrzeigersinn und erzeugen eine positive Biegelinie u(x) mit der Öffnung gegen oben.
+D.h. $u(x) > 0$.
+Dabei verwenden wir die Euler-Bernoulli-Balkengleichung (EBB), die gültig ist, wenn reine Biegung so-wie Querkraftbiegungen auftreten.
+Für die EBB werden ausschliesslich Querschnitte betrachtet, die lotrecht zur Nulllinie liegen (im unbelasteten Zustand). \ref{balken:Biegelinie}

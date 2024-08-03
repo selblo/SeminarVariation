@@ -15,6 +15,7 @@ CHAPTERFILES +=								\
 	chapters/040-felder/fig/offen.tex				\
 	chapters/040-felder/fig/2drand.tex				\
 	chapters/040-felder/fig/randdef.tex				\
+	chapters/040-felder/fig/unterteilung.tex			\
 	chapters/040-felder/fig/green-beweis.tex			\
 	chapters/040-felder/fig/garbageman.tex				\
 	chapters/040-felder/fig/mandelbrot.tex				\

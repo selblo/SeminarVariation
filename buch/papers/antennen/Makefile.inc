@@ -3,12 +3,12 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-dependencies-antennen =						\
+dependencies-antennen =							\
 	papers/antennen/packages.tex					\
 	papers/antennen/main.tex					\
-	papers/antennen/references.bib				\
-	papers/antennen/teil0.tex					\
-	papers/antennen/teil1.tex					\
-	papers/antennen/teil2.tex					\
-	papers/antennen/teil3.tex
+	papers/antennen/references.bib					\
+	papers/antennen/problemstellung.tex				\
+	papers/antennen/antennenAllgemein.tex				\
+	papers/antennen/ritzAufProblem.tex				\
+	papers/antennen/unserRitz.tex
 

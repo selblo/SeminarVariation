@@ -8,11 +8,26 @@
 \kopfrechts{Das Jacobi-Kriterium}
 Die zweite Variation in der Form
 \eqref{buch:variation2:zweitevariation:eqn:SRintegral}
-zeigt, dass es für die Beurteilung, ob tatsächlich ein Extremum 
-vorliegt, auf das Verhalten der Funktionen $S(x)$  und $R(x)$ ankommt.
+zeigt, dass es für die Beurteilung, ob die Funktion $y(x)$ tatsächlich
+ein Extremum vorliegt, auf das Verhalten der Funktionen
+\begin{align*}
+S(x)
+&=
+P(x) - Q'(x)
+=
+\frac{\partial^2F}{\partial y^2}(x,y(x),y'(x))
+-
+\frac{d}{dx}\frac{\partial^2 F}{\partial y'\,\partial y}(x,y(x),y'(x))
+\\
+\intertext{und}
+R(x)
+&=
+\frac{\partial^2F}{\partial y^{\prime2}}(x,y(x),y'(x))
+\end{align*}
+ankommt.
 In einem Minimum garantiert die Legendre-Bedingung bereits,
 dass $R(x)\ge 0$ ist.
-Es bleibt noch zu untersuchen, ob sich Bedinungen an die Funktion
+Es bleibt noch zu untersuchen, ob sich Bedingungen an die Funktion
 $S(x)$ finden lassen, die garantieren können, dass ein Minimum
 vorliegt.
 
@@ -24,11 +39,18 @@ vorliegt.
 Wir möchten herausfinden, ob die zweite Variation negativ werden kann.
 Falls ja müsste sich eine Funktion $\eta(x)$ finden lassen, für die
 der Wert des Integrals
-\eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+\begin{equation}
+\delta^2 I(y)
+=
+\int_{x_0}^{x_1}
+S(x)\eta(x)^2 + R(x)\eta'(x)^2
+\,dx
+\label{buch:variation2:zweitevariation:eqn:SRintegral2}
+\end{equation}
 negativ ist.
 Ob es so eine Funktion gibt könnten wir dadurch entscheiden, dass wir
 das Minimum des Integrals
-\eqref{buch:variation2:zweitevariation:eqn:SRintegral}
+\eqref{buch:variation2:zweitevariation:eqn:SRintegral2}
 suchen.
 Damit ist ein Variationsproblem entstanden, auf das wir wieder die
 bereits entwickelte Theorie anwenden können.
@@ -104,6 +126,54 @@ Die Funktion $S(x)$ lässt sich also durch $R(x)$ und die Lösung $u(x)$
 ausdrücken, dies wird in
 Abschnitt~\ref{buch:variation2:jacobi:subsection:ohne}
 nüztlich sein.
+
+\begin{beispiel}
+Für das Problem des kürzesten Abstands in der Ebene ist
+die Lagrange-Funktion $L(x,y,y')=\sqrt{1+y^{\prime 2}}$ bereits
+in Beispiel~\ref{buch:variation2:legendre:bsp:ebene}
+untersucht worden, sie erfüllt die starke Legendre-Bedingung
+\[
+R(x)
+=
+\frac{\partial L}{\partial y^{\prime 2}}(x,y(x),y'(x))
+=
+\frac{1}{(1+y'(x)^2)^{\frac32}} > 0,
+\]
+wobei die zweite Ableitung von $L$ bereits in
+\eqref{buch:variation2:legendre:bsp:ebene:R}
+berechnet wurde.
+Da $L$ nicht von $y$ abhängt, ist
+\[
+\frac{\partial L}{\partial y}=0
+\qquad\Rightarrow\qquad
+\frac{\partial^2L}{\partial y^2}=0
+\quad\text{und}\quad
+\frac{\partial^2L}{\partial y\,\partial y'}=0
+\qquad\Rightarrow\qquad
+S(x)=0,
+\]
+die Jacobi-Differentialgleichung ist daher
+\begin{equation}
+\frac{d}{dx} \frac{1}{(1+y'(x)^2)^{\frac32}} \frac{d}{dx} u(x) = 0.
+\label{buch:variation2:jacobi:eqn:ebeneQ}
+\end{equation}
+Für eine Lösung $u(x)$ ist
+\[
+\frac{1}{(1+y'(x)^2)^{\frac32}}
+\frac{d}{dx} u(x) = C
+\qquad\rightarrow\qquad
+u'(x)
+=
+C(1+y'(x)^2)^{\frac32}.
+\]
+Insbesondere hat $u'(x)$ immer das gleiche Vorzeichen.
+Wenn $u(x)$ eine Lösung mit Anfangsbedingung $u(x_0)=0$ ist, dann
+kann es keine weitere Nullstelle geben, insbesondere kann es
+also keine Funktion $\eta(x)$ mit Randwerten $\eta(x_0)=\eta(x_1)=0$
+geben, die die Jacobi-Differentialgleichung erfüllt.
+Lösungen der Euler-Lagrange-Differentialgleichung sind also Minima
+des Längenfunktionals.
+\end{beispiel}
 
 %
 % Nullstellen von Lösungen der Jacobi-Differentialgleichung
@@ -527,9 +597,9 @@ $\delta^2 I(y)\ge 0$.
 
 
 %
-% Kürzeste Verbindung auf einem Rotationsellipsoid
+% Kürzeste Verbindung auf einem Rotationskörper
 %
-\subsection{Kürzeste Verbindung auf einem Rotationsellipsoid}
+\subsection{Kürzeste Verbindung auf einem Rotationskörper}
 Seit über 2000 Jahren ist der Menschheit bekannt, dass die Erde
 ungefähr die Form einer Kugel hat.
 Erathostenes gelang es als erstem, den Umfang der Erde mit
@@ -557,6 +627,540 @@ die das Funktional nicht ändert.
 Die beiden Punkte sind konjugierte Punkte.
 \end{beispiel}
 
+%
+% Rotationsflächen
+%
+\subsubsection{Rotationsflächen}
+Eine Rotationsfläche wird am einfachsten in Zylinderkoordinaten
+$(\varphi,r,z)$
+beschrieben.
+Die $z$-Achse ist die Achse der Rotationsfläche, die Funktion $r(z)$
+beschreibt einen Merdian.
+Der Winkel $\varphi$ ist die geographische Länge.
+
+\begin{beispiel}
+Ein Rotationsellipsoid mit Äquatorradius $R$ ist gegeben durch die Funktion
+\[
+r(z)
+=
+\sqrt{R^2-\frac{z^2}{b^2}}.
+\]
+Der Poldurchmesser ist $2b$.
+\end{beispiel}
+
+%
+% Kurvenparametrisierung
+%
+\subsubsection{Kurvenparametetrisierung}
+Ziel der späteren Untersuchung ist herauszufinden, ob eine Linie
+mit konstantem $z$ eine Verbindung geringster Länge zwischen den
+Winkeln $\varphi_0$ und $\varphi_1$ ist.
+Die Variation einer solchen Kurve ist charakterisiert durch die
+Abweichung in $z$-Richtung.
+Man darf daher annehmen, dass die Kurve durch eine Funktion $z(\varphi)$
+mit $z(\varphi_0)=z(\varphi_1)=0$ beschrieben wird.
+Ein Punkt der Kurve ist daher die Koordinaten
+$(\varphi, r(z(\varphi)), z(\varphi))$
+gegeben.
+
+%
+% Kurvenlänge
+%
+\subsubsection{Kurvenlänge}
+Die Länge einer mit $t$ parametrisierten Kurve in Zylinderkoordinaten
+wird durch ein Integral der Form
+\begin{align}
+l
+&=
+\int_{t_0}^{t_1}
+\sqrt{
+r^2
+\dot{\varphi}(t)^2
++
+\dot{r}(t)^2 
++
+\dot{z}(t)^2
+}\,dt
+\notag
+\intertext{gegeben.
+Mit $\varphi$ als Parameter für die Kurve vereinfacht sich das Integral
+auf}
+l(z)
+&=
+\int_{\varphi_0}^{\varphi_1}
+\sqrt{
+r(z(\varphi))^2
++
+r'(z(\varphi))^2 z'(\varphi)^2
++
+z'(\varphi)^2
+}
+\,d\varphi
+\label{buch:variation2:jacobi:bsp:laenge:l}
+\\
+&=
+\int_{\varphi_0}^{\varphi_1}
+\sqrt{
+r(z(\varphi))^2 + z'(\varphi)^2 \bigl(1+r'(z(\varphi))^2\bigr)
+}
+\,d\varphi.
+\notag
+\intertext{Die Lagrange-Funktion dieses Funktionals ist}
+L(\varphi,z,z')
+&=
+\sqrt{r(z)^2 + z^{\prime 2}\bigl(1+r'(z)^2\bigr)}.
+\label{buch:variation2:jacobi:bsp:laenge:L}
+\end{align}
+Man beachte, dass $L$ nicht von $\varphi$ abhängt, was die
+Euler-Lagrange-Differentialgleichung vereinfacht.
+
+Die Länge des Breitenkreises $z=0$ ist das Integral von
+$L(\varphi,0,0)$, also $l=(\varphi_1-\varphi_0)r(0)$.
+Da der zweite Term unter der Wurzel von $L$ immer positiv
+ist, kann die Kurvenlänge nur kleiner werden, wenn dar Radius
+$r(z)$ für $z>0$ deutlich kleiner ist.
+Wenn $r(z)$ mit zunehmendem $z$ nur langsam abnimmt, kann der
+zweite Term die Länge immer noch grösser machen.
+Die interessante Frage, die im Folgenden untersucht werden soll,
+ist daher, wie schnell $r(z)$ abnehmen muss, damit $z(\varphi)=0$
+nicht das Minimum des
+Funktionals~\eqref{buch:variation2:jacobi:bsp:laenge:l}
+ist.
+
+%
+% Euler-Lagrange-Differentialgleichung
+%
+\subsubsection{Euler-Lagrange-Differentialgleichung}
+Für die Euler-Lagrange-Differentialgleichungen werden die partiellen
+Ableitungen der Lagrange-Funktion wie folgt benötigt:
+\begin{align}
+\frac{\partial L}{\partial z}
+&=
+\frac{
+r'(z) + z^{\prime 2}r''(z)r'(z)
+}{
+\sqrt{r(z)^2 + z^{\prime 2}(1+r'(z)^2)}
+}
+\label{buch:variation2:jacobi:rot:el-links}
+\\
+\frac{\partial L}{\partial z'}
+&=
+\frac{
+z'(1+r'(z)^2)
+}{
+\sqrt{r(z)^2 + z^{\prime 2}(1+r'(z)^2)}
+}.
+\end{align}
+Die Ableitung nach $z'$ muss nochmals abgeleitet werden.
+Die Notation wird etwas unübersichlich, wir schreiben zunächst
+\begin{align*}
+Z(\varphi)
+&=
+z'(\varphi)\,(1+r'(z(\varphi))^2)
+\\
+N(\varphi)
+&=
+r(z(\varphi))^2
++
+z'(\varphi)^2 (1+r'(z(\varphi))^2).
+\end{align*}
+Die gesuchte Ableitung von $L$ kann damit geschrieben werden als
+\begin{equation}
+\frac{d}{d\varphi}\frac{\partial L}{\partial z'}
+(\varphi,z(\varphi),z'(\varphi))
+=
+\frac{d}{d\varphi}\frac{Z(\varphi)}{\sqrt{N(\varphi)}}
+=
+\frac{
+Z'(\varphi)N(\varphi)
+-
+\frac12
+Z(\varphi)N'(\varphi)
+}{
+N(\varphi)^{\frac32}
+}.
+\label{buch:variation2:jacobi:eqn:el2}
+\end{equation}
+Auch der Term~\eqref{buch:variation2:jacobi:rot:el-links}
+kann mit Hilfe von $N(\varphi)$ etwas kompakter geschrieben werden:
+\begin{align*}
+\frac{\partial L}{\partial z}
+(\varphi,z(\varphi),z'(\varphi))
+&=
+\frac{
+r'(z(\varphi)) + z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))
+}{\sqrt{N(\varphi)}}
+\\
+&=
+\frac{
+\bigl(r'(z(\varphi)) + z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))\bigr)
+\,
+N(\varphi)
+}{
+N(\varphi)^{\frac32}
+}
+\end{align*}
+Damit kann man jetzt die Euler-Lagrange-Differentialgleichung etwas
+kompakter schreiben.
+Nach Multiplikation mit $N(\varphi)^{\frac32}$ bleibt
+\begin{equation}
+\bigl(
+r'(z(\varphi)) + z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))
+\bigr)
+\,
+N(\varphi)
+-
+Z'(\varphi)N(\varphi) + \frac12 Z(\varphi)N'(\varphi)=0.
+\label{buch:variation2:jacobi:el-ZN}
+\end{equation}
+als Euler-Lagrange-Differentialgleichung.
+
+Die Ableitungen von $Z(\varphi)$ und $N(\varphi)$ sind
+\begin{align*}
+Z'(\varphi)
+&=
+z''(\varphi)\,(1+r'(z(\varphi))^2)
++
+2
+z'(\varphi)^2\,r''(z(\varphi))\,r'(z(\varphi))
+\\
+N'(\varphi)
+&=
+2 r'(z(\varphi))\, r(z(\varphi))\, z'(\varphi)
++
+2 z''(\varphi)\,z'(\varphi)\,(1+r'(z(\varphi))^2)
+\\
+&\qquad
++
+2 z'(\varphi)^3\, r''(z(\varphi))\, r'(z(\varphi)),
+\end{align*}
+und müssen in \eqref{buch:variation2:jacobi:el-ZN} eingesetzt
+werden. 
+
+Zur Berechnung von \eqref{buch:variation2:jacobi:el-ZN} wird
+etwas übersichtlicher, wenn die geschachtelten Funktionen nicht
+mehr alle ausgeschrieben werden müssen.
+Wir kürzen daher wieder $r'(z(\varphi)) = r'$ und $z'(\varphi)=z'$
+und analog für höhere Ableitungen.
+Dann werden die Terme für $Z(\varphi)$ und $N(\varphi)$
+\begin{align*}
+Z(\varphi)
+&=
+z'\,(1+r^{\prime 2}),
+&&&
+Z'(\varphi)
+&=
+z''\,(1+r^{\prime 2}) + 2z^{\prime 2}\,r''\,r',
+\\
+N(\varphi)
+&=
+r^2 + z^{\prime 2}(1+r^{\prime 2})
+&&\text{und}&
+N'(\varphi)
+&=
+2r'\,r\,z' + 2 z''\,z'\,(1+r^{\prime 2})+2 z^{\prime 3} r''\,r'.
+\end{align*}
+
+Wir sind nur daran interessiert zu prüfen, ob die
+Euler-Lagrange-Differentialgleichung für die Funktion $z(\varphi)=0$
+erfüllt ist.
+Daher können wir $z(\varphi)=z=0$ und $z(\varphi)=z'=0$ setzen, dadurch
+vereinfachen sich die Ausdrücke zu
+\begin{align*}
+Z(\varphi) &= 0
+&
+Z'(\varphi)
+&=0
+\\
+N(\varphi) &= r(0)^2
+&
+N'(\varphi) &= 0.
+\end{align*}
+Damit wird die Euler-Lagrange-Differentialgleichung
+\eqref{buch:variation2:jacobi:el-ZN}
+\begin{equation}
+r'(0)^2 r(0)^2 = 0.
+\end{equation}
+Die Funktion $z(\varphi)=0$ ist also nur dann eine Lösung der
+Euler-Lagrange-Differential\-glei\-chung, wenn $r'(0)=0$ ist.
+
+%
+% Legendre-Bedingungen
+%
+\subsubsection{Legendre-Bedingungen}
+Die Legendre-Bedingung fragt nach der zweiten Ableitung von $L$ nach $z'$.
+Mit der Quotientenregel ist sie
+\begin{align*}
+\frac{\partial^2L}{\partial z^{\prime 2}}
+&=
+\frac{
+(1+r'(z)^2)
+\cdot
+\sqrt{r(z)^2+z^{\prime 2}(1+r'(z)^2)}
+-
+z'(1+r'(z)^2)
+\cdot
+\displaystyle
+\frac{
+z'(1+r'(z)^2)
+}{
+\sqrt{r(z)^2 + z^{\prime 2}(1+r'(z)^2)}
+}
+}{
+r(z)^2 + z^{\prime 2}(1+r'(z)^2)
+}.
+\intertext{Bringen wir die Quadratwurzel im zweiten Term in den
+Nenner, indem wir den ersten Term damit erweitern, erhalten wir}
+&=
+\frac{
+(1+r'(z)^2)
+(r(z)^2+z^{\prime 2}(1+r'(z)^2))
+-
+z^{\prime 2}(1+r'(z)^2)^2
+}{
+\bigl(
+r(z)^2 + z^{\prime 2}(1+r'(z)^2)
+\bigr)^{\frac32}
+}
+\\
+&=
+\frac{
+r(z)^2 ( 1 + r'(z)^2)
+}{
+\bigl(
+r(z)^2 + z^{\prime 2}(1+r'(z)^2)
+\bigr)^{\frac32}
+}
+>0.
+\end{align*}
+Die starke Legendre-Bedingung ist also immer erfüllt.
+
+%
+% Die Jacobi-Differentialgleichung
+%
+\subsubsection{Die Jacobi-Differentialgleichung}
+Um die Jacobi-Differentialgleichung aufzustellen, müssen die Koeffizienten
+$S(\varphi)$ und $R(\varphi)$ für die Funktion $z(\varphi)=0$ berechnet
+werden.
+Für $R(\varphi)$ benötigen wir die zweite Ableitung von $L$ nach $z'$,
+die wir bereits berechnet haben, und finden
+\begin{align*}
+R(\varphi)
+&=
+\frac{
+r(0)^2(1+r'(0)^2)
+}{
+r(0)^3
+}
+=
+\frac{1+r'(0)^2}{r(0)}.
+\end{align*}
+$R(\varphi)$ ist also konstant.
+
+Die Berechnung $P(\varphi)$ und $Q(\varphi)$ verlangt nach den anderen
+zweiten Ableitungen von $L$, die aber auch wieder nicht von $\varphi$
+abhängen werden.
+Da auch $z(\varphi)$ und $z'(\varphi)$ für den untersuchten Breitenkreis
+nicht von $\varphi$ abhängen, sind beide konstant.
+Insbesondere wird die Ableitung $Q'(\varphi)=0$ sein, so dass
+$S(\varphi)=P(\varphi)$ ist.
+Es muss also nur noch $P(\varphi)$ bestimmt werden.
+
+Die Ableitungen von $L$ sind
+\begin{align*}
+\frac{\partial L}{\partial z}
+&=
+\frac{
+r'(z)(r''(z)z^{\prime 2}+r(z))
+}{
+\sqrt{(1+r'(z)^2)z^{\prime 2} +r(z)^2}
+}
+\intertext{mit der Quotientenregel}
+\frac{\partial^2 L}{\partial z^2}
+&=
+\frac{
+r''(z) (r''(z) z^{\prime 2} + r(z))
++
+r'(z)(r'''(z) z^{\prime 2} + r'(z))
+}{
+\sqrt{
+r(z)^2 + (1+r'(z)^2) z^{\prime 2}
+}
+}
+-
+\frac{
+(r'''(z) z^{\prime 2} + r(z))^2
+r'(z)^2
+}{
+(
+r(z)^2
++
+(1+r'(z)^2) z^{\prime 2}
+)^{\frac32}
+}.
+\intertext{Wir brauchen diesen Ausdruck nur für $z=0$ und $z'=0$,
+damit vereinfacht er sich zu}
+P(\varphi)
+&=
+\frac{
+r''(0)r(0)+r'(0)^2
+}{
+r(0)
+}
+-
+\frac{
+r(0)^2
+r'(0)^2
+}{
+r(0)^3
+}
+=
+r''(0).
+\end{align*}
+Die Jacobi-Differentialgleichung bekommt daher die Form
+\begin{align}
+\frac{d}{d\varphi}
+R(\varphi)
+\frac{d}{d\varphi}
+u(\varphi)
+&=
+S(\varphi)
+u(\varphi)
+&&\Rightarrow&
+u''(\varphi)
+&=
+\frac{S(\varphi)}{R(\varphi)} u(\varphi)
+\notag
+\\
+&&&\Rightarrow&
+u''(\varphi)
+&=
+\frac{r(0)r''(0)}{1+r'(0)^2}
+u(\varphi).
+\label{buch:variation2:jacobi:rot:lambda}
+\end{align}
+Der Bruch auf der rechten Seite bestimmt die Lösungen vollständig.
+Falls $r''(0) > 0$ ist, ist die konvex und damit kann sie keine
+weitere Nullstellen haben.
+
+%
+% Die Lösungen der Jacobi-Differentialgleichung
+%
+\subsubsection{Die Lösungen der Jacobi-Differentialgleichung und die konjugierten Punkte}
+Die Differentialgleichung
+\[
+u''(x) = -\lambda u(x)\qquad\text{mit $u(\varphi_0)=0$}
+\]
+hat die Lösung 
+\[
+u(\varphi)
+=
+A\sin \sqrt{\lambda}(\varphi-\varphi_0),
+\]
+mit Nullstellen bei $\varphi_0 + \pi k/\sqrt{\lambda}$ mit $k\in\mathbb{Z}$.
+Daraus können wir jetzt ablesen, dass die konjugierten Punkte bei
+$\varphi_0\pm \pi/\sqrt{\lambda}$ zu finden sind.
+Mit dem Wert von $\lambda$ aus~\eqref{buch:variation2:jacobi:rot:lambda}
+erhalten wir 
+\begin{equation}
+\Delta\varphi
+=
+\pi
+\sqrt{-\frac{1+r'(0)^2}{r(0)r''(0)}}
+\label{buch:variation2:jacobi:rot:abstand}
+\end{equation}
+für den Winkelabstand zwischen konjugierten Punkten.
+
+%
+% Konjugierte Punkte auf der Einheitskugel
+%
+\subsubsection{Konjugierte Punkte auf der Einheitskugel}
+Die Einheitskugel ist der Fall
+\begin{equation}
+\left.
+\begin{aligned}
+r(z)
+&=
+\sqrt{1-z^2}
+&&\Rightarrow&
+r(0)&=1
+\\
+r'(z)
+&=
+-
+\frac{z}{\sqrt{1-z^2}}
+&&\Rightarrow&
+r'(0)&=0
+\\
+r''(z)
+&=
+-
+\frac{1}{(1-z^2)^{\frac32}}
+&&\Rightarrow&
+r''(0)&=-1
+\end{aligned}
+\quad
+\right\}
+\qquad\Rightarrow\qquad
+\Delta
+=
+\pi,
+\end{equation}
+die konjugierten Punkte sind also wie erwartet Antipodenpunkte.
+
+%
+% Konjugierte Punkte auf einem Rotationsellipsoid
+%
+\subsubsection{Konjugierte Punkte auf einem Rotationsellipsoid}
+Ein Rotationsellipsoid mit Äquatorradius $1$ und Polradius $b$
+entsteht für die Funktion $r(z)=\sqrt{1-z^2/b^2}$.
+Die Berechnung des Winkelabstands für die konjugierten Punkte
+ergibt
+\begin{equation}
+\left.
+\begin{aligned}
+r(z) &= \sqrt{1-\frac{z^2}{b^2}}
+&&\Rightarrow&
+r(0) &= 1
+\\
+r'(z) &= -\frac{z}{\displaystyle b^2\sqrt{1-\frac{z^2}{b^2}}}
+&&\Rightarrow&
+r'(0) &= 0
+\\
+r''(z)
+&=
+-\frac{1}{b^2\biggl(\displaystyle1-\frac{z^2}{b^2}\biggr)^{\frac32}}
+&&\Rightarrow&
+r''(0) &= -\frac{1}{b^2}
+\end{aligned}
+\quad
+\right\}
+\qquad\Rightarrow\qquad
+\Delta
+=
+\pi b.
+\end{equation}
+Wenn das Ellipsoid also einen kleineren Polradius als $1$ hat, dann
+sind die konjugierten Punkt näher als einen halben Umfang vom
+Ausgangspunkt entfernt.
+
+Man kann dieses Resultat auch wie in
+Abbildung~\ref{buch:variation2:fig:geodaeten} visualisieren.
+\input{chapters/060-variation2/fig/geodesics.tex}
+Der Äquator ist eine Lösung der Euler-Lagrange-Differentialgleichung
+für die Verbindungen zwischen den Punkten $\varphi_0$ und $\varphi_1$.
+Sie wird für $b <= (\varphi_1-\varphi_0)/\pi$ instabil und es gibt
+eine kürzere Verbindung, die nicht entlang dem Äquator verläuft.
+In Abbildung~\ref{buch:variation2:fig:geodaeten} beginnen alle
+Geodäten beim Punkt $P_0$.
+Der Punkt $P_1$ ist der konjugierte Punkt, für Punkte $P$ jenseits dieses
+Punktes gibt es eine kürzere Verbindung von $P_0$ zu $P$.
+
+
+%
+% Die Gestalt der Erde
+%
+\subsubsection{Die Gestalt der Erde}
 Die Erde ist aber nicht eine Kugel, sondern eher ein Rotationsellipsoid,
 der Durchmesser entlang der Achse ist verschieden vom Durchmesser des 
 Äquators.
@@ -579,11 +1183,7 @@ eines Merdianbogens zu vorgegebenem Winkel kürzer.
 Die Expedition von Maupertuis und eine zeitgleich stattfindende Expedtion
 nach Ecuador bestätigten beide die Abplattung.
 
-\begin{beispiel}
-Unter der Annahme, dass die Erde ein Rotationsellipsoid mit Äquatorradius
-$1$ und Polradius $r$ ist, soll der kürzeste Weg zwischen zwei Punkten
-auf dem Äquator bestimmt werden.
-\end{beispiel}
+
 
 
 
