@@ -11,7 +11,7 @@
 \subsection{Variationsprinzip}
 Die Variationsrechnung ist ein Teilgebiet der Analysis, das sich mit kleinen Änderungen in Funktionen und Funktionalen beschäftigt, um Minima und Maxima von Funktionen zu ermitteln. Dabei handelt es sich um mathematische Ausdrücke, die Integrale über eine unbekannte Funktion und ihre Ableitung darstellen können. Ziel ist es, ein Maximum, ein Minimum oder einen Sattelpunkt ausfindig zu machen.
 
-In der Mechanik kommen Variationsrechnungen oft zum Einsatz, da sie die Grundlage aller physikalischen Extremalrechnungen bilden. \ref{balken:Variationsrechnung}
+In der Mechanik kommen Variationsrechnungen oft zum Einsatz, da sie die Grundlage aller physikalischen Extremalrechnungen bilden. \cite{balken:Variationsrechnung}
 
 \subsection{Minimalprinzip}
 Das Minimalprinzip ist ein Konzept, das besagt, dass ein physikalisches System einen Zustand annimmt, der mit dem geringsten Energieaufwand erreicht wird. In der Physik wird das Minimalprinzip oft formuliert, indem eine minimale Wirkung oder Energie angestrebt wird.
@@ -21,9 +21,9 @@ Ein Beispiel hierfür ist eine Feder, die an einem Ende an einer Wand befestigt 
 Das Minimalprinzip in Bezug auf die Balkengleichung ist ein grundlegendes Konzept der Mechanik, auch bekannt als das Prinzip von Hamilton. Es besagt, dass ein System den Gleichgewichtszustand annimmt, bei dem die potenzielle Energie minimal ist. Für einen Balken tritt dieser Zustand ein, wenn alle äusseren Kräfte, Momente, inneren Beanspruchungen sowie Verformungen des Balkens im Gleichgewicht stehen. Die Anwendung dieses Minimalprinzips führt zur Balkengleichung, die die Gleichgewichtsbedingungen des Balkens beschreibt. 
 
 \subsection{Herleitung der Balkengleichung aus dem Variationsprinzip}
-Die Verformungen des Balkens aufgrund der auftretenden Biegespannungen $σ_x$ werden durch
+Die Verformungen des Balkens aufgrund der auftretenden Biegespannungen $sigma_x$ werden durch
 \begin{equation}
-	\sigma_x = \frac{E}{p} z
+	\sigma_x = \frac{E}{\varrho} z
 \end{equation}
 und
 \begin{equation}
@@ -31,19 +31,19 @@ und
 \end{equation}
 beschrieben. Setzt man diese beiden Gleichungen gleich, erhält man
 \begin{equation}
-	\frac{E}{p} z = \frac{M_y}{I_y} z
+	\frac{E}{\varrho} z = \frac{M_y}{I_y} z
 \end{equation}
 und kürzt anschliessend $z$ heraus, so bekommt man
 \begin{equation}
-	\frac{E}{p} = \frac{M_y}{I_y}
+	\frac{E}{\varrho} = \frac{M_y}{I_y}
 \end{equation}
-Dividiert man diese Gleichung durch $E$, um $p$ zu isolieren, erhält man die Formel für den Krümmungsradius
+Dividiert man diese Gleichung durch $E$, um $\varrho$ zu isolieren, erhält man die Formel für den Krümmungsradius
 \begin{equation}
-	\frac{1}{p} = \frac{M_y}{E I_y} = \kappa
+	\frac{1}{\varrho} = \frac{M_y}{E I_y} = \kappa
 \end{equation}
 
 Bei Biegungen, die aufgrund von Querkräften auftreten, ist das Moment veränderlich und hängt von der Position $x$ ab. Dies führt dazu, dass die Krümmung des Balkens bzw. der Biegelinie von der Position $x$ abhängt. Um die Krümmung zu bestimmen, benötigt man den kürzesten Weg zwischen beiden Auflagern des Balkens.
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/BiegungBalke2.jpg}
 	\caption{Darstellung der Biegelinie $y(x)$ mit dem Balken (rot gekennzeichnet) und dessen Auflagern.}
@@ -54,13 +54,14 @@ Zuerst berechnet man die Länge einer Geraden auf der Kurve $y(x)$:
 \begin{equation}
 	\Delta s = \sqrt{\Delta x^2 + \Delta y^2} \approx \sqrt{1 + y'(x)^2} \cdot \Delta x
 \end{equation}
-und danach mit dem Variationsprinzip die Kurvenlänge $l(y)$:
+und danach mit dem Integral die Kurvenlänge $l(y)$:
 \begin{equation}
-	l(y) = \int_{x_1}^{x_2} \sqrt{1 + {y'(x)}^2} \, dx
+	l(y) = \int_{x_1}^{x_2} \sqrt{1 + {y'(x)}^2} \, dx.
 \end{equation}
 
-Um das Variationsprinzip auf die Balkengleichung anwenden zu können, betrachtet man die potenzielle Energie des Balkens. Diese setzt sich aus der Biegeenergie sowie der Energie der äueren Kräfte zusammen. Die potenzielle Energie im Balken wird minimiert, wenn sich das System im Gleichgewicht befindet.
-\begin{figure} [h]
+\subsection{Variationsprinzip für die potentielle Energie}
+Um das Variationsprinzip auf die Balkengleichung anwenden zu können, betrachtet man die potenzielle Energie des Balkens. Diese setzt sich aus der Biegeenergie sowie der Energie der äusseren Kräfte zusammen. Die potenzielle Energie im Balken wird minimiert, wenn sich das System im Gleichgewicht befindet.
+\begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{papers/balken/images/teil2/federgesetz.pdf}
 	\caption{Veranschaulichung zur Energie im Balken durch das Flächenträgheitsmoment}
@@ -69,21 +70,22 @@ Um das Variationsprinzip auf die Balkengleichung anwenden zu können, betrachtet
 
 Die Energiedichte des Balkens an einem Punkt $x$ ist gegeben durch
 \begin{equation}
-	\frac{1}{2} E I \left( \frac{\partial^2 w}{\partial x^2} \right)^2
+	\frac{1}{2} E I \left( \frac{\partial^2 w}{\partial x^2} \right)^2.
 \end{equation}
-
 Hierbei ist $E I$ das Produkt aus dem Elastizitätsmodul und dem Flächenträgheitsmoment $I$, $w(x)$ beschreibt die Durchbiegung des Balkens.
 
 Zusätzlich zur inneren Energie kommt noch die Last $q(x)$, sodass das Funktional der Euler-Bernoulli-Gleichung wie folgt aussieht:
 \begin{equation}
-	\int_0^L \left( -\frac{1}{2} \left( \frac{\partial^2 w}{\partial x^2} \right)^2 + q(x) w(x) \right) \, dx
+	\int_0^L \left( -\frac{1}{2} \left( \frac{\partial^2 w}{\partial x^2} \right)^2 + q(x) w(x) \right) \, dx.
 \end{equation}
 
+\subsection{Zeitabhängige Durchbiegung}
 Für zeitabhängige Durchbiegungen $w(x,t)$ kommt noch ein kinetischer Energieterm hinzu:
 \begin{equation}
 	\frac{1}{2} \mu \left( \frac{\partial w}{\partial t} \right)^2
 \end{equation}
 
+\subsection{Differentialgleichung für $w(x)$}
 Die Lagrange-Funktion lautet daher:
 \begin{equation}
 	L(x,w,w',w'') = -\frac{1}{2} E I (w'')^2 + q w
@@ -100,26 +102,27 @@ Da die Lagrange-Funktion eine höhere Ableitung enthält, erweitert sich die Eul
 \begin{equation}
 	\frac{\partial L}{\partial w} - \frac{d}{dx} \frac{\partial L}{\partial w'} + \frac{d^2}{dx^2} \frac{\partial L}{\partial w''} = 0
 \end{equation}
-
 Einsetzen der Ableitungen ergibt:
 	\begin{align}
 		q - \frac{d^2}{dx^2}(E I w'') &= 0 \\
-		\Rightarrow w''''(x) &= \frac{q}{E I}
+		\Rightarrow w''''(x) &= \frac{q}{E I}.
 	\end{align}
 
+\subsection{Krümmung}
 Unsere Lagrange-Funktion ist somit:
 \begin{equation}
 	L(x,y,y') = \sqrt{1 + {y'}^2}
 \end{equation}
 
-Mittels der partiellen Ableitung von $L$ erhalten wir die folgende Formel:
+Die partiellen Ableitung von $L$ sind
 \begin{equation}
 	\frac{\partial L}{\partial y} = 0
 \end{equation}
 
-Durch weiteres Rechnen erhalten wir:
+und
+
 \begin{equation}
-	\frac{\partial L}{\partial y'} = \frac{y'}{\sqrt{1 + {y'}^2}}
+	\frac{\partial L}{\partial y'} = \frac{y'}{\sqrt{1 + {y'}^2}}.
 \end{equation}
 
 Setzt man $y(x)$ ein und leitet nach $x$ ab, ergibt sich:
@@ -134,13 +137,13 @@ Dies führt zu:
 
 Um die folgende Gleichung zu erhalten:
 \begin{equation}
-	\kappa = \frac{1}{p} = \pm \frac{y''}{(1 + {y'}^2)^{\frac{3}{2}}}
+	\kappa = \frac{1}{\varrho} = \pm \frac{y''}{(1 + {y'}^2)^{\frac{3}{2}}}
 \end{equation}
 
 Da wir in unserem Fall $w(x)$ als Funktion für die Biegelinie verwenden, müssen wir das Vorzeichen bestimmen. Da ein positives Moment eine Biegung nach unten verursacht, müssen wir ein negatives Vorzeichen verwenden. Somit erhalten wir:
 \begin{equation}
 	\kappa=
-	\frac{1}{p}=
+	\frac{1}{\varrho}=
 	-\frac{w''}{\left(1+{w'}^2\right)^\frac{3}{2}}
 \end{equation}
 mit
@@ -153,6 +156,7 @@ und
 	w''=
 	\frac{d^2y}{dx^2}
 \end{equation}
+
 $w$ = Funktion der Durchbiegung
 
 $w'$ = Neigung der Durchbiegung
@@ -192,9 +196,10 @@ Daraus ergibt sich.
 mit
 \begin{equation}
 	\kappa=
-	-w''
-\end{equation}.
+	-w''.
+\end{equation}
 
+\subsection{Temperatureinflüsse}
 Temperaturunterschiede verursachen Verformungen in der Balkenachse.
 Daher ist es wichtig, die Krümmung der Biegelinie bei Temperaturänderungen zu berücksichtigen.
 Daraus ergibt sich der Formel.
@@ -202,24 +207,27 @@ Daraus ergibt sich der Formel.
 	w''=
 	-\frac{M_y}{EI_y}-\alpha_{\text{th}}\frac{\Delta T}{h}
 \end{equation}
+
 $α_th$ = thermische Ausdehnungskoeffizient des Balkenmaterials
 
-$ΔT$ = Temperaturunterschied
+$\Delta T$ = Temperaturunterschied
 
 $h$ = Höhe des Balkens
 
 $I_y$ = Flächenträgheitsmoment
 
-Den oben genannten Formel kann auch folgend angegeben werden.
+Den oben genannten Formel kann auch wie folgt angegeben werden:
 \begin{equation}
 	w''''=
-	\left(-\frac{M_y}{EI_y}-\alpha_{\text{th}}\frac{\Delta T}{h}\right)^{''}
+	\left(-\frac{M_y}{EI_y}-\alpha_{\text{th}}\frac{\Delta T}{h}\right)^{''}.
 \end{equation}
 Bei einer linearen Temperaturverlauf ergibt sich bei der zweiten Ableitung 0.
 \begin{equation}
 	w''''=
-	\left(-\frac{M_y}{EI_y}\right)^{''}
+	\left(-\frac{M_y}{EI_y}\right)^{''}.
 \end{equation}
+
+\subsection{Querkraft}
 Die erste Ableitung des Biegemoments ergibt die Querkraft.
 \begin{equation}
 	\frac{dM}{dx}=
@@ -237,7 +245,7 @@ Mit konstanter Biegesteifigkeit $EI = konst.$ erfolgt.
 	-Q\left(x\right)
 \end{equation}
 
-Die 1. Ableitung der Querkraft bzw. die 2, Ableitung des Biegemoments ergibt der Linienlast entlang der x-Achse.
+Die 1. Ableitung der Querkraft bzw. die 2, Ableitung des Biegemoments ergibt der Linienlast entlang der $x$-Achse.
 \begin{equation}
 	\frac{dQ}{dx}=
 	Q'=
@@ -281,9 +289,11 @@ Jetzt Integrieren wir die Formel viermal.
 	\int{\frac{1}{6}q_0x^3}dx+\int{\frac{1}{2}C_1x^2}dx+\int{C_2x}dx+\int C_3=
 	\frac{1}{24}q_0x^4+\frac{1}{6}C_1x^3+\frac{1}{2}C_2x^2+C_3x+C_4
 \end{equation}
+
+\subsection{Randbedingungen}
 Jetzt werden die Randbedingungen berücksichtigt.
 In unserem Fall haben wir bei $(x_1, y_1)$ einen Festlager und bei $(x_2, y_2)$ ein Loslager.
-Dabei gelten für den Fest- und Loslager $w = 0$ und $M = 0$, das bedeutet, dass an diese Stellen keine Verschiebung in $z$-Richtung stattfindet und dass keinen Momenten aufgenommen werden können.
+Dabei gelten für den Fest- und Loslager $w = 0$ und $M = 0$, das bedeutet, dass an diese Stellen keine Verschiebung in $z$-Richtung stattfindet und dass keine Momente aufgenommen werden können.
 
 Es gilt
 \begin{equation}
@@ -293,26 +303,20 @@ Es gilt
 und
 \begin{equation}
 	EIw'''=
-	-Q_z
-\end{equation}.
+	-Q_z.
+\end{equation}
 
 Als erstes betrachten wir die Stelle $(x_1, y_1)$ mit den Festlager.
-Dabei setzen wir den Ursprung unser Koordinatennetz bei $(x_1, y_1)$, damit ergibt sich $x = 0$.
-Die Bedingungen sind: $w = 0$ und $M = 0$.
-\begin{equation}
-	EIw=
-	\frac{1}{24}q_0x^4+\frac{1}{6}C_1x^3+\frac{1}{2}C_2x^2+C_3x+C_4
-\end{equation}
-$w = 0$ und $x = 0$ einsetzen:
+Dabei setzen wir den Ursprung unseres Koordinatennetzes bei $(x_1, y_1)$, damit ergibt sich $x = 0$. Es folgt aus (13.48) durch einsetzen von $w = 0$ und $x = 0$:
 \begin{equation}
 	EI\cdot0=
 	\frac{1}{24}q_00^4+\frac{1}{6}C_10^3+\frac{1}{2}C_20^2+C_30+C_4
 \end{equation}
 \begin{equation}
-	C_4=
+	\Rightarrow C_4=
 	0
 \end{equation}
-Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen $M = 0$ ein
+Für die Momentenberechnung nehmen wir die 2. Ableitung und setzen in (13.46) $M = 0$ ein:
 \begin{equation}
 	EIw''=
 	-M_y=
@@ -323,15 +327,10 @@ Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen $M = 0$ ein
 	\frac{1}{2}q_00^2+C_10+C_2
 \end{equation}
 \begin{equation}
-	C_2=
+	\Rightarrow C_2=
 	0
 \end{equation}
-Jetzt machen wir die gleichen Berechnungen an der Stelle $(x_2, y_2)$ mit den Loslager, für $x_2$ setzen wir $L$ (für der Länge des Balkens) ein.
-\begin{equation}
-	EIw=
-	\frac{1}{24}q_0x^4+\frac{1}{6}C_1x^3+\frac{1}{2}C_2x^2+C_3x+C_4
-\end{equation}
-$w = 0$ und $x = L$, sowie $C_2 = 0$ und $C_4 = 0$ werden eingesetzt.
+Jetzt machen wir die gleichen Berechnungen an der Stelle $(x_2, y_2)$ mit den Loslager, für $x_2$ setzen wir $L$ (für der Länge des Balkens) ein. Aus (13.48) durch einsetzen von $w = 0$ und $x = L$, sowie $C_2 = 0$ und $C_4 = 0$ folgt
 \begin{equation}
 	EI\cdot0=
 	\frac{1}{24}q_0L^4+\frac{1}{6}C_1L^3+\frac{1}{2}0\cdot L^2+C_3L+0
@@ -341,21 +340,18 @@ $w = 0$ und $x = L$, sowie $C_2 = 0$ und $C_4 = 0$ werden eingesetzt.
 	\frac{1}{24}q_0L^4+\frac{1}{6}C_1L^3+C_3L
 \end{equation}
 \begin{equation}
-	C_3=
-	-\frac{1}{24}q_0L^3-\frac{1}{6}C_1L^2
+	\Rightarrow C_3=
+	-\frac{1}{24}q_0L^3-\frac{1}{6}C_1L^2.
 \end{equation}
-Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen $M = 0$, $x = L$ und $C_2 = 0$ ein.
+Für den Momentenberechnung nehmen wir die 2. Ableitung und setzen in (13.46) $M = 0$, $x = L$ und $C_2 = 0$ ein.
 \begin{align}
-		EIw''&=
-		-M_y=\frac{1}{2}q_0x^2+C_1x+C_2
-    \\
 		0 &=
 		\frac{1}{2}q_0L^2+C_1L+0
     \\
 		C_1&=
 		-\frac{1}{2}q_0L
 \end{align}
-$C_1$ in $C_3$ einsetzen:
+$C_1$ in Formel (13.58) einsetzen:
 \begin{equation}
 	C_3=
 	-\frac{1}{24}q_0L^3-\frac{1}{6}C_1L^2
@@ -363,6 +359,9 @@ $C_1$ in $C_3$ einsetzen:
 	=	-\frac{1}{24}q_0L^3+\frac{1}{12}q_0L^3
 	=	\frac{1}{24}q_0L^3
 \end{equation}
+Damit sind alle Koeffizienten $C_1$, $C_2$, $C_3$ und $C_4$ bestimmt.
+
+\subsection{Gleichung der Biegelinie}
 Die Konstanten werden in die Biegelinien-Gleichung eingesetzt.
 \begin{align}
 	EIw&=
@@ -389,27 +388,26 @@ Die Herleitung der Balkengleichung lässt sich ebenso gut mit den konventionelle
 \end{center}
 \caption{Darstellung unsere Balke mit den Auflagern $A$ und $B$ und der Linienlast $q_0$.}
 \end{figure}
-Gegeben ist:
+gegeben ist:
 \begin{equation}
 	w''(x)=
 	-\frac{M_y(x)}{EI_y}
 	\rightarrow-M_y(x)=
-	EI_y\cdot w''(x)
-\end{equation}.
+	EI_y\cdot w''(x).
+\end{equation}
 Die Auflagerkräfte $A$ und $B$
 \begin{equation}
 	A=
 	B=
 	\frac{q_0\cdot L}{2}
 \end{equation}
-benötigen wir um die Schnittmomente an der Stelle $x$ zu berechnen,
+benötigen wir um die Schnittmomente an der Stelle $x$ zu berechnen:
 \begin{equation}
 	M_y(x)=
 	A\cdot x-\frac{q_0\cdot x^2}{2}=
-	\frac{q_0\cdot L}{2}\cdot x-\frac{q_0\cdot x^2}{2}
+	\frac{q_0\cdot L}{2}\cdot x-\frac{q_0\cdot x^2}{2}.
 \end{equation}
-Moment ist gleich Kraft mal Hebelarm.
-Jetzt setzen wir $My(x) = EIy \cdot w''(x)$ ein
+Moment ist gleich Kraft mal Hebelarm, daher setzen wir jetzt $My(x) = EIy \cdot w''(x)$ ein und erhalten
 \begin{align}
 		EI_y\cdot w''(x)&=
 		\frac{q_0\cdot x^2}{2}-\frac{q_0\cdot L}{2}\cdot x
@@ -423,7 +421,9 @@ Jetzt setzen wir $My(x) = EIy \cdot w''(x)$ ein
 		EI_y\cdot w\left(x\right)&=
 		\frac{q_0}{24}\cdot x^4-\frac{q_0\cdot L}{12}\cdot x^3+C_1\cdot x+C_2
 \end{align}
-1. Randbedingung: Durchbiegung an der Stelle $x = 0$ ist 0.
+
+\subsection{Randbedingungen}
+1. Randbedingung: Durchbiegung an der Stelle $x = 0$ ist 0. Wir setzen diese Wert in (13.73) ein und erhalten:
 \begin{align}
 		EI_y\cdot w\left(x\right)&=
 		\frac{q_0}{24}\cdot x^4-\frac{q_0\cdot L}{12}\cdot x^3+C_1\cdot x+C_2
@@ -442,8 +442,10 @@ Jetzt setzen wir $My(x) = EIy \cdot w''(x)$ ein
 		\frac{q_0}{24}\cdot L^4-\frac{q_0\cdot L}{12}\cdot L^3+C_1\cdot L+0
 	\\
 		C_1&=
-		\frac{q_0\cdot L^3}{24}
+		\frac{q_0\cdot L^3}{24}.
 \end{align}
+
+\subsection{Gleichung der Biegelinie}
 Daraus ergibt sich der Formel:
 \begin{align}
 		EI_y\cdot w\left(x\right)&=
@@ -455,20 +457,28 @@ Daraus ergibt sich der Formel:
 Das ist äquivalent zu dem, was wir bei der mathematischen Herleitung erhalten haben.
 
 \subsection{Erläuterung der Annahmen und Randbedingungen}
-Um die Berechnungen innerhalb der Plattentheorie pragmatischer zu gestalten, werden einige Vereinfachungen vorgenommen und die Randbedingungen festgelegt, unter denen sie gültig sind.
-Dadurch können die Berechnungen vereinfacht und lösbar gemacht werden. \ref{balken:Differentialgleichung der Biegelinie}
+Um die Berechnungen innerhalb der Balkentheorie pragmatischer zu gestalten, werden einige Vereinfachungen vorgenommen und die Randbedingungen festgelegt, unter denen sie gültig sind.
+Dadurch können die Berechnungen vereinfacht und lösbar gemacht werden. \cite{balken:Differentialgleichung-der-Biegelinie}
 Zu den Annahmen und Randbedingungen gehören folgende Aspekte:
 
 \begin{enumerate}
 	\item Die Balken werden als dünn angenommen, die hat zu bedeuten, dass die Dicke im Vergleich zur Länge des Balkens vernachlässigbar klein ist und deshalb für die Berechnung irrelevant ist.
+	
 	\item Die Balken sind eine konstante Linienlast ausgesetzt.
+	
 	\item Die Balken werden als ebene Struktur betrachtet, ohne signifikante Krümmungen und Verwindungen.
-	\item Im unbelasteten Zustand bleiben Linienabschnitte, die senkrecht zur Mittelfläche stehen, auch im verformten Zustand gerade und senkrecht zur verformten Mittelfläche
+	
+	\item Im unbelasteten Zustand bleiben Linienabschnitte, die senkrecht zur Mittelfläche stehen, auch im verformten Zustand gerade und senkrecht zur verformten Mittelfläche.
+	
 	\item Randbedingungen werden festgelegt, wobei die Art der Auflagerung oder Einspannung des Balkens berücksichtigt wird.
 	Diese Randbedingungen sind in der untenstehenden Tabelle aufgeführt.
-	\item Die Verformungen und Spannungen innerhalb des Balkens werden als vernachlässigbar klein betrachtet und können deshalb ausgeschlossen werden
-	\item Die Biegesteifigkeit des Balkens ist als konstant anzunehmen
+	
+	\item Die Verformungen und Spannungen innerhalb des Balkens werden als vernachlässigbar klein betrachtet und können deshalb ausgeschlossen.
+	
+	\item Die Biegesteifigkeit des Balkens ist als konstant anzunehmen.
+	
 	\item Es wird angenommen, dass die Temperaturdifferenz, die zu Verformungen der Balkenachse führt, konstant ist, und daher ergibt seine zweite Ableitung Null.
+	
 	\item Die Belastungen des Balkens wirken senkrecht zur Achse.
 \end{enumerate}
 \begin{figure}
