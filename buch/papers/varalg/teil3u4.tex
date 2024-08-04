@@ -9,10 +9,12 @@
 \subsection{Kreuzung
 \label{buch:paper:varalg:subsection:crossover}}
 \rhead{Kreuzung}
-In diesem Teil des Algorithmus werden die gewählten Elternpaare 
-neu kombiniert, um Nachkommen zu erzeugen. Bei der Kreuzung 
-werden Teile des genetischen String ausgetauscht.
-
+In diesem Schritt des Algorithmus werden die gewählten Elternpaare 
+neu kombiniert, um Nachkommen zu erzeugen. Bei der Kreuzung werden 
+Teile des genetischen String ausgetauscht, wie in der Abbildung
+\ref{fig:one_point_crossover}. Dadurch wird die Variation 
+aufrechterhalten (Grösse der Population bleibt gleich gross) und
+die Hoffnung dass eines der Nachkommen eine bessere Lösung ist.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{
@@ -21,62 +23,64 @@ werden Teile des genetischen String ausgetauscht.
 	\caption{Ein einfaches Beispiel für eine Einpunkt-Kreuzung}
 	\label{fig:one_point_crossover}
 \end{figure}
+Für die Kreuzung gibt es unterschiedliche Methoden:
+\begin{itemize}
+	\item \textbf{Einpunkt-Kreuzung:} Ein zufälliger Punkt wird auf den
+	Elternchromosomen ausgewählt. Die Gene vor diesem Punkt stammen
+	vom ersten Elternteil, die Gene ab diesem Punkt vom zweiten
+	Elternteil. Es wird einen zufälligen Punkt \( k \) \((1 \leq k < n)\)
+	gewählt. Mit der Formeln
+	\begin{align*}
+		O_1 = (P_1[1], P_1[2], \ldots, P_1[k], P_2[k+1], \ldots, P_2[n])\\
+		O_2 = (P_2[1], P_2[2], \ldots, P_2[k], P_1[k+1], \ldots, P_1[n])
+	\end{align*}
+	werden die Nachkommen erzeugt. Auf der Abbildung \ref{fig:one_point_crossover}
+	ist dies dargestellt.
+	\item \textbf{Zweipunkt-Kreuzung:} Zwei Punkte werden ausgewählt und
+	der Genabschnitt zwischen diesen Punkten wird zwischen den Eltern 
+	getauscht. Dafür werden zwei zufällige Punkte \( k_1 \) und \( k_2 \)
+	\((1 \leq k_1 < k_2 < n)\) ausgewählt. Die Nachkommen werden durch die
+	Formeln
+	\begin{align*}
+		O_1 = (P_1[1], \ldots, P_1[k_1], P_2[k_1+1], \ldots, P_2[k_2], P_1[k_2+1], \ldots, P_1[n])\\
+		O_2 = (P_2[1], \ldots, P_2[k_1], P_1[k_1+1], \ldots, P_1[k_2], P_2[k_2+1], \ldots, P_2[n])
+	\end{align*}
+	erzeugt.
+	\item \textbf{Uniforme Kreuzung:} Jedes Gen wird mit einer bestimmten
+	Wahrscheinlichkeit vom ersten oder zweiten Elternteil übernommen, was zu
+	einer zufälligeren Kombination führt. Für jedes Gen \( i \) \((1 \leq i \leq n)\)
+	wird eine zufällige Zahl \( r_i \) im Intervall [0, 1] gewählt. Wenn
+	\( r_i \) kleiner als die vordefinierte Wahrscheinlichkeit \( p \) ist,
+	dann wird das Gen von \( P_1 \) übernommen, ansonsten von \( P_2 \). Es
+	wird über jede Position mit dieser Formel 
+	\begin{align*}
+		O_1[i] &=
+		\begin{cases} 
+			P_1[i] & \text{wenn } r_i < p       \\
+			P_2[i] & \text{wenn } r_i \geq p 
+		\end{cases}
+		\\
+		O_2[i] &=
+		\begin{cases} 
+			P_2[i] & \text{wenn } r_i < p       \\
+			P_1[i] & \text{wenn } r_i \geq p 
+		\end{cases}
+	\end{align*}
+	iteriert\footnote{
+		Iterieren wird typischerweise in der Informatik verwendet und 
+		bedeutet, dass über eine Menge der Reihe nach durchgegangen wird. 
+		Bei der Iteration über einen String wird jede Position des Strings 
+		angeschaut und je nach Aufgabe etwas mit diesem Zeichen gemacht.
+		}.
+\end{itemize}
 
-Für die Kreuzung gibt es unterschiedliche Taktiken:
-
-- **Einpunkt-Kreuzung:** Ein zufälliger Punkt wird auf den 
-Elternchromosomen ausgewählt. Die Gene vor diesem Punkt 
-stammen vom ersten Elternteil, die Gene nach diesem Punkt 
-vom zweiten Elternteil. Mathematische:\\
-Wähle einen zufälligen Punkt \( k \) \((1 \leq k < n)\).
-Erzeuge die Nachkommen durch:
-\begin{align*}
-	O_1 = (P_1[1], P_1[2], \ldots, P_1[k], P_2[k+1], \ldots, P_2[n])
-	O_2 = (P_2[1], P_2[2], \ldots, P_2[k], P_1[k+1], \ldots, P_1[n])
-\end{align*}
-- **Zweipunkt-Kreuzung:** Zwei Punkte werden ausgewählt und 
-der Genabschnitt zwischen diesen Punkten wird zwischen 
-den Eltern getauscht.\\
-Wähle zwei zufällige Punkte \( k_1 \) und \( k_2 \) \((1 \leq k_1 < k_2 < n)\).
-Erzeuge die Nachkommen durch:
-
-\begin{align*}
-	O_1 = (P_1[1], \ldots, P_1[k_1], P_2[k_1+1], \ldots, P_2[k_2], P_1[k_2+1], \ldots, P_1[n])
-	O_2 = (P_2[1], \ldots, P_2[k_1], P_1[k_1+1], \ldots, P_1[k_2], P_2[k_2+1], \ldots, P_2[n])
-\end{align*}
-
-
-- Uniforme Kreuzung: Jedes Gen wird mit einer bestimmten 
-Wahrscheinlichkeit vom ersten oder zweiten Elternteil 
-übernommen, was zu einer zufälligeren Kombination führt.
-Mathematische Formel:\\
-Für jedes Gen \( i \) \((1 \leq i \leq n)\):
-Wähle eine zufällige Zahl \( r_i \) im Intervall [0, 1].\\
-Wenn \( r_i \) kleiner als die vordefinierte Wahrscheinlichkeit 
-\( p \) ist, dann wird das Gen von \( P_1 \) übernommen, 
-ansonsten von \( P_2 \).
-\begin{align*}
-O_1[i] &=
-	\begin{cases} 
-		P_1[i] & \text{wenn } r_i < p       \\
-		P_2[i] & \text{wenn } r_i \geq p 
-	\end{cases}
-\\
-O_2[i] &=
-	\begin{cases} 
-		P_2[i] & \text{wenn } r_i < p       \\
-		P_1[i] & \text{wenn } r_i \geq p 
-	\end{cases}
-\end{align*}
-Hier wird die Variation aufrechterhalten (Grösse der Population
-bleibt gleich gross) und gleichzeitig wird aus den besten Genen 
-neue erstellt, mit dem Versuch noch besseres Resultat zu bekommen.
-
-Wie schon in der Initialisierung erwähnt, kann nicht ein normaler 
-genetischer String \ref{fig:one_point_crossover} mit An und 
-Aus verwendet werden. Dies würde zu einem Resultat wie in der Abbildung 
+\subsection{Kreuzung auf das TSP angepasst
+\label{buch:paper:varalg:subsection:crossover_tsp}}
+\rhead{Kreuzung TSP}
+Für das Traveling Salesman Problem muss der Algorithmus angepasst werden.
+Würde das System wie in der Abbildung \ref{fig:one_point_crossover} 
+übernommen werden, würde es zu einem Resultat wie in der Abbildung
 \ref{fig:one_point_crossover_cities} führen.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{
@@ -85,21 +89,19 @@ Aus verwendet werden. Dies würde zu einem Resultat wie in der Abbildung
 	\caption{Beispiel einer Einpunkt-Kreuzung mit Städten}
 	\label{fig:one_point_crossover_cities}
 \end{figure}
-
-Für das Travelings Salesman Problem wird die Kreuzung mit andern Systemen 
-angepasst, damit es keine Doppelten gibt.
-
-Für den Script wurden die Logik angepasst. Die Algorithmen entfernen einen 
-Teil des Strings, wie bei in den vorherigen Kreuzungen, aber es fügt nach 
-der Reihenfolge des zweiten Elternteils alle nicht vorhandenen 
-Städte hinzu, bis der herausgeschnittene String wieder vollständig ist.
-
+Daher wird muss der Algorithmus so angepasst werden, damit keine Städte verschwinden
+oder doppelte auftretten. Die einfachste Methode ist es, den Teil der Ersetzt wird
+zu entfernen und danach die fehlenden Teile nach der Reihenfolge des anderen
+Elternteils zu ergänzen bis der String wieder vollständig ist, wie in der Abbildung
+\ref{fig:crossover_order_cities} aufgezeigt.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{
 		papers/varalg/images/teil3/08GeneticStringCitiesCrossoverSimple.png
 	}
-	\caption{Beispiel einer Einpunkt-Kreuzung mit Städten}
+	\caption{
+		Beispiel einer Einpunkt-Kreuzung mit Städten, die zu ersetzt werden nach
+		der Reihenfolge des anderen Elternteils ergänzt
+	}
 	\label{fig:crossover_order_cities}
 \end{figure}
-
