@@ -1,0 +1,47 @@
+%
+% koordinatensystem.tex -- Koordinatensystem
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\r{0.7}
+\def\wone{-20}
+\def\wtwo{50}
+\def\w{20}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (p1) at (1.5,-2.8);
+\coordinate (p2) at (6.5,-1.2);
+
+\draw[color=darkred] (p1) to[out=\wone,in={-180+\wtwo}] (p2);
+
+\coordinate (q) at (4.2,-2.87);
+\draw[color=orange] ($(q)+({-180+\w}:1)$) -- ++(\w:2);
+
+\fill[color=orange] (q) circle[radius=0.08];
+\node[color=orange] at (q) [below right] {Tangente};
+
+\fill[color=blue] (p1) circle[radius=0.08];
+\fill[color=blue] (p2) circle[radius=0.08];
+
+\draw[->,color=blue] ($(p2)+({-90+\wtwo}:\r)$) arc({-90+\wtwo}:{90+\wtwo}:\r);
+\draw[->,color=blue] ($(p1)+({90+\wone}:\r)$) arc({90+\wone}:{270+\wone}:\r);
+
+\node[color=blue] at ($(p1)+({180+\wone}:\r)$) [left] {$M$};
+\node[color=blue] at ($(p2)+({\wtwo}:\r)$) [above right] {$M$};
+
+\draw[->] (0,0) -- (8,0) coordinate[label={$x$}];
+\draw[->] (0,0) -- (0,-4) coordinate[label={left:$z,\,w(x)$}];
+
+\end{tikzpicture}
+\end{document}
+

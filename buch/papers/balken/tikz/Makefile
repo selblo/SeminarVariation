@@ -3,7 +3,12 @@
 #
 # (c) 2024 Prof Dr Andreas Müller
 #
-all:	balken.pdf biegelinie.pdf federgesetz.pdf einzellast.pdf drehmoment.pdf
+all:	balken.pdf							\
+	biegelinie.pdf							\
+	federgesetz.pdf							\
+	einzellast.pdf							\
+	drehmoment.pdf							\
+	koordinatensystem.pdf
 
 balken.pdf:	balken.tex
 	pdflatex balken.tex
@@ -30,4 +35,6 @@ einzellast.pdf:	einzellast.tex common.tex
 drehmoment.pdf:	drehmoment.tex common.tex
 	pdflatex drehmoment.tex
 
+koordinatensystem.pdf:	koordinatensystem.tex
+	pdflatex koordinatensystem.tex
 
