@@ -6,53 +6,25 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{varalg:section:teil1}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{varalg:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\section{Algorithmus auf ein Problem anwenden
+\label{buch:paper:varalg:section:find_problem}}
+\rhead{Algorithmus auf ein Problem anwenden}
+Um den Algorithmus zu verstehen, benötigt man ein Problem, das 
+viele Lösungen bietet, von denen eine optimal ist. Die verschiedenen 
+Lösungen sollen kleine Abweichungen aufweisen (Nachbarlösungen) 
+und das Problem soll mit der Grösse aufwändiger werden, um eine 
+Lösungen zu findem. Dabei kam das Travelling Salesman Problem (TSP) 
+in Betracht, welches ein NP-vollständiges Problem darstellt. Es 
+erfüllt die Anforderungen mit vielen Variationen von Lösungen, wobei
+irgendeines davon das Optimum ist.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{varalg:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{varalg:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{varalg:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{varalg:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
-
+\subsection{Travelling Salesman Problem
+\label{buch:paper:varalg:subsection:tsp}}
+\rhead{Travelling Salesman Problem}
+Das Travelling Salesman Problem (TSP) ist ein klassisches Problem 
+aus der Kombinatorischen Optimierung und Informatik. Ziel ist es, 
+für einen Händler die kürzeste Rundreise zu finden, welche eine 
+gegebene Anzahl von Städten umfasst, wobei jede Stadt 
+genau einmal besucht wird, bevor der Händler genau zum Ausgangspunkt 
+zurückkehrt. 
 
