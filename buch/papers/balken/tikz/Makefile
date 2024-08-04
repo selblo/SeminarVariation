@@ -3,7 +3,7 @@
 #
 # (c) 2024 Prof Dr Andreas Müller
 #
-all:	balken.pdf biegelinie.pdf federgesetz.pdf
+all:	balken.pdf biegelinie.pdf federgesetz.pdf einzellast.pdf drehmoment.pdf
 
 balken.pdf:	balken.tex
 	pdflatex balken.tex
@@ -23,4 +23,11 @@ krumm.jpg:	krumm.png Makefile
 
 federgesetz.pdf:	federgesetz.tex gerade.jpg krumm.jpg
 	pdflatex federgesetz.tex
+
+einzellast.pdf:	einzellast.tex common.tex
+	pdflatex einzellast.tex
+
+drehmoment.pdf:	drehmoment.tex common.tex
+	pdflatex drehmoment.tex
+
 
