@@ -10,32 +10,33 @@
 \section{Lagrange-Funktion von Luke\label{luke:section:Luke_Lagrangian}}
 \kopfrechts{Lagrange-Funktion von Luke}
 
-1967 veröffentlichte J. C. Luke \cite{luke:Luke1967} eine Lagrange-Funktion, mit welcher über das Variationsprinzip die Bewegungen von Oberflächenwellen auf einer freien Fluidoberfläche unter Einwirkung der Schwerkraft berechnet werden kann.
-Genau gesagt lässt sich durch die Minimierung des zugehörigen Integrals über das Variationsprinzip, Gleichungen für Oberflächengravitationswellen eines inkompressiblen, nicht viskosen, rotationsfreien Potentialflusses mit einer undurchlässigen freien Oberfläche sowie Boden, bei konstanten Druck, herleiten.
+1967 veröffentlichte J. C. Luke \cite{luke:Luke1967} eine Lagrange-Funktion, mit welcher über ein Variationsprinzip die Bewegungen von Oberflächenwellen auf einer freien Fluidoberfläche unter Einwirkung der Schwerkraft berechnet werden kann.
+Genau gesagt lassen sich durch die Minimierung des zugehörigen Integrals über die Variationsrechnung, Gleichungen für Oberflächengravitationswellen eines inkompressiblen, nicht viskosen, rotationsfreien Potentialflusses mit einer undurchlässigen freien Oberfläche sowie Boden, bei konstanten Druck, herleiten.
 
-Die Formel \eqref{luke:Luke_Variation_Formel} zeigt Luke´s Variationsformel in welcher Luke´s Lagrange-Funktion \eqref{luke:Luke_Lagrangian_Allgemein} vorkommt:
+Luke’s Variationsformel \eqref{luke:Luke_Variation_Formel} , in welcher Luke’s Lagrange-Funktion vorkommt \eqref{luke:Luke_Lagrangian_Allgemein}, lautet:
+
 
 \begin{align}
 	I(\phi)
 	&=
 	- \int_{t_0}^{t_1} \iint_\Omega \int_{z_0}^{z_1}\rho\left(
 	g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2
-	\right) dz \ dy \ dx \ dt
+	\right) dz \ dy \ dx \ dt,
 	\label{luke:Luke_Variation_Formel}
-	\\
+	\intertext{wobei die Lagrange-Funktion definiert ist als:}
+	\nonumber \\
 	L(x,y,z,t,\eta,h,\phi,\phi_t,\phi_x, \phi_y, \phi_z)
 	&=
-	-\int_{z_0}^{z_1}\rho\left( g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2 \right) dz,
+	-\int_{z_0}^{z_1}\rho\left( g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2 \right) dz
 	\label{luke:Luke_Lagrangian_Allgemein}
 \end{align}
-wobei für $z_0$ der Gewässergrund $-h(\bm{x},t)$ und für $z_1$ die freie Oberfläche der Flüssigkeit $\eta(\bm{x},t)$ eingesetzt wird:
+Dabei wird für $z_0$ der Gewässergrund $-h(\bm{x},t)$ und für $z_1$ die freie Oberfläche der Flüssigkeit $\eta(\bm{x},t)$ eingesetzt, und ergibt somit:
 \[
 \qquad\qquad\quad\;\;=
 -\rho\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} 
 g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2 dz
-\]
-
-
+,\]
+mit folgenden Termen:
 \begin{itemize}
 	\item
 	$\phi(\bm{x},z,t)$ ist das Geschwindigkeitspotential
@@ -56,7 +57,7 @@ g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2 dz
 	\item 
 	$\eta(\bm{x},t)$ freie Oberfläche der Flüssigkeit
 	\item 
-	$h(\bm{x},t)$ Gewässergrund 
+	$h(\bm{x},t)$ Gewässergrund.
 	
 \end{itemize}
 %DIESER TEIL EINBAUEN (Rotations und inlompressiblen Strömung)
@@ -77,8 +78,9 @@ Das bedeutet, dass folgende Zusammenhänge erfüllt werden müssen:
 Durch das Erweitern der Lagrange-Funktion, wird der Freiheitsgrad erhöht, was bei der Variation ermöglicht, eine größere Vielfalt von Ansätzen zu realisieren.
 Somit können Effekte berücksichtigt werden, welche in der realen Welt auftreten können. Dies kann zu genaueren Gleichungssystemen für Wasserwellen führen.
 
-Zuerst wird im Sinne der Vereinfachung die Oberflächenspannung vernachlässigt sowie die Flüssigkeitsdichte $\rho$ konstant auf $\rho = 1\frac{g}{ml}$ und die Erdbeschleunigung $g = 9.81\frac{m}{s^2}$ gesetzt.
-Das Integral \eqref{luke:Luke_Lagrangian_Allgemein} kann umgeschrieben und teilweise integriert werden.
+Zuerst wird im Sinne der Vereinfachung die Oberflächenspannung vernachlässigt sowie die Flüssigkeitsdichte $\rho$ konstant auf $\rho = 1\frac{\text{g}}{\text{ml}}$ und die Erdbeschleunigung $g = 9.81\frac{\text{m}}{\text{s}^2}$ gesetzt.
+Das Integral \eqref{luke:Luke_Lagrangian_Allgemein} kann umgeschrieben und teilweise integriert werden. 
+Das ergibt:
 \begin{align*}
 	L
 	&=
@@ -89,21 +91,21 @@ Das Integral \eqref{luke:Luke_Lagrangian_Allgemein} kann umgeschrieben und teilw
 	-\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{1}{2}\left(\nabla\phi\right)^2 + \frac{1}{2}\phi_z^2 dz\Bigg).
 \end{align*}
 Dabei ist $\tilde{\phi} = \phi(\bm{x},\eta(\bm{x},t),t)$ das Geschwindigkeitspotential auf der Oberfläche und $\check{\phi} = \phi(\bm{x},-h(\bm{x},t),t)$ das Geschwindigkeitspotential am Gewässergrund.
-Der Term $\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{\partial \phi}{\partial t}dz$ ist für die Variation irrelevant und kann somit weggelassen werden
+Der Term $\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{\partial \phi}{\partial t}dz$ ist für die Variation irrelevant und kann somit weggelassen werden, wodurch die folgende Gleichung entsteht:
 \begin{align*}
 	&=
 	-\rho\left(\frac{1}{2}g\eta(\bm{x},t)^2 + \frac{1}{2}h(\bm{x},t)^2g +\tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t} + \check{\phi} \frac{\partial h(\bm{x},t)}{\partial t}-\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{1}{2}\left(\nabla\phi\right)^2 + \frac{1}{2}\phi_z^2 dz\right).
 \end{align*}
 Beim Variationsprinzip wird die Veränderung der Funktion unter Variation ihrer Parameter betrachtet.
-Um die Berechnungen zu erleichtern wird angenommen, dass sich der Gewässergrund Zeitlich nicht ändert und die Tiefe konstant bleibt, somit ist $h(\bm{x},t) = h$ und $\frac{\partial h}{\partial t} = 0$.
-Weil die Tiefe $h$ als konstant angenommen wird, verändert diese sich nicht während des Minimierungsprozesses.
+Um die Berechnungen zu erleichtern wird angenommen, dass sich der Gewässergrund zeitlich nicht ändert und die Tiefe konstant bleibt, somit ist $h(\bm{x},t) = h$ und $\frac{\partial h}{\partial t} = 0$.
+Weil die Tiefe $h$ als zeitlich konstant angenommen wird, verändert diese sich nicht während des Minimierungsprozesses.
 Daher hat dieser Term $\frac{1}{2}h^2g$ keinen Einfluss auf die Variation und kann weggelassen werden.
 Somit kann die Lagrange-Funktion angeschrieben werden als:
 \[
 L(\bm{x},z,t,\eta,\phi,\phi_t,\phi_x, \phi_y, \phi_z)
 = 
 -\frac{1}{2}\rho g\eta(\bm{x},t)^2 +\rho \tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t} -\rho \int_{-h}^{\eta(\bm{x},t)} \frac{1}{2}\left(\nabla\phi\right)^2 + \frac{1}{2}\phi_z^2 dz
-\]
+.\]
 Um denn Freiheitsgrad der Variation zu erhöhen, wird die horizontale Geschwindikeit $\bm{u}(\bm{x},z,t) = \nabla\phi = \left(\phi_x, \phi_y\right)$ und die vertikale Geschwindigkeit $v(\bm{x},z,t) = \phi_z$ eingeführt. 
 Dadurch dass wir die Lagrange-Funktion erweitern, müssen wir auch den Zusammenhang von horizontalen und vertikalen Geschwindigkeit mit dem Geschwindigkeitspotential als Nebenbedingung einsetzen.
 Somit bekommen wir die Nebenbedingungen
@@ -129,7 +131,7 @@ v(\bm{x},z,t)
 =
 0.
 \]
-Drei Nebenbedingungen (beachte, dass $\bm{u}(\bm{x},z,t)$ ein zweidimensionaler Vektor ist und somit zwei Nebenbedingungen darstellt) bedeuten das einfügen von drei Lagrange- Multiplikatoren.
+Drei Nebenbedingungen (beachte, dass $\bm{u}(\bm{x},z,t)$ ein zweidimensionaler Vektor ist und somit zwei Nebenbedingungen darstellt) bedeuten das Einfügen von drei Lagrange- Multiplikatoren.
 Wobei $\bm{\mu}(\bm{x},z,t)$ für die ersten beiden und $\upsilon(\bm{x},z,t)$ für die dritte Nebenbedingung eingesetzt wird.
 Somit wird die Lagrange-Funktion erweitert mit den Multiplikatoren und Nebenbedingungen
 \[
@@ -156,13 +158,13 @@ Die Variation von $L$ nach $\bm{u}$ und $v$ ergibt folgende Euler-Lagrange-Gleic
 \[
 \frac{\partial L}{\partial v} = 0
 \]
-Das Lösen der Variation nach $\bm{u}$ ergibt
+Die Variationsrechnung nach $\bm{u}$ ergibt
 \begin{align*}
 	&= \frac{\partial \mathscr{}}{\partial \bm{u}}\left( -\frac{1}{2} \rho g \eta(\bm{x},t)^2 + \rho\tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t} -\rho \int_{-h}^{\eta(\bm{x},t)} \left[ \frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} \cdot (\nabla\phi - \bm{u}) + \upsilon \left(\phi_z - v\right) \right] dz\right)
 	\\
 	&= 0.
 \end{align*}
-Das Integral über $z$ ändert nicht die Lösung der Variation, deshalb wird dieses weggelassen, sowie die Therme davor ergeben Null
+Das Integral über $z$ ändert nicht die Variationsrechnung, deshalb wird dieses weggelassen, sowie die Terme davor ergeben Null
 \begin{align*}
 	&= -\frac{\partial}{\partial \bm{u}} \left(\frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} (\nabla\phi - \bm{u}) + \upsilon \left(\phi_z - v\right) \right) = 0
 	\\
