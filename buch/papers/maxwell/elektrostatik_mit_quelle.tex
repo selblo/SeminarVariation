@@ -7,14 +7,12 @@
 % !TEX encoding = UTF-8
 %
 %erste Maxwell Gleichung mit Quelle
-\subsection{Gausssches Gesetz
+\subsection{Gausssches Gesetz des elektrischen Feldes
 \label{maxwell:section:elektrostatik_mit_quelle}}
-\rhead{Problemstellung}
 Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\varphi(x,y,z)$ und eine Ladungsdichte $\varrho(x,y,z)$ existieren.
-Auch für diesen Raum möchten wir mittels Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
+Auch für diesen Raum möchten wir mittels der Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
 
 \subsubsection{Ansatz}
-\rhead{Ansatz}
 Es ist naheliegend, dass auch in diesem Szenario die Energie im System minimiert werden muss.
 Wie auch in Gleichung \eqref{maxwell:section:energieintegral_quellenfrei} ist die Energie im elektrischen Feld
 \[
@@ -80,21 +78,21 @@ Man bemerkt, dass die Lagrange-Funktion einen zusätzlichen additiven Term erhal
 Solche Terme nennt man Kopplungsterme.
 Sie werden verwendet, um die Wechselwirkung zwischen Termen in der Lagrange-Funktion zu berücksichtigen.
 Der Kopplungsterm in unserem Fall beschreibt die Wechselwirkung zwischen dem Feld und der Ladungsdichte.
-Nun können wir diese Lagrangefunktion in die Euler-Ostrogradski-Differentialgleichung einsetzen, um zu untersuchen, wie sich das elektrische Potentialfeld verhält.
+Nun können wir diese Lagrange-Funktion in die Euler-Ostrogradski-Differentialgleichung einsetzen, um zu untersuchen, wie sich das elektrische Potentialfeld verhält.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-Nun wollen wir die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrangefunktion in die Euler-Ostrogradski-Differentialgleichung einsetzten.
+Jetzt wollen wir die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrange-Funktion in die Euler-Ostrogradski-Differentialgleichung einsetzten.
 Um die Rechnung übersichtlicher zu gestalten, machen wir uns die Linearität der Euler-Ostrogradski-Differentialgleichung
 \begin{equation}
-F\left\{W_{\text{tot}}\right\}
+F(W_{\text{tot}})
 =
-F\left\{W_{\text{e}} - W_{\text{q}}\right\}
+F(W_{\text{e}} - W_{\text{q}})
 =
-F\left\{W_{\text{e}}\right\} + F\left\{-W_{\text{q}}\right\}
+F(W_{\text{e}}) + F(-W_{\text{q}})
 \label{maxwell:section:linearität_von_DGL}
 \end{equation}
 zu nutze.
-Die Lösung von $F\left\{W_{\text{e}}\right\}$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
+Die Lösung von $F(W_{\text{e}})$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
 Durch einsetzen von $-W_{\text{q}}$ in die Euler-Ostrogradski-Differentialgleichung erhalten wir
 \[
 \frac{\partial}{\partial\varphi}\left(-\varrho\,\varphi\right) - \underbrace{\frac{\partial}{\partial x}\frac{\partial}{\partial\varphi_x}\left(\varrho\,\varphi\right)}_{=0} - \underbrace{\frac{\partial}{\partial y}\frac{\partial}{\partial\varphi_y}\left(\varrho\,\varphi\right)}_{=0} - \underbrace{\frac{\partial}{\partial z}\frac{\partial}{\partial\varphi_z}\left(\varrho\,\varphi\right)}_{=0}
@@ -118,7 +116,7 @@ Durch Addition unserer zwei Teillösungen erhalten wir die Gleichung
 &=
 -\varrho.
 \end{align*}
-Schlussendlich erhalten wir
+Schlussendlich ist
 \begin{equation}
 \Delta\varphi
 =
@@ -126,13 +124,15 @@ Schlussendlich erhalten wir
 \label{maxwell:section:erste_maxwellgleichung_1}
 \end{equation}
 % TODO: definiton des laplace-operators suchen
-Durch gleiches Vorgehen wie in Gleichung \eqref{maxwell:section:laplace_gleichung_3} erhalten wir
+Durch gleiches Vorgehen wie in Gleichung \eqref{maxwell:section:laplace_gleichung_3} erreichen wir, dass
 \[
 \nabla\cdot\underbrace{\nabla\varphi}_{\displaystyle-\vec{E}}
 =
--\frac{\varrho}{\varepsilon_0}.
+-\frac{\varrho}{\varepsilon_0}
 \]
-Somit können wir erneut die Schlussdifferentialgleichung mit dem elektrischen Feld ausdrücken. Dadurch muss
+ist.
+Somit können wir erneut die Schlussdifferentialgleichung mit dem elektrischen Feld ausdrücken.
+Dadurch muss
 \begin{equation}
 \nabla\cdot\vec{E}
 =
@@ -140,13 +140,13 @@ Somit können wir erneut die Schlussdifferentialgleichung mit dem elektrischen F
 \label{maxwell:section:erste_maxwellgleichung_2}
 \end{equation}
 gelten.
-Wir sehen, dass dies dem gaussschen Gesetz entspricht.
+Wir sehen, dass dies dem gaussschen Gesetz des elektrischen Feldes entspricht.
 
 \subsubsection{Interpretation des Resultates}
 Das gausssche Gesetz \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, dass die Quelle des elektrischen Feldes eine Ladungsdichte $\varrho$ ist.
 Dies bedeutet, dass elektrische Feldlinien auf Ladungen enden können.
 In anderen Worten wird das elektrostatische Feld durch Ladungen erzeugt!
-Da es sowohl positive wie auch negative Ladungen gibt, gilt dasselbe für die Ladungsdichten.
+Da es sowohl positive wie auch negative Ladungen gibt, existieren demnach auch positive und negative Ladungsdichten.
 Wenn die Ladungsdichte positiv ist, sagt uns die erste Maxwell-Gleichung, dass das elektrische Feld eine Quelle besitzt.
 Das heisst, salopp gesagt, die Feldvektoren zeigen weg von der Ladungsdichte.
 Wenn die Ladungsdichte jedoch negativ ist, besitzt das elektrische Feld eine Senke.
@@ -160,10 +160,10 @@ Die Poisson-Gleichung
 =
 f,
 \]
-wobei $\phi$ ein Potentialfeld und $f$ eine Quelle ist, findet in vielen Teilen der Physik ihre Anwendungen.
-Die Quelle $f$ kann wie in Gleichung \eqref{maxwell:section:erste_maxwellgleichung_1} eine Funktion des Raumes und/oder eine Funkiton der Zeit sein.
-Ein Potentialfeld, dass die Poisson-Gleichung erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, dass die Quelle $f$ besitzt und Rotationsfrei ist.
-Die homogene Gleichung, also wo $f = 0$ ist, führt uns zur Laplace-Gleichung.
+wobei $\varphi$ ein Potentialfeld und $f$ eine Quelle ist, findet in vielen Teilen der Physik ihre Anwendungen.
+Die Quelle $f$ kann wie in Gleichung \eqref{maxwell:section:erste_maxwellgleichung_1} eine Funktion des Raumes und/oder eine Funktion der Zeit sein.
+Ein Potentialfeld, dass die Poisson-Gleichung erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, dass die Quelle $f$ besitzt und rotationsfrei ist.
+Die homogene Gleichung, also jene die $f = 0$ erfüllt, führt uns zur Laplace-Gleichung.
 
 
 

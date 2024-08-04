@@ -10,7 +10,7 @@
 \rhead{Magnetostatik}
 
 
-Wenn sich eine Ladung mit konstanter Geschwindigkeit bewegt, entsteht um sie herum ein konzentrisches Magnetfeld. Darüber hinaus wirken auch magnetische Kräfte auf die Ladung.
+Wenn sich eine Ladung mit konstanter Geschwindigkeit bewegt, entsteht um sie herum ein rotationssymmetrisches Magnetfeld. Darüber hinaus wirken auch magnetische Kräfte auf die Ladung.
 Wenn sich viele Ladungen mit einer konstanten Geschwindigkeit durch einen Leiter bewegen, erzeugen diese einen konstanten Strom, welcher ein konstantes magnetisches Feld, also ein Feld, welches sich über die Zeit nicht ändert, zur Folge hat. Dieses wirkt konzentrisch um den Leiter, wie in Abbildung \ref{maxwell:flussdichte} ersichtlich ist. Ausserdem ist in der Abbildung ersichtlich, dass die Feldlinien einen geschlossenen Pfad bilden. Dies zeigt, dass das magnetische Feld keine Quellen aufweist, also quellenfrei ist, und dass es somit keine magnetischen Monopole gibt.
 
 In der Magnetostatik betrachten wir also stationäre magnetische Felder, die Ursache dafür sind Permanentmagnete oder wie bereits erwähnt Gleichströme bzw. Ladungen mit konstanter Geschwindigkeit.
@@ -80,7 +80,7 @@ also das elektrische Potential im gesamten Raum als null angenommen.
 Wie auch in der Elektrostatik, gibt es in der Magnetostatik ein Potential, mit welchem energetische Zustände berechnet und ausgedrückt werden können. Im Unterschied ist jedoch das magnetische Potential ebenfalls eine vektorielle Grösse, also auch ein Vektorfeld. Das magnetische Vektorpotential zeigt jeweils in die selbe Richtung wie der Geschwindigkeitsvektor der bewegten Ladung.
 Durch das magnetische Vektorpotential, kann die magnetische Flussdichte als 
 \begin{equation}
-	\text{rot}\vec{A}=\nabla \times \vec{A}
+	\operatorname{rot}\vec{A}=\nabla \times \vec{A}
 	=
 	\vec{B}
 	\label{maxwell:definitionVektorpot}
@@ -124,20 +124,20 @@ berechnen. Also das Skalarprodukt der Wirkgrösse und dem Potential des wirkende
 %Mit dem Vektorpotential können ähnlich wie beim elektrischen Potential, energetische Zustände beschrieben werden. Die Wirkgrösse hier ist allerdings eine bewegte Ladung also eine Ladung $q$, welche eine Geschwindigkeit $\vec{v}$ hat. So kann das magnetische Potential dieser Grösse an einem Punkt berechnet werden. Zusätzlich ergibt sich über das Vektorpotential so auch die potentielle Energie dieser Wirkgrösse, auf welche weiter unten noch spezifischer eingegangen wird.
 
 
-\subsection{Amperesches Gesetz}
+\subsection{Ampèresches Gesetz}
 Das Ziel dieses Abschnitts ist erneut eine partielle Differentialgleichung zu finden, welche das Wesen des magnetischen Vektorpotentials und somit des magnetischen Feldes beschreibt.
-Wiederum betrachten wir unter den oben vorausgesetzten Bedingungen einen luftleeren, dreidimensionalen Raum $V \subset \mathbb{R}^3$ in welchem das Vektorfeld des magnetischen Vektorpotentials $\vec{A}(x,y,z)$, somit das magnetische Feld $\vec{B}(x,y,,z)$ und eine magnetische Wirkgrösse $q\vec{v}$  existieren. 
+Wiederum betrachten wir unter den oben vorausgesetzten Bedingungen einen luftleeren, dreidimensionalen Raum $V \subset \mathbb{R}^3$ in welchem das Vektorfeld des magnetischen Vektorpotentials $\vec{A}(x,y,z)$, somit das magnetische Feld $\vec{B}(x,y,z)$ und eine magnetische Wirkgrösse $q\vec{v}$  existieren. 
 
 \subsubsection{Ansatz}
 
 Wieder soll die Energie des gesamten Systems zusammengetragen und minimiert werden. 
-Die Energiedichte des magnetischen Feldes mit \ref{maxwell:definitionVektorpot} eingesetzt ist
+Die Energiedichte des magnetischen Feldes mit \eqref{maxwell:definitionVektorpot} eingesetzt ist
 \[ w_{\text{m}} 
 = 
 \frac{1}{2\mu_0}\vec{B}(x,y,z)^2
 =
 \frac{1}{2\mu_0}\left(\nabla\times\vec{A}(x,y,z)\right)^2. \]
-Somit berechnet sich die Gesamtenergie jenes zu 
+Die Gesamtenergie jenes berechnet sich dadurch als
 \begin{equation}
 	\label{maxwell:magnetFeldEnergie}
 	W_{\text{m}} = \iiint_V w_m\, dV\,.
@@ -151,12 +151,12 @@ q\vec{v}
 \vec{A}
  \]
 berechnen lässt.
-Da unser Ziel jedoch ist, das Integral der Gesamtenergie zu minimieren, müssen wir auch diese potentielle Energie über den gesamten Raum bzw. das selbe Volumen integrieren wie das Integral in \ref{maxwell:magnetFeldEnergie}. 
+Da unser Ziel jedoch ist, das Integral der Gesamtenergie zu minimieren, müssen wir auch diese potentielle Energie über den gesamten Raum bzw. das selbe Volumen integrieren wie das Integral in \eqref{maxwell:magnetFeldEnergie}. 
 
 Dafür betrachten wir erneut nur ein kleines, ein infinitesimales Stück der Ladung also $dq\,\vec{v}$ und können mithilfe von $dq = \varrho\,dV$, wobei $\varrho$ die Ladungsdichte ist, dieses kleine Stück der Ladung sofort zu $\vec{v}\varrho\,dV$ umschreiben.
 Wenn wir uns jetzt überlegen, dass sich eine Ladungsdichte mit einer Geschwindigkeit $\vec{v}$ bewegt, können wir auch sagen, dass dies äquivalent zu einer Stromdichte $\vec{\jmath}=\varrho\vec{v}$ ist. 
 Die kleinen bzw. infinitesimale Stücke der Wirkgrösse formen wir also zu \[\vec{\jmath}\,dV = \varrho\vec{v}\,dV\]
-um und erhalten mit einer Integration über den ganzen Raum
+um und erhalten mit einer Integration über den ganzen Raum $V$
 \begin{equation}
 	W_{\text{p}}
 	= 
@@ -211,7 +211,7 @@ abgelesen und definiert werden.
 Hierbei wollen wir darauf hinweisen, dass die Lagrange-Funktion in diesem Fall von einem Vektor, dem magnetischen Vektorpotential $\vec{A}$ abhängig ist. 
 Das bedeutet, dass jede Komponente des Vektorpotentials einzeln variiert werden kann, was später die Ursache für mehrere Ausführungen der Euler-Ostrogradski-Differentialgleichung sein wird.
 
-Erneut stellen wir auch fest, dass ein additiver Term dazugekommen ist, wie weiter oben beschrieben handelt es sich auch hier um einem Koppelungsterm, welcher hier jedoch die Wechselwirkung zwischen dem Feld und der Wirkgrösse also der Stromdichte $\vec{\jmath}$ beschreibt.
+Erneut stellen wir auch fest, dass ein additiver Term dazugekommen ist, wie weiter oben beschrieben handelt es sich auch hier um einen Kopplungsterm, welcher hier jedoch die Wechselwirkung zwischen dem Feld $\vec{A}$ und der Wirkgrösse, also der Stromdichte $\vec{\jmath}$ beschreibt.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
 
@@ -262,7 +262,7 @@ Da jede Komponente des magnetischen Vektorpotentials für sich variiert werden k
 	- \frac{\partial}{\partial y}(A_{3,y}-A_{2,z})
 \end{equation}
 Wobei für $i=2,3$ genau das gleiche Vorgehen wie bei $i=1$ angewendet wurde.
-Mithilfe von \ref{maxwell:nablaA} wollen wir jetzt den Ausdruck $\nabla\times\nabla\times\vec{A} = \nabla\times\vec{B}$ betrachten.
+Mithilfe von \eqref{maxwell:nablaA} wollen wir jetzt den Ausdruck $\nabla\times\nabla\times\vec{A} = \nabla\times\vec{B}$ betrachten.
 
 \begin{equation}
 	\renewcommand{\arraystretch}{1.9}
@@ -293,7 +293,7 @@ Mithilfe von \ref{maxwell:nablaA} wollen wir jetzt den Ausdruck $\nabla\times\na
 		\frac{\partial}{\partial x}(A_{1,z}-A_{3,x}) - \frac{\partial}{\partial y}(A_{3,y}-A_{2,z})
 	\end{pmatrix}
 \end{equation}
-Wir stellen fest, dass die drei Komponenten des resultierenden Vektors genau mit den rechten Seiten der drei Gleichungen \ref{maxwell:magnetoL1}, \ref{maxwell:magnetoL2} und \ref{maxwell:magnetoL3} übereinstimmen.
+Wir stellen fest, dass die drei Komponenten des resultierenden Vektors genau mit den rechten Seiten der drei Gleichungen \eqref{maxwell:magnetoL1}, \eqref{maxwell:magnetoL2} und \eqref{maxwell:magnetoL3} übereinstimmen.
 Dank der kompakten vektoriellen Schreibweise, können wir also unser Ergebnis der genannten drei Gleichungen zu
 \[ 
 \mu_0\vec{\jmath} 
@@ -304,6 +304,6 @@ zusammenfassen. Hierbei resultiert das Ampèresche-Gesetz.
 
 \subsubsection{Interpretation}
 
-Mittels der Variationsrechnung konnten wir das Ampèresche-Gesetz herleiten, welches besagt, dass die Stromdichte proportional zur Rotation des magnetischen Feldes ist. Anders ausgedrückt kann man, dass die Stromdichte, welche durch eine Fläche strömt, proportional zum magnetischen Feld ist, welches um den Rand dieser selben Fläche wirkt.
+Mittels der Variationsrechnung konnten wir das Ampèresche-Gesetz herleiten, welches besagt, dass die Stromdichte proportional zur Rotation des magnetischen Feldes ist. Anders ausgedrückt kann man sagen, dass die Stromdichte, welche durch eine Fläche strömt, proportional zum magnetischen Feld ist, welches um den Rand dieser selben Fläche wirkt.
 
 
