@@ -42,7 +42,7 @@ Für die Selektion gibt es verschiedene Möglichkeiten.
         P_i
         =
         \frac{f_i}{\sum_{j=1}^{N} f_j}
-        \label{buch:paper:varalg:selection:probability_fittest}
+        \label{eq:probability_fittest}
     \end{equation}
     berechnen. \(f_i\) ist die Funktion, welche die Fitness des Individuums berechnet.
     Geteilt durch die Totale Fitness. \(P_i\) ist die Wahrscheinlichkeit für das Individuum
@@ -53,9 +53,9 @@ Für die Selektion gibt es verschiedene Möglichkeiten.
         P_i
         =
         \frac{r_i}{\sum_{j=1}^{N} r_j}
-        \label{buch:paper:varalg:selection:probability_rating}
+        \label{eq:probability_rating}
     \end{equation}
-    ist die gleiche wie oben, verwendet jedoch die Funktion \(r_i\), welche den 
+    ist die gleiche wie \eqref{eq:probability_fittest}, jedoch verwendet die Funktion \(r_i\), welche den 
     Rang des Individuums berechnet.
     \item \textbf{Turnierselektion:} Eine Gruppe von Individuen wird zufällig ausgewählt
     und das fitteste Individuum dieser Gruppe wird als Elternteil gewählt.
@@ -71,8 +71,7 @@ die Wahrscheinlichkeit mathematisch berechnet wird.
 Für das Traveling Salesman Problem muss die Fitness nach der kürzeste Strecke,
 definiert sein. Dass bedeutet, dass die Wahrscheinlichkeit für die Selektion
 so umgestellt werden, dass je kürzer die Strecke, desto höher die Wahrscheinlichkeit
-ist. Die Formel \ref{buch:paper:varalg:selection:probability_fittest} wird 
-dafür angepasst und neu zu
+ist. Die Formel \eqref{eq:probability_fittest} wird dafür angepasst und neu zu
 \begin{equation}
     P_i
     =
