@@ -9,14 +9,15 @@
 \section{Multipolmoment
 \label{planet:section:multipol}}
 \rhead{Multipolmoment}
-In der Physik ist die Multipolentwicklung ein Verfaheren um die Poisson-Gleichung im dreidimensionalen Raum zu lösen, daraus entsteht eine Laurent-Reihe.
+In der Physik ist die Multipolentwicklung ein Verfaheren, um die Poisson-Gleichung im dreidimensionalen Raum zu lösen, bei der eine Laurent-Reihe als Lösungsfunktion entsteht.
 Die Entwicklungskoeffizienten dieser Reihe heissen Multipolmomente.
-Diese Methode wird hauptsächlich in der Elektrostatik und Magnetostatik verwendet, kann aber auf jeder Gebiet der Physik verallgemeinert werden, in dem die Poisson-Gleichung vorhanden ist.
+Diese Methode wird hauptsächlich in der Elektrostatik und Magnetostatik verwendet, kann aber auf jedem Gebiet der Physik verallgemeinert werden, in dem die Poisson-Gleichung auftritt.
 
 Die Motivation der Multipolentwicklung liegt darin, das Verhalten von beliebigen Potentialen (Gravitationspotential) in grosser Entfernung zu betrachten.
-Analog zur Fourier-Theorie lässt sich mit der Multipolentwicklung ein komplexe physikalisches Problem in kleinere Teilprobleme aufteilen die leiter zu lösen sind.
-Desweiteren zeigt sich auch, dass die Bewegungsgleichung für Planeten im wesentlichen zu linearen DGLs für die Multipolkoeffizienten werden.
-Alle Koeffizienten konvergieren gegen 0, ausser dem konstanten Koeffizienten, dieser ergiebt die Kugelform.
+Analog zur Fourier-Theorie lässt sich mit der Multipolentwicklung ein komplexes physikalisches Problem in kleinere Teilprobleme aufteilen die leichter zu lösen sind.
+Die \cref{planet:fig:multipol} zeigt die ersten drei Entwicklungsschritte einer Ladungswolke.
+Desweiteren zeigt sich auch, dass die Bewegungsgleichung für Planeten im wesentlichen zu linearen Differentialgleichungen für die Multipolkoeffizienten werden.
+Alle Koeffizienten konvergieren gegen 0, ausser dem konstanten Koeffizienten, dieser ergibt die Kugelform.
 
 Dieser Abschnitt und die Herleitungen basieren auf den Inhalten von \cite{planet:multi} und \cite{planet:quadro}.
 
@@ -41,14 +42,14 @@ schreiben, wobei \(\Delta\) der Laplace-Operator, \(f\) eine Dichte und \(\phi\)
 Die formale Lösung dieser Gleichung ist
 
 \begin{equation*}
-\phi (\vec{r}) = \frac{1}{4\pi} \int d^3 \vec{r}\,' \frac{f (\vec{r}\,')} {\left| \vec{r} - \vec{r}\,' \right|}.
+\phi (\vec{r}) = \frac{1}{4\pi} \int d^3 \vec{r}\,' \frac{f (\vec{r}\,')} {\abs{\vec{r} - \vec{r}\,'}}.
 \end{equation*}
 
 \noindent
-Ist \(f (\vec{r})\) in einem Volumen lokalisiert, kann für Orte \(\vec{r}\), die weit außerhalb dieses Volumens liegen, \(r \gg r\,'\), der Bruch in eine Taylor-Reihe in \(\vec{r}\,'\) um \(\vec{r}\,' = 0\) entwickelt werden:
+Ist \(f (\vec{r})\) in einem Volumen lokalisiert, kann für Orte \(\vec{r}\), die weit ausserhalb dieses Volumens liegen, \(r \gg r\,'\), der Bruch in eine Taylor-Reihe in \(\vec{r}\,'\) um \(\vec{r}\,' = 0\) entwickelt werden:
 
 \begin{equation*}
-\frac{1}{\left| \vec{r} - \vec{r}\,' \right|} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( \vec{r}\,' \cdot \vec{\nabla}\,' \right)^n \left. \frac{1}{\left| \vec{r} - \vec{r}\,' \right|} \right|_{\vec{r}\,'=0}
+\frac{1}{\abs{\vec{r} - \vec{r}\,'}} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( \vec{r}\,' \cdot \vec{\nabla}\,' \right)^n \left. \frac{1}{\abs{\vec{r} - \vec{r}\,'}} \right|_{\vec{r}\,'=0}
 \end{equation*}
 
 \noindent
@@ -57,16 +58,16 @@ Nach Bilden der Ableitungen wird diese an der Stelle \(\vec{r}\,' = 0\) ausgewer
 Durch Umformen erhält man
 
 \begin{equation*}
-\frac{1}{\left| \vec{r} - \vec{r}\,' \right|} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
+\frac{1}{\abs{ \vec{r} - \vec{r}\,'}} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
 \end{equation*}
 
 \noindent
 Die genaue Form der Entwicklung und der Multipole hängt vom jeweiligen Koordinatensystem ab.
 
-\subsection{Karthesische Multpolentwicklung
+\subsection{Kartesische Multpolentwicklung
 \label{planet:subsection:kartentwicklung}}
 
-Die karthesische Multipolentwicklung wird im karthesischen Koordinatensystem durchgeführt.
+Die kartesische Multipolentwicklung wird im kartesischen Koordinatensystem durchgeführt.
 Dort ist
 
 \begin{equation*}
@@ -79,25 +80,25 @@ Dann muss bei einem Summanden \(n\)-ter Ordnung ein Tensor \(n\)-ter Stufe, näm
 
 
 \begin{align*}
-\frac{1}{\left| \vec{r} - \vec{r}\,' \right|} &= \frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
-&= \frac{1}{r} + r\,'_{i} \frac{r_{i}}{r^{3}} + \frac{1}{2} r\,'_{i} r\,'_{j} \frac{3 r_{i} r_{j} - r^{2} \delta_{ij}}{r^{5}} + \mathcal{O}(r\,'^{3}).
+\frac{1}{\abs{ \vec{r} - \vec{r}\,'}} &= \frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
+&= \frac{1}{r} + r\,'_{i} \frac{r_{i}}{r^{3}} + \frac{1}{2} r\,'_{i} r\,'_{j} \frac{3 r_{i} r_{j} - r^{2} \delta_{i\!j}}{r^{5}} + \mathcal{O}(r\,'^{3}).
 \end{align*}
 
 
 \noindent
-Das Symbol \(\delta_{ij}\) repräsentiert das sogenannte Kronecker-Delta.
-Die formale Lösung \(\phi (\vec{r})\) der Poisson-Gleichung ist unter Verwendung der Identität \(r\,'_{i} r\,'_{j} r^{2} \delta_{ij} = r\,'^{2} r_{i} r_{j} \delta_{ij}\) wie folgt darstellbar:
+Das Symbol \(\delta_{i\!j}\) repräsentiert das sogenannte Kronecker-Delta.
+Die formale Lösung \(\phi (\vec{r})\) der Poisson-Gleichung ist unter Verwendung der Identität \(r\,'_{i} r\,'_{j} r^{2} \delta_{i\!j} = r\,'^{2} r_{i} r_{j} \delta_{i\!j}\) wie folgt darstellbar:
 
 
 \begin{align*}
-\phi (\vec{r}) &= \frac{1}{4\pi} \left[ \frac{1}{r} \underbrace{\int f (\vec{r}\,') \, d^3 \vec{r}\,'}_{\text{Monopol-}} + \frac{r_{i}}{r^{3}} \underbrace{\int d^3 \vec{r}\,' \, r\,'_{i} f (\vec{r}\,')}_{\text{Dipol-}} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} \underbrace{\int d^3 \vec{r}\,' \left( 3 r\,'_{i} r\,'_{j} - r\,'^{2} \delta_{ij} \right) f (\vec{r}\,')}_{\text{Quadrupolmoment}} \dots \right] \\
-&= \frac{1}{4\pi} \left[ \frac{1}{r} q + \frac{r_{i}}{r^{3}} p_{i} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} Q_{ij} + \dots \right].
+\phi (\vec{r}) &= \frac{1}{4\pi} \left[ \frac{1}{r} \underbrace{\int f (\vec{r}\,') \, d^3 \vec{r}\,'}_{\text{Monopol-}} + \frac{r_{i}}{r^{3}} \underbrace{\int d^3 \vec{r}\,' \, r\,'_{i} f (\vec{r}\,')}_{\text{Dipol-}} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} \underbrace{\int d^3 \vec{r}\,' \left( 3 r\,'_{i} r\,'_{j} - r\,'^{2} \delta_{i\!j} \right) f (\vec{r}\,')}_{\text{Quadrupolmoment}} \ldots \right] \\
+&= \frac{1}{4\pi} \left[ \frac{1}{r} q + \frac{r_{i}}{r^{3}} p_{i} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} Q_{i\!j} + \ldots \right].
 \end{align*}
 
 
-In der entwickelten Reihe kommen die Faktoren \(r\) im Nenner mit steigendem Exponenten.
+In der entwickelten Reihe kommen die Faktoren \(r\) im Nenner mit steigendem Exponenten vor.
 Dabei werden die höheren Ordnungen der Multipolmomente, mit zuhnemendem Abstand zum beobachteten Volumen immer weiter vernachlässigbar.
-Es wurde einfachheitshalber für die Berechnungen der Kugelform in diesem Kapitel als Approximation das erste Moment verwendet und die höheren vernachlässigt.
+Der Einfachheit halber wurde für die Berechnungen der Kugelform in diesem Kapitel das erste Moment als Approximation verwendet und die höheren Momente vernachlässigt.
 
 
 
@@ -113,12 +114,12 @@ Aus der Poisson-Gleichung des Newtonschen Gravitationsgesetzes
 \end{equation*}
 
 \noindent
-Mit der Gravitationskonstante \(G\) und der Massendichte \(\rho\) ist der gravitative Monopol die Gesamtmasse \(M\).
+mit der Gravitationskonstante \(G\) und der Massendichte \(\rho\) ist der gravitative Monopol die Gesamtmasse \(M\).
 
 Da Massen nur positiv sind, lässt sich aus den Ladungen kein Dipolmoment bilden.
 Aus diesem Grund ist der gravitative Quadrupol nicht über zwei Dipole definiert.
 Dennoch haben Massenverteilungen Quadrupole.
-\cref{planet:fig:quadroearth} zeigt ein solches wobei, die blau gefärbten Abweichungen, das fehlen der Masse als negative Masse gesehen wird und die rot gefärbten Abweichungen, die überschüssigen Massen als positive Massen betrachtet wird.  
+\cref{planet:fig:quadroearth} zeigt ein solches wobei, die blau gefärbten Abweichungen, das Fehlen der Masse, als negative Masse gesehen wird und die rot gefärbten Abweichungen, die überschüssige Masse als positive Masse betrachtet wird.  
 
 \begin{figure}[h]
     \centering
@@ -128,9 +129,9 @@ Dennoch haben Massenverteilungen Quadrupole.
 \end{figure}
 
 \begin{beispiel}
-    Die Erde ist durch ihre Rotation keine perfekte Kugel, sie ist leicht eingedellt an den Polen und am Äquator bildet sich ein Wulst \cref{planet:fig:quadroearth}.
+    Die Erde ist durch ihre Rotation keine perfekte Kugel, sie ist an den Polen leicht eingedellt und am Äquator bildet sich ein Wulst (\cref{planet:fig:quadroearth}).
     Die Schwerkraft versucht den höhren Multipolen entgegenzuwirken.
-    Desweiteren sind durch bestimmte Dichteunterschiede weitere Abweichungen der Kugelform, in \cref{planet:fig:geoid} ersichtlich.
+    Ausserdem ergeben sich durch bestimmte Dichteunterschiede weitere Abweichungen der Kugelform, in \cref{planet:fig:geoid} ersichtlich.
 \end{beispiel}
 
 Einige himmelsmechanische Phänomene, wie die dynamische Entwicklung der Bahnelemente von Satelliten, lassen sich mit dem daraus resultierenden Quadrupolmoment beschreiben.
