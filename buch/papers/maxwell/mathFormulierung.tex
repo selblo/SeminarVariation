@@ -16,7 +16,7 @@ Da sowohl das elektrische Feld $\vec{E}$ wie auch das magnetische Feld bzw. die 
 Ein Skalarfeld ist eine Funktion der Form
 \( f:\mathbb{R}^n \rightarrow \mathbb{R}, \) 
 die jedem Punkt im Raum ein Skalar zuordnet.
-Alltägliches Beispiele für ein Skalarfelder sind Temperaturverteilungen, Ladungsdichten oder Potentiale. In Abbildung \ref{maxwell:skalarGrad} ist das Skalarfeld einer positiven Ladung abgebildet.
+Alltägliches Beispiele für ein Skalarfelder sind Temperaturverteilungen, Ladungsdichten oder Potentiale. In Abbildung \ref{maxwell:skalarGrad} ist ein Skalarfeld abgebildet.
 
 
 %Zu den wichtigsten Operationen eines Skalarfeldes gehört der Gradient, welcher dem Skalar- ein Vektorfeld zuordnet.
@@ -44,27 +44,38 @@ In Abbildung \ref{maxwell:skalarGrad} ist ein Vektorfeld abgebildet.
 
 \subsubsection{Gradient}
 
-Der Gradient wurde bereits in Abschnitt \ref{buch:fuvar:richtungsableitung:def:gradient} definiert. Dieser Operator, welcher auf ein Skalarfeld angewendet wird, resultiert in einem Vektorfeld. 
-Die Richtung der Vektoren dieses neuen Vektorfeldes zeigen demnach immer in die Richtung der grössten bzw. steilsten Zunahme.
+Der Gradient einer Funktion $f:\mathbb{R}^3 \rightarrow \mathbb{R}$ ist als 
+\[
+\renewcommand{\arraystretch}{1.9} 
+\operatorname{grad}f = \nabla f = \begin{pmatrix}
+\displaystyle
+\frac{\partial f}{\partial x} \\
+\displaystyle
+\frac{\partial f}{\partial y} \\
+\displaystyle
+\frac{\partial f}{\partial z} \\
+\end{pmatrix}\] 
+definiert und wurde bereits in Abschnitt \ref{buch:fuvar:richtungsableitung:def:gradient} genauer behandelt. Dieser Operator wird auf ein Skalarfeld angewendet und resultiert in einem Vektorfeld. 
+Die Richtung der Vektoren dieses neuen Vektorfeldes zeigen immer in die Richtung der grössten bzw. steilsten Zunahme, wobei der Betrag die Steilheit des Anstiegs repräsentiert.
 %Weiter unten wird ersichtlich, dass auch das elektrische Feld ein Gradientenfeld ist \[ \vec{E} = -\nabla\varphi, \] wobei $\varphi$ das elektrische Potential ist.
 
 \subsubsection{Divergenz}
 %TODO: Link auf Kapitel von Müller
-Die Divergenz eines Vektorfeldes $\vec{F}$ ist definiert als 
-\[ \text{div}\vec{F} = \nabla\cdot\vec{F} 
+Die Divergenz eines Vektorfeldes $\vec{F}:\mathbb{R}^3 \rightarrow \mathbb{R}^3$ ist definiert als 
+\[ \operatorname{div}\vec{F} = \nabla\cdot\vec{F} 
 = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}. \]
 Angewendet wird sie auf ein Vektorfeld und resultiert in ein Skalarfeld.
 Die Divergenz sagt aus, ob an einem Punkt mehr ``hinein-'' als ``herausfliesst'' und macht so eine Aussage über das Bestehen von Quellen und Senken. 
 Wenn die Divergenz negativ ist, liegt eine Senke vor, wenn sie positiv ist eine Quelle.
-Ein Vektorfeld wird quellenfrei genannt, wenn seine Divergenz zu null resultiert.
+Ein Vektorfeld wird als quellenfrei bezeichnet, wenn seine Divergenz gleich null ist.
 
 \subsubsection{Rotation}
 %TODO: Link auf Kapitel von Müller
-Die Rotation eines Vektorfeldes $\vec{F}$ ist definiert als
+Die Rotation eines Vektorfeldes $\vec{F}:\mathbb{R}^3 \rightarrow \mathbb{R}^3$ ist definiert als
 \[
 \renewcommand{\arraystretch}{1.9} 
-\text{rot}\vec{F} = 
-\text{curl}\vec{F}
+\operatorname{rot}\vec{F} = 
+\operatorname{curl}\vec{F}
 =\nabla\times\vec{F}
 = \begin{pmatrix}
 	\displaystyle
@@ -76,4 +87,4 @@ Die Rotation eines Vektorfeldes $\vec{F}$ ist definiert als
 \end{pmatrix}
 . \]
 Mit dieser Operation wird einem Vektorfeld ein neues Vektorfeld zugeordnet, welches eine Aussage darüber macht, wie stark das Feld sich um einen Punkt dreht bzw. rotiert.
-Wenn die Rotation zu null resultiert, ist das Feld wirbelfrei.
+Ein Vektorfeld ist wirbelfrei, wenn seine Rotation null ist.

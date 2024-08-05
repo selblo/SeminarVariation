@@ -1,0 +1,74 @@
+%
+% teil3.tex -- Beispiel-File für Teil 3
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Variationsprinzip der Analysis und Algorithmus
+\label{buch:paper:varalg:section:variations_analysis_algorithm_result}}
+\rhead{Variationsprinzip Mathematik und Algorithmus}
+Im vorherigen Kapitel \ref{buch:paper:varalg:section:genetic_algorithm_process} wurde erklärt, 
+wie der Algorithmus funktioniert, der das Variationsprinzip anwendet. Dies 
+passt jedoch nicht genau zu dem Variationsprinzip, das in der Analysis 
+verwendet wird. In diesem Kapitel wird genauer darauf eingegangen.
+\begin{table}
+   \centering
+   \caption{Woran unterscheiden sich die beiden Prinzipien?}
+   \begin{tabularx}{\textwidth}{|X|X|X|}
+      \hline
+       & Analysis 
+       & Algorithmus 
+       \\ \hline
+      Ziele  
+       & Wie im Kapitel Funktionale \ref{buch:variation:problem:subsection:funktionale}
+
+      beschrieben, ist das Ziel der Variationsrechnung die Optimierung von Funktionalen 
+      durch die Findung einer optimalen Funktion.
+       & Im Algorithmus bedeutet Variation, dass es eine Menge möglicher Lösungen gibt, 
+      aus denen die besten Lösungen ausgewählt und weiterverarbeitet werden, in der 
+      Hoffnung, dass die neuen Lösungen besser sind.
+      \\ \hline
+      Techniken  
+       & Hier werden analytische Techniken wie die Euler-Lagrange-Gleichung verwendet, 
+      um Optimierungsprobleme zu lösen. (Verschiedene Techniken sind in den Kapiteln 
+      2-10 beschrieben)
+       & Im Algorithmus werden Mechanismen verwendet, die stochastische 
+      \footnote{
+         Im Fall des Algorithmus sind stochastische Methoden gemeint, bei denen 
+         eine Anzahl an Zufallsereignissen oder -kombinationen erstellt und 
+         diese anschließend ausgewertet oder weiterverarbeitet werden.
+      }
+      Methoden wie Kreuzung und Mutation beinhalten, um Vielfalt zu erzeugen und aufrechtzuerhalten.
+      \\ \hline
+      Nachbarlösungen
+       & Es wird das Konzept der Richtungsableitung in Richtung einer Funktion \(f(x)\)
+       genutzt. Diese Funktion kann durch kleine Änderungen des Parameters \(x\) beliebig
+       nahe beeinanderliegen. Aufgrund dieser Eigenschaft kann man die Ableitung nach dem
+       Parameter \(x\) bilden, woraus sich die Möglichkeit die Euler-Lagrange-Differentialgleichung
+       abzuleiten. Das Bedeutet das die Nachbarlösungen beliebig nahe sein können.  
+       & Die Nachbarlösungen im Algorithmus werden die Variationen direkt untersucht,
+      gekreuzt und mutiert, um die besten Lösungen zu finden. Jede Nachbarlösung 
+      ist eine endliche Distanz von der aktuellen Lösung entfernt und kann nicht beliebig 
+      nahe sein. Da so keine kontinuierlich Variation möglich ist, gibt es keine Ableitungen
+      und es müssen Methoden dazu genutzt werden, wie im Kapitel 3 
+      \ref{buch:paper:varalg:section:genetic_algorithm_process} beschrieben.
+      \\ \hline
+      Lösung
+       & Die Lösung ist eine Funktion, mit der das Optimum errechnet werden kann.
+       & Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
+      \\ \hline
+   \end{tabularx}
+   \caption{Vergleich auf den Begriff Variationen}
+   \label{tab:variation_comparison}
+\end{table}
+Die Aussage, dass im Algorithmus das Variationsprinzip verwendet ist so nicht
+korrekt. Diese Unterscheiden sich in einigen Punkten, wie in der Tabelle 
+\ref{tab:variation_comparison} aufgezeigt.
+Beide suchen zwar das Optimum, aber in der Analysis sucht 
+man eine Funktion, mit der das Optimum berechnet werden kann, wie z.B. 
+die Durchbiegung einer Kette. Im Algorithmus wird versucht, das Optimum 
+durch Zufall und Variationen (neue Kombinationen) zu finden. Am Ende 
+hat man eine Lösung, die das Optimum sein könnte, sehr nahe dran ist 
+oder komplett daneben liegt.

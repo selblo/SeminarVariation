@@ -1,0 +1,35 @@
+%
+% common.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\def\h{0.7}
+\def\r{12}
+\def\l{8}
+\coordinate (p1) at (0,0);
+\coordinate (p2) at (\l,0);
+\draw (p1) rectangle ($(p2)+(0,0.4)$);
+
+\pgfmathparse{sqrt(\r*\r-4*4)}
+\xdef\s{\pgfmathresult}
+
+\draw[<-,color=orange] ($0.5*(p1)+0.5*(p2)+(0,0.4)$) -- ++(0,1.5);
+\node[color=orange] at ($0.5*(p1)+0.5*(p2)+(0,1.9)$) [right] {$F$};
+
+\draw ($(p1)+(0,-0.1)$) circle[radius=0.1];
+\draw ($(p2)+(0,-0.1)$) circle[radius=0.1];
+
+\draw ($(p1)+(0,-0.2)$)
+	-- ++(-45:{\h*sqrt(2)})
+	-- ++(180:{2*\h})
+	-- cycle;
+
+\draw ($(p2)+(0,-0.2)$)
+	-- ++(-45:{0.8*\h*sqrt(2)})
+	-- ++(180:{0.8*2*\h})
+	-- cycle;
+
+\fill[color=gray!40] ($(p1)+(-1,{-\h-0.2})$) rectangle ++(2,-0.4);
+\draw ($(p1)+(-1,{-\h-0.2})$) -- ++(2,0);
+\fill[color=gray!40] ($(p2)+(-1,{-\h-0.2})$) rectangle ++(2,-0.4);
+\draw ($(p2)+(-1,{-\h-0.2})$) -- ++(2,0);
