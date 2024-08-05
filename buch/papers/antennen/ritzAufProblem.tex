@@ -12,11 +12,11 @@
 \section{Ritz-Verfahren für das Antennenproblem\label{antennen:ritzAnw}}
 
 %todo CHAPTER REFERENZ
-Wie in \ref{buch:antennen:Geom} erwähnt konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
+Wie in \ref{buch:antennen:Geom} erwähnt, konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
 Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen 
 in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren.
-%TODO bild ist weit weg [htbp] ILLEGAL
-\begin{figure}[htbp]
+%TODO bild ist weit weg  ILLEGAL
+\begin{figure}
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -64,8 +64,8 @@ Funktion sein wird, somit ergibt sich
 \end{equation}
 als ideale Approximationsfunktion. 
 
-Diese Entwicklung wir auch Sinus-Fourier Reihe genannt
-und wenn man diese mal für $n=2$ ausschreibt ergibt sich
+Diese Entwicklung wird auch Sinus-Fourier Reihe genannt
+und wenn man diese für $n=2$ ausschreibt ergibt sich
 \begin{equation}
 	y_n(x)
 	=
@@ -73,19 +73,19 @@ und wenn man diese mal für $n=2$ ausschreibt ergibt sich
 	\label{antennen:approxFunktn2}
 \end{equation}
 als Approximationsfunktion. Im weiteren Verlauf ist $y_n(x)$ \eqref{antennen:approxFunktn2} 
-unsere endgültige Approximationsfunktion, mit welcher wir die Problemstellung angehen werden.
+unsere endgültige Approximationsfunktion, mit der wir die Problemstellung angehen werden.
 
 \subsection{Nebenbedingungen von $y_n(x)$\label{antennen:nebenbedRitz}}
 
 Eine Nebenbedingung ist es, dass bei $y_n(0)$ und $y_n(\pi)$ die Funktion null sein muss.
-Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Antennenform die wir optimieren.
+Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Antennenform, die wir optimieren.
 
 Die Sinus-Fourier Reihe \eqref{antennen:unserRitz} hat eine weitere gute Eigenschaft, 
-welche klar wird, wenn man in das gleiche Koordinatensystem wie bei der Abbildung \ref{antennen:koordSysBsp}
-benutzt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
+die ersichtlich wird, wenn man das gleiche Koordinatensystem wie bei der Abbildung \ref{antennen:koordSysBsp}
+benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 
-%TODO bild ist weit weg [htbp] ILLEGAL
-\begin{figure}[htbp]
+%TODO bild ist weit weg  ILLEGAL
+\begin{figure}
 	\centering
 	\begin{tikzpicture}
 		\definecolor{clrGreen}{RGB}{0, 117, 18}
@@ -210,9 +210,9 @@ definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda 
 
 \subsection{Lagrange-Gleichungssystem\label{antennen:lagrangeGLsys}}
 
-Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und 0 setzen. Nur heisst das in diesem Kontext
+Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und gleich 0 setzen. Das heisst in diesem Kontext
+den Gradienten
 
-% TODO GLsys bisschen spacen
 \begin{equation}
 	\nabla F = \vec{0} \;
 	\left\{ \;
@@ -224,15 +224,13 @@ Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und 0 set
 	\label{antennen:lagrangeGrad}
 \end{equation}
 
-
-den Gradienten berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
+berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
 $n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. 
 Wobei $n$ die Anzahl der Koeffizienten ist.
 
-An dieser Stelle soll es einem bewusst werden, was dieses Kapitel von anderen 
-unterscheidet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
+An dieser Stelle wird ersichtlich, was diese Kapitel von den Anderen unterschiedet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
 Problem wie z.B in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
-Konkret heisst es, dass wir keine Differentialgleichung lösen müssen, sondern, 
+Konkret bedeutet dies, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
 
 Das Gleichungssystem, in diesem Fall mit 
@@ -266,8 +264,8 @@ einer Funktion, indem man schrittweise in Richtung des steilsten Abstiegs,
 also dem Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
 fortschreitet. 
 
-% TODO nicht gute position, [htbp] illegal
-\begin{figure}[htbp]
+% TODO nicht gute position,  illegal
+\begin{figure}
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -341,15 +339,15 @@ konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe d
 
 \subsection{Auswertung der Optimierung\label{antennen:auswertung}}
 
-Das Lösen ist eine Sache und das Verstehen des gelösten eine andere. Wie vorher erwähnt können wir beliebig viele
+Das Lösen ist eine Sache, das Verstehen des gelösten eine andere. Wie vorher erwähnt, können wir beliebig viele
 Koeffizienten der Funktion für verschiedene $l$ optimieren.
 
-Um die Abbildung \ref{antennen:plotskoeff} zu verstehen muss man sich folgendes Setup vorstellen. 
+Um die Abbildung \ref{antennen:plotskoeff} zu verstehen, muss man sich folgendes Setup vorstellen. 
 Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$ 
 ``meter''. Diese Distanz ist jeweils auf der x-Achse dargestellt.
 
-% TODO nicht gute position, [htbp] illegal
-\begin{figure}[htbp]
+% TODO nicht gute position,  illegal
+\begin{figure}
 	\centering
 	
 	\definecolor{color1}{rgb}{1.0, 0.0, 1.0}
@@ -468,18 +466,18 @@ Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$
 \end{figure}
 
 Dann nehme man verschiedene \emph{Seillängen} $l$, welche in
-\eqref{antennen:constNebenbed} als konstant definiert war.
+\eqref{antennen:constNebenbed} als konstant definiert waren.
 Als Seil kann man sich die jeweilige Funktionslösung vorstellen.
 Das Ergebnis ist dann die \emph{optimale Form} mit
 maximaler Fläche unter dem Seil für verschiedene \emph{Seillängen}.
 
-Mit mehr Koeffizienten $n$ kann die Funktion, also die Art wie das Seil gelegen wird, immer mehr Fläche aufspannen. Eine sehr interessante \emph{Seillänge} sollte man jedoch genauer unter die Lupe nehmen.
+Mit mehr Koeffizienten $n$ kann die Funktion, also die Art wie das Seil gelegt wird, immer mehr Fläche aufspannen. Eine sehr interessante \emph{Seillänge} sollte man jedoch genauer unter die Lupe nehmen.
 
 Es wurde nun schon oft wie im Kapitel \ref{buch:chapter:nebenbedingungen}
 erwähnt, dass wir die Fläche \emph{maximieren} und den Umfang, wie bei dem Problem von Dido \emph{minimieren} möchten. 
 
-Dort kam eine Form, mit konstanter zweiten Ableitung, also
-der Kreis als Lösung hervor. Somit ist die für uns interessante \emph{Seillänge} $l$, der Durchmesser eines Kreises. Genau diesen wichtigen Vergleich sieht man in der Abbildung \ref{antennen:vergleichKreis}. 
+Dort kam eine Form, mit konstanter zweiter Ableitung, also anders ausgedrückt
+der Kreis, als Lösung hervor. Somit ist die für uns interessante \emph{Seillänge} $l$, der Durchmesser eines Kreises. Genau diesen wichtigen Vergleich sieht man in der Abbildung \ref{antennen:vergleichKreis}. 
 
 \subsection{Vergleich mit perfekten Lösung\label{antennen:vergleich}}
 
@@ -489,13 +487,13 @@ ausgedrückt $l=\frac{\pi^2}{2}$.
 
 Man sieht hier schon recht gut, dass $y_n(x)$ der
 perfekten Lösung, dem Kreis, konvergiert. Dies ist
-natürlich kein wasserfester Beweis, aber ist hier völlig
+natürlich kein wasserfester Beweis, hier aber völlig
 ausreichend. 
 
 % TODO in packages hinzufügen
 \usetikzlibrary{pgfplots.fillbetween}
 
-\begin{figure}[htbp]
+\begin{figure}
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[

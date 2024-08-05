@@ -15,24 +15,25 @@ Es muss jedoch noch bestimmt werden, wie gross der Radius dieser Abrundungen ist
 genau dieser sich befindet. 
 
 \subsection{Parametrisierung Dreieck\label{antennen:param3eck}}
-Hierfür kann wiederum das Verhältnis REF verwendet werden. Die Länge l, hierbei der Umfang 
-des abgerundeten Dreiecks, sowie dessen Fläche A kann mit den Formeln
+Die Länge $l$, hierbei der Umfang 
+des abgerundeten Dreiecks, sowie dessen Fläche $A$ kann mit den Formeln
+\definecolor{clrGreen}{RGB}{0, 117, 18}
 \begin{align}
 	l &= \textcolor{blue}{2 \cdot \pi \cdot r} + \textcolor{orange}{3 \cdot s - 6 \cdot \sqrt{3} \cdot r} \tag{20.24} \label{antennen:Länge} \\
-	A &= \textcolor{green}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{red}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
+	A &= \textcolor{clrGreen}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{red}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
 \end{align}
 \setcounter{equation}{25}
 berechnet werden.
-Der Wirkungsgrad ist nun zu einem Problem geworden, welches nur noch abhängig von 
+Der Wirkungsgrad ist nun zu einem Problem geworden, das nur noch abhängig von 
 der Seitenlänge s des Dreiecks und des Radius r der Kreise ist. Bildlich ist dies 
 in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 
 %TODO Erklären der Formeln l und A mittels Grafik (Formelabschnitte einfärben??)
-\begin{figure}[htpb]
+\begin{figure}
 	\centering
 	\begin{tikzpicture}
 		\definecolor{clrGreen}{RGB}{0, 117, 18}
-		% Define the length of the sides of the triangles
+
 		\def\sidelength{3.14}
 		
 		\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
@@ -45,7 +46,7 @@ in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 		\coordinate (As) at ($(A) + (9pt,5pt)$);
 		\coordinate (Bs) at ($(B) + (9pt,5pt)$);
 		\coordinate (Cs) at ($(C) + (9pt,5pt)$);
-		% Nodes with blue border and green fill
+
 		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (As) {};
 		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Bs) {};
 		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Cs) {};
@@ -73,11 +74,11 @@ Durch Ableiten und Null-setzten
 	\label{antennen:Ableitung}
 \end{equation}
 wird für einen gegebenen Parameter $s$ ein Radius $r$ als Lösung erhalten. 
-Die Ableitung ergibt die Lösung 
+Die Ableitung ergibt die Gleichung 
 \begin{equation}
 	\frac{\left(- 4 \pi r + 12 \sqrt{3} r\right) \left(- 6 \sqrt{3} r + 2 \pi r + 3 s\right)}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0
 	\label{antennen:Ableitunggelöst}
 \end{equation}
-in welcher $s$ mit der gewünschten Seitenlänge parametrisiert werden kann. Nach Lösen des Gleichungssystems resultieren nun die möglichen Werte für den Radius $r$.
+in der $s$ mit der gewünschten Seitenlänge parametrisiert werden kann. Nach Lösen des Gleichungssystems resultieren nun die möglichen und auch unmöglichen Werte für den Radius $r$.
 \subsection{Fazit\label{antennen:fazit}}
-In diesem Kapitel wurde eine Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde gezeigt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Die Gleichung \eqref{antennen:Ableitunggelöst} entspricht nun einer Formel für das Design einer optimalen, dreieckigen Loop-Antenne. 
+In diesem Kapitel wurde eine Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Die Gleichung \eqref{antennen:Ableitunggelöst} entspricht nun einer Formel für das Design einer optimalen, dreieckigen Loop-Antenne. 

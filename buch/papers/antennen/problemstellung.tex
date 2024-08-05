@@ -39,7 +39,7 @@ beiden Ideen muss noch bestimmt werden, wo genau die Anpassung der Eckstücke ge
 das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbildungen 
 \ref{antennen:tikabgeflacht_kleiner} und \ref{antennen:tikabgerundet_kleiner} veranschaulicht.
 
-\begin{figure}[htbp]
+\begin{figure}
 	\centering
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
@@ -63,12 +63,11 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 		\end{tikzpicture}
 		\caption{Antenne mit abgerundeten Ecken}
 		\label{antennen:tikabgerundet}
-	\end{minipage}%
+	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
 		\begin{tikzpicture}
-
 			\def\sidelength{3.14}
 			
 			\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
@@ -94,7 +93,7 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}
 	\centering
 	\begin{minipage}[t]{0.45\textwidth}
 		\centering
@@ -151,14 +150,14 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 	\end{minipage}%
 \end{figure}
 \FloatBarrier
-Eine Eigenschaft, welche das Problem vereinfacht, ist die Symmetrie des Dreiecks. 
+Eine Eigenschaft, die das Problem vereinfacht, ist die Symmetrie des Dreiecks. 
 Das Gesamtproblem kann vereinfacht werden indem nur eine Ecke betrachtet wird. 
 Wie in den Abbildungen \ref{antennen:tiksymmetrie} und \ref{antennen:Ecke} dargestellt, sind die drei Eckfunktionen äquivalent. Die drei 
-gestrichelten Geraden spannen ein weiteres gleichseitiges Dreieck auf, welches 
+gestrichelten Geraden spannen ein weiteres gleichseitiges Dreieck auf, das 
 jedoch vernachlässigt werden kann, da dieses für alle gesuchten Funktionen $f(x,y)$ 
 gleich bleibt. Somit ist das implizite Problem $f(x,y)$ zur expliziten Funktion $f(x)$ 
-geworden, welche wesentlich leichter zu optimieren ist.
-\begin{figure}[htbp]
+geworden, die wesentlich leichter zu optimieren ist.
+\begin{figure}
 	\centering
 	\begin{minipage}[b]{0.45\textwidth}
 		\centering
@@ -197,7 +196,7 @@ geworden, welche wesentlich leichter zu optimieren ist.
 			
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (0.5*\sidelength, \triangleheight) -- (\sidelength,0);
 		\end{tikzpicture}
-		\caption{Ecke der Antenne}
+		\caption{Eine Ecke der Antenne}
 		\label{antennen:Ecke}
 	\end{minipage}
 \end{figure}
