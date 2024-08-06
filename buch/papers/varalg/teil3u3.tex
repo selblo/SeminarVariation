@@ -21,8 +21,9 @@ konvergiert\footnote{
     Population immer ähnlicher zur vorherigen Population werden.
     }
 und in einem lokalen Minimum stecken bleibt. Würde dieser Fall eintreten, 
-kann es sein, dass wir keine besseren Lösungen erhalten können. Die Abbildung
-\ref{fig:selection_of_parents} soll dies veranschaulichen.
+kann es sein, dass wir keine besseren Lösungen erhalten können, obwohl es 
+diese gibt. Die Abbildung
+\ref{fig:selection_of_parents} veranschaulicht die Selektion.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{
@@ -30,11 +31,11 @@ kann es sein, dass wir keine besseren Lösungen erhalten können. Die Abbildung
     }
     \caption{
         Mögliche ausgewählte Eltern für Nachkommen, wobei die blaue Linie 
-        eine höhere Wahrscheinlichkeit hat als die rote Linie}
+        eine höhere Wahrscheinlichkeit hat, dass diese passiert, als die rote Linie}
     \label{fig:selection_of_parents}
 \end{figure}
 Für die Selektion gibt es verschiedene Möglichkeiten, die folgenden zeigen bewährte
-Logiken auf.
+Methoden auf.
 \begin{enumerate}
     \item \textbf{Roulette-Rad-Selektion:} Individuen werden zufällig und
     proportional zu ihrer Fitness ausgewählt. Die Wahrscheinlichkeit wird 
@@ -56,7 +57,7 @@ Logiken auf.
         \label{eq:probability_rating}
     \end{equation}
     ist die gleiche wie \eqref{eq:probability_fittest}, mit dem Unterschied, dass die verwendete Funktion 
-    \(r_i\) den Rang des Individuums wiedergibt.
+    \(r_i\) den Rang des Individuums zurückgibt.
     \item \textbf{Turnierselektion:} Eine Gruppe von Individuen wird zufällig ausgewählt
     und das fitteste Individuum dieser Gruppe wird als Elternteil gewählt.
 \end{enumerate}
@@ -70,11 +71,12 @@ die Wahrscheinlichkeit mathematisch berechnet wird.
 \rhead{Selektion TSP}
 Beim Traveling Salesman Problem sucht man nach der kürzesten Strecke. Die Formel 
 \eqref{eq:probability_fittest} würde aber die längste Strecke höher gewichten, was
-nicht dem Ziel entspricht. Daher wird die Formel angepasst und neu definiert zu
+nicht dem Ziel entspricht. Daher wird die Formel angepasst und neu zu 
 \begin{equation}
     P_i
     =
     \frac{\frac{1}{f_i}}{\sum_{j=1}^{N} \frac{1}{f_j}}
     \label{eq:probability_fittest_tsp}
 \end{equation}
-. Der Term \(\frac{1}{f_i}\) kehrt die Funktion um.
+definiert. Der Term \(\frac{1}{f_i}\) kehrt die Funktion um, sodass kürzere Strecken eine höhere
+Wahrscheinlichkeit haben.
