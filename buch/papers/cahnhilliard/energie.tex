@@ -42,10 +42,22 @@ definieren.
 Dabei bezeichen $N_A$ und $N_B$ die lokale Anzahl der Atome von Stoff A bzw. Stoff B.
 
 \subsection{Freie Energie eines heterogenen Systems}
-
+Um von der gegebenen, inneren Energiefunktion $F$ eines homogenen Systems
+auf die innere Energiefunktion $f$ für ein heterogenes System zu gelangen,
+kann eine multivariante Taylor-Reihe verwendet werden.
+In einem homogenen System ist die Konzentration $c$ überall gleich,
+sodass die freie Energie $F$ ausschließlich von dieser konstanten Konzentration abhängt.
+In einem heterogenen System hingegen variiert die Konzentration $c(x)$ räumlich.
+Somit ist $f$ abhängig von $\nabla^i c$ für alle $i \in \mathbb{N}$.
+Da im homogenen Fall die räumlichen Ableitungen $0$ sind,
+wird die Taylor-Reihe um den Punkt
 \begin{align*}
-\mathbf{c_0} = (c, 0, 0, \ldots)
+\mathbf{c_0}
+=
+(c, 0, 0, \ldots)
 \end{align*}
+erstellt.
+Somit ergibt sich
 \begin{align*}
 f(c, \nabla c, \nabla^2 c, \ldots)
 =
@@ -54,10 +66,8 @@ f(c, \nabla c, \nabla^2 c, \ldots)
 + \sum_{i,j=1}^3 \pderiv{f(\mathbf{c_0})}{c_{ij}} c_{ij}
 + \frac{1}{2} \sum_{i,j=1}^3 \frac{\partial^2 f(\mathbf{c_0})}{%
 \partial c_i \partial c_j} c_{i} c_{j}
-% \\
-% & + \frac{1}{2} \sum_{i,j,k=1}^3 \frac{\partial^2 f(c_0)}{\partial c_k \partial c_{ij}} c_k c_{ij}
-% + \frac{1}{2} \sum_{i,j,k,l=1}^3 \frac{\partial^2 f(c_0)}{\partial c_{ij} \partial c_{kl}} c_{ij} c_{kl}
 + \ldots
+,
 \end{align*}
 wobei gilt
 \begin{align*}
@@ -69,10 +79,23 @@ c_i
 c_{ij}
 =
 \frac{\partial^2 c}{\partial x_i \partial x_j}
+.
 \end{align*}
-
-% TODO: Definition isotrop
-
+Um den Ausdruck weiter zu vereinfachen,
+nehmen wir an,
+dass die Materialeigenschaften unseres Gemisches isotrop sind.
+Isotropie bedeutet,
+dass die Eigenschaften des Materials unabhängig von der Richtung sind,
+d.h.,
+das Material verhält sich in alle Richtungen gleich.
+Dies vereinfacht die Analyse,
+da die Einflüsse der räumlichen Ableitungen der Konzentration
+in alle Richtungen gleich sein müssen.
+Insbesondere heisst das,
+dass $f$ gegenüber Spiegelungen ($x_i \rightarrow -x_i$) und
+Permutationen ($x_i \rightarrow x_j)$ invariant sein muss.
+Aus diesem Grund lässt sich ableiten,
+dass
 \begin{align*}
 \pderiv{f(\mathbf{c_0})}{c_i}
 &=
@@ -92,9 +115,10 @@ c_{ij}
  \pderiv[2]{f(\mathbf{c_0})}{c_i}
 &=
 \kappa_2
+.
 \end{align*}
-
-\begin{align*}
+Damit können wir nun die totale innere Energie unseres Systems ausdrücken als
+\begin{align}
 \mathcal{E}(c)
 =
 &N_V \int_\Omega f\di{x}
@@ -102,43 +126,52 @@ c_{ij}
 N_V \int_\Omega \left[
 F(c) + \kappa_1 \Delta c + \frac{\kappa_2}{2} \abs{\nabla c}^2  + \ldots
 \right]\di{x}
-\\
-\end{align*}
-wobei $N_V$ die Anzahl Moleküle im Gebiet $\Omega$ sind.
+\label{cahnhilliard:energylong}
+,
+\end{align}
+dabei bezeichnet $N_V$ die Anzahl Moleküle im Gebiet $\Omega$.
 
+\subsubsection{Energieausdruck in angenehmere Form bringen}
+Auf \eqref{cahnhilliard:energylong} könnten wir bereits ein Variationsprinzip anwenden.
+Jedoch können wir denn Ausdruck zuerst noch weiter vereinfachen.
+Wenden wir partielle Integration auf den Laplace-Term von \eqref{cahnhilliard:energylong} an,
+erhalten wir
 \begin{align*}
 \int_\Omega \kappa_1 \Delta c \di{x}
 &=
 \int_{\partial\Omega} \kappa_1 \nabla c \cdot n \di{s}
 - \int_\Omega \nabla \kappa_1 \cdot \nabla c \di{x}
-\\
+.
+\end{align*}
+Das Oberflächenintegral können wir $0$ setzen,
+da wir ausschliessen,
+dass das Gefäss das Mischverhältnis der Salatsauce beeinflusst.
+Somit können wir weiter umformen zu
+\begin{align*}
+\int_\Omega \kappa_1 \Delta c \di{x}
 &=-\int_\Omega \sum_{i=1}^3 \pderiv{\kappa_1}{x_i} \pderiv{c}{x_i} \di{x}
 \\
 &=-\int_\Omega \sum_{i=1}^3 \pderiv{\kappa_1}{c} \pderiv{c}{x_i} \pderiv{c}{x_i} \di{x}
 \\
 &=
 -\int_\Omega \pderiv{\kappa_1}{c} \abs{\nabla c}^2 \di{x}
+.
 \end{align*}
-
+Wird der erhaltene Ausdruck in \eqref{cahnhilliard:energylong} eingesetzt,
+ergibt sich
 \begin{align}
 \mathcal{E}(c)
 &=
 N_V \int_\Omega \left[
-F(c) + \kappa_1 \Delta c + \frac{\kappa_2}{2} \abs{\nabla c}^2  + \ldots
+  F(c) + \underbrace{\left( \frac{\kappa_2}{2} - \pderiv{\kappa_1}{c} \right)}_{\frac{1}{2}\varepsilon^2} \abs{\nabla c}^2  + \ldots
 \right]\di{x}
 \nonumber
 \\
 &=
 N_V \int_\Omega \left[
-  F(c) + \underbrace{\left( \frac{\kappa_2}{2} - \pderiv{\kappa_1}{c} \right)}_{\frac{1}{2}\epsilon^2} \abs{\nabla c}^2  + \ldots
+  F(c) + \frac{\varepsilon^2}{2} \abs{\nabla c}^2  + \ldots
 \right]\di{x}
-\nonumber
-\\
-&=
-N_V \int_\Omega \left[
-  F(c) + \frac{\epsilon^2}{2} \abs{\nabla c}^2  + \ldots
-\right]\di{x}
-,\quad
-\text{wobei $\epsilon$ konstant}
+,
 \label{cahnhilliard:energy}
 \end{align}
+wobei $\varepsilon$ in der Praxis häufig als konstant angenommen wird.
