@@ -14,7 +14,7 @@ wurde dargelegt, aus welchen Komponenten ein genetischer Algorithmus besteht und
 solcher aufgebaut werden kann. 
 Obwohl in beiden Fällen das Ziel darin besteht, das Optimum zu erreichen, unterscheidet
 sich das Variationsprinzip der Analysis grundlegend von dem, was in einem genetischen 
-Algorithmus zur Anwendung kommmt. In diesem Abschnitt werden die Unterschiede in der 
+Algorithmus zur Anwendung kommt. In diesem Abschnitt werden die Unterschiede in der 
 Tabelle \ref{tab:variation_comparison} aufgeführt und beschrieben.
 
 Ein wesentlicher Unterschied ist, was man aus der Analysis und genetischer Algorithmus 
@@ -25,69 +25,75 @@ der Variationsrechnung untersucht die Änderung eines Funktionalen. Das bedeutet
 erhalten wir eine Funktion, mit welcher das Optimum berechnen werden kann, wie z.B. die  
 Durchbiegung einer Kette. Im Algorithmus wird versucht, das Optimum durch Zufall von   
 Variationen, durch neue Kombinationen der genetischen Strings, zu finden. Am 
-Ende erhält man für die gestellt Problemstellung eine Lösung, die das Optimum sein könnte,  
+Ende erhält man für die gestellte Problemstellung eine Lösung, die das Optimum sein könnte,  
 sehr nahe dran ist oder komplett daneben liegt. Ändert sich die Ausgangslage, muss der Algorithmus 
 erneut ausgeführt werden, um eine neue mögliche Lösung zu finden. 
 
-\begin{xltabular}{\textwidth}{|L|X|X|}\centering
-   \caption{Woran unterscheiden sich die beiden Prinzipien?}
+\begin{xltabular}{\textwidth}{|L|X|X|}
    \hline
    & Analysis 
-   & Genetischer Algorithmus 
+   & genetischer Algorithmus 
    \\ \hline
    Ziel
    & 
-   Wie im Abschnitt Funktionale \ref{buch:variation:problem:subsection:funktionale} und 
+   Wie im Abschnitt funktionale \ref{buch:variation:problem:subsection:funktionale} und
    im Abschnitt \ref{buch:paper:varalg:section:variations_analysis_algorithm_result}
-   beschrieben, ist das Ziel der Variationsrechnung die Optimierung von Funktionalen, aus der 
-   Ableitung erhält man am Ende eine Funktion, mit welcher das Optimum berechnet werden kann.  
-   Ändern sich nun die Gegebenheiten, wie z.B. der Startpunkt liegt neu höher, werden die Parameter  
-   angepasst und die Funktion neu ausgerechnet, ohne die Ableitung noch einmal zu machen. 
+   beschrieben, ist das Ziel der Variationsrechnung die Optimierung von Funktionalen, aus der
+   Ableitung erhält man am Ende eine Funktion, mit welcher das Optimum berechnet werden kann. 
+   Ändern sich nun die Gegebenheiten, wie z.B. der Startpunkt liegt neu höher, werden die Parameter 
+   angepasst und die Funktion neu ausgerechnet, ohne die Ableitung noch einmal zu machen.
    & 
-   Im Algorithmus bedeuten die Variation, dass es eine Menge möglicher Lösungen gibt, 
+   Im Algorithmus bedeutet die Variation, dass es eine Menge möglicher Lösungen gibt, 
    aus denen die besten ausgewählt und weiterverarbeitet werden, in der 
-   Hoffnung, dass die neuen Lösungen besser sind. Die erhaltene Lösung ist ein Endresultat, für
+   Hoffnung, dass die neuen Lösungen besser sind. Die erhaltene Lösung ist ein Endresultat für
    genau die gestellte Problemstellung. Ändert sich die Ausgangslage, muss der Algorithmus
    erneut ausgeführt werden, um eine neue mögliche Lösung zu finden. Ein weiteres Ziel ist es,
    ein genügend gutes Ergebnis zu erhalten, mit einer annehmbaren Laufzeit.
    \\ \hline
    Techniken  
-   & Hier werden analytische Techniken wie die Euler-Lagrange-Gleichung verwendet, 
-   um Optimierungsprobleme zu lösen. Die verschiedene Techniken sind ab diesem Kapitel
+   & 
+   Hier werden analytische Techniken wie die Euler-Lagrange-Gleichung verwendet, 
+   um Optimierungsprobleme zu lösen. Die verschiedenen Techniken sind ab diesem Kapitel
    \ref{buch:chapter:variation} beschrieben. Aus den Techniken erhalten wir eine Funktion,
    mit welcher das Optimum berechnet werden kann.
    & Im Algorithmus werden Mechanismen verwendet, die stochastische
    \footnote{
       Im Fall des Algorithmus sind stochastische Methoden gemeint, bei denen 
       eine Anzahl an Zufallsereignissen oder -kombinationen erstellt und 
-      diese anschließend ausgewertet oder weiterverarbeitet werden.
+      diese anschliessend ausgewertet oder weiterverarbeitet werden.
    }
    Methoden wie Kreuzung und Mutation beinhalten, um Vielfalt zu erzeugen und aufrechtzuerhalten.
-   Die Techniken sollen die Wahrscheinlickeit erhöhen, dass die besten Lösungen gefunden werden.
+   Die Techniken sollen die Wahrscheinlichkeit erhöhen, dass die besten Lösungen gefunden werden.
    Zusätzlich sollen sie den Zeit- und Speicheraufwand reduzieren.
    Die Techniken sind im Abschnitt 3 \ref{buch:paper:varalg:section:genetic_algorithm_process}
    \\ \hline
    Nachbarlösungen
-   & Es wird das Konzept der Richtungsableitung in Richtung einer Funktion \(f(x)\)
+   & 
+   Es wird das Konzept der Richtungsableitung in Richtung einer Funktion \(f(x)\)
    genutzt. Diese Funktion kann durch kleine Änderungen des Parameters \(x\) beliebig
-   nahe beeinanderliegen. Aufgrund dieser Eigenschaft kann man die Ableitung nach dem
+   nahe beieinanderliegen. Aufgrund dieser Eigenschaft kann man die Ableitung nach dem
    Parameter \(x\) bilden, woraus sich die Möglichkeit ergibt, die Euler-Lagrange-Differentialgleichung
    abzuleiten. Das bedeutet, dass die Nachbarlösungen beliebig nahe sein können.  
-   & Bei den Nachbarlösungen im Algorithmus werden die Variationen direkt untersucht,
+   & 
+   Bei den Nachbarlösungen im Algorithmus werden die Variationen direkt untersucht,
    gekreuzt und mutiert, um die besten Lösungen zu finden. Jede Nachbarlösung 
    ist eine endliche Distanz von der aktuellen Lösung entfernt und kann nicht beliebig 
-   nahe sein. Da so keine kontinuierlich Variation möglich ist, gibt es keine Ableitungen
+   nahe sein. Da so keine kontinuierliche Variation möglich ist, gibt es keine Ableitungen
    und es müssen Methoden dazu genutzt werden, wie im Abschnitt 
    \ref{buch:paper:varalg:section:genetic_algorithm_process} beschrieben.
    \\ \hline
    Lösung
-   & Die Lösung ist eine Funktion, mit der das Optimum errechnet werden kann.
-   & Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
+   & 
+   Die Lösung ist eine Funktion, mit der das Optimum errechnet werden kann.
+   & 
+   Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
    \\ \hline
    Änderung der Parameter
-   & Die Ableitung muss nicht noch einmal durchfeführt werden, sondern man berechnet die 
+   & 
+   Die Ableitung muss nicht noch einmal durchgeführt werden, sondern man berechnet die 
    Funktion mit den neuen Parametern, um das Optimum zu erhalten.
-   & Ändern sich die Parameter, muss der Algorithmus erneut ausgeführt werden, um eine
+   & 
+   Ändern sich die Parameter, muss der Algorithmus erneut ausgeführt werden, um eine
    neue mögliche Lösung zu finden.
    \\ \hline
 \end{xltabular}
