@@ -12,7 +12,7 @@
 Der Startpunkt eines genetischen Algorithmus ist die Initialisierung.
 Dabei wird eine zufällige Population von möglichen Lösungen erstellt.
 Die Abbildung \ref{fig:possible_genetic_string} zeigt, wie ein solcher 
-String aussehn könnte.
+String aussehen könnte.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{
@@ -24,15 +24,15 @@ String aussehn könnte.
 		}
 	\label{fig:possible_genetic_string}
 \end{figure}
-Die Initialisierung besteht aus zwei Aspekte. Eine Aspekt ist die Grösse
+Die Initialisierung besteht aus zwei Aspekten. Ein Aspekt ist die Grösse
 der Population. Die Idee der begrenzten Grösse ist, dass nicht alle möglichen
-Lösungen erstellt und überprüft werden müssen. Dies ersparrt Zeit und Ressourcen.
-Der zweite Aspekt ist, dass die Permutation alle zufällig erstellt werden.
+Lösungen erstellt und überprüft werden müssen. Dies erspart Zeit und Ressourcen.
+Der zweite Aspekt ist, dass die Permutationen alle zufällig erstellt werden.
 Die zufällige Erzeugung der Anfangspopulation stellt ebenfalls eine Form 
 der Variation dar. Sie sorgt dafür, dass die Suche nicht von einem begrenzten 
 Bereich des Lösungsraums startet, sondern eine breite Palette von möglichen 
 Lösungen berücksichtigt. Dabei werden jedoch keine Berechnungen durchgeführt,
-die Hoffnung ist, dass durch die zufällige Erzeugung eine der Lösung nahe
+die Hoffnung ist, dass durch die zufällige Erzeugung eine der Lösungen nahe
 an das Optimum herankommt.
 
 \subsection{Initialisierung auf das TSP angepasst
@@ -41,8 +41,8 @@ an das Optimum herankommt.
 In jeder Position kann ein Gen aktiviert (1) oder deaktiviert (0) sein.
 Diese Logik eignet sich jedoch nicht für das Travelling Salesman 
 Problem (TSP), da eine Stadt nicht einfach ein- oder ausgeschaltet werden kann.
-Würde es auf alle Möglichen Wege angewendet, müsste gewährleistet werden, 
-dass nicht mehrere Wege aktiv sind. Die einfachste Logik ist die Reihenfolge  
+Würde es auf alle möglichen Wege angewendet, müsste gewährleistet werden, 
+dass nicht mehrere Wege aktiv sind. Die einfachste Logik ist, die Reihenfolge  
 im String abzubilden. Dabei zeigt die Nummer der Stadt auf der jeweiligen Position
 auf, ab wann diese besucht wird. Der Aufbau wäre wie in der 
 Abbildung \ref{fig:cities_genetic_string} dargestellt.

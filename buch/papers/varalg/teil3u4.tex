@@ -10,14 +10,14 @@
 \label{buch:paper:varalg:subsection:crossover}}
 \rhead{Kreuzung}
 In diesem Schritt des Algorithmus werden aus den gewählten Elternpaare 
-neue Nachkommen erzeugt. Dies wird erreicht in dem Teile des genetischen 
+neue Nachkommen erzeugt. Dies wird erreicht, indem Teile des genetischen 
 Strings miteinander ausgetauscht werden, 
 wie in der Abbildung \ref{fig:one_point_crossover} veranschaulicht.
 Durch diesen Mechanismus wird die Variation aufrechterhalten. Wichtig ist es,
 dass aus zwei Eltern immer genau zwei Nachkommen erzeugt werden. Würde
 die Population wachsen, würde der Aufwand zwischen den Generationen auch
-wachsen, was der Zweck des Algorithmus verfehlen. Daher die grösse der
-Population muss immer konstant bleiben.
+wachsen, was den Zweck des Algorithmus verfehlt. Daher muss die Grösse der
+Population immer konstant bleiben.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{
@@ -30,9 +30,9 @@ Für die Kreuzung gibt es unterschiedliche Methoden, die gebräuchlichsten sind
 die folgenden:
 \begin{itemize}
 	\item \textbf{Einpunkt-Kreuzung:} Ein zufälliger Punkt \( k \) \((1 \leq k < n)\)
-	wird auf den Elternchromosomen ausgewählt. Der Teil vor diesem Punkt stammen
-	von einem Elternteil, die Gene ab diesem Punkt kommen vom andern Elternteil. 
-	Für die Erzeugung der Nachkommen wird mit dieser Formeln
+	wird auf den Elternchromosomen ausgewählt. Der Teil vor diesem Punkt stammt
+	von einem Elternteil, die Gene ab diesem Punkt kommen vom anderen Elternteil. 
+	Für die Erzeugung der Nachkommen wird mit diesen Formeln
 	\begin{align*}
 		O_1 = (P_1[1], P_1[2], \ldots, P_1[k], P_2[k+1], \ldots, P_2[n])\\
 		O_2 = (P_2[1], P_2[2], \ldots, P_2[k], P_1[k+1], \ldots, P_1[n])

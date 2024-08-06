@@ -11,15 +11,16 @@
 \rhead{Mutation}
 Dieser Schritt sorgt dafür, dass zufällige Änderungen in 
 den Genen stattfinden. Dadurch entstehen neue Gene, was den 
-gesamten Lösungsraum vergrößert. Zusätzlich soll es verhindern,
+gesamten Lösungsraum vergrössert. Zusätzlich soll es verhindern,
 dass nach einer Anzahl von Generationen immer wieder die
 gleichen Genmuster entstehen, wodurch verhindert werden soll, dass 
 der Algorithmus in einem lokalen Extrempunkt stecken bleibt. 
 Die Mutation findet auch nicht bei jedem Kind
 statt, sondern wie in der Natur werden diese per Zufall
-ausgelöst werden. Die Mutation läuft so ab, dass über den String
-iteriert wird und jedesmal wird ein eine Zufallszahl erzeugt. Wird 
-die Bedingung erfüllt, dann wird die Stelle invertiert, wie in der
+ausgelöst. Die Mutation läuft so ab, dass über den String
+iteriert wird und jedes Mal wird eine Zufallszahl erzeugt. Wird 
+die Bedingung im Zusammenhang mit der erzeugten Zahl erfüllt, dann wird 
+die Stelle invertiert, wie in der
 Abbildung \ref{fig:mutation_genetic_string} dargestellt. Dieser Schritt 
 lässt Variationen entstehen, die bei der Kreuzung nicht entstanden wären. 
 \begin{figure}
@@ -38,7 +39,7 @@ lässt Variationen entstehen, die bei der Kreuzung nicht entstanden wären.
 \label{buch:paper:varalg:subsection:mutation_tsp}}
 \rhead{Mutation TSP}
 Für das Travelling Salesman Problem wird die Mutation so angepasst,
-dass wenn eine Mutation stattfindet, zwei zufällige Stellen ausgewählt
+dass, wenn eine Mutation stattfindet, zwei zufällige Stellen ausgewählt
 werden und diese Städte vertauscht werden, 
 wie in der Abbildung \ref{fig:mutation_genetic_string_cities}.
 \begin{figure}
