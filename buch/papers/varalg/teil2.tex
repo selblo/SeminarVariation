@@ -9,20 +9,19 @@
 \section{Einfacher Bruteforce Algorithmus
   \label{buch:paper:varalg:section:bruteforce}}
 \rhead{Einfacher Bruteforce Algorithmus}
-In der Brute-Force-Methode wird jede mögliche Variante durchprobiert,
+In der Bruteforce-Methode wird jede mögliche Variante durchprobiert,
 um die beste Lösung zu finden. Dabei wird systematisch jede mögliche
 Route durchlaufen und überprüft, wie lange die Strecke ist.
-Ablauf durchgemacht und überprüft, wie lange die Strecke ist.
 Ist die Strecke kürzer als die bisher kürzeste gefundene Route,
 wird diese als neue optimale Lösung gespeichert.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{papers/varalg/images/teil2/02BruteforceMethode.png}
-    \caption{Resultate von verschiedener Durchgänge mit steigender Anzahl von Städten.
+    \caption{Resultate von verschiedenen Durchgängen mit steigender Anzahl von Städten.
         \label{fig:results_bruteforce}}
 \end{figure}
 Auf dem Bild \ref{fig:results_bruteforce} ist ersichtlich, dass der
-Aufwand mit jedem weiteren Knoten  exponentiell steigt. Anders
+Aufwand mit jedem weiteren Knoten exponentiell steigt. Anders
 ausgedrückt, mit jeder weiteren Stadt gibt es mehr Varianten, die
 durchprobiert werden müssen. Die Anzahl der Möglichkeiten lässt sich
 mit der Formel \((n-1)!\) berechnen, wobei \(n\) die Anzahl der Städte ist.
@@ -34,7 +33,7 @@ Formel
     \sum_{i=1}^{n-1} d(\sigma(i), \sigma(i+1)) + d(\sigma(n), \sigma(1))
     \label{eq:bruteforce_min_formula}
 \end{equation}
-beschreiben. Die Bedeutung der einzelnen Teile der Formel sind wie folgt:
+beschreiben. Die Bedeutung der einzelnen Teile der Formel ist wie folgt:
 \begin{itemize}
     \item \( L(\sigma) \) repräsentiert die Gesamtlänge der Rundreise.
     \item \( \sigma \) ist eine Permutation
@@ -45,15 +44,14 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel sind wie folgt:
           }
           der Städte \( \{1, 2, \ldots, n\} \),
           wobei jede \( \sigma \) unterschiedliche Reihenfolge der Städte darstellt.
-    \item \( d(i, j) \) ist die Funktion, welche die Entfernung der Stadt \( i \) und
+    \item \( d(i, j) \) ist die Funktion, welche die Entfernung zwischen der Stadt \( i \) und
           Stadt \( j \) zurückgibt.
 \end{itemize}
 \begin{beispiel}
     \label{buch:paper:varalg:subsection:bruteforce_calculate}
     Um zu verdeutlichen, wie die Formel \eqref{eq:bruteforce_min_formula}
-    angewendet wird, folgt hier ein Beispiel. Dafür wird die Tabelle 
-    \ref{tab:example_bruteforce_cities} genutzt, um aufzuzeigen, wie
-    die Formel \eqref{eq:bruteforce_min_formula} angewendet wird.
+    angewendet wird, folgt hier ein Beispiel. Für das Beispiel wird die Tabelle 
+    \ref{tab:example_bruteforce_cities} genutzt.
     \begin{table}
         \centering
         \begin{tabular}{|c|c|c|c|c|}
@@ -65,7 +63,7 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel sind wie folgt:
             $D$ & 20  & 25  & 30  & 0   \\ \hline
         \end{tabular}
         \caption{
-            Beispieltabelle mit möglicher Distanz zu den Städten, diese liest sich wie folgt:
+            Beispieltabelle mit möglichen Distanzen zu den Städten, diese liest sich wie folgt:
             Die Distanz zwischen Stadt $B$ und $D$ beträgt 25.
         }
         \label{tab:example_bruteforce_cities}
@@ -88,9 +86,10 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel sind wie folgt:
 Aus dem vorherigen Abschnitt \ref{buch:paper:varalg:section:bruteforce} ist 
 ersichtlich, dass der Aufwand für die Berechnung der kürzesten Strecke exponentiell steigt.
 Mit jedem weiteren Knoten gibt es mehr Permutationen, die berechnet und verglichen werden 
-müssen. Aus dem Testversuch erhält man die Tabelle \ref{tab:bruteforce_tabelle_time} oder 
-grafisch dargestellt die Abbildung \ref{fig:bruteforce_graph_time}. Daraus ist ersichtlich,
-dass es bei 8 Städten einen Zeitaufwand von 17 Minuten braucht.
+müssen. Aus den Testversuchen mit steigender Anzahl können die Resultate, welche in der 
+Tabelle \ref{tab:bruteforce_tabelle_time} und der grafischen Abbildung \ref{fig:bruteforce_graph_time} 
+dargestellt sind, erhalten werden. Daraus ist ersichtlich,
+dass es bei 8 Städten einen Zeitaufwand von 17 Minuten erreicht.
 % Tabelle
 \begin{table}
     \centering
