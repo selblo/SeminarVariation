@@ -15,7 +15,7 @@ Strings miteinander ausgetauscht werden,
 wie in der Abbildung \ref{fig:one_point_crossover} veranschaulicht.
 Durch diesen Mechanismus wird die Variation aufrechterhalten. Wichtig ist es,
 dass aus zwei Eltern immer genau zwei Nachkommen erzeugt werden. Würde
-die Population wachsen, würde der Aufwand zwischen den Generationen auch
+die Population wachsen, würde der Aufwand zwischen den Generationen
 wachsen, was den Zweck des Algorithmus verfehlt. Daher muss die Grösse der
 Population immer konstant bleiben.
 \begin{figure}
@@ -68,12 +68,14 @@ die folgenden:
 			P_1[i] & \text{wenn } r_i \geq p 
 		\end{cases}
 	\end{align*}
-	iteriert\footnote{
-		Iterieren wird typischerweise in der Informatik verwendet und 
-		bedeutet, dass über eine Menge der Reihe nach durchgegangen wird. 
-		Bei der Iteration über einen String wird jede Position des Strings 
-		angeschaut und je nach Aufgabe etwas mit diesem Zeichen gemacht.
-		}.
+	iteriert.
+% 	Wissenstand der Leser ist vorausgesetzt
+%	\footnote{
+%		Iterieren wird typischerweise in der Informatik verwendet und 
+%		bedeutet, dass über eine Menge der Reihe nach durchgegangen wird. 
+%		Bei der Iteration über einen String wird jede Position des Strings 
+%		angeschaut und je nach Aufgabe etwas mit diesem Zeichen gemacht.
+%		}.
 \end{itemize}
 
 \subsection{Kreuzung auf das TSP angepasst
@@ -81,8 +83,8 @@ die folgenden:
 \rhead{Kreuzung TSP}
 Für das Travelling Salesman Problem muss der Algorithmus angepasst werden.
 Würde das System wie in der Abbildung \ref{fig:one_point_crossover} 
-übernommen werden, würde es zu einem Resultat wie in der Abbildung
-\ref{fig:one_point_crossover_cities} führen.
+übernommen werden, würde das Resultat unkorrekte Teile enthalten, was zu einem 
+String wie in der Abbildung \ref{fig:one_point_crossover_cities} führt.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{
@@ -92,7 +94,7 @@ Würde das System wie in der Abbildung \ref{fig:one_point_crossover}
 	\label{fig:one_point_crossover_cities}
 \end{figure}
 Daher wird der Algorithmus so angepasst, dass keine Städte verschwinden
-oder doppelte auftreten. Die einfachste Methode ist es, den Teil, der Ersetzt wird,
+oder doppelte auftreten. Die einfachste Methode ist es, den Teil, der ersetzt wird,
 zu entfernen und danach die fehlenden Teile nach der Reihenfolge des anderen
 Elternteils zu ergänzen, bis der String wieder vollständig ist. Ein visuelles Beispiel
 finden Sie in der Abbildung \ref{fig:crossover_order_cities}.
@@ -102,7 +104,7 @@ finden Sie in der Abbildung \ref{fig:crossover_order_cities}.
 		papers/varalg/images/teil3/08GeneticStringCitiesCrossoverSimple.png
 	}
 	\caption{
-		Beispiel einer Einpunkt-Kreuzung, welche angepasst an das TSP ist. Der ersetzende Teil wurde entfernd und
+		Beispiel einer Einpunkt-Kreuzung, welche angepasst an das TSP ist. Der ersetzende Teil wurde entfernt und
 		nach der Reihenfolge des anderen Elternteils ergänzt.
 	}
 	\label{fig:crossover_order_cities}
