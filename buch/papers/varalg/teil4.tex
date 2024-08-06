@@ -7,20 +7,20 @@
 % !TEX encoding = UTF-8
 %
 \section{Variationsprinzip der Analysis und Algorithmus
-\label{buch:paper:varalg:section:variations_analysis_algorithm_result}}
+  \label{buch:paper:varalg:section:variations_analysis_algorithm_result}}
 \rhead{Variationsprinzip Mathematik und Algorithmus}
-Im vorherigen Kapitel \ref{buch:paper:varalg:section:genetic_algorithm_process} wurde erklärt, 
+Im vorherigen Abschnitt \ref{buch:paper:varalg:section:genetic_algorithm_process} wurde erklärt, 
 wie der Algorithmus funktioniert, der das Variationsprinzip anwendet. Dies 
 passt jedoch nicht genau zu dem Variationsprinzip, das in der Analysis 
 verwendet wird. In diesem Kapitel wird genauer darauf eingegangen.
 \begin{table}
    \centering
    \caption{Woran unterscheiden sich die beiden Prinzipien?}
-   \begin{tabularx}{\textwidth}{|X|X|X|}
+   \begin{tabularx}{\textwidth}{|L|X|X|}
       \hline
        & Analysis 
-       & Algorithmus 
-       \\ \hline
+       & Genetischer Algorithmus 
+      \\ \hline
       Ziele  
        & Wie im Kapitel Funktionale \ref{buch:variation:problem:subsection:funktionale}
 
@@ -44,10 +44,10 @@ verwendet wird. In diesem Kapitel wird genauer darauf eingegangen.
       \\ \hline
       Nachbarlösungen
        & Es wird das Konzept der Richtungsableitung in Richtung einer Funktion \(f(x)\)
-       genutzt. Diese Funktion kann durch kleine Änderungen des Parameters \(x\) beliebig
-       nahe beeinanderliegen. Aufgrund dieser Eigenschaft kann man die Ableitung nach dem
-       Parameter \(x\) bilden, woraus sich die Möglichkeit die Euler-Lagrange-Differentialgleichung
-       abzuleiten. Das Bedeutet das die Nachbarlösungen beliebig nahe sein können.  
+      genutzt. Diese Funktion kann durch kleine Änderungen des Parameters \(x\) beliebig
+      nahe beeinanderliegen. Aufgrund dieser Eigenschaft kann man die Ableitung nach dem
+      Parameter \(x\) bilden, woraus sich die Möglichkeit die Euler-Lagrange-Differentialgleichung
+      abzuleiten. Das Bedeutet das die Nachbarlösungen beliebig nahe sein können.  
        & Die Nachbarlösungen im Algorithmus werden die Variationen direkt untersucht,
       gekreuzt und mutiert, um die besten Lösungen zu finden. Jede Nachbarlösung 
       ist eine endliche Distanz von der aktuellen Lösung entfernt und kann nicht beliebig 
@@ -60,7 +60,6 @@ verwendet wird. In diesem Kapitel wird genauer darauf eingegangen.
        & Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
       \\ \hline
    \end{tabularx}
-   \caption{Vergleich auf den Begriff Variationen}
    \label{tab:variation_comparison}
 \end{table}
 Die Aussage, dass im Algorithmus das Variationsprinzip verwendet ist so nicht

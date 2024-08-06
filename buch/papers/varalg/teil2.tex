@@ -48,41 +48,39 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel sind wie folgt:
     \item \( d(i, j) \) ist die Funktion, welche die Entfernung der Stadt \( i \) und
           Stadt \( j \) zurückgibt.
 \end{itemize}
-
-\begin{beispiel
-    \label{buch:paper:varalg:subsection:bruteforce_calculate}}
-\rhead{Kurzes Beispiel Rechnung der Formel}
-Um zu verdeutlichen, wie die Formel \eqref{eq:bruteforce_min_formula}
-angewendet wird, folgt hier ein Beispiel. Dafür wird die Tabelle 
-\ref{tab:example_bruteforce_cities} genutzt, um aufzuzeigen, wie
-die Formel \eqref{eq:bruteforce_min_formula} angewendet wird.
-\begin{table}
-    \centering
-    \begin{tabular}{|c|c|c|c|c|}
-        \hline
-            & $A$ & $B$ & $C$ & $D$ \\ \hline
-        $A$ & 0   & 10  & 15  & 20  \\ \hline
-        $B$ & 10  & 0   & 35  & 25  \\ \hline
-        $C$ & 15  & 35  & 0   & 30  \\ \hline
-        $D$ & 20  & 25  & 30  & 0   \\ \hline
-    \end{tabular}
-    \caption{
-        Beispieltabelle mit möglicher Distanz der Städten, diese liesst sich wie folgt:
-        Die Distanz zwischen Stadt $B$ und $D$ beträgt 25.
-    }
-    \label{tab:example_bruteforce_cities}
-\end{table}
-In der Rechnung nutzen wir die Permutation $\sigma = (B, D, A, C)$.
-Diese setzen wir in die Formel ein 
-\begin{equation}
-    L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
-    =
-    25 + 20 + 15 + 35 = 95
-    \label{eq:bruteforce_min_formula_example}
-\end{equation}
-und erhalten für die Permutation die Gesammtlänge 95. Um die kürzeste Strecke zu finden,
-müssen alle möglichen Permutationen durchgerechnet werden. Die kürzeste Strecke ist dann
-das Optimum. 
+\begin{beispiel}
+    \label{buch:paper:varalg:subsection:bruteforce_calculate}
+    Um zu verdeutlichen, wie die Formel \eqref{eq:bruteforce_min_formula}
+    angewendet wird, folgt hier ein Beispiel. Dafür wird die Tabelle 
+    \ref{tab:example_bruteforce_cities} genutzt, um aufzuzeigen, wie
+    die Formel \eqref{eq:bruteforce_min_formula} angewendet wird.
+    \begin{table}
+        \centering
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+                & $A$ & $B$ & $C$ & $D$ \\ \hline
+            $A$ & 0   & 10  & 15  & 20  \\ \hline
+            $B$ & 10  & 0   & 35  & 25  \\ \hline
+            $C$ & 15  & 35  & 0   & 30  \\ \hline
+            $D$ & 20  & 25  & 30  & 0   \\ \hline
+        \end{tabular}
+        \caption{
+            Beispieltabelle mit möglicher Distanz der Städten, diese liest sich wie folgt:
+            Die Distanz zwischen Stadt $B$ und $D$ beträgt 25.
+        }
+        \label{tab:example_bruteforce_cities}
+    \end{table}
+    In der Rechnung nutzen wir die Permutation $\sigma = (B, D, A, C)$.
+    Diese setzen wir in die Formel ein:
+    \begin{equation}
+        L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
+        =
+        25 + 20 + 15 + 35 = 95
+        \label{eq:bruteforce_min_formula_example}
+    \end{equation}
+    und erhalten für die Permutation die Gesamtlänge 95. Um die kürzeste Strecke zu finden,
+    müssen alle möglichen Permutationen durchgerechnet werden. Die kürzeste Strecke ist dann
+    das Optimum. 
 \end{beispiel}
 \subsection{Aufwand Bruteforce
     \label{buch:paper:varalg:subsection:bruteforce_efforts}}
