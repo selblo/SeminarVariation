@@ -144,17 +144,17 @@ nicht positiv sein sollte:
 0
 .
 \end{align*}
-Mit diesem Ausdruck lässt sich jedoch noch keine Aussage treffen,
-ob die Bedingung der Energieminimierung erfüllt wird.
-Um den Ausdruck zu vereinfachen,
-integrieren wir den zweiten Term partiell und führen einige Umformungen durch.
-Dann ergibt sich:
+Leiten wir also nun das Funktional $I$ nach der Zeit ab,
+erhalten wir
 \begin{align*}
 \deriv{}{t} I
 &=
-\int_\Omega \deriv{F}{c} \pderiv{c}{t} + \epsilon^2 \nabla c \cdot \nabla \pderiv{c}{t} \di{x}
+\int_\Omega \deriv{F}{c} \pderiv{c}{t}
++ \epsilon^2 \nabla c \cdot \nabla \pderiv{c}{t} \di{x}
 .
 \end{align*}
+Mit diesem Ausdruck lässt sich jedoch noch keine Aussage treffen,
+ob die Bedingung der Energieminimierung erfüllt wird.
 Um den Ausdruck weiter zu vereinfach integrieren wir den 2. Term partiell
 und wenden noch einige Umformungen an.
 Dann resultiert:
@@ -185,6 +185,7 @@ Final erhalten wir also
 \deriv{}{t} I
 &=
 -\int_\Omega M \abs{\nabla \mu}^2 \di{x}
+,
 \end{align*}
 wobei alle Terme im Integral positiv sind.
 Somit haben wir bewiesen,
