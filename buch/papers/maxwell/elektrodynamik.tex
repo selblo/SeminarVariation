@@ -27,12 +27,12 @@ für die Funktionen, die wir betrachten, gelten darf.
 Das heisst Ladungen dürfen sich nun mit einer beliebigen Geschwindigkeit $\vec{v}$ bewegen und wir berücksichtigen zeitabhängige Skalar- und Vektorfelder.
 Bei den statischen Maxwell-Gleichungen fällt auf, dass das elektrische und magnetische Feld keinerlei Abhängigkeiten voneinander haben.
 Wie sich später herausstellen wird, ändert sich dies, denn die Zeitabhängigkeit führt dazu, dass sich das elektrische und magnetische Feld gegenseitig beeinflussen.
-Daraus folgen einige spannende Tatsachen, auf die wir später noch zu Sprechen kommen.
+Daraus folgen einige spannende Tatsachen, auf die wir später noch zu sprechen kommen.
  
 Im folgenden werden wir unseren Raum definieren und bekannte Vektorfelder in ihrer Definition anpassen.
 
 \subsubsection{Der vierdimensionale Raum}
-Den Raum in dem wir uns nun bewegen werden, definieren wir als
+Der Raum in dem wir uns nun bewegen, definieren wir als
 \begin{equation}
 	\Omega
 	=
@@ -136,7 +136,7 @@ wird in der Elektrodynamik ähnlich definiert wie in der Magnetostatik. Nämlich
 Der Unterschied liegt hier einzig in der zusätzlichen Zeitkomponente im Inputvektor.
 
 \subsection{Dynamische Maxwell-Gleichungen}
-Das Ziel dieses Abschnittes ist ein Variationsprinzip zu formulieren, welches uns die Verhaltensgleichungen der Elektrodynamik liefert. 
+Das Ziel dieses Abschnitts ist ein Variationsprinzip zu formulieren, welches uns die Verhaltensgleichungen der Elektrodynamik liefert. 
 Wir betrachten nun den luftleeren, vierdimensionalen Raum $\Omega$.
 In diesem Raum existieren nun das elektrische Feld $\vec{E}(t,x,y,z)$, das magnetische Feld $\vec{B}(t,x,y,z)$, eine Stromdichte $\vec{\jmath}(t,x,y,z)$ und eine zeitunabhängige Ladungsdichte $\varrho(x,y,z)$.
 
@@ -308,7 +308,6 @@ Da unsere Lagrange-Funktion wiederum von einer vektoriellen Grösse abhängig is
 - \frac{\partial}{\partial \Omega^3}\frac{\partial L}{\partial(\partial^3 A^i)}
 = 0 \qquad \text{für } i=0,1,2,3 \,.
 \]
-
 {\larger\textcircled{\smaller[2]1}} $i = 0$
 \[
 J^0  -\frac{1}{\mu_0}\,\biggl(\partial^1\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
@@ -317,7 +316,6 @@ J^0  -\frac{1}{\mu_0}\,\biggl(\partial^1\underbrace{\left(\partial^0 A^1 + \part
 =
 0
 \]
-
 {\larger\textcircled{\smaller[2]2}} $i = 1$
 \[
 J^1  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^1 + \partial^1 A^0\right)}_{\displaystyle=-E_x/c}
@@ -326,7 +324,6 @@ J^1  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^1 + \part
 =
 0
 \]
-
 {\larger\textcircled{\smaller[2]3}} $i = 2$
 \[
 J^2  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^2 + \partial^2 A^0\right)}_{\displaystyle=-E_y/c}
@@ -335,7 +332,6 @@ J^2  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^2 + \part
 =
 0
 \]
-
 {\larger\textcircled{\smaller[2]4}} $i = 3$
 \[
 J^3  -\frac{1}{\mu_0}\,\biggl(\partial^0\underbrace{\left(\partial^0 A^3 + \partial^3 A^0\right)}_{\displaystyle=-E_z/c}
@@ -367,26 +363,26 @@ Für $i=1,2,3$ resultiert das partielle Differentialgleichungssystem
 \nabla\times\vec{B},
 \label{maxwell:section:ampere_dynamisch}
 \end{align}
-was dem dynamischen ampereschen Gesetz entspricht.
+was dem dynamischen ampèreschen Gesetz entspricht.
  
 Wir kommen nun zur Erkenntnis, dass man die fundamentalen Feldgleichungen des Elektromagnetismus mit einem Variationsprinzip herleiten kann.
-Dafür mussten wir nur die Feldenergie und Wechselwirkungen mit einem Funktional ausdrücken und dieses mithilfe der Variationsrechnung minimieren.
-Eine wunderschöne Tatsache, denn einmal mehr wurden wir Zeuge davon, dass wenn wir Energien minimieren Naturgesetze resultieren!
+Dafür mussten wir nur die Feldenergien und Wechselwirkungen mit einem Funktional ausdrücken und dieses mithilfe der Variationsrechnung minimieren.
+Eine wunderschöne Tatsache, denn einmal mehr wurden wir Zeuge davon, dass wenn wir Energien minimieren, Naturgesetze resultieren!
 
 \subsubsection{Interpretation der Resultate}
 Was können wir aus diesen zwei partiellen Differentialgleichungen entnehmen?
 In der Gleichung \eqref{maxwell:section:gauss_dynamisch} sehen wir, dass das gausssche Gesetz im statischen wie auch im dynamischen Fall von der gleichen Form ist.
 Das heisst die Quelle des elektrischen Feldes ist eine Ladungsdichte $\varrho$.
-In der Gleichung \eqref{maxwell:section:ampere_dynamisch} fällt auf, dass das dynamische ampèrsche Gesetz, im Vergleich zum statischen, einen zusätzlichen Term erhalten hat, der eine zeitliche Veränderung des elektrischen Feldes beinhaltet.
+In der Gleichung \eqref{maxwell:section:ampere_dynamisch} fällt auf, dass das dynamische ampèrsche Gesetz, im Vergleich zum statischen, einen zusätzlichen Term erhalten hat, der eine zeitliche Veränderung des elektrischen Feldes beschreibt.
 Also verursacht nicht nur eine Stromdichte, sondern auch eine zeitliche Veränderung im elektrischen Feld eine Rotation im magnetischen Feld.
 An dieser Stelle bemerken wir zum ersten Mal, dass das magnetische Feld vom elektrischen Feld beeinflusst werden kann.
 
 
-\subsubsection{Gausssches Gesetz des magnetischen Feldes und Faradaysches Gesetz}
+\subsubsection{Gausssches Gesetz des magnetischen Feldes und Faradaysches Gesetz der Induktion}
 Der Vollständigkeit halber wollen wir noch einige Worte über die bisher nicht explizit erwähnten Maxwell-Gleichungen verlieren.
-Die beiden Gesetze folgen ganz simpel aus der Definition des elektrischen und magnetischen Feldes.
+Die beiden Gesetze folgen ganz trivial aus der Definition des elektrischen und magnetischen Feldes.
  
-Wenn wir in Gleichung \eqref{maxwell:section:definition_dynamisch_magnetischesFeld} auf beiden Seiten die Divergenz anwenden, erhalten wir
+Wenn wir in der Gleichung \eqref{maxwell:section:definition_dynamisch_magnetischesFeld} auf beiden Seiten die Divergenz anwenden, erhalten wir
 \[
 \nabla \cdot \vec{B}
 =
@@ -403,7 +399,7 @@ gelten muss.
 Dies entspricht dem gaussschen Gesetz des magnetischen Feldes.
 Es besagt, dass das magnetische Feld quellenfrei ist oder anders ausgedrückt, dass keine magnetische Monopole existieren. Was wiederum auch bedeutet, dass die magnetischen Feldlinien immer in sich geschlossen sein müssen.
  
-Wenn wir in Gleichung \eqref{maxwell:section:definiton_dynamisch_elektrischesFeld} auf beiden Seiten die Rotation anwenden, erhalten wir
+Wenn wir in der Gleichung \eqref{maxwell:section:definiton_dynamisch_elektrischesFeld} auf beiden Seiten die Rotation anwenden, erhalten wir
 \[
 \nabla \times \vec{E}
 =
@@ -419,7 +415,7 @@ Da die partielle Ableitung nach der Zeit eine lineare Operation ist, können wir
 - \frac{\partial \vec{B}}{\partial t}.
 \end{equation}
 Was wir erhalten ist das faradaysche Gesetz der Induktion.
-Diese partielle Differentialgleichungen sagen uns, dass eine zeitliche Veränderung des magnetischen Feldes eine Rotation des elektrischen Feldes verursacht. Also sehen wir, dass auch das elektrische Feld vom magnetischen Feld beeinflusst werden kann. Da in der Elektrodynamik eine zeitliche Veränderung in einem Feld eine Rotation im anderen Feld zur Folge hat, ist die Existenz von elektromagnetischen Wellen auch intuitiv erklärbar. 
+Diese partiellen Differentialgleichungen sagen uns, dass eine zeitliche Veränderung des magnetischen Feldes eine Rotation des elektrischen Feldes verursacht. Also sehen wir, dass auch das elektrische Feld vom magnetischen Feld beeinflusst werden kann. Da in der Elektrodynamik eine zeitliche Veränderung in einem Feld eine Rotation im anderen Feld zur Folge hat, ist die Existenz von elektromagnetischen Wellen so auch intuitiv naheliegend. 
 
 
 \subsubsection{Exkurs zu elektromagnetischen Wellen}
