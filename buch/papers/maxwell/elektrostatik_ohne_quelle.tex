@@ -29,7 +29,7 @@
 
 \section{Elektrostatik\label{maxwell:section:elekktrostatik}}
 \rhead{Elektrostatik}
-Die Elektrostatik ist ein Spezialfall der Elektrodynamik, bei dem statische Felder betrachtet werden.
+Die Elektrostatik ist ein Spezialfall der Elektrodynamik, bei dem statische, das heisst zeitlich nicht veränderliche Felder betrachtet werden.
 Dies setzt voraus, dass
 \begin{equation}
 	\frac{\partial f}{\partial t}
@@ -106,7 +106,7 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
-		\def\R{1.8}
+		\def\R{2.2}
 		\def\NE{16}
 		\def\NV{4}
 		\contourlength{1.6pt}
@@ -118,14 +118,13 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 		\foreach \i [evaluate={\angle=(\i-1)*360/\NE;}] in {1,...,\NE}{
 			\draw[EFieldLineArrow={0.6}] (0,0) -- (\angle:\R);
 		}
-		\draw[charge+] (0,0) circle (7pt) node[black,scale=0.8] {$+Q$};
+		\draw[charge+] (0,0) circle (8pt) node[black,scale=1] {$+Q$};
 		%\draw[FFieldLineArrow={0.6}] (-1,1) -- (-2,2);
-		\draw[-{Stealth[black]}] (-1,1) -- (-1.8,1.8) node at (-1.6, 2) {$\vec{F}$};
-		\draw[charge_small] (-1,1) circle (4pt) node[black,scale=0.8] {$q$};
-		\node[EcolFL,scale=0.8] at (1.4,-1.4) {$\vec{E}$};
-		\node[EcolEP,scale=0.8] at (1.95,0) {$\varphi$};
+		\draw[-{Stealth[black]}] (-1.2,1.2) -- (-2,2) node at (-1.6, 2) {$\vec{F}$};
+		\draw[charge_small] (-1.2,1.2) circle (5pt) node[black,scale=1] {$q$};
+		\node[EcolFL,scale=1] at (1.8,-1.8) {$\vec{E}$};
+		\node[EcolEP,scale=1] at (2.5,0) {$\varphi$};
 	\end{tikzpicture}
-	%TODO: Caption anpassen
 	\caption{Elektrisches Feld (grün) einer positiven Punktladung $+Q$ und Äquipotentiallinien (blau) der selben positiven Punktladung $+Q$}
 	\label{maxwell:section:E-Feld_punktladung}
 \end{figure}
@@ -149,21 +148,19 @@ Die Permittivität
 \)
 ist ein Mass dafür, wie gut sich ein Material polarisieren lässt und ist das Produkt der relativen Permittivität $\varepsilon_r$ und der Permittivität von Vakuum $\varepsilon_0$.
 Die relative Permittivität ist eine materialabhängige Grösse und hat in Vakuum den skalaren Wert $1$.
-Die Permittivität des Vakuums
+Die Permittivität des Vakuums in SI-Einheiten
 \[
 \varepsilon_0
 =
-8.854 \cdot 10^{-12} F/m
+8.854 \cdot 10^{-12}\,\text{F/m}
 \]
 ist die elektrische Feldkonstante.
 
-%TODO: Anderer Titelname
 \subsection{Laplace-Gleichung
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
-\rhead{Problemstellung}
 Man stelle sich nun einen ladungsfreien, luftleeren, drei dimensionalen Raum $V\subset\mathbb{R}^3$
 vor, indem ein elektrisches Potentialfeld $\varphi(x,y,z)$ existiert.
-Für diesen Raum möchten wir mittels der Varitaionsrechnung eine partielle Differentialgleichung entwickeln, die beschreibt, wie sich das Potentialfeld und somit auch das elektrische Feld verhält. 
+Für diesen Raum möchten wir mittels der Variationsrechnung eine partielle Differentialgleichung entwickeln, die beschreibt, wie sich das Potentialfeld und somit auch das elektrische Feld verhält. 
 
 \subsubsection{Ansatz}
 Damit wir eine Gleichung erhalten, die das Verhalten des elektrischen Potentialfeldes beschreibt, muss ganz allgemein die Energie im System minimiert werden. 
@@ -174,14 +171,14 @@ W_{\text{e}}
 \iiint_V w_e\, dV.
 \]
 Dieses Integral gilt es zu minimieren, was die Grundlage für unser Variationsproblem darstellt.
-Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist im Vakuum
+Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist in Vakuum
 \[
 w_{\text{e}}
 =
 \frac{1}{2}\,\varepsilon_0\,\vec{E}\,^2.
 \]
-Diese Gleichung können wir nun mittels definition \eqref{maxwell:section:definition_statisch_elektrischesFeld} mit dem elektrischen Potentialfeld ausdrücken.
-somit ist
+Diese Gleichung können wir nun mittels Definition \eqref{maxwell:section:definition_statisch_elektrischesFeld} mit dem elektrischen Potentialfeld ausdrücken.
+Folglich ist
 \begin{align}
 \renewcommand{\arraystretch}{1.9}
 w_{\text{e}}
@@ -189,7 +186,7 @@ w_{\text{e}}
 \frac{1}{2}\,\varepsilon_0\left(-\nabla\varphi\right)^2
 \\
 w_{\text{e}}
-=
+&=
 \frac{1}{2}\,\varepsilon_0
 \begin{pmatrix}
 \displaystyle
@@ -199,7 +196,7 @@ w_{\text{e}}
 \displaystyle
 -\varphi_z
 \end{pmatrix}
-&\cdot
+\cdot
 \begin{pmatrix}
 \displaystyle
 -\varphi_x\\
@@ -213,12 +210,10 @@ w_{\text{e}}
 \label{maxwell:section:energiedichte}
 \end{align}
 Dies können wir in das zu minimerende Integral einsetzen und bekommen
-%TODO: eventuell underbraces weg lassen.
 \begin{equation}
 	W_{\text{e}}
 	=
-	\iiint_V \underbrace{
-		\frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=L(x,y,z,\varphi,\varphi_x,\varphi_y,\varphi_z)}\, dV.
+	\iiint_V \frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\, dV.
 	\label{maxwell:section:energieintegral_quellenfrei}
 \end{equation}
 Aus dieser Gleichung können wir entnehmen, dass unsere Lagrange-Funktion
@@ -232,24 +227,23 @@ ist.
 Somit haben wir unsere Lagrange-Funktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-%TODO: label suchen von E-O-DGL von müller kapitel
 Nun gilt es die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
 Nach Einsetzen wird die Differentialgleichung zu
-\[
-\frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} - \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
-\frac{\partial}{\partial y}\frac{\partial}{\partial \varphi_y}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
+\begin{align*}
+\frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} &- \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\\
+&- \frac{\partial}{\partial y}\frac{\partial}{\partial \varphi_y}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - 
 \frac{\partial}{\partial z}\frac{\partial}{\partial \varphi_z}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\biggr)
 =
 0.
-\]
+\end{align*}
 Man sieht, dass die partielle Ableitung nach $\varphi$ verschwindet.
-Nach den partiellen Ableitungen nach $\varphi_x$, $\varphi_y$ und $\varphi_z$ wird die Differentialgleichung zu
+Nachdem wir die partiellen Ableitungen nach $\varphi_x$, $\varphi_y$ und $\varphi_z$ durchgeführt haben, wird die Differentialgleichung zu
 \[
 \frac{1}{2}\,\varepsilon_0\left(-\frac{\partial}{\partial x}2\varphi_x - \frac{\partial}{\partial y}2\varphi_y - \frac{\partial}{\partial z}2\varphi_z\right)
 =
 0.
 \]
-Wenn man nun noch die letzten partiellen Ableitungen macht, wird die Differentialgleichung zu
+Wenn man nun noch die letzten partiellen Ableitungen macht, resultiert
 \begin{equation}
 	- \varepsilon_0\underbrace{\left(\frac{\partial^2\varphi}{\partial x^2} + \frac{\partial^2\varphi}{\partial y^2} + \frac{\partial^2\varphi}{\partial z^2}\right)}_{\displaystyle=0}
 	=
@@ -267,7 +261,7 @@ Somit wird unsere Schlussdifferentialgleichung zu
 	\label{maxwell:section:laplace_gleichung_2}
 \end{equation}
 %TODO: Definition Laplace suchen.
-Wenn wir nun den Laplace-Operator laut seiner Definition \eqref{???} mittels Divergenz und Gradient ausdrücken, erhalten wir die Gleichung
+Wenn wir nun den Laplace-Operator laut seiner Definition \eqref{buch:felder:fundamentallemma:eqn:laplaceproduktformel} mittels Divergenz und Gradient ausdrücken, erhalten wir die Gleichung
 \begin{equation}
 \nabla\cdot\underbrace{\nabla\varphi}_{\displaystyle-\vec{E}}
 =
@@ -283,7 +277,7 @@ Dank der statischen Definition des elektrischen Feldes \eqref{maxwell:section:de
 \end{equation}
 sein muss. Diese Differentialgleichung besagt, dass das elektrische Feld quellenfrei ist.
 Dies bedeutet, dass Felldlinien des elektrischen Feldes an keinem Ort im Raum enstehen oder enden können.
-Dies ist sehr naheliegend, da ohne Ladungen im Raum das elektrische Feld quellenfrei sein muss.
+Was wiederum sehr naheliegend ist, da ohne Ladungen im Raum das elektrische Feld quellenfrei sein muss.
 
 %Darf auch weggelassen werden.
 \subsubsection{Exkurs zur Laplace-Gleichung}

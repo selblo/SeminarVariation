@@ -1,0 +1,237 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Herleitung hydrostatische Gleichgewichtsform
+\label{planet:section:teil1}}
+\rhead{Problemstellung}
+Damit die hydrostatische Gleichgewichtsform einfacher berechnet werden kann, werden ein paar Annahmen getroffen.
+\begin{itemize}
+	\item Unser Himmelskörper besteht aus einer idealen Flüssigkeit, das heisst sie ist inkompressibel und hat keine innere Reibung.
+	\item Die Massenverteilungsdichte \(\sigma\) für 2D und die Dichte \(\rho\) für 3D der Flüssigkeit sind konstant.
+	Dies ist eine Idealisierung der Bedingung 2 für die Definition eines Planeten.
+\end{itemize}
+
+\noindent
+Konkret sieht unsere Problemstellung folgendermassen aus.
+\begin{itemize}
+	\item Die potenzielle Energie \(U\) soll minimal werden.
+	\item Die Fläche \(A\) bzw. das Volumen \(V\) ist gegeben.
+	\item Da man eine runde Form erwartet, werden die Berechnungen in Polarkoordinaten bzw. Kugelkoordinaten durchgeführt. Somit suchen wir die Funktion \(r(\varphi)\) in 2D und \(r(\varphi,\theta)\) in 3D.
+\end{itemize}
+
+\subsection{Gravitation}
+
+Die Kraft, welche Teilchen auf andere Teilchen ausüben, nennt man Gravitation.
+Sie ist eine der vier Grundkräfte der Physik.
+Die Gravitation kann man sich als Feld vorstellen.
+Für die Berechnung der Kraft, welche auf ein Teilchen im Gravitationsfeld wirkt, benötigt man das Gravitationspotential \(\Phi\).
+Es ist definiert als
+\begin{equation}
+	\Phi(r) = -\frac{GM}{r}.
+	\label{planet:equ:gravpot}
+\end{equation}
+\(G\) ist die Gravitationskonstante \((G \approx 6.6743 \cdot 10^{-11} \text{m}^3 \text{kg}^{-1} \text{s}^{-2})\).
+\(M\) ist die Masse des Körpers, welcher das Gravitationsfeld erzeugt, \(r\) der Abstand vom Ursprung.
+
+Damit man die Kraft, welche auf ein Teilchen wirkt, berechnen kann, benötigt man den Gradienten des Gravitaionspotenzials, welcher definiert ist als
+\begin{equation*}
+	\nabla \Phi (r) = \frac{\partial \Phi}{\partial r} = \frac{\partial}{\partial r} \biggl( -\frac{GM}{r} \biggr) = \frac{GM}{r^2}.
+\end{equation*}
+
+Um nun die Kraft auf ein Teilchen zu berechnen muss man den Gradient des Gravitationspotenzials mit der Masse des Teilchens multiplizieren.
+Somit lautet die Formel für die Berechnung der Kraft welche auf ein Teilchen wirkt
+\begin{equation*}
+	F = -m\nabla \Phi = -\frac{GMm}{r^2} \frac{\vec{r}}{r}.
+\end{equation*}
+Die Kraft ist negativ, da sie zum Zentrum der Masse zeigen muss.
+
+
+\subsection{Hydrostatische Gleichgewichtsform in 2D}
+\begin{figure}
+	\centering
+	\includegraphics{papers/planet/pictures/Flächenelement.pdf}
+	\caption{Visualisierung Polarkoordinaten}
+	\label{planet:fig:2d}
+\end{figure}
+Für die Berechnung der hydrostatischen Gleichgewichtsform soll nun die potenzielle Energie \(U\) minimal werden.
+Für die Berechnung der Fläche in 2D muss man wissen, dass \(dA = r \, dr \, d\varphi\) ist.
+Dies sieht man in Abbildung \ref{planet:fig:2d}.
+Als Nebenbedingung hat man die Fläche \(A\), welche mit 
+\begin{equation}
+	A = \int_{A}^{} dA
+	\label{planet:equ:A}
+\end{equation}
+berechnet wird.
+Die Formel für die Berechung der potenziellen Energie ist
+\begin{equation}
+	U = \int_{A} \sigma \, \Phi (r) \, dA.
+	\label{planet:equ:U}
+\end{equation}
+Wenn man nun Gleichung \eqref{planet:equ:gravpot} in Gleichung \eqref{planet:equ:U} einsetzt erhält man
+\begin{equation*}
+	U = \int_{0}^{2\pi}\int_{0}^{r(\varphi)} \frac{-GM}{r} \, \sigma r \, dr \, d\varphi.
+\end{equation*}
+Das erste Integral kann man auflösen und die Konstante aus dem Integral heraus nehmen, es resultiert 
+\begin{equation*}
+	U =-GM\sigma \int_{0}^{2\pi} r(\varphi) \, d\varphi .
+\end{equation*}
+Aus dieser Gleichung entnimmt man die Lagrange-Funktion
+\begin{equation*}
+	L(\varphi ,r,r\,') = r(\varphi).
+\end{equation*}
+Für die zweite Lagrange-Funktion schreiben wir die Gleichung der Nebenbedingung \eqref{planet:equ:A} aus zu
+\begin{equation*}
+	A = \int_{0}^{2\pi}\int_{0}^{r(\varphi)} r \, dr \, d\varphi.
+\end{equation*}
+Das innere Integral kann man auflösen, sodass die Gleichung zu
+\begin{equation*}
+	A = \int_{0}^{2\pi}\frac{r(\varphi)^2}{2} \, d\varphi
+\end{equation*}
+vereinfacht wird.
+Aus diesem Integral entnimmt man die Lagrange-Funktion der Nebenbedingung
+\begin{equation*}
+	N(\varphi ,r,r\,') = \frac{r^2}{2}.
+\end{equation*}
+
+Um die gesuchte Lösung zu finden, nutzt man die Methode der Lagrange-Muliplika\-to\-ren.
+Genaueres über die Methode der Lagrange-Muliplikatoren findet man in \cref{buch:nebenbedingungen:lagrangemult:subsection:einzeln}.
+Für die Lösung dieser Problemstellung kann man die Euler-Lagrange-Differentialgleichung als Gradienten ansehen.
+Mit diesen Gradienten kann man anschliessend ein Gleichungssystem aufstellen und die gesuchte Funktion finden.
+Damit man die gesuchte Funktion finden kann, muss man den Gradienten bzw. die Euler-Lagrange-Differentialgleichung der jeweiligen Lagrange-Funktion berechnen und anschliessend in
+\begin{equation}
+	\nabla N \cdot \lambda = \nabla L
+	\label{planet:equ:lamdagleichung}
+\end{equation}
+einsetzen.
+Für die „Gradienten“ der Lagrange-Funktionen benötigt man die jeweiligen partiellen Ableitungen
+\begin{equation*}
+	L(\varphi ,r(\varphi),r(\varphi)_\varphi) = r(\varphi),
+	\frac{\partial L}{\partial r} = 1,
+	\frac{\partial L}{\partial r\,'} = 0,
+\end{equation*}
+und
+\begin{equation*}
+	N(\varphi ,r(\varphi),r(\varphi)_\varphi) = \frac{r^2}{2} ,
+	\frac{\partial N}{\partial r} = r,
+	\frac{\partial N}{\partial r\,'} = 0.
+\end{equation*}
+
+\noindent
+Die „Gradienten“ der Lagrange-Funktionen sind definiert als 
+\begin{equation*}
+	\nabla L = 
+	\frac{\partial L}{\partial r}-  \frac{d}{d\varphi}\left( \frac{\partial L}{\partial r\,'} \right)
+\end{equation*}
+und
+\begin{equation*}
+	\nabla N = \frac{\partial N}{\partial r} - \frac{d}{d\varphi}\left(\frac{\partial N}{\partial r\,'}\right).
+\end{equation*}
+
+\noindent
+Wenn man nun die Ableitungen der Lagrange-Funktionen in die „Gradienten“ einsetzt
+\begin{equation*}
+	\left(\frac{\partial N}{\partial r} - \frac{d}{d\varphi}\left(\frac{\partial N}{\partial r'}\right)\right)\cdot \lambda = \frac{\partial L}{\partial r}-  \frac{d}{d\varphi}\left( \frac{\partial L}{\partial r'} \right)
+\end{equation*} 
+und anschliessend das Ganze in die Gleichung \eqref{planet:equ:lamdagleichung} einsetzt, erhält man
+\begin{equation*}
+	r = \frac{1}{\lambda}.
+\end{equation*}
+Was sagt nun dieses Ergebnis?
+Da \(\lambda\) eine Konstante ist, muss \(r\) ebenfalls eine Konstante sein.
+Da die Berechungen in Polarkoordinaten durchgeführt wurden, bedeutet ein konstanter Radius, dass die gesuchte Form ein Kreis ist.
+
+\subsection{Hydrostatische Gleichgewichtsform in 3D}
+\begin{figure}
+	\centering
+	\includegraphics{papers/planet/pictures/Flächenelement_spherical.pdf}
+	\caption{Visualisierung Kugelkoordinaten}
+	\label{planet:fig:3d}
+\end{figure}
+Für die Berechnung im dreidimensionalen Raum geht man ähnlich vor wie im zweidimensionalen Raum.
+Der Unterschied ist, dass man eine weitere Variable \(\theta\) hat.
+Da man nun mehr als eine Variable hat, muss man die Aufgabe mit der Euler-Ostrogradski-Differentialgleichung lösen.
+Für die Berechnung der hydrostatischen Gleichgewichtsform soll nun wieder die potenzielle Energie \(U\) minimal werden.
+Da die Berechnungen in 3D durchgeführt werden, benötigt man für die Berechung die Formel für ein Volumenteilchen \(dV = r^2 \sin (\theta) \, dr \, d\theta \, d\varphi \).
+Zu sehen ist dies in Abbildung \ref{planet:fig:3d}
+Als Nebenbedingung hat man in 3D das Volumen \(V\) welches mit 
+\begin{equation}
+	V = \int_{V}^{} dV
+	\label{planet:equ:V}
+\end{equation}
+berechnet wird.
+Die Formel für die Berechnung der potenziellen Energie ist
+\begin{equation}
+	U = \int_{V} \sigma \,  \Phi (r)\, dV.
+	\label{planet:equ:U3d}
+\end{equation}
+Setzt man wiederum die Gleichung \eqref{planet:equ:gravpot} in Gleichung \eqref{planet:equ:U3d} ein erhält man
+\begin{equation*}
+	U = \int_{0}^{2\pi}
+	\int_{0}^{\pi}
+	\int_{0}^{r(\varphi,\theta)}
+	\frac{-GM}{r}\, \sigma\, r^2 \sin (\theta) \,
+	dr \, d\theta \, d\varphi.
+\end{equation*}
+Mit ein wenig Umstellen und dem Auflösen des ersten Integrals erhält man
+\begin{equation*}
+	U =-GM\sigma \int_{0}^{2\pi}\int_{0}^{\pi}\frac{r(\varphi,\theta)^2}{2}  \sin (\theta) \, d\theta \, d\varphi.
+\end{equation*}
+Wiederum entnimmt man aus diesem Interal die Lagrange-Funktion
+\begin{equation*}
+	L(\varphi,\theta ,r,r_\varphi,r_\theta) = \frac{r^2}{2}  \sin (\theta).
+\end{equation*}
+Mit dem Wissen, dass \(dV = r^2 \sin (\theta) \, dr \, d\theta \, d\varphi \) ist kann man \eqref{planet:equ:V} als
+\begin{equation*}
+	V = \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{r(\varphi,\theta)} r^2 \sin (\theta) \, dr \, d\theta \, d\varphi
+\end{equation*}
+ausschreiben.
+Hier löst man wiederum das innere Integral auf, schreibt die Konstanten vor das Integral und erhält
+\begin{equation*}
+	V = \int_{0}^{2\pi}\int_{0}^{\pi}\frac{r(\varphi,\theta)^3}{3} \sin (\theta) \, d\theta \, d\varphi.
+\end{equation*}
+Aus dieser Gleichung entnimmt man die Lagrange-Funktion der Nebenbedingung
+\begin{equation*}
+	N(\varphi,\theta ,r,r_\varphi,r_\theta) = \frac{r^3}{3} \sin (\theta).
+\end{equation*}
+Wie in 2D findet man die gesuchte Funktion, wenn man die Gleichung \eqref{planet:equ:lamdagleichung} löst.
+Da man in der Berechung im 3D zwei Variablen hat (\(\varphi,\theta\)), muss man die partiellen Ableitungen nach beiden Variablen berechnen.
+Konkret benutzt man die Euler-Ostrogradski-Differentialgleichung als Gradient, wenn die gesuchte Funktion von mehr als einer Variablen abhängig ist.
+Die Ableitungen sehen folgendermassen aus:
+\begin{align*}
+	\frac{\partial L}{\partial r} &= r  \sin (\theta)& \frac{\partial L}{\partial r_\varphi} &= 0& \frac{\partial L}{\partial r_\theta} &= 0 \\
+\intertext{und}
+	\frac{\partial N}{\partial r} &= r^2\sin (\theta)&	\frac{\partial N}{\partial r_\varphi} &= 0&	\frac{\partial N}{\partial r_\theta} &= 0.
+\end{align*}
+Glücklicherweise werden viele der Ableitungen 0.
+Die „Gradienten“ sind definiert als
+\begin{equation*}
+	\nabla L =  \frac{\partial L}{\partial r} 
+	-\frac{d}{d\varphi}\left( \frac{\partial L}{\partial r_\varphi} \right)
+	-\frac{d}{d\theta}\left( \frac{\partial L}{\partial r_\theta} \right)
+\end{equation*}
+und
+\begin{equation*}
+	\nabla N=  \frac{\partial N}{\partial r} 
+	-\frac{d}{d\varphi}\left( \frac{\partial N}{\partial r_\varphi} \right)
+	-\frac{d}{d\theta}\left( \frac{\partial N}{\partial r_\theta} \right).
+\end{equation*}
+Somit können wir die „Gradienten“ in die Gleichung \eqref{planet:equ:lamdagleichung} einsetzen und erhalten
+\begin{equation*}
+	r^2\sin (\theta) \cdot \lambda = r \sin (\theta).
+\end{equation*}
+Wenn man diese Gleichung weiter vereinfacht erhält man
+\begin{equation*}
+	r = \frac{1}{\lambda}.
+\end{equation*}
+Man erhält dasselbe Ergebnis wie in 2D.
+In 3D bedeutet ein konstanter Radius, das die gesuchte Form eine Kugel ist.
+
+\subsection{Interpretation der Ergebnisse}
+Sowohl in 2D als auch in 3D erhält man das Ergebnis, dass die Form in welcher die potenzielle Energie eines Planeten minimiert wird, ein Kreis bzw. eine Kugel ist.
+Diese Feststellung wird durch die Realität bestätigt, in der grössere Himmelskörper, welche ihre starren Körperkräfte überwinden, kugelähnliche Formen annehmen.
+
