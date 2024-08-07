@@ -42,11 +42,11 @@ definieren.
 Dabei bezeichen $N_A$ und $N_B$ die lokale Anzahl der Atome von Stoff A bzw. Stoff B.
 
 \subsection{Freie Energie eines heterogenen Systems}
-Um von der gegebenen, inneren Energiefunktion $F$ eines homogenen Systems
-auf die innere Energiefunktion $f$ für ein heterogenes System zu gelangen,
+Um von der gegebenen, inneren Energiefunktion $F(c)$ eines homogenen Systems
+auf die innere Energiefunktion $f(c)$ für ein heterogenes System zu gelangen,
 kann eine multivariante Taylor-Reihe verwendet werden.
 In einem homogenen System ist die Konzentration $c$ überall gleich,
-sodass die freie Energie $F$ ausschließlich von dieser konstanten Konzentration abhängt.
+sodass die freie Energie $F(c)$ ausschließlich von dieser konstanten Konzentration abhängt.
 In einem heterogenen System hingegen variiert die Konzentration $c(x)$ räumlich.
 Somit ist $f$ abhängig von $\nabla^i c$ für alle $i \in \mathbb{N}$.
 Da im homogenen Fall die räumlichen Ableitungen $0$ sind,
@@ -86,15 +86,15 @@ nehmen wir an,
 dass die Materialeigenschaften unseres Gemisches isotrop sind.
 Isotropie bedeutet,
 dass die Eigenschaften des Materials unabhängig von der Richtung sind,
-d.h.,
+das heisst,
 das Material verhält sich in alle Richtungen gleich.
 Dies vereinfacht die Analyse,
 da die Einflüsse der räumlichen Ableitungen der Konzentration
 in alle Richtungen gleich sein müssen.
-Insbesondere heisst das,
+Insbesondere bedeutet dies,
 dass $f$ gegenüber Spiegelungen ($x_i \rightarrow -x_i$) und
 Permutationen ($x_i \rightarrow x_j)$ invariant sein muss.
-Aus diesem Grund lässt sich ableiten,
+Aus diesen Eigenschaften lässt sich erkennen,
 dass
 \begin{align*}
 \pderiv{f(\mathbf{c_0})}{c_i}
@@ -174,4 +174,5 @@ N_V \int_\Omega \left[
 ,
 \label{cahnhilliard:energy}
 \end{align}
-wobei $\epsilon$ in der Praxis häufig als konstant angenommen wird.
+wobei $\epsilon$ in der Praxis gemäss \cite{cahnhilliard:freeenergy}
+und \cite{cahnhilliard:deriv} häufig als konstant angenommen wird.
