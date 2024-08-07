@@ -59,7 +59,7 @@ Nach Einsetzen von \(T_1\) und \(T_2\) ergibt dies
     \frac{1}{2} m_2 ( \dot{x}_2^2 + \dot{y}_2^2 )\\
     V_{\text{tot}} &= g ( m_1 y_1 + m_2 y_2 ).
 \end{align*}
-Das schreiben wir in \(\theta\) um
+Das schreiben wir in \(\theta_1\) und \(\theta_2\) um
 \begin{align*}
     T_{\text{tot}} &= \frac{1}{2} m_1 \dot{\theta}^2_1 l_1^2 + 
     \frac{1}{2} m_2 \dot{\theta}^2_2 l_2^2 + \frac{1}{2}
@@ -113,19 +113,17 @@ Danach berechnen wir die Ableitung nach der Zeit
     m_1 l_1^2 \ddot{\theta}_1 + m_2 l_1^2 \ddot{\theta}_1\\
     \shortintertext{}
     & \qquad + m_2 l_1 l_2 \Bigl(\ddot{\theta}_2\cos(\theta_1-\theta_2)-
-    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2) \nonumber\\
+    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2)\\
     \shortintertext{}
-    & \qquad + \dot{\theta}_2^2 \sin(\theta_1-\theta_2)\Bigr)
-    \nonumber\\
+    & \qquad + \dot{\theta}_2^2 \sin(\theta_1-\theta_2)\Bigr)\\
     \shortintertext{}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_2}\right) &=
     m_2 l_2^2 \ddot{\theta}_2\\
     \shortintertext{}
     & \qquad + m_2 l_1 l_2 \Bigl(\ddot{\theta}_1\cos(\theta_1-\theta_2)+
-    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2) \nonumber\\
+    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2)\\
     \shortintertext{}
     & \qquad - \dot{\theta}_1^2 \sin(\theta_1-\theta_2)\Bigr)
-    \nonumber
 \end{align*}
 und zuletzt
 \begin{align*}
@@ -149,21 +147,23 @@ Umformungen die Differentialgleichung
     \ddot{\theta}_1 l_1^2 (m_1 + m_2) \, &= -m_1 g l_1 \sin(\theta_1) 
     - m_2 g l_1 \sin(\theta_1)\\
     & \qquad - m_2 l_1 l_2 \Bigl(\ddot{\theta}_2 \cos(\theta_1-\theta_2) 
-    + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \Bigr) \nonumber
+    + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \Bigr)
     \shortintertext{für \(\theta_1\) und die Differentialgleichung}
     m_2 l_2^2 \ddot{\theta_2} &= -m_2 g l_2 \sin(\theta_2)\\
     & \qquad - m_2 l_1 l_2 \Bigl(\ddot{\theta}_1 \cos(\theta_1-\theta_2) 
-    - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \Bigr) \nonumber
+    - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \Bigr) 
 \end{align*}
-für \(\theta_2\). Nun können wir die Gleichung endlich nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\) auflösen und erhalten
+für \(\theta_2\). Nun können wir die Gleichung endlich nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\)
+auflösen und erhalten
 \begin{align}
     \label{eq:bewegungsgleichung1}
     \ddot{\theta}_1 &= -\frac{g}{l_1} \sin(\theta_1) - \frac{m_2}{m_1+m_2} \frac{l_2}{l_1} 
     \Bigl(\ddot{\theta}_2 \cos(\theta_1-\theta_2) + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \Bigr)\\
+    \label{eq:bewegungsgleichung2}
     \ddot{\theta}_2 &= -\frac{g}{l_2} \sin(\theta_2) - \frac{l_1}{l_2} 
     \Bigl(\ddot{\theta}_1 \cos(\theta_1-\theta_2) - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \Bigr)
 \end{align}
-als Lösung.
+als Resultat.
 
 An dieser Stelle können wir unser Ergebnis plausibilisieren, indem wir in
 der Gleichung \eqref{eq:bewegungsgleichung1} die Länge \(l_2\) gegen null gehen lassen.
@@ -175,13 +175,14 @@ wie vermutet, der Bewegungsgleichung des einfachen Pendels entspricht
 (siehe Gleichung \eqref{eq:mathematisches_pendel}).
 Physikalisch bedeutet das eine Verkleinerung des zweiten Stabs bis dieser verschwindet und
 das Doppelpendel zu einem einfachen transformiert.
-Parallel gilt das auch für \(\ddot{\theta}_2\) wenn die Länge \(l_1\) gegen null läuft:
+Parallel gilt das auch für \(\ddot{\theta}_2\) in \eqref{eq:bewegungsgleichung2}
+wenn die Länge \(l_1\) gegen null läuft:
 \begin{align*}
     \lim_{l_1 \to 0} \ddot{\theta}_2 &= -\frac{g}{l_2} \sin(\theta_2).
 \end{align*}
 
 \subsection{Anfangsbedingungen}
-Als Ergebnis erhalten wir für \(\theta\) jeweils eine Differentialgleichung zweiter Ordnung.
+Als Ergebnis erhalten wir für \(\theta\) jeweils eine gekoppelte Differentialgleichung zweiter Ordnung.
 Diese lässt sich nicht analytisch nach der Zielvariable auflösen,
 d.h. man erhält keine Funktion für die Position in Abhängigkeit von \(\theta\) 
 wie beispielsweise für das einfache Pendel.

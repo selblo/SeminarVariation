@@ -1,0 +1,170 @@
+% !TeX spellcheck = ge_De
+% !TeX encoding = UTF-8
+
+\documentclass[ngerman, aspectratio=169, xcolor={rgb}]{beamer}
+
+% style
+\mode<presentation>{
+	\usetheme{Frankfurt}
+}
+%packages
+\usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{ragged2e}
+
+\usepackage{bm} % bold math
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{multirow} % multi row in tables
+\usepackage{booktabs} %toprule midrule bottomrue in tables
+\usepackage{scrextend}
+\usepackage{textgreek}
+\usepackage[rgb]{xcolor}
+
+\usepackage{ marvosym } % \Lightning
+
+\usepackage{multimedia} % embedded videos
+
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{pgfplots}
+
+\usepackage{algorithmic}
+
+%citations
+%\usepackage[style=verbose,backend=biblatex]{biblatex}
+%\addbibresource{references.bib}
+
+
+%math font
+\usefonttheme[onlymath]{serif}
+
+%Beamer Template modifications
+%\definecolor{mainColor}{HTML}{0065A3} % HSR blue
+\definecolor{accentColor}{HTML}{D72864} % OST raspberry
+\definecolor{mainColor}{HTML}{8C195F} % OST raspberry
+\definecolor{invColor}{HTML}{28d79b} % OST pink
+\definecolor{dgreen}{HTML}{38ad36} % Dark green
+
+%\definecolor{mainColor}{HTML}{000000} % HSR blue
+\setbeamercolor{palette primary}{bg=white,fg=mainColor}
+\setbeamercolor{palette secondary}{bg=orange,fg=mainColor}
+\setbeamercolor{palette tertiary}{bg=yellow,fg=red}
+\setbeamercolor{palette quaternary}{bg=mainColor,fg=white} %bg = Top bar, fg = active top bar topic
+\setbeamercolor{structure}{fg=mainColor} % itemize, enumerate, etc (bullet points)
+\setbeamercolor{section in toc}{fg=black} % TOC sections
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{$\bullet$}~\inserttocsubsection\par}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[circle]
+\setbeamertemplate{description item}[circle]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+% \setbeamertemplate{blocks}[rounded]{shadow=false}
+% \setbeamertemplate{blocks}[default]{shadow=true}
+\setbeamercolor{block title}{use=structure,fg=white,bg=accentColor}
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{footline}{fg=gray}
+\setbeamertemplate{footline}{%
+	\hfill\usebeamertemplate***{navigation symbols}
+	\hspace{0.5cm}
+	\insertframenumber{}\hspace{0.2cm}\vspace{0.2cm}
+}
+
+% \usepackage{caption}
+\usepackage{subcaption}
+% \captionsetup{labelformat=empty}
+
+%Title Page
+\title{Cahn-Hilliard-Gleichung}
+\subtitle{Wieso trennt sich meine Salatsauce?}
+\author{Patrik Müller}
+% \institute{OST Ostschweizer Fachhochschule}
+% \institute{\includegraphics[scale=0.3]{../img/ost_logo.png}}
+\date{\today}
+
+\input{../packages.tex}
+
+\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}%
+
+\newcommand*{\HL}{\textcolor{mainColor}}
+\newcommand*{\RD}{\textcolor{red}}
+\newcommand*{\BL}{\textcolor{blue}}
+\newcommand*{\GN}{\textcolor{dgreen}}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+
+\makeatletter
+\newcount\my@repeat@count
+\newcommand{\myrepeat}[2]{%
+	\begingroup
+	\my@repeat@count=\z@
+	\@whilenum\my@repeat@count<#1\do{#2\advance\my@repeat@count\@ne}%
+	\endgroup
+}
+\makeatother
+
+\usetikzlibrary{automata,arrows,positioning,calc,shapes.geometric, fadings}
+
+\newcommand{\dd}[2][]{\mathrm{d}^{#1} #2}
+\newcommand{\di}[2][]{\,\dd[#1]{#2}}
+\newcommand{\deriv}[3][]{\frac{\dd[#1]{#2}}{\dd[]{#3^{#1}}}}
+\newcommand{\pderiv}[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}
+\newcommand{\abs}[1]{\left| #1 \right| }
+\newcommand{\energy}{\mathcal{E}}
+\newcommand{\flux}{\mathcal{J}}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Rezept}
+	\tableofcontents
+\end{frame}
+%
+% \begin{frame}{}
+% \textbf{Zutaten:}\newline
+% \begin{enumerate}
+% \item Einführung
+% \item Definition der freien Energie
+% \begin{enumerate}
+% \item Für homogene Systeme
+% \item Erweiterung auf heterogene Systeme
+% \end{enumerate}
+% \item Globale Betrachtung des Problems
+% \item Cahn-Hilliard-Gleichungen
+% \item Spinodale Entmischung
+% \item Gegenmassnahmen
+% \end{enumerate}
+% \end{frame}
+
+\input{sections/intro}
+\input{sections/energy}
+% \input{sections/global}
+\input{sections/cahnhilliard}
+\input{sections/spinodal}
+\input{sections/countermeasure}
+
+\appendix
+\begin{frame}
+\centering
+\Large
+$ $
+
+\textbf{Vielen Dank für die Aufmerksamkeit}
+
+\textbf{und ich wünsche viel Spass beim Salatsauce machen}
+\end{frame}
+
+\end{document}
