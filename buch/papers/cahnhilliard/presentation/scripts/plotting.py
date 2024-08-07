@@ -4,6 +4,7 @@
 
 Defines colors, color cyclers, colormaps and other plotting utilities.
 """
+
 import os
 from pathlib import Path
 
@@ -81,6 +82,7 @@ cyclers = {
         ],
     }.items()
 }
+book_cycler = cycler(color=["#cc0000", "#0000ff", "#009900", "#ff8000"])
 
 cmaps = {
     k: mpl.colors.LinearSegmentedColormap.from_list(f"ost_{k}", c)
@@ -108,6 +110,21 @@ cmaps = {
 }
 
 
+def _create_target_path(file):
+    root = str(Path(file).parent)
+    output_folder = f"{root}/../images"
+    os.makedirs(output_folder, exist_ok=True)
+    img_path = f"{output_folder}/{Path(file).stem}.pdf"
+    return img_path
+
+
+def _save_figure(func, *args, **kwargs):
+    file, fig, ax = func(*args, **kwargs)
+    img_path = _create_target_path(file)
+    fig.savefig(img_path)
+    return fig, ax
+
+
 def ost_style(cycler="default"):
     """Decorator to create plots following the OST style guide.
 
@@ -123,24 +140,31 @@ def ost_style(cycler="default"):
     def dec(func):
         def wrapper(*args, **kwargs):
             # Set OST style
-            init_style()
+            init_ost_style()
             if cycler == "short":
                 use_short_cycler()
             elif cycler == "long":
                 use_long_cycler()
+            return _save_figure(func, *args, **kwargs)
 
-            # Call decorated function
-            file, fig, ax = func(*args, **kwargs)
+        return wrapper
 
-            # Create image folder if it doesn't exist
-            root = str(Path(file).parent)
-            output_folder = f"{root}/../images"
-            os.makedirs(output_folder, exist_ok=True)
+    return dec
 
-            # Save the plot as PDF
-            img_path = f"{output_folder}/{Path(file).stem}.pdf"
-            fig.savefig(img_path)
-            return fig, ax
+
+def book_style():
+    """Decorator to create plots following the MathSem book style.
+
+    Initializes book style and creates a PDF in the corresponding 'image' folder.
+    Decorated functions have to return the path to the script, the figure and
+    axes object(s).
+    """
+
+    def dec(func):
+        def wrapper(*args, **kwargs):
+            # Set OST style
+            init_book_style()
+            return _save_figure(func, *args, **kwargs)
 
         return wrapper
 
@@ -148,6 +172,15 @@ def ost_style(cycler="default"):
 
 
 def init_style():
+    """Initialize base style by loading the right Latex packages."""
+    plt.rcParams["text.usetex"] = True
+    plt.rcParams["text.latex.preamble"] = (
+        r"\usepackage{amsmath}\usepackage{times}\usepackage{txfonts}"
+    )
+    plt.rcParams["font.family"] = "serif"
+
+
+def init_ost_style():
     """Initialize OST style.
 
     Loads the right Latex packages, sets the default color cycler and
@@ -156,14 +189,19 @@ def init_style():
     OST colormaps can be accessed like any other matplotlib cmaps.
     Values are "ost_default", "ost_light", "ost_dark".
     """
-    plt.rcParams["text.usetex"] = True
-    plt.rcParams["text.latex.preamble"] = r"\usepackage{lmodern}"
+    init_style()
     plt.rc("axes", prop_cycle=cyclers["default"])
     plt.rc("image", cmap="ost_default")
     _cmaps = plt.colormaps()
     for v in cmaps.values():
         if v.name not in _cmaps:
             plt.register_cmap(cmap=v)
+
+
+def init_book_style():
+    """Initialize book style."""
+    init_style()
+    plt.rc("axes", prop_cycle=book_cycler)
 
 
 def use_short_cycler():
@@ -317,9 +355,7 @@ if __name__ == "__main__":
     x = np.linspace(*xlim, N)
     C, S = ss.fresnel(x)
     use_short_cycler()
-    fig3, ax3 = plt.subplots(
-        num=3, clear=True, constrained_layout=True, figsize=figsize
-    )
+    fig3, ax3 = plt.subplots(num=3, clear=True, constrained_layout=True, figsize=figsize)
     ax3.plot(x, S, label="$S(x)$")
     ax3.plot(x, C, label="$C(x)$")
     create_arrow_axis(xstep, ystep, xlim, ylim, ax3)
