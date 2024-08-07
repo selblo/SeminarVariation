@@ -12,16 +12,18 @@
 In diesem Schritt werden Elternpaare ausgewählt, aus denen neue 
 Nachkommen erzeugt werden. Die Selektion erfolgt so, dass in der 
 Regel nur die Fittesten die Chance erhalten, neue Kinder zu erzeugen. 
-Ein wichtiger Punkt ist, dass, obwohl die Fittesten bevorzugt werden, 
-auch die weniger Fitten die Möglichkeit haben, Nachkommen zu erzeugen. 
-Dadurch wird sichergestellt, dass die Population nicht zu schnell 
+Es gibt jedoch auch die Möglichkeit, dass weniger fitte Individuen die 
+Chance haben, neue Nachkommen zu erzeugen, ähnlich wie in der Natur.
+Durch die weniger Geeigneten wird die Vielfalt der Population erhalten
+und es stellt sicher, dass die Population nicht zu schnell 
 konvergiert\footnote{
-    Konvergenz bedeutet, dass die Population von Lösungen immer ähnlicher wird
+    Konvergenz bedeutet in diesem Fall, dass die Lösungen mit jeder neuen 
+    Population immer ähnlicher zur vorherigen Population werden.
     }
-und in einem lokalen Minimum stecken bleibt. Durch die weniger Geeigneten 
-wird die Vielfalt der Population erhalten und somit die Chance erhöht, 
-dass die Population nicht in einem lokalen Minimum steckenbleibt. Die Abbildung
-\ref{fig:selection_of_parents} stellt dies bildlich dar.
+und in einem lokalen Minimum stecken bleibt. Würde dieser Fall eintreten, 
+kann es sein, dass wir keine besseren Lösungen erhalten können, obwohl es 
+diese gibt. Die Abbildung
+\ref{fig:selection_of_parents} veranschaulicht die Selektion.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{
@@ -29,34 +31,33 @@ dass die Population nicht in einem lokalen Minimum steckenbleibt. Die Abbildung
     }
     \caption{
         Mögliche ausgewählte Eltern für Nachkommen, wobei die blaue Linie 
-        eine höhere Wahrscheinlichkeit hat als die rote Linie}
+        eine höhere Wahrscheinlichkeit hat, dass diese passiert, als die rote Linie}
     \label{fig:selection_of_parents}
 \end{figure}
-Für die Selektion gibt es verschiedene Möglichkeiten.
+Für die Selektion gibt es verschiedene Möglichkeiten, die folgenden zeigen bewährte
+Methoden auf.
 \begin{enumerate}
     \item \textbf{Roulette-Rad-Selektion:} Individuen werden zufällig und
     proportional zu ihrer Fitness ausgewählt. Die Wahrscheinlichkeit wird 
-    anhand ihrer Fitness definiert. Kürzere Strecken haben eine höhere Chance, 
-    ausgewählt zu werden. Die Wahrscheinlichkeit lässt sich mit der Formel
+    anhand ihrer Fitness definiert. Die Wahrscheinlichkeit lässt sich mit der Formel
     \begin{equation}
         P_i
         =
         \frac{f_i}{\sum_{j=1}^{N} f_j}
-        \label{buch:paper:varalg:selection:probability_fittest}
+        \label{eq:probability_fittest}
     \end{equation}
-    berechnen. \(f_i\) ist die Funktion, welche die Fitness des Individuums berechnet.
-    Geteilt durch die Totale Fitness. \(P_i\) ist die Wahrscheinlichkeit für das Individuum
+    berechnen. In dieser Formel sind hohe Fitnesswerte wahrscheinlicher. Die Funktion \(f_i\) 
+    berechnet die Fitness des Individuums. Im Nenner erhalten wir die totale Fitness der Population.
     \item \textbf{Rangselektion:} Individuen werden nach ihrer Fitness sortiert und basierend
-    auf ihrem Rang ausgewählt. Die Wahrscheinlichkeit wird anhand des Rangs definiert. Die 
-    Formel 
+    auf ihrem Rang ausgewählt. Die Formel 
     \begin{equation}
         P_i
         =
         \frac{r_i}{\sum_{j=1}^{N} r_j}
-        \label{buch:paper:varalg:selection:probability_rating}
+        \label{eq:probability_rating}
     \end{equation}
-    ist die gleiche wie oben, verwendet jedoch die Funktion \(r_i\), welche den 
-    Rang des Individuums berechnet.
+    ist die gleiche wie \eqref{eq:probability_fittest}, mit dem Unterschied, dass die verwendete Funktion 
+    \(r_i\) den Rang des Individuums zurückgibt.
     \item \textbf{Turnierselektion:} Eine Gruppe von Individuen wird zufällig ausgewählt
     und das fitteste Individuum dieser Gruppe wird als Elternteil gewählt.
 \end{enumerate}
@@ -68,15 +69,14 @@ die Wahrscheinlichkeit mathematisch berechnet wird.
 \subsection{Selektion auf das TSP angepasst
 \label{buch:paper:varalg:subsection:selection_tsp}}
 \rhead{Selektion TSP}
-Für das Traveling Salesman Problem muss die Fitness nach der kürzeste Strecke,
-definiert sein. Dass bedeutet, dass die Wahrscheinlichkeit für die Selektion
-so umgestellt werden, dass je kürzer die Strecke, desto höher die Wahrscheinlichkeit
-ist. Die Formel \ref{buch:paper:varalg:selection:probability_fittest} wird 
-dafür angepasst und neu zu
+Beim Traveling Salesman Problem sucht man nach der kürzesten Strecke. Die Formel 
+\eqref{eq:probability_fittest} würde aber die längste Strecke höher gewichten, was
+nicht dem Ziel entspricht. Daher wird die Formel angepasst und neu zu 
 \begin{equation}
     P_i
     =
     \frac{\frac{1}{f_i}}{\sum_{j=1}^{N} \frac{1}{f_j}}
-    \label{buch:paper:varalg:selection:probability_fittest_tsp}
+    \label{eq:probability_fittest_tsp}
 \end{equation}
-, dabei wird die Fitness mit \(\frac{1}{f_i}\) umgekehrte.
+definiert. Der Term \(\frac{1}{f_i}\) kehrt die Funktion um, sodass kürzere Strecken eine höhere
+Wahrscheinlichkeit haben.
