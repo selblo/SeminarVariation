@@ -14,21 +14,20 @@ wurde dargelegt, aus welchen Komponenten ein genetischer Algorithmus besteht und
 solcher aufgebaut werden kann. 
 Obwohl in beiden Fällen das Ziel darin besteht, das Optimum zu erreichen, unterscheidet
 sich das Variationsprinzip der Analysis grundlegend von dem, was in einem genetischen 
-Algorithmus zur Anwendung kommt. In diesem Abschnitt werden die Unterschiede angeschaut.
+Algorithmus zur Anwendung kommt. In diesem Abschnitt werden die Unterschiede in der 
+Tabelle \ref{tab:variation_comparison} aufgeführt und beschrieben.
 
-Der Hauptunterschied ist, was man aus der Analysis und genetischer Algorithmus 
-als Resultat erhält. In der Analysis ist ein wesentliches Konzept die Deformation in eine bestimmte 
+Ein wesentlicher Unterschied ist, was man aus der Analysis und genetischer Algorithmus 
+erhält. In der Analysis ist ein wesentliches Konzept die Deformation in eine bestimmte 
 Richtung, das Differential, was in der Richtungsableitung/Variation steckt. Die Richtungsableitung 
-beschreibt, wie sich eine Funktion in eine bestimmte Richtung ändert und die Variationsrechnung 
-untersucht die Änderung eines Funktionalen. Wodurch wir über die Ableitung 
-eine Funktion erhalten, mit welcher das Optimum berechnen werden kann, wie z.B. die  
-Durchbiegung einer Kette. Während im Algorithmus versucht wird, das Optimum durch Zufall von   
+beschreibt, wie sich eine Funktion in eine bestimmte Richtung ändert. Die Variation in  
+der Variationsrechnung untersucht die Änderung eines Funktionalen. Das bedeutet, durch die Ableitung 
+erhalten wir eine Funktion, mit welcher das Optimum berechnen werden kann, wie z.B. die  
+Durchbiegung einer Kette. Im Algorithmus wird versucht, das Optimum durch Zufall von   
 Variationen, durch neue Kombinationen der genetischen Strings, zu finden. Am 
 Ende erhält man für die gestellte Problemstellung eine Lösung, die das Optimum sein könnte,  
 sehr nahe dran ist oder komplett daneben liegt. Ändert sich die Ausgangslage, muss der Algorithmus 
 erneut ausgeführt werden, um eine neue mögliche Lösung zu finden. 
-Weitere Unterschiede sind in der 
-Tabelle \ref{tab:variation_comparison} aufgeführt und beschrieben.
 
 \begin{xltabular}{\textwidth}{|L|X|X|}
    \hline
@@ -46,26 +45,30 @@ Tabelle \ref{tab:variation_comparison} aufgeführt und beschrieben.
    & 
    Im Algorithmus bedeutet die Variation, dass es eine Menge möglicher Lösungen gibt, 
    aus denen die besten ausgewählt und weiterverarbeitet werden, in der 
-   Hoffnung, dass die neuen Lösungen besser sind. Die erhaltene Lösung ist ein Endresultat für
-   genau die gestellte Problemstellung. Ändert sich die Ausgangslage, muss der Algorithmus
-   erneut ausgeführt werden, um eine neue mögliche Lösung zu finden. Ein weiteres Ziel ist es,
+   Hoffnung, dass die neuen Lösungen noch besser sind. Die erhaltene Lösung ist ein Endresultat für
+   genau die gestellte Problemstellung. Ein weiteres Ziel ist es,
    ein genügend gutes Ergebnis zu erhalten, mit einer annehmbaren Laufzeit.
+   \\ \hline
+   Lösung
+   & 
+   Die Lösung ist eine Funktion, mit der das Optimum errechnet werden kann.
+   & 
+   Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
    \\ \hline
    Techniken  
    & 
    Hier werden analytische Techniken wie die Euler-Lagrange-Gleichung verwendet, 
    um Optimierungsprobleme zu lösen. Die verschiedenen Techniken sind ab diesem Kapitel
-   \ref{buch:chapter:variation} beschrieben. Aus den Techniken erhalten wir eine Funktion,
-   mit welcher das Optimum berechnet werden kann.
+   \ref{buch:chapter:variation} beschrieben.
    & Im Algorithmus werden Mechanismen verwendet, die stochastische
    \footnote{
-      Im Fall des Algorithmus sind stochastische Methoden gemeint, bei denen 
-      eine Anzahl an Zufallsereignissen oder -kombinationen erstellt und 
-      diese anschliessend ausgewertet oder weiterverarbeitet werden.
+      Stochastische Methoden beziehen sich in diesem Fall auf Verfahren, bei denen 
+      eine Anzahl von Zufallsereignissen oder -kombinationen erstellt und anschliessend 
+      ausgewertet oder weiterverarbeitet werden
    }
    Methoden wie Kreuzung und Mutation beinhalten, um Vielfalt zu erzeugen und aufrechtzuerhalten.
-   Die Techniken sollen die Wahrscheinlichkeit erhöhen, dass die besten Lösungen gefunden werden.
-   Zusätzlich sollen sie den Zeit- und Speicheraufwand reduzieren.
+   Die Techniken sollen die Wahrscheinlichkeit erhöhen, die besten Lösungen zu finden, 
+   sowie den Zeit- und Speicheraufwand reduzieren.
    Die Techniken sind im Abschnitt 3 \ref{buch:paper:varalg:section:genetic_algorithm_process}
    \\ \hline
    Nachbarlösungen
@@ -79,9 +82,19 @@ Tabelle \ref{tab:variation_comparison} aufgeführt und beschrieben.
    Bei den Nachbarlösungen im Algorithmus werden die Variationen direkt untersucht,
    gekreuzt und mutiert, um die besten Lösungen zu finden. Jede Nachbarlösung 
    ist eine endliche Distanz von der aktuellen Lösung entfernt und kann nicht beliebig 
-   nahe sein. Da so keine kontinuierliche Variation möglich ist, gibt es keine Ableitungen
+   nahe sein. Je nach Algorithmus definieren wir die Distanz sogar.
+   Da so keine kontinuierliche Variation möglich ist, gibt es keine Ableitungen
    und es müssen Methoden dazu genutzt werden, wie im Abschnitt 
    \ref{buch:paper:varalg:section:genetic_algorithm_process} beschrieben.
    \\ \hline
-   
+   Änderung der Parameter
+   & 
+   Ändern sich nun die Gegebenheiten, wie z.B. der Startpunkt liegt neu höher, werden die Parameter 
+   angepasst und die Funktion neu ausgerechnet, ohne die Ableitung noch einmal zu machen. Der Zeitaufwand
+   hält sich in Grenzen.
+   & 
+   Ändert sich die Ausgangslage, muss der Algorithmus erneut ausgeführt werden, um eine
+   neue mögliche Lösung zu finden. Beispiel wird eine weitere Stadt hinzugefügt, braucht
+   es in etwa die gleiche Zeit.
+   \\ \hline
 \end{xltabular}
