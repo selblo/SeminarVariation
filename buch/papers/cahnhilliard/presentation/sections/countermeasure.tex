@@ -60,21 +60,96 @@ v_y(x, y, t)
 \end{itemize}
 \end{frame}
 
+% \begin{frame}{}
+% \begin{figure}
+% \centering
+% \foreach \i in {0.1,0.3,0.5,0.7,1.0}{
+% \begin{subfigure}{0.19\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{images/\i.png}
+% \caption{$\alpha = \i$}
+% \end{subfigure}
+% }
+% \begin{subfigure}{0.19\textwidth}
+% \centering
+% \includegraphics[width=0.2\textwidth]{images/cb.png}
+% \caption{Farbskala}
+% \end{subfigure}
+% \caption{Resultate nach langem Rühren für unterschiedliche Amplituden $\alpha$ {\color{mainColor}[1]}}
+% \end{figure}
+% \end{frame}
+
+\begin{frame}{Anfangsbedingung}
+\begin{figure}
+\centering
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/ach_sim/initial.pdf}
+\caption{Anfangsbedingung $c(x,0)$}
+\end{subfigure}
+%
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{images/colorbar}
+\caption{Farbskala}
+\end{subfigure}
+\caption{Anfangsbedingung $c(x,0)$ der Simulation}
+\end{figure}
+\end{frame}
+
 \begin{frame}{}
 \begin{figure}
 \centering
-\foreach \i in {0.1,0.3,0.5,0.7,1.0}{
-\begin{subfigure}{0.19\textwidth}
+%
+% \begin{subfigure}{0.19\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{images/ach_sim/initial.pdf}
+% \caption{$c(x,0)$}
+% \end{subfigure}
+%
+\begin{subfigure}{0.32\textwidth}
 \centering
-\includegraphics[width=\textwidth]{images/\i.png}
-\caption{$\alpha = \i$}
+\includegraphics[width=\textwidth]{images/ach_sim/very_weak.pdf}
+\caption{$\alpha$ sehr klein}
 \end{subfigure}
-}
-\begin{subfigure}{0.19\textwidth}
+%
+\begin{subfigure}{0.32\textwidth}
 \centering
-\includegraphics[width=0.2\textwidth]{images/cb.png}
+\includegraphics[width=\textwidth]{images/ach_sim/weak.pdf}
+\caption{$\alpha$ klein}
+\end{subfigure}
+%
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{images/colorbar}
+\caption{Farbskala}
+\end{subfigure}
+\caption{Resultate nach langem Rühren für unterschiedliche Amplituden $\alpha$}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}
+\centering
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/ach_sim/nearly.pdf}
+\caption{$\alpha$ moderat}
+\end{subfigure}
+%
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/ach_sim/strong.pdf}
+\caption{$\alpha$ gross}
+\end{subfigure}
+%
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{images/colorbar}
 \caption{Farbskala}
 \end{subfigure}
 \caption{Resultate nach langem Rühren für unterschiedliche Amplituden $\alpha$ {\color{mainColor}[1]}}
 \end{figure}
+
 \end{frame}
