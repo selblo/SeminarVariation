@@ -202,6 +202,7 @@ def init_book_style():
     """Initialize book style."""
     init_style()
     plt.rc("axes", prop_cycle=book_cycler)
+    plt.rc("image", cmap="plasma")
 
 
 def use_short_cycler():
