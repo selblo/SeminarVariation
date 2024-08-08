@@ -7,8 +7,8 @@
 % !TEX root = ../../standalone.tex
 % !TEX encoding = UTF-8
 %
-\newcommand{\di}[2][]{\,\dd[#1]{#2}}
-\newcommand{\deriv}[3][]{\frac{\dd[#1]{#2}}{\dd[]{#3^{#1}}}}
+\newcommand{\di}[2][]{\,d^{#1}{#2}}
+\newcommand{\deriv}[3][]{\frac{d^{#1}{#2}}{d{#3^{#1}}}}
 \newcommand{\pderiv}[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}
 \newcommand{\energy}{\mathcal{E}}
 \newcommand{\flux}{{\vec{\jmath}}}
@@ -39,7 +39,7 @@ um die Dynamik der Phasenumwandlung in festen Lösungen und Legierungen zu besch
 
 In diesem Kapitel werden wir erläutern,
 wie sich die Cahn-Hilliard-Gleichung aus einem Variationsprinzip ableiten lässt.
-Anschließend analysieren wir die Gleichungen,
+Anschliessend analysieren wir die Gleichungen,
 um Lösungsansätze für die Herstellung stabilerer Salatsaucen zu entwickeln.
 
 \input{papers/cahnhilliard/energie.tex}
