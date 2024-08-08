@@ -28,7 +28,7 @@ Dabei stößt man in der Literatur auf folgende Reihenentwicklung, welche sich d
 Die Entwicklung beschreibt eine lange Welle in seichten Wasser welche sich entlang eines horizontalen undurchlässigen Bodens bei $z = -h$ ausbreitet.
 
 Um die Berechnungen einfach zu halten wird für die Funktionen $\phi (\bm{x},z,t)$ und $\bm{u} (\bm{x},z,t)$, in Bezug auf die vertikale Richtung $z$, als konstant angenähert, durch die Mittelung über die Wassertiefe \eqref{luke:Mittelung_Wassertiefe}.
-Die Funktion $v$ wird auch als lineare in Bezug auf $z$ angenähert. 
+Die Funktion $v$ wird auch als lineare Funktion in Bezug auf $z$ angenähert. 
 Konkret erhalten wir dadurch den Ansatz
 \begin{equation}
 	\phi(\bm{x},z,t) \approx \bar{\phi}(\bm{x}, t), \quad \bm{u}(\bm{x},z,t) \approx \bar{\bm{u}}(\bm{x}, t), \quad v(\bm{x},z,t) \approx \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right) \tilde{v}(\bm{x}, t)
@@ -36,7 +36,7 @@ Konkret erhalten wir dadurch den Ansatz
 \end{equation}
 für die Geschwindigkeit.
 Dieser Ansatz findet oft in der Modellierung von seichten Gewässern Verwendung, weil dieser gut die Bewegung des Wassers in der Nähe der Oberfläche beschreibt.
-Die Lagrange-Multiplikatoren $\mu(\bm{x},z,t)$ und $\nu(\bm{x},z,t)$ werden ebenfalls entsprechend diesem Ansatz angenähert:
+Die Lagrange-Multiplikatoren $\mu(\bm{x},z,t)$ und $\upsilon(\bm{x},z,t)$ werden ebenfalls entsprechend diesem Ansatz angenähert:
 \begin{equation}
 	\quad \bm{\mu}(\bm{x},z,t) \approx \bar{\bm{\mu}}(\bm{x}, t), \quad \upsilon(\bm{x},z,t) \approx \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon}(\bm{x}, t).
 	\label{luke:Ansatz_Multiplikatoren}
@@ -61,7 +61,7 @@ Damit wird die Lagrange-Funktion zu
 	\\
 	&\quad+\left(\nabla \bar{\bm{\mu}} + \frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon}\right) \bar{\phi} \Bigg] dz.
 \end{align*}
-Das Integral wird umgeformt und für das vereinfachte Verständnis auf drei Teile aufgeteilt:
+Das Integral wird umgeformt und für leichteres Verständnis auf drei Teile aufgeteilt:
 \begin{align*}
 	L&=
 	\left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
@@ -272,7 +272,7 @@ Ohne weitere Einschränkungen werden wir nun die Minimierung über das Variation
 \end{align}
 
 Wie zu erwarten ergibt die Gleichung \eqref{luke:Variation_nach_u} und \eqref{luke:Variation_nach_v} das $\bar{\bm{\mu}} = \bar{\bm{u}}$ und $\tilde{\upsilon} = \tilde{v}$ ist.
-Dieser Zusammenhang wurde bereits schon beim Variieren der Lagrangian-Funktion \eqref{luke:Luke_Lagrangian_mit_Multi} gezeigt.
+Dieser Zusammenhang wurde bereits beim Variieren der Lagrange-Funktion \eqref{luke:Luke_Lagrangian_mit_Multi} gezeigt.
 Die Gleichung \eqref{luke:Variation_nach_mu} und \eqref{luke:Variation_nach_upsilon} zeigen, dass die Geschwindigkeitsfelder genau einem Geschwindigkeitspotential entsprechen und das die vertikale Geschwindigkeit konstant bleibt. 
 Für uns interessant sind die Gleichungen \eqref{luke:Variation_nach_phi} und \eqref{luke:Variation_nach_eta}.
 Diese lassen sich nämlich umschreiben zu 
@@ -303,7 +303,7 @@ Bei der Burgers-Gleichung handelt es sich um eine nichtlineare, homogene und par
 Die Differenzialgleichung wird in der Regel über die Charakteristikenmethode gelöst. 
 Dabei entsteht folgende Lösung:
 \[
-\bar{u}(x,t) = f(\xi) = f(x-\bar{u}t),\quad \xi = x-f(\xi)t
+\bar{u}(x,t) = f(\xi) = f(x-\bar{u}t),\quad \xi = x-f(\xi)t,
 \]
 wobei $\xi$ der Punkt auf der $x$-Achse ist bei $t = 0$ von dort aus die charakteristischen Kurve aus startet.
 Diese Lösung beschreibt eine nichtlineare Wellenbewegung in welcher sich die Anfangsform der Welle im Laufe der Zeit ändert.
@@ -323,9 +323,9 @@ Die allgemeine lineare Wellengleichung in einer Dimension lautet
 Dabei ist $a$ die Geschwindigkeit der Welle entlang der $x$-Achse.
 Diese Wellengleichung kann in einem Bereich von $\Omega = \{(x,t)\mid t >0\}$ mit folgenden Anfangswerte
 \[
-u(x,0) = u_0(x),\quad \frac{\partial u}{\partial t} = v_0(x),\quad x \in \mathbb{R}.
+u(x,0) = u_0(x),\quad \frac{\partial u}{\partial t} = v_0(x),\quad x \in \mathbb{R},
 \]
-gelöst werden.
+berechnet werden.
 Wenn angenommen wird, dass die Geschwindigkeit $a$ konstant ist, kann die Gleichung auf die Differenzialgleichung erster Ordnung
 \[
 (\partial_t\mp a\partial_x)(\partial_t\pm a\partial_x) u  = 0
@@ -343,10 +343,6 @@ Wenn nun die Gleichung \eqref{luke:Variation_loesung_2} hergenommen wird, welche
 \qquad
 \text{Wellengleichung: }\frac{\partial u}{\partial t} + a \frac{\partial u}{\partial x} = 0,
 \]
-<<<<<<< HEAD
 dann ist zu erkennen, dass sich die Lösung über die Variation von der Lösung der Wellengleichung unterscheidet anhand dessen wie die Geschwindigkeit der Welle eingebunden ist.
 Bei der Wellengleichung ist die Wellengeschwindigkeit $a$ eine Konstante, wobei es bei der Lösung der Variation die Wellengeschwindigkeit $\bar{u}$ von der Position $x$ sowie der Zeit $t$ abhängig ist.
-=======
-dann ist zu erkennen, dass sich die Lösung über die Variation von der Lösung der Wellengleichung anhand wie die Geschwindigkeit der Welle eingebunden ist unterscheidet.
-Bei der Wellengleichung ist die Wellengeschwindigkeit $a$ eine Konstante, wobei es bei der Lösung der Variation die Wellengeschwindigkeit $\bar{u}$ von der Position $x$ sowie der Zeit $t$ abhängig ist.
->>>>>>> 059e486676fd5cb366ec7c480b94be240bc9ebb1
+
