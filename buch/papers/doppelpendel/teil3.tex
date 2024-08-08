@@ -137,9 +137,9 @@ Wir verfolgen das Ziel, nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\) aufzul�
 Dafür formen wir die Gleichungen \eqref{eq:lag1} und \eqref{eq:lag2} folgendermassen um:
 \begin{align*}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_1}\right) 
-    = \frac{\partial L}{\partial \theta_1}\\
+    &= \frac{\partial L}{\partial \theta_1}\\
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_2}\right) 
-    = \frac{\partial L}{\partial \theta_2}.
+    &= \frac{\partial L}{\partial \theta_2}.
 \end{align*}
 Hier setzen wir nun die vorher ausgerechneten Terme ein und erhalten nach wenigen
 Umformungen die Differentialgleichung
@@ -189,12 +189,12 @@ wie beispielsweise für das einfache Pendel.
 
 Trotzdem lassen sich mit Anfangsbedingungen für beide Winkel numerische Lösungen ermitteln.
 Dazu muss man für \(\theta_1(t=0)\) und \(\theta_2(t=0)\), welches die Anfangspositionen darstellen,
-einen Wert definieren wie z.B. jeweils 20°. Genauso für die Anfangsgeschwindigkeiten \(\dot{\theta}_1(t=0)\)
+einen Wert definieren wie z.~B.~jeweils 20°. Genauso für die Anfangsgeschwindigkeiten \(\dot{\theta}_1(t=0)\)
 und \(\dot{\theta}_2(t=0)\).
 Diese werden meistens mit 0 festgelegt. Man kann sich das vorstellen, als würde man das Pendel
 am zweiten Massepunkt fassen und auf die Position ziehen, wo beide Winkel 20° betragen, und dann loslassen.
 Anhand der numerischen Lösungen lassen sich bereits Simulationen erstellen, da der Computer
-sowieso auf diskrete Werte angewiesen ist macht das keinen Unterschied.
+sowieso auf diskrete Werte angewiesen ist, macht das keinen Unterschied.
 Mit den Simulationen könnte man beispielsweise das chaotische Verhalten des Pendels bei verschiedenen 
 Anfangsbedingungen genauer analysieren.
 

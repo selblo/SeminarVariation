@@ -25,7 +25,7 @@ I
 voraus.
 Zusätzlich konzentrieren wir uns in diesem Abschnitt ausschliesslich auf das magnetische Feld bzw. die magnetische Flussdichte, also nur magnetische Phänomene, somit wird auch
 \[\varphi(x,y,z) = 0 \qquad \forall x,y,z\, ,\] 
-also das elektrische Potential im gesamten Raum als null angenommen. 
+also das elektrische Potentialfeld im gesamten Raum als null angenommen. 
 
 
 
@@ -85,7 +85,7 @@ Durch das magnetische Vektorpotential, kann die magnetische Flussdichte als
 	\vec{B}
 	\label{maxwell:definitionVektorpot}
 \end{equation}
-beschrieben werden, wobei wir für später dieses bereits konkret ausrechnen wollen 
+beschrieben werden, wobei wir dies für später bereits konkret ausrechnen wollen 
 \begin{equation}
 	\label{maxwell:nablaA}
 	\renewcommand{\arraystretch}{1.9}
@@ -155,7 +155,7 @@ Da unser Ziel jedoch ist, das Integral der Gesamtenergie zu minimieren, müssen 
 
 Dafür betrachten wir erneut nur ein kleines, ein infinitesimales Stück der Ladung also $dq\,\vec{v}$ und können mithilfe von $dq = \varrho\,dV$, wobei $\varrho$ die Ladungsdichte ist, dieses kleine Stück der Ladung sofort zu $\vec{v}\varrho\,dV$ umschreiben.
 Wenn wir uns jetzt überlegen, dass sich eine Ladungsdichte mit einer Geschwindigkeit $\vec{v}$ bewegt, können wir auch sagen, dass dies äquivalent zu einer Stromdichte $\vec{\jmath}=\varrho\vec{v}$ ist. 
-Die kleinen bzw. infinitesimale Stücke der Wirkgrösse formen wir also zu \[\vec{\jmath}\,dV = \varrho\vec{v}\,dV\]
+Die kleinen bzw. infinitesimalen Stücke der Wirkgrösse formen wir also zu \[\vec{\jmath}\,dV = \varrho\vec{v}\,dV\]
 um und erhalten mit einer Integration über den ganzen Raum $V$
 \begin{equation}
 	W_{\text{p}}
@@ -166,7 +166,7 @@ um und erhalten mit einer Integration über den ganzen Raum $V$
 \end{equation}
 die gesamte potentielle Energie der Wirkgrösse.
 
-Jetzt befinden sich beide Energiekomponenten in einer Form, in der wir über denselben Raum bzw. dasselbe Volumen integrieren können und somit lassen sie sich zu einem einzigen Integral als 
+Jetzt befinden sich beide Energiekomponenten in einer Form, in welcher wir über denselben Raum bzw. dasselbe Volumen integrieren können und somit lassen sie sich zu einem einzigen Integral als 
 \begin{align*}
 W_{\text{tot}} 
 &=
@@ -211,11 +211,11 @@ abgelesen und definiert werden.
 Hierbei wollen wir darauf hinweisen, dass die Lagrange-Funktion in diesem Fall von einem Vektor, dem magnetischen Vektorpotential $\vec{A}$ abhängig ist. 
 Das bedeutet, dass jede Komponente des Vektorpotentials einzeln variiert werden kann, was später die Ursache für mehrere Ausführungen der Euler-Ostrogradski-Differentialgleichung sein wird.
 
-Erneut stellen wir auch fest, dass ein additiver Term dazugekommen ist, wie weiter oben beschrieben handelt es sich auch hier um einen Kopplungsterm, welcher hier jedoch die Wechselwirkung zwischen dem Feld $\vec{A}$ und der Wirkgrösse, also der Stromdichte $\vec{\jmath}$ beschreibt.
+Erneut stellen wir auch fest, dass ein additiver Term dazugekommen ist, wie weiter oben beschrieben handelt es sich auch um einen Kopplungsterm, welcher hier jedoch die Wechselwirkung zwischen dem Feld $\vec{A}$ und der Wirkgrösse, also der Stromdichte $\vec{\jmath}$ beschreibt.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
 
-Da jede Komponente des magnetischen Vektorpotentials für sich variiert werden kann, resultieren demnach drei Euler-Ostrogradski-Differentialgleichung der Form
+Da jede Komponente des magnetischen Vektorpotentials für sich variiert werden kann, resultieren demnach drei Euler-Ostrogradski-Differentialgleichungen der Form
 \[ 
 \frac{\partial L}{\partial A_i} 
 - \frac{\partial}{\partial x}\frac{\partial L}{\partial A_{i,x}}
@@ -302,8 +302,8 @@ Dank der kompakten vektoriellen Schreibweise, können wir also unser Ergebnis de
  \]
 zusammenfassen. Hierbei resultiert das Ampèresche-Gesetz.
 
-\subsubsection{Interpretation}
+\subsubsection{Interpretation des Resultates}
 
-Mittels der Variationsrechnung konnten wir das Ampèresche-Gesetz herleiten, welches besagt, dass die Stromdichte proportional zur Rotation des magnetischen Feldes ist. Anders ausgedrückt kann man sagen, dass die Stromdichte, welche durch eine Fläche strömt, proportional zum magnetischen Feld ist, welches um den Rand dieser selben Fläche wirkt.
+Mittels der Variationsrechnung konnten wir das Ampèresche-Gesetz herleiten, welches besagt, dass die Stromdichte proportional zur Rotation des magnetischen Feldes ist. Anders ausgedrückt kann man auch sagen, dass die Stromdichte, welche durch eine Fläche strömt, proportional zum magnetischen Feld ist, welches um den Rand dieser selben Fläche wirkt.
 
 
