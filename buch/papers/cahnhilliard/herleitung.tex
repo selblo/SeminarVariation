@@ -14,12 +14,12 @@ In den folgenden Abschnitten werden wir das Variationsproblem aufstellen und
 das Resultat an die Kontinuitätsgleichung koppeln.
 Daraus werden wir die Cahn-Hilliard-Gleichung erhalten.
 
-\subsection{Anwenden von Euler-Ostrogradsky-Gleichung}
-Bevor wir die Euler-Ostrogradsky-Gleichung anwenden,
+\subsection{Anwenden von Euler-Ostrogradski-Gleichung}
+Bevor wir die Euler-Ostrogradski-Gleichung anwenden,
 entfernen wir den Skalierungsfaktor $N_V$ aus \eqref{cahnhilliard:energy}.
 Wir nehmen zudem an,
 dass die Änderungen der Konzentration über Distanzen,
-die im Vergleich zum intermolekularen Abstand groß sind,
+die im Vergleich zum intermolekularen Abstand gross sind,
 nur geringfügig sind.
 Damit können wir die Abhängigkeiten von höheren Ableitungen vernachlässigen.
 Auf dieser Grundlage ergibt sich das Funktional
@@ -57,7 +57,7 @@ Berechnen wir nun die Ableitungen des Funktionals nach den Feldvariablen erhalte
 % 2 \sum_{i=1}
 .
 \end{align*}
-Somit können wir nun die Euler-Ostrogradsky-Gleichung anwenden:
+Somit können wir nun die Euler-Ostrogradski-Gleichung anwenden:
 \begin{align*}
 \frac{\delta I}{\delta c}
 &=
@@ -108,7 +108,7 @@ x &\in \partial\Omega
 \label{cahnhilliard:continuity}
 \end{align}
 Nun stellt sich die allerdings die Frage,
-was der Fluss $\flux$ in unserem Problem genau sein könnte?
+was der Fluss $\flux$ \;in unserem Problem genau sein könnte?
 Eine mögliche Inspiration bietet die Wärmeleitungsgleichung,
 wo der Fluss proportional zum Gradienten des Temperaturfeldes ist.
 Dies führt uns zu der Hypothese, dass auch in unserem Fall der Fluss
@@ -128,7 +128,7 @@ dass die Bewegung der Teilchen in Richtung des abnehmenden chemischen Potentials
 um die freie Energie des Systems zu minimieren.
 
 Im folgenden Abschnitt werden wir untersuchen,
-ob der vermutete Fluss $\flux$ wirklich die freie Energie minimiert.
+ob der vermutete Fluss $\flux{}$ \;wirklich die freie Energie minimiert.
 Dies wird es uns ermöglichen,
 die Konsistenz unseres Modells zu bestätigen und
 die Dynamik der Entmischung in der Salatsauce präzise zu beschreiben.
@@ -219,6 +219,7 @@ M \nabla \mu \cdot n
 0
 ,&
 x &\in \partial\Omega
+.
 \end{aligned}
 \label{cahnhilliard:cheq}
 \end{align}

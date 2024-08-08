@@ -38,14 +38,16 @@ c(x,0)
 X
 \sim
 \mathcal{U}(-1,1)
+.
 \end{aligned}
 \end{align*}
 Dabei stellt $\mathcal{U}(-1,1)$ eine Gleichverteilung von $-1$ bis $1$ dar.
 Für $c(x,0)$ wurde absichtlich das aus Kochbüchern typische Verhältnis von
 2 Teile Öl zu 1 Teil Essig gewählt.
-Wir nehmen außerdem an, dass die Sauce initial sehr gut gemischt ist.
+Wir nehmen ausserdem an, dass die Sauce initial sehr gut gemischt ist.
+Der Code für die Simulation ist unter \cite{cahnhilliard:repo} abgelegt.
 
-In Abbildung \ref{cahnhilliard:fig:chsim} sind die Resultate der Simulation
+In Abbildung~\ref{cahnhilliard:fig:chsim} sind die Resultate der Simulation
 zu verschiedenen Zeitpunkten dargestellt.
 Man kann sehen,
 wie sich das homogene Gemisch in seine einzelnen Komponenten zerlegt
@@ -62,7 +64,7 @@ bei der kleine Fluktuationen in der Konzentration zu einer Trennung der Phasen f
 }}
 \subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
 \caption[Simulation der Cahn-Hilliard-Gleichung]{%
-Simulation der Cahn-Hilliard-Gleichung über einen langen Zeitraum.}
+Simulation der Cahn-Hilliard-Gleichung und Entwicklung von $c(x,t)$ über einen langen Zeitraum.}
 \label{cahnhilliard:fig:chsim}
 \end{figure}
 
@@ -82,11 +84,11 @@ die sowohl die inneren Wechselwirkungen der Moleküle
 als auch die Entropie des Systems berücksichtigt.
 Diese Funktion reflektiert die energetischen Kosten der Mischung der beiden Komponenten.
 Die freie Energie für ein solches Gemisch kann laut \cite{cahnhilliard:deriv}
-folgendermaßen ausgedrückt werden:
+folgendermassen ausgedrückt werden:
 \begin{align*}
 F(c)
 &=
-\omega c (1 - c) + R T \left[ (1-c) \log(1-c) + c \log(c) \right]
+\omega c (1 - c) + R T \left[ (1-c) \log(1-c) + c \log(c) \right].
 \end{align*}
 Hierbei ist $\omega$ ein Parameter,
 der die Wechselwirkungsenergie zwischen den Komponenten beschreibt,
@@ -113,7 +115,7 @@ dass bei bestimmten Temperaturen die freie Energie eine Form annimmt,
 die eine Mischung der Komponenten energetisch ungünstig macht.
 Insbesondere bei Temperaturen unterhalb einer kritischen Temperatur $T_\text{krit}$
 zeigt die freie Energie eine konkave Form im Bereich der mittleren Konzentrationen.
-In Abbildung \ref{cahnhilliard:fig:fc}
+In Abbildung~\ref{cahnhilliard:fig:fc}
 ist diese Temperaturabhängigkeit von $F(c)$ dargestellt.
 Dies bedeutet,
 dass das System energetisch bevorzugt ist,
@@ -148,7 +150,7 @@ die in der Cahn-Hilliard-Gleichung \eqref{cahnhilliard:cheq} modelliert wird.
 Nachdem wir nun die Ursachen der Phasentrennung verstanden haben,
 stellt sich die Frage,
 wie man diese Trennung verhindern oder verzögern kann.
-Hier sind einige mögliche Gegenmaßnahmen:
+Hier sind einige mögliche Gegenmassnahmen:
 \begin{enumerate}
 \item \emph{Erhöhung der Temperatur:}
 Da die Neigung zur Phasentrennung bei höheren Temperaturen abnimmt,
@@ -186,7 +188,7 @@ Da die Cahn-Hilliard-Gleichung ursprünglich für feste Lösungen
 und Legierungen entwickelt wurde,
 müssen wir sie erweitern,
 um auch den Einfluss des mechanischen Rührens in flüssigen Gemischen zu berücksichtigen.
-Bis jetzt ist unser Fluss $\flux$ nur durch die Diffusion bestimmt,
+Bis jetzt ist unser Fluss $\flux$ \;nur durch die Diffusion bestimmt,
 die durch den Konzentrationsgradienten angetrieben wird.
 Das mechanische Rühren erzeugt jedoch eine zusätzliche Flusskomponente,
 die ebenfalls berücksichtigt werden muss.
@@ -254,6 +256,7 @@ In diesen Simulationen variieren wir die Stärke des Rührens,
 repräsentiert durch den Parameter $\alpha$ in unserem Geschwindigkeitsfeld.
 So können wir den Einfluss verschiedener Rührintensitäten auf die Phasentrennung
 und die Stabilität der Emulsion untersuchen.
+Der Code für die Simulation ist unter \cite{cahnhilliard:repo} abgelegt.
 
 In Abbildung~\ref{cahnhilliard:fig:achsim}
 sind die Resultate der Simulation mit verschiedenen Rührstärken dargestellt.
@@ -313,7 +316,7 @@ papers/cahnhilliard/presentation/images/ach_sim/strong.pdf}
 \subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
 \caption[Simulation der angepassten Cahn-Hilliard-Gleichung]{%
 Anfangsbedingung $c(x,0)$ und
-Simulationsresultate von \eqref{cahnhilliard:acheq} nach $1000\,\tau$
+Simulationsresultate $c(x,1000\tau)$ von \eqref{cahnhilliard:acheq}
 mit unterschiedlichen Rührstärken $\alpha$.}
 \label{cahnhilliard:fig:achsim}
 \end{figure}
