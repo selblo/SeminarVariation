@@ -9,7 +9,7 @@
 \subsection{Kreuzung
 \label{buch:paper:varalg:subsection:crossover}}
 \rhead{Kreuzung}
-In diesem Schritt des Algorithmus werden aus den gewählten Elternpaare 
+In diesem Schritt des Algorithmus werden aus den gewählten Elternpaaren 
 neue Nachkommen erzeugt. Dies wird erreicht, indem Teile des genetischen 
 Strings miteinander ausgetauscht werden, 
 wie in der Abbildung \ref{fig:one_point_crossover} veranschaulicht.
@@ -32,13 +32,12 @@ die folgenden:
 	\item \textbf{Einpunkt-Kreuzung:} Ein zufälliger Punkt \( k \) \((1 \leq k < n)\)
 	wird auf den Elternchromosomen ausgewählt. Der Teil vor diesem Punkt stammt
 	von einem Elternteil, die Gene ab diesem Punkt kommen vom anderen Elternteil. 
-	Für die Erzeugung der Nachkommen wird mit diesen Formeln
+	Für die Erzeugung der Nachkommen wird mit den Formeln
 	\begin{align*}
 		O_1 = (P_1[1], P_1[2], \ldots, P_1[k], P_2[k+1], \ldots, P_2[n])\\
 		O_2 = (P_2[1], P_2[2], \ldots, P_2[k], P_1[k+1], \ldots, P_1[n])
 	\end{align*}
-	gearbeitet. Eine bildliche Darstellung finden Sie in der Abbildung 
-	\ref{fig:one_point_crossover}.
+	gearbeitet. Die Abbildung \ref{fig:one_point_crossover} stellt diese Kreuzung bildlich dar.
 	\item \textbf{Zweipunkt-Kreuzung:} Zwei zufällige Punkte \( k_1 \) und \( k_2 \)
 	\((1 \leq k_1 < k_2 < n)\) werden ausgewählt und
 	der Genabschnitt zwischen diesen Punkten wird zwischen den Eltern 
@@ -54,7 +53,7 @@ die folgenden:
 	wird eine zufällige Zahl \( r_i \) im Intervall [0, 1] gewählt. Wenn
 	\( r_i \) kleiner als die vordefinierte Wahrscheinlichkeit \( p \) ist,
 	dann wird das Gen von \( P_1 \) übernommen, ansonsten von \( P_2 \). Es
-	wird über jede Position mit dieser Formel 
+	wird über jede Position mit der Formel 
 	\begin{align*}
 		O_1[i] &=
 		\begin{cases} 

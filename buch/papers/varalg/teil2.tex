@@ -9,7 +9,7 @@
 \section{Einfacher Bruteforce Algorithmus
   \label{buch:paper:varalg:section:bruteforce}}
 \rhead{Einfacher Bruteforce Algorithmus}
-In der Bruteforce-Methode wird jede mögliche Variante durchprobiert,
+In der Bruteforce Methode wird jede mögliche Variante durchprobiert,
 um die beste Lösung zu finden. Dabei wird systematisch jede mögliche
 Route durchlaufen und überprüft, wie lange die Strecke ist.
 Ist die Strecke kürzer als die bisher kürzeste gefundene Route,
@@ -50,7 +50,7 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel ist wie folgt:
     \label{buch:paper:varalg:subsection:bruteforce_calculate}
     Um zu verdeutlichen, wie die Formel \eqref{eq:bruteforce_min_formula}
     angewendet wird, folgt hier ein Beispiel. Für das Beispiel wird die Tabelle 
-    \ref{tab:example_bruteforce_cities} genutzt.
+    \ref{tab:example_bruteforce_cities} benutzt.
     \begin{table}
         \centering
         \begin{tabular}{|c|c|c|c|c|}
@@ -67,10 +67,10 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel ist wie folgt:
         }
         \label{tab:example_bruteforce_cities}
     \end{table}
-    In der Rechnung nutzen wir die Permutation $\sigma = (B, D, A, C)$.
+    In der Rechnung nutzen wir die Permutation $\sigma_1 = (B, D, A, C)$.
     Diese setzen wir in die Formel ein:
     \begin{equation}
-        L_1 = d(B, D) + d(D, A) + d(A, C) + d(C, B)
+        L(\sigma_1) = d(B, D) + d(D, A) + d(A, C) + d(C, B)
         =
         25 + 20 + 15 + 35 = 95
         \label{eq:bruteforce_min_formula_example}
@@ -79,7 +79,7 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel ist wie folgt:
     müssen alle möglichen Permutationen durchgerechnet werden. Die kürzeste Strecke ist dann
     das Optimum. 
 \end{beispiel}
-\subsection{Aufwand Bruteforce
+\subsection{Aufwand für den Bruteforce Algorithmus
     \label{buch:paper:varalg:subsection:bruteforce_efforts}}
 \rhead{Aufwand Bruteforce}
 Aus dem vorherigen Abschnitt \ref{buch:paper:varalg:section:bruteforce} ist 

@@ -9,20 +9,23 @@
 \subsection{Mutation
 \label{buch:paper:varalg:subsection:mutation}}
 \rhead{Mutation}
-Dieser Schritt sorgt dafür, dass zufällige Änderungen in 
-den Genen stattfinden. Dadurch entstehen neue Variationen, welche
-in der Kreuzung nicht entstanden wären und er vergrössert den 
-gesamten Lösungsraum. Zusätzlich soll es verhindern,
-dass nach einer Anzahl von Generationen immer wieder die
-gleichen Genmuster entstehen, wodurch verhindert werden soll, dass 
-der Algorithmus in einem lokalen Extrempunkt stecken bleibt. 
-Die Mutation findet auch nicht bei jedem Kind
-statt, sondern wie in der Natur werden diese per Zufall
-ausgelöst. Die Mutation läuft so ab, dass über den String
-iteriert wird. Auf jeder Position wird gewürfelt. Ist 
-die Bedingung im Zusammenhang mit der gewürfelten Zahl erfüllt, dann wird 
-die Stelle invertiert, wie in der
-Abbildung \ref{fig:mutation_genetic_string} dargestellt.
+Dieser Schritt sorgt dafür, dass zufällige Änderungen in den Genen 
+stattfinden. Dadurch entstehen neue Variationen, welche in der 
+Kreuzung nicht entstanden wären und der gesamte Lösungsraum wird 
+vergrössert. Zusätzlich soll dieser Schritt verhindern, dass nach 
+einer Anzahl von Generationen immer wieder die gleichen 
+Genmuster entstehen und der Algorithmus in einem lokalen Extrempunkt 
+stecken bleibt.
+Die Mutation tritt nicht bei jedem Nachkommen auf, sondern wird, 
+ähnlich wie in der Natur, zufällig ausgelöst. Dazu wird eine Bedingung 
+der Form \( \text{Zufällige Zahl} < \text{Grenzzahl} \) definiert. 
+Je kleiner die Grenzzahl, desto unwahrscheinlicher ist eine Mutation. 
+Die Grenzzahl wird im Voraus festgelegt und liegt im Intervall \([0,1]\).
+Nun kann über den String iteriert werden, wobei an jeder Position eine 
+zufällige Zahl generiert wird, die ebenfalls im Intervall \([0,1]\) 
+liegt. Wird die Bedingung erfüllt, wird die entsprechende Stelle, 
+wie in Abbildung \ref{fig:mutation_genetic_string} dargestellt,
+invertiert.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{
