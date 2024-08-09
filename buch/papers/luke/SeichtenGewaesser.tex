@@ -72,17 +72,17 @@ Das Integral wird umgeformt und für leichteres Verständnis auf drei Teile aufg
 	-
 	\frac{1}{2}\rho g \eta(\bm{x}, t)^2
 	\\
-	&+
+	&\qquad+
 	\rho\int_{-h}^{\eta(\bm{x}, t)} \left[ \nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right] dz
 	+
 	\rho\int_{-h}^{\eta(\bm{x}, t)} \left[ \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)^2 \left(\tilde{\upsilon}\tilde{v} - \frac{1}{2} \tilde{v}^2\right)\right] dz
 	\\
-	&+
+	&\qquad+
 	\rho\int_{-h}^{\eta(\bm{x}, t)} \left[ \left(\frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \bar{\phi} \right)\right] dz.
 \end{align*}
 Die drei Integrale werden aufgelöst, wobei $\left(\frac{\partial}{\partial z} \left(\frac{z + h}{\eta(\bm{x}, t) + h}\right)\tilde{\upsilon} \bar{\phi} \right) = \frac{\tilde{\upsilon} \bar{\phi}}{\eta(\bm{x}, t) + h}$ ist:
-\[
-=
+\begin{align*}
+L&=
 \left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
 +
 \bar{\bm{\mu}} \nabla \eta(\bm{x}, t)
@@ -92,38 +92,37 @@ Die drei Integrale werden aufgelöst, wobei $\left(\frac{\partial}{\partial z} \
 \frac{1}{2}\rho g \eta(\bm{x}, t)^2
 +
 \rho(\eta(\bm{x}, t) + h) \left(\nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right)
-\]
-\[
+\\
+&\qquad
 +
 \rho(\eta(\bm{x}, t) + h) \left(\frac{1}{3}\tilde{\upsilon}\tilde{v} - \frac{1}{6}\tilde{v}^2 \right)
 +
 \rho\tilde{\upsilon} \bar{\phi}.
-\]
+\end{align*}
 Somit erhalten wir die einfache Lagrange-Funktion
-\[
-L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
-=
-\]
-\[
-\left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
+\begin{align*}
+&L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
+\\
+&\qquad
+=\left(\frac{\partial \eta(\bm{x}, t)}{\partial t}
 +
 \bar{\bm{\mu}} \nabla \eta(\bm{x}, t) \right)\rho \bar{\phi}
 -
 \frac{1}{2}\rho g \eta(\bm{x}, t)^2
-\]
-\[
+\\
+&\qquad\qquad
 +
 \rho(\eta(\bm{x}, t) + h) \left(\nabla \bar{\bm{\mu}}\bar{\phi} + \bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2 + \frac{1}{3} \tilde{\upsilon}\tilde{v} - \frac{1}{6}\tilde{v}^2\right)
-\]
+\end{align*}
 für eine Oberflächenwasserwelle in seichten Gewässer.
 Diese Funktion kann mittels des Satzes von Green umgeformt werden.
 Diese Umformung wurde von Didier Clamond und Denys Dutykh \cite{luke:CLAMOND201225} durchgeführt.
 Dabei ergibt sich folgende äquivalente Lagrange-Funktion:
-\[
-L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
-=
-\]
-\begin{equation}
+\begin{align}
+&L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
+\notag
+\\
+&\qquad=
 	\rho\bar{\phi}\frac{\partial \eta(\bm{x}, t)}{\partial t}
 	-
 	\frac{1}{2} \rho g \eta(\bm{x}, t)^2
@@ -141,15 +140,14 @@ L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
 	\bar{\bm{\mu}}\nabla \bar{\phi}
 	\right).
 	\label{luke:Lagrangian_mit_Ansatz}
-\end{equation}
+\end{align}
 Im nächsten Schritt werden wir diese Lagrange-Funktion \eqref{luke:Lagrangian_mit_Ansatz} nehmen und das Variationsprinzip anwenden.
 
-\subsection{Berechnung der unbeschränkte Lösung}
+\subsection{Berechnung der unbeschränkten Lösung}
 
 Ohne weitere Einschränkungen werden wir nun die Minimierung über das Variationsprinzip durchführen und folgende Euler-Lagrange-Gleichungen aufstellen:
-
-\[
-\frac{\partial L}{\partial \bar{\bm{u}}} = 0
+\begin{align}
+\frac{\partial L}{\partial \bar{\bm{u}}} &= 0
 ,\quad
 \frac{\partial L}{\partial \bar{\bm{\mu}}} = 0
 ,\quad
@@ -160,9 +158,8 @@ Ohne weitere Einschränkungen werden wir nun die Minimierung über das Variation
 \frac{\partial L}{\partial \bar{\phi}} = 0
 ,\quad
 \frac{\partial L}{\partial \eta} = 0
-\]
-%Variation nach u
-\begin{align}
+\notag
+\\
 	\frac{\partial L}{\partial \bar{\bm{u}}}
 	&=
 	\frac{\partial \mathscr{}}{\partial \bar{\bm{u}}}\left(\bar{\bm{\mu}}\bar{\bm{u}} - \frac{1}{2} \bar{\bm{u}}^2\right)
@@ -276,14 +273,13 @@ Dieser Zusammenhang wurde bereits beim Variieren der Lagrange-Funktion \eqref{lu
 Die Gleichung \eqref{luke:Variation_nach_mu} und \eqref{luke:Variation_nach_upsilon} zeigen, dass die Geschwindigkeitsfelder genau einem Geschwindigkeitspotential entsprechen und das die vertikale Geschwindigkeit konstant bleibt. 
 Für uns interessant sind die Gleichungen \eqref{luke:Variation_nach_phi} und \eqref{luke:Variation_nach_eta}.
 Diese lassen sich nämlich umschreiben zu 
-\begin{equation}
-	\frac{\partial H}{\partial t} + \nabla \cdot [H \bar{\bm{u}}] = 0
+\begin{align}
+	\frac{\partial H}{\partial t} + \nabla \cdot [H \bar{\bm{u}}] &= 0
 	\label{luke:Variation_loesung_1}
-\end{equation}
-\begin{equation}
-	\frac{\partial \bar{\bm{u}}}{\partial t} + (\bar{\bm{u}} \cdot \nabla) \bar{\bm{u}} + g \nabla H = 0,
+\\
+	\frac{\partial \bar{\bm{u}}}{\partial t} + (\bar{\bm{u}} \cdot \nabla) \bar{\bm{u}} + g \nabla H &= 0,
 	\label{luke:Variation_loesung_2}
-\end{equation}
+\end{align}
 wobei $H = \eta(\bm{x},t) + h$ die Gesamtwassertiefe ist.
 
 Gleichung \eqref{luke:Variation_loesung_1} und \eqref{luke:Variation_loesung_2} ergeben die Saint-Venant-Gleichungen, wobei die Gleichung \eqref{luke:Variation_loesung_1} die Kontinuitätsgleichung ist.
