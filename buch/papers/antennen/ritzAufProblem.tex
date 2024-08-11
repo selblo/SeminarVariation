@@ -12,9 +12,9 @@
 \section{Ritz-Verfahren für das Antennenproblem\label{antennen:ritzAnw}}
 
 %todo CHAPTER REFERENZ
-Wie in \ref{buch:antennen:Geom} erwähnt, konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
+Wie in \ref{antennen:Geom} erwähnt, kann dank der Symmetrie das Problem nur auf eine Ecke abbildet werden. 
 Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen 
-in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren.
+in ein Koordinatensystem, welches erlaubt das Problem genauer zu analysieren.
 %TODO bild ist weit weg  ILLEGAL
 \begin{figure}
 	\centering
@@ -48,7 +48,7 @@ in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren
 	\label{antennen:koordSysBsp}
 \end{figure}
 
-Um die Effizienz $\eta$ zu optimieren, müssen wir mit der Approximationsfunktion
+Um die Effizienz $\eta$ zu optimieren, soll man mit der Approximationsfunktion
 $y_n(x)$, wie im Kapitel \ref{antennen:Geom} erwähnt, die Fläche $A$ 
 maximieren und die Länge $l$ minimieren.
 
@@ -65,7 +65,7 @@ Funktion sein wird, somit ergibt sich
 als ideale Approximationsfunktion. 
 
 Diese Entwicklung wird auch Sinus-Fourier Reihe genannt
-und wenn man diese für $n=2$ ausschreibt ergibt sich
+und wenn man diese für $n=2$ ausschreibt, ergibt sich
 \begin{equation}
 	y_n(x)
 	=
@@ -141,11 +141,11 @@ der ungeraden Sinus-Funktionen, die Nebenbedingungen
 \em immer erfüllt \em sind. Im weiteren Verlauf werden diese 
 Nebenbedingungen somit nicht mehr beachtet.
 
-\subsection{Die Lagrangefunktion \label{antennen:lagrangeFunktionen}}
+\subsection{Die Lagrange-Funktion \label{antennen:lagrangeFunktionen}}
 
 %Die beste Fläche ist auch gerade die beste Fläche im quadrat \qed
 
-Abstrahieren wir das Problem nun ein bisschen. Anstelle der Fläche $A$, reden wir nun von 
+Abstrahieren wir das Problem nun ein bisschen. Anstelle der Fläche $A$ reden wir nun von 
 der Funktion $f$ und aus der Länge $l$ wird die Nebenbedingung $n$. 
 
 An dieser Stelle sind unsere Koeffizienten $a_k$ konkret zu bestimmen. 
@@ -172,20 +172,20 @@ Somit sind die neu erwähnten Funktionen
 \label{antennen:lagrangeNamen}
 \end{equation}
 auch in deren Abhängigkeit in \eqref{antennen:lagrangeNamen} zu sehen. Wie schon erwähnt, 
-ist das Problem hier auf 2 Koeffizienten beschränkt. 
+ist das Problem hier auf zwei Koeffizienten beschränkt. 
 
 Die Fläche unter der Kurve ergibt sich aus dem Integral der Funktion, 
-währenddessen man die Länge, also den oberen Rand der Funktion, die 
-erste Ableitung noch braucht.
+währenddessen man für die Länge, also den oberen Rand der Funktion, die 
+erste Ableitung auch noch zusätzlich braucht.
 
-Die Nebenbedingung $n$ setzen wir nun gleich einer Konstanten Länge $l$
+Die Nebenbedingung $n$ setzen wir nun gleich einer konstanten Länge $l$
 \begin{equation}
 n(a_1, a_2)
 =
 l
 \label{antennen:constNebenbed}
 \end{equation}
-und wie jede gute Nebenbedingung setzen wir diese noch gleich null
+und wie jede gute Nebenbedingung setzen wir diese noch gleich null :
 
 \begin{equation}
 \begin{aligned}
@@ -214,8 +214,8 @@ Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und gleic
 den Gradienten
 
 \begin{equation}
-	\nabla F = \vec{0} \;
-	\left\{ \;
+	\nabla F = \vec{0} \,
+	\left\{ \:
 	\begin{aligned}
 		\frac{\partial L}{\partial a_1} = 0 \\
 		\frac{\partial L}{\partial a_2} = 0
@@ -223,13 +223,12 @@ den Gradienten
 	\right.
 	\label{antennen:lagrangeGrad}
 \end{equation}
-
 berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
 $n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. 
 Wobei $n$ die Anzahl der Koeffizienten ist.
 
-An dieser Stelle wird ersichtlich, was diese Kapitel von den Anderen unterschiedet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
-Problem wie z.B in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
+An dieser Stelle wird ersichtlich, was diese Kapitel von den anderen unterschiedet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
+Problem wie z. B. im Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
 Konkret bedeutet dies, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
 
@@ -257,11 +256,10 @@ als trivial ausgegeben hat und somit hier ein $n$ dimensionales Gleichungssystem
 \subsection{Das Gleichungssystem lösen\label{antennen:glSysSolve}}
 
 Ein gutes Verfahren, welches sich zur Lösung des Gleichungssystems 
-\eqref{antennen:lagrangeGradKonkret} anbietet, ist das Gradientenverfahren.
-
-Dieses iterative Verfahren eignet sich hervorragend zur Minimierung 
+\eqref{antennen:lagrangeGradKonkret} anbietet, ist das Gradientenverfahren. Dieses 
+iterative Verfahren eignet sich hervorragend zur Minimierung 
 einer Funktion, indem man schrittweise in Richtung des steilsten Abstiegs,
-also dem Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
+also des Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
 fortschreitet. 
 
 % TODO nicht gute position,  illegal
@@ -321,21 +319,19 @@ fortschreitet.
 
 Ein Beispiel dafür wie das Verfahren aussehen kann, sieht man bei der 
 Abbildung \ref{antennen:gradverfahrenBSP}. Man nimmt irgendeinen Startpunkt
-und geht Schritt für Schritt in Richtung des $-\nabla f$. Mit der Funktion
-$f(x,y)=x^2+y^2$ ist dieses Verfahren recht einfach zu implementieren und ausführen.
+und geht Schritt für Schritt in Richtung des negativen Gradienten $-\nabla f$.
+Mit der Funktion $f(x,y)=x^2+y^2$ ist dieses Verfahren recht einfach zu 
+implementieren und ausführen.
 
 Dieses Verfahren kommt jedoch auch mit einigen Tücken. Wenn die Funktion sehr komplex ist
 und man die Schrittgrösse und Toleranz ungeschickt wählt, ist die Gefahr gross, dass man 
-bei \em lokalen \em Minimas stecken bleibt, obwohl ein \em globales \em gesucht ist.
+bei \em lokalen \em Minima stecken bleibt, obwohl ein \em globales \em Minimum gesucht ist.
 
 Da wir in unserer Arbeit ohnehin die Python-Bibliothek \texttt{SymPy} verwendet haben, 
 um symbolische Berechnungen durchzuführen und automatisch $n$ Koeffizienten zu berechnen, 
 konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe der Funktion 
 \texttt{nsolve()} lösen.
-
-%TODO code im github?
-
-\textcolor{red}{Eventuell findet man den Code auf github?}
+Den Code findet man unter \cite{antennen:codeKoeff}.
 
 \subsection{Auswertung der Optimierung\label{antennen:auswertung}}
 
@@ -490,9 +486,7 @@ perfekten Lösung, dem Kreis, konvergiert. Dies ist
 natürlich kein wasserfester Beweis, hier aber völlig
 ausreichend. 
 
-% TODO in packages hinzufügen
 \usetikzlibrary{pgfplots.fillbetween}
-
 \begin{figure}
 	\centering
 	\begin{tikzpicture}

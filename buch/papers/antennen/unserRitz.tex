@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8
 %
 
-\section{Das Ritz-Verfahren grundsätzlich\label{antennen:ritzGrundsätzlich}}
+\section{Das Ritz-Verfahren\label{antennen:ritzGrundsätzlich}}
 
 Wie schon sehr oft in diesem Buch erwähnt, gibt es das Problem, dass man für ein Funktional
 \begin{equation}
@@ -22,10 +22,8 @@ Solch eine Funktion ist die Lösung der
 \frac{\partial L}{\partial y} - \frac{d}{dx} \left( \frac{\partial L}{\partial y'} \right) = 0
 \label{antennen:el-DGL}
 \end{equation}
-Euler-Lagrange Differentialgleichung.
-
-Wenn diese Gleichung \eqref{antennen:el-DGL} jedoch analytisch nicht lösbar ist,
-kommt das Verfahren nach Ritz ins Spiel.
+Euler-Lagrange Differentialgleichung. Wenn diese Gleichung \eqref{antennen:el-DGL} 
+jedoch analytisch nicht lösbar ist, kommt das Verfahren nach Ritz ins Spiel.
 
 \subsection{Approximationsfunktion nach Ritz\label{antennen:approxFunkt}}
 
@@ -34,7 +32,7 @@ periodische Funktionen $f(t)$ als Linearkombination von anderen Funktionen,
 im Sinne der Fourierreihe als
 %todo WHY SIND KLAMMERN GROSS? CHECKS NID
 \begin{equation}
-FR[f(t)]
+f(t)
 =
 \frac{a_0}{2}+\sum_{n=1}^{\infty}[a_n\cos(n\omega_f t )+b_n\sin(n\omega_f t)]
 \label{antennen:fourier}
@@ -74,6 +72,6 @@ Mögliche ausgeschriebene Funktionen können so aussehen:
 \label{antennen:approxFunktBsp}
 \end{equation}
 
-Das Ziel ist es schlussendlich das Problem so genau wie nötig, mit so wenig
+Das Ziel ist es schlussendlich, das Problem so genau wie nötig mit so wenig
 Koeffizienten wie möglich auszudrücken.
 
