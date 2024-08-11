@@ -105,7 +105,7 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 %E-Field of point charge
 \begin{figure}
 	\centering
-	\begin{tikzpicture}
+	\begin{tikzpicture}[thick]
 		\def\R{2.2}
 		\def\NE{16}
 		\def\NV{4}
@@ -146,15 +146,15 @@ Die Permittivität
 =
 \varepsilon_r\,\varepsilon_0
 \)
-ist ein Mass dafür, wie gut sich ein Material polarisieren lässt und ist das Produkt der relativen Permittivität $\varepsilon_r$ und der Permittivität vom Vakuum $\varepsilon_0$.
+ist ein Mass dafür, wie gut sich ein Material polarisieren lässt. Es ist das Produkt der relativen Permittivität $\varepsilon_r$ und der Permittivität $\varepsilon_0$ des Vakuums.
 Die relative Permittivität ist eine materialabhängige Grösse und hat im Vakuum den skalaren Wert $1$.
-Die Permittivität des Vakuums in SI-Einheiten
+Die Permittivität
 \[
 \varepsilon_0
 =
 8.854 \cdot 10^{-12}\,\frac{\text{C$^2$}}{\text{Nm$^2$}}
 \]
-ist die elektrische Feldkonstante.
+des Vakuums in SI-Einheiten nennt man auch die elektrische Feldkonstante.
 
 \subsection{Laplace-Gleichung
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
@@ -227,7 +227,7 @@ ist.
 Somit haben wir unsere Lagrange-Funktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-Nun gilt es die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
+Nun gilt es, die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
 Nach Einsetzen wird die Differentialgleichung zu
 \begin{align*}
 \frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} &- \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\\
