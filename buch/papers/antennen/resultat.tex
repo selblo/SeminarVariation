@@ -14,7 +14,7 @@ zur besten Effizienz führen, da sie die Gleichung \eqref{antennen:Verhältnis} 
 Es muss jedoch noch bestimmt werden, wie gross der Radius dieser Abrundungen ist und somit wo
 genau dieser sich befindet. 
 
-\subsection{Parametrisierung Dreieck\label{antennen:param3eck}}
+\subsection{Parametrisierung der abgerundeten Dreiecksantenne\label{antennen:param3eck}}
 Die Länge $l$, hierbei der Umfang 
 des abgerundeten Dreiecks, sowie dessen Fläche $A$ kann mit den Formeln
 \definecolor{clrGreen}{RGB}{0, 117, 18}
@@ -25,7 +25,7 @@ des abgerundeten Dreiecks, sowie dessen Fläche $A$ kann mit den Formeln
 \setcounter{equation}{25}
 berechnet werden.
 Der Wirkungsgrad ist nun zu einem Problem geworden, das nur noch abhängig von 
-der Seitenlänge s des Dreiecks und des Radius r der Kreise ist. Bildlich ist dies 
+der Seitenlänge $s$ des Dreiecks und des Radius $r$ der Kreise ist. Bildlich ist dies 
 in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 
 %TODO Erklären der Formeln l und A mittels Grafik (Formelabschnitte einfärben??)
@@ -68,9 +68,9 @@ in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 	\label{antennen:tikzdreieckAufteilung}
 \end{figure}
 
-Durch Ableiten und Null-setzten
+Durch Ableiten und Null setzen
 \begin{equation}
-	\frac{d}{dr} \bigg(\frac{l}{A^2}\bigg)=0
+	\frac{\partial}{\partial{r}} \bigg(\frac{l}{A^2}\bigg)=0
 	\label{antennen:Ableitung}
 \end{equation}
 wird für einen gegebenen Parameter $s$ ein Radius $r$ als Lösung erhalten. 
