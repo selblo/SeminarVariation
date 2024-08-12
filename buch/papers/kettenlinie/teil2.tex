@@ -8,35 +8,89 @@
 %
 \section{Herleitung der Funktionen\label{kettenlinie:section:Herleitung der Funktionen}}
 \rhead{Herleitung der Funktionen}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+Nachdem die theoretischen Grundlagen und Eigenschaften der Kettenlinie behandelt wurden, geht es nun um die konkreten Berechnungen.
+In diesem Abschnitt werden die wesentlichen Formeln und deren Herleitungen vorgestellt, die zur Bestimmung der Kettenlinie notwendig sind.
+Ziel ist es, den mathematischen Prozess verständlich darzustellen und die Anwendung der Formeln an konkreten Beispielen zu demonstrieren.
 
-\subsection{De finibus bonorum et malorum
-\label{kettenlinie:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Kettenlinien als Variationsproblem
+\label{kettenlinie:subsection:Kettenlinien als Variationsproblem}}
+Die Kettenlinie nimmt die Form einer hängenden Kette an, welche unter ihrem eigenen Gewicht hängt.
+Dabei nimmt sie eine Form ein, die die potenzielle Energie minimiert.
 
+Man erkennt daraus, dass es sich um ein klassisches Beispiel für ein Variationsproblem handelt.
+In unserem Problem suchen wir nämlich nach einer Funktion, in diesem Fall die Form der Kette, die einen Integral, hier die potentielle Energie, minimiert.
 
+\subsection{Bogenlänge
+\label{kettenlinie:subsection:Bogenlänge}}
+Wie wir nun wissen, soll die potenzielle Energie minimiert werden.
+Es wird nun aber kein Objekt als Ganzes betrachtet, sondern die Summe der potenziellen Energie aller Teilchen der Kette zusammen.
+Deshalb wird für die kommenden Berechnungen öfters die Bogenlänge benötigt, weshalb sie hier nochmals erläutert und ins Gedächtnis gerufen wird.
+
+Bei einem unendlich kleinen Teil einer beliebigen Kurve ist die Bogenlänge ungefähr der Pythagoras.
+\begin{equation}
+	ds
+	=
+	\sqrt{dx^2 + dy^2}
+	\label{kettenlinie:equation1}
+\end{equation}
+\(dx^2\) kann man ausklammern.
+\begin{equation}
+	ds
+	=
+	\sqrt{dx^2 + dy^2}
+	=
+	\sqrt{dx^2 \left( 1 + \left( \frac{dy}{dx} \right)^2 \right)}
+	=
+	\sqrt{1 + \left( \frac{dy}{dx} \right)^2} \, dx
+\end{equation}
+
+In der Folge kann man \(\frac{dy}{dx}\) mit der Ableitung von \(y\) ersetzen.
+\(y\) ist die Form des Bogens, die wir suchen.
+Bei unendlich kleinen Teilen ergibt sich dann folgender Term:
+\begin{equation}
+	ds
+	=
+	\sqrt{1 + y'^2} \, dx
+\end{equation}
+
+Um die Gesamtlänge der Kurve zu berechnen, summiert man die Längen der unendlich kleinen Abschnitte entlang der Kurve auf.
+Dieser Prozess wird durch Integration erreicht, bei der jeder kleine Abschnitt durch das Differential \(ds\) repräsentiert wird.
+Das Integral ermöglicht es, die Gesamtlänge der Kurve von einem Startpunkt \(x_1\) bis zu einem Endpunkt \(x_2\) zu bestimmen.
+\begin{equation}
+	L
+	=
+	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
+\end{equation}
+
+\subsection{Minimum der potenziellen Energie
+\label{kettenlinie:subsection:Minimum der potenziellen Energie}}
+Für die Herleitung der Kettenlinie brauchen wir zudem die Formell der potentiellen Energie, welche sich wie folgt aus der Masse m, der Erdbeschleunigung g und der Höhe h zusammensetzt.
+\begin{equation}
+	E_{\text{pot}}
+	=
+	mgh
+\end{equation}
+
+Auch benötigen wir die Formell der Bogenlänge, welche wir eben erläutert haben.
+\begin{equation}
+	L
+	=
+	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
+\end{equation}
+
+Wie bereits erwähnt, setzt sich die potenzielle Energie aus der Summe der pozentiellen Energien aller Teilchen der Kette zusammen, es folgt folgende Formel, wobei \(g\) die Gravitationskonstante und \(\mu\) die Massendichte ist.
+\begin{equation}
+	E_{\text{pot}}
+	=
+	\int_{a}^{b} g \mu \sqrt{1 + y'^2} \, y \, dx
+\end{equation}
+Die Konstanten \(\mu\) und \(g\) können ignoriert werden.
+Wir erhalten den folgenden Term:
+\begin{equation}
+	\int_{a}^{b} (\sqrt{1 + y'^2} \, y) \, dx
+\end{equation}
+Dieser muss extremal sein, in unserem Fall minimal.
+
+\subsection{Einsatz der Euler-Lagrange-Gleichung
+\label{kettenlinie:subsection:Einsatz der Euler-Lagrange-Gleichung}}
+TODO
