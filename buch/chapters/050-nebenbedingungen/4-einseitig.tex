@@ -1,0 +1,526 @@
+%
+% 3-einseitig.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+\section{Einseitige Bindungen
+\label{buch:nebenbedingungen:section:einseitigebindungen}}
+\kopfrechts{Einseitige Bindungen}
+Die bisher untersuchten Nebenbedingungen waren alle von der
+Form einer Gleichung, zum Beispiel 
+\[
+\int_{x_0}^{x_1} G(x,y(x),y'(x))\,dx = 0
+\qquad\text{oder}\qquad
+y'(x_2) = c \quad\text{mit $x_2\in (x_0,x_1)$.}
+\]
+Im ersten Fall liefert die Idee der Lagrange-Multiplikatoren
+eine Lösungsmethode.
+Das zweite Problem kann aufgeteilt werden in zwei Probleme auf
+den Teilintervallen $[x_0,x_2]$ und $[x_2,x_1]$ mit einem zusätzlichen
+Randterm an der Stelle $x=x_2$.
+Es sind aber auch Aufgabenstellungen denkbar, in denen Nebenbedingungen
+in der Form einer Ungleichung gegeben sind.
+
+%
+% Ungleichungen als Nebenbedingungen
+%
+\subsection{Ungleichungen als Nebenbedingungen
+\label{buch:nebenbedingungen:einseitig:subsection:ungleichungen}}
+Wir motivieren die Problemstellung mit zwei Anwendungsbeispielen.
+
+%
+% Ein Seil über eine Stütze leiten
+%
+\subsubsection{Ein Seil über eine Stütze leiten}
+\input{chapters/050-nebenbedingungen/fig/seilbahn.tex}
+\index{Tragseil}%
+\index{Seilbahn}%
+Das Tragseil einer Seilbahn trägt die Gondel, die vom Zugseil
+hochgezogen wird.
+\index{Zugseil}%
+Normalerweise wird das Trageseil nicht einfach zwischen Berg- und Talstation
+gespannt sondern über mehrere Zwischstützen geleitet.
+Das Seil liegt dort in einer gekrümmten Seilauflagerung, in der es sich
+in vielen Fällen in Längsrichtung bewegen kann.
+Die Gesamtlänge des Seils bleibt gleich, aber in der Seilauflagerung
+\index{Seilauflagerung}%
+folgt es mindestens ein Stück weit deren Krümmung
+(Abbildung~\ref{buch:nebenbedingungen:fig:seilbahn}).
+
+Gesucht ist die Funktion $y(x)$, definiert auf dem Intervall $[x_0,x_1]$,
+welche das Seil beschreibt.
+Die Gesamtlänge des Seils ist 
+\[
+l(y) = \int_{x_0}^{x_1} \sqrt{1+y'(x)^2}\,dx,
+\]
+wie wir in früheren Beispielen gesehen haben.
+Im Kapitel~\ref{chapter:kettenlinie} wird dargelegt, dass das Seil
+versucht, die potentielle Energie
+\begin{equation}
+E(y) = \mu g \int_{x_0}^{x_1} y\sqrt{1+y'(x)^2}\,dx
+\label{buch:nebenbedingungen:einseitig:eqn:seilE}
+\end{equation}
+zu minimieren, wobei $g$ die Erdbeschleunigung und $\mu$ die
+lineare Massendichte ist.
+Der Faktor $\mu g$ ändert die Lösung des Extremalproblems nicht und 
+kann daher auch weggelassen werden.
+In Kapitel~\ref{chapter:kettenlinie} wird als Lösung für ein Seil
+ohne Zwischenstüzen eine Kettenlinie gefunden.
+
+Die Zwischenstützen erzwingen nun, dass sich das Seil oberhalb der 
+Auflagerungen bewegen muss.
+Es gibt daher eine zusätzliche Nebenbedingung der Form
+\[
+y(x) \ge \varphi(x),
+\]
+der die Funktion $y(x)$ genügen muss.
+
+%
+% Einen Schlauch über einen Schlauchanschluss ziehen
+%
+\subsubsection{Einen Schlauch über einen Schlauchanschluss ziehen}
+Wenn ein Schlauch über einen Schlauchanschluss gezogen wird, spannt
+\index{Schlauch}%
+\index{Schlauchanschluss}%
+er sich und versucht eine Minimalfläche zu bilden.
+\index{Minimalflache@Minimalfläche}%
+Der Schlauch bildet daher eine Rotationsfläche minimalen Inhalts.
+\index{Rotationsfläche}%
+In Kapitel~\ref{chapter:minimalflaechen} wird dieses Problem 
+studiert.
+Beschreibt man den Radius des Schlauchs in Abhängigkeit von der
+Position $x$ entlang der Achse durch die Funktion $y(x)$, dann ist
+der Flächeninhalt
+\begin{equation}
+F(y)
+=
+2\pi
+\int_{x_0}^{x_1}
+y(x)\sqrt{1+y'(x)^2}\,dx.
+\label{buch:nebenbedingungen:einseitig:eqn:schlauchF}
+\end{equation}
+Der Faktor $2\pi$ hat keinen Einfluss auf das Minimum.
+Das Funktional $F(y)$ von
+\eqref{buch:nebenbedingungen:einseitig:eqn:seilE}
+ist äquivalent zum Funktional $E(y)$ von
+\eqref{buch:nebenbedingungen:einseitig:eqn:schlauchF}
+im Seilbahnproblem,
+die Lösungsfunktion $y(x)$ ist daher eine $\cosh$-Kurve,
+die Fläche eine sogenannte {\em Katenoide}.
+\index{Katenoide}
+
+Der Schlauch muss aber auch auf Teilen der Oberfläche des
+Schlauchanschlusses aufliegen.
+Dies bedeutet, dass der Innenradius $y(x)$ des Schlauchs immer
+mindestens so gross sein muss wie der Radius $r(x)$ des Schlauchanschlusses.
+Die Funktion $y(x)$ muss daher eine Nebenbedingung der Form
+\[
+y(x) \ge r(x),\quad x\in[x_0,x_1]
+\]
+erfüllen.
+
+%
+% Einseitige Bindungen
+%
+\subsubsection{Einseitige Bindungen}
+Eine Nebenbedingung in der Form einer Ungleichung der Art
+\[
+y(x) \ge \varphi(x)
+\]
+mit einer vorgegebenen Funktion $\varphi(x)$ heisst auch
+ein {\em Problem mit einseitiger Bindung}
+\index{einseitige Bindung}%
+\index{Bindung, einseitig}%
+oder ein Problem mit einer {\em Gebietseinschränkung}.
+\index{Gebietseinschrankung@Gebietseinschränkung}%
+
+%
+% Euler-Lgrange-Differentialgleichung
+%
+\subsection{Euler-Lagrange-Differentialungleichung
+\label{buch:nebenbedingungen:einseitig:subsection:eldgl}}
+Die Euler-Lagrange-Differentialgleichung war bis anhing die Standardmethode,
+ein Variationsproblem in ein lokales Problem umzuwandeln.
+Die Herleitung verlangte aber, dass die Lösungsfunktion $y(x)$ beliebig
+variiert werden konnte, was beim Vorhandensein einseitiger Bindungen
+oder Gebietseinschränkungen nicht mehr möglich ist.
+
+%
+% Aufgabenstellung
+%
+\subsubsection{Aufgabenstellung}
+Gegeben ist ein Lagrange-Funktion
+$F\colon [x_0,x_1]\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}:(x,y,y')\mapsto F(x,y,y')$ 
+und eine Funktion $\varphi\colon[x_0,x_1]\to\mathbb{R}$.
+
+\begin{aufgabe}
+\label{buch:nebenbedingungen:einseitig:aufgabe}
+Gesucht ist eine Funktion $y(x)$, definiert auf dem Intervall $[x_0,x_1]$,
+mit Randwerten $y(x_0) = y_0$ und $y(x_1)=y_1$, welche das Integral
+\[
+I(y)
+=
+\int_{x_0}^{x_1} F(x,y(x),y'(x))\,dx
+\]
+minimiert und ausserdem die Gebietseinschränkung
+\[
+y(x) \ge \varphi(x), \quad x\in[x_0,x_1]
+\]
+erfüllt.
+\end{aufgabe}
+
+%
+% Variation mit einseitiger Bindung
+%
+\subsubsection{Variation mit einseitiger Bindung}
+Auf einer Teilmenge $A$ des Definitionsbereichs $[x_0,x_1]$ folgt
+die Lösung der Funktion $\varphi(x)$, auf dem Rest ist die Differenz
+$y(x)-\varphi(x)>0$.
+Mit einer Variationsfunktionen $\eta(x)$ wird die erste Variation
+\[
+\delta I
+=
+\frac{d}{d\varepsilon}I(y+\varepsilon\eta)\bigg|_{\varepsilon=0}
+\]
+bestimmt.
+$\eta(x)$ kann ausserhalb der Menge $A$
+beliebige, nicht zu grosse positive und negative Werte annehmen.
+Innerhalb von $A$ aber muss $\eta(x)\ge 0$ sein.
+Ausserdem kann der Parameter $\varepsilon$ nur positive Werte annehmen.
+Das Kriterium für ein Minimum ist dann aber auch nicht mehr, dass die
+Ableitung verschwinden muss, sondern dass die Ableitung $\ge 0$ ist.
+Innerhalb von $A$ muss also gelten
+\[
+\frac{d}{d\varepsilon}I(y+\varepsilon\eta)\bigg|_{\varepsilon=0} \ge 0.
+\]
+Eingesetzt in das Integral erhalten wir
+\begin{align*}
+\delta I
+&=
+\frac{d}{d\varepsilon}
+\int_{x_0}^{x_1}
+F(x,y(x)+\varepsilon \eta(x),y'(x)+\varepsilon \eta'(x))\,dx
+\bigg|_{\varepsilon=0}
+\\
+&=
+\int_{x_0}^{x_1}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))\eta(x)
++
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))\eta'(x)
+\,dx
+\\
+&=
+\int_{x_0}^{x_1}
+\biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
++
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\eta(x)
+\,dx
+\intertext{Dieses Integral können wir zerlegen in ein Integral über $A$
+und eines über $[x_0,x_1]\setminus A$:}
+&=
+\int_A
+\biggl(
+\frac{\partial F}{\partial y} + \frac{d}{dx}\frac{\partial F}{\partial y'}
+\biggr)
+\eta(x)
+\,dx
++
+\int_{[x_0,x_1]\setminus A}
+\biggl(
+\frac{\partial F}{\partial y} + \frac{d}{dx}\frac{\partial F}{\partial y'}
+\biggr)
+\eta(x)
+\,dx
+\ge 0.
+\end{align*}
+Durch geeignete Wahl der Funktionen $\eta$ können wir den Beitrag der
+beiden Integrale zur Variation auseinanderhalten, was in den nachfolgenden
+Abschnitten diskutiert werden soll.
+
+%
+% Variationen in $A$
+%
+\subsubsection{Variationen in $A$}
+Zunächst betrachten wir Funktionen $\eta(x)$, die ausserhalb von $A$
+verschwinden.
+Die Werte $\eta(x)$ müssen natürlich im Inneren von $A$ immmer $\ge 0$
+sein.
+Wir brauchen daher die folgende Variante des Fundamentallemmas.
+\index{Fundamentallemma!einseitig}%
+
+\begin{satz}[Einseitiges Fundamentallemma]
+Sei $f\colon A\to\mathbb{R}$ eine stetige Funktion und sei
+\[
+\int_A f(x)\eta(x)\ge 0
+\]
+für alle beliebig oft differenzierbaren Funktionen $\eta\colon A\to\mathbb{R}$
+mit $\eta(x)\ge 0$.
+\end{satz}
+
+\begin{proof}
+Wir führen den Beweis mit Widerspruch.
+Sei $x_*\in A$ eine Stelle, an der $f(x_*)<0$ ist.
+Dann gibt es wegen der Stetigkeit von $f$ auch eine kleine Umgebung $U$ von
+$x_*$, in der $f(x)$ immer noch $<\frac12f(x_*)<0$ ist.
+Mit einer deliebig oft differenzierbaren, positiven Funktion $\eta(x)$,
+die nur in der Umgebung $U$ Werte $\ge 0$ hat, folgt wie im
+Fundamentallemma \ref{buch:variation:fundamentallemma:satz:fundamentallemma},
+dass
+\[
+\int_A f(x)\eta(x)\,dx < 0
+\]
+wird, im Widerspruch zu den Voraussetzungen.
+Folglich muss $f(x)\ge 0$ sein.
+\end{proof}
+
+Aus dem Lemma folgt also, dass
+\begin{equation}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\ge 0
+\end{equation}
+gilt für $x\in A$.
+
+%
+% Variation ausserhalb von $A$
+%
+\subsubsection{Variationen ausserhalb von $A$}
+Ausserhalb von $A$ darf $\eta(x)$ positive und negative Werte annehmen.
+Wir betrachten daher jetzt Funktionen $\eta(x)$, die innerhalb von $A$
+verschwinden.
+Wir schreiben $B=[x_0,x_1]\setminus A$.
+Für eine solche Funktion muss
+\[
+\int_B \biggl(
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+\biggr)
+\eta(x)
+\,dx
+\ge 0
+\]
+gelten.
+Dasselbe muss auch für $-\eta(x)$ gelten, also
+\[
+0
+\le
+\int_B \biggl(
+\frac{\partial F}{\partial y}
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}
+\biggr)
+(-\eta(x))
+\,dx
+=
+-
+\int_B \biggl(
+\frac{\partial F}{\partial y}
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}
+\biggr)
+\eta(x)
+\,dx
+\le 0,
+\]
+dies ist nur möglich, wenn das Integral verschwindet.
+Nach dem Fundamentallemma muss dann auch der Klammerausdruck
+im Integranden verschwinden.
+Ausserhalb von $A$ gilt daher weiterhin die
+Euler-Lagrange-Differentialgleichung.
+
+\begin{satz}[Euler-Lagrange-Differentialungleichung]
+\label{buch:nebenbedingungen:einseitig:satz:elungleichung}
+Eine Funktion $y(x)$, die die
+Aufgabe~\ref{buch:nebenbedingungen:einseitig:aufgabe}
+löst, erfüllt dort, wo $y(x)=\varphi(x)$ ist, die Ungleichung
+\index{Euler-Lagrange-Differentialungleichung}%
+\index{Ungleichung, Differential-}%
+\begin{equation}
+\frac{\partial F}{\partial y'}(x,\varphi(x),\varphi'(x))
+-
+\frac{d}{dx}\frac{\partial F}{\partial y'}(x,\varphi(x),\varphi'(x))
+\ge
+0
+\label{buch:nebenbedingungen:einseitig:eqn:eldglu}
+\end{equation}
+und im Rest des Definitionsbereichs die Euler-Lagrange-Differentialgleichung
+\begin{equation}
+\frac{\partial F}{\partial y}(x,y(x),y'(x))
+-
+\frac{d}{dx}
+\frac{\partial F}{\partial y'}(x,y(x),y'(x))
+=
+0.
+\label{buch:nebenbedingungen:einseitig:eqn:eldgl}
+\end{equation}
+\end{satz}
+
+%
+% Anschlussbedingungen
+%
+\subsection{Anschlussbedingungen
+\label{buch:nebenbedingungen:einseitig:subsection:anschluss}}
+\input{chapters/050-nebenbedingungen/fig/einseitig.tex}
+Eine Lösung der
+Aufgabe~\ref{buch:nebenbedingungen:einseitig:aufgabe}
+setzt sich aus Teilstücken zusammen, auf denen die Lösungsfunktion mit
+$\varphi(x)$ übereinstimmt und wo die Bedingung
+\eqref{buch:nebenbedingungen:einseitig:eqn:eldglu}
+erfüllt sein muss, und ``freien'' Teilstücken, wo die
+Euler-Lagrange-Differentialgleichung
+\eqref{buch:nebenbedingungen:einseitig:eqn:eldgl} gilt.
+An einer Übergangsstelle $x_*$ muss $y(x_*)=\varphi(x_*)$ sein,
+aber die Steigung von $y(x)$ kann in $x_*$ einen Sprung
+erleiden.
+Wir suchen nach einer Bedingung für die die beiden Steigungen 
+$y'(x_*+)$ und $y'(x_*-)$ ähnlich wie die Transversalitätsbedingungen.
+\index{Anschlussbedingungen}%
+
+\begin{satz}[Anschlussbedingungen]
+\label{buch:nebenbedingungen:einseitig:satz:anschlussbedingungen}
+Ist $x_*$ ein Punkt in $[x_0,x_1]$, links von dem eine Lösung $y(x)$ der
+Aufgabe~\ref{buch:nebenbedingungen:einseitig:aufgabe}
+frei ist, während sie rechts davon an $\varphi(x)$ anliegt, also
+$y(x) = \varphi(x)$ für $x>x_*$ und nahe bei $x_*$, dann gilt
+für die linksseitige Steigung $y'(x_*-)$ von $y(x_*)$ die
+Bedingung
+\[
+F(x_*,y(x_*),y'(x_*-)) = F(x_*,\varphi(x_*),\varphi'(x_*)).
+\]
+\end{satz}
+
+\begin{proof}
+Indem wir uns nötigenfalls auf eine Umgebung von $x_*$ beschränken,
+können wir eine Variation $x(\varepsilon)=x_*+\varepsilon$ und
+$y(x,\varepsilon)$ derart wählen, dass die Funktion $x\mapsto y(x,\varepsilon)$
+für $x\in[x_0,x_*+\varepsilon]$ eine Lösung der
+Euler-Lagrange-Differentialgleichung ist, und in $x\in[x_*+\varepsilon,x_1]$
+mit der Funktion $\varphi(x)$ übereinstimmt.
+Eine solche Variation ist in
+Abbildung~\ref{buch:nebenbedingungen:einseitig:fig:einseitig}
+dargestellt.
+Damit $y(x,0)$ eine Extremale ist, muss die Ableitung des Funktionals
+$I(y(x,\varepsilon))$ nach $\varepsilon$ an der Stelle $0$ verschwinden.
+
+Wir berechnen jetzt das Funktional
+\begin{align}
+I(y(x,\varepsilon))
+&=
+\int_{x_0}^{x_1} F(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
+\\
+&=
+\int_{x_0}^{x_*+\varepsilon} F(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
++
+\int_{x_*+\varepsilon}^{x_1} F(x,\varphi(x),\varphi'(x))\,dx.
+\notag
+\intertext{Die Ableitung des zweiten Integrals gibt den Wert an der unteren
+Grenze, also}
+&=
+\int_{x_0}^{x_*+\varepsilon} F(x,y(x,\varepsilon),y'(x,\varepsilon))\,dx
+-
+F(x_*,\varphi(x_*),\varphi'(x_*).
+\notag
+\intertext{Die Ableitung des ersten Integrals ist durch die allgemeine
+Variationsformel von
+Satz~\ref{buch:variation:allgemein:satz:allgemeinvariation1} gegeben, die}
+&=
+\vec{r}_* \cdot \vec{f}_*
++
+\int_{x_0}^{x_*}
+\biggl(
+\frac{\partial F}{\partial y}-\frac{d}{dx}\frac{\partial F}{\partial y}
+\biggr)
+\frac{\partial y}{\partial\varepsilon}(x,0)\,dx
+-
+F(x_*,\varphi(x_*),\varphi'(x_*)
+\label{buch:nebenbedingungen:einseitig:eqn:allgvariation}
+\end{align}
+ergibt.
+Darin ist $\vec{r}_*$ der Tangentialvektor an die Randkurve, also
+\[
+\vec{r}_* 
+=
+\begin{pmatrix}
+1\\
+\varphi'(x_*)
+\end{pmatrix},
+\]
+und $\vec{f}_*$ ist gegeben durch die
+Formel~\eqref{buch:nebenbedingungen:allgemein:eqn:fi}, also
+\[
+\vec{f}_*
+=
+\begin{pmatrix}
+\displaystyle
+F(x_*,y(x_*),y'(x_*))
+-
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))
+\frac{\partial y}{\partial \varepsilon}(x_*,0)\\
+\displaystyle
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))
+\end{pmatrix}.
+\]
+Da $y(x,\varepsilon)$ links von $x_*$ eine Lösung der
+Euler-Lagrange-Differentiagleichung ist, verschwindet der Integrand
+in \eqref{buch:nebenbedingungen:einseitig:eqn:allgvariation}
+und das Integral leistet keinen Beitrag.
+Damit kann jetzt die Ableitung nach $\varepsilon$ an der Stelle
+$\varepsilon=0$ ausgerechnet werden, sie ist
+\begin{align*}
+\delta I(y)
+&=
+F(x_*,y(x_*),y'(x_*))
+-
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))
+\frac{\partial y}{\partial \varepsilon}(x_*,0)
+\\
+&\qquad
++
+\frac{\partial F}{\partial y'}(x_*,y(x_*),y'(x_*))\varphi'(x_*)
+-
+F(x_*,\varphi(x_*),\varphi'(x_*)).
+\intertext{Wegen $\partial y(x_*,0)/\partial \varepsilon=\varphi'(x_*)$
+heben sich der zweite und dritte Term weg und es bleibt}
+&=
+F(x_*,y(x_*),y'(x_*))
+-
+F(x_*,\varphi(x_*),\varphi'(x_*)).
+\end{align*}
+Da die Ableitung $\delta I(y)$ verschwindet, folgt
+\[
+F(x_*,y(x_*),y'(x_*))
+=
+F(x_*,\varphi(x_*),\varphi'(x_*)),
+\]
+womit die Aussage bewiesen ist.
+\end{proof}
+
+Die Bedingung ist natürlich erfüllt, wenn $y'(x_*-)=\varphi'(x_*)$ ist.
+Dies ist der einfachste Fall, in diesem Fall ist $y'(x)$ stetig,
+die Lösungskurve $y(x)$ schmiegt sich an der Stelle $x_*$  tangential
+an die Nebenbedingung $\varphi(x)$ an.
+
+Die Lösungsfunktion kann nur dann eine Sprungstelle bei $x_*$ haben,
+wenn die Gleichung
+\[
+F(x_*\varphi(x_*),p)
+=
+F(x_*,\varphi(x_*),\varphi'(x_*))
+\]
+für $p$ mehr als eine Lösung hat.
+Falls $p$ eine weitere Lösung ist, sind auch Extremalen mit
+\(
+y'(x_*-)=p
+\)
+denkbar.
+

@@ -1,0 +1,32 @@
+%
+% einzellast.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\input{common.tex}
+
+\begin{scope}
+\clip (0,-1) rectangle (\l,2);
+\draw[color=darkred] ($0.5*(p1)+0.5*(p2)+(0,{0.2+\s})$) circle[radius=\r];
+\end{scope}
+
+\fill[color=blue] ($0.5*(p1)+0.5*(p2)+(0,{0.2+\s-\r})$) circle[radius=0.08];
+
+\node[color=darkred] at ($0.5*(p1)+0.5*(p2)+(0,{0.2+\s-\r})$)
+	[below right] {Biegelinie};
+
+\end{tikzpicture}
+\end{document}
+

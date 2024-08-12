@@ -3,37 +3,48 @@
 %
 % (c) 2020 Autor, OST Ostschweizer Fachhochschule
 %
-% !TEX root = ../../buch.tex
+% TODO: change back to ../../buch.tex
+% !TEX root = ../../standalone.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:cahnhilliard}}
-\kopflinks{Thema}
+\newcommand{\di}[2][]{\,d^{#1}{#2}}
+\newcommand{\deriv}[3][]{\frac{d^{#1}{#2}}{d{#3^{#1}}}}
+\newcommand{\pderiv}[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}
+\newcommand{\energy}{\mathcal{E}}
+\newcommand{\flux}{{\vec{\jmath}}}
+
+\chapter{Cahn-Hilliard-Gleichung\label{chapter:cahnhilliard}}
+\kopflinks{Cahn-Hilliard-Gleichung}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Patrik Müller}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Das alltägliche Phänomen,
+dass sich eine sorgfältig zubereitete Salatsauce
+nach kurzer Zeit wieder in ihre Bestandteile trennt,
+ist vielen vertraut.
+Trotz intensiven Rührens und Schüttelns scheint es unvermeidlich,
+dass das Öl an die Oberfläche steigt,
+während der Essig sich am Boden sammelt.
+Diese scheinbar einfache Beobachtung offenbart ein faszinierendes physikalisches Phänomen,
+das tiefgreifende mathematische und thermodynamische Prinzipien widerspiegelt.
 
-\input{papers/cahnhilliard/teil0.tex}
-\input{papers/cahnhilliard/teil1.tex}
-\input{papers/cahnhilliard/teil2.tex}
-\input{papers/cahnhilliard/teil3.tex}
+Die Tendenz von Essig und Öl,
+sich zu trennen,
+lässt sich durch das Konzept der Phasentrennung erklären,
+ein Prozess,
+der in vielen binären Gemischen beobachtet wird.
+Im Zentrum dieses Phänomens steht die Cahn-Hilliard-Gleichung,
+die ursprünglich entwickelt wurde,
+um die Dynamik der Phasenumwandlung in festen Lösungen und Legierungen zu beschreiben.
+
+In diesem Kapitel werden wir erläutern,
+wie sich die Cahn-Hilliard-Gleichung aus einem Variationsprinzip ableiten lässt.
+Anschliessend analysieren wir die Gleichungen,
+um Lösungsansätze für die Herstellung stabilerer Salatsaucen zu entwickeln.
+
+\input{papers/cahnhilliard/energie.tex}
+\input{papers/cahnhilliard/herleitung.tex}
+\input{papers/cahnhilliard/spinodal.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

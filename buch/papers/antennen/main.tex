@@ -6,34 +6,22 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:antennen}}
-\kopflinks{Thema}
+\chapter{Antennen\label{chapter:antennen}}
+\kopflinks{Antennen}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Baris Catan und Jannis Gull}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Das Ziel dieses Kapitels ist, den Wirkungsgrad einer dreieckigen Loop-Antenne mittels 
+Formoptimierung zu erhöhen. Für die Umsetzung dieser Problemstellung wird 
+eine direkte Methode der Variation, in diesem Fall das Verfahren nach Ritz, 
+verwendet.
 
-\input{papers/antennen/teil0.tex}
-\input{papers/antennen/teil1.tex}
-\input{papers/antennen/teil2.tex}
-\input{papers/antennen/teil3.tex}
+\input{papers/antennen/antennenAllgemein.tex}
+\input{papers/antennen/problemstellung.tex}
+\input{papers/antennen/unserRitz.tex}
+\input{papers/antennen/ritzAufProblem.tex}
+\input{papers/antennen/resultat.tex}
+
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

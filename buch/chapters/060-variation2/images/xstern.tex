@@ -1,0 +1,55 @@
+%
+% xstern.tex -- Zusammengesetzte Lösung der Jacobi-Differentialgleichung
+%
+% (c) 2024 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\a{0.48}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-0.1,0) -- (11.3,0) coordinate[label={$x$}];
+\draw[->] (0,-2.1) -- (0,2.5) coordinate[label={right:$u$}];
+
+\draw[color=blue,line width=1.4pt]
+	plot[domain=180:270,smooth]
+		({1+\x/30},{\a*(2.5*sin(\x)+0.8*sin(2*\x))});
+
+\draw[color=darkred,line width=1.4pt]
+	plot[domain=0:180,smooth]
+		({1+\x/30},{\a*(2.5*sin(\x)+0.8*sin(2*\x))})
+		-- (10,0);
+
+\fill[color=blue] (1,0) circle[radius=0.08];
+\draw[color=blue] (1,0) -- +(0.5,0.5);
+\draw[color=blue] (1,0) -- +(-0.5,-0.5);
+
+\node[color=blue] at (1,0) [below right] {$u_0(x_0)=0$};
+\node[color=blue] at (1,0) [above right,rotate=45] {$u_0'(x_0)=1$};
+
+\draw (1,-0.05) -- (1,0.05);
+\draw (7,-0.05) -- (7,0.05);
+\draw (10,-0.05) -- (10,0.05);
+\draw[line width=0.2pt] (1,0) -- (1,-2);
+\draw[line width=0.2pt] (7,0) -- (7,-2);
+\draw[line width=0.2pt] (10,0) -- (10,-2);
+\begin{scope}[yshift=-2cm]
+\node at (1,-0.05) [below] {$x_0\mathstrut$};
+\node at (7,-0.05) [below] {$x_*\mathstrut$};
+\node at (10,-0.05) [below] {$x_1\mathstrut$};
+\end{scope}
+\node[color=darkred] at (8.5,0) [above] {$u_1(x)=0$};
+\node[color=blue] at (8.5,{-1.5*\a}) {$u_0(x)$};
+\node[color=darkred] at (3.2,{2.8*\a}) [above] {$u_1(x)=u_0(x)$};
+
+\end{tikzpicture}
+\end{document}
+

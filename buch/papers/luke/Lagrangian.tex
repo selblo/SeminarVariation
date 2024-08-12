@@ -1,0 +1,251 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Lagrange-Funktion von Luke\label{luke:section:Luke_Lagrangian}}
+\kopfrechts{Lagrange-Funktion von Luke}
+
+1967 veröffentlichte J. C. Luke \cite{luke:Luke1967} eine Lagrange-Funktion, mit welcher über ein Variationsprinzip die Bewegungen von Oberflächenwellen auf einer freien Fluidoberfläche unter Einwirkung der Schwerkraft berechnet werden kann.
+Genau gesagt lassen sich durch die Minimierung des zugehörigen Integrals über die Variationsrechnung Gleichungen für Oberflächengravitationswellen eines inkompressiblen, nicht viskosen, rotationsfreien Potentialflusses mit einer undurchlässigen freien Oberfläche sowie Boden, bei konstantem Druck, herleiten.
+
+Luke’s Variationsformel \eqref{luke:Luke_Variation_Formel} , in welcher Luke’s Lagrange-Funktion vorkommt \eqref{luke:Luke_Lagrangian_Allgemein}, lautet
+
+
+\begin{align}
+	I(\phi)
+	&=
+	- \int_{t_0}^{t_1} \underset{\Omega}{\int\hspace*{-2mm}\int} \int_{z_0}^{z_1}\rho\left(
+	g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2
+	\right) dz \ dy \ dx \ dt,
+	\label{luke:Luke_Variation_Formel}
+	\intertext{wobei die Lagrange-Funktion definiert ist als}
+	\nonumber \\
+	L(x,y,z,t,\eta,h,\phi,\phi_t,\phi_x, \phi_y, \phi_z)
+	&=
+	-\int_{z_0}^{z_1}\rho\left( g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2 \right) dz.
+	\label{luke:Luke_Lagrangian_Allgemein}
+\end{align}
+Dabei wird für $z_0$ der Gewässergrund $-h(\bm{x},t)$ und für $z_1$ die freie Oberfläche der Flüssigkeit $\eta(\bm{x},t)$ eingesetzt, und ergibt
+\begin{align}
+	\qquad\qquad\quad\;\;=
+	-\rho\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} 
+	g z + \phi_t + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}\phi_z^2 dz
+	,
+	\nonumber
+\end{align}
+mit folgenden Termen:
+\begin{itemize}
+	\item
+	$\phi(\bm{x},z,t)$ ist das Geschwindigkeitspotential
+	\item
+	$\rho$ Dichte der Flüssigkeit
+	\item
+	$g$ Erdbeschleunigung
+	\item
+	$t$ Zeit
+	\item 
+	$\bm{x}$ horizontale Koordinatenvektor mit $x$ und $y$ als Komponenten
+	\item 
+	$z$ vertikale Koordinate
+	\item 
+	$\Omega$ Gebiet über die horizontalen Koordinaten $[x_0,x_1]\times[y_0,y_1]$
+	\item 
+	$\nabla$ horizontaler Gradient, wodurch sich der Term $(\nabla \phi)^2 = \phi_x^2+\phi_y^2$ ergibt
+	\item 
+	$\eta(\bm{x},t)$ freie Oberfläche der Flüssigkeit
+	\item 
+	$h(\bm{x},t)$ Gewässergrund.
+	
+\end{itemize}
+%DIESER TEIL EINBAUEN (Rotations und inlompressiblen Strömung)
+Luke setzt voraus, dass es sich um eine rotationsfreie und inkompressible Strömung handelt.
+Das bedeutet, dass diese Zusammenhänge
+
+\begin{align*}
+	\text{Horizontale Geschwindigkeit:}&\quad \bm{u}(\bm{x},t) &&= \nabla \phi (\bm{x}, y, t) = \left(\phi_x, \phi_y\right),
+	\\
+	\text{Rotationsfreiheit:}&\quad \nabla \times \bm{u}(\bm{x},t) &&= 0,
+	\\
+	\text{Inkompressible Strömung:}&\quad \nabla \cdot \bm{u}(\bm{x},t) &&= \nabla \cdot \nabla \phi(\bm{x}, z, t) = \Delta \phi(\bm{x}, z, t) = 0,
+\end{align*}
+erfüllt werden müssen.
+\subsection{Erweitern der Lagrange-Funktion von Luke
+	\label{luke:subsection:Erweitern}}
+
+Durch das Erweitern der Lagrange-Funktion wird der Freiheitsgrad erhöht, was bei der Variation ermöglicht, eine größere Vielfalt von Ansätzen zu realisieren.
+Somit können Effekte berücksichtigt werden, welche in der realen Welt auftreten können. Dies kann zu genaueren Gleichungssystemen für Wasserwellen führen.
+
+Zuerst wird im Sinne der Vereinfachung die Oberflächenspannung vernachlässigt sowie die Flüssigkeitsdichte $\rho$ konstant auf $\rho = 1\frac{\text{g}}{\text{ml}}$ und die Erdbeschleunigung $g = 9.81\frac{\text{m}}{\text{s}^2}$ gesetzt.
+Das Integral \eqref{luke:Luke_Lagrangian_Allgemein} kann umgeschrieben und teilweise integriert werden. 
+Das ergibt
+\begin{align*}
+	L
+	&=
+	-\rho\left(\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} g z\, dz - \int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \phi_t\, dz -\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{1}{2}\left(\nabla\phi\right)^2 + \frac{1}{2}\phi_z^2 dz\right)
+	\\
+	&=
+	-\rho\Bigg(\frac{1}{2}g\eta(\bm{x},t)^2 + \frac{1}{2}h(\bm{x},t)^2g +\tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t} + \check{\phi} \frac{\partial h(\bm{x},t)}{\partial t} + \\ &\qquad\quad\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{\partial \phi}{\partial t}dz
+	-\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{1}{2}\left(\nabla\phi\right)^2 + \frac{1}{2}\phi_z^2 dz\Bigg).
+\end{align*}
+Dabei ist $\tilde{\phi} = \phi(\bm{x},\eta(\bm{x},t),t)$ das Geschwindigkeitspotential auf der Oberfläche und $\check{\phi} = \phi(\bm{x},-h(\bm{x},t),t)$ das Geschwindigkeitspotential am Gewässergrund.
+Der Term $\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{\partial \phi}{\partial t}dz$ ist für die Variation irrelevant und kann somit weggelassen werden, wodurch die Gleichung
+\begin{align*}
+	&=
+	-\rho\left(\frac{1}{2}g\eta(\bm{x},t)^2 + \frac{1}{2}h(\bm{x},t)^2g +\tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t} + \check{\phi} \frac{\partial h(\bm{x},t)}{\partial t}-\int_{-h(\bm{x},t)}^{\eta(\bm{x},t)} \frac{1}{2}\left(\nabla\phi\right)^2 + \frac{1}{2}\phi_z^2 dz\right),
+\end{align*}
+entsteht.
+Beim Variationsprinzip wird die Veränderung der Funktion unter Variation ihrer Parameter betrachtet.
+Um die Berechnungen zu erleichtern wird angenommen, dass sich der Gewässergrund zeitlich nicht ändert und die Tiefe konstant bleibt, somit ist $h(\bm{x},t) = h$ und $\frac{\partial h}{\partial t} = 0$.
+Weil die Tiefe $h$ als zeitlich konstant angenommen wird, verändert diese sich nicht während des Minimierungsprozesses.
+Daher hat dieser Term $\frac{1}{2}h^2g$ keinen Einfluss auf die Variation und kann weggelassen werden.
+Somit kann die Lagrange-Funktion angeschrieben werden als
+\begin{align}
+	L(\bm{x},z,t,\eta,\phi,\phi_t,\phi_x, \phi_y, \phi_z)
+	= 
+	-\frac{1}{2}\rho g\eta(\bm{x},t)^2 +\rho \tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t} -\rho \int_{-h}^{\eta(\bm{x},t)} \frac{1}{2}\left(\nabla\phi\right)^2 + \frac{1}{2}\phi_z^2 dz
+	.
+	\nonumber
+\end{align}
+Um denn Freiheitsgrad der Variation zu erhöhen, wird die horizontale Geschwindigkeit $\bm{u}(\bm{x},z,t) = \nabla\phi = (\phi_x, \phi_y)$ und die vertikale Geschwindigkeit $v(\bm{x},z,t) = \phi_z$ eingeführt. 
+Dadurch dass wir die Lagrange-Funktion erweitern, müssen wir auch den Zusammenhang von horizontalen und vertikalen Geschwindigkeit mit dem Geschwindigkeitspotential als Nebenbedingung einsetzen.
+Somit bekommen wir die Nebenbedingungen
+
+\begin{align}
+	\bm{u}(\bm{x},z,t)
+	&=
+	\nabla\phi
+	&&&&\Rightarrow&&&
+	\bm{u}(\bm{x},z,t)
+	-
+	\nabla\phi
+	&=
+	0,
+	\nonumber
+	\\
+	v(\bm{x},z,t)
+	&=
+	\phi_z
+	&&&&\Rightarrow&&&
+	v(\bm{x},z,t)
+	-
+	\phi_z
+	&=
+	0.
+	\nonumber
+\end{align}
+Drei Nebenbedingungen (beachte, dass $\bm{u}(\bm{x},z,t)$ ein zweidimensionaler Vektor ist und somit zwei Nebenbedingungen darstellt) bedeuten das Einfügen von drei Lagrange- Multiplikatoren, wobei $\bm{\mu}(\bm{x},z,t)$ für die ersten beiden und $\upsilon(\bm{x},z,t)$ für die dritte Nebenbedingung eingesetzt wird.
+Die Lagrange-Funktion wird mit den Multiplikatoren und Nebenbedingungen erweitert und ergibt
+\begin{align}
+&L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
+\notag
+\\
+&\qquad=
+	-
+	\frac{1}{2}\rho  g \eta(\bm{x},t)^2
+	+
+	\rho \tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t}
+	\notag
+\\
+&\qquad\quad
+	-
+	\rho \int_{-h}^{\eta(\bm{x},t)} \left[ \frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} \cdot (\nabla\phi - \bm{u}) + \upsilon  \left(\phi_z - v\right) \right] dz.
+	\label{luke:Luke_Lagrangian_mit_Multi}
+\end{align}
+Die Multiplikatoren lassen sich über das Variationsprinzip bestimmen.
+Die Bestimmung der Multiplikatoren kann schon vor konkreter Berechnung durchgeführt werden.
+Dafür betrachten wir die Variation der Lagrangefunktion \eqref{luke:Luke_Lagrangian_mit_Multi} bezogen auf die Geschwindigkeiten $\bm{u}$ und $v$.
+Die Variation von $L$ nach $\bm{u}$ und $v$ ergeben die Gleichungen
+
+\begin{align*}
+\frac{\partial L}{\partial \bm{u}} &= 0
+\\
+\frac{\partial L}{\partial v} &= 0.
+\end{align*}
+Die Variationsrechnung nach $\bm{u}$ ergibt
+\begin{align*}
+	\frac{\partial L}{\partial \bm{u}}
+	&=\frac{\partial \mathscr{}}{\partial \bm{u}}\left( -\frac{1}{2} \rho g \eta(\bm{x},t)^2 + \rho\tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t} -\rho \int_{-h}^{\eta(\bm{x},t)} \left[ \frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} \cdot (\nabla\phi - \bm{u}) + \upsilon \left(\phi_z - v\right) \right] dz\right).
+	\nonumber
+\end{align*}
+Das Integral über $z$ ändert die Variationsrechnung nicht, deshalb wird dieses weggelassen. Terme davor ergeben Null.
+Es bleibt
+\begin{align*}
+	\frac{\partial L}{\partial \bm{u}} &= -\frac{\partial}{\partial \bm{u}} \left(\frac{1}{2} (\bm{u}^2 + v^2) + \bm{\mu} (\nabla\phi - \bm{u}) + \upsilon \left(\phi_z - v\right) \right)
+	\\
+	\frac{\partial L}{\partial \bm{u}} &= -\frac{\partial}{\partial \bm{u}} \left( \frac{1}{2} (\bm{u}^2 + v^2) \right)  -\frac{\partial}{\partial \bm{u}} \left( \bm{\mu} (\nabla\phi - \bm{u}) \right)  -\frac{\partial}{\partial \bm{u}} \left( \upsilon \left(\phi_z - v\right) \right)
+	\\
+	\frac{\partial L}{\partial \bm{u}} &=
+	-\bm{u}
+	+\bm{\mu} = 0.
+\end{align*}
+Somit erhalten wir
+\begin{equation}
+	\bm{u}(\bm{x},z,t) = \bm{\mu}(\bm{x},z,t).
+\end{equation}
+Das gleiche wird mit der Variation nach $v$ gemacht und ergibt
+\begin{equation}
+	v(\bm{x},z,t) = \upsilon(\bm{x},z,t).
+\end{equation}
+Diese Erkenntnis kann wiederum in \eqref{luke:Luke_Lagrangian_mit_Multi} eingesetzt werden.
+Damit ergibt sich die Lagrange Funktion
+\begin{align}
+&L(\bm{x},z,t,\eta,\phi,\bm{u}, v,\phi_t,\phi_x, \phi_y, \phi_z)
+\notag
+\\
+&\qquad=
+	-
+	\frac{1}{2}\rho g \eta(\bm{x},t)^2
+	+
+	\rho\tilde{\phi} \frac{\partial\eta(\bm{x},t)}{\partial t}
+	+
+	\rho\int_{-h}^{\eta(\bm{x},t)} \left[ \frac{1}{2} \bm{u}^2 + \frac{1}{2} v^2 - \bm{u} \nabla \phi - v \phi_z \right] dz.
+	\label{luke:Luke_Lagrangian_mit_Multi_verkuerzt}
+\end{align}
+Somit haben wir drei Lagrange-Funktionen mit unterschiedlich vielen Variablen.
+Die ursprüngliche Lagrange-Funktion von Luke \eqref{luke:Luke_Lagrangian_Allgemein} hat die Variablen $(x,y,z,t,\eta,\phi)$.
+Die angepasste Funktion mit den Lagrange-Multiplikatoren \eqref{luke:Luke_Lagrangian_mit_Multi} hat vier Variablen mehr $(x,y,z,t,\eta,\phi,\bm{u},v,\bm{\mu},\upsilon)$ und die vereinfachte Form davon \eqref{luke:Luke_Lagrangian_mit_Multi_verkuerzt} hat zwei Variablen mehr $(x,y,z,t,\eta,\phi,\bm{u},v)$.
+Diese zusätzlichen Variablen bringen zusätzliche Freiheitsgrade.
+Damit kann bei der Konstruktion von Lösungen für verschiedener Oberflächenwasserwellen mehrere untergeordnete Beziehungen erfüllt werden.
+
+Die Lagrange-Funktion \eqref{luke:Luke_Lagrangian_mit_Multi} kann mittels des Satzes von Green umgeformt werden auf eine Formulierung welche mehr der klassischen Mechanik entspricht.
+Diese Umformung wurde von Didier Clamond und Denys Dutykh \cite{luke:CLAMOND201225} durchgeführt. Dabei ergibt sich die äquivalente Lagrange-Funktion
+\begin{align}
+&L(\bm{x},z,t,\eta,\phi,\bm{u}, v, \bm{\mu},\upsilon,\phi_t,\phi_x,\phi_y,\phi_z)
+\notag
+\\
+&\qquad=
+\left(\frac{\partial \eta(\bm{x},t)}{\partial t}
++
+\tilde{\bm{\mu}} \nabla \eta(\bm{x},t)
+-
+\tilde{\upsilon}\right) \rho\tilde{\phi}
+-
+\frac{1}{2} \rho g \eta(\bm{x},t)^2
+\notag
+\\
+&\qquad\qquad
+	+
+	\rho
+	\int_{-h}^{\eta(\bm{x},t)} \left[ \bm{\mu}  \bm{u} - \frac{1}{2} \bm{u}^2 + \upsilon v - \frac{1}{2} v^2 + \left(\nabla \bm{\mu} + \frac{\partial \upsilon}{\partial z}\right) \phi \right] dz,
+	\label{luke:Luke_Lagrangian_umgeschrieben}
+\end{align}
+wobei $\tilde{\mu} = \mu(\bm{x},\eta(\bm{x},t),t)$ und $\tilde{\upsilon} = \upsilon(\bm{x},\eta(\bm{x},t),t)$ die Lagrange-Multiplikatoren auf der Wasseroberfläche sind.
+Die Lagrange-Funktion \eqref{luke:Luke_Lagrangian_umgeschrieben} beinhaltet die kinetische Energie minus der potenziellen Energie plus der Bedingungen für rotationsfreie und inkompressiblen Strömung sowie die Bedingung der Undurchlässigkeit für Oberflächen.
+Diese Anordnung der Lagrange-Funktion ergibt das hamiltonsche Prinzip in seiner allgemeinsten Form für rotationsfreie Oberflächengravitationswellen.
+
+\subsection{Mittelung}
+Bevor wir zu den Variationen der Lagrange-Funktion kommen wird noch folgende Formulierung zur Vereinfachung der nachfolgenden Schritte eingeführt.
+Alle Variablen, welche mit einem Balken gekennzeichnet sind, sind über die Wassertiefe gemittelte Werte. Diese sind durch
+
+\begin{align}
+	\overline{\bm{u}}(\bm{x}, t) \equiv \frac{1}{\eta(\bm{x}, t) + h} \int_{-h}^{\eta(\bm{x},t)} \bm{u}(\bm{x},z,t) \, dz,
+	\label{luke:Mittelung_Wassertiefe}
+\end{align}
+definiert.
+Zu beachten ist, dass die über die Wassertiefe gemittelte Variable nicht mehr von der vertikalen Achse $z$ abhängt.
+

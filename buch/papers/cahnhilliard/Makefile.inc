@@ -7,8 +7,7 @@ dependencies-cahnhilliard =						\
 	papers/cahnhilliard/packages.tex					\
 	papers/cahnhilliard/main.tex					\
 	papers/cahnhilliard/references.bib				\
-	papers/cahnhilliard/teil0.tex					\
-	papers/cahnhilliard/teil1.tex					\
-	papers/cahnhilliard/teil2.tex					\
-	papers/cahnhilliard/teil3.tex
+	papers/cahnhilliard/energie.tex     \
+	papers/cahnhilliard/herleitung.tex     \
+	papers/cahnhilliard/spinodal.tex
 

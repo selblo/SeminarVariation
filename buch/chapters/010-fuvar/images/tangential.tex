@@ -1,0 +1,48 @@
+%
+% tangential.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usepackage{ifthen}
+\begin{document}
+
+\newboolean{showgrid}
+\setboolean{showgrid}{false}
+\def\breite{7}
+\def\hoehe{4}
+
+\begin{tikzpicture}[>=latex,thick]
+\clip (-6.3,-3.55) rectangle (6.3,3.55);
+
+% Povray Bild
+\node at (0,0) {\includegraphics[width=12.6cm]{tangential.jpg}};
+
+% Gitter
+\ifthenelse{\boolean{showgrid}}{
+\draw[step=0.1,line width=0.1pt] (-\breite,-\hoehe) grid (\breite, \hoehe);
+\draw[step=0.5,line width=0.4pt] (-\breite,-\hoehe) grid (\breite, \hoehe);
+\draw                            (-\breite,-\hoehe) grid (\breite, \hoehe);
+\fill (0,0) circle[radius=0.05];
+}{}
+
+\node at (6.1,-2.3) {$x$};
+\node at (-0.2,3.4) {$z$};
+\node[opacity=0.5] at (1.75,0.1) {$y$};
+
+\node[color=darkred] at (3.9,-1.1) [right]
+	{$\displaystyle\frac{\partial f}{\partial x}$};
+\node[color=darkred] at (0.9,1.4) [right]
+	{$\displaystyle\frac{\partial f}{\partial y}$};
+
+\end{tikzpicture}
+
+\end{document}
+

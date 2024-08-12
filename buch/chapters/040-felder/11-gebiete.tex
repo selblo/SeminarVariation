@@ -41,6 +41,7 @@ Funktion nicht nur im Punkt $x$, sondern auch in einer Umgebung
 des Punktes $x$.
 Die Ableitung einer Funktion ist daher nur definiert auf einer
 offenen Menge im Sinne der folgenden Definition.
+\input{chapters/040-felder/fig/offen.tex}
 
 \begin{definition}[offene Menge, Gebiet]
 Eine Teilmenge $\Omega\subset\mathbb{R}^n$ heisst {\em offen}, wenn es für
@@ -58,7 +59,6 @@ B_r(x)
 \]
 Eine offene Menge $\Omega\subset\mathbb{R}$ heisst auch ein {\em Gebiet}.
 \index{Gebiet}%
-\input{chapters/040-felder/fig/offen.tex}
 \end{definition}
 
 %
@@ -132,6 +132,7 @@ Im folgenden sollen daher nur solche Gebiete betrachtet werden,
 deren Rand die zusätzliche Eigenschaft haben, dass er mit stetigen
 oder sogar differenzierbaren Funktionen beschrieben werden kann.
 Dies wird von der folgenden Definition erreicht.
+\input{chapters/040-felder/fig/randdef.tex}
 
 \begin{definition}[glatter Rand]
 \label{buch:felder:fundamentallemma:def:glatterrand}
@@ -150,7 +151,6 @@ das Bild $\varphi(x)$ eines Punktes $x=(x_1,\dots,x_{n-1},x_n)$ in $\Omega$
 liegt, wenn $x_n\ge 0$ ist, nicht in $\Omega$ liegt, wenn $x_n<0$ ist und auf
 dem Rand $\partial\Omega$ liegt, wenn $x_n=0$ ist
 (Abbildung~\ref{buch:felder:fundamentallemma:fig:randdef}).
-\input{chapters/040-felder/fig/randdef.tex}
 \end{definition}
 
 Ein Gebiet hat also einen glatten Rand, wenn er sich lokal als das
@@ -163,7 +163,7 @@ In zwei Dimensionen kann man den Rand eines Gebietes mit
 glattem Rand stückweise als Graphen von differenzierbaren Funktionen
 $y_k(x)$ beschreiben, wie dies in
 \input{chapters/040-felder/fig/2drand.tex}
-Abbildung~\ref{buch:felder:fundamtenallemma:fig:2drand}
+Abbildung~\ref{buch:felder:fundamentallemma:fig:2drand}
 dargestellt ist.
 Mit dieser Definition lassen sich aber natürlich vorkommende Gebiete
 wie ein Rechteck $(x_1,x_2)\times(y_1,y_2)$ nicht beschreiben, da
@@ -171,19 +171,455 @@ es in den Ecken des Rechtecks keine Abbildung gibt, wie sie in der
 Definition~\ref{buch:felder:fundamentallemma:def:glatterrand}
 verlangt wird.
 
-
 %
 % Integration über ein Gebiet
 %
 \subsubsection{Integration über ein Gebiet}
+Eine Variationsaufgabe sucht eine Funktion, die ein Integral minimiert,
+dessen Integrand von der Funktion abhängt.
+Im Falle einer Funktion einer Variablen ist das Definitionsgebiet der
+Funktion ein Intervall $I=[x_0,x_1]$, die Funktion $y\colon I\to\mathbb{R}$
+wird als differenzierbar angenommen und das zu minimierende Funktional
+ist
+\[
+J(y)
+=
+\int_{x_0}^{x_1} L(x,y(x),y'(x))\,dx
+=
+\int_I L(x,y(x),y'(x))\,dx.
+\]
+Für Funktionen mehrerer Variablen muss also insbesondere der Begriff
+der Integration auf ein Integral über ein Gebiet verallgemeinert werden.
+
+Eine Funktion $f(x) = f(x_1,\dots,x_n)$ kann über beliebige
+Koordinatenrechtecke oder mehrdimensionale Quader $R$,
+die durch Ungleichungen $a_i< x_i<b_i$ gegeben sind, durch das iterierte
+Integral
+\[
+\int_R f(x)
+\,dx
+=
+\int_{a_1}^{b_1}
+\dots
+\int_{a_n}^{b_n}
+f(x_1,\dots,x_n)
+\,dx_n
+\dots
+\,dx_1
+\]
+berechnet werden.
+
+Das Gebiet $G$ kann durch Quader $R_k$ approximiert werden
+(Abbildung~\ref{buch:felder:fig:unterteilung}),
+\input{chapters/040-felder/fig/unterteilung.tex}
+das Integral der Funktion $f$ wird dann durch die Summe
+\begin{equation}
+\int_G f(x)\,dx
+\approx
+\sum_k
+\int_{R_k} f(x)\,dx
+\label{buch:felder:gebiete:eqn:GintegralR}
+\end{equation}
+approximiert.
+Durch Verfeinerung der Quader kann das Gebiet beliebig vollständig überdeckt
+werden und damit das Integral beliebig genau approximiert werden.
+Der Grenzwert der Summe~\eqref{buch:felder:gebiete:eqn:GintegralR}
+ist das Integral der Funktion $f$ über das Gebiet $G$.
+
+%
+% Integral über $G$ als iteriertes eindimensionales Integral
+%
+\subsubsection{Integral über $G$ als iteriertes eindimensionales Integral}
+Ein konvexes Gebiet $G$ wie zum Beispiel die Ellipse
+\[
+G
+=
+\biggl\{
+(x_1,x_2)
+\in
+\mathbb{R}^2
+\,
+\bigg|
+\,
+\frac{x_1^2}{a^2}+\frac{x_2^2}{b^2}< 1
+\biggr\}
+\]
+kann auch durch die Ungleichungen
+\begin{align*}
+-b\sqrt{1-\frac{x_1^2}{a^2}}
+&< x_2 <
+b\sqrt{1-\frac{x_1^2}{a^2}}
+&&\text{für $x_1\in (-a,a)$}
+\intertext{bzw.}
+-a\sqrt{1-\frac{x_2^2}{b^2}}
+&< x_1 <
+a\sqrt{1-\frac{x_2^2}{b^2}}
+&&\text{für $x_2\in (-b,b)$}
+\end{align*}
+beschrieben werden.
+Etwas allgemeiner gibt es Funktionen
+$x_{2,\pm}(x_1)$ 
+und
+$x_{1,\pm}(x_2)$ 
+derart, dass das Gebiet $G$ durch die Ungleichungen
+\begin{align*}
+x_{2,-}(x_1) &< x_2 < x_{2,+}(x_1)&& \text{für $x_1\in(x_{10},x_{11})$}
+\intertext{bzw.}
+x_{1,-}(x_2) &< x_1 < x_{1,+}(x_2)&& \text{für $x_2\in(x_{20},x_{21})$}
+\end{align*}
+gegeben ist.
+Mit diesen Bezeichnungen lässt sich das Integral über das Gebiet auch
+auf zwei verschiedene Arten als das iterierte Integral
+\[
+\int_G f(x) \,dx
+=
+\int_{x_{10}}^{x_{11}}
+\int_{x_{2,-}(x_1)}^{x_{2,+}(x_1)} f(x_1,x_2)\,dx_2\,dx_1
+=
+\int_{x_{20}}^{x_{21}}
+\int_{x_{1,-}(x_2)}^{x_{1,+}(x_2)} f(x_1,x_2)\,dx_1\,dx_2
+\]
+geschrieben werden.
+Änliche iterierte Integrale können verwenden werden, um Integrale
+über Gebiete zu berechnen, deren Dimension grösser als $2$ ist.
+
+Kompliziertere Gebiete, wie die in
+Abbildung~\ref{buch:felder:fundamentallemma:fig:2drand}
+dargestellten konvexen zweidimensionalen Gebiete, können durch Summen solcher
+Integrale berechnet werden.
+
+%
+% Integration und Koordinatentransformation
+%
+\subsubsection{Integration und Koordinatentransformationen}
+Unter einer Koordinatentransformation im Definitionsgebiet 
+$G$ einer Funktion ändert sich der geometrische Sachverhalt nicht,
+das Integral der Funktion sollte sich nicht ändern.
+Seien $x_i=x_i(y_1,\dots,y_n)$ Funktionen, die die alten Koordinaten
+durch die neuen Koordinaten $y_1,\dots,y_n$ ausdrücken.
+Die zusammengesetze Funktion
+\[
+f(x(y))
+=
+f(x_1(y_1,\dots,y_n),\dots,x_n(y_1,\dots,y_n))
+\]
+hat ein Gebiet $\tilde{G}$ als Definitionsgebiet.
+Approximiert man $\tilde{G}$ mit Quader $\tilde{R}_k$, dann sind
+die Bildmengen $x(\tilde{R}_k)$ keine Quader.
+Da die Funktionen $x_i$ differenzierbar, sind sie jedoch näherungsweise
+Quader.
+Durch die Abbildung $x$ werden die Kantenvektoren $e_j$ der Quader 
+$\tilde{R}_k$ auf die Vektoren $Dx\cdot e_j$ abgebildet, die ein
+Parallelepiped mit dem Volumen
+\[
+\det Dx
+=
+\left|
+\renewcommand{\arraystretch}{1.9}
+\begin{matrix}
+\displaystyle
+\frac{\partial x_1}{\partial y_1}
+&
+\displaystyle
+\frac{\partial x_1}{\partial y_2}
+&\dots&
+\displaystyle
+\frac{\partial x_1}{\partial y_n}
+\\
+\displaystyle
+\frac{\partial x_2}{\partial y_1}
+&
+\displaystyle
+\frac{\partial x_2}{\partial y_2}
+&\dots&
+\displaystyle
+\frac{\partial x_2}{\partial y_n}
+\\
+\vdots&\vdots&\ddots&\vdots\\
+\displaystyle
+\frac{\partial x_n}{\partial y_1}
+&
+\displaystyle
+\frac{\partial x_n}{\partial y_2}
+&\dots&
+\displaystyle
+\frac{\partial x_n}{\partial y_n}
+\end{matrix}
+\right|
+\]
+aufspannen.
+Mit dem zusätzlichen Faktor $\det Dx$ kann daher dem Integral einer Funktion
+über ein Gebiet eine koordinatensystemunabhängige Bedeutung gegeben werden.
+
+%
+% Volumenelement
+%
+\subsubsection{Volumenelement}
+Die Notwendigkeit, bei einer Variablentransformation den Faktor
+$\det Dx$ hinzuzufügen, zeigt, dass ein vom Koordinatensystem unabhängiges
+Integral einer Funktion über ein Gebiet $G$ erst durch eine zusätzliche
+Gewichtsfunktion $g(x)$ definiert ist, die sich beim Wechsel des
+Koordinatensystems mit der Determinanten der Ableitung $Dx$ multipliziert.
+Die Gewichtsfunktion ist im willkürlich.
+Sie wird erst eindeutig,
+wenn die Verbindung zwischen dem Volumeninhalt des Gebietes und 
+dem Integral dadurch hergestellt wird, dass das Integral der konstanten
+Funktion $1$ das Volumen
+\[
+\operatorname{vol}(G)
+=
+\int_G 1\cdot g(x)\,dx
+\]
+sein soll.
+
+Für kartesische Koordinaten ist die diese Gewichtsfunktion $g(x)=1$.
+Wählt man stattdessen Kugelkoordinaten $(r,\vartheta,\varphi)$, mit der
+Koordinatentransformation
+\begin{equation}
+\left.
+\begin{aligned}
+x&=r\sin\vartheta\cos\varphi\\
+y&=r\sin\vartheta\sin\varphi\\
+z&=r\cos\vartheta
+\end{aligned}
+\;\right\}
+\qquad
+\Rightarrow
+\qquad
+Dx
+=
+\begin{pmatrix}
+\sin\vartheta\cos\varphi
+	&  r \cos\vartheta\cos\varphi
+		& -r\sin\vartheta\sin\varphi\\
+\sin\vartheta\sin\varphi
+	&  r \cos\vartheta\sin\varphi
+		& \phantom{-}r\sin\vartheta\cos\varphi\\
+\cos\vartheta
+	& -r \sin\vartheta
+		& \phantom{-}0
+\end{pmatrix},
+\end{equation}
+deren Determinante
+\begin{align*}
+\det Dx
+&=
+r^2\bigl(
+\cos\vartheta
+(\cos\vartheta \sin\vartheta \cos^2\varphi
++
+\cos\vartheta \sin\vartheta \sin^2\varphi
+)
+\\
+&\phantom{=}
+\quad
++
+\sin\vartheta
+(
+\sin^2\vartheta \cos^2\varphi
++
+\sin^2\vartheta \sin^2\varphi
+)
+\bigr)
+\\
+&=
+r^2\bigl(
+\cos^2\vartheta\sin\vartheta
++
+\sin^3\vartheta
+\bigr)
+\\
+&=
+r^2
+\sin\vartheta
+\bigl(
+\cos^2\vartheta
++
+\sin^2\vartheta
+\bigr)
+\\
+&=
+r^2\sin\vartheta
+\end{align*}
+ist.
+In Kugelkoordinaten ist das Integral daher als
+\[
+\int_G f(r,\vartheta,\varphi)
+\,
+r^2\sin^2\varphi
+\,dr\,d\vartheta\,d\varphi
+\]
+zu berechnen.
+Die Gewichtsfunktion $g(r,\vartheta,\varphi)=r^2\sin\vartheta$ ergibt
+zusammen mit den Differentialen des Integrals das sogenannte
+{\em Volumenelement}
+\(
+r^2\sin\vartheta\,dr\,d\vartheta\,d\varphi
+\).
+
+Die Funktion $g(x)$ zusammen zusammen mit den Infinitesimalsymbolen
+im Integral heisst auch das Volumenelement.
+\index{Volumenelement}%
+Wir kürzen das Volumenelement auch einfach als $dV$ ab wie in
+\[
+\int_G f(x) \,dV
+=
+\int_G f(x)\,g(x)\,dx.
+\]
+Wenn $\varphi\colon U\to\mathbb{R}^n$ mit $U\subset\mathbb{R}^n$ ein lokales
+Koordinatensystem für eine Teilmenge eines Gebietes ist, dann muss als
+Gewichtsfunktion das Volumen eines von den Tangentialvektoren
+\[
+\vec{v}_1
+=
+\frac{\partial\varphi}{\partial x_1}
+,\dots,
+\vec{v}_n
+=
+\frac{\partial\varphi}{\partial x_n}
+\]
+aufgespannten Parallelepipeds verwendet wird, welches durch die Determinante
+\[
+g(x)
+=
+\det(\vec{v}_1,\dots,\vec{v}_n)
+\]
+mit Spaltenvektoren $\vec{v}_i$ gegeben ist.
+Es ist also wieder
+\[
+\int_G f(x)\, dV
+=
+\int_G f(x) \det(\vec{v}_1,\dots,\vec{v}_n)\,dx
+\]
+eine vom Koordinatensystem unabhängige Formel für die Berechnung des
+Integrals.
 
 %
 % Integration über eine Kurve
 %
 \subsubsection{Integration über eine Kurve}
+Ein besonders einfacher Fall ist das Integral über eine Kurve $C$.
+Mit Hilfe einer Parametrisierung $\gamma_1\colon I_1\to C\subset \mathbb{R}^n$
+einer Kurve wird ein Integral über die Werte einer Funktion $f$, die auf
+der Bildmenge $\gamma_1(I_1)$ definiert ist, zu einem Integral
+\begin{equation}
+\int_{I_1}
+f(\gamma_1(t))
+\,dt
+\label{buch:felder:gebiete:eqn:kurvenintegral}
+\end{equation}
+der Funktion $f\circ\gamma\colon I_1\to\mathbb{R}:t\mapsto f(\gamma_1(t))$
+über ein Intervall der reellen Achse.
+Dabei spielt aber offenbar die Parametrisierung eine Rolle.
+Eine alternative Parametrisierung $\gamma_2\colon I_2\to\mathbb{R}^n$,
+lässt sich immer durch eine Koordinatentransformation $u\colon I_2\to I_1$
+in $\gamma_2 = \gamma_1\circ u$ überführen.
+Dabei geht das Integral
+\eqref{buch:felder:gebiete:eqn:kurvenintegral}
+mit der Substitution $t=u(s)$
+über in das Integral
+\[
+\int_{i_1}
+f(\gamma_1(t))
+\,dt
+=
+\int_{I_2}
+f(\gamma_1(u(s)))
+\,
+u'(s)
+\,ds
+=
+\int_{I_2}
+f(\gamma_2(s))
+\,
+u'(s)
+\,ds.
+\]
+Der zusätzliche Faktor $u'(s)$ gibt wieder, wie die Umparametrisierung
+die Kurvenlänge verzerrt.
+
+Das Volumenelement muss so gewählt werden, dass das Integral der Funktion
+$1$ entlang der Kurve die Länge der Kurve ergibt.
+Dies funktioniert genau dann, wenn die Länge des Tangentialvektors
+$|\dot{\gamma(t)}|$ der Parametrisierung verwendet wird.
+Das Integral
+\[
+\int_C f\,ds
+=
+\int_I f(\gamma(t))\,|\dot{\gamma}(t)|\,dt
+\]
+ist daher eine Grösse, die von der Parametrisierung unabhängig ist.
+
+Ist $\vec{v}$ ein entlang der Kurve $C$, dann sind im Skalarprodukt
+\[
+\vec{v}(\gamma(t))\cdot \dot{\gamma}(t)
+=
+|\vec{v}(\gamma(t))| \, |\dot{\gamma}(t)|\, \cos \alpha,
+\]
+wobei $\alpha$ der Winkel zwischen der $\vec{v}$ und der Kurventangente
+im Punkt $\gamma(t)$ ist, der Betrag $|\vec{v}|$ und der Winkel $\alpha$
+nur von der Position entlang der Kurve abhängig.
+Der Faktor $|\dot{\gamma}(t)|$ ist das Längenelement, welches das Integral
+\[
+\int_C \vec{v}\cdot d\vec{s}
+=
+\int_I \vec{v}(\gamma(t))\cdot \dot{\gamma}(t)\,dt
+\]
+zu einer Grösse macht, die von der Parametrisierung unabhängig ist.
 
 %
 % Integration über den Rand
 %
 \subsubsection{Integration über den Rand}
+Ist der Rand eines Gebietes glatt im Sinne der
+Definition~\ref{buch:felder:fundamentallemma:def:glatterrand},
+darf man einen Zusammenhang zwischen einem Integral über das Gebiet
+und einem Integral über den Rand erwarten.
+Die Sätze von Green, Stokes und Gauss, die im
+Abschnitt~\ref{buch:felder:subsection:partint} als Verallgemeinerung
+der partiellen Integration präzisiert werden.
+Die Definition~\ref{buch:felder:fundamentallemma:def:glatterrand}
+stellt sicher, dass der Rand eines Gebietes mindestens stückweise
+durch ein Koordinatensystem parametrisiert wird, welches die
+Koordinaten $(x_1,\dots,x_{n-1})$ verwendet.
+
+Sei also $\varphi\colon U\to\mathbb{R}^n$ mit $U\subset\mathbb{R}^{n-1}$
+eine Parametrisierung des Randes.
+Als Volumenelement für das Integral über den Rand muss das Volumen
+eines Parallelepipeds verwendet werden, welches von den Tangentialvektoren
+\[
+\vec{v}_1
+=
+\frac{\partial\varphi}{\partial x_1},
+\dots,
+\vec{v}_{n-1}
+\frac{\partial\varphi}{\partial x_{n-1}}
+\]
+aufgespannt wird.
+Dieses Volumen kann mit der Gram-Determinante
+\[
+\det(\vec{v}_i\cdot\vec{v}_k)
+=
+\left|
+\begin{matrix}
+\vec{v}_1\cdot\vec{v}_1
+	& \vec{v}_1\cdot\vec{v}_2
+		& \dots
+			& \vec{v}_1\cdot\vec{v}_{n-1}\\
+\vec{v}_2\cdot\vec{v}_1
+	& \vec{v}_2\cdot\vec{v}_2
+		& \dots
+			& \vec{v}_2\cdot\vec{v}_{n-1}\\
+\vdots&\vdots&\ddots&\vdots\\
+\vec{v}_{n-1}\cdot\vec{v}_1
+	& \vec{v}_{n-1}\cdot\vec{v}_2
+		& \dots
+			& \vec{v}_{n-1}\cdot\vec{v}_{n-1}
+\end{matrix}
+\right|
+\]
+berechnet werden \cite{buch:linalg}.
+
+
+
 

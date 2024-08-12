@@ -8,6 +8,7 @@ all:	2drand.pdf							\
 	greenbeweis.pdf							\
 	offen.pdf							\
 	randdef.pdf							\
+	unterteilung.pdf						\
 	variation.pdf
 
 2drand.pdf:	2drand.tex
@@ -70,3 +71,9 @@ variation.jpg:	variation.png Makefile
 
 variation.pdf:	variation.tex variation.jpg flaeche.jpg
 	pdflatex variation.tex
+
+#
+# Unterteilung
+#
+unterteilung.pdf:	unterteilung.tex
+	pdflatex unterteilung.tex

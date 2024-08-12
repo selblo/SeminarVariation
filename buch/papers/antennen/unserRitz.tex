@@ -1,0 +1,79 @@
+%
+% unserRitz.tex 
+%
+% 
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Das Ritz-Verfahren grundsätzlich\label{antennen:ritzGrundsätzlich}}
+
+Wie schon sehr oft in diesem Buch erwähnt, gibt es das Problem, dass man für ein Funktional
+\begin{equation}
+I(y)
+=
+\int_{x_1}^{x_2}L(x,y(x),y'(x))\,dx
+\label{antennen:normalesFunktional}
+\end{equation}
+eine Funktion $y(x)$ finden muss, welche das Funktional extremal macht.
+Solch eine Funktion ist die Lösung der
+\begin{equation}
+\frac{\partial L}{\partial y} - \frac{d}{dx} \left( \frac{\partial L}{\partial y'} \right) = 0
+\label{antennen:el-DGL}
+\end{equation}
+Euler-Lagrange Differentialgleichung.
+
+Wenn diese Gleichung \eqref{antennen:el-DGL} jedoch analytisch nicht lösbar ist,
+kommt das Verfahren nach Ritz ins Spiel.
+
+\subsection{Approximationsfunktion nach Ritz\label{antennen:approxFunkt}}
+
+Aus der Fourier-Theorie weiss man, dass
+periodische Funktionen $f(t)$ als Linearkombination von anderen Funktionen, 
+im Sinne der Fourierreihe als
+%todo WHY SIND KLAMMERN GROSS? CHECKS NID
+\begin{equation}
+FR[f(t)]
+=
+\frac{a_0}{2}+\sum_{n=1}^{\infty}[a_n\cos(n\omega_f t )+b_n\sin(n\omega_f t)]
+\label{antennen:fourier}
+\end{equation}
+beschrieben werden können.
+
+Eine ähnliche Idee wird beim Verfahren nach Ritz angewendet.
+Es wird eine Approximationsfunktion in der Form
+\begin{equation}
+y(x)=\sum_{k=1}^n a_k \psi_k(x)
+\label{antennen:ritzFunkt}
+\end{equation}
+definiert. Die Funktionen $\psi_k(x)$ und Koeffizienten $a_k$, oder
+wie in der Welt des Verfahrens nach Ritz,  
+\em Koordinatenfunktionen $\psi_k(x)$ \em und \em Koordinaten \em $a_k$.
+Im weiteren Verlauf jedoch behalten wir die intuitiveren, zuerst genannten Namen.
+
+\subsection{Mögliche Approximationsfunktionen\label{antennen:approxBsp}}
+
+Je nach Problemstellung gibt es bessere oder schlechtere Approximationsfunktionen.
+Mögliche ausgeschriebene Funktionen können so aussehen:
+\begin{equation}
+	\begin{aligned}
+		\text{Potenz-Entwicklung: }
+		y(x)
+		&=
+		a_0+a_1 x+a_2 x^2+\cdots+a_n x^n \\
+		\text{Fourier-Entwicklung: } 
+		y(x)
+		&=
+		a_0+a_1\cos(x)+b_1\sin(x)+\cdots+a_n\cos(n x)+b_n\sin(n x)\\
+		\text{Exponential-Entwicklung: } 
+		y(x)
+		&=
+		a_1 e^{\lambda x}+a_2 e^{-\lambda x}+\cdots+a_n e^{(-1)^n \lambda}
+	\end{aligned}
+\label{antennen:approxFunktBsp}
+\end{equation}
+
+Das Ziel ist es schlussendlich das Problem so genau wie nötig, mit so wenig
+Koeffizienten wie möglich auszudrücken.
+

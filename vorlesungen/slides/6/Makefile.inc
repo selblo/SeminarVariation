@@ -6,4 +6,7 @@
 chapter6 =								\
 	../slides/6/problemtypen.tex					\
 	../slides/6/freierrand.tex					\
-	../slides/6/variation.tex
+	../slides/6/variation.tex					\
+	../slides/6/hermite.tex						\
+	../slides/6/refraktion.tex					\
+	../slides/6/spline.tex
