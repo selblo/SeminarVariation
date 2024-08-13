@@ -141,7 +141,7 @@ der ungeraden Sinus-Funktionen, die Nebenbedingungen
 \em immer erfüllt \em sind. Im weiteren Verlauf werden diese 
 Nebenbedingungen somit nicht mehr beachtet.
 
-\subsection{Die Lagrange-Funktion \label{antennen:lagrangeFunktionen}}
+\subsection{Die zu optimierende Funktion \label{antennen:optmFunktion}}
 
 %Die beste Fläche ist auch gerade die beste Fläche im quadrat \qed
 
@@ -199,18 +199,19 @@ und wie jede gute Nebenbedingung setzen wir diese noch gleich null :
 \label{antennen:fertigeNebenbed}
 \end{aligned}
 \end{equation}
-Nun kann man die endlichdimensionale Lagrange-Funktion
+Nun kann man die zu optimierende Funktion
 
 \begin{equation}
 F(x,a_1,a_2,\lambda)
 = 
 f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
-definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n (a_1,a_2, l)$ addiert.
+definieren. Dazu wird die Funktion $f$ mit der Nebenbedingung zusammen mit einem
+Multiplikator $\lambda \: n (a_1,a_2, l)$ addiert.
 
-\subsection{Lagrange-Gleichungssystem\label{antennen:lagrangeGLsys}}
+\subsection{Das endlichdimensionale Gleichungssystem\label{antennen:lagrangeGLsys}}
 
-Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und gleich 0 setzen. Das heisst in diesem Kontext
+Nun möchte man die  $F$ ableiten und gleich 0 setzen. Das heisst in diesem Kontext
 den Gradienten
 
 \begin{equation}
