@@ -6,7 +6,7 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-
+\usetikzlibrary{spy}
 \section{Resultat\label{antennen:resultat}}
 
 Das Verfahren nach Ritz hat ergeben, dass die Antenne eine kreisförmige Abrundung an den Ecken 
@@ -20,33 +20,33 @@ des abgerundeten Dreiecks, sowie dessen Fläche $A$ kann mit den Formeln
 \definecolor{clrGreen}{RGB}{0, 117, 18}
 \begin{align}
 	l &= \textcolor{blue}{2 \cdot \pi \cdot r} + \textcolor{orange}{3 \cdot s - 6 \cdot \sqrt{3} \cdot r} \tag{20.24} \label{antennen:Länge} \\
-	A &= \textcolor{clrGreen}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{red}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
+	A &= \textcolor{clrGreen}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{darkred}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
 \end{align}
 \setcounter{equation}{25}
 berechnet werden.
-Der Wirkungsgrad ist nun zu einem Problem geworden, das nur noch abhängig von 
+Der Wirkungsgrad ist nun zu einem eindimensionalen Problem mit zwei Variablen geworden, das nur noch abhängig von 
 der Seitenlänge $s$ des Dreiecks und des Radius $r$ der Kreise ist. Bildlich ist dies 
 in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 
 %TODO Erklären der Formeln l und A mittels Grafik (Formelabschnitte einfärben??)
 \begin{figure}
 	\centering
-	\begin{tikzpicture}
+	\begin{tikzpicture}[spy using outlines={circle, magnification=4, size=3cm, connect spies}]
 		\definecolor{clrGreen}{RGB}{0, 117, 18}
-
+		
 		\def\sidelength{3.14}
 		
 		\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
-
+		
 		\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 		\coordinate (A) at (0,0);
 		\coordinate (B) at (2.51,0);
 		\coordinate (C) at (2.51/2,1.73/2*2.51);
-
+		
 		\coordinate (As) at ($(A) + (9pt,5pt)$);
 		\coordinate (Bs) at ($(B) + (9pt,5pt)$);
 		\coordinate (Cs) at ($(C) + (9pt,5pt)$);
-
+		
 		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (As) {};
 		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Bs) {};
 		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Cs) {};
@@ -54,17 +54,25 @@ in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 		\draw[line width=10pt, orange] (As) -- (Bs) (Bs) -- (Cs) (Cs) -- (As);
 		\draw[line width=8pt, black] (As) -- (Bs) (Bs) -- (Cs) (Cs) -- (As);
 		
-		\path[draw=black, fill=red] (As) -- (Bs) -- (Cs) -- (As);
-
+		\path[fill=darkred] (As) -- (Bs) -- (Cs) -- (As);
+		
+				% Beschriftung und Pfeile für den Radius 'r'
+		\draw[<->,thin, yellow,>={Stealth[scale=0.5]}] (0.5*\sidelength, \triangleheight-0.375) -- (0.5*\sidelength+0.155, \triangleheight-0.285) node[below] {\tiny$r$};
+		
+		\draw[<->, thin, violet,>={Stealth[scale=1]}] ([shift={(+3pt,1.7pt)}]\sidelength,0) -- ([shift={(3pt,1.7pt)}]0.5*\sidelength, \triangleheight) node[] at ([shift={(6pt,3.4pt)}]0.75*\sidelength,0.5*\triangleheight) {$s$};
+		
 		\draw[->] (0,0) -- (4,0) node[below right] {};
 		\draw[->] (0,0) -- (0,4) node[left] {};
-
+		
 		\foreach \x in {0, 1,2,3}
 		\draw (\x,1pt) -- (\x,-1pt) node[below] {\x};
 		\foreach \y in {1, 2, 3}
 		\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
+		
+		% Zoom auf die Ecke C
+		\spy on (1.57,2.5) in node [right] at ($(1.57,2.5)+(2.5,0)$);
 	\end{tikzpicture}
-	\caption{Aufteilung des Dreiecks}
+	\caption{Aufteilung des Dreiecks mit Zoom auf eine Ecke}
 	\label{antennen:tikzdreieckAufteilung}
 \end{figure}
 
