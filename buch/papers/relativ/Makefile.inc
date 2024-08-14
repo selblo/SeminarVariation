@@ -3,12 +3,10 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-dependencies-relativ =						\
+dependencies-relativ =							\
 	papers/relativ/packages.tex					\
-	papers/relativ/main.tex					\
+	papers/relativ/main.tex						\
 	papers/relativ/references.bib				\
-	papers/relativ/teil0.tex					\
-	papers/relativ/teil1.tex					\
-	papers/relativ/teil2.tex					\
-	papers/relativ/teil3.tex
-
+	papers/relativ/sections/relativistik.tex	\
+	papers/relativ/sections/rel_mechanik.tex	\
+	papers/relativ/sections/em_feld.tex
