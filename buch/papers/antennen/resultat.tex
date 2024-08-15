@@ -7,12 +7,18 @@
 % !TEX encoding = UTF-8
 %
 \usetikzlibrary{spy}
-\section{Resultat\label{antennen:resultat}}
+\section{Finale Überlegung\label{antennen:resultat}}
 
 Das Verfahren nach Ritz hat ergeben, dass die Antenne eine kreisförmige Abrundung an den Ecken 
 zur besten Effizienz führen, da sie die Gleichung \eqref{antennen:Verhältnis} optimieren. 
 Es muss jedoch noch bestimmt werden, wie gross der Radius dieser Abrundungen ist und somit wo
 genau dieser sich befindet. 
+
+Das Kapitel \ref{antennen:ritzAnw} hat gezeigt, dass ein Abrundung an den Ecken
+zur besten Effizienz führt, weil die abgerundete Form das Verhältnis \eqref{antennen:Verhältnis}
+minimiert und somit die Effizienz maximiert. Wie gross der Radius dieser Abrundung
+ist, muss jedoch noch bestimmt werden.
+
 
 \subsection{Parametrisierung der abgerundeten Dreiecksantenne\label{antennen:param3eck}}
 Die Länge $l$, hierbei der Umfang 
@@ -56,7 +62,7 @@ in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 		
 		\path[fill=darkred] (As) -- (Bs) -- (Cs) -- (As);
 		
-				% Beschriftung und Pfeile für den Radius 'r'
+		% Beschriftung und Pfeile für den Radius 'r'
 		\draw[<->,thin, yellow,>={Stealth[scale=0.5]}] (0.5*\sidelength, \triangleheight-0.375) -- (0.5*\sidelength+0.155, \triangleheight-0.285) node[below] {\tiny$r$};
 		
 		\draw[<->, thin, violet,>={Stealth[scale=1]}] ([shift={(+3pt,1.7pt)}]\sidelength,0) -- ([shift={(3pt,1.7pt)}]0.5*\sidelength, \triangleheight) node[] at ([shift={(6pt,3.4pt)}]0.75*\sidelength,0.5*\triangleheight) {$s$};

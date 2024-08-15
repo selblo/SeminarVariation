@@ -206,12 +206,12 @@ F(x,a_1,a_2,\lambda)
 = 
 f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
-definieren. Dazu wird die Funktion $f$ mit der Nebenbedingung zusammen mit einem
+definieren. Dazu wird die Funktion $f$ mit der Nebenbedingung und einem
 Multiplikator $\lambda \: n (a_1,a_2, l)$ addiert.
 
 \subsection{Das endlichdimensionale Gleichungssystem\label{antennen:lagrangeGLsys}}
 
-Nun möchte man die  $F$ ableiten und gleich 0 setzen. Das heisst in diesem Kontext
+Die Funktion $F$ möchte man nun ableiten und gleich 0 setzen. Das heisst in diesem Kontext
 den Gradienten
 
 \begin{equation}
@@ -228,7 +228,8 @@ berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein
 $n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. 
 Wobei $n$ die Anzahl der Koeffizienten ist.
 
-An dieser Stelle wird ersichtlich, was diese Kapitel von den anderen unterschiedet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
+An dieser Stelle wird ersichtlich, was diese Kapitel von den anderen unterschiedet. Mit dem Verfahren nach Ritz  
+kann man ein unendlich dimensionales
 Problem wie z. B. im Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
 Konkret bedeutet dies, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
@@ -334,14 +335,23 @@ konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe d
 \texttt{nsolve()} lösen.
 Den Code findet man unter \cite{antennen:codeKoeff}.
 
-\subsection{Auswertung der Optimierung\label{antennen:auswertung}}
+\subsection{Das Verstehen der Lösung\label{antennen:auswertung}}
 
-Das Lösen ist eine Sache, das Verstehen des gelösten eine andere. Wie vorher erwähnt, können wir beliebig viele
-Koeffizienten der Funktion für verschiedene $l$ optimieren.
+Die Abbildung \ref{antennen:plotskoeff} zeigt, wie sich die Lösung visuell mit mehr 
+Koeffizienten verändert. Auf der x-Achse sieht man jeweilt eine beliebige Distanz von \emph{$\pi$}.
+Für diese Distanz verbindet die Funktion $y_n(x)$ diese Distanz mit einer Linie, welche eine
+fixe Länge $l$ hat. Wie lang die verschiedenen Längen genau sind, ist hierbei irrelevant.
 
-Um die Abbildung \ref{antennen:plotskoeff} zu verstehen, muss man sich folgendes Setup vorstellen. 
-Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$ 
-``meter''. Diese Distanz ist jeweils auf der x-Achse dargestellt.
+Das Ergebnis ist dann die \emph{optimale Form} mit
+maximaler Fläche unter der Funktion. Mit mehr Koeffizienten $n$ kann die Funktion,
+immer mehr Fläche aufspannen. Eine sehr interessante \emph{Länge} jedoch sollte man 
+genauer unter die Lupe nehmen. 
+
+Es wurde nun schon oft wie im Kapitel \ref{buch:chapter:nebenbedingungen}
+erwähnt, dass wir die Fläche \emph{maximieren} und den Umfang oder hier Länge $l$, wie 
+bei dem Problem von Dido \emph{minimieren} möchten. 
+Dort kam eine Form, mit konstanter zweiter Ableitung, also anders ausgedrückt
+der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$, der Durchmesser eines Kreises. Dieser wichtige Vergleich wird in \ref{antennen:vergleich} gemacht und genauer erläutert.
 
 % TODO nicht gute position,  illegal
 \begin{figure}
@@ -462,29 +472,18 @@ Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$
 	\label{antennen:plotskoeff}
 \end{figure}
 
-Dann nehme man verschiedene \emph{Seillängen} $l$, welche in
-\eqref{antennen:constNebenbed} als konstant definiert waren.
-Als Seil kann man sich die jeweilige Funktionslösung vorstellen.
-Das Ergebnis ist dann die \emph{optimale Form} mit
-maximaler Fläche unter dem Seil für verschiedene \emph{Seillängen}.
-
-Mit mehr Koeffizienten $n$ kann die Funktion, also die Art wie das Seil gelegt wird, immer mehr Fläche aufspannen. Eine sehr interessante \emph{Seillänge} sollte man jedoch genauer unter die Lupe nehmen.
-
-Es wurde nun schon oft wie im Kapitel \ref{buch:chapter:nebenbedingungen}
-erwähnt, dass wir die Fläche \emph{maximieren} und den Umfang, wie bei dem Problem von Dido \emph{minimieren} möchten. 
-
-Dort kam eine Form, mit konstanter zweiter Ableitung, also anders ausgedrückt
-der Kreis, als Lösung hervor. Somit ist die für uns interessante \emph{Seillänge} $l$, der Durchmesser eines Kreises. Genau diesen wichtigen Vergleich sieht man in der Abbildung \ref{antennen:vergleichKreis}. 
-
 \subsection{Vergleich mit perfekten Lösung\label{antennen:vergleich}}
 
-Das Seil ist in diesem Kontext wieder die Funktion $y_n(x)$. In der Abbildung \ref{antennen:vergleichKreis} sogar mit 8 Koeffizienten, für eine Länge $l$ des halben
-Kreisumfangs eines Kreises mit Durchmesser $\pi$. Einfacher
-ausgedrückt $l=\frac{\pi^2}{2}$.
+Die Abbildung \ref{antennen:vergleichKreis} vergleicht unsere Lösung\footnotemark{}, also die 
+Funktion $y_n(x)$ optimiert für den halben Kreisumfang eines Kreises mit Durchmesser $\pi$. 
+Einfacher ausgedrückt $l=\frac{\pi^2}{2}$.
+
+\footnotetext{Das ausrechnen der acht Koeffizienten mit dem Python-Skript \cite{antennen:codeKoeff}
+ging je nach Maschine und Anfangswerte, 5 bis 10 Minuten.}
 
 Man sieht hier schon recht gut, dass $y_n(x)$ der
 perfekten Lösung, dem Kreis, konvergiert. Dies ist
-natürlich kein wasserfester Beweis, hier aber völlig
+natürlich kein wasserfester Beweis, hier aber völlig  
 ausreichend. 
 
 \usetikzlibrary{pgfplots.fillbetween}
@@ -495,8 +494,10 @@ ausreichend.
 			axis lines=middle,
 			xlabel=$x$,
 			ylabel=$y$,
-			xmin=0, xmax=3.14159, 
-			xtick={0, 1.5708, 3.14159}, 
+			xmin=-0.3, xmax=3.5,
+			ymin=-0.6, ymax=2.4, 
+			xtick={0, 1.5708, 3.14159},
+			ytick={0.5, 1, 1.5, 2}, 
 			xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 			axis equal=true, 
 			every axis plot/.append style={thick}
