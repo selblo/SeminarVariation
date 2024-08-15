@@ -6,10 +6,10 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:geodaeten}}
-\kopflinks{Thema}
+\chapter{Geodäten\label{chapter:geodaeten}}
+\kopflinks{Geodäten}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Andrin Kälin}
 
 Ein paar Hinweise für die korrekte Formatierung des Textes
 \begin{itemize}
@@ -29,11 +29,16 @@ anzuwenden.
 Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
 Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
 \end{itemize}
+Geodätenlinien beschreiben den kürzesten Weg zwischen zwei Punkten auf einer beliebigen Oberfläche.
+Dabei ist sowohl Form als auch Dimension beliebig.
+Um diese Linien zu berechnen wird das Standardverfahren für Geodätenlinein verwendet, welches auf dem metrischen Tensor [\ref{geodaeten:section:MetrischerTensor}] des zu untersuchenden Raumes basiert.
+Um den Metrischen Tensor aufstellen zu können, müssen zunächst die Linienelemente [\ref{geodaeten:section:Linienelemente}] bekannt sein.
+Die folgenden zwei Kapitel sollen zunächst die Linienelemente [\ref{geodaeten:section:Linienelemente}] und den metrischen Tensor [\ref{geodaeten:section:MetrischerTensor}] erklären.
+Erst dann kann das Standardverfahren anhand einiger Beispiele veranschaulicht werden.
 
-\input{papers/geodaeten/teil0.tex}
-\input{papers/geodaeten/teil1.tex}
-\input{papers/geodaeten/teil2.tex}
-\input{papers/geodaeten/teil3.tex}
+\input{papers/geodaeten/Linienelemente/Linienelemente.tex}
+\input{papers/geodaeten/MetrischerTensor/MetrischerTensor.tex}
+\input{papers/geodaeten/StandardverfahrenGeodaeten/StandardverfahrenGeodaeten.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
