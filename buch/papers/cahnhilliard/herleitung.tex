@@ -1,0 +1,231 @@
+%
+% cahnhillard.tex -- Herleitung der Cahn-Hilliard-Gleichung
+%
+% (c) 2024 Patrik Müller, Hochschule Rapperswil
+%
+% !TeX root = ../../buch.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_CH
+%
+\section{Herleitung der Cahn-Hilliard-Gleichung\label{cahnhilliard:section:herleitung}}
+\rhead{Herleitung der Cahn-Hilliard-Gleichung}
+Mit \eqref{cahnhilliard:energy} haben wir nun einen Ausdruck auf den wir ein Variationsprinzip anwenden können.
+In den folgenden Abschnitten werden wir das Variationsproblem aufstellen und
+das Resultat an die Kontinuitätsgleichung koppeln.
+Daraus werden wir die Cahn-Hilliard-Gleichung erhalten.
+
+\subsection{Anwenden von Euler-Ostrogradski-Gleichung}
+Bevor wir die Euler-Ostrogradski-Gleichung anwenden,
+entfernen wir den Skalierungsfaktor $N_V$ aus \eqref{cahnhilliard:energy}.
+Wir nehmen zudem an,
+dass die Änderungen der Konzentration über Distanzen,
+die im Vergleich zum intermolekularen Abstand gross sind,
+nur geringfügig sind.
+Damit können wir die Abhängigkeiten von höheren Ableitungen vernachlässigen.
+Auf dieser Grundlage ergibt sich das Funktional
+\begin{align}
+I(c)
+&=
+\int_\Omega L(x, c, \nabla c) \di{x}
+\nonumber
+\\
+&=
+\int_\Omega F(c) + \frac{\epsilon^2}{2} \abs{\nabla c}^2 \di{x}.
+\end{align}
+Berechnen wir nun die Ableitungen des Funktionals nach den Feldvariablen erhalten wir
+\begin{align*}
+\pderiv{I}{c}
+&=
+\deriv{F}{c}
+\\
+\pderiv{I}{(\nabla c)}
+&=
+% \pderiv{}{(\nabla c)} \frac{\epsilon^2}{2} \abs{\nabla c}^2
+% &=
+\epsilon^2 \sum_{i=1}^3 \pderiv{c}{x_i}
+\\
+\pderiv{}{x_i}\pderiv{I}{(\nabla c)}
+&=
+\epsilon^2 \sum_{i=1}^3 \pderiv[2]{c}{x_i}
+=
+\epsilon^2 \Delta c
+% \pderiv{}{(\nabla c)} \left[
+% \sum_{i=1}^3 \left( \pderiv{I}{c_i} \right)
+% \right]
+% \\
+% &&&=
+% 2 \sum_{i=1}
+.
+\end{align*}
+Somit können wir nun die Euler-Ostrogradski-Gleichung anwenden:
+\begin{align*}
+\frac{\delta I}{\delta c}
+&=
+\deriv{F}{c} -  \epsilon^2 \Delta c
+\equiv
+\mu
+.
+\end{align*}
+Der erhaltene Ausdruck $\mu$ wird in der Literatur häufig als
+\emph{chemisches Potential} bezeichnet.
+Im Gleichgewichtszustand gilt $\mu = 0$.
+Wir sind jedoch insbesondere daran interessiert,
+wie sich unser Gemisch über die Zeit verhält und entmischt.
+Daher betrachten wir im folgenden Abschnitt die Dynamik des Systems,
+indem wir die zeitliche Entwicklung der Konzentration
+$c$ analysieren.
+
+\subsection{Koppeln mit Kontinuitätsgleichung}
+Nachdem wir das chemische Potential $\mu$ bestimmt haben,
+welches die treibende Kraft für die Veränderung der Konzentration darstellt,
+ist der nächste Schritt,
+die zeitliche Entwicklung der Konzentration $c(x,t)$ zu untersuchen.
+Diese Entwicklung wird durch die Kontinuitätsgleichung
+\eqref{buch:symmetrien:felder:eqn:kontinuitaet} gesteuert,
+da die Gesamtmasse der Komponenten in einem abgeschlossenen System konstant bleiben muss.
+Für das Salatsaucen-Problem gelten folgende Differentialgleichung mit Randbedingungen:
+\begin{align}
+\begin{aligned}
+\pderiv{c}{t}
+&=
+- \nabla \cdot \flux
+,\quad&
+x &\in \Omega
+\\
+\nabla c \cdot n
+&=
+0
+,&
+x &\in \partial\Omega
+\\
+\flux \cdot n
+&=
+0
+,&
+x &\in \partial\Omega
+.
+\end{aligned}
+\label{cahnhilliard:continuity}
+\end{align}
+Nun stellt sich die allerdings die Frage,
+was der Fluss $\flux$ \;in unserem Problem genau sein könnte?
+Eine mögliche Inspiration bietet die Wärmeleitungsgleichung,
+wo der Fluss proportional zum Gradienten des Temperaturfeldes ist.
+Dies führt uns zu der Hypothese, dass auch in unserem Fall der Fluss
+durch den Gradienten eines Potentials bestimmt wird.
+Daher vermuten wir:
+\begin{align*}
+\flux
+=
+- M \nabla \mu
+,\quad\text{wobei } M > 0
+.
+\end{align*}
+In der Literatur wird $M$ als die Mobilitätsfunktion bezeichnet,
+die häufig als konstant angenommen wird.
+Der negative Vorzeichen in der Flussgleichung impliziert,
+dass die Bewegung der Teilchen in Richtung des abnehmenden chemischen Potentials erfolgt,
+um die freie Energie des Systems zu minimieren.
+
+Im folgenden Abschnitt werden wir untersuchen,
+ob der vermutete Fluss $\flux{}$ \;wirklich die freie Energie minimiert.
+Dies wird es uns ermöglichen,
+die Konsistenz unseres Modells zu bestätigen und
+die Dynamik der Entmischung in der Salatsauce präzise zu beschreiben.
+
+\subsubsection{Beweis der Energieminimierung}
+Da es sich bei unserem Problem um ein Variationsproblem handelt,
+sollte die freie Energie minimiert werden.
+Dies bedeutet, dass die zeitliche Ableitung des Funktionals  $I$
+nicht positiv sein sollte:
+\begin{align*}
+\deriv{}{t} I
+&\leq
+0
+.
+\end{align*}
+Leiten wir also nun das Funktional $I$ nach der Zeit ab,
+erhalten wir
+\begin{align*}
+\deriv{}{t} I
+&=
+\int_\Omega \deriv{F}{c} \pderiv{c}{t}
++ \epsilon^2 \nabla c \cdot \nabla \pderiv{c}{t} \di{x}
+.
+\end{align*}
+Mit diesem Ausdruck lässt sich jedoch noch keine Aussage treffen,
+ob die Bedingung der Energieminimierung erfüllt wird.
+Um den Ausdruck weiter zu vereinfach integrieren wir den 2. Term partiell
+und wenden noch einige Umformungen an.
+Dann resultiert:
+\begin{align*}
+\deriv{}{t} I
+&=
+\int_\Omega \deriv{F}{c} \pderiv{c}{t} - \epsilon^2 \Delta c \pderiv{c}{t} \di{x}
++ \int_{\partial\Omega} \epsilon^2 \pderiv{c}{t} \underbrace{\nabla c\cdot n}_{=0} \di{s}
+\\
+&=
+\int_\Omega \mu \pderiv{c}{t} \di{x}
+\\
+&=
+\int_\Omega \mu \nabla \cdot (M \nabla \mu) \di{x}
+.
+\end{align*}
+Durch erneute partielle Integration erhalten wir
+\begin{align*}
+\deriv{}{t} I
+&=
+\int_{\partial\Omega} \mu M \nabla \mu \cdot n \di{s} - \int_\Omega \nabla \mu \cdot (M \nabla \mu) \di{x}
+.
+\end{align*}
+Gemäss der Randbedingungen von \eqref{cahnhilliard:continuity}
+verschwindet das Oberflächenintegral.
+Final erhalten wir also
+\begin{align*}
+\deriv{}{t} I
+&=
+-\int_\Omega M \abs{\nabla \mu}^2 \di{x}
+,
+\end{align*}
+wobei alle Terme im Integral positiv sind.
+Somit haben wir bewiesen,
+dass unser vermuteter Fluss alle Bedingungen erfüllt.
+
+\subsubsection{Cahn-Hilliard-Gleichung}
+Nun haben wir also endlich alle Zutaten zusammen,
+um die Cahn-Hilliard-Gleichung aufzustellen:
+\begin{align}
+\begin{aligned}
+\pderiv{c}{t}
+&=
+\nabla \cdot (M \nabla \mu)
+,\quad&
+x &\in \Omega
+\\
+\mu
+&=
+\deriv{F}{c} -  \epsilon^2 \Delta c
+,&
+x &\in \Omega
+\\
+\nabla c \cdot n
+&=
+0
+,&
+x &\in \partial\Omega
+\\
+M \nabla \mu \cdot n
+&=
+0
+,&
+x &\in \partial\Omega
+.
+\end{aligned}
+\label{cahnhilliard:cheq}
+\end{align}
+Die Cahn-Hilliard-Gleichung beschreibt somit
+die zeitliche Entwicklung der Konzentration $c(x,t)$
+in Abhängigkeit vom chemischen Potential $\mu$,
+und stellt sicher,
+dass die freie Energie des Systems minimiert wird,
+während die Massenerhaltung gewährleistet ist.

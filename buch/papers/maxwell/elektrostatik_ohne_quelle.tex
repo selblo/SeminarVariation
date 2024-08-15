@@ -71,7 +71,7 @@ ist als
 definiert.
 In Worten gefasst kann man sagen, dass das elektrische Potential eine auf die Ladung normierte potentielle Energie darstellt.
 Somit kann die linke Abbildung in \ref{maxwell:skalarGrad} als ein Feld, das proportional zur potentiellen Energie ist, angeschaut werden.
-Des Weiteren steht die elektrische Spannung eng in Verbindung mit dem elektrischen Potential.
+Des weiteren steht die elektrische Spannung eng in Verbindung mit dem elektrischen Potential.
 Die Spannung $U$ zwischen zwei Punkten $a$ und $b$ wird definiert als
 \(
 U_{ab}
@@ -105,7 +105,7 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 %E-Field of point charge
 \begin{figure}
 	\centering
-	\begin{tikzpicture}
+	\begin{tikzpicture}[thick]
 		\def\R{2.2}
 		\def\NE{16}
 		\def\NV{4}
@@ -146,15 +146,15 @@ Die Permittivität
 =
 \varepsilon_r\,\varepsilon_0
 \)
-ist ein Mass dafür, wie gut sich ein Material polarisieren lässt und ist das Produkt der relativen Permittivität $\varepsilon_r$ und der Permittivität von Vakuum $\varepsilon_0$.
-Die relative Permittivität ist eine materialabhängige Grösse und hat in Vakuum den skalaren Wert $1$.
-Die Permittivität des Vakuums in SI-Einheiten
+ist ein Mass dafür, wie gut sich ein Material polarisieren lässt. Es ist das Produkt der relativen Permittivität $\varepsilon_r$ und der Permittivität $\varepsilon_0$ des Vakuums.
+Die relative Permittivität ist eine materialabhängige Grösse und hat im Vakuum den skalaren Wert $1$.
+Die Permittivität
 \[
 \varepsilon_0
 =
-8.854 \cdot 10^{-12}\,\text{F/m}
+8.854 \cdot 10^{-12}\,\frac{\text{C$^2$}}{\text{Nm$^2$}}
 \]
-ist die elektrische Feldkonstante.
+des Vakuums in SI-Einheiten nennt man auch die elektrische Feldkonstante.
 
 \subsection{Laplace-Gleichung
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
@@ -171,7 +171,7 @@ W_{\text{e}}
 \iiint_V w_e\, dV.
 \]
 Dieses Integral gilt es zu minimieren, was die Grundlage für unser Variationsproblem darstellt.
-Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist in Vakuum
+Die in \eqref{maxwell:section:definiton_energiedichte_elektrischesFeld} definierte Energiedichte ist im Vakuum
 \[
 w_{\text{e}}
 =
@@ -227,7 +227,7 @@ ist.
 Somit haben wir unsere Lagrange-Funktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-Nun gilt es die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
+Nun gilt es, die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
 Nach Einsetzen wird die Differentialgleichung zu
 \begin{align*}
 \frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} &- \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\\
@@ -243,16 +243,16 @@ Nachdem wir die partiellen Ableitungen nach $\varphi_x$, $\varphi_y$ und $\varph
 =
 0.
 \]
-Wenn man nun noch die letzten partiellen Ableitungen macht, resultiert
+Wenn man nun noch die letzten partiellen Ableitungen durchführt, resultiert
 \begin{equation}
 	- \varepsilon_0\underbrace{\left(\frac{\partial^2\varphi}{\partial x^2} + \frac{\partial^2\varphi}{\partial y^2} + \frac{\partial^2\varphi}{\partial z^2}\right)}_{\displaystyle=0}
 	=
 	0.
 	\label{maxwell:section:laplace_gleichung_1}
 \end{equation}
-%definiton des laplace operators suchen
+%TODO:definiton des laplace operators suchen
 An dieser Gleichung sieht man, dass die Klammer mit den partiellen Ableitungen gleich null sein muss, da die Permittivität des Vakuums nicht null sein kann.
-Zusätzlich wird nun ersichtlich, dass der Klammerterm nach Definition \eqref{???} mit dem Laplace-Operator angewendet auf das elektrische Potentialfeld $\varphi$ ersetzt werden kann.
+Zusätzlich wird nun ersichtlich, dass der Klammerterm nach Definition \eqref{buch:fundamentallemma:definition:laplace-operator} mit dem Laplace-Operator angewendet auf das elektrische Potentialfeld $\varphi$ ersetzt werden kann.
 Somit wird unsere Schlussdifferentialgleichung zu
 \begin{equation}
 	\Delta\varphi
@@ -261,7 +261,7 @@ Somit wird unsere Schlussdifferentialgleichung zu
 	\label{maxwell:section:laplace_gleichung_2}
 \end{equation}
 %TODO: Definition Laplace suchen.
-Wenn wir nun den Laplace-Operator laut seiner Definition \eqref{buch:felder:fundamentallemma:eqn:laplaceproduktformel} mittels Divergenz und Gradient ausdrücken, erhalten wir die Gleichung
+Wenn wir nun den Laplace-Operator laut seiner Definition \eqref{buch:fundamentallemma:definition:laplace-operator} mittels Divergenz und Gradient ausdrücken, erhalten wir die Gleichung
 \begin{equation}
 \nabla\cdot\underbrace{\nabla\varphi}_{\displaystyle-\vec{E}}
 =
@@ -276,7 +276,7 @@ Dank der statischen Definition des elektrischen Feldes \eqref{maxwell:section:de
 	\label{maxwell:section:e_feld_quellenfrei}
 \end{equation}
 sein muss. Diese Differentialgleichung besagt, dass das elektrische Feld quellenfrei ist.
-Dies bedeutet, dass Felldlinien des elektrischen Feldes an keinem Ort im Raum enstehen oder enden können.
+Dies bedeutet gleichzeitig, dass Felldlinien des elektrischen Feldes an keinem Ort im Raum enstehen oder enden können.
 Was wiederum sehr naheliegend ist, da ohne Ladungen im Raum das elektrische Feld quellenfrei sein muss.
 
 %Darf auch weggelassen werden.
@@ -289,7 +289,7 @@ Ein Potentialfeld, das die Laplace-Gleichung
 0
 \]
 erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, das rotationsfrei und quellenfrei ist.
-Diese Gleichung findet nicht nur Anwendungen in der Elektrostatik, sondern auch in stationärer Fluiddynamik und stationärer Wärmeleitung.
+Diese Gleichung findet nicht nur Anwendungen in der Elektrostatik, sondern auch in der stationären Fluiddynamik und der stationären Wärmeleitung.
 
 
 

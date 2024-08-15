@@ -10,7 +10,7 @@
 \subsection{Gausssches Gesetz des elektrischen Feldes
 \label{maxwell:section:elektrostatik_mit_quelle}}
 Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\varphi(x,y,z)$ und eine Ladungsdichte $\varrho(x,y,z)$ existieren.
-Auch für diesen Raum möchten wir mittels der Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
+Auch für diesen Raum möchten wir mittels der Variationsrechnung eine partielle Differentialgleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
 
 \subsubsection{Ansatz}
 Es ist naheliegend, dass auch in diesem Szenario die Energie im System minimiert werden muss.
@@ -81,7 +81,7 @@ Der Kopplungsterm in unserem Fall beschreibt die Wechselwirkung zwischen dem Fel
 Nun können wir diese Lagrange-Funktion in die Euler-Ostrogradski-Differentialgleichung einsetzen, um zu untersuchen, wie sich das elektrische Potentialfeld verhält.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-Jetzt wollen wir die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrange-Funktion in die Euler-Ostrogradski-Differentialgleichung einsetzten.
+Jetzt wollen wir, die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrange-Funktion in die Euler-Ostrogradski-Differentialgleichung einsetzten.
 Um die Rechnung übersichtlicher zu gestalten, machen wir uns die Linearität der Euler-Ostrogradski-Differentialgleichung
 \begin{equation}
 F(W_{\text{tot}})
@@ -95,11 +95,11 @@ zu nutze.
 Die Lösung von $F(W_{\text{e}})$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
 Durch einsetzen von $-W_{\text{q}}$ in die Euler-Ostrogradski-Differentialgleichung erhalten wir
 \[
-\frac{\partial}{\partial\varphi}\left(-\varrho\,\varphi\right) - \underbrace{\frac{\partial}{\partial x}\frac{\partial}{\partial\varphi_x}\left(\varrho\,\varphi\right)}_{=0} - \underbrace{\frac{\partial}{\partial y}\frac{\partial}{\partial\varphi_y}\left(\varrho\,\varphi\right)}_{=0} - \underbrace{\frac{\partial}{\partial z}\frac{\partial}{\partial\varphi_z}\left(\varrho\,\varphi\right)}_{=0}
+\frac{\partial}{\partial\varphi}\left(-\varrho\,\varphi\right) - \frac{\partial}{\partial x} \underbrace{\frac{\partial}{\partial\varphi_x}\left(\varrho\,\varphi\right)}_{\displaystyle=0} - \frac{\partial}{\partial y} \underbrace{\frac{\partial}{\partial\varphi_y}\left(\varrho\,\varphi\right)}_{\displaystyle=0} - \frac{\partial}{\partial z} \underbrace{\frac{\partial}{\partial\varphi_z}\left(\varrho\,\varphi\right)}_{\displaystyle=0}
 =
 0.
 \]
-Da alle partiellen Ableitungen nach $\varphi_x, \varphi_y, \varphi_z$ null ergeben, müssen wir nur noch die partielle Ableitung nach $\varphi$ erledigen.
+Da alle partiellen Ableitungen nach $\varphi_x, \varphi_y, \varphi_z$ null ergeben, müssen wir nur noch die partielle Ableitung nach $\varphi$ durchführen.
 Somit ist
 \(
 -\varrho
@@ -147,7 +147,7 @@ Das gausssche Gesetz \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, da
 Dies bedeutet, dass elektrische Feldlinien auf Ladungen enden können.
 In anderen Worten wird das elektrostatische Feld durch Ladungen erzeugt!
 Da es sowohl positive wie auch negative Ladungen gibt, existieren demnach auch positive und negative Ladungsdichten.
-Wenn die Ladungsdichte positiv ist, sagt uns die erste Maxwell-Gleichung, dass das elektrische Feld eine Quelle besitzt.
+Wenn die Ladungsdichte positiv ist, sagt uns das gausssche Gesetz, dass das elektrische Feld eine Quelle besitzt.
 Das heisst, salopp gesagt, die Feldvektoren zeigen weg von der Ladungsdichte.
 Wenn die Ladungsdichte jedoch negativ ist, besitzt das elektrische Feld eine Senke.
 Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen. Dies ist in Abbildung \ref{maxwell:section:E-Feld_punktladung} veranschaulicht.
