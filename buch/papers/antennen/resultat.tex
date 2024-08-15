@@ -9,10 +9,6 @@
 \usetikzlibrary{spy}
 \section{Finale Überlegung\label{antennen:resultat}}
 
-Das Verfahren nach Ritz hat ergeben, dass die Antenne eine kreisförmige Abrundung an den Ecken 
-zur besten Effizienz führen, da sie das Verhältnis \eqref{antennen:Verhältnis} minimiert. 
-Es muss jedoch noch bestimmt werden, wie gross der Radius dieser Abrundungen ist. 
-
 Das Kapitel \ref{antennen:ritzAnw} hat gezeigt, dass ein Abrundung an den Ecken
 zur besten Effizienz führt, weil die abgerundete Form das Verhältnis \eqref{antennen:Verhältnis}
 minimiert und somit die Effizienz maximiert. Wie gross der Radius dieser Abrundung
@@ -90,6 +86,12 @@ Die Ableitung ergibt die Gleichung
 	\frac{\left(- 4 \pi r + 12 \sqrt{3} r\right) \left(- 6 \sqrt{3} r + 2 \pi r + 3 s\right)}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0
 	\label{antennen:Ableitunggelöst}
 \end{equation}
-in der $s$ mit der gewünschten Seitenlänge parametrisiert werden kann. Nach Lösen des Gleichungssystems resultieren nun die möglichen und auch unmöglichen Werte für den Radius $r$. Als konkretes Beispiel wird der Parameter $s$ mit dem Wert $\pi$ definiert. Nach dem lösen der Gleichung \eqref{antennen:Ableitunggelöst} wird für $r$ den auf vier Nachkommastellen gerundete Wert 0.2465 erhalten.
+in der $s$ mit der gewünschten Seitenlänge parametrisiert werden kann. Nach Lösen des Gleichungssystems resultieren nun die möglichen und auch unmöglichen Werte für den Radius $r$. 
+
+Als konkretes Beispiel wird der Parameter $s$, also die Seitenlänge des Dreiecks mit dem Wert $\pi$ definiert. 
+Nach dem lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhaltet
+man den Wert $r\approx0.2465$. Das Verhältnis zwischen Seitenlänge und Radius ist somit $\frac{\pi}{0.2465} \approx 12.744$.
+Dieses Verhältnis kann nun für beliebige Seitenlängen benutzt werden.
+
 \subsection{Fazit\label{antennen:fazit}}
 In diesem Kapitel wurde eine Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Die Gleichung \eqref{antennen:Ableitunggelöst} entspricht nun einer Formel für das Design einer optimalen, dreieckigen Loop-Antenne. 
