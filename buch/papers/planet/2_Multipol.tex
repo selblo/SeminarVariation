@@ -19,7 +19,7 @@ Die \cref{planet:fig:multipol} zeigt die ersten drei Entwicklungsschritte einer 
 Desweiteren zeigt sich auch, dass die Bewegungsgleichung für Planeten im wesentlichen zu linearen Differentialgleichungen für die Multipolkoeffizienten werden.
 Alle Koeffizienten konvergieren gegen 0, ausser dem konstanten Koeffizienten, dieser ergibt die Kugelform.
 
-Dieser Abschnitt und die Herleitungen basieren auf den Inhalten von \cite{planet:multi} und \cite{planet:quadro}.
+Dieser Abschnitt und die Herleitungen basieren auf \cite{planet:multi} und \cite{planet:quadro}.
 
 \begin{figure}[h!]
     \centering
@@ -75,7 +75,7 @@ Dort ist
 \end{equation*}
 
 \noindent
-wobei die Einsteinsche Summenkonvention verwendet wird.
+wobei die einsteinsche Summenkonvention verwendet wird.
 Dann muss bei einem Summanden \(n\)-ter Ordnung ein Tensor \(n\)-ter Stufe, nämlich \(\textstyle \prod_{k=1}^{n} \partial_{i_{k}} \frac{1}{r}\) berechnet werden:
 
 
@@ -91,7 +91,7 @@ Die formale Lösung \(\phi (\vec{r})\) der Poisson-Gleichung ist unter Verwendun
 
 
 \begin{align*}
-\phi (\vec{r}) &= \frac{1}{4\pi} \left[ \frac{1}{r} \underbrace{\int f (\vec{r}\,') \, d^3 \vec{r}\,'}_{\text{Monopol-}} + \frac{r_{i}}{r^{3}} \underbrace{\int d^3 \vec{r}\,' \, r\,'_{i} f (\vec{r}\,')}_{\text{Dipol-}} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} \underbrace{\int d^3 \vec{r}\,' \left( 3 r\,'_{i} r\,'_{j} - r\,'^{2} \delta_{i\!j} \right) f (\vec{r}\,')}_{\text{Quadrupolmoment}} \ldots \right] \\
+\phi (\vec{r}) &= \frac{1}{4\pi} \Biggl[ \frac{1}{r} \underbrace{\int f (\vec{r}\,') \, d^3 \vec{r}\,'}_{\text{Monopol-}} + \frac{r_{i}}{r^{3}} \underbrace{\int d^3 \vec{r}\,' \, r\,'_{i} f (\vec{r}\,')}_{\text{Dipol-}} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} \underbrace{\int d^3 \vec{r}\,' \left( 3 r\,'_{i} r\,'_{j} - r\,'^{2} \delta_{i\!j} \right) f (\vec{r}\,')}_{\text{Quadrupolmoment}} \ldots \Biggr] \\
 &= \frac{1}{4\pi} \left[ \frac{1}{r} q + \frac{r_{i}}{r^{3}} p_{i} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} Q_{i\!j} + \ldots \right].
 \end{align*}
 
