@@ -17,13 +17,13 @@
 	\begin{tikzpicture}[scale=1]
 		\begin{scope}[scale=0.1]
 			\draw[shift={(-\wireampl+0.02,-\wirelen)}, rotate=90, 
-			color=cableBlue, cap=round] plot[domain=1.5:\wirelen, 
+			color=cableBlue, cap=round, line width=0.6pt] plot[domain=1.5:\wirelen, 
 			samples=100] (\x, {sin(\x r)*\wireampl});
 		\end{scope}
 		
 		\begin{scope}[scale=0.1]
 			\draw[shift={(-\wireampl+0.02,-\wirelen)}, rotate=90, 
-			color=red, cap=round] plot[domain=1.5:\wirelen, 
+			color=red, cap=round, line width=0.6pt] plot[domain=1.5:\wirelen, 
 			samples=100] (\x, {sin(\x r)*-\wireampl});
 		\end{scope}
 		

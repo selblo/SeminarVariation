@@ -35,14 +35,14 @@ Die Differenzialgleichung
 	\frac{\partial}{\partial{r}} \bigg(\frac{l}{A^2}\bigg)=0
 	\label{antennen:Ableitung}
 \end{equation}
-ergibt für einen gegebenen Parameter $s$ einen Radius $r$ als Lösung. 
+ergibt für eine gewünschte Seitenlänge $s$ einen Radius $r$ als Lösung. 
 Die Ableitung ergibt die Gleichung 
 \begin{equation}
-	\frac{(- 4 \pi r + 12 \sqrt{3} r) (- 6 \sqrt{3} r + 2 \pi r + 3 s)}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0
+	\frac{(- 4 \pi r + 12 \sqrt{3} r) (- 6 \sqrt{3} r + 2 \pi r + 3 s)}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0.
 	\label{antennen:Ableitunggelöst}
 \end{equation}
-in der $s$ mit der gewünschten Seitenlänge definiert werden kann. Nach Lösen des komplizierten
-Gleichungssystems resultieren dann die möglichen und auch unmöglichen Werte für den Radius $r$. 
+Das Gleichungssystem ist äußerst hochgradig und komplex. Die Lösung erfolgt numerisch, 
+wobei es eine Herausforderung darstellt, mögliche und unmögliche Ergebnisse voneinander zu unterscheiden.
 
 Als konkretes Beispiel wird der Parameter $s$, also die Seitenlänge des Dreiecks mit dem Wert $\pi$ definiert. 
 Nach dem Lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhält
@@ -51,4 +51,4 @@ Dieses Verhältnis kann nun für beliebige Seitenlängen verwendet werden und st
 diejenigen dar, die eine optimale dreieckige Loop-Antenne entwerfen möchten.
 
 \subsection{Fazit\label{antennen:fazit}}
-In diesem Kapitel wurde eine Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Die Gleichung \eqref{antennen:Ableitunggelöst} entspricht nun einer Formel für das Design einer optimalen, dreieckigen Loop-Antenne. 
+In diesem Kapitel wurde eine dreieckige Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Das Verhältnis zwischen Seitenlänge und Radius $\frac{\pi}{0.2465} \approx 12.744$ ist optimal.
