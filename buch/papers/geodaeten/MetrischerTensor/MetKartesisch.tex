@@ -9,12 +9,17 @@
 \subsection{Kartesisch\label{geodaeten:section:MetKartesisch}}
 \rhead{Metrischer Tensor Beispiele}
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+Der Metrische Tensor für einen zweidimensionalen kartesischen Raum kann aus der Gleichung [\ref{geodaeten:equation:Linienelemente:Kartesisch:equation1}] des Linienelements hergeleitet werden.
+Gesucht ist eine Matrix $T$, welche multipliziert mit dem Vektor der Ableitungen aller Dimensionen im Quadrat das Linienelement ergibt. 
+\begin{equation}
+	\begin{aligned} 
+	\mathbf{d\vec{s}}^2 &= \left| \begin{pmatrix} \dot{x}^2 \\ \dot{y}^2 \end{pmatrix} \right| \cdot dt^2 \\
+	&= T \cdot \begin{pmatrix} \dot{x}^2 \\ \dot{y}^2 \end{pmatrix} dt^2
+	\end{aligned}	
+\end{equation}
 
+Da das Linienelement in diesem einfachen Beispiel keine Koeffizienten vor den Ableitungen der Dimensionen hat, entspricht der metrische Tensor $T$ der Einheitsmatrix $I$
+\begin{equation}
+		T = I = \begin{pmatrix} 1 && 0 \\ 0 && 1 \end{pmatrix} .
+\end{equation}
 
