@@ -6,71 +6,32 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
+\usetikzlibrary{spy}
+\section{Finale Überlegung\label{antennen:resultat}}
 
-\section{Resultat\label{antennen:resultat}}
+Das Kapitel \ref{antennen:ritzAnw} hat gezeigt, dass ein Abrundung an den Ecken
+zur besten Effizienz führt, weil die abgerundete Form das Verhältnis \eqref{antennen:Verhältnis}
+minimiert und somit die Effizienz maximiert. Wie gross der Radius dieser Abrundung
+ist, muss jedoch noch bestimmt werden.
 
-Das Verfahren nach Ritz hat ergeben, dass die Antenne eine kreisförmige Abrundung an den Ecken 
-zur besten Effizienz führen, da sie die Gleichung \eqref{antennen:Verhältnis} optimieren. 
-Es muss jedoch noch bestimmt werden, wie gross der Radius dieser Abrundungen ist und somit wo
-genau dieser sich befindet. 
 
-\subsection{Parametrisierung Dreieck\label{antennen:param3eck}}
+\subsection{Parametrisierung der abgerundeten Dreiecksantenne\label{antennen:param3eck}}
 Die Länge $l$, hierbei der Umfang 
 des abgerundeten Dreiecks, sowie dessen Fläche $A$ kann mit den Formeln
 \definecolor{clrGreen}{RGB}{0, 117, 18}
 \begin{align}
 	l &= \textcolor{blue}{2 \cdot \pi \cdot r} + \textcolor{orange}{3 \cdot s - 6 \cdot \sqrt{3} \cdot r} \tag{20.24} \label{antennen:Länge} \\
-	A &= \textcolor{clrGreen}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{red}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
-\end{align}
-\setcounter{equation}{25}
+	A &= \textcolor{clrGreen}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{darkred}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
+\end{align}\setcounter{equation}{25}%
 berechnet werden.
-Der Wirkungsgrad ist nun zu einem Problem geworden, das nur noch abhängig von 
-der Seitenlänge s des Dreiecks und des Radius r der Kreise ist. Bildlich ist dies 
+Der Wirkungsgrad ist nun zu einem eindimensionalen Problem mit zwei Variablen geworden, das nur noch abhängig von 
+der Seitenlänge $s$ des Dreiecks und des Radius $r$ der Kreise ist. Bildlich ist dies 
 in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
+\input{papers/antennen/fig/aufteilungDreieckZoomFIG.tex}
 
-%TODO Erklären der Formeln l und A mittels Grafik (Formelabschnitte einfärben??)
-\begin{figure}
-	\centering
-	\begin{tikzpicture}
-		\definecolor{clrGreen}{RGB}{0, 117, 18}
-
-		\def\sidelength{3.14}
-		
-		\pgfmathsetmacro{\triangleheight}{sqrt(3)/2*\sidelength}
-
-		\draw[fill=white] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
-		\coordinate (A) at (0,0);
-		\coordinate (B) at (2.51,0);
-		\coordinate (C) at (2.51/2,1.73/2*2.51);
-
-		\coordinate (As) at ($(A) + (9pt,5pt)$);
-		\coordinate (Bs) at ($(B) + (9pt,5pt)$);
-		\coordinate (Cs) at ($(C) + (9pt,5pt)$);
-
-		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (As) {};
-		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Bs) {};
-		\node[circle, inner sep=0pt, minimum size=9pt, fill=clrGreen, draw=blue, line width=1pt] at (Cs) {};
-		
-		\draw[line width=10pt, orange] (As) -- (Bs) (Bs) -- (Cs) (Cs) -- (As);
-		\draw[line width=8pt, black] (As) -- (Bs) (Bs) -- (Cs) (Cs) -- (As);
-		
-		\path[draw=black, fill=red] (As) -- (Bs) -- (Cs) -- (As);
-
-		\draw[->] (0,0) -- (4,0) node[below right] {};
-		\draw[->] (0,0) -- (0,4) node[left] {};
-
-		\foreach \x in {0, 1,2,3}
-		\draw (\x,1pt) -- (\x,-1pt) node[below] {\x};
-		\foreach \y in {1, 2, 3}
-		\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
-	\end{tikzpicture}
-	\caption{Aufteilung des Dreiecks}
-	\label{antennen:tikzdreieckAufteilung}
-\end{figure}
-
-Durch Ableiten und Null-setzten
+Durch Ableiten und Null setzen
 \begin{equation}
-	\frac{d}{dr} \bigg(\frac{l}{A^2}\bigg)=0
+	\frac{\partial}{\partial{r}} \bigg(\frac{l}{A^2}\bigg)=0
 	\label{antennen:Ableitung}
 \end{equation}
 wird für einen gegebenen Parameter $s$ ein Radius $r$ als Lösung erhalten. 
@@ -79,6 +40,14 @@ Die Ableitung ergibt die Gleichung
 	\frac{\left(- 4 \pi r + 12 \sqrt{3} r\right) \left(- 6 \sqrt{3} r + 2 \pi r + 3 s\right)}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0
 	\label{antennen:Ableitunggelöst}
 \end{equation}
-in der $s$ mit der gewünschten Seitenlänge parametrisiert werden kann. Nach Lösen des Gleichungssystems resultieren nun die möglichen und auch unmöglichen Werte für den Radius $r$.
+in der $s$ mit der gewünschten Seitenlänge definiert werden kann. Nach Lösen des komplizierten
+Gleichungssystems resultieren dann die möglichen und auch unmöglichen Werte für den Radius $r$. 
+
+Als konkretes Beispiel wird der Parameter $s$, also die Seitenlänge des Dreiecks mit dem Wert $\pi$ definiert. 
+Nach dem lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhaltet
+man den Wert $r\approx0.2465$. Das Verhältnis zwischen Seitenlänge und Radius ist somit $\frac{\pi}{0.2465} \approx 12.744$.
+Dieses Verhältnis kann nun für beliebige Seitenlängen benutzt werden und hilft somit hoffentlich
+einer Person, die eine optimale dreieckige Loop-Antenne designen möchte.
+
 \subsection{Fazit\label{antennen:fazit}}
 In diesem Kapitel wurde eine Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Die Gleichung \eqref{antennen:Ableitunggelöst} entspricht nun einer Formel für das Design einer optimalen, dreieckigen Loop-Antenne. 

@@ -1,0 +1,34 @@
+
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usetikzlibrary{arrows,intersections,math}
+\usepackage{ifthen}
+\begin{document}
+	\definecolor{conductorYellow}{HTML}{ffc000}
+	\definecolor{cableBlue}{HTML}{00b0f0}
+	\def\opening{3}
+	\def\arcRadius{1.5}
+	\def\wirelen{10.5}
+	\def\wireampl{0.8}
+	\begin{tikzpicture}[scale=1]
+		\begin{scope}[scale=0.1]
+			\draw[shift={(-\wireampl+0.02,-\wirelen)}, rotate=90, 
+			color=cableBlue, cap=round] plot[domain=1.5:\wirelen, 
+			samples=100] (\x, {sin(\x r)*\wireampl});
+		\end{scope}
+		
+		\begin{scope}[scale=0.1]
+			\draw[shift={(-\wireampl+0.02,-\wirelen)}, rotate=90, 
+			color=red, cap=round] plot[domain=1.5:\wirelen, 
+			samples=100] (\x, {sin(\x r)*-\wireampl});
+		\end{scope}
+		
+		\draw[color=conductorYellow, line width=1.5pt, cap=round](0,0)  
+		arc[start angle=-90+\opening), end angle=(270-\opening), radius=\arcRadius];
+	\end{tikzpicture}
+\end{document}
+
