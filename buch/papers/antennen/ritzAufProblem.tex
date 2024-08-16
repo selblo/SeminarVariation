@@ -24,6 +24,8 @@ in ein Koordinatensystem, welches erlaubt das Problem genauer zu analysieren.
 			axis lines=middle,
 			xlabel={$x$},
 			ylabel={$y$},
+			axis line style = {line width=0.5pt},
+			tick style={line width=0.5pt, black},
 			xtick={0, 1.5708, 3.14159},
 			xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 			ytick=\empty,
@@ -44,7 +46,7 @@ in ein Koordinatensystem, welches erlaubt das Problem genauer zu analysieren.
 			\addlegendentry{$y_n(x)?$}
 		\end{axis}
 	\end{tikzpicture}
-	\caption{Problemstellung im Koordinatensystem}
+	\caption{Problemstellung im Koordinatensystem.}
 	\label{antennen:koordSysBsp}
 \end{figure}
 
@@ -94,6 +96,8 @@ benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 			axis lines=middle,
 			xlabel={$x$},
 			ylabel={$y$},
+			axis line style = {line width=0.5pt},
+			tick style={line width=0.5pt, black},
 			xtick={0, 1.5708, 3.14159},
 			xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 			ytick=\empty,
@@ -111,16 +115,16 @@ benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 			\addlegendentry{Problemstellung}
 			
 			\addplot[thick, blue, dashed, domain=0:3.14159, samples=100] {sin(deg(x))+sin(3*deg(x))};
-			\addlegendentry{$y_n(x) = sin(x)+sin(3x)$}
+			\addlegendentry{$y_n(x) = \sin(x)+\sin(3x)$}
 			
 			\addplot[thick, clrGreen, dashed, domain=0:3.14159, samples=100] {sin(deg(x))};
-			\addlegendentry{$sin(x)$}
+			\addlegendentry{$\sin(x)$}
 			
 			\addplot[thick, orange, dashed, domain=0:3.14159, samples=100] {sin(3*deg(x))};
-			\addlegendentry{$sin(3x)$}
+			\addlegendentry{$\sin(3x)$}
 		\end{axis}
 	\end{tikzpicture}
-	\caption{Nebenbedingungen im Koordinatensystem}
+	\caption{Nebenbedingungen im Koordinatensystem.}
 	\label{antennen:nebenbedGrafik}
 \end{figure}
 
@@ -178,7 +182,7 @@ Die Fläche unter der Kurve ergibt sich aus dem Integral der Funktion,
 währenddessen man für die Länge, also den oberen Rand der Funktion, die 
 erste Ableitung auch noch zusätzlich braucht.
 
-Die Nebenbedingung $n$ setzen wir nun gleich einer konstanten Länge $l$
+Die Nebenbedingung $n$ setzen wir nun gleich einer konstanten Länge
 \begin{equation}
 n(a_1, a_2)
 =
@@ -206,8 +210,8 @@ F(x,a_1,a_2,\lambda)
 = 
 f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
-definieren. Dazu wird die Funktion $f$ mit der Nebenbedingung und einem
-Multiplikator $\lambda \: n (a_1,a_2, l)$ addiert.
+definieren. Dazu wird die Funktion $f$ mit der Nebenbedingung $n(a_1,a_2,l)$ und einem
+Multiplikator $\lambda$ addiert.
 
 \subsection{Das endlichdimensionale Gleichungssystem\label{antennen:lagrangeGLsys}}
 
@@ -215,18 +219,26 @@ Die Funktion $F$ möchte man nun ableiten und gleich 0 setzen. Das heisst in die
 den Gradienten
 
 \begin{equation}
-	\nabla F = \vec{0} \,
-	\left\{ \:
+	\nabla F 
+	=
+	\begin{pmatrix} 
+		\frac{\displaystyle\strut\partial F}{\displaystyle\strut\partial a_1} 
+		\\ 
+		\frac{\displaystyle\strut\partial F}{\displaystyle\strut\partial a_2}  
+	\end{pmatrix} 
+	= 
+	\vec{0} \Rightarrow
+	\left\{
 	\begin{aligned}
-		\frac{\partial L}{\partial a_1} = 0 \\
-		\frac{\partial L}{\partial a_2} = 0
+		\frac{\partial F}{\partial a_1} = 0 \\
+		\frac{\partial F}{\partial a_2} = 0
 	\end{aligned}
 	\right.
 	\label{antennen:lagrangeGrad}
 \end{equation}
 berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
-$n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. 
-Wobei $n$ die Anzahl der Koeffizienten ist.
+$n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed},
+wobei $n$ die Anzahl der Koeffizienten ist.
 
 An dieser Stelle wird ersichtlich, was diese Kapitel von den anderen unterschiedet. Mit dem Verfahren nach Ritz  
 kann man ein unendlich dimensionales
@@ -252,8 +264,7 @@ Das Gleichungssystem, in diesem Fall mit
 	\end{aligned}
 	\label{antennen:lagrangeGradKonkret}
 \end{equation}
-ausschreiben. Zu beachten ist, dass eine Gleichung sich hier
-als trivial ausgegeben hat und somit hier ein $n$ dimensionales Gleichungssystem entsteht.
+ausschreiben. 
 
 \subsection{Das Gleichungssystem lösen\label{antennen:glSysSolve}}
 
@@ -315,7 +326,7 @@ fortschreitet.
 			};
 		\end{axis}
 	\end{tikzpicture}
-	\caption{Gradientenverfahren auf $f(x,y)=x^2+y^2$}
+	\caption{Gradientenverfahren auf $f(x,y)=x^2+y^2$.}
 	\label{antennen:gradverfahrenBSP}
 \end{figure}
 
@@ -335,10 +346,10 @@ konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe d
 \texttt{nsolve()} lösen.
 Den Code findet man unter \cite{antennen:codeKoeff}.
 
-\subsection{Das Verstehen der Lösung\label{antennen:auswertung}}
+\subsection{Die Lösung verstehen\label{antennen:auswertung}}
 
 Die Abbildung \ref{antennen:plotskoeff} zeigt, wie sich die Lösung visuell mit mehr 
-Koeffizienten verändert. Auf der x-Achse sieht man jeweilt eine beliebige Distanz von \emph{$\pi$}.
+Koeffizienten verändert. Auf der x-Achse sieht man jeweils eine beliebige Distanz von \emph{$\pi$}.
 Für diese Distanz verbindet die Funktion $y_n(x)$ diese Distanz mit einer Linie, welche eine
 fixe Länge $l$ hat. Wie lang die verschiedenen Längen genau sind, ist hierbei irrelevant.
 
@@ -375,6 +386,8 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$, d
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -401,6 +414,8 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$, d
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -429,6 +444,8 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$, d
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -455,6 +472,8 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$, d
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -468,11 +487,11 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$, d
 		\end{tikzpicture}
 	\end{subfigure}
 	
-	\caption{Verschiedene Längen $l$ für $y_n(x)$ mit verschieden vielen Koeffizienten}
+	\caption{Verschiedene Längen $l$ für $y_n(x)$ mit verschieden vielen Koeffizienten.}
 	\label{antennen:plotskoeff}
 \end{figure}
 
-\subsection{Vergleich mit perfekten Lösung\label{antennen:vergleich}}
+\subsection{Vergleich mit der exakten Lösung\label{antennen:vergleich}}
 
 Die Abbildung \ref{antennen:vergleichKreis} vergleicht unsere Lösung\footnotemark{}, also die 
 Funktion $y_n(x)$ optimiert für den halben Kreisumfang eines Kreises mit Durchmesser $\pi$. 
@@ -482,7 +501,7 @@ Einfacher ausgedrückt $l=\frac{\pi^2}{2}$.
 ging je nach Maschine und Anfangswerte, 5 bis 10 Minuten.}
 
 Man sieht hier schon recht gut, dass $y_n(x)$ der
-perfekten Lösung, dem Kreis, konvergiert. Dies ist
+exakten Lösung, dem Kreis, konvergiert. Dies ist
 natürlich kein wasserfester Beweis, hier aber völlig  
 ausreichend. 
 

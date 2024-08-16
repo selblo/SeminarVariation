@@ -19,8 +19,9 @@ ist, muss jedoch noch bestimmt werden.
 Die Länge $l$, hierbei der Umfang 
 des abgerundeten Dreiecks, sowie dessen Fläche $A$ kann mit den Formeln
 \definecolor{clrGreen}{RGB}{0, 117, 18}
+\definecolor{drkOrange}{RGB}{255, 130, 28}
 \begin{align}
-	l &= \textcolor{blue}{2 \cdot \pi \cdot r} + \textcolor{orange}{3 \cdot s - 6 \cdot \sqrt{3} \cdot r} \tag{20.24} \label{antennen:Länge} \\
+	l &= \textcolor{blue}{2 \cdot \pi \cdot r} + \textcolor{drkOrange}{3 \cdot s - 6 \cdot \sqrt{3} \cdot r} \tag{20.24} \label{antennen:Länge} \\
 	A &= \textcolor{clrGreen}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{darkred}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
 \end{align}\setcounter{equation}{25}%
 berechnet werden.
@@ -46,8 +47,8 @@ Gleichungssystems resultieren dann die möglichen und auch unmöglichen Werte f�
 Als konkretes Beispiel wird der Parameter $s$, also die Seitenlänge des Dreiecks mit dem Wert $\pi$ definiert. 
 Nach dem lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhaltet
 man den Wert $r\approx0.2465$. Das Verhältnis zwischen Seitenlänge und Radius ist somit $\frac{\pi}{0.2465} \approx 12.744$.
-Dieses Verhältnis kann nun für beliebige Seitenlängen benutzt werden und hilft somit hoffentlich
-einer Person, die eine optimale dreieckige Loop-Antenne designen möchte.
+Dieses Verhältnis kann nun für beliebige Seitenlängen verwendet werden und stellt somit eine wertvolle Hilfe für 
+diejenigen dar, die eine optimale dreieckige Loop-Antenne entwerfen möchten.
 
 \subsection{Fazit\label{antennen:fazit}}
 In diesem Kapitel wurde eine Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Die Gleichung \eqref{antennen:Ableitunggelöst} entspricht nun einer Formel für das Design einer optimalen, dreieckigen Loop-Antenne. 

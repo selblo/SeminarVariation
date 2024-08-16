@@ -51,15 +51,13 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 			
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
-			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
+			\draw[->,{line width=0.5pt}] (-0.33,0) -- (3.7,0) node[above left] {$x$};
+			\draw[->,{line width=0.5pt}] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
 			\foreach \x\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
-			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
-			\foreach \y in {1, 2, 3}
-			\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
+			\draw (\x,2pt) -- (\x,-2pt) node[below] {\xlabel};
 		\end{tikzpicture}
-		\caption{Antenne mit abgerundeten Ecken}
+		\caption{Antenne mit abgerundeten Ecken.}
 		\label{antennen:tikabgerundet}
 	\end{minipage}
 	\hfill
@@ -76,15 +74,13 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 			(0.5,0) -- (0.25,1.73/2*0.5) -- (0.5*\sidelength-0.25, \triangleheight-1.73/2*0.5) -- 
 			(0.5*\sidelength+0.25, \triangleheight-1.73/2*0.5) -- (\sidelength-0.25,1.73/2*0.5) -- (\sidelength-0.5,0) -- cycle;
 			
-			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
-			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
+			\draw[->,{line width=0.5pt}] (-0.33,0) -- (3.7,0) node[above left] {$x$};
+			\draw[->,{line width=0.5pt}] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
 			\foreach \x\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
-			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
-			\foreach \y in {1, 2, 3}
-			\draw (1pt,\y) -- (-1pt,\y) node[left] {\y};
+			\draw (\x,2pt) -- (\x,-2pt) node[below] {\xlabel};
 		\end{tikzpicture}
-		\caption{Antennenform mit abgeflachten Ecken}
+		\caption{Antennenform mit abgeflachten Ecken.}
 		\label{antennen:tikabgeflacht}
 	\end{minipage}
 
@@ -109,13 +105,13 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 			
 			\draw[blue, line width=0.3mm,] (1.5,0) -- (0.75,1.73 /2*1.5) -- (0.5*\sidelength-0.75, \triangleheight-1.73/2*1.5) -- (0.5*\sidelength+0.75, \triangleheight-1.73/2*1.5)--(\sidelength-0.75,1.73/2*1.5) -- (\sidelength-1.5,0) -- cycle;
 			
-			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
-			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
+			\draw[->,{line width=0.5pt}] (-0.33,0) -- (3.7,0) node[above left] {$x$};
+			\draw[->,{line width=0.5pt}] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
 			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
-			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
+			\draw (\x,2pt) -- (\x,-2pt) node[below] {\xlabel};
 		\end{tikzpicture}
-		\caption{Antennenform mit variablen abgeflachten Ecken}
+		\caption{Antennenform mit variablen abgeflachten Ecken.}
 		\label{antennen:tikabgeflacht_kleiner}
 	\end{minipage}
 	\hfill
@@ -136,13 +132,13 @@ das Verhältnis \eqref{antennen:Verhältnis} zu optimieren. Dies ist in den Abbi
 			
 			\draw[blue, line width=0.3mm, rounded corners=1.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
-			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
+			\draw[->,{line width=0.5pt}] (-0.33,0) -- (3.7,0) node[above left] {$x$};
+			\draw[->,{line width=0.5pt}] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
 			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
-			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
+			\draw (\x,2pt) -- (\x,-2pt) node[below] {\xlabel};
 		\end{tikzpicture}
-		\caption{Antennenform mit variablen abgerundeten Ecken}
+		\caption{Antennenform mit variablen abgerundeten Ecken.}
 		\label{antennen:tikabgerundet_kleiner}
 	\end{minipage}%
 \end{figure}
@@ -168,17 +164,17 @@ geworden, die wesentlich leichter zu optimieren ist.
 			
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (\sidelength,0) -- (0.5*\sidelength, \triangleheight) -- cycle;
 			
-			\draw[->] (-0.33,0) -- (3.7,0) node[above left] {$x$};
-			\draw[->] (0,-0.785) -- (0,3.14) node[below right] {$y$};
+			\draw[->,{line width=0.5pt}] (-0.33,0) -- (3.7,0) node[above left] {$x$};
+			\draw[->,{line width=0.5pt}] (0,-0.785) -- (0,3.14) node[below right] {$y$};
 			
 			\foreach \x/\xlabel in {1.5708/$\frac{\pi}{2}$, 3.14159/$\pi$}
-			\draw (\x,1pt) -- (\x,-1pt) node[below] {\xlabel};
+			\draw (\x,2pt) -- (\x,-2pt) node[below] {\xlabel};
 			
 			\draw[clrGreen, dashed, line width=0.5mm] (3.14156/4-0.5, \triangleheight/2) -- (0.75*\sidelength+0.5, \triangleheight/2);
 			\draw[clrGreen, dashed, line width=0.5mm] (3.14156/4-0.25, \triangleheight/2+0.433) -- (0.5*\sidelength+0.25, 0-0.433);
 			\draw[clrGreen, dashed, line width=0.5mm] (0.5*\sidelength-0.25, 0-0.433) -- (0.75*\sidelength+0.25, \triangleheight/2+0.433);
 		\end{tikzpicture}
-		\caption{Symmetrie einer Antenne}
+		\caption{Symmetrie der Antenne.}
 		\label{antennen:tiksymmetrie}
 	\end{minipage}%
 	\hfill
@@ -192,7 +188,7 @@ geworden, die wesentlich leichter zu optimieren ist.
 			
 			\draw[red, line width=0.3mm, rounded corners=0.5cm] (0,0) -- (0.5*\sidelength, \triangleheight) -- (\sidelength,0);
 		\end{tikzpicture}
-		\caption{Eine Ecke der Antenne}
+		\caption{Eine Ecke der Antenne.}
 		\label{antennen:Ecke}
 	\end{minipage}
 \end{figure}
