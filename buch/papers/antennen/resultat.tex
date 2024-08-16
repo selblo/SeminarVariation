@@ -6,7 +6,7 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\usetikzlibrary{spy}
+%\usetikzlibrary{spy}
 \section{Finale Überlegung\label{antennen:resultat}}
 
 Das Kapitel \ref{antennen:ritzAnw} hat gezeigt, dass ein Abrundung an den Ecken
@@ -30,22 +30,22 @@ der Seitenlänge $s$ des Dreiecks und des Radius $r$ der Kreise ist. Bildlich is
 in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 \input{papers/antennen/fig/aufteilungDreieckZoomFIG.tex}
 
-Durch Ableiten und Null setzen
+Die Differenzialgleichung
 \begin{equation}
 	\frac{\partial}{\partial{r}} \bigg(\frac{l}{A^2}\bigg)=0
 	\label{antennen:Ableitung}
 \end{equation}
-wird für einen gegebenen Parameter $s$ ein Radius $r$ als Lösung erhalten. 
+ergibt für einen gegebenen Parameter $s$ einen Radius $r$ als Lösung. 
 Die Ableitung ergibt die Gleichung 
 \begin{equation}
-	\frac{\left(- 4 \pi r + 12 \sqrt{3} r\right) \left(- 6 \sqrt{3} r + 2 \pi r + 3 s\right)}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0
+	\frac{(- 4 \pi r + 12 \sqrt{3} r) (- 6 \sqrt{3} r + 2 \pi r + 3 s)}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0
 	\label{antennen:Ableitunggelöst}
 \end{equation}
 in der $s$ mit der gewünschten Seitenlänge definiert werden kann. Nach Lösen des komplizierten
 Gleichungssystems resultieren dann die möglichen und auch unmöglichen Werte für den Radius $r$. 
 
 Als konkretes Beispiel wird der Parameter $s$, also die Seitenlänge des Dreiecks mit dem Wert $\pi$ definiert. 
-Nach dem lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhaltet
+Nach dem Lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhält
 man den Wert $r\approx0.2465$. Das Verhältnis zwischen Seitenlänge und Radius ist somit $\frac{\pi}{0.2465} \approx 12.744$.
 Dieses Verhältnis kann nun für beliebige Seitenlängen verwendet werden und stellt somit eine wertvolle Hilfe für 
 diejenigen dar, die eine optimale dreieckige Loop-Antenne entwerfen möchten.
