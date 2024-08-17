@@ -6,7 +6,7 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\usetikzlibrary{spy}
+%\usetikzlibrary{spy}
 \section{Finale Überlegung\label{antennen:resultat}}
 
 Das Kapitel \ref{antennen:ritzAnw} hat gezeigt, dass ein Abrundung an den Ecken
@@ -19,8 +19,9 @@ ist, muss jedoch noch bestimmt werden.
 Die Länge $l$, hierbei der Umfang 
 des abgerundeten Dreiecks, sowie dessen Fläche $A$ kann mit den Formeln
 \definecolor{clrGreen}{RGB}{0, 117, 18}
+\definecolor{drkOrange}{RGB}{255, 130, 28}
 \begin{align}
-	l &= \textcolor{blue}{2 \cdot \pi \cdot r} + \textcolor{orange}{3 \cdot s - 6 \cdot \sqrt{3} \cdot r} \tag{20.24} \label{antennen:Länge} \\
+	l &= \textcolor{blue}{2 \cdot \pi \cdot r} + \textcolor{drkOrange}{3 \cdot s - 6 \cdot \sqrt{3} \cdot r} \tag{20.24} \label{antennen:Länge} \\
 	A &= \textcolor{clrGreen}{r^2 \cdot \pi} + \textcolor{black}{3 \cdot r \cdot (s - 2 \cdot \sqrt{3} \cdot r)} + \textcolor{darkred}{\frac{\sqrt{3} \cdot (s - 2 \cdot \sqrt{3} \cdot r)^2}{4}} \tag{20.25} \label{antennen:Fläche}
 \end{align}\setcounter{equation}{25}%
 berechnet werden.
@@ -29,25 +30,25 @@ der Seitenlänge $s$ des Dreiecks und des Radius $r$ der Kreise ist. Bildlich is
 in Abbildung \ref{antennen:tikzdreieckAufteilung} veranschaulicht.
 \input{papers/antennen/fig/aufteilungDreieckZoomFIG.tex}
 
-Durch Ableiten und Null setzen
+Die Differenzialgleichung
 \begin{equation}
 	\frac{\partial}{\partial{r}} \bigg(\frac{l}{A^2}\bigg)=0
 	\label{antennen:Ableitung}
 \end{equation}
-wird für einen gegebenen Parameter $s$ ein Radius $r$ als Lösung erhalten. 
+ergibt für eine gewünschte Seitenlänge $s$ einen Radius $r$ als Lösung. 
 Die Ableitung ergibt die Gleichung 
 \begin{equation}
-	\frac{\left(- 4 \pi r + 12 \sqrt{3} r\right) \left(- 6 \sqrt{3} r + 2 \pi r + 3 s\right)}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r \left(- 2 \sqrt{3} r + s\right) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0
+	\frac{(- 4 \pi r + 12 \sqrt{3} r) (- 6 \sqrt{3} r + 2 \pi r + 3 s)}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{3}} + \frac{- 6 \sqrt{3} + 2 \pi}{\left(\pi r^{2} + 3 r (- 2 \sqrt{3} r + s) + \frac{\sqrt{3} \left(- 2 \sqrt{3} r + s\right)^{2}}{4}\right)^{2}}=0.
 	\label{antennen:Ableitunggelöst}
 \end{equation}
-in der $s$ mit der gewünschten Seitenlänge definiert werden kann. Nach Lösen des komplizierten
-Gleichungssystems resultieren dann die möglichen und auch unmöglichen Werte für den Radius $r$. 
+Das Gleichungssystem ist äußerst hochgradig und komplex. Die Lösung erfolgt numerisch, 
+wobei es eine Herausforderung darstellt, mögliche und unmögliche Ergebnisse voneinander zu unterscheiden.
 
 Als konkretes Beispiel wird der Parameter $s$, also die Seitenlänge des Dreiecks mit dem Wert $\pi$ definiert. 
-Nach dem lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhaltet
+Nach dem Lösen der Gleichung \eqref{antennen:Ableitunggelöst} mit dem Python-Skript \cite{antennen:codeAbleitung} erhält
 man den Wert $r\approx0.2465$. Das Verhältnis zwischen Seitenlänge und Radius ist somit $\frac{\pi}{0.2465} \approx 12.744$.
-Dieses Verhältnis kann nun für beliebige Seitenlängen benutzt werden und hilft somit hoffentlich
-einer Person, die eine optimale dreieckige Loop-Antenne designen möchte.
+Dieses Verhältnis kann nun für beliebige Seitenlängen verwendet werden und stellt somit eine wertvolle Hilfe für 
+diejenigen dar, die eine optimale dreieckige Loop-Antenne entwerfen möchten.
 
 \subsection{Fazit\label{antennen:fazit}}
-In diesem Kapitel wurde eine Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Die Gleichung \eqref{antennen:Ableitunggelöst} entspricht nun einer Formel für das Design einer optimalen, dreieckigen Loop-Antenne. 
+In diesem Kapitel wurde eine dreieckige Antennenform ermittelt, welche die optimale Effizienz aufweist. Mittels dem Variationsprinzip von Ritz wurde dargelegt, dass eine Antenne in Form eines gleichseitigen Dreiecks für eine Effizienzsteigerung abgerundete Ecken benötigt. Das Verhältnis zwischen Seitenlänge und Radius $\frac{\pi}{0.2465} \approx 12.744$ ist optimal.
