@@ -83,7 +83,7 @@ Eine Nebenbedingung ist es, dass bei $y_n(0)$ und $y_n(\pi)$ die Funktion null s
 Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Antennenform, die optimiert wird.
 
 Die Sinus-Fourier Reihe \eqref{antennen:unserRitz} hat eine weitere gute Eigenschaft, 
-die ersichtlich wird, wenn das gleiche Koordinatensystem wie bei der Abbildung \ref{antennen:koordSysBsp}
+die ersichtlich wird, wenn man das gleiche Koordinatensystem wie bei der Abbildung \ref{antennen:koordSysBsp}
 benutzt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 
 %TODO bild ist weit weg  ILLEGAL
@@ -179,8 +179,8 @@ auch in deren Abhängigkeit in \eqref{antennen:lagrangeNamen} zu sehen. Wie scho
 ist das Problem hier auf zwei Koeffizienten beschränkt. 
 
 Die Fläche unter der Kurve ergibt sich aus dem Integral der Funktion, 
-währenddessen man für die Länge, also den oberen Rand der Funktion, die 
-erste Ableitung auch noch zusätzlich braucht.
+währenddessen für die Länge, also den oberen Rand der Funktion, die 
+erste Ableitung auch noch zusätzlich gebraucht wird.
 
 Die Nebenbedingung $n$ setzen wir nun gleich einer konstanten Länge
 \begin{equation}
@@ -189,7 +189,7 @@ n(a_1, a_2)
 l
 \label{antennen:constNebenbed}
 \end{equation}
-und wie jede gute Nebenbedingung setzen wir diese noch gleich null :
+und wie jede gute Nebenbedingung setzen wir diese noch gleich null:
 
 \begin{equation}
 \begin{aligned}
@@ -203,14 +203,14 @@ und wie jede gute Nebenbedingung setzen wir diese noch gleich null :
 \label{antennen:fertigeNebenbed}
 \end{aligned}
 \end{equation}
-Nun kann man die zu optimierende Funktion
+Nun kann die zu optimierende Funktion
 
 \begin{equation}
 F(x,a_1,a_2,\lambda)
 = 
 f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
-definieren. Dazu wird die Funktion $f$ mit der Nebenbedingung $n(a_1,a_2,l)$ und einem
+definiert werden. Dazu wird die Funktion $f$ mit der Nebenbedingung $n(a_1,a_2,l)$ und einem
 Multiplikator $\lambda$ addiert.
 
 \subsection{Das endlichdimensionale Gleichungssystem\label{antennen:lagrangeGLsys}}
@@ -241,13 +241,13 @@ $n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqre
 wobei $n$ die Anzahl der Koeffizienten ist.
 
 An dieser Stelle wird ersichtlich, was diese Kapitel von den anderen unterschiedet. Mit dem Verfahren nach Ritz  
-kann man ein unendlich dimensionales
-Problem wie z. B. im Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
+kann ein unendlich dimensionales
+Problem wie z. B. im Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandelt werden. 
 Konkret bedeutet dies, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
 
 Das Gleichungssystem, in diesem Fall mit 
-2 Koeffizienten kann man dann als
+2 Koeffizienten, kann nun als
 \begin{equation}
 	\begin{aligned}
 		\int_0^\pi \sin (x) dx
@@ -264,16 +264,16 @@ Das Gleichungssystem, in diesem Fall mit
 	\end{aligned}
 	\label{antennen:lagrangeGradKonkret}
 \end{equation}
-ausschreiben. 
+ausgeschrieben werden. 
 
 \subsection{Das Gleichungssystem lösen\label{antennen:glSysSolve}}
 
 Ein gutes Verfahren, welches sich zur Lösung des Gleichungssystems 
 \eqref{antennen:lagrangeGradKonkret} anbietet, ist das Gradientenverfahren. Dieses 
 iterative Verfahren eignet sich hervorragend zur Minimierung 
-einer Funktion, indem man schrittweise in Richtung des steilsten Abstiegs,
+einer Funktion, indem schrittweise in Richtung des steilsten Abstiegs,
 also des Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
-fortschreitet. 
+fortgeschritten wird. 
 
 % TODO nicht gute position,  illegal
 \begin{figure}
@@ -330,21 +330,21 @@ fortschreitet.
 	\label{antennen:gradverfahrenBSP}
 \end{figure}
 
-Ein Beispiel dafür wie das Verfahren aussehen kann, sieht man bei der 
-Abbildung \ref{antennen:gradverfahrenBSP}. Man nimmt irgendeinen Startpunkt
+Ein Beispiel dafür wie das Verfahren aussehen kann, wird in 
+Abbildung \ref{antennen:gradverfahrenBSP} gezeigt. Man nimmt irgendeinen Startpunkt
 und geht Schritt für Schritt in Richtung des negativen Gradienten $-\nabla f$.
 Mit der Funktion $f(x,y)=x^2+y^2$ ist dieses Verfahren recht einfach zu 
 implementieren und ausführen.
 
 Dieses Verfahren kommt jedoch auch mit einigen Tücken. Wenn die Funktion sehr komplex ist
-und man die Schrittgrösse und Toleranz ungeschickt wählt, ist die Gefahr gross, dass man 
+und die Schrittgrösse und Toleranz ungeschickt gewählt wird, ist die Gefahr gross, dass man
 bei \em lokalen \em Minima stecken bleibt, obwohl ein \em globales \em Minimum gesucht ist.
 
 Da wir in unserer Arbeit ohnehin die Python-Bibliothek \texttt{SymPy} verwendet haben, 
 um symbolische Berechnungen durchzuführen und automatisch $n$ Koeffizienten zu berechnen, 
 konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe der Funktion 
 \texttt{nsolve()} lösen.
-Den Code findet man unter \cite{antennen:codeKoeff}.
+Den Code findet der Leser unter \cite{antennen:codeKoeff}.
 
 \subsection{Die Lösung verstehen\label{antennen:auswertung}}
 
@@ -355,8 +355,8 @@ fixe Länge $l$ hat. Wie lang die verschiedenen Längen genau sind, ist hierbei 
 
 Das Ergebnis ist dann die \emph{optimale Form} mit
 maximaler Fläche unter der Funktion. Mit mehr Koeffizienten $n$ kann die Funktion,
-immer mehr Fläche aufspannen. Eine sehr interessante \emph{Länge} jedoch sollte man 
-genauer unter die Lupe nehmen. 
+immer mehr Fläche aufspannen. Eine sehr interessante \emph{Länge} jedoch sollte
+genauer unter die Lupe genommen werden. 
 
 Es wurde nun schon oft wie im Kapitel \ref{buch:chapter:nebenbedingungen}
 erwähnt, dass wir die Fläche \emph{maximieren} und den Umfang oder hier Länge $l$, wie 
