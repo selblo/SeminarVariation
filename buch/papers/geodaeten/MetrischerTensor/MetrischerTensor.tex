@@ -14,6 +14,8 @@ Im vorherigen Kapitel wurde das Konzept des Linienelements erläutert.
 Es wurde aufgezeigt, wie dieses mittels geometrischer und topologischer Analyse für verschiedene Räume und Koordinatensysteme berechnet werden kann.
 Aus der Vektorgeometrie ist uns jedoch ein anderes nützliches Werkzeug bekannt, welches uns erlaubt, Abstände in einem Raum zu berechnen: Das Skalarprodukt.
 
+\subsection{Skalarprodukt im euklidischen Raum}
+
 Im euklidischen Raum ist das Skalarprodukt zwischen zwei Vektoren $\vec{u}$ und $\vec{v}$ definiert als
 \begin{equation}
 	\vec{u} \cdot \vec{v} = \sum_{i=1}^n u_i v_i,
@@ -31,50 +33,43 @@ Betrachten wir nun einen infinitesimal kleinen Vektor in einer Ebene mit kartesi
 \end{equation}
 was die quadratische infinitesimale Länge des Vektors beschreibt und dem bereits bekannten Linienelement entspricht.
 
-%Eventuell Einstieg Mannigfaltigkeit:
-%Diese Definition des Skalarprodukts ist jedoch nicht allgemeingültig und gilt nur für die Berechnung von Abständen im euklidischen Raum.
-%Was passiert jedoch in komplexeren Räumen mit speziellen Koordinatensystemen wie Zylinder- oder Kugelkoordinaten?
-%
-%Um diese Fragen zu beantworten, müssen wir zuerst die Konzepte der Riemannschen Mannigfaltigkeit und des metrischen Tensors verstehen.
-%
-%Eine Mannigfaltigkeit ist ein mathematisches Konstrukt, das dazu dient, komplizierte geometrische Objekte in eine einfachere, lokal verständliche Form zu bringen.
-%Im Wesentlichen ist eine Mannigfaltigkeit eine Sammlung von Punkten, die in kleinen Bereichen (lokal) wie der euklidische Raum aussehen. 
-%
-%Ein einfaches Beispiel hierfür ist die Erdoberfläche.
-%Steht ein "Flat-Earther" auf der Erdoberfläche, so erscheint ihm die Erde flach, weil der Bereich, den er betrachtet, sehr klein ist im Vergleich zur Gesamtgröße der Erde.
-%Würde dieser "Flat-Earther" jedoch weiter zurücktreten und die gesamte Erde betrachten, sollte auch er erkennen können, dass sie in Wirklichkeit eine Kugel ist.
-%
-%Eine Mannigfaltigkeit ist also ein mathematisches Objekt, das lokal flach oder euklidisch erscheint, aber global eine kompliziertere Struktur haben kann, wie zum Beispiel die Oberfläche einer Kugel.
-%
-%Eine differenzierbare Mannigfaltigkeit setzt zusätzlich voraus, dass sie in der Umgebung jedes Punktes lokal differenzierbar ist.
-%Differenzierbarkeit bedeutet, dass an jedem Punkt der Mannigfaltigkeit die Ableitung existiert, wodurch die Mannigfaltigkeit eine glatte Struktur erhält.
-%Dies ermöglicht es, für jeden Punkt einer solchen Mannigfaltigkeit ein Skalarprodukt zu definieren, da die Mannigfaltigkeit lokal wie ein differenzierbarer euklidischer Raum erscheint.
-%Die Funktion, die das Skalarprodukt für jeden Punkt einer solchen Mannigfaltigkeit definiert, wird als Metrik bezeichnet.
-%
-%Die Metrik ist somit das grundlegende Werkzeug, das es uns ermöglicht, Längen, Abstände und Winkel in einem Raum zu messen.
-%In einfachen geometrischen Räumen, wie dem euklidischen Raum, kennen wir die Metrik bereits als die Formel für den Abstand zwischen zwei Punkten.
-%Wir haben auch bereits die Metrik in verschiedenen Koordinatensystemen angewendet, um Linienelemente auf unterschiedlichen Oberflächen zu berechnen.
-%
-%Wenn wir jedoch von einem Koordinatensystem in ein anderes wechseln oder komplexere Räume wie gekrümmte Oberflächen betrachten, wird die Metrik durch den sogenannten metrischen Tensor $g_{ij}$ repräsentiert.
-%Dieser Tensor ist eine symmetrische $n \times n$-Matrix, die die Metrik an jedem Punkt der Mannigfaltigkeit kodiert.
-%Eine differenzierbare Mannigfaltigkeit, die zusätzlich durch einen metrischen Tensor ausgestattet ist, der an jedem Punkt der Mannigfaltigkeit definiert ist, wird als riemannsche Mannigfaltigkeit bezeichnet.
-
 Diese Definition des Skalarprodukts ist jedoch nicht allgemeingültig und gilt nur für die Berechnung von Abständen im euklidischen Raum.
-Was passiert jedoch in komplexeren Räumen mit speziellen Koordinatensystemen wie Zylinder- oder Kugelkoordinaten? 
-Hier kommt der sogenannte metrische Tensor ins Spiel.
+Für komplexere Räume mit speziellen Koordinatensystemen wie Zylinder- oder Kugelkoordinaten müssen wir zuerst die Konzepte der Riemannschen Mannigfaltigkeit und des metrischen Tensors verstehen.
 
-%Eventuell Einführung Metrik:
-%Bevor wir den metrischen Tensor einführen, ist es jedoch wichtig, das Konzept der Metrik zu verstehen. 
-%Eine Metrik ist eine Funktion, die den Abstand zwischen zwei Punkten in einem Raum definiert. 
-%In einfachen geometrischen Räumen, wie dem euklidischen Raum, kennen wir die Metrik bereits als die Formel für den Abstand zwischen zwei Punkten. 
-%In einem $n$-dimensionalen Raum beschreibt die Metrik die geometrischen Eigenschaften des Raumes, indem sie festlegt, wie Längen, Abstände und Winkel zwischen Vektoren berechnet werden.
-%
-%Wenn wir von einem Koordinatensystem in ein anderes wechseln oder komplexere Räume wie gekrümmte Oberflächen betrachten, wird die Metrik durch den sogenannten metrischen Tensor $g_{ij}$ repräsentiert.
+\subsection{Mannigfaltigkeit}
+
+Eine Mannigfaltigkeit ist ein mathematisches Konstrukt, das dazu dient, komplizierte geometrische Objekte in eine einfachere, lokal verständliche Form zu bringen.
+Im Wesentlichen ist eine Mannigfaltigkeit eine Sammlung von Punkten, die den Raum in lokal euklidische Bereiche unterteilt. 
+
+Ein einfaches Beispiel hierfür ist die Erdoberfläche.
+Steht ein "Flat-Earther" auf der Erdoberfläche, so erscheint ihm die Erde flach, weil der Bereich, den er betrachtet, sehr klein ist im Vergleich zur Gesamtgröße der Erde.
+Würde dieser "Flat-Earther" jedoch weiter zurücktreten und die gesamte Erde betrachten, sollte auch er erkennen können, dass sie in Wirklichkeit eine Kugel ist.
+
+Eine Mannigfaltigkeit ist also ein mathematisches Objekt, das lokal flach oder euklidisch erscheint, aber global eine kompliziertere Struktur haben kann, wie zum Beispiel die Oberfläche einer Kugel.
+
+Eine differenzierbare Mannigfaltigkeit setzt zusätzlich voraus, dass sie in der Umgebung jedes Punktes lokal differenzierbar ist, wodurch die Mannigfaltigkeit eine glatte Struktur erhält.
+Da sich die Mannigfaltigkeit lokal wie ein differenzierbarer euklidischer Raum verhalt  ermöglicht uns das für jeden Punkt ein Skalarprodukt zu definieren.
+Die Funktion, die das Skalarprodukt für jeden Punkt einer solchen Mannigfaltigkeit definiert, wird als Metrik bezeichnet.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{papers/geodaeten/Abbildungen/MetrischerTensor/Tangentialebene}
+	\caption{Tangentialebene eines Punktes der riemannschen Mannigfaltigkeit einer Kugeloberfläche}
+	\label{geodaeten:figure:MetrischerTensor:Tangentialebene}
+\end{figure}
+
+\subsection{Metrik und metrischer Tensor}
+
+Die Metrik ist somit das grundlegende Werkzeug, das es uns ermöglicht, Längen, Abstände und Winkel in einem Raum zu messen.
+In einfachen geometrischen Räumen, wie dem euklidischen Raum, kennen wir die Metrik bereits als den Satz des Pythagoras.
+Wir haben auch bereits in Abschnitt \ref{geodaeten:section:Linienelemente:Beispiele} die Metrik in verschiedenen Koordinatensystemen angewendet, um Linienelemente auf unterschiedlichen Oberflächen zu berechnen.
+
+Um die Metrik mathematisch darstellen zu können wird der metrische Tensor $g_{ij}$ eingeführt.
+Dieser Tensor ist eine symmetrische $n \times n$-Matrix, wobei $n$ der Dimension des Raumes entspricht, die die Metrik an jedem Punkt der Mannigfaltigkeit kodiert.
+Eine differenzierbare Mannigfaltigkeit, welche an jedem Punkt durch einen metrischen Tensor definiert ist, wird als riemannsche Mannigfaltigkeit bezeichnet.
 
 Der metrische Tensor $g_{ij}$ ist ein fundamentales Werkzeug in der Differentialgeometrie und der allgemeinen Relativitätstheorie. 
-Er ist eine symmetrische $n \times n$-Matrix, wobei $n$ der Dimension des Raumes entspricht. 
 Diese Matrix enthält alle Informationen darüber, wie Abstände und Winkel in einem Raum berechnet werden.
-Der metrische Tensor ist dabei raumabhängig, das heisst, er definiert für jeden Punkt im Raum, wie das Skalarprodukt berechnet wird.
 Auf diese Weise beschreibt der metrische Tensor die geometrische Struktur des gesamten Raumes.
 
 Mit dem metrischen Tensor lässt sich eine allgemeine Definition für das Skalarprodukt zweier Vektoren finden, die unabhängig vom Koordinatensystem ist:
@@ -91,6 +86,7 @@ Die Komponenten der Vektoren $u^i$ und $v^j$ werden dabei durch den metrischen T
 Berechnet man nun mit dieser allgemeinen Definition das Skalarprodukt eines infinitesimalen Vektors mit sich selbst, erhält man:
 \begin{equation}
 	ds^2 = g_{ij} \, du^i \, du^j.
+	\label{geodaeten:equation:MetrischerTensor:AllgemeinesLinienelement}
 \end{equation}
 Somit lässt sich das Linienelement in einer allgemeinen Form ausdrücken, die mithilfe des metrischen Tensors zu einer koordinatenunabhängigen Funktion wird.
 
