@@ -7,8 +7,6 @@ dependencies-geodaeten =						\
 	papers/geodaeten/packages.tex					\
 	papers/geodaeten/main.tex					\
 	papers/geodaeten/references.bib				\
-	papers/geodaeten/teil0.tex					\
-	papers/geodaeten/teil1.tex					\
 	papers/geodaeten/teil2.tex					\
 	papers/geodaeten/teil3.tex
 
