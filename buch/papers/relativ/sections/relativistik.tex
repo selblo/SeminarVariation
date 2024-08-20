@@ -1,0 +1,84 @@
+
+\section{Das Relativitätsprinzip 
+\label{relativ:section:relativistik}}
+\rhead{Das Relativitätsprinzip}
+
+Um relativistische Mechanik verstehen zu können,
+muss natürlich zuerst auf das Relativitätsprinzip eingegangen werden.
+Dabei gibt es zwei wesentliche Unterschiede zur klassischen Mechanik.
+
+Der erste wichtige Unterschied ist, dass die Zeit unter relativistischer Betrachtung keine absolute Grösse mehr ist.
+Geschehenes kann also nicht einfach anhand eines starren Zeitstrahls erklärt werden, sondern die Zeit ist abhängig vom Betrachter.
+Man geht über vom dreidimensionalen Raum in die vierdimensionale Raumzeit, in welcher die Welt relativistisch beschrieben wird.
+
+Der zweite Unterschied ist,
+dass die Geschwindigkeit der Wirkungsausbreitung begrenzt ist,
+und zwar durch die Lichtgeschwindigkeit \(c=\qty[per-mode=fraction]{299792458}{\metre\per\second}\).
+Diese ist zwar auch in der klassischen Mechanik eine Konstante,
+jedoch ist die Geschwindigkeit der Wirkungsausbreitung dort unbegrenzt.
+Ein einfaches Beispiel, um dies zu veranschaulichen,
+ist die Betrachtung von starren Körpern in der klassischen Mechanik.
+Wird ein starrer Körper beispielsweise an einem Punkt angestossen,
+so muss sich, gemäss Definition eines starren Körpers,
+jeder Teil dieses Körpers augenblicklich und zeitgleich in Bewegung setzen.
+Dies bedeutet also, dass sich die Wirkung (Anstossen des Körpers)
+vom Punkt aus, in dem dieser angestossen wurde,
+mit unendlicher Geschwindigkeit in alle Teile des Körpers ausbreitet.
+
+
+\subsection{Koordinatentransformationen 
+\label{relativ:section:koordtrafo}}
+
+In der klassischen Mechanik gibt es die folgenden,
+intuitiven Transformationen, um zwischen verschiedenen Bezugssystemen
+zu vergleichen:
+
+\begin{aligned}
+    &\text{Translation in der Zeit: } && t \rightarrow t + b \\
+    &\text{Translation im Raum: } && \vec{r} \rightarrow \vec{r} + \vec{a} \\
+    &\text{Orthogonale Drehung: } && \vec{r} \rightarrow A \vec{r} \\
+    &\text{Transformation auf ein Bezugssystem mit Relativgeschwindigkeit: } && \vec{r} \rightarrow \vec{r} + \vec{v} \cdot t
+\end{aligned}.
+
+Eine Kombination aus diesen Transformationen wird als Galilei-Transformation bezeichnet.
+
+In der relativistischen Mechanik muss man sich hingegen der Lorentz-Transformation bedienen,
+welche eine Erweiterung der Galilei-Transformation darstellt
+und wesentlich kompliziertere Formeln annehmen kann. Besipielsweise beschreibt
+\begin{equation}
+    t = \frac{t' + \frac{V}{c^2}x'}{\sqrt{1-\frac{V^2}{c^2}}}
+\end{equation}
+die Umrechnung der Zeit bei einer Bewegung mit konstanter Geschwindigkeit \(V\).\todo{Diese Aussage überprüfen.}
+
+
+\subsection{Der Abstand 
+\label{relativ:section:abstand}}
+
+Ebenfalls muss der Begriff des Abstands für die relativistische Mechanik umformuliert werden.
+In der klassischen Mechanik ist der euklidische Abstand
+\begin{equation}
+    \de{s}=\sqrt{\de{x}^2 + \de{y}^2 + \de{z}^2}
+\end{equation}
+für alle Bezugssysteme identisch.
+
+Analog dazu gibt es in der relativistischen Mechanik den erweiterten Abstand
+\begin{equation}
+    \de{s} = \sqrt{c^2\de{t}^2 - \de{x}^2 - \de{y}^2 - \de{z}^2},
+\end{equation}
+welcher abenfalls für verschiedene Bezugssysteme identisch ist.
+
+
+\subsection{Die Eigenzeit 
+\label{relativ:section:eigenzeit}}
+
+Angenommen, wir beobachten eine Uhr, welche sich um die Strecke
+\(\sqrt{\de{x}^2 + \de{y}^2 + \de{z}^2}\)
+bewegt.
+Im Koordinatensystem der Uhr gilt
+\(\de{x'} = \de{y'} = \de{z'} = 0\).
+Gemäss der Invarianz des Abstands gilt somit
+\begin{equation*}
+    \underbrace{\de{s}^2 = c^2\de{t}^2 - \de{x}^2 - \de{y}^2 - \de{z}^2}_{\text{Unser Koordinatensystem}}
+        = \underbrace{\de{s'}^2 = c^2\de{t'}^2}_{\text{Koordinatensystem der Uhr}} .
+\end{equation*}
+\todo{Diesen Abschnitt vollenden.}
