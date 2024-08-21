@@ -64,7 +64,7 @@ Nach Bilden der Ableitungen werden diese an der Stelle \(\vec{r}\,' = 0\) ausgew
 Durch Umformen erhält man
 
 \begin{equation*}
-\frac{1}{|\vec{r} - \vec{r}'|} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
+\frac{1}{|\vec{r} - \vec{r}\,'|} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
 \end{equation*}
 
 \noindent
@@ -86,7 +86,9 @@ Dann muss bei einem Summanden \(n\)-ter Ordnung ein Tensor \(n\)-ter Stufe, näm
 
 
 \begin{align*}
-\frac{1}{|\vec{r} - \vec{r}'|} &= \frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
+\frac{1}{|\vec{r} - \vec{r}\,'|}
+&=
+\frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
 &= \frac{1}{r} + r\,'_{i} \frac{r_{i}}{r^{3}} + \frac{1}{2} r\,'_{i} r\,'_{j} \frac{3 r_{i} r_{j} - r^{2} \delta_{i\!j}}{r^{5}} + \mathcal{O}(r\,'^{3}).
 \end{align*}
 
