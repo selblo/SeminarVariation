@@ -42,14 +42,20 @@ schreiben, wobei \(\Delta\) der Laplace-Operator, \(f\) eine Dichte und \(\phi\)
 Die formale Lösung dieser Gleichung ist
 
 \begin{equation*}
-\phi (\vec{r}) = \frac{1}{4\pi} \int d^3 \vec{r}\,' \frac{f (\vec{r}\,')} {\abs{\vec{r} - \vec{r}\,'}}.
+\phi (\vec{r})
+=
+\frac{1}{4\pi}
+\int d^3 \vec{r}\,'
+\frac{f (\vec{r}\,')}{|\vec{r} - \vec{r}\,'|}.
 \end{equation*}
 
 \noindent
 Ist \(f (\vec{r})\) in einem Volumen lokalisiert, kann für Orte \(\vec{r}\), die weit ausserhalb dieses Volumens liegen, \(r \gg r\,'\), der Bruch in eine Taylor-Reihe in \(\vec{r}\,'\) um \(\vec{r}\,' = 0\) entwickelt werden:
 
 \begin{equation*}
-\frac{1}{\abs{\vec{r} - \vec{r}\,'}} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( \vec{r}\,' \cdot \vec{\nabla}\,' \right)^n \left. \frac{1}{\abs{\vec{r} - \vec{r}\,'}} \right|_{\vec{r}\,'=0}
+\frac{1}{|\vec{r} - \vec{r}\,'|}
+=
+\sum_{n=0}^{\infty} \frac{1}{n!} \left( \vec{r}\,' \cdot \vec{\nabla}\,' \right)^n \left. \frac{1}{|\vec{r} - \vec{r}\,'|} \right|_{\vec{r}\,'=0}
 \end{equation*}
 
 \noindent
@@ -58,7 +64,7 @@ Nach Bilden der Ableitungen werden diese an der Stelle \(\vec{r}\,' = 0\) ausgew
 Durch Umformen erhält man
 
 \begin{equation*}
-\frac{1}{\abs{ \vec{r} - \vec{r}\,'}} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
+\frac{1}{|\vec{r} - \vec{r}\,'|} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
 \end{equation*}
 
 \noindent
@@ -80,7 +86,9 @@ Dann muss bei einem Summanden \(n\)-ter Ordnung ein Tensor \(n\)-ter Stufe, näm
 
 
 \begin{align*}
-\frac{1}{\abs{ \vec{r} - \vec{r}\,'}} &= \frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
+\frac{1}{|\vec{r} - \vec{r}\,'|}
+&=
+\frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
 &= \frac{1}{r} + r\,'_{i} \frac{r_{i}}{r^{3}} + \frac{1}{2} r\,'_{i} r\,'_{j} \frac{3 r_{i} r_{j} - r^{2} \delta_{i\!j}}{r^{5}} + \mathcal{O}(r\,'^{3}).
 \end{align*}
 
