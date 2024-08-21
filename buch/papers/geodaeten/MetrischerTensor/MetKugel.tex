@@ -6,16 +6,50 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\subsection{Kugel\label{geodaeten:section:MetKugel}}
+\subsection{Kugel\label{geodaeten:section:MetrischerTensor:Kugel}}
 \rhead{Metrischer Tensor Beispiele}
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+In diesem Abschnitt werden wir den metrischen Tensor für die Oberfläche einer Kugel herleiten.
+Wir beginnen mit dem bereits bekannten Linienelement für die Kugeloberfläche und zeigen, wie der metrische Tensor daraus abgeleitet wird.
+
+Das Linienelement für die Oberfläche einer Kugel mit Radius $r$ in Kugelkoordinaten $(\theta, \phi)$ ist gegeben durch:
+\begin{equation}
+	ds^2 = r^2 \left( d\theta^2 + \sin^2\theta \, d\phi^2 \right).
+\end{equation}
+
+Um den metrischen Tensor $g_{ij}$ für die Kugeloberfläche zu bestimmen, drücken wir das Linienelement in der allgemeinen Form
+\begin{equation}
+	ds^2 = g_{ij} \, du^i \, du^j
+\end{equation}
+aus, wobei $u^1 = \theta$ und $u^2 = \phi$ die Koordinaten auf der Kugeloberfläche darstellen.
+
+Vergleichen wir nun die beiden Ausdrücke für das Linienelement:
+\begin{equation}
+	ds^2 = r^2 \, d\theta^2 + r^2 \sin^2\theta \, d\phi^2
+\end{equation}
+und
+\begin{equation}
+	ds^2 = g_{11} \, (d\theta)^2 + g_{22} \, (d\phi)^2 + 2g_{12} \, d\theta \, d\phi.
+\end{equation}
+
+Durch den Vergleich der Terme sehen wir, dass:
+\begin{equation}
+	g_{11} = r^2, \quad g_{22} = r^2 \sin^2\theta, \quad \text{und} \quad g_{12} = g_{21} = 0.
+\end{equation}
+
+Daraus ergibt sich der metrische Tensor für die Kugeloberfläche in Matrixform:
+\begin{equation}
+	g_{ij} = r^2 \begin{pmatrix}
+		1 & 0 \\
+		0 & \sin^2\theta
+	\end{pmatrix}.
+\end{equation}
+
+Hier ist ersichtlich, dass der Radius $r$ lediglich ein Skalierungsfaktor ist und für die geometrischen Eigenschaften der Kugeloberfläche keine entscheidende Rolle spielt. 
+Die wesentliche Geometrie wird durch die Winkelabhängigkeit der Metrik bestimmt.
+Dieser Tensor beschreibt somit die Geometrie der Kugeloberfläche und ermöglicht die Berechnung von Abständen, Winkeln und anderen geometrischen Größen.
+
+
 
 
 

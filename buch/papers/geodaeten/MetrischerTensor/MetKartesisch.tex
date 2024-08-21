@@ -6,15 +6,48 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\subsection{Kartesisch\label{geodaeten:section:MetKartesisch}}
+\usepackage{xcolor}
+\subsection{Kartesisch\label{geodaeten:section:MetrischerTensor:Kartesisch}}
 \rhead{Metrischer Tensor Beispiele}
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+Der Metrische Tensor für einen zweidimensionalen kartesischen Raum kann aus der Gleichung [\ref{geodaeten:equation:MetrischerTensor:AllgemeinesLinienelement}] des allgemeinen Linienelements hergeleitet werden.
+Schreiben wir die Einsteinsche-Summe für zwei Dimensionen aus ergibt sich
+\begin{equation}
+	ds^2 = g_{11} \cdot du^1 \cdot du^1 + g_{12} \cdot du^1 \cdot du^2 + g_{21} \cdot du^2 \cdot du^1 + g_{22} \cdot du^2 \cdot du^2 .
+	\label{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme}
+\end{equation}
 
+In dem Kartesischen Raum gilt, $du^1 = dx$ und $du^2 = dy$ wobei zu beachten ist, dass bei der Einsteinschen Summenkonvention die Hochstele keiner Potenz sondern eines Index entspricht.
+Aus Abschnitt \ref{geodaeten:section:Linienelemente:Kartesisch} kennen wir das Linienelement des Kartesischen Raums als
+
+\begin{equation}
+	ds^2 = dx^2 + dy^2 .
+\end{equation}
+
+Aus dem Linienelement können wir die Koeffizienten von 
+
+\begin{equation}
+du^1 \cdot du^1 = dx^2 \quad \text{und} \quad du^2 \cdot du^2 = dy^2 
+\end{equation}
+
+als $1$ herauslesen.
+Die Koeffizienten für
+
+\begin{equation}
+du^1 \cdot du^2 = dx \cdot dy \quad \text{und} \quad du^2 \cdot du^1 = dy \cdot dx
+\end{equation}
+
+sind beide $0$.
+In Gleichung \ref{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme} ist zu erkennen, dass diese Koeffizienten den Werten im metrischen Tensor $g_{ij}$ entsprechen.
+An den richtigen stellen eingesetzt ergibt sich der metrische Tensor des Kartesischen Raums zu
+
+\begin{equation}
+	\begin{aligned}
+		g_{11} &= \textcolor{red}{1} \\
+		g_{12} &= \textcolor{blue}{0} \\
+		g_{21} &= \textcolor{green}{0} \\
+		g_{22} &= \textcolor{magenta}{1} \\
+		g_{ij} &= \begin{pmatrix} \textcolor{red}{1} && \textcolor{blue}{0} \\ \textcolor{green}{0} && \textcolor{magenta}{1} \end{pmatrix} .
+	\end{aligned}
+\end{equation}
 
