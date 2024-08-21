@@ -26,7 +26,7 @@ Dieser ist in Kugelkoordinaten $(\theta, \phi)$ gegeben durch:
 	\end{pmatrix}.
 \end{equation}
 
-Zuerst berechnen wir die Inverse des metrischen Tensors, da diese für die Berechnung der Christoffelsymbole benötigt wird.
+Zuerst berechnen wir die Inverse des metrischen Tensors, da diese für die Berechnung der Christoffel-Symbol benötigt wird.
 Der inverse Tensor $g^{ij}$ ist gegeben durch:
 \begin{equation}
 	g^{ij} = \frac{1}{r^2} 
@@ -42,18 +42,18 @@ Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\theta$, erhalten wir:
 	\frac{\partial g_{11}}{\partial \theta} = 0, \quad \frac{\partial g_{11}}{\partial \phi} = 0, \quad \frac{\partial g_{22}}{\partial \theta} = 2r^2 \sin\theta \cos\theta, \quad \frac{\partial g_{22}}{\partial \phi} = 0.
 \end{equation}
 
-Mit diesen Ableitungen und dem inversen Tensor $g^{ij}$ können wir nun die Christoffelsymbole berechnen:
+Mit diesen Ableitungen und dem inversen Tensor $g^{ij}$ können wir nun die Christoffel-Symbol berechnen:
 \begin{equation}
 	\Gamma_{ij}^k = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
 \end{equation}
 wobei $u^1 = \theta$ und $u^2 = \phi$.
 
-Nach Einsetzen der Werte und Vereinfachung erhalten wir folgende nicht-verschwindende Christoffelsymbole:
+Nach Einsetzen der Werte und Vereinfachung erhalten wir folgende nicht-verschwindende Christoffel-Symbol:
 \begin{equation}
 	\Gamma_{12}^2 = \Gamma_{21}^2 = \cot\theta \quad \text{und} \quad \Gamma_{22}^1 = -\sin\theta \cos\theta.
 \end{equation}
 
-Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von den Koordinaten ($\theta$) zu nicht-verschwindenden Christoffelsymbolen, die die intrinsische Krümmung der Kugeloberfläche beschreiben.
+Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von den Koordinaten ($\theta$) zu nicht-verschwindenden Christoffel-Symbol, die die intrinsische Krümmung der Kugeloberfläche beschreiben.
 
 Um diese Krümmung zu verstehen, betrachten wir die Geometrie entlang unterschiedlicher Wege.
 Bewegt man einen Vektor entlang des Äquators, bleibt seine Richtung relativ zur Kugeloberfläche konstant, da das Bogenmaß von $\phi$ am Äquator unverändert bleibt.
@@ -61,9 +61,9 @@ Entlang eines Längengrads hingegen ändert sich die Richtung des Vektors, da da
 Je näher man den Polen kommt, desto kürzer wird der Bogen für eine gegebene Änderung von $\phi$, was zu einer Änderung der Vektorrichtung führt.
 
 Diese Veränderung der Vektorrichtung ist eine Folge der Krümmung der Kugeloberfläche.
-Die nicht-verschwindenden Christoffelsymbole beschreiben diese Krümmung und zeigen an, wie sich die Richtung eines Vektors während des Transports entlang der Oberfläche ändert.
+Die nicht-verschwindenden Christoffel-Symbol beschreiben diese Krümmung und zeigen an, wie sich die Richtung eines Vektors während des Transports entlang der Oberfläche ändert.
 
-Mit den berechneten Christoffelsymbolen können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
+Mit den berechneten Christoffel-Symbol können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
 
 Die allgemeine Form der Geodätengleichung lautet:
 \begin{equation}
@@ -71,15 +71,14 @@ Die allgemeine Form der Geodätengleichung lautet:
 \end{equation}
 wobei $u^k$ die Koordinaten darstellen, in diesem Fall $\theta$ und $\phi$.
 
-Setzen wir die entsprechenden Christoffelsymbole und Koordinaten in die Gleichungen ein, erhalten wir:
+Setzen wir die entsprechenden Christoffel-Symbol und Koordinaten in die Gleichungen ein, erhalten wir:
 \begin{equation}
 	\begin{aligned} 
 		0 &= \ddot{\theta} + \Gamma^1_{11} \dot{\theta} \dot{\theta} + 2\Gamma^1_{12} \dot{\theta}\dot{\phi} + \Gamma^1_{22} \dot{\phi} \dot{\phi} \\
 		0 &= \ddot{\phi} + \Gamma^2_{11} \dot{\theta} \dot{\theta} + 2\Gamma^2_{12} \dot{\theta}\dot{\phi} + \Gamma^2_{22} \dot{\phi} \dot{\phi}
 	\end{aligned}
 \end{equation}
-
-Da einige der Christoffelsymbole Null sind, vereinfachen sich Geodätengleichung zu:
+Da einige der Christoffel-Symbol Null sind, vereinfachen sich Geodätengleichung zu:
 \begin{align}
 	0 &= \ddot{\theta} - \sin\theta \cos\theta \, \dot{\phi}^2 \\
 	0 &= \ddot{\phi} + 2 \cot\theta \, \dot{\theta} \dot{\phi}
@@ -89,7 +88,7 @@ Da $r$ lediglich ein Skalierungsfaktor ist, kürzt es sich in den Geodätengleic
 Die Geometrie wird allein durch die Winkelabhängigkeit bestimmt, sodass der Radius keinen Einfluss auf die Form der Geodäten hat.
 
 Das Lösen der Geodätengleichungen ist oft aufwendig und schwierig, was numerische Ansätze erforderlich macht. 
-Daher überprüfen wir durch Analyse, ob Groskreise diese tatsächlich erfüllen und als Lösungen gelten.
+Daher überprüfen wir durch Analyse, ob Grosskreise diese tatsächlich erfüllen und als Lösungen gelten.
 
 Betrachten wir die Geodätengleichungen für konstantes $\theta$, also entlang eines Breitengrads.
 Für konstantes $\theta$ gilt $\dot{\theta} = 0$ und $\ddot{\theta} = 0$.
@@ -98,7 +97,7 @@ Setzen wir dies in die erste Geodätengleichung ein, so erhalten wir:
 	0 = -\sin\theta \cos\theta \, \dot{\phi}^2.
 \end{equation}
 Die zweite Geodätengleichung vereinfacht sich zu $0 = \ddot{\phi}$, was zeigt, dass $\phi(t)$ linear in der Zeit variiert.
-Diese erste GeodätenGleichung wird nur für $\theta = \frac{\pi}{2}$ erfüllt, das heisst, nur für den Äquator.
+Diese erste Geodätengleichung wird nur für $\theta = \frac{\pi}{2}$ erfüllt, das heisst, nur für den Äquator.
 Für alle anderen Breitengrade mit $\theta \neq \frac{\pi}{2}$ ist $\dot{\phi}$ gleich null, was bedeutet, dass es keine Bewegung in der $\phi$-Richtung gibt und somit keine Geodäte vorliegt.
 Der Äquator, als einziger Breitengrad, erfüllt daher die Geodätengleichungen und ist ein Großkreis.
 
