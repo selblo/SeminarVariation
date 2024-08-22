@@ -1,0 +1,142 @@
+%
+% 3_rechenbeispiel.tex -- Ein einleuchtendes Rechenbeispiel anhand eines einfachen Pendels
+%
+% (c) 2024 Flurin Brechbühler, OST - Ostschweizer Fachhochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Rechenbeispiel\label{fem:rechenbsp}}
+\kopfrechts{Rechenbeispiel}
+
+Als Beispiel wurde die Differentialgleichung eines einfachen Pendels gelöst. % TODO: evtl. Ref. zu Kap. Doppelpendel
+Diese lässt sich aus dem Term
+\begin{equation}
+    E_{kin} = \frac{1}{2} m l^2 {\theta'}^2,
+\end{equation}
+der die kinetische Energie des Systems beschreibt, und dem Term
+\begin{equation}
+    E_{pot} = m g l (1 - \cos \theta),
+\end{equation}
+der die potentielle Energie des Systems beschreibt, herleiten. 
+Diese Terme zusammengesetzt ergeben die Lagrange-Funktion
+\begin{equation}
+    \ell = \frac{1}{2} m l^2 {\theta'}^2 - m g l (1 - \cos \theta),
+\end{equation}
+welche minimiert werden soll.
+Die Ableitung dieser sollte also Null ergeben:
+\begin{equation}
+    \theta'' + \frac{g}{l} \sin \theta = 0.
+\end{equation}
+
+Da wir mit dem bisher behandelten Vorgehen nur lineare Differentialgleichungen lösen können, wird die Approximation
+\begin{equation}
+    \sin \theta \approx \theta
+\end{equation}
+verwendet. % TODO: währe es möglich, nichtlineare DGLs zu lösen?
+Dies hat jedoch leider zur Folge, dass unsere Lösung nur für kleine $\theta$ (ungefär $\theta < 15 \deg$) gut stimmen wird.
+
+Die Differentialgleichung, die es zu lösen gilt, ist also
+\begin{equation}
+    \theta'' + \frac{g}{l} \theta = 0.
+\end{equation}
+
+
+\subsection{Schwache Form}
+Die schwache Form des Problems lautet
+\begin{equation}
+    \int \left( \theta'' + \frac{g}{l} \theta \right) \cdot v \diff t 
+    = \int \theta'' \cdot v \diff t + \int \frac{g}{l} \theta \cdot v \diff t
+    = 0
+\end{equation}
+und kann durch partielles Integrieren des Terms $\int \theta'' \cdot v \diff t$ zu einer Differentialgleichung erster Ordnung gemacht werden:
+\begin{equation}
+    - \int \theta' \cdot v' \diff t + \int \frac{g}{l} \theta \cdot v \diff t = -\Phi(\theta, v) = 0
+    \label{fem:rechenbsp:schwache_form}
+\end{equation}
+
+
+\subsection{Befüllen der Matrix}
+Der Vektor $\vec{b}$ ist in diesem Fall besonders einfach zu bestimmen: Da die rechte Seite Null ist, gilt
+\begin{equation}
+    \vec{b} = \vec{0}.
+\end{equation}
+Um die Elemente der Matrix $\mathbf{L}$ zu ermitteln, werden die Integrale aus Gleichung \ref{fem:rechenbsp:schwache_form} verwendet:
+\begin{equation}
+    l_{ij} = - \int a_i'(t) \cdot a_j'(t) \diff t + \int \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
+\end{equation}
+
+
+\subsection{Formfunktion wählen}
+Da sich das Problem durch die partielle Integration auf eine DGL 1. Ordnung reduzieren liess und es bei diesem Beispiel vor allem um das Vorgehen und nicht um präzise Resultate geht, wird der lineare Ansatz gewählt.
+Die Formfunktionen lauten also 
+\begin{equation}
+    a(t) = \left\{ \begin{array}{ll}
+        1+\frac{t}{\Delta t} & \mbox{für} -\Delta t < t < 0 \\
+        1-\frac{t}{\Delta t} & \mbox{für} 0 \leq t < \Delta t \\
+        0 & \mbox{sonst}
+    \end{array} \right.
+\end{equation}
+und
+\begin{equation}
+    a'(t) = \left\{ \begin{array}{ll}
+        \frac{1}{\Delta t} & \mbox{für} -\Delta t < t < 0 \\
+        -\frac{1}{\Delta t} & \mbox{für} 0 < t < \Delta t \\
+        0 & \mbox{sonst}
+    \end{array} \right. .
+\end{equation}
+
+Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei Fällen unterschieden werden:
+\begin{itemize}
+    \item[$i = j$:] Volle überlappung der Formfunktion: Die Formfunktion wird quadriert und integriert. 
+    \item[$\abs{i - j} = 1$:] Die beiden Elemente grenzen aneinander: Es wird über das Produkt der beiden Formfunktionen integriert.
+    \item[$\abs{i - j} > 1$:] Die beiden Elemente grenzen nicht aneinander: Die Formfunktionen überlappen nicht, das Integral über das Produkt ist also null.
+\end{itemize}
+Im Mehrdimensionalen müsste anhand des Graphen ermittelt werden, ob zwei Elemente nebeneinander liegen oder nicht.
+
+\subsubsection{Element mit sich selbst ($i = j$)} %TODO: Besseren Titel finden.
+Da die Integrale aller Elemente gleich und die Formfunktionen symmetrisch sind, reicht es aus, nur das Integral
+\begin{equation}
+    \int_{0}^{\Delta t} \frac{1}{(\Delta t)^2} t^2 \diff t = \frac{1}{3} \Delta t
+\end{equation}
+der Formfunktion $ a_1(t) = \frac{t}{\Delta t} $ zu lösen.
+Es resultiert
+\begin{equation}
+    \int a_k(t) \cdot a_k(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{t^2}{(\Delta t)^2} \diff t = \frac{2}{3} \Delta t.
+\end{equation}
+
+Für das Integral über die Ableitungen der Formfunktionen resultiert
+\begin{equation}
+    \int a_k'(t) \cdot a_k'(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = \frac{2}{\Delta t},
+\end{equation}
+da $a_1'(t)= \frac{1}{\Delta t} \ \mbox{wenn} \ 0 \leq t < \Delta t$.
+
+\subsubsection{Benachbarte Elemente ($\abs{i - j} = 1$)}
+Auch hier reicht es aus, eines der Integrale zu berechnen. 
+Gewählt wurden ebenfalls aufgrund der einfachen Formfunktionen die Funktionen $a_0(t) = 1 - \frac{t}{\Delta t}$ und $a_1(t) = \frac{t}{\Delta t}$.
+Es resultiert
+\begin{equation}
+    \int a_k(t) \cdot a_{k+1}(t) \diff t = \int_{0}^{\Delta t} \left(1 - \frac{t}{\Delta t}\right) \cdot \frac{t}{\Delta t} \diff t = \frac{1}{6} \Delta t.
+\end{equation}
+Auch hier wird noch das Integral über die Ableitungen 
+\begin{equation}
+    \int a_k'(t) \cdot a_{k+1}'(t) \diff t = \int_{0}^{\Delta t} -\frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = -\frac{1}{\Delta t},
+\end{equation}
+benötigt.
+Hierbei gilt $a_0'(t)= -\frac{1}{\Delta t} \ \mbox{und} \ a_1'(t)= \frac{1}{\Delta t} \ \mbox{wenn} \ 0 \leq t < \Delta t$
+
+\subsubsection{Zusammenfassung} % TODO: Braucht anderen TItel
+Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also:
+\begin{equation}
+    \begin{aligned}
+        l_{ij} 
+        &= - \int a_i'(t) \cdot a_j'(t) \diff t + \frac{g}{l} \int a_i(t) \cdot a_j(t) \diff t \\
+        &=  \left\{ 
+                \begin{array}{ll}
+                    - \frac{2}{\Delta t} + \frac{2g}{3l} \Delta t & \mbox{für} i = j \\
+                    \frac{1}{\Delta t} + \frac{g}{6l} \Delta t & \mbox{für} \abs{i - j} = 1 \\
+                    0 & \mbox{sonst}
+                \end{array} 
+            \right.
+    \end{aligned}
+\end{equation}
