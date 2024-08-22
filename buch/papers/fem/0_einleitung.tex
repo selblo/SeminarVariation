@@ -1,0 +1,28 @@
+%
+% 0_einleitung.tex -- Einleitung zur Methode der Finiten Elemente
+%
+% (c) 2024 Flurin Brechbühler, OST - Ostschweizer Fachhochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+%\section{Einleitung\label{fem:section:einleitung}}
+\input{papers/fem/custom_commands.tex}
+
+\kopfrechts{Einleitung}
+
+Differentialgleichungen sind mit Computern eher schwer zu lösen. 
+Dies ist speziell auch bei mehrdimensionalen Problemen mit komplexen Randbedingungen - wie sie bei Minimalproblemen oft auftreten - der Fall. 
+Zum Lösen solcher Probleme werden oftmals numerische Methoden eingesetzt. 
+Das Rayleigh-Ritz-Verfahren, wie es im Kapitel \ref{antennen:ritzAnw} angewandt wird, ist eine solche Methode.
+Sie beschränkt dabei die Menge der möglichen Lösungsfunktionen, um das unendlich-dimensionale Problem auf ein endlich dimensionales herunterzubrechen, sodass zur Lösung Computer eingesetzt werden können. 
+
+Die Methode der Finiten Elemente, auch FEM (aus dem Englischen Finite Element Method), ist eine weitere numerische Methode.
+Sie begrenzt jedoch nicht die Menge der berücksichtigten Lösungsfunktionen, sondern stellt eine Lösung aus mehreren kleinen Funktionsstücken - den Elementen - zusammen.
+Zudem, dass die FEM beim Lösen von Minimalproblemen oft Anwendung findet, kann man bei deren Herleitung Nutzen aus der Kenntnis der ersten Variation ziehen. 
+
+In diesem Paper wird die Methode der Finiten Elemente anhand eines eindimensionalen Problems hergeleitet. 
+Anschliessend soll gezeigt werden, wie dieser Ansatz auf mehrere Dimensionen ausgeweitet werden könnte. 
+Die Methode wird dann angewandt, um die Differentialgleichung eines einfachen Pendels zu lösen. 
+Ein weiteres, etwas praxisnäheres Anwendungsbeispiel wird zeigen, wie mit Hilfe der PDE-Toolbox im Matlab die Spannungsverteilung im innern eines Stahlträgers ermittelt werden kann. % TODO: Citation PDE-Toolbox?
+Als Abschluss soll durch einige spezifische Anwendungsbeispiele eine Übersicht über die Bereiche, in denen die FEM eingesetzt wird, verschafft werden.

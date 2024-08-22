@@ -7,14 +7,14 @@
 % !TEX encoding = UTF-8
 %
 
-
+\usetikzlibrary{pgfplots.fillbetween}
 
 \section{Ritz-Verfahren für das Antennenproblem\label{antennen:ritzAnw}}
 
 %todo CHAPTER REFERENZ
-Wie in \ref{buch:antennen:Geom} erwähnt, konnten wir dank der Symmetrie das Problem nur auf eine Ecke abbilden. 
-Diese Ecke setze man nun geschickt wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen 
-in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren.
+Wie in \ref{antennen:Geom} erwähnt, kann dank der Symmetrie das Problem nur auf eine Ecke abgebildet werden. 
+Diese Ecke wird nun geschickt, wie in der Abbildung \ref{antennen:koordSysBsp} zu sehen, 
+in ein Koordinatensystem gesetzt, welches erlaubt das Problem genauer zu analysieren.
 %TODO bild ist weit weg  ILLEGAL
 \begin{figure}
 	\centering
@@ -24,6 +24,8 @@ in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren
 			axis lines=middle,
 			xlabel={$x$},
 			ylabel={$y$},
+			axis line style = {line width=0.5pt},
+			tick style={line width=0.5pt, black},
 			xtick={0, 1.5708, 3.14159},
 			xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 			ytick=\empty,
@@ -41,21 +43,21 @@ in ein Koordinatensystem, welches uns erlaubt das Problem genauer zu analysieren
 			\addlegendentry{Problemstellung}
 			
 			\addplot[thick, blue, dashed, domain=0:3.14159, samples=100] {1.0882345*sin(deg(x))+0.0866761*sin(3*deg(x))};
-			\addlegendentry{$y_n(x)?$}
+			\addlegendentry{Mögliches $y_n(x)$}
 		\end{axis}
 	\end{tikzpicture}
-	\caption{Problemstellung im Koordinatensystem}
+	\caption{Problemstellung im Koordinatensystem.}
 	\label{antennen:koordSysBsp}
 \end{figure}
 
-Um die Effizienz $\eta$ zu optimieren, müssen wir mit der Approximationsfunktion
-$y_n(x)$, wie im Kapitel \ref{antennen:Geom} erwähnt, die Fläche $A$ 
-maximieren und die Länge $l$ minimieren.
+Um die Effizienz $\eta$ zu optimieren, soll mit der Approximationsfunktion
+$y_n(x)$, wie in Kapitel \ref{antennen:Geom} erwähnt, die Fläche $A$ 
+maximiert und die Länge $l$ minimiert werden.
 
 \subsection{Ideale Approximationsfunktion\label{antennen:unsereApproxFunkt}}
 
 Bei diesem Problem ist zu erwarten, dass die Lösung eine glatte und symmetrische
-Funktion sein wird, somit ergibt sich
+Funktion sein wird. Somit ergibt sich
 \begin{equation}
 	y_n(x)
 	= 
@@ -65,7 +67,7 @@ Funktion sein wird, somit ergibt sich
 als ideale Approximationsfunktion. 
 
 Diese Entwicklung wird auch Sinus-Fourier Reihe genannt
-und wenn man diese für $n=2$ ausschreibt ergibt sich
+und wenn diese für $n=2$ ausgeschrieben wird, ergibt sich
 \begin{equation}
 	y_n(x)
 	=
@@ -73,16 +75,16 @@ und wenn man diese für $n=2$ ausschreibt ergibt sich
 	\label{antennen:approxFunktn2}
 \end{equation}
 als Approximationsfunktion. Im weiteren Verlauf ist $y_n(x)$ \eqref{antennen:approxFunktn2} 
-unsere endgültige Approximationsfunktion, mit der wir die Problemstellung angehen werden.
+die endgültige Approximationsfunktion, mit der die Problemstellung angegangen wird.
 
 \subsection{Nebenbedingungen von $y_n(x)$\label{antennen:nebenbedRitz}}
 
 Eine Nebenbedingung ist es, dass bei $y_n(0)$ und $y_n(\pi)$ die Funktion null sein muss.
-Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Antennenform, die wir optimieren.
+Diese Nebenbedingung ist sehr wichtig für die Stetigkeit der finalen Antennenform, die optimiert wird.
 
 Die Sinus-Fourier Reihe \eqref{antennen:unserRitz} hat eine weitere gute Eigenschaft, 
 die ersichtlich wird, wenn man das gleiche Koordinatensystem wie bei der Abbildung \ref{antennen:koordSysBsp}
-benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
+benutzt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 
 %TODO bild ist weit weg  ILLEGAL
 \begin{figure}
@@ -94,6 +96,8 @@ benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 			axis lines=middle,
 			xlabel={$x$},
 			ylabel={$y$},
+			axis line style = {line width=0.5pt},
+			tick style={line width=0.5pt, black},
 			xtick={0, 1.5708, 3.14159},
 			xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 			ytick=\empty,
@@ -111,16 +115,16 @@ benützt und $y_n(x)$ mit beispielsweise den Koeffizienten $a_1=a_2=1$ plottet.
 			\addlegendentry{Problemstellung}
 			
 			\addplot[thick, blue, dashed, domain=0:3.14159, samples=100] {sin(deg(x))+sin(3*deg(x))};
-			\addlegendentry{$y_n(x) = sin(x)+sin(3x)$}
+			\addlegendentry{$y_n(x) = \sin(x)+\sin(3x)$}
 			
-			\addplot[thick, clrGreen, dashed, domain=0:3.14159, samples=100] {sin(deg(x))};
-			\addlegendentry{$sin(x)$}
+			\addplot[thick, clrGreen, domain=0:3.14159, samples=100] {sin(deg(x))};
+			\addlegendentry{$\sin(x)$}
 			
-			\addplot[thick, orange, dashed, domain=0:3.14159, samples=100] {sin(3*deg(x))};
-			\addlegendentry{$sin(3x)$}
+			\addplot[thick, orange, domain=0:3.14159, samples=100] {sin(3*deg(x))};
+			\addlegendentry{$\sin(3x)$}
 		\end{axis}
 	\end{tikzpicture}
-	\caption{Nebenbedingungen im Koordinatensystem}
+	\caption{Nebenbedingungen im Koordinatensystem.}
 	\label{antennen:nebenbedGrafik}
 \end{figure}
 
@@ -141,11 +145,11 @@ der ungeraden Sinus-Funktionen, die Nebenbedingungen
 \em immer erfüllt \em sind. Im weiteren Verlauf werden diese 
 Nebenbedingungen somit nicht mehr beachtet.
 
-\subsection{Die Lagrangefunktion \label{antennen:lagrangeFunktionen}}
+\subsection{Die zu optimierende Funktion \label{antennen:optmFunktion}}
 
 %Die beste Fläche ist auch gerade die beste Fläche im quadrat \qed
 
-Abstrahieren wir das Problem nun ein bisschen. Anstelle der Fläche $A$, reden wir nun von 
+Abstrahieren wir das Problem nun ein bisschen. Anstelle der Fläche $A$ reden wir nun von 
 der Funktion $f$ und aus der Länge $l$ wird die Nebenbedingung $n$. 
 
 An dieser Stelle sind unsere Koeffizienten $a_k$ konkret zu bestimmen. 
@@ -172,20 +176,20 @@ Somit sind die neu erwähnten Funktionen
 \label{antennen:lagrangeNamen}
 \end{equation}
 auch in deren Abhängigkeit in \eqref{antennen:lagrangeNamen} zu sehen. Wie schon erwähnt, 
-ist das Problem hier auf 2 Koeffizienten beschränkt. 
+ist das Problem hier auf zwei Koeffizienten beschränkt. 
 
 Die Fläche unter der Kurve ergibt sich aus dem Integral der Funktion, 
-währenddessen man die Länge, also den oberen Rand der Funktion, die 
-erste Ableitung noch braucht.
+währenddessen man für die Länge, also den oberen Rand der Funktion, 
+zusätzlich die erste Ableitung auch noch braucht
 
-Die Nebenbedingung $n$ setzen wir nun gleich einer Konstanten Länge $l$
+Die Nebenbedingung $n$ setzen wir nun gleich einer konstanten Länge
 \begin{equation}
 n(a_1, a_2)
 =
 l
 \label{antennen:constNebenbed}
 \end{equation}
-und wie jede gute Nebenbedingung setzen wir diese noch gleich null
+und wie jede gute Nebenbedingung setzen wir diese noch gleich null:
 
 \begin{equation}
 \begin{aligned}
@@ -199,42 +203,51 @@ und wie jede gute Nebenbedingung setzen wir diese noch gleich null
 \label{antennen:fertigeNebenbed}
 \end{aligned}
 \end{equation}
-Nun kann man die endlichdimensionale Lagrange-Funktion
+Nun kann die zu optimierende Funktion
 
 \begin{equation}
 F(x,a_1,a_2,\lambda)
 = 
 f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
-definieren. Dazu wird die Funktion $f$ mit der Lagrange-Nebenbedingung $\lambda \: n (a_1,a_2, l)$ addiert.
+definiert werden. Dazu wird die Funktion $f$ mit der Nebenbedingung $n(a_1,a_2,l)$ und einem
+Multiplikator $\lambda$ addiert.
 
-\subsection{Lagrange-Gleichungssystem\label{antennen:lagrangeGLsys}}
+\subsection{Das endlichdimensionale Gleichungssystem\label{antennen:lagrangeGLsys}}
 
-Nun möchte man die endlichdimensionale Lagrange-Funktion $F$ ableiten und gleich 0 setzen. Das heisst in diesem Kontext
+Die Funktion $F$ möchte man nun ableiten und gleich 0 setzen. Das heisst in diesem Kontext
 den Gradienten
 
 \begin{equation}
-	\nabla F = \vec{0} \;
-	\left\{ \;
+	\nabla F 
+	=
+	\begin{pmatrix} 
+		\frac{\displaystyle\strut\partial F}{\displaystyle\strut\partial a_1} 
+		\\ 
+		\frac{\displaystyle\strut\partial F}{\displaystyle\strut\partial a_2}  
+	\end{pmatrix} 
+	= 
+	\vec{0} \Rightarrow
+	\left\{
 	\begin{aligned}
-		\frac{\partial L}{\partial a_1} = 0 \\
-		\frac{\partial L}{\partial a_2} = 0
+		\frac{\partial F}{\partial a_1} = 0 \\
+		\frac{\partial F}{\partial a_2} = 0
 	\end{aligned}
 	\right.
 	\label{antennen:lagrangeGrad}
 \end{equation}
-
 berechnen und dem Nullvektor gleichsetzen. Dabei entsteht hier ein 
-$n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed}. 
-Wobei $n$ die Anzahl der Koeffizienten ist.
+$n+1$ dimensionales Gleichungssystem aus \eqref{antennen:lagrangeGrad} und \eqref{antennen:fertigeNebenbed},
+wobei $n$ die Anzahl der Koeffizienten ist.
 
-An dieser Stelle wird ersichtlich, was diese Kapitel von den Anderen unterschiedet. Dank dem Verfahren nach Ritz konnten wir ein unendlich dimensionales
-Problem wie z.B in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandeln. 
+An dieser Stelle wird ersichtlich, was diese Kapitel von den anderen unterschiedet. Mit dem Verfahren nach Ritz  
+kann ein unendlichdimensionales
+Problem wie z. B. in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandelt werden. 
 Konkret bedeutet dies, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
 
 Das Gleichungssystem, in diesem Fall mit 
-2 Koeffizienten kann man dann als
+2 Koeffizienten, kann nun als
 \begin{equation}
 	\begin{aligned}
 		\int_0^\pi \sin (x) dx
@@ -251,100 +264,52 @@ Das Gleichungssystem, in diesem Fall mit
 	\end{aligned}
 	\label{antennen:lagrangeGradKonkret}
 \end{equation}
-ausschreiben. Zu beachten ist, dass eine Gleichung sich hier
-als trivial ausgegeben hat und somit hier ein $n$ dimensionales Gleichungssystem entsteht.
+ausgeschrieben werden. 
 
 \subsection{Das Gleichungssystem lösen\label{antennen:glSysSolve}}
 
 Ein gutes Verfahren, welches sich zur Lösung des Gleichungssystems 
-\eqref{antennen:lagrangeGradKonkret} anbietet, ist das Gradientenverfahren.
+\eqref{antennen:lagrangeGradKonkret} anbietet, ist das Gradientenverfahren. Dieses 
+iterative Verfahren eignet sich hervorragend zur Minimierung 
+einer Funktion, indem schrittweise in Richtung des steilsten Abstiegs,
+also des Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
+fortgeschritten wird. 
 
-Dieses iterative Verfahren eignet sich hervorragend zur Minimierung 
-einer Funktion, indem man schrittweise in Richtung des steilsten Abstiegs,
-also dem Gradienten aus der Gleichung \eqref{antennen:lagrangeGrad},
-fortschreitet. 
+\input{papers/antennen/fig/gradienteverfahrenFIG.tex}
 
-% TODO nicht gute position,  illegal
-\begin{figure}
-	\centering
-	\begin{tikzpicture}
-		\begin{axis}[
-			width=10cm,
-			height=8cm,
-			view={110}{40},
-			grid=major,
-			xlabel={$x$},
-			ylabel={$y$},
-			zlabel={$f(x,y)$},
-			zmin=-1,
-			zmax=5,
-			domain=-1.5:1.25,
-			y domain=-1.5:1.5,
-			colormap={invertedcool}{color(0cm)=(magenta); color(0.5cm)=(cyan)},
-			]
-			\addplot3[
-			mesh,
-			shader=interp,
-			samples=31,
-			domain=-1.5:1.25,
-			y domain=-1.5:1.5
-			] {x^2 + y^2};
-			
-			\addplot3[
-			thick,
-			darkgreen,
-			mark=*,
-			mark options={solid},
-			-stealth,
-			line join=bevel,
-			point meta=explicit symbolic,
-			nodes near coords={
-				\ifdim\coordindex pt=0pt Start\fi
-				\ifdim\coordindex pt=7pt Ende\fi
-			},
-			every node near coord/.append style={anchor=south west, color=darkgreen}
-			] coordinates {
-				(-0.5, -1, 1.25)   
-				(-0.429, -0.857, 0.918)
-				(-0.357, -0.714, 0.638)
-				(-0.286, -0.571, 0.408)
-				(-0.214, -0.429, 0.230)
-				(-0.143, -0.286, 0.102)
-				(-0.071, -0.143, 0.026)
-				(0, 0, 0)      
-			};
-		\end{axis}
-	\end{tikzpicture}
-	\caption{Gradientenverfahren auf $f(x,y)=x^2+y^2$}
-	\label{antennen:gradverfahrenBSP}
-\end{figure}
+Ein Beispiel dafür wie das Verfahren aussehen kann, wird in 
+Abbildung \ref{antennen:gradverfahrenBSP} gezeigt. Man nimmt irgendeinen Startpunkt
+und geht Schritt für Schritt in Richtung des negativen Gradienten $-\nabla f$.
+Mit der Funktion $f(x,y)=x^2+y^2$ ist dieses Verfahren recht einfach zu 
+implementieren und auszuführen.
 
-Ein Beispiel dafür wie das Verfahren aussehen kann, sieht man bei der 
-Abbildung \ref{antennen:gradverfahrenBSP}. Man nimmt irgendeinen Startpunkt
-und geht Schritt für Schritt in Richtung des $-\nabla f$. Mit der Funktion
-$f(x,y)=x^2+y^2$ ist dieses Verfahren recht einfach zu implementieren und ausführen.
-
-Dieses Verfahren kommt jedoch auch mit einigen Tücken. Wenn die Funktion sehr komplex ist
-und man die Schrittgrösse und Toleranz ungeschickt wählt, ist die Gefahr gross, dass man 
-bei \em lokalen \em Minimas stecken bleibt, obwohl ein \em globales \em gesucht ist.
+Dieses Verfahren kommt jedoch auch mit einigen Tücken. Bei komplexen Funktionen muss die 
+Schrittgrösse und Toleranz geschickt gewählt werden, da sonst die Gefahr gross ist,
+bei \em lokalen \em Minima stecken zu bleiben, obwohl ein \em globales \em Minimum gesucht ist.
 
 Da wir in unserer Arbeit ohnehin die Python-Bibliothek \texttt{SymPy} verwendet haben, 
 um symbolische Berechnungen durchzuführen und automatisch $n$ Koeffizienten zu berechnen, 
 konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe der Funktion 
 \texttt{nsolve()} lösen.
+Den Code findet der Leser unter \cite{antennen:codeKoeff}.
 
-%TODO code im github?
+\subsection{Die Lösung verstehen\label{antennen:auswertung}}
 
-\textcolor{red}{Eventuell findet man den Code auf github?}
+Die Abbildung \ref{antennen:plotskoeff} zeigt, wie sich die Lösung visuell mit mehr 
+Koeffizienten verändert. Auf der x-Achse sieht man jeweils eine beliebige Distanz von \emph{$\pi$}.
+Diese Distanz verbindet die Funktion $y_n(x)$ mit einer
+fixen Länge $l$. Wie lang die verschiedenen Längen genau sind, ist hierbei noch irrelevant.
 
-\subsection{Auswertung der Optimierung\label{antennen:auswertung}}
+Das Ergebnis ist die \emph{optimale Form} mit
+maximaler Fläche unter der Funktion. Mit mehr Koeffizienten $n$ kann die Funktion
+immer mehr Fläche aufspannen. Eine sehr interessante Länge jedoch sollte man
+genauer unter die Lupe nehmen. 
 
-Das Lösen ist eine Sache, das Verstehen des gelösten eine andere. Wie vorher erwähnt, können wir beliebig viele
-Koeffizienten der Funktion für verschiedene $l$ optimieren.
-
-Um die Abbildung \ref{antennen:plotskoeff} zu verstehen, muss man sich folgendes Setup vorstellen. 
-Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$ 
-``meter''. Diese Distanz ist jeweils auf der x-Achse dargestellt.
+Zuvor wurde in Kapitel \ref{buch:chapter:nebenbedingungen} das Problem von Dido
+behandelt, bei dem es auch darum ging, die Fläche zu \emph{maximieren} und den Umfang oder die Länge $l$ zu 
+\emph{minimieren}. 
+Dort kam eine Form mit konstanter zweiter Ableitung, also anders ausgedrückt
+der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$ der Durchmesser eines Kreises. Dieser wichtige Vergleich wird in \ref{antennen:vergleich} gemacht und genauer erläutert.
 
 % TODO nicht gute position,  illegal
 \begin{figure}
@@ -368,6 +333,8 @@ Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -394,6 +361,8 @@ Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -422,6 +391,8 @@ Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -448,6 +419,8 @@ Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$
 				axis lines=middle,
 				xlabel={$x$},
 				ylabel={$y$},
+				axis line style = {line width=0.5pt},
+				tick style={line width=0.5pt, black},
 				xtick={0, 1.5708, 3.14159},
 				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
 				ytick={0, 1, 2, 3},
@@ -461,82 +434,25 @@ Man lege eine arbiträre Distanz fest, hier von Anfang bis Ende $\pi$
 		\end{tikzpicture}
 	\end{subfigure}
 	
-	\caption{Verschiedene Längen $l$ für $y_n(x)$ mit verschieden vielen Koeffizienten}
+	\caption{Verschiedene Längen $l$ für $y_n(x)$ mit verschieden vielen Koeffizienten.}
 	\label{antennen:plotskoeff}
 \end{figure}
 
-Dann nehme man verschiedene \emph{Seillängen} $l$, welche in
-\eqref{antennen:constNebenbed} als konstant definiert waren.
-Als Seil kann man sich die jeweilige Funktionslösung vorstellen.
-Das Ergebnis ist dann die \emph{optimale Form} mit
-maximaler Fläche unter dem Seil für verschiedene \emph{Seillängen}.
+\subsection{Vergleich mit der exakten Lösung\label{antennen:vergleich}}
 
-Mit mehr Koeffizienten $n$ kann die Funktion, also die Art wie das Seil gelegt wird, immer mehr Fläche aufspannen. Eine sehr interessante \emph{Seillänge} sollte man jedoch genauer unter die Lupe nehmen.
+Die Abbildung \ref{antennen:vergleichKreis} vergleicht unsere Lösung\footnotemark{}, also die 
+Funktion $y_n(x)$ optimiert für den halben Kreisumfang eines Kreises mit Durchmesser $\pi$. 
+Einfacher ausgedrückt $l=\frac{\pi^2}{2}$.
 
-Es wurde nun schon oft wie im Kapitel \ref{buch:chapter:nebenbedingungen}
-erwähnt, dass wir die Fläche \emph{maximieren} und den Umfang, wie bei dem Problem von Dido \emph{minimieren} möchten. 
-
-Dort kam eine Form, mit konstanter zweiter Ableitung, also anders ausgedrückt
-der Kreis, als Lösung hervor. Somit ist die für uns interessante \emph{Seillänge} $l$, der Durchmesser eines Kreises. Genau diesen wichtigen Vergleich sieht man in der Abbildung \ref{antennen:vergleichKreis}. 
-
-\subsection{Vergleich mit perfekten Lösung\label{antennen:vergleich}}
-
-Das Seil ist in diesem Kontext wieder die Funktion $y_n(x)$. In der Abbildung \ref{antennen:vergleichKreis} sogar mit 8 Koeffizienten, für eine Länge $l$ des halben
-Kreisumfangs eines Kreises mit Durchmesser $\pi$. Einfacher
-ausgedrückt $l=\frac{\pi^2}{2}$.
+\footnotetext{Das ausrechnen der acht Koeffizienten mit dem Python-Skript \cite{antennen:codeKoeff}
+dauerte je nach Maschine und Anfangswerte, 5 bis 10 Minuten.}
 
 Man sieht hier schon recht gut, dass $y_n(x)$ der
-perfekten Lösung, dem Kreis, konvergiert. Dies ist
-natürlich kein wasserfester Beweis, hier aber völlig
+exakten Lösung, dem Kreis, konvergiert. Dies ist
+natürlich kein wasserfester Beweis, hier aber völlig  
 ausreichend. 
 
-% TODO in packages hinzufügen
-\usetikzlibrary{pgfplots.fillbetween}
-
-\begin{figure}
-	\centering
-	\begin{tikzpicture}
-		\begin{axis}[
-			axis lines=middle,
-			xlabel=$x$,
-			ylabel=$y$,
-			xmin=0, xmax=3.14159, 
-			xtick={0, 1.5708, 3.14159}, 
-			xticklabels={0, $\frac{\pi}{2}$, $\pi$},
-			axis equal=true, 
-			every axis plot/.append style={thick}
-			]
-			\addplot[
-			domain=0:3.14159,
-			samples=200,
-			red
-			] 
-			{1.7956133389*sin(deg(x)) + 0.28393414605*sin(deg(3*x)) + 0.117828104002*sin(deg(5*x)) + 0.0625789829*sin(deg(7*x)) + 0.036466961219*sin(deg(9*x))};
-			
-			\addplot[name path=F, domain=0:3.14159, samples=200, blue]
-			{sqrt(1.5708^2-(x-1.5708)^2)};
-			
-			\path[name path=axis] (axis cs:0,0) -- (axis cs:3.14159,0);
-			
-			\addplot [
-			thick,
-			color=blue,
-			fill=blue, 
-			fill opacity=0.5,
-			pattern=dots,
-			pattern color=blue
-			]
-			fill between[
-			of=F and axis,
-			soft clip={domain=0:3.14159},
-			split, 
-			];
-		\end{axis}
-	\end{tikzpicture}
-	\caption{$y_n(x)$ mit 8 Koeffizienten verglichen mit einem Kreis mit Durchmesser $\pi$}
-	\label{antennen:vergleichKreis}
-\end{figure}
-
+\input{papers/antennen/fig/koeffVergleichKreisFIG.tex}
 
 
 

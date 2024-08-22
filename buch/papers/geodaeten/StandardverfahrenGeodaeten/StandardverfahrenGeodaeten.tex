@@ -1,0 +1,50 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Standardverfahren für Geodätenlinien
+\label{geodaeten:section:Standardverfahren}}
+\rhead{Standardverfahren für Geodätenlinien}
+
+Mit den Linienelementen und dem metrischen Tensor kann nun das Funktional für die Variation
+\begin{equation}
+	L = \int_T \sqrt{g_{ij} \dot{u}^i \dot{u}^j} dt
+\end{equation}
+
+als integral des zu minimierenden Weges aufgestellt werden.
+Das verwenden des Raum spezifischen metrischen Tensors ermöglicht, diese allgemeine Formel für jede Art von Raum anzuwenden.
+Daher der Name Standardverfahren.
+Die Herleitung der Differentialgleichung ist hier zweitrangig und zunächst soll sie mittels einiger Beispiele veranschaulicht werden (Abschnitt \ref{geodaeten:section:StandardverfahrenBeispiele}).
+Daher hier die Lösung des Funktionales, ohne Herleitung, welche die Geodäten-Differentialgleichung
+\begin{equation}
+	\ddot{u}^k + \Gamma_{ij}^k \dot{u}^i \dot{u}^j = 0 ,
+	\label{geodaeten:equation:Standardverfahren:Geodaetengleichung}
+\end{equation}
+
+ergibt.
+Diese allgemeine Geodätengleichung kann schließlich nach der Funktion des kürzesten Weges $u(t)$ aufgelöst werden.
+
+Die Geodätengleichung beinhaltet die Christophsymbole $\Gamma_{ij}^k$, welche mithilfe des metrischen Tensors berechnet werden können als
+\begin{equation}
+	\Gamma_{ij}^k = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right) .
+	\label{geodaeten:equation:Standardverfahren:Christophsymbole}
+\end{equation}
+
+Die Christophsymbole beschreiben, wie sich ein Raum in die Richtung einer Dimension ändert.
+Der kürzeste Weg ist immer eine Gerade.
+Für unterschiedlichen Räume hat eine Gerade jedoch immer eine andere Form.
+Die Christophsymbole können als Korrekturfaktor der geraden, abhängig vom Raum interpretiert werden.
+Mit den Christophsymbole können außerdem Aussagen über die Krümmung eines Raumes gemacht werden.
+Sind die Christophsymbole gleich Null herrscht im zugehörigen Raum keine Krümmung. 
+Eine Gerade bleibt eine Gerade (Abschnitt \ref{geodaeten:section:StandardverfahrenBeispiele}).
+
+\section{Beispiele zum Standardverfahren 
+\label{geodaeten:section:StandardverfahrenBeispiele}}
+
+\input{papers/geodaeten/StandardverfahrenGeodaeten/StaKartesisch.tex}
+\input{papers/geodaeten/StandardverfahrenGeodaeten/StaZylinder.tex}
+\input{papers/geodaeten/StandardverfahrenGeodaeten/StaKugel.tex}
