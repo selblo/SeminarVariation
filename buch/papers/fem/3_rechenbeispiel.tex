@@ -12,19 +12,19 @@
 Als Beispiel wurde die Differentialgleichung eines einfachen Pendels gelöst. % TODO: evtl. Ref. zu Kap. Doppelpendel
 Diese lässt sich aus dem Term
 \begin{equation}
-    E_{kin} = \frac{1}{2} m l^2 {\theta'}^2,
+    E_{\text{kin}} = \frac{1}{2} m l^2 {\theta'}^2,
 \end{equation}
 der die kinetische Energie des Systems beschreibt, und dem Term
 \begin{equation}
-    E_{pot} = m g l (1 - \cos \theta),
+    E_{\text{pot}} = m g l (1 - \cos \theta),
 \end{equation}
 der die potentielle Energie des Systems beschreibt, herleiten. 
 Diese Terme zusammengesetzt ergeben die Lagrange-Funktion
 \begin{equation}
-    \ell = \frac{1}{2} m l^2 {\theta'}^2 - m g l (1 - \cos \theta),
+    L = \frac{1}{2} m l^2 {\theta'}^2 - m g l (1 - \cos \theta),
 \end{equation}
 welche minimiert werden soll.
-Die Ableitung dieser sollte also Null ergeben:
+Die Euler-Lagrange-Differenzialgleichung dieser sollte also Null ergeben:
 \begin{equation}
     \theta'' + \frac{g}{l} \sin \theta = 0.
 \end{equation}
@@ -34,7 +34,7 @@ Da wir mit dem bisher behandelten Vorgehen nur lineare Differentialgleichungen l
     \sin \theta \approx \theta
 \end{equation}
 verwendet. % TODO: währe es möglich, nichtlineare DGLs zu lösen?
-Dies hat jedoch leider zur Folge, dass unsere Lösung nur für kleine $\theta$ (ungefär $\theta < 15 \deg$) gut stimmen wird.
+Dies hat jedoch leider zur Folge, dass unsere Lösung nur für kleine $\theta$ (ungefähr $\theta < 15 \deg$) gut stimmen wird.
 
 Die Differentialgleichung, die es zu lösen gilt, ist also
 \begin{equation}
@@ -86,9 +86,10 @@ und
     \end{array} \right. .
 \end{equation}
 
+% TODO: Insert Immage
 Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei Fällen unterschieden werden:
 \begin{itemize}
-    \item[$i = j$:] Volle überlappung der Formfunktion: Die Formfunktion wird quadriert und integriert. 
+    \item[$i = j$:] Volle Überlappung der Formfunktion: Die Formfunktion wird quadriert und integriert. 
     \item[$\abs{i - j} = 1$:] Die beiden Elemente grenzen aneinander: Es wird über das Produkt der beiden Formfunktionen integriert.
     \item[$\abs{i - j} > 1$:] Die beiden Elemente grenzen nicht aneinander: Die Formfunktionen überlappen nicht, das Integral über das Produkt ist also null.
 \end{itemize}

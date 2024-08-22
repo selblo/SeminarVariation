@@ -6,9 +6,9 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Erweiterung nD\label{fem:erweiterung_nD}}
+\section{Erweiterung auf $n$ Dimensionen\label{fem:erweiterung_nD}}
 \kopfrechts{Erweiterung nD}
-Um das in einer Dimension erarbeitete Prinzip auf höhere Dimensionen auszuweiten, muss zum einen stat über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden -
+Um das in einer Dimension erarbeitete Prinzip auf höhere Dimensionen auszuweiten, muss zum einen statt über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden ---
 aus 
 \begin{equation}
     \int_{l} u(x) \cdot v(x) \diff x
@@ -18,13 +18,13 @@ wird also
     \int_{\Omega} u(\vec{x}) \cdot v(\vec{x}) \diff \vec{x}.
 \end{equation}
 
-Zum zum anderen werden die Ableitungen durch Gradienten ersetzt - 
+Zum anderen werden die Ableitungen durch Gradienten ersetzt ---
 \begin{equation}
     \int_{l} f'(x) \cdot v'(x) \diff x
 \end{equation}
 wird zu
 \begin{equation}
-    \int_{\Omega} \Delta f(\vec{x}) \cdot \Delta v(\vec{x}) \diff \vec{x}.
+    \int_{\Omega} \nabla f(\vec{x}) \cdot \nabla v(\vec{x}) \diff \vec{x}.
 \end{equation}
 
 
@@ -34,14 +34,14 @@ Diese Punkte werden Elemente genannt und jeweils mit den nächstgelegenen Nachba
 Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix "möglichst diagonal" wird. % TODO: Tönt schlecht... Gibt sicher ein Name für dieses Problem -> Fussnote
 Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung TODO: \ref{} resultieren. % TODO: Bild einfügen
 
-Zum befüllen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
+Zum Befüllen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
 Für $\mathbf{L}$ gilt
 \begin{equation}
     l_{ij} = \int_{\Omega} a_i(\vec{x}) \cdot a_j(\vec{x}) \diff \vec{x},
 \end{equation}
 während für $\mathbf{M}$ 
 \begin{equation}
-    m_{ij} = \int_{\Omega} \Delta a_i(\vec{x}) \cdot \Delta a_j(\vec{x}) \diff \vec{x},
+    m_{ij} = \int_{\Omega} \nabla a_i(\vec{x}) \cdot \nabla a_j(\vec{x}) \diff \vec{x},
 \end{equation}
 eingesetzt werden muss.
 
