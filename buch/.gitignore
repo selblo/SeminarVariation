@@ -8,3 +8,5 @@ buch.idx
 buch.run.xml
 buch.toc
 buch.synctex.gz
+buch.fls
+buch.fdb_latexmk
