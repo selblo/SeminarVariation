@@ -30,6 +30,15 @@ mit unendlicher Geschwindigkeit in alle Teile des Körpers ausbreitet.
 \subsection{Koordinatentransformationen 
 \label{relativ:section:koordtrafo}}
 
+Koordinatentransformationen werden benutzt,
+um Koordinaten aus einem Bezugssystem in diejenigen eines anderen Bezugssystems umzurechnen.
+In der Physik dienen sie besipielsweise dazu,
+ein System oder einen Vorgang aus einer anderen Perspektive bzw.
+von einem anderen Refernzpunkt aus zu beschreiben.
+
+\subsubsection{Galilei-Transformation 
+\label{relativ:section:galilei-trafo}}
+
 In der klassischen Mechanik gibt es die folgenden,
 intuitiven Transformationen, um zwischen verschiedenen Bezugssystemen
 zu vergleichen:
@@ -39,18 +48,29 @@ zu vergleichen:
     &\text{Translation im Raum: } && \vec{r} \rightarrow \vec{r} + \vec{a} \\
     &\text{Orthogonale Drehung: } && \vec{r} \rightarrow A \vec{r} \\
     &\text{Transformation auf ein Bezugssystem mit Relativgeschwindigkeit: } && \vec{r} \rightarrow \vec{r} + \vec{v} \cdot t
-\end{aligned}.
+\end{aligned}
 \]
 
 Eine Kombination aus diesen Transformationen wird als Galilei-Transformation bezeichnet.
+\todo{Abbildung Galilei-Transformation}
+
+\subsubsection{Lorentz-Transformation 
+\label{relativ:section:lorentz-trafo}}
 
 In der relativistischen Mechanik muss man sich hingegen der Lorentz-Transformation bedienen,
 welche eine Erweiterung der Galilei-Transformation darstellt
-und wesentlich kompliziertere Formeln annehmen kann. Besipielsweise beschreibt
+und wesentlich kompliziertere Formeln annehmen kann.
+Besipielsweise ergeben sich die Transformation von einem
+Bezugssystem \(K\) in ein anderes System \(K'\),
+welches sich entlang der \(x\)-Achse mit der Geschwindigkeit \(V\)
+relativ zu \(K\) bewegt, die folgenden Gleichungen
 \begin{equation}
-    t = \frac{t' + \frac{V}{c^2}x'}{\sqrt{1-\frac{V^2}{c^2}}}
+    x = \frac{x' + V t'}{\sqrt{1 - \frac{V^2}{c^2}}}, \quad
+    y = y', \quad
+    z = z', \quad
+    t = \frac{t' + \frac{V}{c^2}x'}{\sqrt{1-\frac{V^2}{c^2}}}.
 \end{equation}
-die Umrechnung der Zeit bei einer Bewegung mit konstanter Geschwindigkeit \(V\).\todo{Diese Aussage überprüfen.}
+\todo{Abbildung Lorentz-Transformation}
 
 
 \subsection{Der Abstand 
@@ -73,7 +93,8 @@ welcher abenfalls für verschiedene Bezugssysteme identisch ist.
 \subsection{Die Eigenzeit 
 \label{relativ:section:eigenzeit}}
 
-Angenommen, wir beobachten eine Uhr, welche sich um die Strecke
+Angenommen, wir beobachten eine Uhr,
+welche sich in unserem Koordinatensystem um die Strecke
 \(\sqrt{dx^2 + dy^2 + dz^2}\)
 bewegt.
 Im Koordinatensystem der Uhr gilt
@@ -83,4 +104,24 @@ Gemäss der Invarianz des Abstands gilt somit
     \underbrace{ds^2 = c^2 dt^2 - dx^2 - dy^2 - dz^2}_{\text{Unser Koordinatensystem}}
         = \underbrace{ds'^2 = c^2 dt'^2}_{\text{Koordinatensystem der Uhr}} .
 \end{equation*}
-\todo{Diesen Abschnitt vollenden.}
+Wird dieser Ausruck nach dem Differential der Zeit im System der Uhr aufgelöst,
+so folgt
+\begin{equation}
+    dt' = \frac{ds}{c} = \frac{ds'}{c}
+    = dt \sqrt{1 - \frac{dx^2+dy^2+dz^2}{c^2 dt^2}}
+    = dt \sqrt{1 - \frac{v^2}{c^2}}.
+\end{equation}
+Dieses Zeitdifferntial kann nun zur Zeitdifferenz
+\begin{equation}
+    t_2' - t_1' = \int_{t_1}^{t_2} dt \sqrt{1 - \frac{v^2}{c^2}}
+\end{equation}
+integriert werden.
+Das ist nun die Zeit, die von der bewegten Uhr gemessen wird.
+Eine solche Zeit, welche von einer Uhr,
+welche sich mit einem Gegenstand mitbewegt, gemessen wird,
+nennt man \emph{Eigenzeit}.
+Durch den Ausdruck unter der Wurzel wird auch klar,
+dass die Zeitdifferenz \(t_2'- t_1'\) kleiner ist
+als \(t_2 - t_1\) im Refernzsystem.
+Daher kommt auch der Ausdruck
+``bewegte Uhren gehen langsamer''.
