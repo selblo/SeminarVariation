@@ -1,0 +1,114 @@
+%
+% teil2.tex -- Beispiel-File für teil2 
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Bildliche Darstellung der Flussüberquerung
+\label{schwimmen:section:bildliche_darstellung}}
+\rhead{Teil 2}
+
+
+
+Die Gleichung \ref{eq:angle} beschreibt den Winkel, den man schwimmen sollte, um die optimale Flussüberquerung zu erreichen. Die beiden Schwimmgeschwindigkeiten \(c_y\) und \(c_x\) sind durch den Satz des Pythagoras miteinander verknüpft. Es ist definiert, dass die schwimmende Person durch ihre Schwimmleistung bzw. Schwimmkraft limitiert ist. Um diese Limitation zu berücksichtigen, wird festgelegt, dass die schwimmende Person nicht mehr Kraft hat, als sich mit der Geschwindigkeit \(v\) in ruhigem Wasser fortzubewegen. Durch diese Definition folgt, dass
+\begin{equation}
+    v^2 = c_y^2 + c_x^2
+\end{equation}
+gilt. Die Geschwindigkeit \(c_y\), die der Geschwindigkeit in Flussrichtung entspricht, ist äquivalent zur Strömungsgeschwindigkeit \(u\), da die Person auf der anderen Uferseite auf gleicher Höhe ankommen muss. In Abbildung \ref{fig:river_pfrofiles} sind die besten Schwimmmöglichkeiten dargestellt, um das andere Ufer zu erreichen. Das in Abbildung \ref{fig:sin_velocity} dargestellte Profil ist das realistischste und entspricht am ehesten den Gegebenheiten eines Flusses. Die anderen Flussprofile dienen der Veranschaulichung von Gedankenexperimenten.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{Grafiken/strait.png}	
+        \caption{Stillstehender Fluss \newline}
+        \label{fig:no_velocity}
+    \end{subfigure}
+    \hfill  
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{Grafiken/diagoal.png}	
+        \caption{Diagonales Flussgeschwindigkeitsprofil}
+        \label{fig:diagonal_velocity}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{Grafiken/squard.png}	
+        \caption{Quadratisches Flussgeschwindigkeitsprofil}
+        \label{fig:squerd_velocity}
+    \end{subfigure}
+    \hfill  
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{Grafiken/sin.png}	
+        \caption{Sinusförmiges Flussgeschwindigkeitsprofil}
+        \label{fig:sin_velocity}
+    \end{subfigure}
+    \par\bigskip
+    \caption{Die vier Grafiken stellen jeweils einen Fluss mit dem entsprechenden Flussgeschwindigkeitsprofil in Orange und dem Schwimmwinkel in Blau dar. Es ist zu beachten, dass die Flussströmung von unten nach oben verläuft. Der Winkel ist so zu interpretieren, dass je flacher er verläuft (in \(x\)-Richtung), desto geradliniger bewegt man sich auf die andere Uferseite zu.}
+    \label{fig:river_pfrofiles}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Die Gleichung \ref{eq:angle} beschreibt den Winkel den man schwimmen sollte für die optimale Flussüberquerung. Die beiden Schwimmgeschwindigkeiten \(c_y\) und \(c_x\) sind von einander über den Satz des Pythagorases abhängig. Es ist definiert das der Mensch durch seine schwimmleistung bzw. schwimmkaraft limitiert ist. Um diese Limitation beizubehalten definiert man das der Mensch nicht mehr Kraft hat als sich mit der Geschwindigkeit \(v\) fortzubewegen (schwimmen). Durch diese Definition folgt das 
+% \begin{equation}
+%     v^2=c_y^2+c_x^2
+% \end{equation}
+% ist. Die \(c_y\) Geschwindigkeit die der Geschwindigkeit in Flussrichtung entspricht ist equivalent zur Strömungsgeschwindigkeit \(u\) da man auf der anderen Uferseite auf gleicher Höhe sein muss. In Abbildung \ref{fig:river_pfrofiles} siht man die besten schwimmmöglichkeiten um das andere Ufer zu erreichen. Das in \ref{fig:sin_velocity} dargestelle Profiel ist das realistischte übereinstimmende Profiel mit einem Fluss. Die anderen Flussprofiele dienen meist der Gedankenstütze.
+
+
+
+% \begin{figure}[h]
+%     \centering
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=1\textwidth]{Grafiken/strait.png}	
+%         \caption{Stillstehender Fluss \newline}
+%         \label{fig:no_velocity}
+%     \end{subfigure}
+%     \hfill  
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=1\textwidth]{Grafiken/diagoal.png}	
+%         \caption{Diagonales Flussgeschwindigkeitsprofil}
+%         \label{fig:diagonal_velocity}
+%     \end{subfigure}
+%     \par\bigskip
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=1\textwidth]{Grafiken/squard.png}	
+%         \caption{Quadratisches Flussgeschwindigkeitsprofil}
+%         \label{fig:squerd_velocity}
+%     \end{subfigure}
+%     \hfill  
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=1\textwidth]{Grafiken/sin.png}	
+%         \caption{Sinusförmiges Flussgeschwindigkeitsprofil}
+%         \label{fig:sin_velocity}
+%     \end{subfigure}
+%     \par\bigskip
+%     \caption{Die vier Graphiken stellen immer einen Fluss dar mit dem jeweiligen Flussgeschwindigkeitsprofil in oragne und dem Schwimmwinkel in Blau. Es sei zu beachten das die Flussströmung von unten nach oben geht. Der Winkel ist so zu intepretieren das je Flächer (x Verhalten) er hat je gräder begiebt man sich auf die andere Uferseit}
+%     \label{fig:river_pfrofiles}
+% \end{figure}
