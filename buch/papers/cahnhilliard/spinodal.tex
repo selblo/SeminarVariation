@@ -59,10 +59,19 @@ bei der kleine Fluktuationen in der Konzentration zu einer Trennung der Phasen f
 \begin{figure}
 \centering
 \foreach \n [count=\xi] \i in {0,5,10,15,25,50,80,130,300,1500,70000}{
-\subfigure[$t = \i\,\tau$]{
-\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/ch_sim/\i.pdf}
-}}
-\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+%\subfigure[$t = \i\,\tau$]{
+%\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/ch_sim/\i.pdf}
+%}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{papers/cahnhilliard/presentation/images/ch_sim/\i.pdf}
+\caption{$t = \i\,\tau$}
+\end{subfigure}
+}
+%\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}
+\caption{Farbskala}
+\end{subfigure}
 \caption[Simulation der Cahn-Hilliard-Gleichung]{%
 Simulation der Cahn-Hilliard-Gleichung und Entwicklung von $c(x,t)$ über einen langen Zeitraum.}
 \label{cahnhilliard:fig:chsim}
@@ -288,32 +297,66 @@ wie das Rühren, eine wesentliche Rolle bei der Herstellung von Emulsionen spiel
 
 \begin{figure}
 \centering
-\subfigure[Anfangsbedingung]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[Anfangsbedingung]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/initial.pdf}
+%\label{cahnhilliard:subfig:initial}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/initial.pdf}
+\caption{Anfangsbedingung
 \label{cahnhilliard:subfig:initial}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ sehr klein]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ sehr klein]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/very_weak.pdf}
+%\label{cahnhilliard:subfig:vweak}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/very_weak.pdf}
+\caption{$\alpha$ sehr klein
 \label{cahnhilliard:subfig:vweak}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ klein]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ klein]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/weak.pdf}
+%\label{cahnhilliard:subfig:weak}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/weak.pdf}
+\caption{$\alpha$ klein
 \label{cahnhilliard:subfig:weak}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ moderat]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ moderat]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/nearly.pdf}
+%\label{cahnhilliard:subfig:nearly}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/nearly.pdf}
+\caption{$\alpha$ moderat
 \label{cahnhilliard:subfig:nearly}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ gross]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ gross]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/strong.pdf}
+%\label{cahnhilliard:subfig:strong}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/strong.pdf}
+\caption{$\alpha$ gross
 \label{cahnhilliard:subfig:strong}}
+\end{subfigure}
 %
-\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+%\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}
+\caption{Farbskala}
+\end{subfigure}
 \caption[Simulation der angepassten Cahn-Hilliard-Gleichung]{%
 Anfangsbedingung $c(x,0)$ und
 Simulationsresultate $c(x,1000\tau)$ von \eqref{cahnhilliard:acheq}
