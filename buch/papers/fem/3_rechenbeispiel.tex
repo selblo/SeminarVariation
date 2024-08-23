@@ -90,8 +90,8 @@ und
 Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei Fällen unterschieden werden:
 \begin{itemize}
     \item[$i = j$:] Volle Überlappung der Formfunktion: Die Formfunktion wird quadriert und integriert. 
-    \item[$\abs{i - j} = 1$:] Die beiden Elemente grenzen aneinander: Es wird über das Produkt der beiden Formfunktionen integriert.
-    \item[$\abs{i - j} > 1$:] Die beiden Elemente grenzen nicht aneinander: Die Formfunktionen überlappen nicht, das Integral über das Produkt ist also null.
+    \item[$|i - j| = 1$:] Die beiden Elemente grenzen aneinander: Es wird über das Produkt der beiden Formfunktionen integriert.
+    \item[$|i - j| > 1$:] Die beiden Elemente grenzen nicht aneinander: Die Formfunktionen überlappen nicht, das Integral über das Produkt ist also null.
 \end{itemize}
 Im Mehrdimensionalen müsste anhand des Graphen ermittelt werden, ob zwei Elemente nebeneinander liegen oder nicht.
 
@@ -112,7 +112,7 @@ Für das Integral über die Ableitungen der Formfunktionen resultiert
 \end{equation}
 da $a_1'(t)= \frac{1}{\Delta t} \ \mbox{wenn} \ 0 \leq t < \Delta t$.
 
-\subsubsection{Benachbarte Elemente ($\abs{i - j} = 1$)}
+\subsubsection{Benachbarte Elemente ($|i - j| = 1$)}
 Auch hier reicht es aus, eines der Integrale zu berechnen. 
 Gewählt wurden ebenfalls aufgrund der einfachen Formfunktionen die Funktionen $a_0(t) = 1 - \frac{t}{\Delta t}$ und $a_1(t) = \frac{t}{\Delta t}$.
 Es resultiert
@@ -135,7 +135,7 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also:
         &=  \left\{ 
                 \begin{array}{ll}
                     - \frac{2}{\Delta t} + \frac{2g}{3l} \Delta t & \mbox{für} i = j \\
-                    \frac{1}{\Delta t} + \frac{g}{6l} \Delta t & \mbox{für} \abs{i - j} = 1 \\
+                    \frac{1}{\Delta t} + \frac{g}{6l} \Delta t & \mbox{für} |i - j| = 1 \\
                     0 & \mbox{sonst}
                 \end{array} 
             \right.
