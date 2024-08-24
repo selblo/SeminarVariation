@@ -9,7 +9,6 @@
 \subsection{Kugel\label{geodaeten:section:Standardverfahren:Kugel}}
 \rhead{Standardverfahren Beispiele}
 
-In diesem Abschnitt werden wir die Geodätengleichungen für eine Kugeloberfläche herleiten und lösen.
 Intuitiv erwarten wir, dass die Geodäten auf der Kugeloberfläche Grosskreise sind.
 Ein Grosskreis ist der geradlinigste Weg zwischen zwei Punkten auf einer Kugel.
 Dies lässt sich vorstellen, indem man zwei Nadeln in eine Kugeloberfläche steckt und einen Faden um die beiden Nadeln spannt.
@@ -53,17 +52,17 @@ Nach Einsetzen der Werte und Vereinfachung erhalten wir folgende nicht-verschwin
 	\Gamma_{12}^2 = \Gamma_{21}^2 = \cot\theta \quad \text{und} \quad \Gamma_{22}^1 = -\sin\theta \cos\theta.
 \end{equation}
 
-Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von den Koordinaten ($\theta$) zu nicht-verschwindenden Christoffel-Symbol, die die intrinsische Krümmung der Kugeloberfläche beschreiben.
+Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von den Koordinaten ($\theta$) zu nicht-verschwindenden Christoffel-Symbolen, welche die intrinsische Krümmung der Kugeloberfläche beschreiben.
 
 Um diese Krümmung zu verstehen, betrachten wir die Geometrie entlang unterschiedlicher Wege.
-Bewegt man einen Vektor entlang des Äquators, bleibt seine Richtung relativ zur Kugeloberfläche konstant, da das Bogenmaß von $\phi$ am Äquator unverändert bleibt.
+Bewegt man einen Vektor entlang eines Breitengrades, bleibt seine Richtung relativ zur Kugeloberfläche konstant, da das Bogenmaß von $\phi$ am Äquator unverändert bleibt.
 Entlang eines Längengrads hingegen ändert sich die Richtung des Vektors, da das Bogenmaß von $\phi$ mit $\theta$ variiert.
 Je näher man den Polen kommt, desto kürzer wird der Bogen für eine gegebene Änderung von $\phi$, was zu einer Änderung der Vektorrichtung führt.
 
-Diese Veränderung der Vektorrichtung ist eine Folge der Krümmung der Kugeloberfläche.
-Die nicht-verschwindenden Christoffel-Symbol beschreiben diese Krümmung und zeigen an, wie sich die Richtung eines Vektors während des Transports entlang der Oberfläche ändert.
+Diese Veränderung der Vektorrichtung ist eine Folge der intrinsischen Krümmung der Kugeloberfläche.
+Die nicht-verschwindenden Christoffel-Symbole beschreiben diese Krümmung und zeigen an, wie sich die Richtung eines Vektors während des Transports entlang der Oberfläche ändert.
 
-Mit den berechneten Christoffel-Symbol können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
+Mit den berechneten Christoffel-Symbolen können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
 
 Die allgemeine Form der Geodätengleichung lautet:
 \begin{equation}
@@ -71,14 +70,14 @@ Die allgemeine Form der Geodätengleichung lautet:
 \end{equation}
 wobei $u^k$ die Koordinaten darstellen, in diesem Fall $\theta$ und $\phi$.
 
-Setzen wir die entsprechenden Christoffel-Symbol und Koordinaten in die Gleichungen ein, erhalten wir:
+Setzen wir die entsprechenden Christoffel-Symbole und Koordinaten in die Gleichungen ein, erhalten wir:
 \begin{equation}
 	\begin{aligned} 
 		0 &= \ddot{\theta} + \Gamma^1_{11} \dot{\theta} \dot{\theta} + 2\Gamma^1_{12} \dot{\theta}\dot{\phi} + \Gamma^1_{22} \dot{\phi} \dot{\phi} \\
 		0 &= \ddot{\phi} + \Gamma^2_{11} \dot{\theta} \dot{\theta} + 2\Gamma^2_{12} \dot{\theta}\dot{\phi} + \Gamma^2_{22} \dot{\phi} \dot{\phi}
 	\end{aligned}
 \end{equation}
-Da einige der Christoffel-Symbol Null sind, vereinfachen sich Geodätengleichung zu:
+Da einige der Christoffel-Symbole Null sind, vereinfachen sich Geodätengleichung zu:
 \begin{align}
 	0 &= \ddot{\theta} - \sin\theta \cos\theta \, \dot{\phi}^2 \\
 	0 &= \ddot{\phi} + 2 \cot\theta \, \dot{\theta} \dot{\phi}
@@ -113,6 +112,6 @@ Damit sind alle Längengrade tatsächlich Geodäten.
 
 Zusammenfassend konnten wir durch unsere Analyse zeigen, dass nur Grosskreise, wie der Äquator und die Längengrade, die Geodätengleichungen vollständig erfüllen und somit die wahren Geodäten auf der Kugeloberfläche darstellen.
 
-Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleichungen $\theta(t)$ und $\phi(t)$ in Abhängigkeit vom Zeitparameter $t$ zwangsläufig die Form von Grosskreisen annehmen müssen und dass das Standardverfahren diese Grosskreise korrekt als die Geodäten auf der Kugeloberfläche identifiziert.
+Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleichungen $\theta(t)$ und $\phi(t)$ in Abhängigkeit vom Zeitparameter $t$ zwangsläufig die Form von Grosskreisen annehmen müssen und dass die allgemeinen Geodätengleichung diese Grosskreise korrekt als die Geodäten auf der Kugeloberfläche identifiziert.
 
 

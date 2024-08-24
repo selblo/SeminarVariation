@@ -14,17 +14,24 @@ Was auf den ersten Blick für sogenannte ``Flat-Earther" ein schwieriges Konzept
 Zoomt man nahe genug an die Erdoberfläche heran, verschwinden die Krümmungen, und Abstände lassen sich nahezu wie in einem euklidischen Raum berechnen.
 
 In Kugelkoordinaten beschreibt $r$ den Abstand eines Punktes vom Zentrum der Kugel (Radius), $\theta$ den Winkel zur $z$-Achse (Polarwinkel), und $\phi$ den Winkel in der $x$-$y$-Ebene (Azimutwinkel).
-Diese Parameter definieren die Position eines Punktes auf der Kugeloberfläche eindeutig, wie in der Abbildung dargestellt.
+Diese Parameter definieren die Position eines Punktes auf der Kugeloberfläche eindeutig, wie in der Abbildung [\ref{geodaeten:figure:Linienelemente:Kugelkoordinaten:Kugelkoordinaten}] dargestellt.
 
 Da wir uns auf der Oberfläche der Kugel befinden, bleibt $r$ konstant, und wir betrachten nur die Winkel $\theta$ und $\phi$.
 Wenn ein Punkt nun um einen infinitesimalen Abstand auf der Kugeloberfläche verschoben wird, entstehen Verschiebungen entlang der zugehörigen Basisvektoren:
-$r \, d\theta$ für die Breitenrichtung und $r \sin\theta \, d\phi$ für die Längsrichtung.
+\begin{equation}
+	$r \, d\theta$ 
+\end{equation}
+für die Breitenrichtung und
+\begin{equation}
+	$r \sin\theta \, d\phi$ 
+\end{equation} 
+für die Längsrichtung.
 
-Weil lokal gerechnet werden kann wie in einem euklidischen Raum, ergibt sich der Abstand zwischen zwei Punkten auf der Kugeloberfläche durch die Anwendung des Pythagoras auf die jeweiligen infinetsimalen Verschiebungen entlang der Basisvektoren.
+Weil lokal gerechnet werden kann wie in einem euklidischen Raum, ergibt sich der Abstand zwischen zwei Punkten auf der Kugeloberfläche durch die Anwendung des Pythagoras auf diese jeweiligen infinetsimalen Verschiebungen.
 
 Das Linienelement $ds$ für die Oberfläche der Kugel kann daher als
 \begin{equation}
-ds^2 = r^2 \, d\theta^2 + r^2 \, \sin^2\theta \, d\phi^2
+	ds^2 = r^2 \, d\theta^2 + r^2 \, \sin^2\theta \, d\phi^2
 \end{equation}
 beschrieben werden.
 
