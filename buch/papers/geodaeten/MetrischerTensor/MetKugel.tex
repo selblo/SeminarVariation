@@ -9,9 +9,6 @@
 \subsection{Kugel\label{geodaeten:section:MetrischerTensor:Kugel}}
 \rhead{Metrischer Tensor Beispiele}
 
-In diesem Abschnitt werden wir den metrischen Tensor für die Oberfläche einer Kugel herleiten.
-Wir beginnen mit dem bereits bekannten Linienelement für die Kugeloberfläche und zeigen, wie der metrische Tensor daraus abgeleitet wird.
-
 Das Linienelement für die Oberfläche einer Kugel mit Radius $r$ in Kugelkoordinaten $(\theta, \phi)$ ist gegeben durch:
 \begin{equation}
 	ds^2 = r^2 \left( d\theta^2 + \sin^2\theta \, d\phi^2 \right).
@@ -31,12 +28,10 @@ und
 \begin{equation}
 	ds^2 = g_{11} \, (d\theta)^2 + g_{22} \, (d\phi)^2 + 2g_{12} \, d\theta \, d\phi.
 \end{equation}
-
 Durch den Vergleich der Terme sehen wir, dass:
 \begin{equation}
 	g_{11} = r^2, \quad g_{22} = r^2 \sin^2\theta, \quad \text{und} \quad g_{12} = g_{21} = 0.
 \end{equation}
-
 Daraus ergibt sich der metrische Tensor für die Kugeloberfläche in Matrixform:
 \begin{equation}
 	g_{ij} = r^2 \begin{pmatrix}
@@ -48,8 +43,3 @@ Daraus ergibt sich der metrische Tensor für die Kugeloberfläche in Matrixform:
 Hier ist ersichtlich, dass der Radius $r$ lediglich ein Skalierungsfaktor ist und für die geometrischen Eigenschaften der Kugeloberfläche keine entscheidende Rolle spielt. 
 Die wesentliche Geometrie wird durch die Winkelabhängigkeit der Metrik bestimmt.
 Dieser Tensor beschreibt somit die Geometrie der Kugeloberfläche und ermöglicht die Berechnung von Abständen, Winkeln und anderen geometrischen Größen.
-
-
-
-
-
