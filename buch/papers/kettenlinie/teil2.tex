@@ -43,7 +43,6 @@ Bei einem unendlich kleinen Teil einer beliebigen Kurve ist die Bogenlänge unge
 	=
 	\sqrt{1 + \left( \frac{dy}{dx} \right)^2} \, dx
 \end{equation}
-
 In der Folge kann man \(\frac{dy}{dx}\) mit der Ableitung von \(y\) ersetzen.
 \(y\) ist die Form des Bogens, die wir suchen.
 Bei unendlich kleinen Teilen ergibt sich dann folgender Term:
@@ -52,7 +51,6 @@ Bei unendlich kleinen Teilen ergibt sich dann folgender Term:
 	=
 	\sqrt{1 + y'^2} \, dx
 \end{equation}
-
 Um die Gesamtlänge der Kurve zu berechnen, summiert man die Längen der unendlich kleinen Abschnitte entlang der Kurve auf.
 Dieser Prozess wird durch Integration erreicht, bei der jeder kleine Abschnitt durch das Differential \(ds\) repräsentiert wird.
 Das Integral ermöglicht es, die Gesamtlänge der Kurve von einem Startpunkt \(x_1\) bis zu einem Endpunkt \(x_2\) zu bestimmen.
@@ -70,14 +68,12 @@ Für die Herleitung der Kettenlinie brauchen wir zudem die Formell der potentiel
 	=
 	mgh
 \end{equation}
-
 Auch benötigen wir die Formell der Bogenlänge, welche wir eben erläutert haben.
 \begin{equation}
 	L
 	=
 	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
 \end{equation}
-
 Wie bereits erwähnt, setzt sich die potenzielle Energie aus der Summe der pozentiellen Energien aller Teilchen der Kette zusammen, es folgt folgende Formel, wobei \(g\) die Gravitationskonstante und \(\mu\) die Massendichte ist.
 \begin{equation}
 	E_{\text{pot}}
@@ -97,10 +93,13 @@ In diesem Fall kommt nun die Euler-Lagrange-Gleichung zum Einsatz. Wir rufen Sie
 \begin{equation}
 	\int_{a}^{b} L(x, y, y') \, dx \, \text{ist extremal} \iff \frac{\partial L}{\partial y}(x, y, y') - \frac{d}{dx} \frac{\partial L}{\partial y'}(x, y, y') = 0
 \end{equation}
-
 Zuerst muss die Lagrange-Funktion \(L\) bestimmt werden.
 \begin{equation}
 	L(x, y, y')
 	=
 	\sqrt{1 + y'^2} \, y
 \end{equation}
+Nun setzen wir die Lagrange-Funktion in die Euler-Lagrange-Gleichung ein, um die gewünschte Differentialgleichung zu erhalten. Es muss also folgende Differentialgleichung gelten:
+\begin{equation}
+\frac{\partial}{\partial y} \left( \sqrt{1 + y'^2} \, y \right) - \frac{d}{dx} \frac{\partial}{\partial y'} \left( \sqrt{1 + y'^2} \, y \right) = 0
+\end{equation} 
