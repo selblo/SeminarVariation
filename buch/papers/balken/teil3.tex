@@ -8,33 +8,38 @@
 %
 \section{Anwendungen der Balkengleichung
 \label{balken:section:teil3}}
-
 Die Differentialrechnung ist von grundlegender Bedeutung für die Untersuchung und Lösung von Problemen im Zusammenhang mit der Balkengleichung. 
 In diesem Abschnitt werden einige konkrete Anwendungen der Differentialrechnung in Bezug auf die Balkengleichung erläutert. 
 Anschliessend werden Fallstudien und Beispiele vorgestellt, um diese Anwendungen weiter zu veranschaulichen.
 
 \subsection{Praktische Anwendungen im Ingenieurwesen und Physik
 \label{Praktische Anwendungen im Ingenieurwissenschaften und Physik}}
-\textbf{ Berechnung von Biegemomenten und Biegespannungen:}
-Die Differentialrechnung wird verwendet, um das Biegemoment entlang eines Balkens zu bestimmen, der verschiedenen Belastungen ausgesetzt ist. 
+\begin{description}
+\item[\textbf{Berechnung von Biegemomenten und Biegespannungen:}] Die Differentialrechnung wird verwendet, um das Biegemoment entlang eines Balkens zu bestimmen, der verschiedenen Belastungen ausgesetzt ist. 
 Durch die Integration der Biegemomente entlang der Länge des Balkens kann die Biegelinie und somit die Krümmung des Balkens berechnet werden. 
 Aus der Krümmung können dann die Biegespannungen mit Hilfe des Elastizitätsmoduls und des Trägheitsmoments ermittelt werden.
 
-\textbf{ Optimierung von Balkenprofilen:}
-Durch die Differentialrechnung können Ingenieure die optimale Geometrie von Balkenprofilen bestimmen, um bestimmte Anforderungen hinsichtlich Festigkeit, Steifigkeit und Gewicht zu erfüllen. 
+\item[\textbf{Optimierung von Balkenprofilen:}] Durch die Differentialrechnung können Ingenieure die optimale Geometrie von Balkenprofilen bestimmen, um bestimmte Anforderungen hinsichtlich Festigkeit, Steifigkeit und Gewicht zu erfüllen. 
 Dies kann durch die Minimierung von Materialkosten oder das Maximieren der strukturellen Leistung erfolgen.
 
-\textbf{ Analyse von statischen und dynamischen Verhalten:}
-Die Differentialrechnung ermöglicht es, das statische und dynamische Verhalten von Balken unter verschiedenen Belastungen zu analysieren. 
+\item[\textbf{Analyse von statischen und dynamischen Verhalten:}] Die Differentialrechnung ermöglicht es, das statische und dynamische Verhalten von Balken unter verschiedenen Belastungen zu analysieren. 
 Dies umfasst die Berechnung von Eigenfrequenzen, Schwingungsmoden und Schwingungsantworten, die für die Bewertung der strukturellen Stabilität und Leistung wichtig sind.
 
-\textbf{ Entwurf von Tragstrukturen:}
-Bei der Entwicklung von Tragstrukturen wie Brücken, Gebäuden oder Maschinenkomponenten ist die Differentialrechnung unerlässlich, um die strukturelle Integrität und Zuverlässigkeit zu gewährleisten. 
+\item[\textbf{Entwurf von Tragstrukturen:}] Bei der Entwicklung von Tragstrukturen wie Brücken, Gebäuden oder Maschinenkomponenten ist die Differentialrechnung unerlässlich, um die strukturelle Integrität und Zuverlässigkeit zu gewährleisten. 
 Sie ermöglicht es Ingenieuren, die Auswirkungen von Lasten und Belastungen auf die Struktur zu verstehen und entsprechende Designentscheidungen zu treffen.
 
-\textbf{ Finite-Elemente-Analyse (FEA):}
-Die Finite-Elemente-Methode, ein gängiges Werkzeug zur numerischen Lösung von Balkengleichungen, basiert auf der Differentialrechnung. 
-Durch die Unterteilung des Balkens in kleine Elemente und die Anwendung von Differentialgleichungen auf jedes einzelne Element können Ingenieure komplexe strukturelle Probleme lösen und das Verhalten des Balkens unter verschiedenen Bedingungen simulieren.
+\item[\textbf{Finite-Elemente-Analyse (FEA):}] Die Finite-Elemente-Methode, ein gängiges Werkzeug zur numerischen Lösung von Balkengleichungen, basiert auf der Differentialrechnung. 
+Durch die Unterteilung des Balkens in kleine Elemente und die Anwendung von Differentialgleichungen auf jedes einzelne Element können Ingenieure komplexe strukturelle Probleme lösen und das Verhalten des Balkens unter verschiedenen Bedingungen simulieren. 
+Für die Analyse beliebiger dreidimensionaler Strukturen wird die baustatische Methode allerdings deutlich schwieriger. 
+Hier zeigt sich der Vorteil des Minimalprinzips: Die Variationsrechnung, insbesondere das Prinzip des kleinsten Energiepotentials. 
+Die in der FEA verwendeten partiellen Differentialgleichungen sind die Euler-Ostrogradski-Differentialgleichungen des Minimumprinzips. 
+Somit kann man mittels der FEA das Verhalten eines Balkens unter verschiedenster Bedingungen simulieren und komplexe Probleme lösen.
+
+Eine interessante historische Anmerkung verdeutlicht die Bedeutung der Variationsrechnung in der Mechanik: Im 18. Jahrhundert versuchten Wissenschaftler, Gleichungen für Platten und Schalen mit der baustatischen Methode zu entwickeln, was jedoch zu falschen Ergebnissen führte. 
+Erst durch den Einsatz der Variationsrechnung konnten die korrekten Gleichungen gefunden werden. 
+Paul Funk beschreibt diese historische Entwicklung in seinem Buch über die Variationsrechnung. 
+Die Balkengleichung ist dabei ein Sonderfall, bei dem sowohl die baustatische Methode als auch die Variationsrechnung erfolgreich angewendet werden können. 
+\end{description}
 
 \subsection{Fallstudien und Beispiele
 \label{Fallstudien und Beispiele}}
@@ -45,7 +50,7 @@ Fallstudien untersuchen verschiedene Brückentypen wie Balkenbrücken, Bogenbrü
 Ein herausragendes Beispiel für die Zuverlässigkeit von Tragwerken bietet die Reussbrücke Wassen, die 1972 im Rahmen der Gotthard Nordrampe erbaut wurde. 
 \begin{figure} [h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{papers/balken/images/teil3/ReussbrueckeWassen1.jpg}
+	\includegraphics[width=\textwidth]{papers/balken/images/teil3/ReussbrueckeWassen1.jpg}
 	\caption{Reussbrücke Wassen}
 	\label{fig:Reussbrücke-Wassen}
 \end{figure}
@@ -53,7 +58,7 @@ Im Jahr 2016 wurde die Brücke durch Hochwasser und Unwetter beschädigt, wobei 
 Trotz erheblicher Verformungen hielt die Brücke stand – ein eindrucksvolles Zeugnis für die Stabilität eines sorgfältig geplanten Tragwerks.
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.75\textwidth]{papers/balken/images/teil3/ReussbrueckeWassen2.jpg}
+\includegraphics[width=\textwidth]{papers/balken/images/teil3/ReussbrueckeWassen2.jpg}
 \end{center}
 \caption{Verformungsvermögen}
 \end{figure}
@@ -61,7 +66,7 @@ Die anschliessende Instandsetzung erforderte die Verstärkung des unterspülten 
 Zusätzlich wurde eine Verstärkung im Brückenträger implementiert, um die strukturelle Integrität weiter zu verbessern. 
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.75\textwidth]{papers/balken/images/teil3/ReussbrueckeWassen3.jpg}
+\includegraphics[width=\textwidth]{papers/balken/images/teil3/ReussbrueckeWassen3.jpg}
 \end{center}
 \caption{Verstärkung der Brückenträger}
 \end{figure}

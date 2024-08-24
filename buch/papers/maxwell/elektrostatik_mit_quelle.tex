@@ -7,149 +7,147 @@
 % !TEX encoding = UTF-8
 %
 %erste Maxwell Gleichung mit Quelle
-\subsection{Gausssches Gesetz
+\subsection{Gausssches Gesetz des elektrischen Feldes
 \label{maxwell:section:elektrostatik_mit_quelle}}
-\rhead{Problemstellung}
-Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\phi(x,y,z)$ und eine Ladungsdichte $\rho(x,y,z)$ existieren.
-Auch für diesen Raum möchten wir mittels Variationsrechnung eine Gleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
+Nun betrachten wir einen luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$, in dem ein elektrisches Potentialfeld $\varphi(x,y,z)$ und eine Ladungsdichte $\varrho(x,y,z)$ existieren.
+Auch für diesen Raum möchten wir mittels der Variationsrechnung eine partielle Differentialgleichung finden, die das Verhalten des elektrischen Potentialfeldes beschreibt.
 
 \subsubsection{Ansatz}
-\rhead{Ansatz}
 Es ist naheliegend, dass auch in diesem Szenario die Energie im System minimiert werden muss.
 Wie auch in Gleichung \eqref{maxwell:section:energieintegral_quellenfrei} ist die Energie im elektrischen Feld
 \[
-W_e
+W_{\text{e}}
 =
-\iiint_V \frac{1}{2}\,\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right)\, dV.
+\iiint_V \frac{1}{2}\,\varepsilon_0\,(\varphi_x^2 + \varphi_y^2 + \varphi_z^2)\, dV.
 \]
-Jedoch ist dies nicht die einzige Komponente der gesamt Energie des Systems.
-Laut \ref{maxwell:section:definition_elektrischespotentialfeld} ist das elektrische Potential eine auf Ladung normierte potenzielle Energie.
+Jedoch ist dies nicht die einzige Komponente der Gesamtenergie des Systems.
+Laut \eqref{maxwell:section:definition_elektrischespotentialfeld} ist das elektrische Potential eine auf die Ladung normierte potentielle Energie.
 Somit haben wir die fehlende Komponente gefunden.
-Damit wir die, durch die Ladung
+Damit wir die durch die Ladung
 \begin{equation}
 q
 =
-\iiint_V \rho(x,y,z)\, dV
+\iiint_V \varrho(x,y,z)\, dV
 \label{maxwell:ladung}
 \end{equation}
-%TODO: mathematisch korrekt machen
-verursachte, potentielle Energie $W_q$ im System mit der Ladungsdichte $\rho$ ausdrücken können, müssen wir untersuchen, was eine infinitesimale potentielle Energie verursacht.
+verursachte potentielle Energie $W_{\text{q}}$ im System mit der Ladungsdichte $\varrho$ ausdrücken können, müssen wir untersuchen, was eine infinitesimale potentielle Energie verursacht.
 Wenn wir diese infinitesimal kleine potentielle Energie
-\[
-dW_q
+\(
+dW_{\text{q}}
 =
-\phi\, dq
-\]
+\varphi\, dq
+\)
 unter die Lupe nehmen und für die infinitesimal kleine Ladung
-\[
+\(
 dq
 =
-\rho\, dV
-\]
+\varrho\, dV
+\)
 einsetzen, erhalten wir
-\[
-dW_q
+\(
+dW_{\text{q}}
 =
-\phi\,\rho\, dV.
-\]
-Jetzt müssen die infinitesimalen potentiellen Energien im Raum $V$ zusammengezählt werden und was resultiert ist
+\varphi\,\varrho\, dV.
+\)
+Jetzt müssen die infinitesimalen potentiellen Energien im Raum $V$ zusammengezählt werden und es resultiert
 \begin{equation}
-W_q
+W_{\text{q}}
 =
-\iiint_V \rho\,\phi\, dV.
+\iiint_V \varphi\,\varrho\, dV.
 \label{maxwell:section:potenzielle_energie_ladung}
 \end{equation}
-Mit der gesamt Energie des Systems
+Mit der Gesamtenergie
 \[
-W_{tot}
+W_{\text{tot}}
 =
-W_e - W_q
+W_{\text{e}} - W_{\text{q}}
 =
-\iiint_V \frac{1}{2}\,\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\,\rho\, dV
+\iiint_V \frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - \varphi\,\varrho\, dV
 \]
-haben wir unser zu minimierendes Integral gefunden.
-Daraus können wir wieder die Lagrange funktion
+des Systems haben wir unser zu minimierendes Integral gefunden.
+Daraus können wir wieder die Lagrange-Funktion
 \begin{equation}
-L(x,y,z,\phi,\phi_x,\phi_y,\phi_z)
+L(x,y,z,\varphi,\varphi_x,\varphi_y,\varphi_z)
 =
-\frac{1}{2}\,\epsilon_0\left(\phi_x^2 + \phi_y^2 + \phi_z^2\right) - \phi\,\rho
+\frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right) - \varphi\,\varrho
 \label{maxwell:section:lagrangefunktion_mit_quelle}
 \end{equation}
 % TODO: Müller fragen wegen kopplungsterme
 ablesen.
-Man bemerkt, dass die Lagrangefunktion einen zusätzlichen additiven Term erhalten hat im Verlgeich zur Lagrangefunktion \eqref{maxwell:section:lagrangefunktion_quellenfrei}.
+Man bemerkt, dass die Lagrange-Funktion einen zusätzlichen additiven Term erhalten hat im Verlgeich zur Lagrange-Funktion \eqref{maxwell:section:lagrangefunktion_quellenfrei}.
 Solche Terme nennt man Kopplungsterme.
-Sie werden verwendet, um die Wechselwirkung zwischen Termen in der Lagrangefunktion zu berücksichtigen.
+Sie werden verwendet, um die Wechselwirkung zwischen Termen in der Lagrange-Funktion zu berücksichtigen.
 Der Kopplungsterm in unserem Fall beschreibt die Wechselwirkung zwischen dem Feld und der Ladungsdichte.
-Nun können wir diese Lagrangefunktion in die Euler-Ostrogradski-Differentialgleichung einsetzen, um zu untersuchen, wie sich das elektrische Potentialfeld verhält.
+Nun können wir diese Lagrange-Funktion in die Euler-Ostrogradski-Differentialgleichung einsetzen, um zu untersuchen, wie sich das elektrische Potentialfeld verhält.
 
-\subsubsection{Einsetzen in die Euler-Ostrogradski-DifferentialGleichung}
-Nun wollen wir die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrangefunktion in die E-O-DGL einsetzten.
-Um die Rechnung übersichtlicher zu gestalten, machen wir uns die Linearität der E-O-DGL
+\subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
+Jetzt wollen wir, die in \eqref{maxwell:section:lagrangefunktion_mit_quelle} gefundene Lagrange-Funktion in die Euler-Ostrogradski-Differentialgleichung einsetzten.
+Um die Rechnung übersichtlicher zu gestalten, machen wir uns die Linearität der Euler-Ostrogradski-Differentialgleichung
 \begin{equation}
-F\left\{W_{tot}\right\}
+F(W_{\text{tot}})
 =
-F\left\{W_e - W_q\right\}
+F(W_{\text{e}} - W_{\text{q}})
 =
-F\left\{W_e\right\} + F\left\{-W_q\right\}
+F(W_{\text{e}}) + F(-W_{\text{q}})
 \label{maxwell:section:linearität_von_DGL}
 \end{equation}
 zu nutze.
-Die Lösung von $F\left\{W_e\right\}$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
-Durch einsetzen von $-W_q$ in die E-O-DGL erhalten wir
+Die Lösung von $F(W_{\text{e}})$ haben wir in Gleichung \eqref{maxwell:section:laplace_gleichung_1} bereits gefunden.
+Durch einsetzen von $-W_{\text{q}}$ in die Euler-Ostrogradski-Differentialgleichung erhalten wir
 \[
-\frac{\partial}{\partial\phi}\left(-\rho\,\phi\right) - \underbrace{\frac{\partial}{\partial x}\frac{\partial}{\partial\phi_x}\left(\rho\,\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial y}\frac{\partial}{\partial\phi_y}\left(\rho\,\phi\right)}_{=0} - \underbrace{\frac{\partial}{\partial z}\frac{\partial}{\partial\phi_z}\left(\rho\,\phi\right)}_{=0}
+\frac{\partial}{\partial\varphi}\left(-\varrho\,\varphi\right) - \frac{\partial}{\partial x} \underbrace{\frac{\partial}{\partial\varphi_x}\left(\varrho\,\varphi\right)}_{\displaystyle=0} - \frac{\partial}{\partial y} \underbrace{\frac{\partial}{\partial\varphi_y}\left(\varrho\,\varphi\right)}_{\displaystyle=0} - \frac{\partial}{\partial z} \underbrace{\frac{\partial}{\partial\varphi_z}\left(\varrho\,\varphi\right)}_{\displaystyle=0}
 =
 0.
 \]
-Da alle partiellen Ableitungen nach $\phi_x, \phi_y, \phi_z$ null ergeben, müssen wir nur noch die partielle Ableitung nach $\phi$ erledigen.
+Da alle partiellen Ableitungen nach $\varphi_x, \varphi_y, \varphi_z$ null ergeben, müssen wir nur noch die partielle Ableitung nach $\varphi$ durchführen.
 Somit ist
-\begin{equation}
--\rho
+\(
+-\varrho
 =
 0.
-\end{equation}
-Durch additon unserer zwei Teillösungen erhalten wir die Gleichung
+\)
+Durch Addition unserer zwei Teillösungen erhalten wir die Gleichung
 \begin{align*}
--\epsilon_0\,\Delta\phi - \rho
+-\varepsilon_0\,\Delta\varphi - \varrho
 &=
 0
 \\
-\epsilon_0\,\Delta\phi
+\Leftrightarrow \qquad \varepsilon_0\,\Delta\varphi
 &=
--\rho.
+-\varrho.
 \end{align*}
-Schlussendlich erhalten wir
+Schlussendlich ist
 \begin{equation}
-\Delta\phi.
+\Delta\varphi
 =
--\frac{\rho}{\epsilon_0}.
+-\frac{\varrho}{\varepsilon_0}.
 \label{maxwell:section:erste_maxwellgleichung_1}
 \end{equation}
 % TODO: definiton des laplace-operators suchen
-Mittels Anwendung der Definiton \ref{???} des Laplace-Operators und der Definiton des elektrischen Feldes \eqref{maxwell:section:definition_statisch_elektrischesFeld} ist
+Durch gleiches Vorgehen wie in Gleichung \eqref{maxwell:section:laplace_gleichung_3} erreichen wir, dass
 \[
-\nabla\cdot\underbrace{\nabla\phi}_{-\vec{E}}
+\nabla\cdot\underbrace{\nabla\varphi}_{\displaystyle-\vec{E}}
 =
--\frac{\rho}{\epsilon_0}.
+-\frac{\varrho}{\varepsilon_0}
 \]
-Somit muss
+ist.
+Somit können wir erneut die Schlussdifferentialgleichung mit dem elektrischen Feld ausdrücken.
+Dadurch muss
 \begin{equation}
 \nabla\cdot\vec{E}
 =
-\frac{\rho}{\epsilon_0}
+\frac{\varrho}{\varepsilon_0}
 \label{maxwell:section:erste_maxwellgleichung_2}
 \end{equation}
-sein.
-Wir sehen, dass dies der ersten Maxwell-Gleichung in differentieller Schreibweise entspricht.
+gelten.
+Wir sehen, dass dies dem gaussschen Gesetz des elektrischen Feldes entspricht.
 
 \subsubsection{Interpretation des Resultates}
-% TODO: Bilder einfügen von Ladungen und elektrischem Feld
-Die erste Maxwell-Gleichung \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, dass die Quelle des elektrischen Feldes eine Ladungsdichte $\rho$ ist.
+Das gausssche Gesetz \eqref{maxwell:section:erste_maxwellgleichung_2} besagt, dass die Quelle des elektrischen Feldes eine Ladungsdichte $\varrho$ ist.
 Dies bedeutet, dass elektrische Feldlinien auf Ladungen enden können.
 In anderen Worten wird das elektrostatische Feld durch Ladungen erzeugt!
-Da es sowohl positive wie auch negative Ladungen gibt, gilt dasselbe für die Ladungsdichten.
-Wenn die Ladungsdichte positiv ist, sagt uns die erste Maxwell-Gleichung, dass das elektrische Feld eine Quelle besitzt.
+Da es sowohl positive wie auch negative Ladungen gibt, existieren demnach auch positive und negative Ladungsdichten.
+Wenn die Ladungsdichte positiv ist, sagt uns das gausssche Gesetz, dass das elektrische Feld eine Quelle besitzt.
 Das heisst, salopp gesagt, die Feldvektoren zeigen weg von der Ladungsdichte.
 Wenn die Ladungsdichte jedoch negativ ist, besitzt das elektrische Feld eine Senke.
 Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen. Dies ist in Abbildung \ref{maxwell:section:E-Feld_punktladung} veranschaulicht.
@@ -158,14 +156,14 @@ Das heisst in diesem Fall, dass die Feldvektoren auf die Ladungsdichte zeigen. D
 % Darf auch weggelassen werden.
 Die Poisson-Gleichung
 \[
--\Delta\varphi
+\Delta\varphi
 =
 f,
 \]
-wobei $\varphi$ ein Potentialfeld und $f$ eine Quelle ist, mag zwar ein wenig fischig klingen, jedoch hat sie Anwendungen in vielen Teilen der Physik.
-Die Quelle $f$ kann wie in Gleichung \eqref{maxwell:section:erste_maxwellgleichung_1} eine Funktion des Raumes und/oder eine Funkiton der Zeit sein.
-Ein Potentialfeld, dass die Poisson-Gleichung erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, dass die Quelle $f$ besitzt und Rotationsfrei ist.
-Die homogene Gleichung, also wo $f = 0$ ist, führt uns zur Laplace-Gleichung.
+wobei $\varphi$ ein Potentialfeld und $f$ eine Quelle ist, findet in vielen Teilen der Physik ihre Anwendungen.
+Die Quelle $f$ kann wie in Gleichung \eqref{maxwell:section:erste_maxwellgleichung_1} eine Funktion des Raumes und/oder eine Funktion der Zeit sein.
+Ein Potentialfeld, dass die Poisson-Gleichung erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, dass die Quelle $f$ besitzt und rotationsfrei ist.
+Die homogene Gleichung, also jene die $f = 0$ erfüllt, führt uns zur Laplace-Gleichung.
 
 
 

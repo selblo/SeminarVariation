@@ -1,0 +1,48 @@
+%
+% teil3.tex -- Beispiel-File für Teil 3
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Variationsprinzip bei einem genetischen Algorithmus
+\label{buch:paper:varalg:section:genetic_algorithm_process}}
+\rhead{Variationsprinzip beim genetischen Algorithmus}
+Ein genetischer Algorithmus nutzt nach ChatGPT das Variationsprinzip, 
+das wie folgt definiert wird:
+\begin{quote}
+Das Variationsprinzip ist ein grundlegendes Konzept in der 
+evolutionären Computertechnik, insbesondere in genetischen 
+Algorithmen. Es besagt, dass genetische Vielfalt in einer 
+Population von Individuen aufrechterhalten werden muss, 
+um eine effektive Suche im Suchraum zu ermöglichen und eine 
+Lösung für das zugrunde liegende Problem zu finden.
+\\
+Der genetische Algorithmus nutzt dieses Variationsprinzip, um eine 
+Population von möglichen Lösungen zu einem Problem zu entwickeln 
+und zu verfeinern \cite{varalg:chatgpt2024}.
+\end{quote}
+In diesem Abschnitt werden die einzelnen Schritte eines genetischen Algorithmus 
+erläutert. Da der Algorithmus nicht eins zu eins auf das Travelling Salesman
+Problem angewendet werden kann, wird in den Unterabschnitten zuerst beschrieben,
+was in jedem Schritt passiert und anschliessend, wie diese auf das Travelling 
+Salesman Problem angepasst werden.
+Der Ablauf besteht aus den folgenden Schritten:
+\begin{enumerate}
+    \item Initialisierung: Erstellung der Anfangspopulation.
+    \item Evaluation: Bewertung der Individuen.
+    \item Selektion: Auswahl der Individuen für die Weiterentwicklung.
+    \item Kreuzung: Erzeugung neuer Individuen.
+    \item Mutation: Zufällige Veränderung der Individuen.
+    \item Ersetzung: Ersetzung der alten Population durch die neue.
+    \item Abbruchkriterium: Festlegung, wann der Algorithmus beendet wird.
+\end{enumerate}
+
+\input{papers/varalg/teil3u1.tex}
+\input{papers/varalg/teil3u2.tex}
+\input{papers/varalg/teil3u3.tex}
+\input{papers/varalg/teil3u4.tex}
+\input{papers/varalg/teil3u5.tex}
+\input{papers/varalg/teil3u6.tex}
+\input{papers/varalg/teil3u7.tex}

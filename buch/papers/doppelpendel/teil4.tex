@@ -1,38 +1,124 @@
 \section{Chaotisches Verhalten}
-Schon die Tatsache, dass sich für die Differentialgleichungen keine 
-analytischen Lösungen bestimmen lassen, weisen auf das chaotische Verhalten
-des Systems hin.
-Wie im vorherigen Kapitel angetönt, liess ich mithilfe der Gleichungen eine Simulation
-erstellen, um genau dieses Verhalten näher zu analysieren.
-Die dadurch gewonnen Erkenntnisse werden im folgenden Kapitel erläutert.
+Wie im vorherigen Kapitel angedeutet, wurde mithilfe der Gleichungen eine Simulation erstellt,
+um das chaotische Verhalten näher zu untersuchen.
+Diese Simulation wurde von Alex Krieg, einem Studenten der Fachhochschule OST, entwickelt.
+Die daraus gewonnenen Erkenntnisse werden in diesem Abschnitt erläutert.
 
+\input{papers/doppelpendel/simulation.tex}
 \subsection{Physikalisches Chaos}
 In der Physik wird das Chaos als aperiodisches Langzeitverhalten in einem deterministischen
 System bezeichnet, mit empfindlicher Abhängigkeit der Anfangsbedingungen.
 Aperiodisches Langzeitverhalten bedeutet, wenn sich das System nach langer zeitlicher Betrachtung
-nicht in sich wiederholendes Muster verfällt.
-Das einfache Pendel weist ein periodisches Langzeitverhalten auf, denn es schwingt immer im gleichen 
-Muster.
-Deterministisch heisst, dass das Verhalten des Systems vorherbestimmbar ist.
-Dies mag zunächst verwirrend erscheinen, da chaotisches Verhalten grundsätzlich nicht
-berechenbar ist.
-Was aber gemeint ist, man kann vorhersagen ob das System in eine chaotischen Zustand 
-verfällt oder stabil bleibt.
+nicht periodisch wird.
+Das einfache Pendel weist ein periodisches Langzeitverhalten auf,
+denn es schwingt immer im gleichen Muster.
+Deterministisch heisst im übertragenen Sinn, dass das Verhalten des Systems gleich bleibt,
+sofern die Anfangsbedingungen die Gleichen sind.
+Trotzdem kann sich bei der kleinsten Abweichung eine völlig andere Trajektorie bilden.
+Dies rührt daher, dass die immer vorhandenen kleinen Störungen, wie z.~B.~thermisches Rauschen,
+bei empfindlicher Abhängigkeit der Anfangsbedingung, die Bahn deutlich beeinflussen.
+Dieses Phänomen ist auch bekannt als der Schmetterlingseffekt \cite{doppelpendel:schmetterlingseffekt}.
 
 \subsection{Simulationsanalyse}
-Das erste Experiment (Abbildung ) wird aufzeigen wie stark sich die Trajektoren zweier Doppelpendel unterscheiden
-bei kleinsten Unterschieden in den Anfangsbedingungen.
+Im ersten Experiment wollen wir uns ansehen, wie die Trajektorie eines Pendels aussieht,
+welche aus der horizontalen Lage bzw. Anfangsbedingung 90° startet
+(siehe Abbildung \ref{fig:pendel_bei_90}).
 Beim Wiederholen dieses Experiment lässt sich feststellen, dass für exakt dieselben Anfangsbedingungen
 das gleiche Ergebnis resultiert und daher deterministisch ist.
 
-Im zweiten Experiment (Abbildung ) haben wir drei Doppelpendel mit jeweils anderen Anfangsbedingungen.
-Das bedeutet auch mit unterschiedlicher potentieller Energie.
-Es lässt bereits vermuten, dass die Pendel mit hoher potentieller Energie eine stärkere Tendenz haben
-in den chaotischen Zustand überzugehen.
-Das zeigen auch die Trajektoren aus diesem Versuch als Ergebnis.
+Im zweiten Experiment (Abbildung \ref{fig:pendel_bei_weniger_90}), wurde die vorherige
+Anfangsbedingung marginal verändert.
+\(\theta_2\) wurde um ca.~ein Zehntel Grad verringert.
+Nichtsdestotrotz lässt sich am Resultat nichts wiedererkennen.
 
-Nun was wir hier für drei verschiedene Anfangsbedingungen durchgeführt haben, kann man natürlich
+Im letzten Experiment (Abbildung \ref{fig:pendel_nichtchaotisch}) wird gezeigt,
+wie das Pendel bei kleineren Winkeln nicht chaotisch wird.
+Es lässt bereits vermuten, dass die Pendel mit hoher potentieller Energie eine stärkere Tendenz haben,
+in den chaotischen Zustand überzugehen.
+Das zeigen auch die Trajektoren aus diesen Versuchen.
+%\begin{figure}
+%    \centering
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{papers/doppelpendel/images/pendel_stand_90.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{papers/doppelpendel/images/pendel_spur_90.png}
+%    \end{minipage}
+%    \caption{Pendel mit der Anfangsbedingung 90°.}
+%    \label{fig:pendel_bei_90}
+%    \centering
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{papers/doppelpendel/images/pendel_stand_kleiner_90.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{papers/doppelpendel/images/pendel_spur_kleiner_90.png}
+%    \end{minipage}
+%    \caption{Anfangsbedingung der Winkel ist kaum sichtbar kleiner als 90°.}
+%    \label{fig:pendel_bei_weniger_90}
+%    \centering
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{papers/doppelpendel/images/pendel_stand_nichtchaotisch.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{papers/doppelpendel/images/pendel_spur_nichtchaotisch.png}
+%    \end{minipage}
+%    \caption{Pendel wird nicht chaotisch, aufgrund kleiner Winkel.}
+%    \label{fig:pendel_nichtchaotisch}
+%\end{figure}
+
+Was wir hier für drei verschiedene Anfangsbedingungen durchgeführt haben, kann man selbstverständlich
 für etliche Winkel durchrechnen lassen und beeurteilen ob bei gegebenem Winkel das System chaotisch wird.
-Genau das wurde durch einen Schüler im <<Schweizer Jugend forscht>> mithilfe eines neuronalen Netzes
-untersucht. %Zitat Davide
-Das Resultat wurde als ein sogenanntes Bifurkationsdiagramm ausgegeben siehe Abbildung.
+Das wurde durch Davide Farassino im <<Schweizer Jugend forscht>> 
+mithilfe eines Programms untersucht \cite{doppelpendel:wettbewerbsarbeit}.
+Das Resultat wurde im sogenannten Parameterraum ausgegeben
+ersichtlich in Abbildung \ref{fig:Parameterraum}.
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{papers/doppelpendel/images/parameterraum.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{papers/doppelpendel/images/parameterraum_stabile_inseln.png}
+    \end{minipage}
+    \caption{Winkelpaare im Parameterraum (links) und stabile Inseln im Parameterraum (rechts)
+    \cite{doppelpendel:wettbewerbsarbeit}}
+    \label{fig:Parameterraum}
+\end{figure}
+Auf der horizontalen Achse sind Anfangswinkel von \(\theta_1\) und
+auf der vertikalen diejenigen von \(\theta_2\).
+Schwarz bildet die Winkelpaare ab, die nicht ins Chaos übergehen.
+Die farbigen Punkte sind daher kritische Winkelpaare.
+Es wird unterschieden zwischen dunkelroten Punkten,
+das sind Winkelpaare, die schnell chaotisch werden, und
+gelben Punkten, die eine kritische Zeit nahe an 30 Sekunden haben.
+Äusserst interessant sind die sogenannten stabilen Inseln.
+Auch umgeben von kritischen Winkelpaaren, zeigen sich einige
+grössere Winkelpaare als nicht kritisch.
+
+Das Resultat der stabilen Winkelpaare aus dem Parameterraum können wir mathematisch noch plausibilisieren.
+Wir haben bereits zuvor festgestellt, dass bei kleiner potentieller Energie das System stabil bleibt.
+Dies führt zu ebenso kleiner kinetischen Energie, was anders formuliert heisst:
+Die Geschwindigkeiten sind vernachlässigbar klein.
+Wenn wir in unseren Bewegungsgleichungen
+\eqref{eq:bewegungsgleichung1} und \eqref{eq:bewegungsgleichung2}
+die Terme höherer Ordnung vernachlässigen, bekommen wir
+\begin{align*}
+\ddot{\theta_1} &= -\frac{g}{l_1} \theta_1\\
+\ddot{\theta_2} &= -\frac{g}{l_2} \theta_2\\
+\end{align*}
+als lineare Differentialgleichung mit periodischem Verhalten.
+Ebenso wurde für kleine Winkel bereits berücksichtigt,
+dass \(\sin(\theta)\) zu \(\theta\) vereinfacht werden kann.
+
