@@ -11,7 +11,7 @@
 
 Intuitiv erwarten wir, dass die Geodäten auf der Kugeloberfläche Grosskreise sind.
 Ein Grosskreis ist der geradlinigste Weg zwischen zwei Punkten auf einer Kugel.
-Dies lässt sich vorstellen, indem man zwei Nadeln in eine Kugeloberfläche steckt und einen Faden um die beiden Nadeln spannt.
+Dies kann man sich vorstellen, indem man zwei Nadeln in eine Kugeloberfläche steckt und einen Faden um die beiden Nadeln spannt.
 Der Faden wird immer entlang eines Grosskreises verlaufen.
 Tatsächlich folgen Flugzeuge auf Langstreckenflügen dieser Logik und fliegen entlang von Grosskreisen, um die kürzeste Strecke zwischen zwei Punkten auf der Erde zurückzulegen.
 Wir möchten nun überprüfen, ob wir mit dem Standardverfahren tatsächlich zu dieser Lösung kommen.
@@ -35,6 +35,7 @@ Der inverse Tensor $g^{ij}$ ist gegeben durch:
 	\end{pmatrix}.
 \end{equation}
 
+\subsection{Christoffel-Symbole}
 Nun berechnen wir die partiellen Ableitungen des metrischen Tensors $g_{ij}$ in Bezug auf die Koordinaten $\theta$ und $\phi$.
 Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\theta$, erhalten wir:
 \begin{equation}
@@ -62,6 +63,7 @@ Je näher man den Polen kommt, desto kürzer wird der Bogen für eine gegebene �
 Diese Veränderung der Vektorrichtung ist eine Folge der intrinsischen Krümmung der Kugeloberfläche.
 Die nicht-verschwindenden Christoffel-Symbole beschreiben diese Krümmung und zeigen an, wie sich die Richtung eines Vektors während des Transports entlang der Oberfläche ändert.
 
+\subsection{Geodätengleichung}
 Mit den berechneten Christoffel-Symbolen können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
 
 Die allgemeine Form der Geodätengleichung lautet:
@@ -89,6 +91,7 @@ Die Geometrie wird allein durch die Winkelabhängigkeit bestimmt, sodass der Rad
 Das Lösen der Geodätengleichungen ist oft aufwendig und schwierig, was numerische Ansätze erforderlich macht. 
 Daher überprüfen wir durch Analyse, ob Grosskreise diese tatsächlich erfüllen und als Lösungen gelten.
 
+\subsection{Äquator}
 Betrachten wir die Geodätengleichungen für konstantes $\theta$, also entlang eines Breitengrads.
 Für konstantes $\theta$ gilt $\dot{\theta} = 0$ und $\ddot{\theta} = 0$.
 Setzen wir dies in die erste Geodätengleichung ein, so erhalten wir:
@@ -100,6 +103,7 @@ Diese erste Geodätengleichung wird nur für $\theta = \frac{\pi}{2}$ erfüllt, 
 Für alle anderen Breitengrade mit $\theta \neq \frac{\pi}{2}$ ist $\dot{\phi}$ gleich null, was bedeutet, dass es keine Bewegung in der $\phi$-Richtung gibt und somit keine Geodäte vorliegt.
 Der Äquator, als einziger Breitengrad, erfüllt daher die Geodätengleichungen und ist ein Großkreis.
 
+\subsection{Längengrade}
 Nun analysieren wir die Geodätengleichungen für konstantes $\phi$, also entlang eines Längengrads.
 Für konstantes $\phi$ gilt $\dot{\phi} = 0$ und $\ddot{\phi} = 0$.
 Setzen wir dies in die erste Geodätengleichung ein, erhalten wir:

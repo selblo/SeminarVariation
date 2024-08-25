@@ -18,7 +18,7 @@ g_{ij} = \begin{pmatrix}
 \end{pmatrix},
 \end{equation}
 wollen wir die Christoffel-Symbole berechnen.
-Die Christoffel-Symbole sind gegeben durch,
+Die Christoffel-Symbole sind gegeben durch
 
 \begin{equation}
 \Gamma^i_{jk} = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
@@ -41,24 +41,25 @@ Denn der Kartesische Raum ist nicht gekrümmt, weshalb keine Korrektur der Gerad
 
 Setzt man die Christoffel-Symbole in die allgemeine Geodätengleichung ein, erhält man mit $u^1 = x(t)$
 \begin{equation}
-\begin{aligned}
-\ddot{u}^1 + \Gamma_{ij}^1 \dot{u}^i \dot{u}^j &= 0 \\
-\ddot{u}^1 + 0_{ij} \cdot \dot{u}^i \dot{u}^j &= 0\\
-\ddot{u}^1 &= 0 \\
-\ddot{x}(t) &= 0
-\end{aligned}
-\label{geodaeten:equation:Standardverfahren:Kartesisch:x}
+	\begin{alignedat}{2}
+		&\ddot{u}^1 + \Gamma_{ij}^1 \dot{u}^i \dot{u}^j &=& \quad 0 \\
+		&\ddot{u}^1 + 0_{ij} \cdot \dot{u}^i \dot{u}^j \quad &=& \quad 0\\
+		&\ddot{u}^1  &=& \quad 0 \\
+		&\ddot{x}(t) &=& \quad 0
+	\end{alignedat}
+	\label{geodaeten:equation:Standardverfahren:Kartesisch:x}
 \end{equation}
 und mit $u^2 = y(t)$
 \begin{equation}
-\begin{aligned}
-\ddot{u}^2 + \Gamma_{ij}^2 \dot{u}^i \dot{u}^j &= 0 \\
-\ddot{u}^2 + 0_{ij} \cdot \dot{u}^i \dot{u}^j &= 0 \\
-\ddot{u}^2 &= 0 \\
-\ddot{y}(t) &= 0 \qquad \qquad .
-\end{aligned}
-\label{geodaeten:equation:Standardverfahren:Kartesisch:y}
+	\begin{alignedat}{2}
+		&\ddot{u}^2 + \Gamma_{ij}^2 \dot{u}^i \dot{u}^j &=& \quad 0 \\
+		&\ddot{u}^2 + 0_{ij} \cdot \dot{u}^i \dot{u}^j \quad &=& \quad 0 \\
+		&\ddot{u}^2  &=& \quad 0 \\
+		&\ddot{y}(t) &=& \quad 0  .
+	\end{alignedat}
+	\label{geodaeten:equation:Standardverfahren:Kartesisch:y}
 \end{equation}
+
 
 Man sieht bereits, da die zweite Ableitungen in beide Dimensionen Null sind, handelt es sich bei dem kürzesten Weg um eine Gerade, was aus der Erfahrung durchaus Sinn ergibt.
 

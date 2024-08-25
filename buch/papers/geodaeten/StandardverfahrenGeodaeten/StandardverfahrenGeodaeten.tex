@@ -30,7 +30,7 @@ wodurch sich durch Unformen und Vereinfachen letztendlich eine Differentialgleic
 \end{equation}
 dessen Lösung eine Funktion beschreibt, die den kürzesten Abstand zwischen zwei Punkten auf einer Ebene darstellt. Die Lösung dieser Gleichung, wie wir später nochmals sehen werden, ist eine Gerade, was intuitiv einleuchtend ist.
 
-Nun stellen wir uns die Frage, ob wir mit unserem neu erlernten Wissen eine allgemeine Differentialgleichung finden können, welche die Funktion des kürzesten Abstands zwischen zwei Punkten für beliebige n-dimensionale geometrische Räume beschreibt.
+Nun stellen wir uns die Frage, ob wir mit unserem neu erlernten Wissen eine allgemeine Differentialgleichung finden können, welche die Funktion des kürzesten Abstands zwischen zwei Punkten für beliebige $n$-dimensionale geometrische Räume beschreibt.
 
 Wir fangen mit dem allgemeinen Linienelement an.
 \begin{equation}
@@ -70,7 +70,7 @@ Damit ergibts sich die Euler-Lagrange-Differentialgleichung zu
 \begin{equation}
 	\frac{d}{dt} \left(\frac{1}{2 \sqrt{\varphi}} \, \varphi_{\dot{u}^n}\right) - \frac{1}{2 \sqrt{\varphi}} \, \varphi_{u^n} = 0.
 \end{equation}
-wobei $\varphi_{\dot{u}^n} = \frac{\partial \varphi}{\partial \dot{u}^n}$ und $\varphi_{u^n} = \frac{\partial \varphi}{\partial u^n}$ die inneren partiellen Ableitungen von $\varphi$ nach den jeweiligen Koordinaten sind.
+wobei $\varphi_{\dot{u}^n} = \frac{\partial \varphi}{\partial \dot{u}^n}$ und $\varphi_{u^n} = \frac{\partial \varphi}{\partial u^n}$ die partiellen Ableitungen von $\varphi$ nach den jeweiligen Koordinaten sind.
 
 Wir nehmen an, dass $\varphi = 1$ ist, was bedeutet, dass der Parameter $t$ mit der Bogenlänge $s$ identifiziert werden kann und somit als natürlicher Parameter fungiert.
 Dies vereinfacht die Berechnungen und führt zur konstanten Geschwindigkeit entlang der Geodäte.
@@ -79,7 +79,7 @@ Dadurch vereinfacht sich die Gleichung noch weiter zu
 \begin{equation}
 	\frac{d}{ds} \left( \varphi_{\dot{u}^n} \right) - \varphi_{u^n} = 0,
 \end{equation}
-wobei die Punktableitungen hier bedeuten, dass jetzt nach $s$ abgeleitet wird.
+Die Punktableitungen bedeuten hier, dass jetzt nach $s$ abgeleitet wird.
 
 Für die partielle Ableitung $\varphi_{u^n}$ erhalten wir
 \begin{equation} 
@@ -104,6 +104,7 @@ Aus der Produktregel ergibt sich somit
 Weil $g_{ij}$ symmetrisch ist ($g_{ij} = g_{ji}$), lässt sich dies zusammenfassen zu
 \begin{equation}
 	\frac{\partial \varphi}{\partial \dot{u}^n} = 2g_{in} \dot{u}^i.
+	\label{geodaeten:equation:StandardverfahrenGeodaeten:equation1}
 \end{equation}
 
 Da $\varphi_{\dot{u}^n}$ von den Koordinaten $u^k$ und deren Ableitungen $\dot{u}^k$ abhängt, berechnet sich die Ableitung von $\varphi_{\dot{u}^n}$ nach $s$ durch Anwendung der Kettenregel als:
@@ -112,22 +113,23 @@ Da $\varphi_{\dot{u}^n}$ von den Koordinaten $u^k$ und deren Ableitungen $\dot{u
 \end{equation}
 wobei ab diesem Punkt die Summierung über den Index $k$ implizit erfolgt, wie es beim metrischen Tensor üblich ist.
 
-Für die partielle Ableitung $\frac{\partial \varphi_{\dot{u}^n}}{\partial u^k}$ erhalten wir
+Mithilfe von \eqref{geodaeten:equation:StandardverfahrenGeodaeten:equation1} erhalten wir für die partielle Ableitung nach $n^k$  
 \begin{equation}
-	2 \frac{\partial g_{in}}{\partial u^k} \ \dot{u}^i,
+	\frac{\partial \varphi_{\dot{u}^n}}{\partial u^k} = 
+	2 \frac{\partial g_{in}}{\partial u^k} \ \dot{u}^i
 \end{equation}
-
 und für $\frac{\partial \varphi_{\dot{u}^n}}{\partial \dot{u}^k}$ ergibt sich
-\begin{equation}
-	2 \, g_{kn}
-\end{equation}
 
+\begin{equation}
+	2 \, g_{kn} .
+\end{equation}
 Daraus folgt schliesslich
+
 \begin{equation}
 	\frac{d}{ds} \left( \varphi_{\dot{u}^n} \right) = 2 \frac{\partial g_{in}}{\partial u^k} \ \dot{u}^i \dot{u}^k + 2 g_{kn} \, \ddot{u}^k.
 \end{equation}
-
 Fügt man nun alles zusammen und setzt dies in die Euler-Lagrange-Differentialgleichung ein, ergibt sich
+
 \begin{equation}
 	2 \frac{\partial g_{in}}{\partial u^k} \ \dot{u}^i \dot{u}^k + 2 g_{kn} \, \ddot{u}^k - \frac{\partial g_{ij}}{\partial u^n} \, \dot{u}^i \, \dot{u}^j = 0.
 \end{equation}
@@ -147,10 +149,10 @@ Der korrigierte Ausdruck lautet dann
 Da der Index $k$ im ersten Summanden und der Index $j$ im letzten Summanden beide bis $n$ summiert werden, kann der Index $k$ durch $j$ ersetzt werden. 
 Dadurch lässt sich der Term $g_{ij}$ aufgrund der wiederhergestellten Symmetrie teilweise ausklammern und es ergibt sich
 \begin{equation}
-	2 g_{kn} \, \ddot{u}^k + \frac{1}{2} \left( \frac{\partial g_{jn}}{\partial u^i} + \frac{\partial g_{in}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^n} \right) \, \dot{u}^i \, \dot{u}^j = 0.
+	 g_{kn} \, \ddot{u}^k + \frac{1}{2} \left( \frac{\partial g_{jn}}{\partial u^i} + \frac{\partial g_{in}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^n} \right) \, \dot{u}^i \, \dot{u}^j = 0.
 \end{equation}
 
-Teilt man den gesamten Ausdruck durch $2g_{ij}$ und benennt den Index $n$ in $l$ um, so erhält man die folgende Gleichung:
+Teilt man den gesamten Ausdruck durch $2g_{ij}$ und benennt den Index $n$ in $l$ um, so erhält man die Gleichung
 \begin{equation}
 	\ddot{u}^k + \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right) \dot{u}^i \dot{u}^j = 0,
 \end{equation}
@@ -173,8 +175,8 @@ Die Christoffel-Symbole wirken wie Wegweiser, welche die Geodäten so korrigiere
 Da die Christoffel-Symbole von der Geometrie des Raumes abhängen, reflektieren sie auch die Krümmung des Raumes.
 Wenn beispielsweise alle Christoffel-Symbole null sind, ist der Raum krümmungsfrei, und eine Gerade bleibt eine Gerade.
 
-Mit dieser allgemeinen Geodätengleichung können nun die Geodätenlinien für beliebige n-dimensionale Räume berechnet werden. 
-Anstatt das Variationsprinzip jedes Mal von Grund auf anzuwenden, kann die Geodätengleichung direkt genutzt werden, um daraus standardmässig die Funktion des kürzesten Weges zu ermitteln. (Abschnitt \ref{geodaeten:section:StandardverfahrenBeispiele}).
+Mit dieser allgemeinen Geodätengleichung können nun die Geodätenlinien für beliebige $n$-dimensionale Räume berechnet werden. 
+Anstatt das Variationsprinzip jedes Mal von Grund auf anzuwenden, kann die Geodätengleichung direkt genutzt werden, um daraus standardmässig die Funktion des kürzesten Weges zu ermitteln (Abschnitt \ref{geodaeten:section:StandardverfahrenBeispiele}).
 
 \section{Beispiele zu den Differentialgleichungen für Geodätenlinien 
 \label{geodaeten:section:StandardverfahrenBeispiele}}
