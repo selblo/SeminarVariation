@@ -9,20 +9,24 @@
 \section{Problemstellung\label{kettenlinie:section:Problemstellung}}
 \rhead{Problemstellung}
 Die Problemstellung der Kettenlinie besteht darin, die Form einer flexiblen, homogenen und nicht dehnbaren Kette zu bestimmen, die an zwei festen Punkten aufgehängt ist und unter dem Einfluss der Schwerkraft hängt.
-Mathematisch wird dies als die Suche nach einer Kurve \( y(x) \) beschrieben, die diese Bedingungen erfüllt. 
-
-Gegeben für die Problemstellung sind: Zwei Aufhängepunkte \( A(x_1, y_1) \) und \( B(x_2, y_2) \).
+Mathematisch wird dies als die Suche nach einer Kurve \( y(x) \) beschrieben, die diese Bedingungen erfüllt.
+Gegeben für die Problemstellung sind: 
+\begin{itemize}
+\item
+Zwei Aufhängepunkte \( A(x_1, y_1) \) und \( B(x_2, y_2) \).
+\item
 Eine homogene Kette, d.h., ihre Dichte \( \rho \) ist konstant.
-Die Kette ist flexibel und kann sich frei bewegen. 
-
+\item
+Die Kette ist flexibel und kann sich frei bewegen.
+\end{itemize}
 Ziel ist es, die Form der Kurve \( y(x) \), welche die Kette zwischen den beiden Punkten annimt zu bestimmen.
 
 \subsection{Mathematische Formulierung
 \label{kettenlinie:subsection:Mathematische Formulierung}}
 Die potenzielle Energie der Kette wird durch das Integral
-\[
-U = \int_{x_1}^{x_2} \rho g y \sqrt{1 + (y')^2} \, dx
-\]
+\begin{equation}
+	U = \int_{x_1}^{x_2} \rho g y \sqrt{1 + (y')^2} \, dx
+\end{equation}
 beschrieben, wobei \( y' \) die Ableitung von \( y \) nach \( x \) ist und \( g \) die Gravitationskonstante.
 Dieses Integral soll minimiert werden, was zur entsprechenden Euler-Lagrange-Gleichung führt.
 
