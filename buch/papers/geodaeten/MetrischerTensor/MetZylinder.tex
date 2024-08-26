@@ -9,25 +9,25 @@
 \subsection{Zylinder\label{geodaeten:section:MetrischerTensor:Zylinder}}
 \rhead{Metrischer Tensor Beispiele}
 
-Für die Zylinderoberfläche gilt $r$ als konstant und $u^1 = \phi$, $u^2 =z$ 
-Vergleicht man die Einstein-Summe aus Gleichung \eqref{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme} mit dem Linienelement der Zylinderoberfläche
-
+Für die Zylinderoberfläche gilt $r$ als konstant und $u^1 = \phi$, $u^2 =z$.
+Vergleicht man die Einstein-Summe aus Gleichung \eqref{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme}
 \begin{equation}
-	\begin{aligned}
-	ds^2 &= g_{11}  du^1  du^1 + g_{12}  du^1  du^2 + g_{21}  du^2  du^1 + g_{22}  du^2  du^2 \\
-	&= r^2 \cdot d \phi^2 +dz^2 ,
-	\end{aligned}
+	ds^2 = g_{11} \, du^1 \, du^1 + 2g_{12} \, du^1 \, du^2 + g_{22} \, du^2 \, du^2
 \end{equation}
-kann mittels Koeffizienten Vergleich bestimmt werden, dass 
-
+mit dem Linienelement der Zylinderoberfläche
+\begin{equation}
+	= r^2 \cdot d \phi^2 +dz^2 ,
+\end{equation}
+kann mittels Koeffizienten Vergleich bestimmt werden, dass
 \begin{equation}
 	\begin{alignedat}{3}
 		g_{11}  du^1 du^1 &= g_{11}  d \phi^2 & &= r^2 \cdot d \phi^2 \\
 		g_{22}  du^2 du^2 &= g_{22}  dz^2    & &= 1 \cdot dz^2 \\
-		g_{12}  du^1 du^2 &= g_{12}  d \phi  dz & &= 0 \cdot d \phi  dz \\
-		g_{21}  du^2 du^2 &= g_{21}  dz  d \phi & &= 0 \cdot dz  d \phi .
+		2g_{12}  du^1 du^2 &= 2g_{12}  d \phi  dz & &= 2\cdot0 \, d \phi \cdot dz.
+
 	\end{alignedat}
 \end{equation}
+
 Die Matrixeinträge entsprechen den Koeffizienten der jeweiligen Ableitungsprodukte und damit lässt sich der metrische Tensor aufstellen als
 \begin{equation}
 	g_{ji} =\begin{pmatrix} g_{11} && g_{12} \\ g_{21} && g_{22} \end{pmatrix}= \begin{pmatrix} r^2 && 0 \\ 0 && 1 \end{pmatrix} .
@@ -36,13 +36,14 @@ Die Matrixeinträge entsprechen den Koeffizienten der jeweiligen Ableitungsprodu
 Ist $r$ nicht konstant, bedeutet dies, dass man sich in drei Dimensionen bewegen kann.
 Deshalb muss eine $3 \times 3$-Matrix für den metrischen Tensor entstehen, damit jede Bewegung vollständig beschrieben ist. 
 
+
 Die Einstein-Summe hat, aufgrund der Symmetrie des metrischen Tensors, hier die Form
 
 \begin{equation}
-\begin{aligned}
+	\begin{aligned}
 	ds^2 = &g_{11}  du^1  du^1 + g_{22}  du^2  du^2 + g_{33}  du^3  du^3 \nonumber \\
 	&+ 2 \cdot g_{12}  du^1  du^2 + 2 \cdot g_{13}  du^1  du^3 + 2 \cdot g_{23}  du^2  du^3 .
-\end{aligned} 
+	\end{aligned} 
 	\label{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme3D}
 \end{equation}
 
@@ -50,7 +51,6 @@ Im Linienelement des Zylinders aus \eqref{geodaeten:equation:Linienelemente:Zyli
 Daher sind alle Einträge außer den Diagonalen Null.
 Mit $u^1 = r$, $u^2 = \phi$ und $u^3 = z$  können die diagonalen Elemente mit den Koeffizienten im Linienelement bestimmt werden. 
 Somit gilt
-
 \begin{equation}
 	\begin{aligned}
 		g_{11}  &= 1  \\
@@ -59,7 +59,6 @@ Somit gilt
 	\end{aligned}
 \end{equation}
 und damit ist der metrische Tensor im dreidimensionalen zylindrischen Raum
-
 \begin{equation}
 	T = \begin{pmatrix} 1 && 0 && 0 \\ 0 && r^2 && 0 \\ 0 && 0 && 1 \end{pmatrix} .
 \end{equation}

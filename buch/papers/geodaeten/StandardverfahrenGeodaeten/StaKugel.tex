@@ -42,7 +42,7 @@ Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\theta$, erhalten wir:
 	\frac{\partial g_{11}}{\partial \theta} = 0, \quad \frac{\partial g_{11}}{\partial \phi} = 0, \quad \frac{\partial g_{22}}{\partial \theta} = 2r^2 \sin\theta \cos\theta, \quad \frac{\partial g_{22}}{\partial \phi} = 0.
 \end{equation}
 
-Mit diesen Ableitungen und dem inversen Tensor $g^{ij}$ können wir nun die Christoffel-Symbol berechnen:
+Mit diesen Ableitungen und dem inversen Tensor $g^{ij}$ können wir nun die Christoffel-Symbole berechnen:
 \begin{equation}
 	\Gamma_{ij}^k = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
 \end{equation}
@@ -79,7 +79,7 @@ Setzen wir die entsprechenden Christoffel-Symbole und Koordinaten in die Gleichu
 		0 &= \ddot{\phi} + \Gamma^2_{11} \dot{\theta} \dot{\theta} + 2\Gamma^2_{12} \dot{\theta}\dot{\phi} + \Gamma^2_{22} \dot{\phi} \dot{\phi}
 	\end{aligned}
 \end{equation}
-Da einige der Christoffel-Symbole Null sind, vereinfachen sich Geodätengleichung zu:
+Weil einige der Christoffel-Symbole Null sind, vereinfachen sich Geodätengleichung zu:
 \begin{align}
 	0 &= \ddot{\theta} - \sin\theta \cos\theta \, \dot{\phi}^2 \\
 	0 &= \ddot{\phi} + 2 \cot\theta \, \dot{\theta} \dot{\phi}
@@ -100,8 +100,15 @@ Setzen wir dies in die erste Geodätengleichung ein, so erhalten wir:
 \end{equation}
 Die zweite Geodätengleichung vereinfacht sich zu $0 = \ddot{\phi}$, was zeigt, dass $\phi(t)$ linear in der Zeit variiert.
 Diese erste Geodätengleichung wird nur für $\theta = \frac{\pi}{2}$ erfüllt, das heisst, nur für den Äquator.
-Für alle anderen Breitengrade mit $\theta \neq \frac{\pi}{2}$ ist $\dot{\phi}$ gleich null, was bedeutet, dass es keine Bewegung in der $\phi$-Richtung gibt und somit keine Geodäte vorliegt.
-Der Äquator, als einziger Breitengrad, erfüllt daher die Geodätengleichungen und ist ein Großkreis.
+Für alle anderen Breitengrade mit $\theta \neq \frac{\pi}{2}$ muss $\dot{\phi}$ gleich null werden, was bedeutet, dass es keine Bewegung in der $\phi$-Richtung gibt und somit keine Geodäte vorliegt.
+Der Äquator, als einziger Breitengrad, erfüllt daher die Geodätengleichungen und ist ein Grosskreis.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{papers/geodaeten/Abbildungen/Standardverfahren/StaKugelBreitengrade}
+	\caption{Erdkugel mit Breitengrade und Äquator als Geodätenlinie}
+	\label{geodaeten:figure:Standardverfahren:Breitengrade}
+\end{figure}
 
 \subsection{Längengrade}
 Nun analysieren wir die Geodätengleichungen für konstantes $\phi$, also entlang eines Längengrads.
@@ -117,5 +124,12 @@ Damit sind alle Längengrade tatsächlich Geodäten.
 Zusammenfassend konnten wir durch unsere Analyse zeigen, dass nur Grosskreise, wie der Äquator und die Längengrade, die Geodätengleichungen vollständig erfüllen und somit die wahren Geodäten auf der Kugeloberfläche darstellen.
 
 Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleichungen $\theta(t)$ und $\phi(t)$ in Abhängigkeit vom Zeitparameter $t$ zwangsläufig die Form von Grosskreisen annehmen müssen und dass die allgemeinen Geodätengleichung diese Grosskreise korrekt als die Geodäten auf der Kugeloberfläche identifiziert.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{papers/geodaeten/Abbildungen/Standardverfahren/StaKugelLaengengrade}
+	\caption{Erdkugel mit Längengrade als Geodätenlinen}
+	\label{geodaeten:figure:Standardverfahren:Laengengrade}
+\end{figure}
 
 
