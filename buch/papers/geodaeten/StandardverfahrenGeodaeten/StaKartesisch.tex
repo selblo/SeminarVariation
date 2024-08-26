@@ -39,45 +39,44 @@ Somit ergeben sich alle Christoffel-Symbole als null
 Denkt man an die Definition aus Abschnitt \ref{geodaeten:section:Standardverfahren}, macht dies durchaus Sinn.
 Denn der Kartesische Raum ist nicht gekrümmt, weshalb keine Korrektur der Geraden notwendig ist.
 
-Setzt man die Christoffel-Symbole in die allgemeine Geodätengleichung ein, erhält man mit $u^1 = x(t)$
+Setzt man die Christoffel-Symbole in die allgemeine Geodätengleichung \eqref{geodaeten:equation:StandardverfahrenGeodaeten:Geodaetengleichung} ein, erhält man mit $u^1 = x(t)$
 \begin{equation}
-	\begin{alignedat}{2}
-		&\ddot{u}^1 + \Gamma_{ij}^1 \dot{u}^i \dot{u}^j &=& \quad 0 \\
-		&\ddot{u}^1 + 0_{ij} \cdot \dot{u}^i \dot{u}^j \quad &=& \quad 0\\
-		&\ddot{u}^1  &=& \quad 0 \\
-		&\ddot{x}(t) &=& \quad 0
+	\begin{alignedat}{3}
+		&\ddot{u}^1 + \Gamma_{ij}^1 \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
+		% &\ddot{u}^1 + 0_{ij} \cdot \dot{u}^i \dot{u}^j &\quad = \quad& 0\\
+		&\ddot{u}^1  &\quad = \quad& 0 \\
+		&\ddot{x}(t) &\quad = \quad& 0
 	\end{alignedat}
 	\label{geodaeten:equation:Standardverfahren:Kartesisch:x}
 \end{equation}
 und mit $u^2 = y(t)$
 \begin{equation}
-	\begin{alignedat}{2}
-		&\ddot{u}^2 + \Gamma_{ij}^2 \dot{u}^i \dot{u}^j &=& \quad 0 \\
-		&\ddot{u}^2 + 0_{ij} \cdot \dot{u}^i \dot{u}^j \quad &=& \quad 0 \\
-		&\ddot{u}^2  &=& \quad 0 \\
-		&\ddot{y}(t) &=& \quad 0  .
+	\begin{alignedat}{3}
+		&\ddot{u}^2 + \Gamma_{ij}^2 \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
+		% &\ddot{u}^2 + 0_{ij} \cdot \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
+		% &\ddot{u}^2  &\quad = \quad& 0 \\
+		&\ddot{y}(t) &\quad = \quad& 0  .
 	\end{alignedat}
 	\label{geodaeten:equation:Standardverfahren:Kartesisch:y}
 \end{equation}
 
 
+
 Man sieht bereits, da die zweite Ableitungen in beide Dimensionen Null sind, handelt es sich bei dem kürzesten Weg um eine Gerade, was aus der Erfahrung durchaus Sinn ergibt.
 
 Setzt man nun zwei Punkte als Start und Endpunkt, kann man durch diese Nebenbedingungen eine konkrete Lösung erhalten.
-Beispielsweise wollen wir den kürzesten Weg zwischen $P_A = (1,1)$ und $P_B = (3,5)$ berechnen. Wir integrieren die zweite Ableitung von $x(t)$
+Beispielsweise wollen wir den kürzesten Weg zwischen $P_A = (1,1)$ und $P_B = (3,5)$ berechnen. 
+Durch doppeltes integrieren der zweiten Ableitung von $x(t)$ erhält man
 
 \begin{equation}
-	\frac{d^2x}{dt^2} = 0 \Rightarrow \frac{dx}{dt} = c_1 ,
+	\frac{d^2x}{dt^2} = 0 
+	\Rightarrow \frac{dx}{dt} = c_1 
+	\Rightarrow x(t) = c_1 \cdot t + c_2  .
+	\label{geodaeten:equation:Standardverfahren:Kartesisch:equation1}
 \end{equation}
-wobei $c_1$ eine Integrationskonstante ist. Durch erneutes Integrieren erhalten wir
+Dabei sind $c_1$  und $c_2$ Integrationskonstanten. 
 
-\begin{equation}
-\Rightarrow x(t) = c_1 \cdot t + c_2  .
-\label{geodaeten:equation:Standardverfahren:Kartesisch:equation1}
-\end{equation}
-Wieder ist $c_2$ eine Integrationskonstante. 
 Wir sehen, die Gleichung entspricht einer parametrierten Geradengleichung mit $c_2$ als Startwert für $x(0)$ und $c_1$ als Steigung von $x(t)$. 
-
 Mit $P_A(x_1,y_1)$ und $P_B(x_2,y_2)$ haben diese Gleichungen die Form
 
 \begin{align}
@@ -99,22 +98,8 @@ und damit ist die Lösung der Geodätengleichung in $x$ gleich
 \begin{equation}
 	x(t) = 2t + 1 .
 \end{equation}
-Analog für $y(t)$ ist \eqref{geodaeten:equation:Standardverfahren:Kartesisch:equation1}
-  
-\begin{equation}
-	\Rightarrow y(t) = c_3 \cdot t + c_4  .
-\end{equation}
-Durch Einsetzen der Randwerte ergibt sich für $y(t)$ 
 
-\begin{equation}
-	0 \cdot c_3 + c_4 = 1 \Rightarrow c_4 = 1 
-\end{equation}
-und für die Steigung aus Sicht von $y$
-
-\begin{equation}
-	c_4 = y_2 - y_1 \\=5-1 = 4 .
-\end{equation}
-Damit ist die Lösung der Geodätengleichung in $y$ gleich
+Analog für $y(t)$ ist ist die Lösung der Geodätengleichung in $y$ gleich
 
 \begin{equation}
 	y(t) = 4t + 1 .

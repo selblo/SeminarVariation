@@ -24,8 +24,8 @@ kann mittels Koeffizienten Vergleich bestimmt werden, dass
 	\begin{alignedat}{3}
 		g_{11}  du^1 du^1 &= g_{11}  d \phi^2 & &= r^2 \cdot d \phi^2 \\
 		g_{22}  du^2 du^2 &= g_{22}  dz^2    & &= 1 \cdot dz^2 \\
-		g_{12}  du^1 du^2 &= g_{12}  d \phi  dz & &= 0 \cdot d \phi \cdot dz \\
-		g_{21}  du^2 du^2 &= g_{21}  dz  d \phi & &= 0 \cdot dz \cdot d \phi .
+		g_{12}  du^1 du^2 &= g_{12}  d \phi  dz & &= 0 \cdot d \phi  dz \\
+		g_{21}  du^2 du^2 &= g_{21}  dz  d \phi & &= 0 \cdot dz  d \phi .
 	\end{alignedat}
 \end{equation}
 Die Matrixeinträge entsprechen den Koeffizienten der jeweiligen Ableitungsprodukte und damit lässt sich der metrische Tensor aufstellen als
@@ -36,13 +36,12 @@ Die Matrixeinträge entsprechen den Koeffizienten der jeweiligen Ableitungsprodu
 Ist $r$ nicht konstant, bedeutet dies, dass man sich in drei Dimensionen bewegen kann.
 Deshalb muss eine $3 \times 3$-Matrix für den metrischen Tensor entstehen, damit jede Bewegung vollständig beschrieben ist. 
 
-Die Einstein-Summe hat hier die Form
+Die Einstein-Summe hat, aufgrund der Symmetrie des metrischen Tensors, hier die Form
 
 \begin{equation}
 \begin{aligned}
-	ds^2 = &\ g_{11}  du^1  du^1 + g_{12}  du^1  du^2 + g_{13}  du^1  du^3 \nonumber \\
-	&+ g_{21}  du^2  du^1 + g_{22}  du^2  du^2 + g_{23}  du^2  du^3 \nonumber \\
-	&+ g_{31}  du^3  du^1 + g_{32}  du^3  du^2 + g_{33}  du^3  du^3  .
+	ds^2 = &g_{11}  du^1  du^1 + g_{22}  du^2  du^2 + g_{33}  du^3  du^3 \nonumber \\
+	&+ 2 \cdot g_{12}  du^1  du^2 + 2 \cdot g_{13}  du^1  du^3 + 2 \cdot g_{23}  du^2  du^3 .
 \end{aligned} 
 	\label{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme3D}
 \end{equation}
