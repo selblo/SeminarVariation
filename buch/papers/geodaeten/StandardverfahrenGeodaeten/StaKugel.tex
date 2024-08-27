@@ -33,16 +33,18 @@ Der inverse Tensor $g^{ij}$ ist ergibt sich zu
 		1 & 0 \\
 		0 & \frac{1}{\sin^2\theta}
 	\end{pmatrix}.
+	\label{geodaeten:equation:StaKugel:TensorInverse}
 \end{equation}
 
-\subsection{Christoffel-Symbole}
 Nun berechnen wir die partiellen Ableitungen des metrischen Tensors $g_{ij}$ in Bezug auf die Koordinaten $\theta$ und $\phi$.
 Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\theta$, erhalten wir
 \begin{equation}
 	\frac{\partial g_{11}}{\partial \theta} = 0, \quad \frac{\partial g_{11}}{\partial \phi} = 0, \quad \frac{\partial g_{22}}{\partial \theta} = 2r^2 \sin\theta \cos\theta, \quad \frac{\partial g_{22}}{\partial \phi} = 0.
+	\label{geodaeten:equation:StaKugel:Ableitungen}
 \end{equation}
 
-Mit diesen Ableitungen und dem inversen Tensor $g^{ij}$ können wir nun die Christoffel-Symbole berechnen:
+\subsection{Christoffel-Symbole}
+Mit den Ableitungen \eqref{geodaeten:equation:StaKugel:Ableitungen} und dem inversen Tensor $g^{ij}$ \eqref{geodaeten:equation:StaKugel:TensorInverse} können wir nun die Christoffel-Symbole berechnen durch
 \begin{equation}
 	\Gamma_{ij}^k = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
 \end{equation}
