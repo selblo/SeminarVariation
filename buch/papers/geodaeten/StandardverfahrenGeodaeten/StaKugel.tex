@@ -17,7 +17,7 @@ Tatsächlich folgen Flugzeuge auf Langstreckenflügen dieser Logik und fliegen e
 Wir möchten nun überprüfen, ob wir mit dem Standardverfahren tatsächlich zu dieser Lösung kommen.
 
 Um dies zu tun, benötigen wir den bereits im vorherigen Abschnitt hergeleiteten metrischen Tensor für die Kugeloberfläche.
-Dieser ist in Kugelkoordinaten $(\theta, \phi)$ gegeben durch:
+Dieser ist in Kugelkoordinaten $(\theta, \phi)$ gegeben durch
 \begin{equation}
 	g_{ij} = r^2 \begin{pmatrix}
 		1 & 0 \\
@@ -26,7 +26,7 @@ Dieser ist in Kugelkoordinaten $(\theta, \phi)$ gegeben durch:
 \end{equation}
 
 Zuerst berechnen wir die Inverse des metrischen Tensors, da diese für die Berechnung der Christoffel-Symbol benötigt wird.
-Der inverse Tensor $g^{ij}$ ist gegeben durch:
+Der inverse Tensor $g^{ij}$ ist ergibt sich zu
 \begin{equation}
 	g^{ij} = \frac{1}{r^2} 
 	\begin{pmatrix}
@@ -37,7 +37,7 @@ Der inverse Tensor $g^{ij}$ ist gegeben durch:
 
 \subsection{Christoffel-Symbole}
 Nun berechnen wir die partiellen Ableitungen des metrischen Tensors $g_{ij}$ in Bezug auf die Koordinaten $\theta$ und $\phi$.
-Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\theta$, erhalten wir:
+Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\theta$, erhalten wir
 \begin{equation}
 	\frac{\partial g_{11}}{\partial \theta} = 0, \quad \frac{\partial g_{11}}{\partial \phi} = 0, \quad \frac{\partial g_{22}}{\partial \theta} = 2r^2 \sin\theta \cos\theta, \quad \frac{\partial g_{22}}{\partial \phi} = 0.
 \end{equation}
@@ -48,41 +48,46 @@ Mit diesen Ableitungen und dem inversen Tensor $g^{ij}$ können wir nun die Chri
 \end{equation}
 wobei $u^1 = \theta$ und $u^2 = \phi$.
 
-Nach Einsetzen der Werte und Vereinfachung erhalten wir folgende nicht-verschwindende Christoffel-Symbol:
+Nach Einsetzen der Werte und Vereinfachung erhalten wir folgende nicht-verschwindende Christoffel-Symbole
 \begin{equation}
 	\Gamma_{12}^2 = \Gamma_{21}^2 = \cot\theta \quad \text{und} \quad \Gamma_{22}^1 = -\sin\theta \cos\theta.
 \end{equation}
 
-Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von den Koordinaten ($\theta$) zu nicht-verschwindenden Christoffel-Symbolen, welche die intrinsische Krümmung der Kugeloberfläche beschreiben.
+Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von der Koordinate $\theta$ zu nicht-verschwindenden Christoffel-Symbolen, welche die intrinsische Krümmung der Kugeloberfläche beschreiben.
 
-Um diese Krümmung zu verstehen, betrachten wir die Geometrie entlang unterschiedlicher Wege.
-Bewegt man einen Vektor entlang eines Breitengrades, bleibt seine Richtung relativ zur Kugeloberfläche konstant, da das Bogenmaß von $\phi$ am Äquator unverändert bleibt.
-Entlang eines Längengrads hingegen ändert sich die Richtung des Vektors, da das Bogenmaß von $\phi$ mit $\theta$ variiert.
-Je näher man den Polen kommt, desto kürzer wird der Bogen für eine gegebene Änderung von $\phi$, was zu einer Änderung der Vektorrichtung führt.
+Um diese Krümmung zu verstehen, betrachten wir die Bewegung eines Tangentialvektors auf der Oberfläche in Bezug auf die Basisvektoren.
 
-Diese Veränderung der Vektorrichtung ist eine Folge der intrinsischen Krümmung der Kugeloberfläche.
-Die nicht-verschwindenden Christoffel-Symbole beschreiben diese Krümmung und zeigen an, wie sich die Richtung eines Vektors während des Transports entlang der Oberfläche ändert.
+Wird die Komponente des Vektors entlang eines Breitenkreises verändert, also in $\phi$-Richtung, führt das zu keiner Änderung der Vektorrichtung, da das Bogenmass von $\phi$ entlang eines Breitenkreises konstant bleibt.
+Diese Bewegung beeinflusst die allgemeine Richtung des Vektors also nicht, was auch im metrischen Tensor reflektiert wird, der keinerlei Abhängigkeit von $\phi$ aufweist.
+
+Andererseits führt eine Veränderung der Komponente entlang eines Längengrades, also in $\theta$-Richtung, zu einer Veränderung der Vektorrichtung.
+Dies liegt daran, dass das Bogenmass von $\phi$ mit $\theta$ variiert: 
+Je näher man den Polen kommt, desto kürzer wird der Bogen für eine gegebene Änderung von $\theta$, was die Gesamtrichtung des Vektors beeinflusst. 
+Damit der Tangentialvektor seine ursprüngliche Richtung beibehält, müsste die Bewegung in der $\phi$-Richtung zunehmend verringert werden, je näher man den Polen kommt.
+
+Diese Richtungsänderung des Vektors ist eine direkte Folge der intrinsischen Krümmung der Kugeloberfläche.
+Die nicht-verschwindenden Christoffel-Symbole beschreiben genau diese Krümmung und geben an, wie sich die Richtung eines Vektors bei seiner Bewegung entlang der Oberfläche verändert.
 
 \subsection{Geodätengleichung}
 Mit den berechneten Christoffel-Symbolen können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
 
-Die allgemeine Form der Geodätengleichung lautet:
+Die allgemeine Form der Geodätengleichung lautet
 \begin{equation}
 	\ddot{u}^k + \Gamma^k_{ij} \dot{u}^i \dot{u}^j = 0,
 \end{equation}
 wobei $u^k$ die Koordinaten darstellen, in diesem Fall $\theta$ und $\phi$.
 
-Setzen wir die entsprechenden Christoffel-Symbole und Koordinaten in die Gleichungen ein, erhalten wir:
+Setzen wir die entsprechenden Christoffel-Symbole und Koordinaten in die Gleichungen ein, erhalten wir
 \begin{equation}
 	\begin{aligned} 
 		0 &= \ddot{\theta} + \Gamma^1_{11} \dot{\theta} \dot{\theta} + 2\Gamma^1_{12} \dot{\theta}\dot{\phi} + \Gamma^1_{22} \dot{\phi} \dot{\phi} \\
-		0 &= \ddot{\phi} + \Gamma^2_{11} \dot{\theta} \dot{\theta} + 2\Gamma^2_{12} \dot{\theta}\dot{\phi} + \Gamma^2_{22} \dot{\phi} \dot{\phi}
+		0 &= \ddot{\phi} + \Gamma^2_{11} \dot{\theta} \dot{\theta} + 2\Gamma^2_{12} \dot{\theta}\dot{\phi} + \Gamma^2_{22} \dot{\phi} \dot{\phi},
 	\end{aligned}
 \end{equation}
-Weil einige der Christoffel-Symbole Null sind, vereinfachen sich Geodätengleichung zu:
+und weil einige der Christoffel-Symbole Null sind, vereinfachen sich die Geodätengleichungen schliesslich zu
 \begin{align}
 	0 &= \ddot{\theta} - \sin\theta \cos\theta \, \dot{\phi}^2 \\
-	0 &= \ddot{\phi} + 2 \cot\theta \, \dot{\theta} \dot{\phi}
+	0 &= \ddot{\phi} + 2 \cot\theta \, \dot{\theta} \dot{\phi}.
 \end{align}
 
 Da $r$ lediglich ein Skalierungsfaktor ist, kürzt es sich in den Geodätengleichungen heraus. 
@@ -123,7 +128,7 @@ Damit sind alle Längengrade tatsächlich Geodäten.
 
 Zusammenfassend konnten wir durch unsere Analyse zeigen, dass nur Grosskreise, wie der Äquator und die Längengrade, die Geodätengleichungen vollständig erfüllen und somit die wahren Geodäten auf der Kugeloberfläche darstellen.
 
-Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleichungen $\theta(t)$ und $\phi(t)$ in Abhängigkeit vom Zeitparameter $t$ zwangsläufig die Form von Grosskreisen annehmen müssen und dass die allgemeinen Geodätengleichung diese Grosskreise korrekt als die Geodäten auf der Kugeloberfläche identifiziert.
+Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleichungen $\theta(t)$ und $\phi(t)$ zwangsläufig die Form von Grosskreisen annehmen müssen und dass die allgemeine Geodätengleichung diese Grosskreise korrekt als die Geodäten auf der Kugeloberfläche identifiziert.
 
 \begin{figure}
 	\centering
@@ -131,5 +136,3 @@ Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleich
 	\caption{Erdkugel mit Längengrade als Geodätenlinen}
 	\label{geodaeten:figure:Standardverfahren:Laengengrade}
 \end{figure}
-
-

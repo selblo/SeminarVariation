@@ -10,7 +10,7 @@
 \rhead{Metrischer Tensor Beispiele}
 
 Für die Zylinderoberfläche gilt $r$ als konstant und $u^1 = \phi$, $u^2 =z$.
-Vergleicht man die Einstein-Summe aus Gleichung \eqref{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme}
+Vergleicht man die Summe aus Gleichung \eqref{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme}
 \begin{equation}
 	ds^2 = g_{11} \, du^1 \, du^1 + 2g_{12} \, du^1 \, du^2 + g_{22} \, du^2 \, du^2
 \end{equation}
@@ -23,8 +23,7 @@ kann mittels Koeffizienten Vergleich bestimmt werden, dass
 	\begin{alignedat}{3}
 		g_{11}  du^1 du^1 &= g_{11}  d \phi^2 & &= r^2 \cdot d \phi^2 \\
 		g_{22}  du^2 du^2 &= g_{22}  dz^2    & &= 1 \cdot dz^2 \\
-		2g_{12}  du^1 du^2 &= 2g_{12}  d \phi  dz & &= 2\cdot0 \, d \phi \cdot dz.
-
+		2g_{12}  du^1 du^2 &= 2g_{12}  d \phi  dz & &= 0 \cdot 2 \, d \phi  dz.
 	\end{alignedat}
 \end{equation}
 
@@ -35,15 +34,12 @@ Die Matrixeinträge entsprechen den Koeffizienten der jeweiligen Ableitungsprodu
 
 Ist $r$ nicht konstant, bedeutet dies, dass man sich in drei Dimensionen bewegen kann.
 Deshalb muss eine $3 \times 3$-Matrix für den metrischen Tensor entstehen, damit jede Bewegung vollständig beschrieben ist. 
-
-
-Die Einstein-Summe hat, aufgrund der Symmetrie des metrischen Tensors, hier die Form
-
+Für den dreidimensionalen Fall, ergibt sich dank der Symmetrie des metrischen Tensors, das allgemeine Linienelement in der Summenform als
 \begin{equation}
 	\begin{aligned}
-	ds^2 = &g_{11}  du^1  du^1 + g_{22}  du^2  du^2 + g_{33}  du^3  du^3 \nonumber \\
-	&+ 2 \cdot g_{12}  du^1  du^2 + 2 \cdot g_{13}  du^1  du^3 + 2 \cdot g_{23}  du^2  du^3 .
-	\end{aligned} 
+		ds^2 = &g_{11} \, du^1 \, du^1 + g_{22} \, du^2 \, du^2 + g_{33} \, du^3 \, du^3 \nonumber \\
+		&+ 2 \cdot g_{12} \, du^1 \, du^2 + 2 \cdot g_{13} \, du^1 \, du^3 + 2 \cdot g_{23} \, du^2 \, du^3.
+	\end{aligned}
 	\label{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme3D}
 \end{equation}
 
