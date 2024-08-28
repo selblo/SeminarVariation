@@ -24,24 +24,24 @@ und bildet daraus die Euler-Lagrange-Differentialgleichung
 \begin{equation}
 	\frac{d}{dx} \left(\frac{\partial \mathcal{L}}{\partial y'}\right) - \frac{\partial \mathcal{L}}{\partial y} = 0.
 \end{equation}
-Durch Unformen und Vereinfachen ergibt sich letztendlich eine Differentialgleichung in der Form von
+Durch Umformungen und Vereinfachungen ergibt sich letztendlich eine Differentialgleichung in der Form
 \begin{equation}
 	0 = \frac{y''}{\left(1 + \left(y'\right)^2\right)^{\frac{3}{2}}},
 \end{equation}
-dessen Lösung eine Funktion beschreibt, die den kürzesten Abstand zwischen zwei Punkten auf einer Ebene darstellt. Die Lösung dieser Gleichung, wie wir später nochmals sehen werden, ist eine Gerade, was intuitiv einleuchtend ist.
+deren Lösung eine Funktion beschreibt, die den kürzesten Abstand zwischen zwei Punkten auf einer Ebene darstellt. Wie wir später sehen werden, ist die Lösung dieser Gleichung eine Gerade, was intuitiv einleuchtend ist.
 
 Nun stellen wir uns die Frage, ob wir mit unserem neu erlernten Wissen eine allgemeine Differentialgleichung finden können, welche die Funktion des kürzesten Abstands zwischen zwei Punkten für beliebige $n$-dimensionale geometrische Räume beschreibt.
 
 \subsection{Formulierung des Variationsprinzips}
-Wir fangen mit dem allgemeinen Linienelement an:
+Wir beginnen mit dem allgemeinen Linienelement
 \begin{equation}
 	ds^2 = g_{ij} \, du^i \, du^j.
 \end{equation}
-Das parametrisieren wir jetzt nach einem gemeinsamen Parameter, wie beispielsweise die Zeit:
+Dieses parametrisieren wir nun nach einem gemeinsamen Parameter, wie zum Beispiel der Zeit, und erhalten
 \begin{equation}
 	ds^2 = g_{ij} \, \dot{u}^i \dot{u}^j \, dt^2,
 \end{equation}
-wobei $\dot{u}^i = \frac{du^i}{dt}$ die Ableitungen der Koordinaten nach der Zeit $t$ sind.
+wobei $\dot{u}^i = \frac{du^i}{dt}$ die Ableitungen der Koordinaten nach der Zeit $t$ darstellen.
 
 Durch die gemeinsame Parametrisierung lässt sich nun das Funktional für die Variation,
 \begin{equation}
@@ -52,7 +52,7 @@ als Integral des zu minimierenden Weges aufstellen.
 Die Verwendung des raumspezifischen metrischen Tensors ermöglicht es, diese allgemeine Formel für jede Art von Raum anzuwenden.
 
 Weil das Funktional nur von einem einzigen Parameter abhängt, können wir die klassische Euler-Lagrange-Differentialgleichung verwenden.
-Als erstes identifizieren wir somit die Lagrange-Funktion:
+Als erstes identifizieren wir somit die Lagrange-Funktion als
 \begin{equation}
 	\mathcal{L}(u^n, \dot{u}^n) = \sqrt{g_{ij} \, \dot{u}^i \dot{u}^j}.
 	\label{geodaeten:equation:StandardverfahrenGeodaeten:LagrangeFunktion}
@@ -64,7 +64,6 @@ Da das Funktional eine $n$-dimensionale Anzahl an Koordinaten umfasst, die selbs
 	\label{geodaeten:equation:StandardverfahrenGeodaeten:DGL1}
 \end{equation}
 aufgestellt werden.
-
 Für einen $n$-dimensionalen Raum ergeben sich somit auch $n$ Differentialgleichungen. 
 
 \subsection{Vereinfachungen und Rahmenbedingungen}
@@ -72,7 +71,7 @@ Wir setzen voraus, dass der Radikand des Funktionals \eqref{geodaeten:equation:S
 Diese Voraussetzungen charakterisieren eine Riemannsche Mannigfaltigkeit.
 Daher gilt diese Variationsrechnung für beliebige geometrische Räume unter der Voraussetzung, dass sie als Riemannsche Mannigfaltigkeiten interpretiert werden können\footnote{Tatsächlich gelten die Geodätengleichungen, die sich aus dieser Variationsrechnung ergeben, auch für sogenannte Pseudo-Riemannsche Räume.
 	In diesen Räumen kann die Metrik negative Werte annehmen, wie es für die Beschreibung gekrümmter Raumzeiten der Fall ist.
-	Die Herleitung weicht zwar leicht ab, aber das Ergebnis, die allgemeine Geodätengleichung, bleibt unverändert.
+	Die Herleitung weicht zwar leicht ab, aber das Ergebnis, die allgemeine Geodätengleichung, bleibt gleich.
 }.
 
 Um weitere Berechnungen zu vereinfachen, substituieren wir den Radikanden in \eqref{geodaeten:equation:StandardverfahrenGeodaeten:LagrangeFunktion} mit
@@ -80,7 +79,6 @@ Um weitere Berechnungen zu vereinfachen, substituieren wir den Radikanden in \eq
 	\varphi = g_{ij} \, \dot{u}^i \dot{u}^j.
 	\label{geodaeten:equation:StandardverfahrenGeodaeten:Substitution}
 \end{equation}
-
 Damit ergibt sich die Euler-Lagrange-Differentialgleichung \eqref{geodaeten:equation:StandardverfahrenGeodaeten:DGL1} zu
 \begin{equation}
 	\frac{d}{dt} \left(\frac{1}{2 \sqrt{\varphi}} \, \varphi_{\dot{u}^n}\right) - \frac{1}{2 \sqrt{\varphi}} \, \varphi_{u^n} = 0,
@@ -88,9 +86,8 @@ Damit ergibt sich die Euler-Lagrange-Differentialgleichung \eqref{geodaeten:equa
 \end{equation}
 wobei $\varphi_{\dot{u}^n} = \frac{\partial \varphi}{\partial \dot{u}^n}$ und $\varphi_{u^n} = \frac{\partial \varphi}{\partial u^n}$ die partiellen Ableitungen von $\varphi$ nach den jeweiligen Koordinaten sind.
 
-Wir nehmen zusätzlich an, dass $\varphi = 1$ ist, was bedeutet, dass der Parameter $t$ mit der Bogenlänge $s$ identifiziert werden kann und somit als natürlicher Parameter fungiert.
+Wir nehmen zusätzlich an, dass $\varphi = 1$ ist. Daraus folgt gemäss \eqref{geodaeten:equation:StandardverfahrenGeodaeten:Funktional}, dass der Parameter $t$ mit der Bogenlänge $s$ identifiziert werden kann und daher als natürlicher Parameter fungiert.
 Dies vereinfacht die Berechnungen und führt zur konstanten Geschwindigkeit entlang der Geodäte.
-
 Dadurch vereinfacht sich die Gleichung \eqref{geodaeten:equation:StandardverfahrenGeodaeten:DGL2} noch weiter zu
 \begin{equation}
 	\frac{d}{ds} \left( \varphi_{\dot{u}^n} \right) - \varphi_{u^n} = 0,
@@ -117,16 +114,15 @@ wobei es zwei Fälle zu betrachten gibt, abhängig davon, ob $i = n$ oder $j = n
 
 Aus der Produktregel ergibt sich somit
 \begin{equation}
-	\frac{\partial \varphi}{\partial \dot{u}^n} = g_{nj} \dot{u}^j + g_{in} \dot{u}^i.
+	\frac{\partial \varphi}{\partial \dot{u}^n} = g_{nj} \dot{u}^j + g_{in} \dot{u}^i,
 \end{equation}
-
-Weil $g_{ij}$ symmetrisch ist ($g_{ij} = g_{ji}$), lässt sich dies zusammenfassen zu
+und weil $g_{ij}$ symmetrisch ist ($g_{ij} = g_{ji}$), lässt sich dies zusammenfassen zu
 \begin{equation}
 	\frac{\partial \varphi}{\partial \dot{u}^n} = 2g_{in} \dot{u}^i.
 	\label{geodaeten:equation:StandardverfahrenGeodaeten:PartialPhi2}
 \end{equation}
 
-Da $\varphi_{\dot{u}^n}$ von den Koordinaten $u^k$ und deren Ableitungen $\dot{u}^k$ abhängt, berechnet sich die Ableitung von $\varphi_{\dot{u}^n}$ nach $s$ durch Anwendung der Kettenregel als:
+Da $\varphi_{\dot{u}^n}$ von den Koordinaten $u^k$ und deren Ableitungen $\dot{u}^k$ abhängt, berechnet sich die Ableitung von $\varphi_{\dot{u}^n}$ nach $s$ durch Anwendung der Kettenregel als
 \begin{equation}
 	\frac{d}{ds} \left( \varphi_{\dot{u}^n} \right) = \sum_{k = 1}^n \left( \frac{\partial \varphi_{\dot{u}^n}}{\partial u^k} \, \dot{u}^k + \frac{\partial \varphi_{\dot{u}^n}}{\partial \dot{u}^k} \, \ddot{u}^k \right),
 	\label{geodaeten:equation:StandardverfahrenGeodaeten:Ableitung1s}
@@ -158,10 +154,11 @@ Fügt man nun alles zusammen und setzt \eqref{geodaeten:equation:Standardverfahr
 
 Im ersten Summanden tritt jedoch ein Problem auf, da dieser Term nicht symmetrisch ist. 
 Die Koeffizienten $\frac{\partial g_{in}}{\partial u^k}$ und $\frac{\partial g_{kn}}{\partial u^i}$ können unterschiedlich sein, was die symmetrische Eigenschaft des metrischen Tensors gefährdet. 
-Um dies zu korrigieren, bildet man den Mittelwert der beiden Koeffizienten, wodurch sich die Symmetrie wiederherstellen lässt:
+Um dies zu korrigieren, bildet man den Mittelwert der beiden Koeffizienten
 \begin{equation}
-	\frac{1}{2} \left( \frac{\partial g_{kn}}{\partial u^i} + \frac{\partial g_{in}}{\partial u^k} \right).
+	\frac{1}{2} \left( \frac{\partial g_{kn}}{\partial u^i} + \frac{\partial g_{in}}{\partial u^k} \right),
 \end{equation}
+wodurch sich die Symmetrie wiederherstellen lässt.
 
 Der korrigierte Ausdruck lautet dann
 \begin{equation}
@@ -180,24 +177,17 @@ Teilt man den gesamten Ausdruck durch $2g_{ij}$ und benennt den Index $n$ in $l$
 \end{equation}
 wobei $g^{kl}$ die Inverse des metrischen Tensors darstellt.
 
-
-Nach weiterem Zusammenfassen ergibt sich schließlich die allgemeine Geodätengleichung:
-\begin{equation} 
-	\ddot{u}^k + \Gamma^k_{ij} \dot{u}^i \dot{u}^j = 0, 
-	\label{geodaeten:equation:StandardverfahrenGeodaeten:Geodaetengleichung}
-\end{equation}
-
 Dieser Ausdruck kann durch die sogenannten Christoffel-Symbole $\Gamma^k_{ij}$ weiter zusammengefasst werden.
 Diese sind definiert als
 \begin{equation}
-
-	\Gamma^k_{ij} = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right).
+	\Gamma^k_{ij} = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
 \end{equation}
-Aufgrund der Symmetrie des metrischen Tensors sind auch die Christoffel-Symbole in den Indizes $i$ und $j$ symmetri ($\Gamma^k_{ij} = \Gamma^k_{ji}$).
+und sind aufgrund der wiederhergestellten Symmetrie des metrischen Tensors, ebenfalls in den Indizes $i$ und $j$ symmetrisch ($\Gamma^k_{ij} = \Gamma^k_{ji}$).
 
-Durch die Einführung der Christoffel-Symbole erhält man schliesslich die allgemeine Geodätengleichung:
+Durch die Einführung der Christoffel-Symbole erhält man so schliesslich die allgemeine Geodätengleichung
 \begin{equation}
 	\ddot{u}^k + \Gamma^k_{ij} \dot{u}^i \dot{u}^j = 0.
+	\label{geodaeten:equation:StandardverfahrenGeodaeten:Geodaetengleichung}
 \end{equation}
 
 Diese allgemeine Geodätengleichung kann so interpretiert werden, dass der kürzeste Weg zwischen zwei Punkten prinzipiell immer eine Gerade ist. 
