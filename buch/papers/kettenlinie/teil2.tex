@@ -6,38 +6,238 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 2 
-\label{kettenlinie:section:teil2}}
-\rhead{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{Herleitung der Funktionen\label{kettenlinie:section:Herleitung der Funktionen}}
+\rhead{Herleitung der Funktionen}
+Nachdem die theoretischen Grundlagen und Eigenschaften der Kettenlinie behandelt wurden, geht es nun um die konkreten Berechnungen.
+In diesem Abschnitt werden die wesentlichen Formeln und deren Herleitungen vorgestellt, die zur Bestimmung der Kettenlinie notwendig sind.
+Ziel ist es, den mathematischen Prozess verständlich darzustellen und die Anwendung der Formeln an konkreten Beispielen zu demonstrieren.
 
-\subsection{De finibus bonorum et malorum
-\label{kettenlinie:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Kettenlinien als Variationsproblem
+\label{kettenlinie:subsection:Kettenlinien als Variationsproblem}}
+Die Kettenlinie nimmt die Form einer hängenden Kette an, welche unter ihrem eigenen Gewicht hängt.
+Dabei nimmt sie eine Form ein, die die potenzielle Energie minimiert.
 
+Man erkennt daraus, dass es sich um ein klassisches Beispiel für ein Variationsproblem handelt.
+In unserem Problem suchen wir nämlich nach einer Funktion, in diesem Fall die Form der Kette, die einen Integral, hier die potentielle Energie, minimiert.
 
+\subsection{Bogenlänge
+\label{kettenlinie:subsection:Bogenlänge}}
+Wie wir nun wissen, soll die potenzielle Energie minimiert werden.
+Es wird nun aber kein Objekt als Ganzes betrachtet, sondern die Summe der potenziellen Energie aller Teilchen der Kette zusammen.
+Deshalb wird für die kommenden Berechnungen öfters die Bogenlänge benötigt, weshalb sie hier nochmals erläutert und ins Gedächtnis gerufen wird.
+
+Bei einem unendlich kleinen Teil einer beliebigen Kurve ist die Bogenlänge ungefähr der Pythagoras.
+\[
+	ds
+	=
+	\sqrt{dx^2 + dy^2}
+	\label{kettenlinie:equation1}
+\]
+\(dx^2\) kann man ausklammern.
+\[
+	ds
+	=
+	\sqrt{dx^2 + dy^2}
+	=
+	\sqrt{dx^2 \left( 1 + \left( \frac{dy}{dx} \right)^2 \right)}
+	=
+	\sqrt{1 + \left( \frac{dy}{dx} \right)^2} \, dx
+\]
+In der Folge kann man \(\frac{dy}{dx}\) mit der Ableitung von \(y\) ersetzen.
+\(y\) ist die Form des Bogens, die wir suchen.
+Bei unendlich kleinen Teilen ergibt sich dann folgender Term:
+\[
+	ds
+	=
+	\sqrt{1 + y'^2} \, dx
+\]
+Um die Gesamtlänge der Kurve zu berechnen, summiert man die Längen der unendlich kleinen Abschnitte entlang der Kurve auf.
+Dieser Prozess wird durch Integration erreicht, bei der jeder kleine Abschnitt durch das Differential \(ds\) repräsentiert wird.
+Das Integral ermöglicht es, die Gesamtlänge der Kurve von einem Startpunkt \(x_1\) bis zu einem Endpunkt \(x_2\) zu bestimmen.
+\[
+	L
+	=
+	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
+\]
+
+\subsection{Minimum der potenziellen Energie
+\label{kettenlinie:subsection:Minimum der potenziellen Energie}}
+Für die Herleitung der Kettenlinie brauchen wir zudem die Formell der potentiellen Energie, welche sich wie folgt aus der Masse m, der Erdbeschleunigung g und der Höhe h zusammensetzt.
+\[
+	E_{\text{pot}}
+	=
+	mgh
+\]
+Auch benötigen wir die Formell der Bogenlänge, welche wir eben erläutert haben.
+\[
+	L
+	=
+	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
+\]
+Wie bereits erwähnt, setzt sich die potenzielle Energie aus der Summe der pozentiellen Energien aller Teilchen der Kette zusammen, es folgt folgende Formel, wobei \(g\) die Gravitationskonstante und \(\mu\) die Massendichte ist.
+\[
+	E_{\text{pot}}
+	=
+	\int_{a}^{b} g \mu \sqrt{1 + y'^2} \, y \, dx
+\]
+Die Konstanten \(\mu\) und \(g\) können ignoriert werden.
+Wir erhalten den folgenden Term:
+\[
+	\int_{a}^{b} (\sqrt{1 + y'^2} \, y) \, dx
+\]
+Dieser muss extremal sein, in unserem Fall minimal.
+
+\subsection{Einsatz der Euler-Lagrange-Gleichung
+\label{kettenlinie:subsection:Einsatz der Euler-Lagrange-Gleichung}}
+In diesem Fall kommt nun die Euler-Lagrange-Gleichung zum Einsatz. Wir rufen Sie hier nochmals ins Gedächtnis.
+\[
+	\int_{a}^{b} L(x, y, y') \, dx \, \text{ist extremal} \iff \frac{\partial L}{\partial y}(x, y, y') - \frac{d}{dx} \frac{\partial L}{\partial y'}(x, y, y') = 0
+\]
+Zuerst muss die Lagrange-Funktion \(L\) bestimmt werden.
+\[
+	L(x, y, y')
+	=
+	\sqrt{1 + y'^2} \, y
+\]
+Nun setzen wir die Lagrange-Funktion in die Euler-Lagrange-Gleichung ein, um die gewünschte Differentialgleichung zu erhalten. Es muss also folgende Differentialgleichung gelten:
+
+\begin{align*}
+	\Leftrightarrow &\
+	\frac{\partial}{\partial y} \left( \sqrt{1 + y'^2} \, y \right) &- &\ \frac{d}{dx} \frac{\partial}{\partial y'} \left( \sqrt{1 + y'^2} \, y \right) 
+	&= &\
+	0
+	\\
+	\Leftrightarrow &\
+	\sqrt{1 + y'^2} &- &\ \frac{d}{dx} \dfrac{yy'}{\sqrt{1 + y'^2}}
+	&= &\
+	0
+	\\
+	\Leftrightarrow &\
+	\sqrt{1 + y'^2} &- &\ \frac{\left( y y'' + y'^2 \right) \left( \sqrt{1 + y'^2} \right) - y y' \cdot \frac{y' y''}{\sqrt{1 + y'^2}}}{1 + y'^2}
+	&= &\
+	0 | * \left(\sqrt{1 + y'^2}\right)\left(1 + y'^2\right)
+	\\
+	\Leftrightarrow &\
+	\left(1 + y'^2\right)^2 &- &\ ((y y'' + y'^2)(1 + y'^2) - y y' \cdot y' y'')
+	&= &\
+	0
+	\\
+	\Leftrightarrow &\
+	1 + 2y'^2 \cancel{+y'^4} &- &\ (y y'' + y'^2 \cancel{+ yy'^2 y''} \cancel{+ y'^4} \cancel{- yy'^2 y''})
+	&= &\
+	0
+	\\
+	\Leftrightarrow &\
+	1 + y'^2 - yy'' & &\
+	&= &\
+	0 \label{kettenlinie:equation_1} \tag{\theequation} \stepcounter{equation}
+\end{align*}
+Als nächstes muss die Gleichung nach \(x\) differenziert werden, das heißt, es wird auf beiden Seiten der Gleichung die Ableitung mit Respekt auf \(x\) gebildet.
+\begin{align*}
+	&\Rightarrow &\
+	2y'y'' - (y'y'' + yy''')
+	&=
+	0
+	\\
+	&\Leftrightarrow &\
+	2y'y'' - y'y'' - yy'''
+	&=
+	0
+	\\
+	&\Leftrightarrow &\
+	y'y'' - yy'''
+	&=
+	0
+	\\
+	&\Leftrightarrow &\
+	yy''' - y'y''
+	&=
+	0
+	\\
+	&\Leftrightarrow &\
+	y^2 \left(\dfrac{yy''' - y'y''}{y^2}\right)
+	&=
+	0
+	\\
+	&\Leftrightarrow &\
+	y^2 \left(\dfrac{y''}{y}\right)'
+	&=
+	0
+	\\
+\end{align*}
+Der triviale Fall \(y = 0\) kann aufgrund der bisherigen Argumentation ausgeschlossen werden.
+Daraus ergibt sich unmittelbar:
+\[
+	\Rightarrow
+	y''
+	=
+	cy
+	, c \in \mathbb{R}
+\]
+Dies kann durch das Lösungssystem \(\{ e^{\sqrt{c}x}, e^{-\sqrt{c}x} \}\) gelöst werden.
+Daher ergibt sich die allgemeine Lösung als
+\[
+	y
+	=
+	a_1\left(e^{\sqrt{c}x} + e^{-\sqrt{c}x}\right) + a_2\left(e^{\sqrt{c}x} - e^{-\sqrt{c}x}\right), \, a_1, a_2 \in \mathbb{R}
+\]
+Bei genauerer Analyse der Funktion erkennt man, dass \(y(x) = y(-x) \) gilt.
+Dies impliziert, dass die Kurve achsensymmetrisch zur y-Achse ist.
+Folglich muss \(a_2 = 0\) und \(a_1 \neq 0\) sein.
+
+Für \(a_2 = 0\) reduziert sich die Lösung auf den folgenden Ausdruck:
+\[
+	y
+	=
+	a_1\left(e^{\sqrt{c}x} + e^{-\sqrt{c}x}\right), \, a_1 \in \mathbb{R}
+\]
+Da \(e^{\sqrt{c}x} + e^{-\sqrt{c}x} = 2\cosh(\sqrt{c}x)\), kann die Lösung schließlich in folgender Form geschrieben werden:
+\begin{equation}
+	y
+	=
+	a_1\cosh(\sqrt{c}x), \quad a_1 \in \mathbb{R}
+	\label{kettenlinie:equation_2}
+\end{equation}
+Als nächstes gilt es, \(a_1\) zu bestimmen:
+\begin{align*}
+	\eqref{kettenlinie:equation_1}
+	&\Rightarrow &\
+	yy'' - y'^2
+	&=
+	1
+	\\
+	&\Leftrightarrow &\
+	ca_1^2\cosh^2(\sqrt{c}x) - ca_1^2\sinh^2(\sqrt{c}x)
+	&=
+	1
+	\\
+	&\Leftrightarrow &\
+	a_1^2c(\cosh^2(\sqrt{c}x) - \sinh^2(\sqrt{c}x))
+	&=
+	1
+	\\
+	&\Leftrightarrow &\
+	a_1
+	&=
+	\frac{1}{\sqrt{c}}, \Rightarrow c, \, a_1 \in \mathbb{R}_+
+\end{align*}
+Damit haben wir die Lösung der Differentialgleichung gefunden. Durch Einsetzen von \(a_1 = \frac{1}{\sqrt{c}}\) in die Gleichung \eqref{kettenlinie:equation_2} ergibt sich die endgültige Gleichung der Kettenlinie:
+\[
+y = a \cosh\left(\frac{x}{a}\right), \quad a := \frac{1}{\sqrt{c}}
+\]
+Nach der Herleitung der grundlegenden Differentialgleichung und der Gleichung der Kettenlinie, können wir nun die horizontale Verschiebung \(x_0\) und die vertikale Verschiebung \(y_0\) einführen, um die allgemeinste Form der Kettenlinie zu formulieren.
+Diese erlaubt es, die Kurve entlang der x-Achse zu verschieben und vertikal zu justieren, was in praktischen Anwendungen wie dem Bau von Hängebrücken oder der Modellierung von Kabeln unter realen Bedingungen nützlich ist.
+
+Die allgemeine Form der Kettenlinie lässt sich ausdrücken als:
+\[
+	y(x)
+	=
+	a \cosh\left(\frac{x - x_0}{a}\right) + y_0
+\]
+Hierbei ist:
+
+\begin{itemize}
+	\item \(a\) ein Skalierungsfaktor, der die Stärke der Kurvung bestimmt,
+	\item \(x_0\) die horizontale Verschiebung, die den Scheitelpunkt der Kurve bestimmt,
+	\item \(y_0\) die vertikale Verschiebung, die die minimale Höhe der Kurve angibt.
+\end{itemize}

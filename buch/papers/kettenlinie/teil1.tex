@@ -6,53 +6,28 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{kettenlinie:section:teil1}}
+\section{Problemstellung\label{kettenlinie:section:Problemstellung}}
 \rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+Die Problemstellung der Kettenlinie besteht darin, die Form einer flexiblen, homogenen und nicht dehnbaren Kette zu bestimmen, die an zwei festen Punkten aufgehängt ist und unter dem Einfluss der Schwerkraft hängt.
+Mathematisch wird dies als die Suche nach einer Kurve \( y(x) \) beschrieben, die diese Bedingungen erfüllt.
+Gegeben für die Problemstellung sind: 
+\begin{itemize}
+\item
+Zwei Aufhängepunkte \( A(x_1, y_1) \) und \( B(x_2, y_2) \).
+\item
+Eine homogene Kette, d.h., ihre Dichte \( \rho \) ist konstant.
+\item
+Die Kette ist flexibel und kann sich frei bewegen.
+\end{itemize}
+Ziel ist es, die Form der Kurve \( y(x) \), welche die Kette zwischen den beiden Punkten annimt zu bestimmen.
+
+\subsection{Mathematische Formulierung
+\label{kettenlinie:subsection:Mathematische Formulierung}}
+Die potenzielle Energie der Kette wird durch das Integral
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{kettenlinie:equation1}
+	U = \int_{x_1}^{x_2} \rho g y \sqrt{1 + (y')^2} \, dx
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{kettenlinie:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{kettenlinie:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{kettenlinie:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{kettenlinie:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+beschrieben, wobei \( y' \) die Ableitung von \( y \) nach \( x \) ist und \( g \) die Gravitationskonstante.
+Dieses Integral soll minimiert werden, was zur entsprechenden Euler-Lagrange-Gleichung führt.
 
 
