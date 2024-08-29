@@ -9,19 +9,18 @@
 \subsection{Kartesisch\label{geodaeten:section:MetrischerTensor:Kartesisch}}
 \rhead{Metrischer Tensor Beispiele}
 
-Der Metrische Tensor für einen zweidimensionalen kartesischen Raum kann aus der Gleichung \eqref{geodaeten:equation:MetrischerTensor:AllgemeinesLinienelement} des allgemeinen Linienelements hergeleitet werden.
+Der metrische Tensor für einen zweidimensionalen kartesischen Raum kann aus der Gleichung \eqref{geodaeten:equation:MetrischerTensor:AllgemeinesLinienelement} des allgemeinen Linienelements hergeleitet werden.
 Schreiben wir die Summe für zwei Dimensionen aus, ergibt sich
 \begin{equation}
 	ds^2 = g_{11} \, du^1 \, du^1 + 2g_{12} \, du^1 \, du^2 + g_{22} \, du^2 \, du^2.
 	\label{geodaeten:equation:MetrischerTensor:Kartesisch:EinsteinSumme}
 \end{equation}
-Für den kartesischen Raum gilt, $du^1 = dx$ und $du^2 = dy$, wobei zu beachten ist, dass bei der Einsteinschen Summenkonvention die Hochstele keinem Exponenten, sondern einem Index entspricht.
+Für den kartesischen Raum gilt, $du^1 = dx$ und $du^2 = dy$, wobei zu beachten ist, dass bei der einsteinschen Summenkonvention die Hochstellung nicht einem Exponenten, sondern einem Index entspricht.
 
 Aus Abschnitt \ref{geodaeten:section:Linienelemente:Kartesisch} kennen wir das Linienelement des Kartesischen Raums als
 \begin{equation}
 	ds^2 = dx^2 + dy^2 .
 \end{equation}
-
 Aus dem Linienelement können wir die Koeffizienten von 
 \begin{equation}
 	du^1 du^1 = dx^2 \quad \text{und} \quad du^2  du^2 = dy^2 
@@ -29,7 +28,7 @@ Aus dem Linienelement können wir die Koeffizienten von
 als $1$ herauslesen. 
 Die Koeffizienten für
 \begin{equation}
-du^1  du^2 = dx  dy \quad \text{und} \quad du^2  du^1 = dy  dx
+du^1  du^2 = dx \, dy \quad \text{und} \quad du^2  du^1 = dy \,  dx
 \end{equation}
 sind beide $0$.
 
@@ -38,8 +37,8 @@ An den richtigen Stellen eingesetzt ergibt sich der metrische Tensor des kartesi
 \begin{equation}
 	\begin{aligned}
 		g_{11} &= \textcolor{red}{1} \\
-		g_{22} &= \textcolor{magenta}{1} \\
+		g_{22} &= \textcolor{darkgreen}{1} \\
 		g_{12} &= g_{21} = \textcolor{blue}{0} \\
-		g_{ij} &= \begin{pmatrix} \textcolor{red}{1} && \textcolor{blue}{0} \\ \textcolor{blue}{0} && \textcolor{magenta}{1} \end{pmatrix} .
+		g_{ij} &= \begin{pmatrix} \textcolor{red}{1} && \textcolor{blue}{0} \\ \textcolor{blue}{0} && \textcolor{darkgreen}{1} \end{pmatrix} .
 	\end{aligned}
 \end{equation}
