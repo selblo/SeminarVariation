@@ -43,9 +43,9 @@ Dieses parametrisieren wir nun nach einem gemeinsamen Parameter, wie zum Beispie
 \end{equation}
 wobei $\dot{u}^i = \frac{du^i}{dt}$ die Ableitungen der Koordinaten nach der Zeit $t$ darstellen.
 
-Durch die gemeinsame Parametrisierung lässt sich nun das Funktional für die Variation,
+Durch die gemeinsame Parametrisierung lässt sich nun das Funktional für die Variation
 \begin{equation}
-	L = \int_{t_1}^{t_2} \sqrt{g_{ij} \, \dot{u}^i \dot{u}^j} \, dt,
+	L = \int_{t_1}^{t_2} \sqrt{g_{ij} \, \dot{u}^i \dot{u}^j} \, dt
 	\label{geodaeten:equation:StandardverfahrenGeodaeten:Funktional}
 \end{equation}
 als Integral des zu minimierenden Weges aufstellen.
@@ -86,10 +86,9 @@ Damit ergibt sich die Euler-Lagrange-Differentialgleichung \eqref{geodaeten:equa
 \end{equation}
 wobei $\varphi_{\dot{u}^n} = \frac{\partial \varphi}{\partial \dot{u}^n}$ und $\varphi_{u^n} = \frac{\partial \varphi}{\partial u^n}$ die partiellen Ableitungen von $\varphi$ nach den jeweiligen Koordinaten sind.
 
-Der Ausdruck $\varphi$ repräsentiert im Wesentlichen den quadrierten Betrag des Geschwindigkeitsvektors im gekrümmten Raum, der durch die Metrik $g_{ij}$ beschrieben wird.
-Entlang der Geodätenlinie können wir eine konstante Geschwindigkeit bestimmen, da diese keinen Einfluss auf die Distanz hat.
-Wir nehmen also zusätzlich an, dass $\varphi = 1$ ist.
-Daraus folgt gemäss \eqref{geodaeten:equation:StandardverfahrenGeodaeten:Funktional}, dass der Parameter $t$ mit der Bogenlänge $s$ identifiziert werden kann und daher als natürlicher Parameter fungiert.
+Wir nehmen zusätzlich an, dass $\varphi = 1$ ist.
+Daraus folgt gemäss \eqref{geodaeten:equation:StandardverfahrenGeodaeten:Funktional}, dass der Parameter $t$ mit der Bogenlänge $s$ identifiziert werden kann und daher als natürlicher Parameter fungiert. 
+Diese Annahme ist gerechtfertigt, da der Ausdruck für $\varphi$ dem Quadrat des tangentialen Geschwindigkeitsvektors entspricht und die Geschwindigkeit, mit der die Geodäte durchlaufen wird, die Form der Geodäte selbst nicht verändert.
 Dadurch vereinfacht sich die Gleichung \eqref{geodaeten:equation:StandardverfahrenGeodaeten:DGL2} noch weiter zu
 \begin{equation}
 	\frac{d}{ds} \left( \varphi_{\dot{u}^n} \right) - \varphi_{u^n} = 0,
@@ -171,7 +170,7 @@ Dadurch lässt sich der Term $g_{ij}$ aufgrund der wiederhergestellten Symmetrie
 \begin{equation}
 	2 g_{kn} \, \ddot{u}^k + \left( \frac{\partial g_{jn}}{\partial u^i} + \frac{\partial g_{in}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^n} \right) \, \dot{u}^i \, \dot{u}^j = 0.
 \end{equation}
-Multipliziert man den gesamten Ausdruck mit der Inversen von $2g_{kn}$ und benennt den Index $n$ in $l$ um, so erhält man die Gleichung
+Multipliziert man den gesamten Ausdruck mit $\frac{1}{2} g^{kn}$ und benennt den Index $n$ in $l$ um, so erhält man die Gleichung
 \begin{equation}
 	\ddot{u}^k + \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right) \dot{u}^i \dot{u}^j = 0,
 \end{equation}
@@ -181,6 +180,7 @@ Dieser Ausdruck kann durch die sogenannten Christoffel-Symbole $\Gamma^k_{ij}$ w
 Diese sind definiert als
 \begin{equation}
 	\Gamma^k_{ij} = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
+	\label{geodaeten:equation:StandardverfahrenGeodaeten:ChristopherSymbole}
 \end{equation}
 und sind aufgrund der wiederhergestellten Symmetrie des metrischen Tensors, ebenfalls in den Indizes $i$ und $j$ symmetrisch ($\Gamma^k_{ij} = \Gamma^k_{ji}$).
 
