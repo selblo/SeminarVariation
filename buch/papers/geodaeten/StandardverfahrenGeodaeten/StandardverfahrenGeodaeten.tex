@@ -43,9 +43,9 @@ Dieses parametrisieren wir nun nach einem gemeinsamen Parameter, wie zum Beispie
 \end{equation}
 wobei $\dot{u}^i = \frac{du^i}{dt}$ die Ableitungen der Koordinaten nach der Zeit $t$ darstellen.
 
-Durch die gemeinsame Parametrisierung lässt sich nun das Funktional für die Variation,
+Durch die gemeinsame Parametrisierung lässt sich nun das Funktional für die Variation
 \begin{equation}
-	L = \int_{t_1}^{t_2} \sqrt{g_{ij} \, \dot{u}^i \dot{u}^j} \, dt,
+	L = \int_{t_1}^{t_2} \sqrt{g_{ij} \, \dot{u}^i \dot{u}^j} \, dt
 	\label{geodaeten:equation:StandardverfahrenGeodaeten:Funktional}
 \end{equation}
 als Integral des zu minimierenden Weges aufstellen.
@@ -86,8 +86,9 @@ Damit ergibt sich die Euler-Lagrange-Differentialgleichung \eqref{geodaeten:equa
 \end{equation}
 wobei $\varphi_{\dot{u}^n} = \frac{\partial \varphi}{\partial \dot{u}^n}$ und $\varphi_{u^n} = \frac{\partial \varphi}{\partial u^n}$ die partiellen Ableitungen von $\varphi$ nach den jeweiligen Koordinaten sind.
 
-Wir nehmen zusätzlich an, dass $\varphi = 1$ ist. Daraus folgt gemäss \eqref{geodaeten:equation:StandardverfahrenGeodaeten:Funktional}, dass der Parameter $t$ mit der Bogenlänge $s$ identifiziert werden kann und daher als natürlicher Parameter fungiert.
-Dies vereinfacht die Berechnungen und führt zur konstanten Geschwindigkeit entlang der Geodäte.
+Wir nehmen zusätzlich an, dass $\varphi = 1$ ist.
+Daraus folgt gemäss \eqref{geodaeten:equation:StandardverfahrenGeodaeten:Funktional}, dass der Parameter $t$ mit der Bogenlänge $s$ identifiziert werden kann und daher als natürlicher Parameter fungiert. 
+Diese Annahme ist gerechtfertigt, da der Ausdruck für $\varphi$ dem Quadrat des tangentialen Geschwindigkeitsvektors entspricht und die Geschwindigkeit, mit der die Geodäte durchlaufen wird, die Form der Geodäte selbst nicht verändert.
 Dadurch vereinfacht sich die Gleichung \eqref{geodaeten:equation:StandardverfahrenGeodaeten:DGL2} noch weiter zu
 \begin{equation}
 	\frac{d}{ds} \left( \varphi_{\dot{u}^n} \right) - \varphi_{u^n} = 0,
@@ -111,7 +112,6 @@ wobei es zwei Fälle zu betrachten gibt, abhängig davon, ob $i = n$ oder $j = n
 	\item Wenn $i = n$, dann ist $\frac{\partial \dot{u}^i}{\partial \dot{u}^n} = 1$ und $\frac{\partial \dot{u}^j}{\partial \dot{u}^n} = 0$, für $i \neq j$.
 	\item Wenn $j = n$, dann ist $\frac{\partial \dot{u}^j}{\partial \dot{u}^n} = 1$ und $\frac{\partial \dot{u}^i}{\partial \dot{u}^n} = 0$, für $i \neq j$.
 \end{itemize}
-
 Aus der Produktregel ergibt sich somit
 \begin{equation}
 	\frac{\partial \varphi}{\partial \dot{u}^n} = g_{nj} \dot{u}^j + g_{in} \dot{u}^i,
@@ -168,10 +168,9 @@ Der korrigierte Ausdruck lautet dann
 Da der Index $k$ im ersten Summanden und der Index $j$ im letzten Summanden beide bis $n$ summiert werden, kann der Index $k$ durch $j$ ersetzt werden. 
 Dadurch lässt sich der Term $g_{ij}$ aufgrund der wiederhergestellten Symmetrie teilweise ausklammern und es ergibt sich
 \begin{equation}
-	 g_{kn} \, \ddot{u}^k + \left( \frac{\partial g_{jn}}{\partial u^i} + \frac{\partial g_{in}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^n} \right) \, \dot{u}^i \, \dot{u}^j = 0.
+	2 g_{kn} \, \ddot{u}^k + \left( \frac{\partial g_{jn}}{\partial u^i} + \frac{\partial g_{in}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^n} \right) \, \dot{u}^i \, \dot{u}^j = 0.
 \end{equation}
-
-Teilt man den gesamten Ausdruck durch $2g_{ij}$ und benennt den Index $n$ in $l$ um, so erhält man die Gleichung
+Multipliziert man den gesamten Ausdruck mit $\frac{1}{2} g^{kn}$ und benennt den Index $n$ in $l$ um, so erhält man die Gleichung
 \begin{equation}
 	\ddot{u}^k + \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right) \dot{u}^i \dot{u}^j = 0,
 \end{equation}
@@ -181,6 +180,7 @@ Dieser Ausdruck kann durch die sogenannten Christoffel-Symbole $\Gamma^k_{ij}$ w
 Diese sind definiert als
 \begin{equation}
 	\Gamma^k_{ij} = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
+	\label{geodaeten:equation:StandardverfahrenGeodaeten:ChristopherSymbole}
 \end{equation}
 und sind aufgrund der wiederhergestellten Symmetrie des metrischen Tensors, ebenfalls in den Indizes $i$ und $j$ symmetrisch ($\Gamma^k_{ij} = \Gamma^k_{ji}$).
 
@@ -191,7 +191,7 @@ Durch die Einführung der Christoffel-Symbole erhält man so schliesslich die al
 \end{equation}
 
 Diese allgemeine Geodätengleichung kann so interpretiert werden, dass der kürzeste Weg zwischen zwei Punkten prinzipiell immer eine Gerade ist. 
-Allerdings wird die Vorstellung einer "Geraden" durch die Geometrie des Raumes verzerrt und nimmt je nach Raum eine andere Form an. 
+Allerdings wird die Vorstellung einer Geraden durch die Geometrie des Raumes verzerrt und nimmt je nach Raum eine andere Form an. 
 Hier kommen die Christoffel-Symbole in der Geodätengleichung ins Spiel.
 
 Die Christoffel-Symbole beschreiben, wie sich ein Raum in die Richtung einer Dimension ändert.
