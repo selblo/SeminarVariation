@@ -3,19 +3,79 @@
 \label{relativ:section:em_feld}}
 \rhead{Ladungen im Elektromagnetischen Feld}
 
+
 \subsection{Elementarteilchen in der Relativitätstheorie 
 \label{relativ:section:elementarteilchen}}
 
 Wie bereits in der Einleitung zu Abschnitt~\ref{relativ:section:relativistik} erwähnt,
-kann gemäss der Relativitätstheorie keine starren Körper geben.
+kann es gemäss der Relativitätstheorie keine starren Körper geben.
 Angemessener ist daher die Betrachtung \emph{punktförmiger Elementarteilchen}.
 Der Zustand eines solchen Elementarteilchens ist dabei vollständig definiert durch
-die drei Raumkooridnaten und die drei zugehörigen Geschwindigkeitskomponenten.
+die drei Raumkoordinaten und die drei zugehörigen Geschwindigkeitskomponenten.
 
-\subsection{ Wirkungsintegral 
+
+\subsection{Wirkungsintegral 
 \label{relativ:section:wirkungsintegral}}
 
 Das Wirkungsintegral für ein Elementarteilchen im elektromagnetischen Feld ist
 \begin{equation}
-    S = - \int_{t_1}^{t_2} \left( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi \right) \, dt
+    S = \int_a^b \left(-mc\,ds + \frac{e}{c} \mathbf{A}\,d\mathbf{r} - e\varphi\,dt\right),
+\label{relativ:eqn:wirk-int-em-feld}
 \end{equation}
+oder als Integral über die Zeit geschrieben,
+\begin{equation}
+    S = \int_{t_1}^{t_2} \left( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi \right) \, dt,
+\label{relativ:eqn:wirk-int-em-feld-zeit}
+\end{equation}
+wobei \(\displaystyle \mathbf{v} = \frac{d\mathbf{r}}{dt}\) der Geschwindigkeitsvektor der drei räumlichen Dimensionen ist.
+Der Integrand in~\ref{relativ:eqn:wirk-int-em-feld-zeit} ist gerade die Lagrange-Funktion
+\begin{equation}
+    L = -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi
+\label{relativ:eqn:lagrange-em-feld}
+\end{equation}
+
+
+\subsection{Bewegungsgleichung 
+\label{relativ:section:bewegungsgleichung}}
+
+Bei der Berechnung der Bahn eines Elementarteilchens
+in einem elektromagnetischen Feld geht man von
+der vereinfachenden aber angemessenen Annahme aus,
+dass die Rückwirkung des Teilchens auf das Feld vernachlässigt werden kann.
+\footnote{Konkret muss für diese Annahme beispielsweise
+\(H \ll \frac{m^2c^4}{e^3}\) erfüllt sein.
+Die rechte Seite ergibt dabei für ein Elektron
+eine magnetische Feldstärke von
+\(\frac{m_e^2c^4}{e^3} \approx
+\frac{(\qty{9e-31}{\kilogram})^2 (\qty{3e8}{\metre\per\second})^4}{(\qty{1.6e-19}{\ampere\second})^3}
+\approx \qty[per-mode=fraction]{1.6e30}{\ampere\per\metre}\),
+was im Vakuum einer magnetischen Flussdichte von
+\(\mu_0 \cdot \qty[per-mode=fraction]{1.6e30}{\ampere\per\metre} \approx
+\qty[per-mode=fraction]{1.25e-6}{\tesla\metre\per\ampere} \cdot
+\qty[per-mode=fraction]{1.6e30}{\ampere\per\metre} =
+\qty{2e24}{\tesla}\)
+entspricht, einem Wert weitaus grösser als alle bekannten physikalischen Phänomene.}
+
+Die Bewegungsgleichung ergibt sich aus der Variation des Wirkungsintegrals
+mit der Euler-Lagrange-Differentialgleichung
+\begin{equation}
+    \frac{d}{dt} \frac{\partial L}{\partial \mathbf{v}} - \frac{\partial L}{\partial \mathbf{r}} = 0,
+\label{realtiv:eqn:euler-lagrange-em-feld}
+\end{equation}
+wobei \(L\) in~\ref{relativ:eqn:lagrange-em-feld} gegeben ist.
+Die Ableitung nach dem Geschwindigkeitsvektor \(\mathbf{v}\) ergibt
+\begin{equation}
+    \frac{\partial L}{\partial \mathbf{v}} =
+    mc^2 \frac{-\frac{2}{c^2}\mathbf{v}}{-2\sqrt{1-\frac{v^2}{c^2}}}
+    + \frac{e}{c} \mathbf{A} - 0
+    = \frac{m \mathbf{v}}{\sqrt{1-\frac{v^2}{c^2}}} + \frac{e}{c} \mathbf{A}.
+\label{realtiv:eqn:part-diff-v}
+\end{equation}
+Dies wird auch als verallgemeinerter Teilchenimpuls \(\mathbf{P}\) bezeichnet.
+Die partielle Ableitung nach \(\mathbf{r}\) ergibt dann
+\begin{equation}
+    \frac{\partial L}{\partial \mathbf{r}} = \nabla L
+    = 0 + \frac{e}{c} \operatorname{grad} \mathbf{Av} - e \operatorname{grad} \varphi
+\label{realtiv:eqn:part-diff-r}
+\end{equation}
+\todo{Rechnung fortsetzen}
