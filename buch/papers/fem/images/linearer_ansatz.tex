@@ -1,0 +1,67 @@
+%
+% linearer_ansatz.tex -- Formfunktionen linearer Ansatz
+%
+% (c) 2024 Flurin Brechbühler
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkpurple}{rgb}{0.6,0,0.6}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\begin{document}
+\def\skala{1}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\begin{scope}
+
+% Plots
+%     % a_{n-1}
+% \draw[color=darkred,line width=1.4pt,dashed] plot[domain=-1.025:-1, scale=4, smooth]
+% ({\x},{\x+2});
+% \draw[color=darkred,line width=1.4pt,dashed] plot[domain=-1:0, scale=4, smooth]
+% ({\x},{-\x});
+% \draw[color=darkred,line width=1.4pt,dashed] plot[domain=0:1.075, scale=4, smooth]
+% ({\x},{0});
+    % a_n
+\draw[color=darkred,line width=1.4pt] plot[domain=-1.025:-1, scale=4, smooth]
+({\x},{0});
+\draw[color=darkred,line width=1.4pt] plot[domain=-1:0, scale=4, smooth]
+({\x},{\x+1});
+\draw[color=darkred,line width=1.4pt] plot[domain=0:1, scale=4, smooth]
+({\x},{1-\x});
+\draw[color=darkred,line width=1.4pt] plot[domain=1:1.075, scale=4, smooth]
+({\x},{0});
+%     % a_{n+1}
+% \draw[color=darkblue,line width=1.4pt,dashed] plot[domain=-1.025:0, scale=4, smooth]
+% ({\x},{0});
+% \draw[color=darkblue,line width=1.4pt,dashed] plot[domain=0:1, scale=4, smooth]
+% ({\x},{\x});
+% \draw[color=darkblue,line width=1.4pt,dashed] plot[domain=1:1.075, scale=4, smooth]
+% ({\x},{2-\x});
+
+% x-Achse
+\draw[->] (-4.1,0) -- (4.3,0) coordinate[label={$x$}];
+\draw (4,-0.1) -- (4,0.1);
+\draw (-4,-0.1) -- (-4,0.1);
+\node at (-4,0) [below] {$-\Delta x$};
+\node at ( 0,0) [below] {$0$};
+\node at ( 4,0) [below] {$\Delta x$};
+
+% y-Achse
+\draw[->] (0,{-0.1}) -- (0,{4.3})
+coordinate[label={right:$y$}];
+\node at (-0.1,0) [left, inner sep=1pt, fill=white] {$0$};
+\draw (-0.1,4) -- (0.1,4);
+\node at (0,4) [left] {$1$};
+
+\end{scope}
+\end{tikzpicture}
+\end{document}

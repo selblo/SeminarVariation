@@ -124,7 +124,7 @@ Damit können wir nun die totale innere Energie unseres Systems ausdrücken als
 &N_V \int_\Omega f\di{x}
 =
 N_V \int_\Omega \left[
-F(c) + \kappa_1 \Delta c + \frac{\kappa_2}{2} \abs{\nabla c}^2  + \ldots
+F(c) + \kappa_1 \Delta c + \frac{\kappa_2}{2} |\nabla c|^2  + \ldots
 \right]\di{x}
 \label{cahnhilliard:energylong}
 ,
@@ -154,7 +154,7 @@ Somit können wir weiter umformen zu
 &=-\int_\Omega \sum_{i=1}^3 \pderiv{\kappa_1}{c} \pderiv{c}{x_i} \pderiv{c}{x_i} \di{x}
 \\
 &=
--\int_\Omega \pderiv{\kappa_1}{c} \abs{\nabla c}^2 \di{x}
+-\int_\Omega \pderiv{\kappa_1}{c} |\nabla c|^2 \di{x}
 .
 \end{align*}
 Wird der erhaltene Ausdruck in \eqref{cahnhilliard:energylong} eingesetzt,
@@ -163,13 +163,13 @@ ergibt sich
 \mathcal{E}(c)
 &=
 N_V \int_\Omega \biggl[
-  F(c) + \underbrace{\left( \frac{\kappa_2}{2} - \pderiv{\kappa_1}{c} \right)}_{\frac{1}{2}\epsilon^2} \abs{\nabla c}^2  + \ldots
+  F(c) + \underbrace{\left( \frac{\kappa_2}{2} - \pderiv{\kappa_1}{c} \right)}_{\frac{1}{2}\epsilon^2} |\nabla c|^2  + \ldots
 \biggr]\di{x}
 \nonumber
 \\
 &=
 N_V \int_\Omega \left[
-  F(c) + \frac{\epsilon^2}{2} \abs{\nabla c}^2  + \ldots
+  F(c) + \frac{\epsilon^2}{2} |\nabla c|^2  + \ldots
 \right]\di{x}
 ,
 \label{cahnhilliard:energy}
