@@ -1,0 +1,43 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Linienelemente\label{geodaeten:section:Linienelemente}}
+\rhead{Linienelemente}
+
+Ein Linienelement beschreibt, wie sich der Raum in die entsprechende Dimension verändert.
+Es entspricht also der Ableitung einer Richtung nach der Zeit oder in anderen Worten um ein infinitesimales Wegelement.
+In einem $n$-dimensionalen Raum entspricht ein Linienelement also einem $n$-dimensionalen Vektor, welcher die Änderung der Kurve in jeder Dimension beschreibt.
+Um die Weglänge unsere Geodätenlinie minimieren zu können, müssen wir erst mal den Weg berechnen.
+Jeder Weg kann in kleinere Wegstücke unterteilt werden, welche addiert wieder den ganzen Weg ergeben.
+Da die Linienelemente den infinitesimalen Wegelementen entsprechen, müssen sie entlang jeder Dimension integriert werden.
+Der Weg $l$ entspricht also der Summe von Wegstücken also
+\begin{equation}
+	l = \sum \Delta \text{Weg}
+\end{equation}
+und für infinitesimal große Wegstücke kann man diese ersetzen durch Linienelemente $ds$  als
+\begin{equation}	
+	d\text{Weg} = ds .
+	\label{geodaeten:equation:Linienelemente:equation1}
+\end{equation}
+Um den Weg $l$ zu erhalten müssen schließlich diese Linienelemente in allen Dimensionen integrieren mit,
+\begin{equation}
+	l = 
+	\sum^{n} \int_a^b ds .
+	\label{geodaeten:equation:Linienelemente:equation2}
+\end{equation}
+
+\section{Beispiele zu Linienelementen\label{geodaeten:section:Linienelemente:Beispiele}}
+Die Beispiele sind für alle Unterkapitel gleich aufgebaut.
+Zuerst wird das zweidimensionales Beispiel des Kartesischen Raumes als einfacher Einstieg behandelt.
+Danach wird der Zylinder als einstieg in den dreidimensionalen Raum aufgezeigt.
+Zum Schluss wird das Beispiel an einer Kugel untersucht, welches in der Praxis große Anwendung erfährt, aufgrund der Ähnlichkeit zur Erdkugel.
+
+	\input{papers/geodaeten/Linienelemente/LinKartesisch.tex}
+	\input{papers/geodaeten/Linienelemente/LinZylinder.tex}
+	\input{papers/geodaeten/Linienelemente/LinKugel.tex}
+

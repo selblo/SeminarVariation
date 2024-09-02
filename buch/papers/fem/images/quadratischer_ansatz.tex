@@ -1,0 +1,71 @@
+%
+% linearer_ansatz.tex -- Formfunktionen linearer Ansatz
+%
+% (c) 2024 Flurin Brechbühler
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkpurple}{rgb}{0.6,0,0.6}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\begin{document}
+\def\skala{1}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\begin{scope}
+
+% Plots
+\draw[color=darkred,line width=1.4pt] plot[domain=-1.025:-1, scale=4, smooth]
+({\x},{0});
+\draw[color=darkred,line width=1.4pt] plot[domain=-1:0, scale=4, smooth]
+({\x},{(-4*(-1-\x)*(0-\x))});
+\draw[color=darkred,line width=1.4pt] plot[domain=0:1.075, scale=4, smooth]
+({\x},{0});
+
+\draw[color=darkpurple,line width=1.4pt] plot[domain=-1.025:-1, scale=4, smooth]
+({\x},{0});
+\draw[color=darkpurple,line width=1.4pt] plot[domain=-1:0, scale=4, smooth]
+({\x},{(2*(-1-\x)*(-0.5-\x))});
+\draw[color=darkpurple,line width=1.4pt] plot[domain=0:1, scale=4, smooth]
+({\x},{(2*(0.5-\x)*(1-\x))});
+\draw[color=darkpurple,line width=1.4pt] plot[domain=1:1.075, scale=4, smooth]
+({\x},{0});
+
+\draw[color=darkblue,line width=1.4pt] plot[domain=-1.025:0, scale=4, smooth]
+({\x},{0});
+\draw[color=darkblue,line width=1.4pt] plot[domain=0:1, scale=4, smooth]
+({\x},{(-4*(0-\x)*(1-\x))});
+\draw[color=darkblue,line width=1.4pt] plot[domain=1:1.075, scale=4, smooth]
+({\x},{0});
+
+% x-Achse
+\draw[->] (-4.1,0) -- (4.3,0) coordinate[label={$x$}];
+\node at (-4,0) [below left]  {$-2 \Delta x$};
+\draw (-4,-0.1) -- (-4,0.1);
+\node at (-2,0) [below right] {$-\Delta x$};
+\draw (-2,-0.1) -- (-2,0.1);
+\node at ( 0,0) [below]       {$0$};
+\draw ( 0,-0.1) -- ( 0,0.1);
+\node at ( 2,0) [below left]  {$\Delta x$};
+\draw ( 2,-0.1) -- ( 2,0.1);
+\node at ( 4,0) [below right] {$2 \Delta x$};
+\draw ( 4,-0.1) -- ( 4,0.1);
+
+% y-Achse
+\draw[->] (0,{-0.1}) -- (0,{4.3})
+coordinate[label={right:$y$}];
+\node at (-0.1,0) [left, inner sep=1pt, fill=white] {$0$};
+\draw (-0.1,4) -- (0.1,4);
+\node at (0,4) [left] {$1$};
+
+\end{scope}
+\end{tikzpicture}
+\end{document}

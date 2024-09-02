@@ -9,17 +9,17 @@
 \section{Multipolmoment
 \label{planet:section:multipol}}
 \rhead{Multipolmoment}
-In der Physik ist die Multipolentwicklung ein Verfaheren, um die Poisson-Gleichung im dreidimensionalen Raum zu lösen, bei der eine Laurent-Reihe als Lösungsfunktion entsteht.
+In der Physik ist die Multipolentwicklung ein Verfahren, um die Poisson-Gleichung im dreidimensionalen Raum zu lösen, wobei eine Laurent-Reihe als Lösungsfunktion entsteht.
 Die Entwicklungskoeffizienten dieser Reihe heissen Multipolmomente.
 Diese Methode wird hauptsächlich in der Elektrostatik und Magnetostatik verwendet, kann aber auf jedem Gebiet der Physik verallgemeinert werden, in dem die Poisson-Gleichung auftritt.
 
 Die Motivation der Multipolentwicklung liegt darin, das Verhalten von beliebigen Potentialen (Gravitationspotential) in grosser Entfernung zu betrachten.
-Analog zur Fourier-Theorie lässt sich mit der Multipolentwicklung ein komplexes physikalisches Problem in kleinere Teilprobleme aufteilen die leichter zu lösen sind.
+Analog zur Fourier-Theorie lässt sich mit der Multipolentwicklung ein komplexes physikalisches Problem in kleinere Teilprobleme aufteilen, die leichter zu lösen sind.
 Die \cref{planet:fig:multipol} zeigt die ersten drei Entwicklungsschritte einer Ladungswolke.
 Desweiteren zeigt sich auch, dass die Bewegungsgleichung für Planeten im wesentlichen zu linearen Differentialgleichungen für die Multipolkoeffizienten werden.
 Alle Koeffizienten konvergieren gegen 0, ausser dem konstanten Koeffizienten, dieser ergibt die Kugelform.
 
-Dieser Abschnitt und die Herleitungen basieren auf den Inhalten von \cite{planet:multi} und \cite{planet:quadro}.
+Dieser Abschnitt und die Herleitungen basieren auf \cite{planet:multi} und \cite{planet:quadro}.
 
 \begin{figure}[h!]
     \centering
@@ -42,29 +42,35 @@ schreiben, wobei \(\Delta\) der Laplace-Operator, \(f\) eine Dichte und \(\phi\)
 Die formale Lösung dieser Gleichung ist
 
 \begin{equation*}
-\phi (\vec{r}) = \frac{1}{4\pi} \int d^3 \vec{r}\,' \frac{f (\vec{r}\,')} {\abs{\vec{r} - \vec{r}\,'}}.
+\phi (\vec{r})
+=
+\frac{1}{4\pi}
+\int d^3 \vec{r}\,'
+\frac{f (\vec{r}\,')}{|\vec{r} - \vec{r}\,'|}.
 \end{equation*}
 
 \noindent
 Ist \(f (\vec{r})\) in einem Volumen lokalisiert, kann für Orte \(\vec{r}\), die weit ausserhalb dieses Volumens liegen, \(r \gg r\,'\), der Bruch in eine Taylor-Reihe in \(\vec{r}\,'\) um \(\vec{r}\,' = 0\) entwickelt werden:
 
 \begin{equation*}
-\frac{1}{\abs{\vec{r} - \vec{r}\,'}} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( \vec{r}\,' \cdot \vec{\nabla}\,' \right)^n \left. \frac{1}{\abs{\vec{r} - \vec{r}\,'}} \right|_{\vec{r}\,'=0}
+\frac{1}{|\vec{r} - \vec{r}\,'|}
+=
+\sum_{n=0}^{\infty} \frac{1}{n!} \left( \vec{r}\,' \cdot \vec{\nabla}\,' \right)^n \left. \frac{1}{|\vec{r} - \vec{r}\,'|} \right|_{\vec{r}\,'=0}
 \end{equation*}
 
 \noindent
 Dabei bedeutet \(\vec{\nabla}\,'\), dass der Nablaoperator \(\vec{\nabla}\) nur auf die gestrichenen Koordinaten \(\vec{r}\,'\) und nicht auf \(\vec{r}\) wirkt.
-Nach Bilden der Ableitungen wird diese an der Stelle \(\vec{r}\,' = 0\) ausgewertet.
+Nach Bilden der Ableitungen werden diese an der Stelle \(\vec{r}\,' = 0\) ausgewertet.
 Durch Umformen erhält man
 
 \begin{equation*}
-\frac{1}{\abs{ \vec{r} - \vec{r}\,'}} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
+\frac{1}{|\vec{r} - \vec{r}\,'|} = \sum_{n=0}^{\infty} \frac{1}{n!} \left( - \vec{r}\,' \cdot \vec{\nabla} \right)^n \frac{1}{r}.
 \end{equation*}
 
 \noindent
 Die genaue Form der Entwicklung und der Multipole hängt vom jeweiligen Koordinatensystem ab.
 
-\subsection{Kartesische Multpolentwicklung
+\subsection{Kartesische Multipolentwicklung
 \label{planet:subsection:kartentwicklung}}
 
 Die kartesische Multipolentwicklung wird im kartesischen Koordinatensystem durchgeführt.
@@ -75,12 +81,14 @@ Dort ist
 \end{equation*}
 
 \noindent
-wobei die Einsteinsche Summenkonvention verwendet wird.
+wobei die einsteinsche Summenkonvention verwendet wird.
 Dann muss bei einem Summanden \(n\)-ter Ordnung ein Tensor \(n\)-ter Stufe, nämlich \(\textstyle \prod_{k=1}^{n} \partial_{i_{k}} \frac{1}{r}\) berechnet werden:
 
 
 \begin{align*}
-\frac{1}{\abs{ \vec{r} - \vec{r}\,'}} &= \frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
+\frac{1}{|\vec{r} - \vec{r}\,'|}
+&=
+\frac{1}{r} - r\,'_{i} \partial_{i} \frac{1}{r} + \frac{1}{2} r\,'_{i} r\,'_{j} \partial_{i} \partial_{j} \frac{1}{r} + \mathcal{O}(r\,'^{3}) \\
 &= \frac{1}{r} + r\,'_{i} \frac{r_{i}}{r^{3}} + \frac{1}{2} r\,'_{i} r\,'_{j} \frac{3 r_{i} r_{j} - r^{2} \delta_{i\!j}}{r^{5}} + \mathcal{O}(r\,'^{3}).
 \end{align*}
 
@@ -91,13 +99,13 @@ Die formale Lösung \(\phi (\vec{r})\) der Poisson-Gleichung ist unter Verwendun
 
 
 \begin{align*}
-\phi (\vec{r}) &= \frac{1}{4\pi} \left[ \frac{1}{r} \underbrace{\int f (\vec{r}\,') \, d^3 \vec{r}\,'}_{\text{Monopol-}} + \frac{r_{i}}{r^{3}} \underbrace{\int d^3 \vec{r}\,' \, r\,'_{i} f (\vec{r}\,')}_{\text{Dipol-}} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} \underbrace{\int d^3 \vec{r}\,' \left( 3 r\,'_{i} r\,'_{j} - r\,'^{2} \delta_{i\!j} \right) f (\vec{r}\,')}_{\text{Quadrupolmoment}} \ldots \right] \\
+\phi (\vec{r}) &= \frac{1}{4\pi} \Biggl[ \frac{1}{r} \underbrace{\int f (\vec{r}\,') \, d^3 \vec{r}\,'}_{\text{Monopol-}} + \frac{r_{i}}{r^{3}} \underbrace{\int d^3 \vec{r}\,' \, r\,'_{i} f (\vec{r}\,')}_{\text{Dipol-}} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} \underbrace{\int d^3 \vec{r}\,' \left( 3 r\,'_{i} r\,'_{j} - r\,'^{2} \delta_{i\!j} \right) f (\vec{r}\,')}_{\text{Quadrupolmoment}} \ldots \Biggr] \\
 &= \frac{1}{4\pi} \left[ \frac{1}{r} q + \frac{r_{i}}{r^{3}} p_{i} + \frac{1}{2} \frac{r_{i} r_{j}}{r^{5}} Q_{i\!j} + \ldots \right].
 \end{align*}
 
 
 In der entwickelten Reihe kommen die Faktoren \(r\) im Nenner mit steigendem Exponenten vor.
-Dabei werden die höheren Ordnungen der Multipolmomente, mit zuhnemendem Abstand zum beobachteten Volumen immer weiter vernachlässigbar.
+Dabei werden die höheren Ordnungen der Multipolmomente, mit zunehmendem Abstand zum beobachteten Volumen immer weiter vernachlässigbar.
 Der Einfachheit halber wurde für die Berechnungen der Kugelform in diesem Kapitel das erste Moment als Approximation verwendet und die höheren Momente vernachlässigt.
 
 
@@ -124,7 +132,7 @@ Dennoch haben Massenverteilungen Quadrupole.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.60\linewidth]{papers/planet/pictures/Quadroearth.pdf}
-    \caption{Beispiel eines gravitativen Quadrupol
+    \caption{Beispiel eines gravitativen Quadrupols
         \label{planet:fig:quadroearth}}
 \end{figure}
 
