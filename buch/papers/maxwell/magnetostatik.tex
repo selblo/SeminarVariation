@@ -31,43 +31,8 @@ also das elektrische Potentialfeld im gesamten Raum als null angenommen.
 
 \begin{figure}
 \centering
+\includegraphics{papers/maxwell/images/mfeld.pdf}
 % WIRE B FIELD 3D
-\begin{tikzpicture}[z={(0.8,0.28)},x={(0.58,-0.45)}]
-	
-	\def\L{6}
-	\def\W{0.10}
-	\def\R{0.9}
-	\def\ang{-35}
-	\def\scale{1.3}
-	\def\NB{5}
-	\coordinate (O) at (0,0,0);
-	%\draw (0,0,0) -- (2,0,0);
-	%\draw (0,0,0) -- (0,0,2);
-	
-	% Koordinatensystem
-	\draw[->] (0,0,0) -- (3,0,0) node[anchor=north east]{$x$};
-	\draw[->] (0,0,0) -- (0,3,0) node[anchor=north west]{$z$};
-	\draw[->] (0,0,0) -- (0,0,4) node[anchor=south]{$y$};
-	
-	% B FIELD BACK
-	\foreach \i [evaluate={\x=(\i-\NB/2-0.5)*\L/\NB;}] in {1,...,\NB}{
-		%\draw[BField,-] (0,0,\x)++(\ang+1:\R) arc (\ang+1:\ang-181:\R);
-		\draw[BFieldLine=1] (0,0,\x)++(\ang+1:\R) arc (\ang+1:\ang-181:\R) --++ (65:0.001*\R);
-	}
-	
-	% WIRE
-	\draw[metal] (0,0,-\L/2)++(120:\W/2) --++ (0,0,\L) arc (120:-60:\W/2) --++ (0,0,-\L) arc (-60:120:\W/2);
-	\draw[metal] (0,0,-\L/2) circle (\W/2);
-	\draw[current] (0.12*\R,-0.12*\R,0.4*\L) --++ (0,0,0.2*\L) node[below=2,right] {$I$};
-	
-	% B FIELD FRONT
-	\foreach \i [evaluate={\x=(\i-\NB/2-0.5)*\L/\NB;}] in {1,...,\NB}{
-		%\draw[BFieldLine=1] (0,0,\x)++(\ang+180:\R) arc (\ang+180:\ang:\R) --++ (-116:0.001*\R);
-		\draw[BField,-] (0,0,\x)++(\ang+180:\R) arc (\ang+180:\ang:\R);
-	}
-	\node[Bcol] at (-0.9*\R,0.9*\R,-0.25*\L) {$\vec{B}$}; %++(140:1.3*\R)
-	
-\end{tikzpicture}
 	\caption{Magnetische Flussdichte um einen geraden Leiter}
 	\label{maxwell:flussdichte}
 \end{figure}

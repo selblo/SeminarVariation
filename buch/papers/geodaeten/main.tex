@@ -9,32 +9,22 @@
 \chapter{Geodäten\label{chapter:geodaeten}}
 \kopflinks{Geodäten}
 \begin{refsection}
-\chapterauthor{Andrin Kälin}
+\chapterauthor{Andrin Kälin, Marco Rouge}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
 Geodätenlinien beschreiben den kürzesten Weg zwischen zwei Punkten auf einer beliebigen Oberfläche.
 Dabei ist sowohl Form als auch Dimension beliebig.
-Um diese Linien zu berechnen wird das Standardverfahren für Geodätenlinein verwendet, welches auf dem metrischen Tensor [\ref{geodaeten:section:MetrischerTensor}] des zu untersuchenden Raumes basiert.
-Um den Metrischen Tensor aufstellen zu können, müssen zunächst die Linienelemente [\ref{geodaeten:section:Linienelemente}] bekannt sein.
-Die folgenden zwei Kapitel sollen zunächst die Linienelemente [\ref{geodaeten:section:Linienelemente}] und den metrischen Tensor [\ref{geodaeten:section:MetrischerTensor}] erklären.
-Erst dann kann das Standardverfahren anhand einiger Beispiele veranschaulicht werden.
+Um diese Linien zu berechnen wird ein Standardverfahren für Geodätenlinien entwickelt, welches auf dem metrischen Tensor des zu untersuchenden Raumes basiert.
+Um den metrischen Tensor aufstellen zu können, müssen zunächst die Linienelemente bekannt sein.
+Die folgenden zwei Abschnitte sollen zunächst die Linienelemente (Abschnitt \ref{geodaeten:section:Linienelemente}) und den metrischen Tensor (Abschnitt \ref{geodaeten:section:MetrischerTensor}) erklären.
+Erst dann kann die Berechnung der Geodätenlinien anhand einiger Beispiele (Abschnitt \ref{geodaeten:section:StandardverfahrenBeispiele}) veranschaulicht werden.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=7cm]{papers/geodaeten/Abbildungen/Orthodromic_air_route}
+	\caption{Kürzester Weg zwischen zwei Punkten auf der Erdkugel. Bildquelle: \cite{geodaeten:Geodäte}}
+	\label{geodaeten:figure:Geodaeten:Erdkugel}
+\end{figure}
+
 
 \input{papers/geodaeten/Linienelemente/Linienelemente.tex}
 \input{papers/geodaeten/MetrischerTensor/MetrischerTensor.tex}

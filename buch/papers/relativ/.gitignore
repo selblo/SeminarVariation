@@ -1,0 +1,13 @@
+.vscode/
+*.bib
+*.bbl
+*.blg
+*.fls
+*.idx
+*.toc
+*.ilg
+*.ind
+*.fdb_latexmk
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
