@@ -8,9 +8,12 @@
 %
 \section{Theoretische Grundlagen und Beispiele
 	\label{minimalflaechen:section:Theoretische Grundlagen und Beispiele}}
-\rhead{Theoretische Grundlagen und Beispiele}
-Minimalflächen sind durch die Eigenschaft definiert, dass ihre mittlere Krümmung an jedem Punkt null ist.
+\kopfrechts{Theoretische Grundlagen und Beispiele}
+Minimalflächen sind durch die Eigenschaft definiert, dass ihre
+mittlere Krümmung an jedem Punkt null ist.
 Die mittlere Krümmung $H$ einer Fläche wird durch den Durchschnitt
+\index{mittlere Krümmung}%
+\index{Krümmung, mittlere}%
 %
 \begin{equation}
 	H=\frac{k_{1}+k_{2}}{2}
@@ -37,19 +40,19 @@ Allerdings ist die Aussage, dass Minimalflächen die Gleichung \(\Delta f = 0\) 
 Dies gilt nur näherungsweise für Flächen, die nahezu horizontal sind.
 Eine präzisere Beschreibung ergibt sich aus der nichtparametrischen Gleichung der vorgeschriebenen mittleren Krümmung.
 
-Ist \(\mathbf{x}\) ein Graph, so schreibt er sich als
-
+Ist \(\mathbf{x}\) die Parametrisierung der Fläche, so schreibt sie sich als
 \begin{equation}
-\mathbf{x}(u,v) = (u,v,\zeta(u,v))^{T}
+\mathbf{x}(u,v) = (u,v,\zeta(u,v))^{T}.
 \end{equation}
-%
-und die Funktion \(\zeta\) erfüllt die nichtparametrische Gleichung
-
+Die mittlere Krümmung kann aus
+der Funktion \(\zeta\) mit als
 \begin{equation}
 (1 + \zeta_{v}^{2})\zeta_{uu} - 2\zeta_{u}\zeta_{v}\zeta_{uv} + (1 + \zeta_{u}^{2})\zeta_{vv} = H(u,v,\zeta(u,v)).
 \end{equation}
+berechnet werden.
 %
 Im Fall von Minimalflächen ist \(H = 0\) und die Gleichung wird als Minimalflächengleichung bezeichnet.
+\index{Minimalflächengleichung}%
 Wenn man in dieser Gleichung \(\zeta_u = \zeta_v = 0\) setzt (d.h. eine Fläche mit sehr geringer Steigung), bleibt tatsächlich nur \(\zeta_{uu} + \zeta_{vv} = \Delta \zeta\) übrig. 
 
 
@@ -65,12 +68,14 @@ Hier sind einige dieser Beispiele:
 \begin{itemize}
 	\item
 	Helikoid (Wendefläche, Abbildung \ref{fig:helikoid})
+\index{Helikoid}%
 	
 	Diese Minimalfläche entsteht durch eine unstetige, aber isometrische Deformation des Katenoids.
 	Ein Helikoid kann als eine verallgemeinerte Spirale betrachtet werden.
 	Die Gleichung, die ein Helikoid beschreibt, ist $z=\theta$, wobei $\theta$ der Winkel in Zylinderkoordinaten ist.
 	%
 	Das Helikoid ist wie eine Wendeltreppe, welche sich in einer endlosen Spirale nach oben und unten wendet.
+\index{Wendeltreppe}%
 	%
 \begin{figure}
 	\centering
@@ -81,17 +86,22 @@ Hier sind einige dieser Beispiele:
 
 	\item
 	Katenoid
+\index{Katenoid}%
 	
 	Das Katenoid ist eine Rotationsfläche, welche durch die Drehung einer Kettenlinie um die $x$-Achse entsteht.
 	Sie ist die einzige Minimalfläche, die auch eine Rotationsfläche ist.
 	Eine Kettenlinie ist die Kurve, die durch eine ideale flexible Kette oder ein Seil gebildet wird, welche unter dem Einfluss der Schwerkraft hängt.
+\index{Kettenlinie}%
 	Das Katenoid ist eine der einfachsten und bekanntesten Minimalflächen.
 	
-	Unter diesem Link \url{https://www.geogebra.org/m/BtAdpcYM} kann man sehen, wie durch die Rotation einer Kettenlinie ein Katenoid entsteht.
+	Unter dem Link \url{https://www.geogebra.org/m/BtAdpcYM} kann man sehen, wie durch die Rotation eine Kettenlinie ein Katenoid entsteht.
 	\item
-	Scherk'sche Minimalfläche (Abbildung \ref{fig:schreksche-minimalflache})
+	Scherksche Minimalfläche (Abbildung \ref{fig:schreksche-minimalflache})
+\index{Scherksche Minimalfläche}%
 	
 	Diese Minimalfläche wurde von Heinrich Ferdinand Scherk im Jahr 1834 entdeckt.
+\index{Heinrich Ferdinand Scherk}%
+\index{Scherk, Heinrich Ferdinand}%
 	Sie hat eine schachbrettartige Struktur und wird durch die Gleichung 
 	\begin{equation}
 		z=\ln(\frac{\cos(y)}{\cos(x)}) 
@@ -101,17 +111,20 @@ Hier sind einige dieser Beispiele:
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{"papers/minimalflaechen/doublyscherkshear"}
-	\caption{Scherk'sche Minimalfläche \cite{minimalflaechen:doublyscherkshear}}
+	\caption{Scherksche Minimalfläche \cite{minimalflaechen:doublyscherkshear}}
 	\label{fig:schreksche-minimalflache}
 \end{figure}
 	\item
 	Henneberg-Fläche (Abbildung \ref{fig:henneberg-flache})
+\index{Henneberg-Fläche}%
 	
 	Diese nicht orientierbare Minimalfläche wurde von Ernst Lebrecht Henneberg entdeckt.
+\index{Ernst Lebrecht Henneberg}%
+\index{Henneberg, Ernst Lebrecht}%
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{"papers/minimalflaechen/Henneberg Fläche"}
-	\caption{Henneberg Fläche \cite{minimalflaechen:henneberg}}
+	\caption{Henneberg-Fläche \cite{minimalflaechen:henneberg}}
 	\label{fig:henneberg-flache}
 \end{figure}
 
@@ -126,9 +139,12 @@ Es ist, als ob sie in einer vierdimensionalen Welt unterwegs wären, in der Oben
 	\label{minimalflaechen:subsection:Anwendungen von Minimalflächen}}
 Minimalflächen haben zahlreiche Anwendungen in der realen Welt.
 In der Architektur und im Bauwesen werden sie genutzt, um stabile und ästhetisch ansprechende Strukturen zu entwerfen.
+\index{Architektur}%
 Ihre Eigenschaft, die Fläche zu minimieren, macht sie ideal für Konstruktionen, die leicht werden müssen und damit weniger Material brauchen.
 
 Ein bekanntes Beispiel für die Anwendung von Minimalflächen in der Architektur ist das Münchner Olympiastadion (Abbildung \ref{fig:stadion-1}).
+\index{Münchner Olympiastation}%
+\index{Olympiastadion, München}%
 Das Dach dieses Stadions basiert auf Prinzipien von Minimalflächen und zeigt, wie solche Flächen genutzt werden können, um beeindruckende und funktionale Bauwerke zu schaffen.
 Durch die Minimierung der Fläche wird nicht nur Material gespart, sondern auch eine elegante und leichte Struktur geschaffen, die dennoch stabil und langlebig ist.
 \begin{figure}
@@ -140,6 +156,7 @@ Durch die Minimierung der Fläche wird nicht nur Material gespart, sondern auch 
 
 
 Ein alltägliches Beispiel für eine Minimalfläche ist eine Seifenblase.
+\index{Seifenhaut}%
 Wenn man einen Draht in eine Seifenlösung taucht und dann herauszieht, bildet sich zwischen den Drähten eine dünne Seifenhaut, die eine Minimalfläche darstellt.
 Diese Seifenhaut strebt danach, ihre Oberfläche zu minimieren und so die Fläche zwischen den Drähten so klein wie möglich zu halten.
 Die Kräfte, die auf die Seifenhaut wirken, sorgen dafür, dass sie diese minimale Fläche einnimmt.
