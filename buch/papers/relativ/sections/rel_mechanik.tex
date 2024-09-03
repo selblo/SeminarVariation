@@ -2,3 +2,42 @@
 \section{Relativistische Mechanik 
 \label{relativ:section:rel_mechanik}}
 \rhead{Relativistische Mechanik}
+
+\subsection{Das Prinzip der kleinsten Wirkung 
+\label{relativ:section:kleinste-wirkung}}
+
+Für die Berechnung der Bewegung von materiellen Teilchen geht man
+vom Prinzip der kleinsten Wirkung aus.
+Dieses besagt, dass es für jedes mechanische System ein sogenanntes
+Wirkungsintegral \(S\) gibt,
+dass für diejenige Bewegung ein Minimum besitzt, die tatsächlich erfolgt.
+Wie bereits zu erahnen ist, kann dieses Minimum durch die Variation \(dS\)
+des Wirkungsintegrals ermittelt werde.
+
+Da dieses Integral unabhängig vom gewählten Koordinatensystem sein muss,
+kann es nur von Skalaren und nicht von den Variablen \(x, y, z, t\) abhängen.
+Das Wirkungsintegral hat daher die Form
+\begin{equation}
+    S = - \alpha \int_{a}^{b} ds,
+\label{relativ:eqn:wirk-int-grundform}
+\end{equation}
+wobei \(\alpha\) eine vom Teilchen abhängige Konstante,
+und \(a\) und \(b\) zwei Ereignisse in der Raumzeit sind.
+Integriert wird über die Weltlinie des Teilchens,
+d.h. entlang dessen Bahn durch die Raumzeit.
+
+Das Wirkungsintegral lässt sich auch über die Zeit darstellen,
+wobei es die Form
+\begin{equation}
+    S = \int_{t_1}^{t_2} L \, dt
+\label{relativ:eqn:wirk-int-zeit}
+\end{equation}
+annimmt, mit der Lagrange-Funktion \(L\).
+
+\todo{Saubere Überleitung erarbeiten.}
+
+Für ein freies Teilchen ergibt sich schliesslich die Lagrange-Funktion
+\begin{equation}
+    L = -mc^2 \sqrt{1-\frac{v^2}{c^2}}.
+\label{relativ:eqn:lagrange-freies-teilchen}
+\end{equation}
