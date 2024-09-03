@@ -6,25 +6,25 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Herleitung der Funktionen\label{kettenlinie:section:Herleitung der Funktionen}}
-\rhead{Herleitung der Funktionen}
+\section{Herleitung der Lagrange-Funktionen\label{kettenlinie:section:Herleitung der Lagrange-Funktionen}}
+\rhead{Herleitung der Lagrange-Funktionen}
 Nachdem die theoretischen Grundlagen und Eigenschaften der Kettenlinie behandelt wurden, geht es nun um die konkreten Berechnungen.
 In diesem Abschnitt werden die wesentlichen Formeln und deren Herleitungen vorgestellt, die zur Bestimmung der Kettenlinie notwendig sind.
 Ziel ist es, den mathematischen Prozess verständlich darzustellen und die Anwendung der Formeln an konkreten Beispielen zu demonstrieren.
 
-\subsection{Kettenlinien als Variationsproblem mit Nebenbedingungen
-\label{kettenlinie:subsection:Kettenlinien als Variationsproblem}}
-Die Kettenlinie beschreibt die Form einer hängenden Kette, die unter ihrem eigenen Gewicht hängt und dabei eine Form annimmt, welche die potenzielle Energie minimiert.
+\subsection{Kettenlinien als Variationsproblem mit Nebenbedingung
+\label{kettenlinie:subsection:Kettenlinien als Variationsproblem mit Nebenbedingung}}
+Die Kettenlinie beschreibt die Form einer hängenden Kette, die unter ihrem eigenen Gewicht hängt und dabei eine Form annimmt, welche die potentielle Energie minimiert.
 Eine der wesentlichen Bedingungen ist die vorgegebene Länge der Kette.
-Diese beiden Anforderungen, nämlich die Minimierung der potenziellen Energie und die konstante Kettenlänge, stellen die zwei Nebenbedingungen für das Variationsproblem dar.
+Diese Anforderung der konstanten Kettenlänge stellt die Nebenbedingung für das Variationsproblem dar.
 
 Man erkennt daraus, dass es sich um ein klassisches Beispiel für ein Variationsproblem handelt.
 In unserem Problem suchen wir nämlich nach einer Funktion, in diesem Fall die Form der Kette mit vorgegebener Länge, die einen Integral, hier die potentielle Energie, minimiert.
 
 \subsection{Bogenlänge
 \label{kettenlinie:subsection:Bogenlänge}}
-Wie wir nun durch die definierten Nebenbedingungen wissen, soll die potenzielle Energie minimiert werden.
-Es wird nun aber kein Objekt als Ganzes betrachtet, sondern die Summe der potenziellen Energie aller Teilchen der Kette zusammen.
+Wie wir nun wissen, soll die potentielle Energie minimiert werden.
+Es wird nun aber kein Objekt als Ganzes betrachtet, sondern die Summe der potentiellen Energie aller Teilchen der Kette zusammen.
 Deshalb wird für die kommenden Berechnungen öfters die Bogenlänge benötigt, weshalb sie hier nochmals erläutert und ins Gedächtnis gerufen wird.
 
 Bei einem unendlich kleinen Teil einer beliebigen Kurve ist die Bogenlänge ungefähr
@@ -32,7 +32,7 @@ Bei einem unendlich kleinen Teil einer beliebigen Kurve ist die Bogenlänge unge
 	ds
 	=
 	\sqrt{dx^2 + dy^2}
-	\label{kettenlinie:equation1}
+	\label{kettenlinie:equation1},
 \end{equation}
 was dem Pythagoras entspricht.
 Hier kann man \(dx^2\) ausklammern, damit man auf die Formel
@@ -41,7 +41,7 @@ Hier kann man \(dx^2\) ausklammern, damit man auf die Formel
 	=
 	\sqrt{dx^2 + dy^2}
 	=
-	\sqrt{dx^2 \left( 1 + \left( \frac{dy}{dx} \right)^2 \right)}
+	\sqrt{dx^2 \biggl( 1 + \left( \frac{dy}{dx} \right)^2 \biggr)}
 	=
 	\sqrt{1 + \left( \frac{dy}{dx} \right)^2} \, dx
 \end{equation}
@@ -64,9 +64,9 @@ Das Integral
 \end{equation}
 ermöglicht es, die Gesamtlänge der Kurve von einem Startpunkt \(x_1\) bis zu einem Endpunkt \(x_2\) zu bestimmen.
 
-\subsection{Minimum der potenziellen Energie
-\label{kettenlinie:subsection:Minimum der potenziellen Energie}}
-Für die Herleitung der Kettenlinie brauchen wir zudem die Formel der potentiellen Energie um die erste Nebenbedingung zu erfüllen. Diese setzt sich zusammen aus der Masse \(m\), der Erdbeschleunigung \(g\) und der Höhe \(h\):
+\subsection{Minimum der potentiellen Energie
+\label{kettenlinie:subsection:Minimum der potentiellen Energie}}
+Für die Herleitung der Kettenlinie brauchen wir zudem die Formel der potentiellen Energie für die Minimierung. Diese setzt sich zusammen aus der Masse \(m\), der Erdbeschleunigung \(g\) und der Höhe \(h\):
 \begin{equation}
 	E_{\text{pot}}
 	=
@@ -79,31 +79,30 @@ Auch benötigen wir die Formel
 	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
 \end{equation}
 der Bogenlänge, welche wir eben erläutert haben.
-Um die zweite Nebenbedingung für die Kettenlänge zu erfüllen, brauchen wir eine zweite Lagrange-Funktion.
+Um die Nebenbedingung für die Kettenlänge zu erfüllen, brauchen wir eine zweite Lagrange-Funktion.
 Dafür benötigen wir die Formel
 \begin{equation}
 	m = \mu \cdot ds = \mu \sqrt{1 + y'^2} \, dx
 \end{equation}
-für die Masse eines Kettenstücks.
+für die Masse eines Kettenstücks, wobei \(\mu\) die Massendichte ist.
 Die Höhe des Kettenstücks ist definiert durch
 \begin{equation}
 	h = y(x).
 \end{equation}
-Die potenzielle Energie des Kettenstücks ist dann:
+Die potentielle Energie des Kettenstücks ist dann:
 \begin{equation}
-	dE_{pot} = m \cdot g \cdot h = \mu \sqrt{1 + y'^2} \cdot g \cdot y(x) \, dx.
+	dE_{\text{pot}} = m \cdot g \cdot h = \mu \sqrt{1 + y'^2} \cdot g \cdot y(x) \, dx.
 \end{equation}
-Wie bereits erwähnt, setzt sich die potenzielle Energie aus der Summe der potenziellen Energien aller Teilchen der Kette zusammen
+Wie bereits erwähnt, setzt sich die potenzielle Energie aus der Summe der potentiellen Energien aller Teilchen der Kette zusammen
 \begin{equation}
-	E_{pot} = \int dE_{pot} = \int_{x_1}^{x_2} \mu g \sqrt{1 + y'^2} y, dx
+	E_{\text{pot}} = \int dE_{\text{pot}} = \int_{x_1}^{x_2} \mu g \sqrt{1 + y'^2} y  \, dx.
 \end{equation}
-wobei \(g\) die Gravitationskonstante und \(\mu\) die Massendichte ist.
 Die Konstanten \(\mu\) und \(g\) können ignoriert werden.
 Wir erhalten
 \begin{equation}
-	\int_{x_1}^{x_2} (\sqrt{1 + y'^2} \, y) \, dx.
+	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, y \, dx.
 \end{equation}
-Dieser muss extremal sein, in unserem Fall minimal.
+Diese muss extremal sein, in unserem Fall minimal.
 
 \subsection{Einsatz der Euler-Lagrange-Gleichung
 \label{kettenlinie:subsection:Einsatz der Euler-Lagrange-Gleichung}}
@@ -116,151 +115,129 @@ Zuerst muss die Lagrange-Funktion \(L\) bestimmt werden, welche in diesem Fall d
 \begin{equation}
 	L(x, y, y')
 	=
-	\sqrt{1 + y'^2} \, y
+	y sqrt(1+y'^2) + \lambda sqrt(1+y'^2)
+	=
+	(y + \lambda) sqrt(1+y'^2)
 \end{equation}
 gegeben ist.
 Nun setzen wir die Lagrange-Funktion in die Euler-Lagrange-Gleichung ein, um die gewünschte Differentialgleichung zu erhalten. Es muss also folgende Differentialgleichung gelten:
 
 \begin{align*}
 	\Leftrightarrow &\
-	\frac{\partial}{\partial y} \left( \sqrt{1 + y'^2} \, y \right) &- &\ \frac{d}{dx} \frac{\partial}{\partial y'} \left( \sqrt{1 + y'^2} \, y \right) 
+	\frac{\partial}{\partial y} \left( \sqrt{1 + y'^2} \, y \right) - \frac{d}{dx} \frac{\partial}{\partial y'} \left( \sqrt{1 + y'^2} \, y \right) 
 	&= &\
 	0
 	\\
 	\Leftrightarrow &\
-	\sqrt{1 + y'^2} &- &\ \frac{d}{dx} \dfrac{yy'}{\sqrt{1 + y'^2}}
+	\sqrt{1 + y'^2} - \frac{d}{dx} (y + \lambda) \dfrac{y'}{\sqrt{1 + y'^2}}
 	&= &\
 	0
 	\\
 	\Leftrightarrow &\
-	\sqrt{1 + y'^2} &- &\ \frac{\left( y y'' + y'^2 \right) \left( \sqrt{1 + y'^2} \right) - y y' \cdot \frac{y' y''}{\sqrt{1 + y'^2}}}{1 + y'^2}
-	&= &\
-	0 \quad | \cdot (\sqrt{1 + y'^2})(1 + y'^2)
-	\\
-	\Leftrightarrow &\
-	\left(1 + y'^2\right)^2 &- &\ ((y y'' + y'^2)(1 + y'^2) - y y' \cdot y' y'')
+	\sqrt{1 + y'^2} - \frac{y'^2}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{d}{dx} \frac{y'}{\sqrt{1 + y'^2}}
 	&= &\
 	0
 	\\
 	\Leftrightarrow &\
-	1 + 2y'^2 \cancel{+y'^4} &- &\ (y y'' + y'^2 \cancel{+ yy'^2 y''} \cancel{+ y'^4} \cancel{- yy'^2 y''})
+	\frac{1 + y'^2 - y'^2}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{y'' \sqrt{1 + y'^2} - y' \frac{y' y''}{\sqrt{1 + y'^2}}}{(1 + y'^2)} 
 	&= &\
 	0
 	\\
 	\Leftrightarrow &\
-	1 + y'^2 - yy'' & &\
+	\frac{1}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{y'' (1 + y'^2) - y''y'^2}{(1 + y'^2)^ \frac{3}{2}} 
+	&= &\
+	0
+	\\
+	\Leftrightarrow &\
+	\frac{1}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{y''}{\sqrt{1 + y'^2}^3} 
+	&= &\
+	0
+	\\
+	\Leftrightarrow &\
+	\frac{1 + y'^2 - (y + \lambda) y''} {\sqrt{1 + y'^2}^3}
+	&= &\
+	0
+	\\
+	\Rightarrow &\
+	1 + y'^2 - (y + \lambda) y''
 	&= &\
 	0 \label{kettenlinie:equation_1} \tag{\theequation} \stepcounter{equation}.
-\end{align*}
-Als nächstes muss die Gleichung nach \(x\) differenziert werden, das heißt, es wird auf beiden Seiten der Gleichung die Ableitung nach \(x\) gebildet.
-Dieser Schritt ist notwendig, um eine zusätzliche Bedingung für die Funktion \(y(x)\) zu erhalten, die es ermöglicht, die Form der Kettenlinie genauer zu bestimmen:
-\begin{align*}
-	&\Rightarrow &\
-	2y'y'' - (y'y'' + yy''')
-	&=
-	0
-	\\
-	&\Leftrightarrow &\
-	2y'y'' - y'y'' - yy'''
-	&=
-	0
-	\\
-	&\Leftrightarrow &\
-	y'y'' - yy'''
-	&=
-	0
-	\\
-	&\Leftrightarrow &\
-	yy''' - y'y''
-	&=
-	0
-	\\
-	&\Leftrightarrow &\
-	y^2 \left(\dfrac{yy''' - y'y''}{y^2}\right)
-	&=
-	0
-	\\
-	&\Leftrightarrow &\
-	y^2 \left(\dfrac{y''}{y}\right)'
-	&=
-	0 \label{kettenlinie:equation_2} \tag{\theequation} \stepcounter{equation}.
-	\\
 \end{align*}
 
 \subsection{Lösung der Differentialgleichung
 \label{kettenlinie:subsection:Lösung der Differentialgleichung}}
-Der triviale Fall \(y = 0\) kann aufgrund der bisherigen Argumentation ausgeschlossen werden.
-Daraus ergibt sich unmittelbar:
+Wir haben in \eqref{kettenlinie:equation_1} die Differentialgleichung
+\begin{equation}
+	1 + y'^2 - (y + \lambda) y''
+	=
+	0
+\end{equation}
+bekommen.
+Hier ist \(\lambda\) die Vertikalverschiebung, die wir in die Funktion \(y\) integrieren können
+\begin{equation}
+	y
+	\rightarrow
+	y - \lambda ,
+\end{equation}
+wobei die Differentialgleichung gleich bleibt.
+
+Die Differentialgleichung
+\begin{equation}
+	1 + y'^2 - y y''
+	=
+	0
+\end{equation}
+lässt sich entsprechend umstellen und man erhält
+\begin{equation}
+	1
+	=
+	y y'' - y^2.
+\end{equation}
+Diese kann man nun ohne Rechnen lösen, wenn man weiss, dass die Hyperbelfunktionen die Gleichungen
+\begin{align*}
+	1 &= \cosh(x)^2 - \sinh(x)^2 \\
+	\cosh'(x) &= \sinh(x) \\
+	\cosh''(x) &= \cosh(x)
+\end{align*}
+erfüllen.
 \begin{equation}
 	\Rightarrow
-	y''
-	=
-	cy
-	, c \in \mathbb{R}.
-\end{equation}
-Dies kann durch das Lösungssystem \(\{ e^{\sqrt{c}x}, e^{-\sqrt{c}x} \}\) gelöst werden.
-Daher ergibt sich die allgemeine Lösung als
-\begin{equation}
 	y
 	=
-	a_1\left(e^{\sqrt{c}x} + e^{-\sqrt{c}x}\right) + a_2\left(e^{\sqrt{c}x} - e^{-\sqrt{c}x}\right), \, a_1, a_2 \in \mathbb{R}.
+	cosh(x), \quad
+	y'
+	=
+	sinh(x)
 \end{equation}
-Bei genauerer Analyse der Funktion erkennt man, dass \(y(x) = y(-x) \) gilt.
-Wir suchen hier nach symmetrischen Lösungen und führen die Asymmetrie später durch eine Translation wieder ein.
-Dies impliziert, dass die Kurve achsensymmetrisch zur \(y\)-Achse ist.
-Folglich muss \(a_2 = 0\) und \(a_1 \neq 0\) sein.
+ist eine Lösung der Differentialgleichung.
+\begin{equation}
+	y(x)
+	=
+	a \cosh\left(\frac{x}{a}\right)
+\end{equation}
+erfüllt die Differentialgleichung ebenfalls. Ausserdem ist 
+\begin{equation}
+	y'(x)
+	=
+	\sinh\left(\frac{x}{a}\right)
+\end{equation}
+und
+\begin{equation}
+	y''(x)
+	=
+	\frac{1}{a} \cosh\left(\frac{x}{a}\right).
+\end{equation}
+Somit wurden alle Lösungen gefunden.
 
-Für \(a_2 = 0\) reduziert sich die Lösung auf den folgenden Ausdruck:
-\begin{equation}
-	y
-	=
-	a_1\left(e^{\sqrt{c}x} + e^{-\sqrt{c}x}\right), \, a_1 \in \mathbb{R}.
-\end{equation}
-Da \(e^{\sqrt{c}x} + e^{-\sqrt{c}x} = 2\cosh(\sqrt{c}x)\), kann die Lösung schließlich in der Form
-\begin{equation}
-	y
-	=
-	a_1\cosh(\sqrt{c}x), \quad a_1 \in \mathbb{R}
-	\label{kettenlinie:equation_3}
-\end{equation}
-geschrieben werden.
-Als nächstes gilt es, \(a_1\) zu bestimmen:
-\begin{align*}
-	\eqref{kettenlinie:equation_1}
-	&\Rightarrow &\
-	yy'' - y'^2
-	&=
-	1
-	\\
-	&\Leftrightarrow &\
-	ca_1^2\cosh^2(\sqrt{c}x) - ca_1^2\sinh^2(\sqrt{c}x)
-	&=
-	1
-	\\
-	&\Leftrightarrow &\
-	a_1^2c(\cosh^2(\sqrt{c}x) - \sinh^2(\sqrt{c}x))
-	&=
-	1
-	\\
-	&\Leftrightarrow &\
-	a_1
-	&=
-	\frac{1}{\sqrt{c}}, \Rightarrow c, \, a_1 \in \mathbb{R}_+.
-\end{align*}
-Damit haben wir die Lösung der Differentialgleichung gefunden. Durch Einsetzen von \(a_1 = \frac{1}{\sqrt{c}}\) in die Gleichung \eqref{kettenlinie:equation_3} ergibt sich die endgültige Gleichung
-\begin{equation}
-y = a \cosh\left(\frac{x}{a}\right), \quad a := \frac{1}{\sqrt{c}}
-\end{equation}
-der Kettenlinie.
 Nach der Herleitung der grundlegenden Differentialgleichung und der Gleichung der Kettenlinie, können wir nun die horizontale Verschiebung \(x_0\) und die vertikale Verschiebung \(y_0\) einführen, um die allgemeinste Form der Kettenlinie zu formulieren.
 Diese erlaubt es, die Kurve entlang der \(x\)-Achse zu verschieben und vertikal zu justieren, was in praktischen Anwendungen wie dem Bau von Hängebrücken oder der Modellierung von Kabeln unter realen Bedingungen nützlich ist.
 
 Die allgemeine Form der Kettenlinie lässt sich ausdrücken als:
-\[
+\begin{equation}
 	y(x)
 	=
 	a \cosh\left(\frac{x - x_0}{a}\right) + y_0
-\]
+\end{equation}
 Hierbei ist:
 
 \begin{itemize}
