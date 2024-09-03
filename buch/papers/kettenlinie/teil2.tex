@@ -93,7 +93,7 @@ Die potentielle Energie des Kettenstücks ist dann:
 \begin{equation}
 	dE_{\text{pot}} = m \cdot g \cdot h = \mu \sqrt{1 + y'^2} \cdot g \cdot y(x) \, dx.
 \end{equation}
-Wie bereits erwähnt, setzt sich die potenzielle Energie aus der Summe der potentiellen Energien aller Teilchen der Kette zusammen
+Wie bereits erwähnt, setzt sich die potentielle Energie aus der Summe der potentiellen Energien aller Teilchen der Kette zusammen:
 \begin{equation}
 	E_{\text{pot}} = \int dE_{\text{pot}} = \int_{x_1}^{x_2} \mu g \sqrt{1 + y'^2} y  \, dx.
 \end{equation}
@@ -115,52 +115,54 @@ Zuerst muss die Lagrange-Funktion \(L\) bestimmt werden, welche in diesem Fall d
 \begin{equation}
 	L(x, y, y')
 	=
-	y sqrt(1+y'^2) + \lambda sqrt(1+y'^2)
+	y \sqrt{1+y'^2} + \lambda \sqrt{1+y'^2}
 	=
-	(y + \lambda) sqrt(1+y'^2)
+	(y + \lambda) \sqrt{1+y'^2}
 \end{equation}
 gegeben ist.
+Darin ist \(\lambda\) der Lagrange-Multiplikator, der zur Berücksichtigung der Nebenbedingung nötig ist.
+
 Nun setzen wir die Lagrange-Funktion in die Euler-Lagrange-Gleichung ein, um die gewünschte Differentialgleichung zu erhalten. Es muss also folgende Differentialgleichung gelten:
 
 \begin{align*}
-	\Leftrightarrow &\
-	\frac{\partial}{\partial y} \left( \sqrt{1 + y'^2} \, y \right) - \frac{d}{dx} \frac{\partial}{\partial y'} \left( \sqrt{1 + y'^2} \, y \right) 
-	&= &\
+	& \Leftrightarrow &
+	\frac{\partial}{\partial y} \left( \sqrt{1 + y'^2} \, (y + \lambda) \right) - \frac{d}{dx} \frac{\partial}{\partial y'} \left( \sqrt{1 + y'^2} \, (y + \lambda) \right) 
+	&=
 	0
 	\\
-	\Leftrightarrow &\
+	& \Leftrightarrow &
 	\sqrt{1 + y'^2} - \frac{d}{dx} (y + \lambda) \dfrac{y'}{\sqrt{1 + y'^2}}
-	&= &\
+	&=
 	0
 	\\
-	\Leftrightarrow &\
+	& \Leftrightarrow &
 	\sqrt{1 + y'^2} - \frac{y'^2}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{d}{dx} \frac{y'}{\sqrt{1 + y'^2}}
-	&= &\
+	&=
 	0
 	\\
-	\Leftrightarrow &\
+	& \Leftrightarrow &
 	\frac{1 + y'^2 - y'^2}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{y'' \sqrt{1 + y'^2} - y' \frac{y' y''}{\sqrt{1 + y'^2}}}{(1 + y'^2)} 
-	&= &\
+	&=
 	0
 	\\
-	\Leftrightarrow &\
+	& \Leftrightarrow &
 	\frac{1}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{y'' (1 + y'^2) - y''y'^2}{(1 + y'^2)^ \frac{3}{2}} 
-	&= &\
+	&=
 	0
 	\\
-	\Leftrightarrow &\
+	& \Leftrightarrow &
 	\frac{1}{\sqrt{1 + y'^2}} - (y + \lambda) \frac{y''}{\sqrt{1 + y'^2}^3} 
-	&= &\
+	&=
 	0
 	\\
-	\Leftrightarrow &\
+	& \Leftrightarrow &
 	\frac{1 + y'^2 - (y + \lambda) y''} {\sqrt{1 + y'^2}^3}
-	&= &\
+	&=
 	0
 	\\
-	\Rightarrow &\
+	& \Rightarrow &
 	1 + y'^2 - (y + \lambda) y''
-	&= &\
+	&=
 	0 \label{kettenlinie:equation_1} \tag{\theequation} \stepcounter{equation}.
 \end{align*}
 
@@ -173,7 +175,7 @@ Wir haben in \eqref{kettenlinie:equation_1} die Differentialgleichung
 	0
 \end{equation}
 bekommen.
-Hier ist \(\lambda\) die Vertikalverschiebung, die wir in die Funktion \(y\) integrieren können
+Hier ist \(\lambda\) die Vertikalverschiebung, die wir in die Funktion \(y\) integrieren können:
 \begin{equation}
 	y
 	\rightarrow
@@ -199,17 +201,16 @@ Diese kann man nun ohne Rechnen lösen, wenn man weiss, dass die Hyperbelfunktio
 	\cosh'(x) &= \sinh(x) \\
 	\cosh''(x) &= \cosh(x)
 \end{align*}
-erfüllen.
+erfüllen. Somit ist
 \begin{equation}
-	\Rightarrow
 	y
 	=
-	cosh(x), \quad
+	\cosh(x), \quad
 	y'
 	=
-	sinh(x)
+	\sinh(x)
 \end{equation}
-ist eine Lösung der Differentialgleichung.
+eine Lösung der Differentialgleichung.
 \begin{equation}
 	y(x)
 	=
@@ -236,7 +237,7 @@ Die allgemeine Form der Kettenlinie lässt sich ausdrücken als:
 \begin{equation}
 	y(x)
 	=
-	a \cosh\left(\frac{x - x_0}{a}\right) + y_0
+	a \cosh\left(\frac{x - x_0}{a}\right) + y_0.
 \end{equation}
 Hierbei ist:
 
