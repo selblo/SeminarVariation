@@ -9,22 +9,22 @@
 \section{Linienelemente\label{geodaeten:section:Linienelemente}}
 \rhead{Linienelemente}
 
-Um die Weglänge unserer Geodätenlinie minimieren zu können, müssen wir erst einmal den Weg berechnen.
+Um die Weglänge unserer Geodätenlinie minimieren zu können, müssen wir zuerst einmal den Weg berechnen.
 Jeder Weg kann in kleinere Wegstücke $\Delta \text{Weg}$ unterteilt werden, welche addiert wieder den ganzen Weg ergeben.
-Der Weg $l$ entspricht 
+Der Weg $l$ entspricht also
 \begin{equation}
 	l = \sum \Delta \text{Weg} .
 \end{equation}
 
-Linienelemente sind als infinitesimal kleine Wegstücke definiert, welche entlang jeder Dimension integriert die Weglänge ergeben.
-Ein Linienelement entlang einer Dimensions-Achse beschreibt, wie sich der Raum in die entsprechende Dimension verändert.
-In einem $n$-dimensionalen Raum entspricht ein Linienelement also einem $n$-dimensionalen Vektor, welcher die Kurve in jeder Dimension beschreibt.
-
-Die Wegstücke werden infinitesimal und die Formel für die Wegstücklänge $\Delta \text{Weg}$ wird zur Formel für das Linienelement $ds$  als
+Wenn diese Wegstücke nun verkleinert werden, bis sie infinitesimal klein sind, transformiert sich die Formel für die Wegstücklänge $\Delta \text{Weg}$ in die für das Linienelement $ds$ als
 \begin{equation}	
 	d\text{Weg} = ds .
 	\label{geodaeten:equation:Linienelemente:equation1}
 \end{equation}
+
+Linienelemente sind somit als infinitesimal kleine Wegstücke definiert, welche entlang jeder Dimension integriert die Weglänge ergeben.
+Ein Linienelement entlang einer Dimensions-Achse beschreibt, wie sich der Raum in die entsprechende Dimension verändert.
+In einem $n$-dimensionalen Raum entspricht ein Linienelement also einem $n$-dimensionalen Vektor, welcher die Kurve in jeder Dimension beschreibt.
 
 Um den Weg $l$ zu erhalten müssen schliesslich diese Linienelemente in allen Dimensionen integriert werden mit
 \begin{equation}
@@ -34,10 +34,10 @@ Um den Weg $l$ zu erhalten müssen schliesslich diese Linienelemente in allen Di
 \end{equation}
 
 \section{Beispiele zu Linienelementen\label{geodaeten:section:Linienelemente:Beispiele}}
-Die Beispiele sind für alle Unterkapitel gleich aufgebaut.
+Die Beispiele sind für alle Abschnitte gleich aufgebaut.
 Zuerst wird das zweidimensionale Beispiel des kartesischen Raumes als einfacher Einstieg behandelt.
 Danach wird der Zylinder als Übergang in etwas komplexere Strukturen aufgezeigt.
-Zum Schluss werden Untersuchungen an einer Kugel durchgeführt, welche in der Praxis grosse Anwendung finden, aufgrund der Ähnlichkeit zur Erdkugel (Abbildung \ref{geodaeten:figure:Geodaeten:Erdkugel}).
+Zum Schluss werden Untersuchungen an einer Kugel durchgeführt, welche in der Praxis grosse Anwendung finden, unter anderem aufgrund der Ähnlichkeit zur Erdkugel (Abbildung \ref{geodaeten:figure:Geodaeten:Erdkugel}).
 
 	\input{papers/geodaeten/Linienelemente/LinKartesisch.tex}
 	\input{papers/geodaeten/Linienelemente/LinZylinder.tex}
