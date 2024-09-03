@@ -33,10 +33,29 @@ wobei es die Form
 \label{relativ:eqn:wirk-int-zeit}
 \end{equation}
 annimmt, mit der Lagrange-Funktion \(L\).
+Ersetzt man \(ds\) in \eqref{relativ:eqn:wirk-int-grundform}
+gemäss \eqref{relativ:eqn:differential-eigenzeit} und passt
+die Integrationsgrenzen an, so erhält man
+\begin{equation}
+    S = -\int_{t_1}^{t_2} \alpha c \sqrt{1-\frac{v^2}{c^2}} dt.
+\end{equation}
 
-\todo{Saubere Überleitung erarbeiten.}
-
-Für ein freies Teilchen ergibt sich schliesslich die Lagrange-Funktion
+Zur Bestimmung der Teilchenkonstante \(\alpha\) beginnt man mit der Forderung,
+dass die Lagrange-Funktion im Grenzfall \(c\rightarrow\inf\) in den
+Ausdruck \(L=mv^2/2\) der klassischen Mechanik übergehen soll.
+Die Taylorreihe von \(L\) ergibt beim Weglassen der Terme höherer Ordnung
+\begin{equation}
+    L = - \alpha c \sqrt{1-\frac{v^2}{c^2}}
+    \approx -\alpha c + \frac{\alpha v^2}{2c}.
+\end{equation}
+Da Konstanten in der Lagrange-Funktion keinen Einfluss auf die Bewegungsgleichung haben,
+kann der erste Term ignoriert werden. Somit bleibt die Forderung
+\begin{equation}
+    \frac{\alpha v^2}{2c} = \frac{mv^2}{2}\
+    \text{und daraus ergibt sich}\
+    \alpha = mc.
+\end{equation}
+Für ein freies Teilchen ergibt sich folglich die Lagrange-Funktion
 \begin{equation}
     L = -mc^2 \sqrt{1-\frac{v^2}{c^2}}.
 \label{relativ:eqn:lagrange-freies-teilchen}

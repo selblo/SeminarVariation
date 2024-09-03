@@ -1,0 +1,28 @@
+
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\begin{document}
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+
+\begin{tikzpicture}[>=latex, x=0.75pt,y=0.75pt,yscale=1,xscale=1]
+
+% Koordinatensystem K
+\draw[->] (-10,0) -- (100,0) node[anchor=west]{$x$};
+\draw[->] (0,-10) -- (0,100) node[anchor=south]{$y$};
+\draw (0, 0) node[anchor=north west]{$K$};
+
+% Offset zwischen Koordinatesystemen
+\def\dx{60}
+\def\dy{40}
+
+% Koordinatensystem K'
+\draw[->] (-10+\dx, 0+\dy) -- (100+\dx, 0+\dy) node[anchor=west]{$x'$};
+\draw[->] (0+\dx, -10+\dy) -- (0+\dx, 100+\dy) node[anchor=south]{$y'$};
+\draw (0+\dx, 0+\dy) node[anchor=north west]{$K'$};
+
+% Verschiebungslinie
+\draw[->, red] (0, 0) -- (\dx, \dy) node[midway, anchor=south east]{$\vec{r}$};
+
+\end{tikzpicture}
+\end{document}
