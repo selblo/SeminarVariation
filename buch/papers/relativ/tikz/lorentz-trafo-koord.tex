@@ -1,0 +1,44 @@
+
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{tikz,pgfplots}
+\usepackage{tikz-3dplot}
+% \usepackage[outline]{contour} % glow around text
+% \usetikzlibrary{angles,quotes} % for pic (angle labels)
+% \usetikzlibrary{arrows,arrows.meta}
+% \usetikzlibrary{calc}
+% \usetikzlibrary{decorations.markings}
+% \usetikzlibrary{arrows,intersections,math}
+\begin{document}
+% \def\skala{1}
+% \tikzset{>=latex} % for LaTeX arrow head
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+
+\begin{tikzpicture}[>=latex, x=0.75pt,y=0.75pt,z=0.5*0.75pt,yscale=1,xscale=1]
+
+% Koordinatensystem K
+\draw[->] (-10,0,0) -- (100,0,0) node[anchor=west]{$x$};
+\draw[->] (0,-10,0) -- (0,100,0) node[anchor=south]{$z$};
+\draw[->] (0,0,-10) -- (0,0,100) node[anchor=south]{$y$};
+\draw (0, 0, 0) node[anchor=north west]{$K$};
+
+
+% Offset zwischen Koordinatesystemen
+\def\dx{150}
+
+% Koordinatensystem K'
+\draw[->] (-10+\dx,0,0) -- (100+\dx,0,0) node[anchor=west]{$x'$};
+\draw[->] (0+\dx,-10,0) -- (0+\dx,100,0) node[anchor=south]{$z'$};
+\draw[->] (0+\dx,0,-10) -- (0+\dx,0,100) node[anchor=south]{$y'$};
+\draw (0+\dx, 0, 0) node[anchor=north west]{$K'$};
+
+% Geschwindigkeitsvektor
+\draw[->, red, line width=1.2pt] (\dx,0,0) -- (40+\dx,0,0) node[midway, anchor=south west]{$V$};
+
+\end{tikzpicture}
+\end{document}
