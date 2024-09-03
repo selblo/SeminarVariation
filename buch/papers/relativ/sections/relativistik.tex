@@ -47,12 +47,19 @@ zu vergleichen:
     &\text{Translation in der Zeit: } && t \rightarrow t + b \\
     &\text{Translation im Raum: } && \vec{r} \rightarrow \vec{r} + \vec{a} \\
     &\text{Orthogonale Drehung: } && \vec{r} \rightarrow A \vec{r} \\
-    &\text{Transformation auf ein Bezugssystem mit Relativgeschwindigkeit: } && \vec{r} \rightarrow \vec{r} + \vec{v} \cdot t
+    &\text{Transformation auf ein Bezugssystem mit Relativgeschwindigkeit: } && \vec{r} \rightarrow \vec{r} + \vec{v} \cdot t .
 \end{aligned}
 \]
-
 Eine Kombination aus diesen Transformationen wird als Galilei-Transformation bezeichnet.
-\todo{Abbildung Galilei-Transformation}
+Ein einfaches Beispiel dafür ist in Abbildung~\ref{relativ:fig:galilei-trafo} zu finden.
+\begin{figure}
+    \centering
+    \includegraphics{papers/relativ/tikz/galilei_trafo.pdf}
+    \caption{Darstellung einer einfachen Galilei-Transformation in \(\mathbb{R}^2\)
+    vom Koordinatensystem \(K\) zum System \(K'\).
+    Sie besteht lediglich aus einer Translation um den Vektor \(\vec{r}\).
+    \label{relativ:fig:galilei-trafo}}
+\end{figure}
 
 \subsubsection{Lorentz-Transformation 
 \label{relativ:section:lorentz-trafo}}
@@ -63,7 +70,8 @@ und wesentlich kompliziertere Formeln annehmen kann.
 Beispielsweise ergeben sich die Transformation von einem
 Bezugssystem \(K\) in ein anderes System \(K'\),
 welches sich entlang der \(x\)-Achse mit der Geschwindigkeit \(V\)
-relativ zu \(K\) bewegt, die folgenden Gleichungen
+relativ zu \(K\) bewegt (siehe Abbildung~\ref{relativ:fig:lorentz-trafo-koords}),
+die Gleichungen
 \begin{equation}
     x = \frac{x' + V t'}{\sqrt{1 - \frac{V^2}{c^2}}}, \quad
     y = y', \quad
@@ -71,8 +79,14 @@ relativ zu \(K\) bewegt, die folgenden Gleichungen
     t = \frac{t' + \frac{V}{c^2}x'}{\sqrt{1-\frac{V^2}{c^2}}}.
     \label{relativ:eqn:lorentz-trafo-beisp}
 \end{equation}
-\todo{Abbildung Lorentz-Transformation}
-
+\begin{figure}
+    \centering
+    \includegraphics{papers/relativ/tikz/lorentz-trafo-koord.pdf}
+    \caption{Bezugssystem \(K\) und ein zweites Koordinatensystem \(K'\),
+    welches sich relativ zu \(K\) mit der konstanten Geschwindigkeit \(V\)
+    entlang der \(x\)-Achse bewegt.
+    \label{relativ:fig:lorentz-trafo-koords}}
+\end{figure}
 
 \subsection{Der Abstand 
 \label{relativ:section:abstand}}

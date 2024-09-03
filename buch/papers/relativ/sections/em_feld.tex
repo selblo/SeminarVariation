@@ -1,10 +1,10 @@
 
-\section{Ladungen im Elektromagnetischen Feld 
+\section{Ladungen im Elektromagnetischen Feld
 \label{relativ:section:em_feld}}
 \rhead{Ladungen im Elektromagnetischen Feld}
 
 
-\subsection{Elementarteilchen in der Relativitätstheorie 
+\subsection{Elementarteilchen in der Relativitätstheorie
 \label{relativ:section:elementarteilchen}}
 
 Wie bereits in der Einleitung zu Abschnitt~\ref{relativ:section:relativistik} erwähnt,
@@ -14,35 +14,44 @@ Der Zustand eines solchen Elementarteilchens ist dabei vollständig definiert du
 die drei Raumkoordinaten und die drei zugehörigen Geschwindigkeitskomponenten.
 
 
-\subsection{Wirkungsintegral 
+\subsection{Wirkungsintegral
 \label{relativ:section:wirkungsintegral}}
 
 Das Wirkungsintegral für ein Elementarteilchen im elektromagnetischen Feld ist
 \begin{equation}
-    S = \int_a^b \left(-mc\,ds + \frac{e}{c} \mathbf{A}\,d\mathbf{r} - e\varphi\,dt\right),
-\label{relativ:eqn:wirk-int-em-feld}
+    S = \int_a^b \left(-mc\,ds + \frac{e}{c} \mathbf{A}\,d\mathbf{r} - e\varphi\,dt\right).
+    \label{relativ:eqn:wirk-int-em-feld}
 \end{equation}
-oder als Integral über die Zeit geschrieben,
+Dabei ist \(A\) das \emph{Vektorpotential des Feldes}\footnote{
+    Auch bekannt als \emph{magnetisches Vektorpotential}.}
+und \(\varphi\) das \emph{skalare potential des Feldes}\footnote{
+    Auch bekannt als \emph{elektrisches Potential}.}.
+In der relativistischen Raumzeit schreibt man diese zwei Grössen
+auch als Vierervektor \(A^i = (\varphi, \mathbf{A})\),
+wobei \(\varphi\) zur Zeitkoordinate \(t\) gehört und
+\(\mathbf{A}\) zu den räumlichen Koordinaten \(x, y, z\).
+Als Integral über die Zeit geschrieben ergibt sich das Wirkungsintegral als
 \begin{equation}
-    S = \int_{t_1}^{t_2} \left( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi \right) \, dt,
-\label{relativ:eqn:wirk-int-em-feld-zeit}
+    S = \int_{t_1}^{t_2} \biggl( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi \biggr) \, dt,
+    \label{relativ:eqn:wirk-int-em-feld-zeit}
 \end{equation}
 wobei \(\displaystyle \mathbf{v} = \frac{d\mathbf{r}}{dt}\) der Geschwindigkeitsvektor der drei räumlichen Dimensionen ist.
-Der Integrand in~\ref{relativ:eqn:wirk-int-em-feld-zeit} ist gerade die Lagrange-Funktion
+Der Integrand in \eqref{relativ:eqn:wirk-int-em-feld-zeit} ist gerade die Lagrange-Funktion
 \begin{equation}
     L = -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi
-\label{relativ:eqn:lagrange-em-feld}
+    \label{relativ:eqn:lagrange-em-feld}
 \end{equation}
 
 
-\subsection{Bewegungsgleichung 
+\subsection{Bewegungsgleichung
 \label{relativ:section:bewegungsgleichung}}
 
 Bei der Berechnung der Bahn eines Elementarteilchens
 in einem elektromagnetischen Feld geht man von
 der vereinfachenden aber angemessenen Annahme aus,
-dass die Rückwirkung des Teilchens auf das Feld vernachlässigt werden kann.
+dass die Rückwirkung des Teilchens auf das Feld vernachlässigt werden kann
 \footnote{Konkret muss für diese Annahme beispielsweise
+für die magnetische Feldstärke
 \(H \ll \frac{m^2c^4}{e^3}\) erfüllt sein.
 Die rechte Seite ergibt dabei für ein Elektron
 eine magnetische Feldstärke von
@@ -54,28 +63,113 @@ was im Vakuum einer magnetischen Flussdichte von
 \qty[per-mode=fraction]{1.25e-6}{\tesla\metre\per\ampere} \cdot
 \qty[per-mode=fraction]{1.6e30}{\ampere\per\metre} =
 \qty{2e24}{\tesla}\)
-entspricht, einem Wert weitaus grösser als alle bekannten physikalischen Phänomene.}
+entspricht, einem Wert weitaus grösser als alle bekannten physikalischen Phänomene.}.
 
 Die Bewegungsgleichung ergibt sich aus der Variation des Wirkungsintegrals
 mit der Euler-Lagrange-Differentialgleichung
 \begin{equation}
     \frac{d}{dt} \frac{\partial L}{\partial \mathbf{v}} - \frac{\partial L}{\partial \mathbf{r}} = 0,
-\label{realtiv:eqn:euler-lagrange-em-feld}
+    \label{realtiv:eqn:euler-lagrange-em-feld}
 \end{equation}
-wobei \(L\) in~\ref{relativ:eqn:lagrange-em-feld} gegeben ist.
+wobei \(L\) in \eqref{relativ:eqn:lagrange-em-feld} gegeben ist.
 Die Ableitung nach dem Geschwindigkeitsvektor \(\mathbf{v}\) ergibt
 \begin{equation}
     \frac{\partial L}{\partial \mathbf{v}} =
     mc^2 \frac{-\frac{2}{c^2}\mathbf{v}}{-2\sqrt{1-\frac{v^2}{c^2}}}
     + \frac{e}{c} \mathbf{A} - 0
     = \frac{m \mathbf{v}}{\sqrt{1-\frac{v^2}{c^2}}} + \frac{e}{c} \mathbf{A}.
-\label{realtiv:eqn:part-diff-v}
+    \label{realtiv:eqn:part-diff-v}
 \end{equation}
-Dies wird auch als verallgemeinerter Teilchenimpuls \(\mathbf{P}\) bezeichnet.
-Die partielle Ableitung nach \(\mathbf{r}\) ergibt dann
+Dies wird auch als verallgemeinerter Teilchenimpuls \(\mathbf{P}\) bezeichnet,
+wovon der linke Term der gewöhnliche (relativistische) Impuls \(\mathbf{p}\)
+des Teilchens ist.
+
+Die partielle Ableitung von \(L\) nach \(\mathbf{r}\) ergibt dann
 \begin{equation}
     \frac{\partial L}{\partial \mathbf{r}} = \nabla L
-    = 0 + \frac{e}{c} \operatorname{grad} \mathbf{Av} - e \operatorname{grad} \varphi
-\label{realtiv:eqn:part-diff-r}
+    = 0 + \frac{e}{c} \operatorname{grad} \mathbf{Av} - e \operatorname{grad} \varphi.
+    \label{realtiv:eqn:part-diff-r}
 \end{equation}
-\todo{Rechnung fortsetzen}
+Wir können nun \eqref{realtiv:eqn:part-diff-v} und \eqref{realtiv:eqn:part-diff-r}
+in \eqref{realtiv:eqn:euler-lagrange-em-feld} einsetzen und erhalten
+\begin{equation}
+    \frac{d}{dt} \biggl(\mathbf{p} + \frac{e}{c} \mathbf{A}\biggr)
+    - \frac{e}{c} \operatorname{grad} \mathbf{Av} + e \operatorname{grad} \varphi = 0.
+    \label{realtiv:eqn:euler-lagrange-em-eingesetzt}
+\end{equation}
+Diese Differentialgleichung kann mittels Formeln der Vektoranalysis
+umgeformt werden, um schliesslich
+\begin{equation}
+    \frac{d\mathbf{p}}{dt} = -\frac{e}{c} \frac{\partial\mathbf{A}}{\partial t}
+    - e \operatorname{grad} \varphi +
+    \frac{e}{c} \mathbf{v} \times \operatorname{rot} \mathbf{A}
+    \label{realtiv:eqn:euler-lagrange-em-eingesetzt}
+\end{equation}
+zu erhalten.
+
+\begin{beispiel}
+\label{realtiv:bsp:teilchen-konst-e-feld}
+Gehen wir von der einfachen Situation aus,
+in der sich ein Elektron durch ein statisches
+elektrisches Feld bewegt und \(\mathbf{A}\)
+somit dem Nullvektor entspricht.
+Der Geschwindigkeitsvektor des Elektrons sei
+\(\mathbf{v}_0 = \mathbf{v}(t=0) =(\beta c, 0, 0)^T\), wobei
+\(\beta \in (0, 1)\).
+Die Differentialgleichung reduziert sich somit zu
+\begin{equation}
+    \frac{d\mathbf{p}}{dt} =
+    \frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}} \frac{d\mathbf{v}}{dt} =
+    - e \operatorname{grad} \varphi,
+    \label{relativ:eqn:euler-lagrange-bsp-1}
+\end{equation}
+mit der Elektronenmasse \(m_e\) und der Elementarladung \(e\).
+Die Ableitung des Impulses entspricht somit lediglich
+dem Gradienten des elektrischen Potentials, oder dem elektrischen Feld.
+Der wesentliche Unterschied zur klassischen Mechanik ist hierbei
+der bekannte relativistische Korrekturfaktor
+\(\sqrt{1-\frac{v^2}{c^2}}\).
+
+Nehmen wir nun beispielsweise an,
+dass das elektrische Feld lediglich eine \(x\)-Komponente hat,
+sprich \( \operatorname{grad} \varphi = (E_x, 0, 0)^T \),
+so ergibt sich für die Ableitung des Geschwindigkeitsvektors
+\begin{equation}
+    \frac{d}{dt}
+        \begin{pmatrix}
+            v_x \\
+            v_y \\
+            v_z
+        \end{pmatrix} =
+        - \frac{e \sqrt{1-\frac{v^2}{c^2}}}{m_e}
+        \begin{pmatrix}
+            E_x \\
+            0 \\
+            0
+        \end{pmatrix}.
+    \label{relativ:eqn:bsp-abl-v-vec}
+\end{equation}
+Hierbei ist klar, dass sich die Geschwindigkeitskomponenten
+in \(y\)- und \(z\)-Richtung nicht ändern können.
+Zusammen mit der Anfangsgeschwindigkeit \(\mathbf{v}_0\)
+ergibt sich somit die nichtlineare Differentialgleichung erster Ordnung
+\begin{equation}
+    \frac{d}{dt} v_x = - \frac{e E_x}{m_e} \sqrt{1-\frac{v_x^2}{c^2}}
+\end{equation}
+für die Geschwindigkeit in \(x\)-Richtung \(v_x\).
+Mittels Separierung erhält man die Lösung
+\begin{equation}
+    v_x(t) = c \operatorname{sin} \biggl(
+        \frac{k_1 - \frac{e}{m_e}t}{c}
+    \biggr)
+\end{equation}
+mit der zu bestimmenden Konstanten \(k_1\).
+\todo{Dies kann kaum stimmen?!}
+% Zum Zeitpunkt \(t=0\) erhält man
+% \begin{equation}
+%     v_x(0) = c \operatorname{sin} \biggl(\frac{k_1}{c}\biggr)
+%     = \beta c \Leftrightarrow
+%     k_1 = c \operatorname{arcsin}(\beta)
+% \end{equation}
+
+\end{beispiel}
