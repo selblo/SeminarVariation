@@ -1,0 +1,46 @@
+%
+% a2.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{color1}{rgb}{1.0, 0.0, 1.0}
+\definecolor{color2}{rgb}{0.75, 0.0, 1.0}
+\definecolor{color3}{rgb}{0.5, 0.0, 1.0}
+\definecolor{color4}{rgb}{0.25, 0.0, 1.0}
+
+\begin{axis}[
+	title={$n=2$ Koeffizienten},
+	domain=0:pi,
+	samples=100,
+	ymin=0, ymax=3.5,
+	xmin=0, xmax=3.5,
+	axis lines=middle,
+	xlabel={$x$},
+	ylabel={$y$},
+	axis line style = {line width=0.5pt},
+	tick style={line width=0.5pt, black},
+	xtick={0, 1.5708, 3.14159},
+	xticklabels={0, $\frac{\pi}{2}$, $\pi$},
+	ytick={0, 1, 2, 3},
+	width=6cm, height=4cm
+	]
+	\addplot[thick, color1] {1.08823455130519*sin(deg(x)) + 0.0866761835928106*sin(3*deg(x))};
+	\addplot[thick, color2] {1.81055138481242*sin(deg(x)) + 0.195685048731416*sin(3*deg(x))};
+	\addplot[thick, color3] {2.46066609594305*sin(deg(x)) + 0.301243389027199*sin(3*deg(x))};
+	\addplot[thick, color4] {3.08456094286871*sin(deg(x)) + 0.402479943701422*sin(3*deg(x))};
+\end{axis}
+
+\end{tikzpicture}
+\end{document}
+

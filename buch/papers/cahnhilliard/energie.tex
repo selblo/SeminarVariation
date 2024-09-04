@@ -7,17 +7,26 @@
 % !TeX encoding = UTF-8
 %
 \section{Freie Energie\label{cahnhilliard:section:energie}}
-\rhead{Freie Energie}
+\kopfrechts{Freie Energie}
 
 Die freie Energie ist ein grundlegendes Konzept in der Thermodynamik.
+\index{freie Energie}%
+\index{Energie!frei}%
+\index{Thermodynamik}%
 Sie beschreibt,
 wie viel Energie in einem System verfügbar ist,
 um Arbeit zu leisten.
 Diese Zustandsgrösse leitet sich aus der inneren Energie,
+\index{innere Energie}%
+\index{Energie!innere}%
 der Temperatur und der Entropie des Systems ab.
+\index{Entropie}%
 Für ein einfaches,
 abgeschlossenes System bei konstanter Temperatur $T$
+\index{Temperatur}%
 und konstantem Volumen $V$ wird die Helmholtz-Energie $F$ verwendet.
+\index{Helmholtz-Energie}%
+\index{Energie!Helmholtz-}%
 Sie ist definiert als
 \begin{align*}
 F
@@ -30,7 +39,8 @@ wie in festen Körpern oder Flüssigkeiten in starren Behältern.
 Aus diesem Grund eignet sie sich besonders gut für unser Salatsaucen-Problem.
 
 In den folgenden Abschnitten betrachten wir $F$ als eine gegebene Funktion
-für ein homogenes Gemisch zweier Stoffe A und B.
+für ein homogenes Gemisch zweier Stoffe $A$ und $B$.
+\index{Stoff}%
 Dabei interessiert uns nur das lokale Mischungsverhältnis der beiden Stoffe,
 das wir als
 \begin{align*}
@@ -39,12 +49,15 @@ c
 \frac{N_B}{N_A + N_B}
 \end{align*}
 definieren.
-Dabei bezeichen $N_A$ und $N_B$ die lokale Anzahl der Atome von Stoff A bzw. Stoff B.
+Dabei bezeichen $N_A$ und $N_B$ die lokale Anzahl der Atome von Stoff $A$
+bzw. Stoff $B$.
 
 \subsection{Freie Energie eines heterogenen Systems}
 Um von der gegebenen, inneren Energiefunktion $F(c)$ eines homogenen Systems
+\index{homogen}%
 auf die innere Energiefunktion $f(c)$ für ein heterogenes System zu gelangen,
 kann eine multivariate Taylor-Reihe verwendet werden.
+\index{Taylor-Reihe}%
 In einem homogenen System ist die Konzentration $c$ überall gleich,
 sodass die freie Energie $F(c)$ ausschliesslich von dieser konstanten Konzentration abhängt.
 In einem heterogenen System hingegen variiert die Konzentration $c(x)$ räumlich.
@@ -84,6 +97,8 @@ c_{ij}
 Um den Ausdruck weiter zu vereinfachen,
 nehmen wir an,
 dass die Materialeigenschaften unseres Gemisches isotrop sind.
+\index{Materialeigenschaft}%
+\index{isotrop}%
 Isotropie bedeutet,
 dass die Eigenschaften des Materials unabhängig von der Richtung sind,
 das heisst,
@@ -163,16 +178,16 @@ ergibt sich
 \mathcal{E}(c)
 &=
 N_V \int_\Omega \biggl[
-  F(c) + \underbrace{\left( \frac{\kappa_2}{2} - \pderiv{\kappa_1}{c} \right)}_{\frac{1}{2}\epsilon^2} |\nabla c|^2  + \ldots
+  F(c) + \underbrace{\left( \frac{\kappa_2}{2} - \pderiv{\kappa_1}{c} \right)}_{\displaystyle\frac{1}{2}\varepsilon^2} |\nabla c|^2  + \ldots
 \biggr]\di{x}
 \nonumber
 \\
 &=
 N_V \int_\Omega \left[
-  F(c) + \frac{\epsilon^2}{2} |\nabla c|^2  + \ldots
+  F(c) + \frac{\varepsilon^2}{2} |\nabla c|^2  + \ldots
 \right]\di{x}
 ,
 \label{cahnhilliard:energy}
 \end{align}
-wobei $\epsilon$ in der Praxis gemäss \cite{cahnhilliard:freeenergy}
+wobei $\varepsilon$ in der Praxis gemäss \cite{cahnhilliard:freeenergy}
 und \cite{cahnhilliard:deriv} häufig als konstant angenommen wird.

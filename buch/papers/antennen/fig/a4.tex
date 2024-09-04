@@ -1,0 +1,45 @@
+%
+% a4.tex -- 4 Koeffizienten
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{color1}{rgb}{1.0, 0.0, 1.0}
+\definecolor{color2}{rgb}{0.75, 0.0, 1.0}
+\definecolor{color3}{rgb}{0.5, 0.0, 1.0}
+\definecolor{color4}{rgb}{0.25, 0.0, 1.0}
+
+\begin{axis}[
+	title={$n=4$ Koeffizienten},
+	domain=0:pi,
+	samples=100,
+	ymin=0, ymax=3.5,
+	xmin=0, xmax=3.5,
+	axis lines=middle,
+	xlabel={$x$},
+	ylabel={$y$},
+	axis line style = {line width=0.5pt},
+	tick style={line width=0.5pt, black},
+	xtick={0, 1.5708, 3.14159},
+	xticklabels={0, $\frac{\pi}{2}$, $\pi$},
+	ytick={0, 1, 2, 3},
+	width=6cm, height=4cm
+	]
+	\addplot[thick, color1] {1.08336686654360*sin(deg(x)) + 0.102013525169225*sin(3*deg(x)) + 0.0292728737553532*sin(5*deg(x)) + 0.0100642932737197*sin(7*deg(x))};
+	\addplot[thick, color2] {1.80275228117654*sin(deg(x)) + 0.262223597024550*sin(3*deg(x)) + 0.0898544624243682*sin(5*deg(x)) + 0.0312039886658123*sin(7*deg(x))};
+	\addplot[thick, color3] {2.46107632379109*sin(deg(x)) + 0.430953350464770*sin(3*deg(x)) + 0.156100515783400*sin(5*deg(x)) + 0.0535838810399717*sin(7*deg(x))};
+	\addplot[thick, color4] {3.10156229609598*sin(deg(x)) + 0.599148439503026*sin(3*deg(x)) + 0.221465165912620*sin(5*deg(x)) + 0.0748051312645227*sin(7*deg(x))};
+\end{axis}
+
+\end{tikzpicture}
+\end{document}
