@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8
 %
 \section{Herleitung der Lagrange-Funktionen\label{kettenlinie:section:Herleitung der Lagrange-Funktionen}}
-\rhead{Herleitung der Lagrange-Funktionen}
+\kopfrechts{Herleitung der Lagrange-Funktionen}
 Nachdem die theoretischen Grundlagen und Eigenschaften der Kettenlinie behandelt wurden, geht es nun um die konkreten Berechnungen.
 In diesem Abschnitt werden die wesentlichen Formeln und deren Herleitungen vorgestellt, die zur Bestimmung der Kettenlinie notwendig sind.
 Ziel ist es, den mathematischen Prozess verständlich darzustellen und die Anwendung der Formeln an konkreten Beispielen zu demonstrieren.
@@ -25,7 +25,9 @@ In unserem Problem suchen wir nämlich nach einer Funktion, in diesem Fall die F
 \label{kettenlinie:subsection:Bogenlänge}}
 Wie wir nun wissen, soll die potentielle Energie minimiert werden.
 Es wird nun aber kein Objekt als Ganzes betrachtet, sondern die Summe der potentiellen Energie aller Teilchen der Kette zusammen.
+\index{Energie!potentiell}%
 Deshalb wird für die kommenden Berechnungen öfters die Bogenlänge benötigt, weshalb sie hier nochmals erläutert und ins Gedächtnis gerufen wird.
+\index{Bogenlänge}%
 
 Bei einem unendlich kleinen Teil einer beliebigen Kurve ist die Bogenlänge ungefähr
 \begin{equation}
@@ -35,15 +37,16 @@ Bei einem unendlich kleinen Teil einer beliebigen Kurve ist die Bogenlänge unge
 	\label{kettenlinie:equation1},
 \end{equation}
 was dem Pythagoras entspricht.
+\index{Pythagoras}%
 Hier kann man \(dx^2\) ausklammern, damit man auf die Formel
 \begin{equation}
 	ds
 	=
 	\sqrt{dx^2 + dy^2}
 	=
-	\sqrt{dx^2 \biggl( 1 + \left( \frac{dy}{dx} \right)^2 \biggr)}
+	\sqrt{dx^2 \biggl( 1 + \biggl( \frac{dy}{dx} \biggr)^2 \biggr)}
 	=
-	\sqrt{1 + \left( \frac{dy}{dx} \right)^2} \, dx
+	\sqrt{1 + \biggl( \frac{dy}{dx} \biggr)^2} \, dx
 \end{equation}
 kommt.
 In der Folge kann man \(\frac{dy}{dx}\) durch die Ableitung von \(y(x)\) ersetzen.
@@ -58,7 +61,7 @@ Um die Gesamtlänge der Kurve zu berechnen, summiert man die Längen der unendli
 Dieser Prozess wird durch Integration erreicht, bei der jeder kleine Abschnitt durch das Differential \(ds\) repräsentiert wird.
 Das Integral
 \begin{equation}
-	L
+	l
 	=
 	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
 \end{equation}
@@ -74,7 +77,7 @@ Für die Herleitung der Kettenlinie brauchen wir zudem die Formel der potentiell
 \end{equation}
 Auch benötigen wir die Formel 
 \begin{equation}
-	U
+	l
 	=
 	\int_{x_1}^{x_2} \sqrt{1 + y'^2} \, dx
 \end{equation}
@@ -85,6 +88,7 @@ Dafür benötigen wir die Formel
 	m = \mu \cdot ds = \mu \sqrt{1 + y'^2} \, dx
 \end{equation}
 für die Masse eines Kettenstücks, wobei \(\mu\) die Massendichte ist.
+\index{Massendichte}%
 Die Höhe des Kettenstücks ist definiert durch
 \begin{equation}
 	h = y(x).
@@ -109,7 +113,9 @@ Diese muss extremal sein, in unserem Fall minimal.
 In diesem Fall kommt nun die Euler-Lagrange-Gleichung zum Einsatz.
 Wir rufen Sie hier nochmals ins Gedächtnis:
 \begin{equation}
-	\int_{x_1}^{x_2} L(x, y, y') \, dx \, \text{ist extremal} \iff \frac{\partial L}{\partial y}(x, y, y') - \frac{d}{dx} \frac{\partial L}{\partial y'}(x, y, y') = 0.
+	\int_{x_1}^{x_2} L(x, y, y') \, dx \, \text{ist extremal}
+\quad\Leftrightarrow\quad
+\frac{\partial L}{\partial y}(x, y, y') - \frac{d}{dx} \frac{\partial L}{\partial y'}(x, y, y') = 0.
 \end{equation}
 Zuerst muss die Lagrange-Funktion \(L\) bestimmt werden, welche in diesem Fall durch
 \begin{equation}
@@ -125,7 +131,7 @@ Darin ist \(\lambda\) der Lagrange-Multiplikator, der zur Berücksichtigung der 
 Nun setzen wir die Lagrange-Funktion in die Euler-Lagrange-Gleichung ein, um die gewünschte Differentialgleichung zu erhalten. Es muss also folgende Differentialgleichung gelten:
 
 \begin{align*}
-	& \Leftrightarrow &
+	&                 &
 	\frac{\partial}{\partial y} \left( \sqrt{1 + y'^2} \, (y + \lambda) \right) - \frac{d}{dx} \frac{\partial}{\partial y'} \left( \sqrt{1 + y'^2} \, (y + \lambda) \right) 
 	&=
 	0
@@ -196,6 +202,7 @@ lässt sich entsprechend umstellen und man erhält
 	y y'' - y^2.
 \end{equation}
 Diese kann man nun ohne Rechnen lösen, wenn man weiss, dass die Hyperbelfunktionen die Gleichungen
+\index{Hyperbelfunktionen}%
 \begin{align*}
 	1 &= \cosh(x)^2 - \sinh(x)^2 \\
 	\cosh'(x) &= \sinh(x) \\

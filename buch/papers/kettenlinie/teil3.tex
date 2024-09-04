@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8
 %
 \section{Experiment\label{kettenlinie:section:Experiment}}
-\rhead{Experiment}
+\kopfrechts{Experiment}
 Im Rahmen dieser Seminararbeit wurde ein Experiment durchgeführt, um das Verhalten der Kettenlinie in verschiedenen Szenarien zu veranschaulichen und ebenfalls um die hergeleiteten Formeln physikalisch zu bestätigen.
 
 In diesem Abschnitt werden verschiedene Kettenlinien miteinander verglichen.
@@ -16,45 +16,37 @@ So werden in den folgenden Versuchen immer gleich lange Ketten verwendet und an 
 
 \subsection{Versuch 1: Kettenlinien aus verschiedenen Materialien
 \label{kettenlinie:subsection:massendichte}}
-Im Abschnitt \ref{kettenlinie:subsection:Minimum der potentiellen Energie} wird hergeleitet, dass die Massendichte ignoriert werden kann. Daraus lässt sich schliessen, dass das Material aus welcher die Kette gefertigt ist, keinen Einfluss auf die Kettenlinie hat.
+\input{papers/kettenlinie/fig/materialien.tex}%
+\input{papers/kettenlinie/fig/materialien-kombiniert.tex}%
+Im Abschnitt \ref{kettenlinie:subsection:Minimum der potentiellen Energie} wird hergeleitet, dass die Massendichte ignoriert werden kann. Daraus lässt sich schliessen, dass das Material, aus dem die Kette gefertigt ist, keinen Einfluss auf die Kettenlinie hat.
 
-In den Abbildungen \ref{fig:Kettenlinie-Holz} und \ref{fig:Kettenlinie-Metall} sind zwei Ketten mit derselben Länge an zwei Aufhängepunkten mit der gleichen Distanz abgebildet.
+In den Abbildungen \ref{fig:kettenlinie-materialien}~(a) und
+\ref{fig:kettenlinie-materialien}~(b) sind zwei Ketten mit derselben
+Länge an zwei Aufhängepunkten mit der gleichen Distanz abgebildet.
 Einziger Unterschied sind die verwendeten Materialien.
-Die Kette in \ref{fig:Kettenlinie-Holz} ist aus Holzperlen, wobei in \ref{fig:Kettenlinie-Metall} Metallperlen verwendet wurden.
-Metall und Holz haben eine unterschiedliche Dichte, dennoch ist die Form der Kettenlinie für beide Ketten immer noch dieselbe, wie in Abbildung \ref{fig:Kettenlinie-Holz-Metall} zu sehen, wo die beiden Ketten übereinander gelegt sind.
+Die Kette in \ref{fig:kettenlinie-materialien}~(a) ist aus Holzperlen,
+wobei in \ref{fig:kettenlinie-materialien}~(b) Metallperlen verwendet
+wurden.
+Metall und Holz haben eine unterschiedliche Dichte, dennoch ist die
+Form der Kettenlinie für beide Ketten immer noch dieselbe, wie in
+Abbildung \ref{fig:Kettenlinie-Holz-Metall} zu sehen, wo die beiden
+Ketten übereinander gelegt sind.
+\index{Metall}%
+\index{Holz}%
 
-\begin{figure}
-	\centering
-	\begin{minipage}{0.5\textwidth}
-		\centering
-		\includegraphics[width=1\textwidth]{papers/kettenlinie/images/kettenlinie_holz.jpg}
-		\caption{Kettenlinie aus Holz}
-		\label{fig:Kettenlinie-Holz}
-	\end{minipage}\hfill
-	\begin{minipage}{0.5\textwidth}
-		\centering
-		\includegraphics[width=1\textwidth]{papers/kettenlinie/images/kettenlinie_metall.jpg}
-		\caption{Kettenlinie aus Metall}
-		\label{fig:Kettenlinie-Metall}
-	\end{minipage}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=1\textwidth]{papers/kettenlinie/images/kettenlinie_holz_metall.png}
-	\caption{Holz Kettenlinie und Metall Kettenlinie übereinander gelegt}
-	\label{fig:Kettenlinie-Holz-Metall}
-\end{figure}
 
 \subsection{Versuch 2: Kettenlinien in verschiedenen Umgebungen
 \label{kettenlinie:subsection:umgebung}}
+\input{papers/kettenlinie/fig/wasser.tex}%
+\input{papers/kettenlinie/fig/kombiniert.tex}%
 Auch in Abschnitt \ref{kettenlinie:subsection:Minimum der potentiellen Energie} wird die Gravitationskonstante ignoriert.
 Da die Gravitation keine Rolle spielt für die Form der Kettenlinie, lässt sich annehmen dass egal in welcher Umgebung die Kette aufgehängt wird, sie immer in derselben Form bleibt.
 Wichtig ist nur, dass eine Gravitationskraft existiert.
 Um diese Annahme zu testen, werden die Kettenlinien von Versuch 1 im Abschnitt \ref{kettenlinie:subsection:massendichte} wiederverwendet, aber diesmal in Wasser aufgehängt.
 
-In den Abbildungen \ref{fig:Kettenlinie-Holz-Wasser} und \ref{fig:Kettenlinie-Metall-Wasser} sind diese Kettenlinien im Wasser zu sehen.
+In den Abbildungen \ref{fig:kettenlinie-wasser}~(a) und
+\ref{fig:kettenlinie-wasser}~(b) sind diese Kettenlinien im Wasser zu sehen.
 Legt man diese wieder übereinander, sieht man dass die Form unverändert bleibt.
-
 In Abbildung \ref{fig:Kettenlinie-Merged} wird dies, zusätzlich mit den Kettenlinien aus Versuch 1, nochmal veranschaulicht.
 
 \subsection{Versuch 3: Kettenlinien im Wasser
@@ -63,41 +55,15 @@ In Abbildung \ref{fig:Kettenlinie-Merged} wird dies, zusätzlich mit den Kettenl
 Aus dem vorherigen Versuch, wurden einige Verhaltensänderungen festgestellt.
 So entsteht bei der Kette aus Holz eine umgekehrte Kettenlinie im Wasser.
 Grund dafür ist natürlich die geringere Dichte von Holz gegenüber von Wasser.
-Da die Aufhängepunkte der Kette unterwasser sind, entsteht durch den Auftrieb eine umgekehrte Kettenlinie.
+Da die Aufhängepunkte der Kette unter Wasser sind, entsteht durch den Auftrieb eine umgekehrte Kettenlinie.
 Diese Kettenlinie hat immer noch dieselbe Form wie die restlichen Kettenlinien in diesem Experiment, jedoch um 180° gedreht.
 
 In der Abbildung \ref{fig:Kettenlinie-Curves} ist eine weitere Besonderheit zu sehen.
+\input{papers/kettenlinie/fig/knicke.tex}
 Wenn die Holzkettenlinie auf der Wasseroberfläche aufkommt, entstehen durch den Auftrieb Knicke.
 Spannend dabei ist, dass dadurch drei Segmente entstehen.
 In jedem Segment entsteht zwischen den Knicken eine eigene, neue Kettenlinie.
 
-\begin{figure}
-	\centering
-	\begin{minipage}{0.5\textwidth}
-		\centering
-		\includegraphics[width=1\textwidth]{papers/kettenlinie/images/kettenlinie_holz_wasser.png}
-		\caption{Kettenlinie aus Holz im Wasser}
-		\label{fig:Kettenlinie-Holz-Wasser}
-	\end{minipage}\hfill
-	\begin{minipage}{0.5\textwidth}
-		\centering
-		\includegraphics[width=1\textwidth]{papers/kettenlinie/images/kettenlinie_metall_wasser.jpg}
-		\caption{Kettenlinie aus Metall im Wasser}
-		\label{fig:Kettenlinie-Metall-Wasser}
-	\end{minipage}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=1\textwidth]{papers/kettenlinie/images/kettenlinie_merged.png}
-	\caption{Vier Kettenlinien übereinander gelegt}
-	\label{fig:Kettenlinie-Merged}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=1\textwidth]{papers/kettenlinie/images/kettenlinie_curves.png}
-	\caption{Kettenlinie mit Knicke, es entstehen drei Kettenlinien}
-	\label{fig:Kettenlinie-Curves}
-\end{figure}
 
 \subsection{Fazit Experiment
 \label{kettenlinie:subsection:fazit-experiment}}
