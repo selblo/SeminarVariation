@@ -1,24 +1,32 @@
-
 \section{Herleitung der Bewegungsgleichungen}
+\kopfrechts{Herleitung der Bewegungsgleichungen}%
 Als Erstes definieren wir die Positionen der beiden Massepunkte 
 \(m_1\) und \(m_2\) des Pendels mithilfe von kartesischen Koordinaten 
 als (\(x_1\), \(y_1\)) und (\(x_2\), \(y_2\)) gemäss Abbildung \ref{fig:pendulum}.
 Wir stellen nun für jede Koordinate die Gleichung über den Winkel auf,
 beginnend mit
 \begin{align*}
-    x_1 &= l_1 \sin(\theta_1)\\
-    y_1 &= -l_1 \cos(\theta_1).\\
-    \shortintertext{Genau dasselbe gilt für}
-    x_2 &= l_1 \sin(\theta_1) + l_2 \sin(\theta_2)\\
-    y_2 &= -l_1 \cos(\theta_1) - l_2 \cos(\theta_2).  
+    x_1 &= \phantom{-}l_1 \sin(\theta_1)\\
+    y_1 &= -l_1 \cos(\theta_1).
+%\shortintertext{Genau dasselbe gilt für}
+%    x_2 &= \phantom{-}l_1 \sin(\theta_1) + l_2 \sin(\theta_2)\\
+%    y_2 &= -l_1 \cos(\theta_1) - l_2 \cos(\theta_2).  
 \end{align*}
+Genau dasselbe gilt für
+\begin{equation*}
+\renewcommand{\arraycolsep}{1.5pt}
+\begin{array}{rcrlcrl}
+    x_2 &=&  l_1&\hspace*{-1.5pt}\sin(\theta_1)&+&l_2&\hspace*{-1.5pt}\sin(\theta_2)\\[2pt]
+    y_2 &=& -l_1&\hspace*{-1.5pt}\cos(\theta_1)&-&l_2&\hspace*{-1.5pt}\cos(\theta_2).  
+\end{array}
+\end{equation*}
 Hierbei sind \(l_1\) und \(l_2\) die Längen der masselosen Verbindungsstangen.
 Danach lässt sich mit der ersten Ableitung der Position von
 \(m_1\) nach der Zeit die Geschwindigkeit bestimmen als
 \begin{align*}
     \dot{x}_1 &= \dot{\theta}_1 l_1 \cos(\theta_1)\\
     \dot{y}_1 &= \dot{\theta}_1 l_1 \sin(\theta_1).\\ 
-    \shortintertext{Für den zweiten Massepunkt \(m_2\) gilt}
+\intertext{Für den zweiten Massepunkt \(m_2\) gilt}
     \dot{x}_2 &= \dot{\theta}_2 l_2 \cos(\theta_2)
     + \dot{\theta}_1 l_1 \cos(\theta_1)\\
     \dot{y}_2 &= \dot{\theta}_2 l_2 \sin(\theta_2).
@@ -35,6 +43,8 @@ Danach lässt sich mit der ersten Ableitung der Position von
 Für die Anwendung der Methode von Lagrange müssen wir die Lagrange-Funktion 
 \eqref{eq:lagrange} aufstellen.
 Dafür stellen wir die Gleichungen der kinetischen und potenziellen Energie auf.
+\index{Energie!potentiell}%
+\index{Energie!kinetisch}%
 Wir beginnen mit der Energiegleichung für die Masse \(m_1\)
 \begin{align*}
     T_1 &= \frac{1}{2} m_1 
@@ -48,6 +58,8 @@ und ähnlich gilt für die Masse \(m_2\)
     V_2 &= g m_2 y_2,
 \end{align*}
 wobei \(g\) die Erdbeschleunigungskonstante ist.
+\index{Erdbeschleunigung}%
+\index{g@$g$}%
 Damit sieht die Gesamtenergie folgendermassen aus:
 \begin{align*}
     T_{\text{tot}} &= T_1 + T_2\\
@@ -89,7 +101,7 @@ ist.
 
 \subsection{Einsetzen in die Euler-Lagrange-Differentialgleichung}
 Die im vorherigen Abschnitt definierte Lagrange-Funktion müssen wir in
-die Euler-Lagrange-Differentialgleichung
+die Euler-Lagrange-Differentialgleichungen
 \begin{align}
     \label{eq:lag1}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_1}\right) 
@@ -100,37 +112,44 @@ die Euler-Lagrange-Differentialgleichung
 \end{align}
 einsetzen.
 Dies lösen wir Schritt für Schritt auf, beginnend mit
-\begin{align*}
-    \frac{\partial L}{\partial \dot{\theta}_1} &= m_1 \dot{\theta}_1 l_1^2
-    + m_2 \dot{\theta}_1 l_1^2 + m_2 l_1 l_2 \dot{\theta}_1
-    \cos(\theta_1-\theta_2)\\
-    \frac{\partial L}{\partial \dot{\theta}_2} &= m_2 \dot{\theta}_2 l_2^2
-    + m_2 l_1 l_2 \dot{\theta}_1 \cos(\theta_1-\theta_2).
-\end{align*}
+\begin{equation*}
+\renewcommand{\arraycolsep}{1.5pt}
+\begin{array}{rclclcl}
+\displaystyle
+\frac{\partial L}{\partial \dot{\theta}_1}
+&=& m_1 \dot{\theta}_1 l_1^2
+&+& m_2 \dot{\theta}_1 l_1^2
+&+& m_2 l_1 l_2 \dot{\theta}_1 \cos(\theta_1-\theta_2)
+\\[9pt]
+\displaystyle
+\frac{\partial L}{\partial \dot{\theta}_2}
+&=& m_2 \dot{\theta}_2 l_2^2
+& &
+&+& m_2 l_1 l_2 \dot{\theta}_1 \cos(\theta_1-\theta_2).
+\end{array}
+\end{equation*}
 Danach berechnen wir die Ableitung nach der Zeit
 \begin{align*}
-    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_1}\right) &=
-    m_1 l_1^2 \ddot{\theta}_1 + m_2 l_1^2 \ddot{\theta}_1\\
-    \shortintertext{}
-    & \qquad + m_2 l_1 l_2 \Bigl(\ddot{\theta}_2\cos(\theta_1-\theta_2)-
-    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2)\\
-    \shortintertext{}
-    & \qquad + \dot{\theta}_2^2 \sin(\theta_1-\theta_2)\Bigr)\\
-    \shortintertext{}
-    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_2}\right) &=
-    m_2 l_2^2 \ddot{\theta}_2\\
-    \shortintertext{}
-    & \qquad + m_2 l_1 l_2 \Bigl(\ddot{\theta}_1\cos(\theta_1-\theta_2)+
-    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2)\\
-    \shortintertext{}
-    & \qquad - \dot{\theta}_1^2 \sin(\theta_1-\theta_2)\Bigr)
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_1}\right)
+&=
+    m_1 l_1^2 \ddot{\theta}_1 + m_2 l_1^2 \ddot{\theta}_1
++ m_2 l_1 l_2 \bigl(\ddot{\theta}_2\cos(\theta_1-\theta_2)-
+    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2)
++ \dot{\theta}_2^2 \sin(\theta_1-\theta_2)\bigr)\\
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}_2}\right)
+&=
+    m_2 l_2^2 \ddot{\theta}_2
+    \phantom{\mathstrut+ m_2 l_1^2 \ddot{\theta}_1}
++ m_2 l_1 l_2 \bigl(\ddot{\theta}_1\cos(\theta_1-\theta_2)+
+    \dot{\theta}_1 \dot{\theta}_2 \sin(\theta_1-\theta_2)
+ - \dot{\theta}_1^2 \sin(\theta_1-\theta_2)\bigr)
 \end{align*}
 und zuletzt
 \begin{align*}
     \frac{\partial L}{\partial {\theta}_1} &= -m_1 l_1 l_2 \dot{\theta}_1
     \dot{\theta}_2 \sin(\theta_1-\theta_2) - m_1 g l_1 \sin(\theta_1)
     - m_2 g l_1 \sin(\theta_1)\\
-    \frac{\partial L}{\partial {\theta}_2} &= m_2 l_1 l_2 \dot{\theta}_1
+    \frac{\partial L}{\partial {\theta}_2} &= \phantom{-}m_2 l_1 l_2 \dot{\theta}_1
     \dot{\theta}_2 \sin(\theta_1-\theta_2) - m_2 g l_2 \sin(\theta_2).
 \end{align*}
 Wir verfolgen das Ziel, nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\) aufzulösen.
@@ -146,22 +165,22 @@ Umformungen die Differentialgleichung
 \begin{align*}
     \ddot{\theta}_1 l_1^2 (m_1 + m_2) \, &= -m_1 g l_1 \sin(\theta_1) 
     - m_2 g l_1 \sin(\theta_1)\\
-    & \qquad - m_2 l_1 l_2 \Bigl(\ddot{\theta}_2 \cos(\theta_1-\theta_2) 
-    + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \Bigr)
-    \shortintertext{für \(\theta_1\) und die Differentialgleichung}
+    & \qquad - m_2 l_1 l_2 \bigl(\ddot{\theta}_2 \cos(\theta_1-\theta_2) 
+    + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \bigr)
+    \intertext{für \(\theta_1\) und die Differentialgleichung}
     m_2 l_2^2 \ddot{\theta_2} &= -m_2 g l_2 \sin(\theta_2)\\
-    & \qquad - m_2 l_1 l_2 \Bigl(\ddot{\theta}_1 \cos(\theta_1-\theta_2) 
-    - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \Bigr) 
+    & \qquad - m_2 l_1 l_2 \bigl(\ddot{\theta}_1 \cos(\theta_1-\theta_2) 
+    - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \bigr) 
 \end{align*}
 für \(\theta_2\). Nun können wir die Gleichung endlich nach \(\ddot{\theta}_1\) und \(\ddot{\theta}_2\)
 auflösen und erhalten
 \begin{align}
     \label{eq:bewegungsgleichung1}
     \ddot{\theta}_1 &= -\frac{g}{l_1} \sin(\theta_1) - \frac{m_2}{m_1+m_2} \frac{l_2}{l_1} 
-    \Bigl(\ddot{\theta}_2 \cos(\theta_1-\theta_2) + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \Bigr)\\
+    \bigl(\ddot{\theta}_2 \cos(\theta_1-\theta_2) + \dot{\theta}_2^2 \sin(\theta_1-\theta_2) \bigr)\\
     \label{eq:bewegungsgleichung2}
     \ddot{\theta}_2 &= -\frac{g}{l_2} \sin(\theta_2) - \frac{l_1}{l_2} 
-    \Bigl(\ddot{\theta}_1 \cos(\theta_1-\theta_2) - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \Bigr)
+    \bigl(\ddot{\theta}_1 \cos(\theta_1-\theta_2) - \dot{\theta}_1^2 \sin(\theta_1-\theta_2) \bigr)
 \end{align}
 als Resultat.
 
@@ -175,7 +194,7 @@ wie vermutet, der Bewegungsgleichung des einfachen Pendels entspricht
 (siehe Gleichung \eqref{eq:mathematisches_pendel}).
 Physikalisch bedeutet das eine Verkleinerung des zweiten Stabs bis dieser verschwindet und
 das Doppelpendel zu einem einfachen transformiert.
-Parallel gilt das auch für \(\ddot{\theta}_2\) in \eqref{eq:bewegungsgleichung2}
+Analog gilt das auch für \(\ddot{\theta}_2\) in \eqref{eq:bewegungsgleichung2}
 wenn die Länge \(l_1\) gegen null läuft:
 \begin{align*}
     \lim_{l_1 \to 0} \ddot{\theta}_2 &= -\frac{g}{l_2} \sin(\theta_2).
