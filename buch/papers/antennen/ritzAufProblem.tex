@@ -65,8 +65,9 @@ Funktion sein wird. Somit ergibt sich
 	\label{antennen:unserRitz}
 \end{equation}
 als ideale Approximationsfunktion. 
+\index{Approximationsfunktion}%
 
-Diese Entwicklung wird auch Sinus-Fourier Reihe genannt
+Diese Entwicklung wird auch Sinus-Fourier-Reihe genannt
 und wenn diese für $n=2$ ausgeschrieben wird, ergibt sich
 \begin{equation}
 	y_n(x)
@@ -163,7 +164,7 @@ Somit sind die neu erwähnten Funktionen
 	\rightarrow
 	f(a_1,a_2)
 	&=
-	\int\limits_{0}^{\pi} y_n(x,a_1,a_2)\, dx
+	\int_{0}^{\pi} y_n(x,a_1,a_2)\, dx
 	\\
 	l
 	\rightarrow
@@ -171,7 +172,7 @@ Somit sind die neu erwähnten Funktionen
 	\rightarrow
 	n(a_1,a_2)
 	&=
-	\int\limits_{0}^{\pi} \sqrt{1+y_n'(x, a_1, a_2)^2}\, dx
+	\int_{0}^{\pi} \sqrt{1+y_n'(x, a_1, a_2)^2}\, dx
 \end{aligned}
 \label{antennen:lagrangeNamen}
 \end{equation}
@@ -212,6 +213,7 @@ f(a_1,a_2)+\lambda \: n(a_1,a_2, l)
 \end{equation}
 definiert werden. Dazu wird die Funktion $f$ mit der Nebenbedingung $n(a_1,a_2,l)$ und einem
 Multiplikator $\lambda$ addiert.
+\index{Multiplikator}%
 
 \subsection{Das endlichdimensionale Gleichungssystem\label{antennen:lagrangeGLsys}}
 
@@ -227,7 +229,8 @@ den Gradienten
 		\frac{\displaystyle\strut\partial F}{\displaystyle\strut\partial a_2}  
 	\end{pmatrix} 
 	= 
-	\vec{0} \Rightarrow
+	\vec{0}
+	\qquad\Rightarrow\qquad
 	\left\{
 	\begin{aligned}
 		\frac{\partial F}{\partial a_1} = 0 \\
@@ -242,7 +245,8 @@ wobei $n$ die Anzahl der Koeffizienten ist.
 
 An dieser Stelle wird ersichtlich, was diese Kapitel von den anderen unterschiedet. Mit dem Verfahren nach Ritz  
 kann ein unendlichdimensionales
-Problem wie z. B. in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein endlich dimensionales verwandelt werden. 
+Problem wie z. B. in Kapitel \ref{buch:chapter:nebenbedingungen}, in ein
+endlichdimensionales verwandelt werden. 
 Konkret bedeutet dies, dass wir keine Differentialgleichung lösen müssen, sondern, 
 das nichtlineare Gleichungssystem, welches wir zuvor erhalten haben.
 
@@ -288,24 +292,29 @@ Schrittgrösse und Toleranz geschickt gewählt werden, da sonst die Gefahr gross
 bei \em lokalen \em Minima stecken zu bleiben, obwohl ein \em globales \em Minimum gesucht ist.
 
 Da wir in unserer Arbeit ohnehin die Python-Bibliothek \texttt{SymPy} verwendet haben, 
+\index{SymPy@\texttt{SymPy}}%
 um symbolische Berechnungen durchzuführen und automatisch $n$ Koeffizienten zu berechnen, 
 konnten wir das Gleichungssystem \eqref{antennen:lagrangeGradKonkret} mithilfe der Funktion 
 \texttt{nsolve()} lösen.
+\index{nsolve@\texttt{nsolve}}%
 Den Code findet der Leser unter \cite{antennen:codeKoeff}.
 
 \subsection{Die Lösung verstehen\label{antennen:auswertung}}
 
 Die Abbildung \ref{antennen:plotskoeff} zeigt, wie sich die Lösung visuell mit mehr 
-Koeffizienten verändert. Auf der x-Achse sieht man jeweils eine beliebige Distanz von \emph{$\pi$}.
+Koeffizienten verändert. Auf der $x$-Achse sieht man jeweils eine beliebige Distanz von \emph{$\pi$}.
 Diese Distanz verbindet die Funktion $y_n(x)$ mit einer
 fixen Länge $l$. Wie lang die verschiedenen Längen genau sind, ist hierbei noch irrelevant.
 
 Das Ergebnis ist die \emph{optimale Form} mit
+\index{optimale Form}%
 maximaler Fläche unter der Funktion. Mit mehr Koeffizienten $n$ kann die Funktion
 immer mehr Fläche aufspannen. Eine sehr interessante Länge jedoch sollte man
 genauer unter die Lupe nehmen. 
 
 Zuvor wurde in Kapitel \ref{buch:chapter:nebenbedingungen} das Problem von Dido
+\index{Problem von Dido}%
+\index{Dido, Problem von}%
 behandelt, bei dem es auch darum ging, die Fläche zu \emph{maximieren} und den Umfang oder die Länge $l$ zu 
 \emph{minimieren}. 
 Dort kam eine Form mit konstanter zweiter Ableitung, also anders ausgedrückt
@@ -323,57 +332,59 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$ de
 	% 2 koeff
 	\begin{subfigure}{0.48\textwidth}
 		\centering
-		\begin{tikzpicture}
-			\begin{axis}[
-				title={$n=2$ Koeffizienten},
-				domain=0:pi,
-				samples=100,
-				ymin=0, ymax=3.5,
-				xmin=0, xmax=3.5,
-				axis lines=middle,
-				xlabel={$x$},
-				ylabel={$y$},
-				axis line style = {line width=0.5pt},
-				tick style={line width=0.5pt, black},
-				xtick={0, 1.5708, 3.14159},
-				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
-				ytick={0, 1, 2, 3},
-				width=6cm, height=4cm
-				]
-				\addplot[thick, color1] {1.08823455130519*sin(deg(x)) + 0.0866761835928106*sin(3*deg(x))};
-				\addplot[thick, color2] {1.81055138481242*sin(deg(x)) + 0.195685048731416*sin(3*deg(x))};
-				\addplot[thick, color3] {2.46066609594305*sin(deg(x)) + 0.301243389027199*sin(3*deg(x))};
-				\addplot[thick, color4] {3.08456094286871*sin(deg(x)) + 0.402479943701422*sin(3*deg(x))};
-			\end{axis}
-		\end{tikzpicture}
+		\includegraphics{papers/antennen/fig/a2.pdf}
+%		\begin{tikzpicture}
+%			\begin{axis}[
+%				title={$n=2$ Koeffizienten},
+%				domain=0:pi,
+%				samples=100,
+%				ymin=0, ymax=3.5,
+%				xmin=0, xmax=3.5,
+%				axis lines=middle,
+%				xlabel={$x$},
+%				ylabel={$y$},
+%				axis line style = {line width=0.5pt},
+%				tick style={line width=0.5pt, black},
+%				xtick={0, 1.5708, 3.14159},
+%				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
+%				ytick={0, 1, 2, 3},
+%				width=6cm, height=4cm
+%				]
+%				\addplot[thick, color1] {1.08823455130519*sin(deg(x)) + 0.0866761835928106*sin(3*deg(x))};
+%				\addplot[thick, color2] {1.81055138481242*sin(deg(x)) + 0.195685048731416*sin(3*deg(x))};
+%				\addplot[thick, color3] {2.46066609594305*sin(deg(x)) + 0.301243389027199*sin(3*deg(x))};
+%				\addplot[thick, color4] {3.08456094286871*sin(deg(x)) + 0.402479943701422*sin(3*deg(x))};
+%			\end{axis}
+%		\end{tikzpicture}
 	\end{subfigure}%
 	\hfill
 	% 3 koeff
 	\begin{subfigure}{0.48\textwidth}
 		\centering
-		\begin{tikzpicture}
-			\begin{axis}[
-				title={$n=3$ Koeffizienten},
-				domain=0:pi,
-				samples=100,
-				ymin=0, ymax=3.5,
-				xmin=0, xmax=3.5,
-				axis lines=middle,
-				xlabel={$x$},
-				ylabel={$y$},
-				axis line style = {line width=0.5pt},
-				tick style={line width=0.5pt, black},
-				xtick={0, 1.5708, 3.14159},
-				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
-				ytick={0, 1, 2, 3},
-				width=6cm, height=4cm
-				]
-				\addplot[thick, color1] {1.14063451060611*sin(deg(x)) + 0.108169939153489*sin(3*deg(x)) + 0.0268323654703764*sin(5*deg(x))};
-				\addplot[thick, color2] {1.85437292911293*sin(deg(x)) + 0.253791821832382*sin(3*deg(x)) + 0.0683318364481152*sin(5*deg(x))};
-				\addplot[thick, color3] {2.50955540772763*sin(deg(x)) + 0.402071210261300*sin(3*deg(x)) + 0.110183839692472*sin(5*deg(x))};
-				\addplot[thick, color4] {3.14502916280716*sin(deg(x)) + 0.548044536721918*sin(3*deg(x)) + 0.150139877796318*sin(5*deg(x))};
-			\end{axis}
-		\end{tikzpicture}
+		\includegraphics{papers/antennen/fig/a3.pdf}
+%		\begin{tikzpicture}
+%			\begin{axis}[
+%				title={$n=3$ Koeffizienten},
+%				domain=0:pi,
+%				samples=100,
+%				ymin=0, ymax=3.5,
+%				xmin=0, xmax=3.5,
+%				axis lines=middle,
+%				xlabel={$x$},
+%				ylabel={$y$},
+%				axis line style = {line width=0.5pt},
+%				tick style={line width=0.5pt, black},
+%				xtick={0, 1.5708, 3.14159},
+%				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
+%				ytick={0, 1, 2, 3},
+%				width=6cm, height=4cm
+%				]
+%				\addplot[thick, color1] {1.14063451060611*sin(deg(x)) + 0.108169939153489*sin(3*deg(x)) + 0.0268323654703764*sin(5*deg(x))};
+%				\addplot[thick, color2] {1.85437292911293*sin(deg(x)) + 0.253791821832382*sin(3*deg(x)) + 0.0683318364481152*sin(5*deg(x))};
+%				\addplot[thick, color3] {2.50955540772763*sin(deg(x)) + 0.402071210261300*sin(3*deg(x)) + 0.110183839692472*sin(5*deg(x))};
+%				\addplot[thick, color4] {3.14502916280716*sin(deg(x)) + 0.548044536721918*sin(3*deg(x)) + 0.150139877796318*sin(5*deg(x))};
+%			\end{axis}
+%		\end{tikzpicture}
 	\end{subfigure}
 	
 	\vspace{0.5cm} 
@@ -381,57 +392,59 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$ de
 	% 4l koeff
 	\begin{subfigure}{0.48\textwidth}
 		\centering
-		\begin{tikzpicture}
-			\begin{axis}[
-				title={$n=4$ Koeffizienten},
-				domain=0:pi,
-				samples=100,
-				ymin=0, ymax=3.5,
-				xmin=0, xmax=3.5,
-				axis lines=middle,
-				xlabel={$x$},
-				ylabel={$y$},
-				axis line style = {line width=0.5pt},
-				tick style={line width=0.5pt, black},
-				xtick={0, 1.5708, 3.14159},
-				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
-				ytick={0, 1, 2, 3},
-				width=6cm, height=4cm
-				]
-				\addplot[thick, color1] {1.08336686654360*sin(deg(x)) + 0.102013525169225*sin(3*deg(x)) + 0.0292728737553532*sin(5*deg(x)) + 0.0100642932737197*sin(7*deg(x))};
-				\addplot[thick, color2] {1.80275228117654*sin(deg(x)) + 0.262223597024550*sin(3*deg(x)) + 0.0898544624243682*sin(5*deg(x)) + 0.0312039886658123*sin(7*deg(x))};
-				\addplot[thick, color3] {2.46107632379109*sin(deg(x)) + 0.430953350464770*sin(3*deg(x)) + 0.156100515783400*sin(5*deg(x)) + 0.0535838810399717*sin(7*deg(x))};
-				\addplot[thick, color4] {3.10156229609598*sin(deg(x)) + 0.599148439503026*sin(3*deg(x)) + 0.221465165912620*sin(5*deg(x)) + 0.0748051312645227*sin(7*deg(x))};
-			\end{axis}
-		\end{tikzpicture}
+		\includegraphics{papers/antennen/fig/a4.pdf}
+%		\begin{tikzpicture}
+%			\begin{axis}[
+%				title={$n=4$ Koeffizienten},
+%				domain=0:pi,
+%				samples=100,
+%				ymin=0, ymax=3.5,
+%				xmin=0, xmax=3.5,
+%				axis lines=middle,
+%				xlabel={$x$},
+%				ylabel={$y$},
+%				axis line style = {line width=0.5pt},
+%				tick style={line width=0.5pt, black},
+%				xtick={0, 1.5708, 3.14159},
+%				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
+%				ytick={0, 1, 2, 3},
+%				width=6cm, height=4cm
+%				]
+%				\addplot[thick, color1] {1.08336686654360*sin(deg(x)) + 0.102013525169225*sin(3*deg(x)) + 0.0292728737553532*sin(5*deg(x)) + 0.0100642932737197*sin(7*deg(x))};
+%				\addplot[thick, color2] {1.80275228117654*sin(deg(x)) + 0.262223597024550*sin(3*deg(x)) + 0.0898544624243682*sin(5*deg(x)) + 0.0312039886658123*sin(7*deg(x))};
+%				\addplot[thick, color3] {2.46107632379109*sin(deg(x)) + 0.430953350464770*sin(3*deg(x)) + 0.156100515783400*sin(5*deg(x)) + 0.0535838810399717*sin(7*deg(x))};
+%				\addplot[thick, color4] {3.10156229609598*sin(deg(x)) + 0.599148439503026*sin(3*deg(x)) + 0.221465165912620*sin(5*deg(x)) + 0.0748051312645227*sin(7*deg(x))};
+%			\end{axis}
+%		\end{tikzpicture}
 	\end{subfigure}%
 	\hfill
 	% 5 koeff
 	\begin{subfigure}{0.48\textwidth}
 		\centering
-		\begin{tikzpicture}
-			\begin{axis}[
-				title={$n=5$ Koeffizienten},
-				domain=0:pi,
-				samples=100,
-				ymin=0, ymax=3.5,
-				xmin=0, xmax=3.5,
-				axis lines=middle,
-				xlabel={$x$},
-				ylabel={$y$},
-				axis line style = {line width=0.5pt},
-				tick style={line width=0.5pt, black},
-				xtick={0, 1.5708, 3.14159},
-				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
-				ytick={0, 1, 2, 3},
-				width=6cm, height=4cm
-				]
-				\addplot[thick, color1] {1.08242048596654*sin(deg(x)) + 0.103364847431102*sin(3*deg(x)) + 0.0311161489593337*sin(5*deg(x)) + 0.0125977513219976*sin(7*deg(x)) + 0.00512952717128434*sin(9*deg(x))};
-				\addplot[thick, color2] {1.79915900016821*sin(deg(x)) + 0.271669937694202*sin(3*deg(x)) + 0.102270415943148*sin(5*deg(x)) + 0.0453106859569591*sin(7*deg(x)) + 0.0178553921145572*sin(9*deg(x))};
-				\addplot[thick, color3] {2.45687381390258*sin(deg(x)) + 0.451721838817908*sin(3*deg(x)) + 0.183206206667679*sin(5*deg(x)) + 0.0827190790444953*sin(7*deg(x)) + 0.0317715747685065*sin(9*deg(x))};
-				\addplot[thick, color4] {3.09881979748560*sin(deg(x)) + 0.632286666812462*sin(3*deg(x)) + 0.264348386834190*sin(5*deg(x)) + 0.119443731427762*sin(7*deg(x)) + 0.0448574142367621*sin(9*deg(x))};
-			\end{axis}
-		\end{tikzpicture}
+		\includegraphics{papers/antennen/fig/a5.pdf}
+%		\begin{tikzpicture}
+%			\begin{axis}[
+%				title={$n=5$ Koeffizienten},
+%				domain=0:pi,
+%				samples=100,
+%				ymin=0, ymax=3.5,
+%				xmin=0, xmax=3.5,
+%				axis lines=middle,
+%				xlabel={$x$},
+%				ylabel={$y$},
+%				axis line style = {line width=0.5pt},
+%				tick style={line width=0.5pt, black},
+%				xtick={0, 1.5708, 3.14159},
+%				xticklabels={0, $\frac{\pi}{2}$, $\pi$},
+%				ytick={0, 1, 2, 3},
+%				width=6cm, height=4cm
+%				]
+%				\addplot[thick, color1] {1.08242048596654*sin(deg(x)) + 0.103364847431102*sin(3*deg(x)) + 0.0311161489593337*sin(5*deg(x)) + 0.0125977513219976*sin(7*deg(x)) + 0.00512952717128434*sin(9*deg(x))};
+%				\addplot[thick, color2] {1.79915900016821*sin(deg(x)) + 0.271669937694202*sin(3*deg(x)) + 0.102270415943148*sin(5*deg(x)) + 0.0453106859569591*sin(7*deg(x)) + 0.0178553921145572*sin(9*deg(x))};
+%				\addplot[thick, color3] {2.45687381390258*sin(deg(x)) + 0.451721838817908*sin(3*deg(x)) + 0.183206206667679*sin(5*deg(x)) + 0.0827190790444953*sin(7*deg(x)) + 0.0317715747685065*sin(9*deg(x))};
+%				\addplot[thick, color4] {3.09881979748560*sin(deg(x)) + 0.632286666812462*sin(3*deg(x)) + 0.264348386834190*sin(5*deg(x)) + 0.119443731427762*sin(7*deg(x)) + 0.0448574142367621*sin(9*deg(x))};
+%			\end{axis}
+%		\end{tikzpicture}
 	\end{subfigure}
 	
 	\caption{Verschiedene Längen $l$ für $y_n(x)$ mit verschieden vielen Koeffizienten.}
@@ -442,7 +455,7 @@ der Kreis, als Lösung hervor. Somit ist die für uns interessante Länge $l$ de
 
 Die Abbildung \ref{antennen:vergleichKreis} vergleicht unsere Lösung\footnotemark{}, also die 
 Funktion $y_n(x)$ optimiert für den halben Kreisumfang eines Kreises mit Durchmesser $\pi$. 
-Einfacher ausgedrückt $l=\frac{\pi^2}{2}$.
+Einfacher ausgedrückt ist $l=\frac{\pi^2}{2}$.
 
 \footnotetext{Das ausrechnen der acht Koeffizienten mit dem Python-Skript \cite{antennen:codeKoeff}
 dauerte je nach Maschine und Anfangswerte, 5 bis 10 Minuten.}
