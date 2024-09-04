@@ -7,37 +7,42 @@
 % !TEX encoding = UTF-8
 %
 \subsection{Kugel\label{geodaeten:section:Linienelement:Kugel}}
-\rhead{Linienelemente Beispiele}
-
 In ähnlicher Weise wie im Beispiel mit dem Zylinder lässt sich eine Kugel lokal wie eine flache Ebene darstellen.
 Was auf den ersten Blick für sogenannte ``Flat-Earther'' ein schwieriges Konzept zu sein scheint, ist intuitiv verständlich:
+\index{Flat-Earther}%
 Zoomt man nahe genug an die Erdoberfläche heran, verschwinden die Krümmungen, und Abstände lassen sich nahezu wie in einem euklidischen Raum berechnen.
 
-In Kugelkoordinaten beschreibt $r$ den Abstand eines Punktes vom Zentrum der Kugel (Radius), $\theta$ den Winkel zur $z$-Achse (Polarwinkel), und $\phi$ den Winkel in der $x$-$y$-Ebene (Azimutwinkel).
+In Kugelkoordinaten beschreibt $r$ den Abstand eines Punktes vom Zentrum der Kugel (Radius), $\vartheta$ den Winkel zur $z$-Achse (Polarwinkel), und $\varphi$ den Winkel in der $x$-$y$-Ebene (Azimutwinkel).
+\index{Radius}%
+\index{Polarwinkel}%
+\index{Azimutwinkel}%
 Diese Parameter definieren die Position eines Punktes auf der Kugeloberfläche eindeutig, wie in der Abbildung \ref{geodaeten:figure:Linienelemente:Kugelkoordinaten:Kugelkoordinaten} dargestellt.
 
-Da wir uns auf der Oberfläche der Kugel befinden, bleibt $r$ konstant und wir betrachten nur die Winkel $\theta$ und $\phi$.
+Da wir uns auf der Oberfläche der Kugel befinden, bleibt $r$ konstant und wir betrachten nur die Winkel $\vartheta$ und $\varphi$.
 Wenn ein Punkt nun um einen infinitesimalen Abstand auf der Kugeloberfläche verschoben wird, entstehen Verschiebungen entlang der zugehörigen Basisvektoren. 
 
 Die Verschiebung in der Längsrichtung ergibt sich aus
 \begin{equation}
-	r \, d\theta
+	r \, d\vartheta
 \end{equation}
 und für die Verschiebung in der Breitenrichtung erigbt sich
 \begin{equation}
-	r \sin\theta \, d\phi.
+	r \sin\vartheta \, d\varphi.
 \end{equation}
 
 Weil lokal wie in einem euklidischen Raum gerechnet werden kann, ergibt sich der Abstand zwischen zwei Punkten auf der Kugeloberfläche durch die Anwendung des Pythagoras auf diese jeweiligen infinetsimalen Verschiebungen. 
 Das Linienelement $ds$ für die Oberfläche einer Kugel lässt sich daher beschreiben als
+\index{Oberfläche}%
+\index{Kugel}%
+\index{Linienelement!Kugel}%
 \begin{equation}
-ds^2 = r^2 \, d\theta^2 + r^2 \sin^2\theta \, d\phi^2.
+ds^2 = r^2 \, d\vartheta^2 + r^2 \sin^2\vartheta \, d\varphi^2.
 \end{equation}
 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=6cm]{papers/geodaeten/Abbildungen/Linienelemente/LinKugel1}
-	\caption{Kugelkoordinaten mit Radius $r$, Polarwinkel $\theta$ und Azimutwinkel $\phi$. Bildquelle: \cite{geodaeten:Kugelkoordinaten}}
+	\caption{Kugelkoordinaten mit Radius $r$, Polarwinkel $\vartheta$ und Azimutwinkel $\varphi$. Bildquelle: \cite{geodaeten:Kugelkoordinaten}}
 	\label{geodaeten:figure:Linienelemente:Kugelkoordinaten:Kugelkoordinaten}
 \end{figure}

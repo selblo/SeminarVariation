@@ -7,21 +7,20 @@
 % !TEX encoding = UTF-8
 %
 \subsection{Kartesisch\label{geodaeten:section:Standardverfahren:Kartesisch}}
-\rhead{Standardverfahren Beispiele}
 
 Für den kartesischen Raum mit dem metrischen Tensor
 \begin{equation}
-g_{ij} = \begin{pmatrix} 
+g_{i\!j} = \begin{pmatrix} 
 	1 & 0 \\ 
 	0 & 1 
 \end{pmatrix},
 \end{equation}
 wollen wir die Christoffel-Symbole \eqref{geodaeten:equation:StandardverfahrenGeodaeten:ChristopherSymbole} berechnen.
 
-Da der metrische Tensor $g_{ij}$ konstant ist und keine direkte Abhängigkeit von den Koordinaten aufweist, verschwinden alle Ableitungen.
+Da der metrische Tensor $g_{i\!j}$ konstant ist und keine direkte Abhängigkeit von den Koordinaten aufweist, verschwinden alle Ableitungen.
 Ohne weitere Berechnungen kann man also schliessen, dass
 \begin{equation}
-\frac{\partial g_{ij}}{\partial u^k} = 0 .
+\frac{\partial g_{i\!j}}{\partial u^k} = 0 .
 \end{equation}
 Somit ergeben sich alle Christoffel-Symbole zu
 \begin{equation}
@@ -34,8 +33,8 @@ Denn der Kartesische Raum ist nicht gekrümmt, weshalb keine Korrektur der Gerad
 Setzt man die Christoffel-Symbole in die allgemeine Geodätengleichung \eqref{geodaeten:equation:StandardverfahrenGeodaeten:Geodaetengleichung} ein, erhält man mit $u^1 = x(t)$
 \begin{equation}
 	\begin{alignedat}{3}
-		&\ddot{u}^1 + \Gamma_{ij}^1 \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
-		% &\ddot{u}^1 + 0_{ij} \cdot \dot{u}^i \dot{u}^j &\quad = \quad& 0\\
+		&\ddot{u}^1 + \Gamma_{i\!j}^1 \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
+		% &\ddot{u}^1 + 0_{i\!j} \cdot \dot{u}^i \dot{u}^j &\quad = \quad& 0\\
 		%&\ddot{u}^1  &\quad = \quad& 0 \\
 		&\ddot{x}(t) &\quad = \quad& 0
 	\end{alignedat}
@@ -44,8 +43,8 @@ Setzt man die Christoffel-Symbole in die allgemeine Geodätengleichung \eqref{ge
 und mit $u^2 = y(t)$
 \begin{equation}
 	\begin{alignedat}{3}
-		&\ddot{u}^2 + \Gamma_{ij}^2 \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
-		% &\ddot{u}^2 + 0_{ij} \cdot \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
+		&\ddot{u}^2 + \Gamma_{i\!j}^2 \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
+		% &\ddot{u}^2 + 0_{i\!j} \cdot \dot{u}^i \dot{u}^j &\quad = \quad& 0 \\
 		% &\ddot{u}^2  &\quad = \quad& 0 \\
 		&\ddot{y}(t) &\quad = \quad& 0  .
 	\end{alignedat}
@@ -90,7 +89,8 @@ Analog für $y(t)$ ergibt sich die Lösung der Geodätengleichung in $y$ zu
 	y(t) = 4t + 1 .
 	\label{geodaeten:equation:StaKartesisch:LoesungY}
 \end{equation}
-Die resultierende Kurve ist in Abbildung \ref{geodaeten:figure:Standardverfahren:Kartesisch:figure1} dargestellt.
+Die resultierende Kurve ist in Abbildung
+\ref{geodaeten:figure:Standardverfahren:Kartesisch:figure1} dargestellt.
 \begin{figure}
 	\centering
 	\includegraphics[width=10cm]{papers/geodaeten/Abbildungen/Standardverfahren/Kartesisch}
