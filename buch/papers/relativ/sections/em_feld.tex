@@ -22,7 +22,7 @@ Das Wirkungsintegral für ein Elementarteilchen im elektromagnetischen Feld ist
     S = \int_a^b \left(-mc\,ds + \frac{e}{c} \mathbf{A}\,d\mathbf{r} - e\varphi\,dt\right).
     \label{relativ:eqn:wirk-int-em-feld}
 \end{equation}
-Dabei ist \(A\) das \emph{Vektorpotential des Feldes}\footnote{
+Dabei ist \(\mathbf{A}\) das \emph{Vektorpotential des Feldes}\footnote{
     Auch bekannt als \emph{magnetisches Vektorpotential}.}
 und \(\varphi\) das \emph{skalare potential des Feldes}\footnote{
     Auch bekannt als \emph{elektrisches Potential}.}.
@@ -49,8 +49,8 @@ Der Integrand in \eqref{relativ:eqn:wirk-int-em-feld-zeit} ist gerade die Lagran
 Bei der Berechnung der Bahn eines Elementarteilchens
 in einem elektromagnetischen Feld geht man von
 der vereinfachenden aber angemessenen Annahme aus,
-dass die Rückwirkung des Teilchens auf das Feld vernachlässigt werden kann
-\footnote{Konkret muss für diese Annahme beispielsweise
+dass die Rückwirkung des Teilchens auf das Feld vernachlässigt werden kann\footnote{
+Konkret muss für diese Annahme beispielsweise
 für die magnetische Feldstärke
 \(H \ll \frac{m^2c^4}{e^3}\) erfüllt sein.
 Die rechte Seite ergibt dabei für ein Elektron
@@ -119,9 +119,16 @@ Der Geschwindigkeitsvektor des Elektrons sei
 Die Differentialgleichung reduziert sich somit zu
 \begin{equation}
     \frac{d\mathbf{p}}{dt} =
-    \frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}} \frac{d\mathbf{v}}{dt} =
-    - e \operatorname{grad} \varphi,
+    - e \operatorname{grad} \varphi.
     \label{relativ:eqn:euler-lagrange-bsp-1}
+\end{equation}
+In einem nächsten Schritt wird für \(\mathbf{p}\)
+wieder der Ausdruck in \eqref{realtiv:eqn:part-diff-v} eingesetzt,
+womit
+\begin{equation}
+    \frac{d\mathbf{p}}{dt} =
+    \frac{d}{dt} \Biggl(\frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}} \mathbf{v}\Biggr) =
+    - e \operatorname{grad} \varphi,
 \end{equation}
 mit der Elektronenmasse \(m_e\) und der Elementarladung \(e\).
 Die Ableitung des Impulses entspricht somit lediglich
@@ -129,6 +136,24 @@ dem Gradienten des elektrischen Potentials, oder dem elektrischen Feld.
 Der wesentliche Unterschied zur klassischen Mechanik ist hierbei
 der bekannte relativistische Korrekturfaktor
 \(\sqrt{1-\frac{v^2}{c^2}}\).
+
+Die zeitliche Ableitung des Ausdrucks in der Klammer ist nicht ganz trivial,
+da \(v^2=\sqrt{\mathbf{v}\cdot\mathbf{v}}\)
+und somit natürlich auch von \(t\) abhängt.
+Mittels Quotientenregel ergibt sich
+\begin{multline*}
+    \frac{d\mathbf{p}}{dt}
+    = \frac{d}{dt} \Biggl(\frac{m_e \mathbf{v}}{\sqrt{1-\frac{v^2}{c^2}}}\Biggr)
+    = \frac{m_e\frac{d\mathbf{v}}{dt}\sqrt{1-\frac{v^2}{c^2}}
+    -m_e\mathbf{v}\cdot\frac{-\frac{\cancel{2}}{c^2}\mathbf{v}}{\cancel{2}\sqrt{1-\frac{v^2}{c^2}}}
+    \frac{d\mathbf{v}}{dt}}{1-\frac{v^2}{c^2}}\\
+    = m_e\frac{d\mathbf{v}}{dt}\frac{\biggl(1-\frac{v^2}{c^2}\biggr)^\frac{1}{2}
+    +\frac{\mathbf{v}\cdot\mathbf{v}}{c^2} \biggl(1-\frac{v^2}{c^2}\biggr)^{-\frac{1}{2}}}
+    {\biggl(1-\frac{v^2}{c^2}\biggr)^1}
+    = m_e\frac{d\mathbf{v}}{dt}\frac{\biggl(1-\frac{v^2}{c^2}\biggr)^1
+    +\frac{v^2}{c^2}}{\biggl(1-\frac{v^2}{c^2}\biggr)^\frac{3}{2}}
+    = \frac{m_e}{\biggl(1-\frac{v^2}{c^2}\biggr)^\frac{3}{2}}\frac{d\mathbf{v}}{dt}.
+\end{multline*}
 
 Nehmen wir nun beispielsweise an,
 dass das elektrische Feld lediglich eine \(x\)-Komponente hat,
@@ -141,7 +166,7 @@ so ergibt sich für die Ableitung des Geschwindigkeitsvektors
             v_y \\
             v_z
         \end{pmatrix} =
-        - \frac{e \sqrt{1-\frac{v^2}{c^2}}}{m_e}
+        - \frac{e \biggl(1-\frac{v^2}{c^2}\biggr)^\frac{3}{2}}{m_e}
         \begin{pmatrix}
             E_x \\
             0 \\
@@ -154,22 +179,43 @@ in \(y\)- und \(z\)-Richtung nicht ändern können.
 Zusammen mit der Anfangsgeschwindigkeit \(\mathbf{v}_0\)
 ergibt sich somit die nichtlineare Differentialgleichung erster Ordnung
 \begin{equation}
-    \frac{d}{dt} v_x = - \frac{e E_x}{m_e} \sqrt{1-\frac{v_x^2}{c^2}}
+    \frac{dv_x}{dt} = - \frac{e E_x}{m_e} \biggl(1-\frac{v_x^2}{c^2}\biggr)^\frac{3}{2}
 \end{equation}
 für die Geschwindigkeit in \(x\)-Richtung \(v_x\).
-Mittels Separierung erhält man die Lösung
-\begin{equation}
-    v_x(t) = c \operatorname{sin} \biggl(
-        \frac{k_1 - \frac{e}{m_e}t}{c}
-    \biggr)
-\end{equation}
-mit der zu bestimmenden Konstanten \(k_1\).
-\todo{Dies kann kaum stimmen?!}
-% Zum Zeitpunkt \(t=0\) erhält man
-% \begin{equation}
-%     v_x(0) = c \operatorname{sin} \biggl(\frac{k_1}{c}\biggr)
-%     = \beta c \Leftrightarrow
-%     k_1 = c \operatorname{arcsin}(\beta)
-% \end{equation}
+Diese kann mittels Separierung gelöst werden.
+Wir separieren nach den Variablen \(v_x\) und \(t\)
+und integrieren auf beiden Seiten:
+\begin{align*}
+    \int\frac{dv_x}{\biggl(1-\frac{v_x^2}{c^2}\biggr)^\frac{3}{2}}
+    &= \int-\frac{e E_x}{m_e}dt \\
+    \Rightarrow\quad\frac{v_x}{\sqrt{1-\frac{v_x^2}{c^2}}}
+    &= -\frac{e E_x}{m_e}t + K_1.
+\end{align*}
+Diese Gleichung kann nun (etwas mühsam) nach \(v_x\) aufgelöst werden:
+\begin{align*}
+    \frac{v_x^2}{1-\frac{v_x^2}{c^2}}
+    &= \biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2\\
+    \Leftrightarrow\quad v_x^2 &= \biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2
+    \biggl(1-\frac{v_x^2}{c^2}\biggr)\\
+    \Leftrightarrow\quad
+    v_x^2 \biggl(1 + \frac{1}{c^2}\biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2\biggr)
+    &= \biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2\\
+    \Leftrightarrow\quad
+    v_x^2 &= \frac{\biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2}
+    {1 + \frac{1}{c^2}\biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2}\\
+    \Leftrightarrow\quad
+    v_x(t) &= \frac{-\frac{e E_x}{m_e}t + K_1}
+    {\sqrt{1+\biggl(-\frac{eE_x}{m_e c}t+\frac{K_1}{c}\biggr)^2}}.
+\end{align*}
+Und mit der Anfangsbedingung \(v_x(t=0)=\beta c\) erhält man
+\begin{multline*}
+    v_x(0) = \beta c = \frac{K_1}{\sqrt{1+\biggl(\frac{K_1}{c}\biggr)^2}}\quad
+    \Leftrightarrow\quad K_1^2 = \beta^2 c^2 \Biggl(1+\Biggl(\frac{K_1}{c}\Biggr)^2\Biggr)\\
+    \Leftrightarrow\quad K_1^2 (1-\beta^2) = \beta^2 c^2\quad
+    \Leftrightarrow\quad K_1 = \frac{\beta c}{\sqrt{1-\beta^2}}
+\end{multline*}
+und somit eine vollständige Gleichung für die Geschwindigkeit des Elektrons.
+
+\todo{Abbildung mit Lösungskurven; Erläuterungen}
 
 \end{beispiel}
