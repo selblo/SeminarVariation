@@ -62,3 +62,6 @@ back2.pdf:	back2.tex buchcover2.pdf
 	pdflatex back2.tex
 back2.jpg:	back2.pdf
 	convert -density 150 back2.pdf back2.jpg
+
+mathsem.jpg:	vroh.jpg Makefile
+	magick -extract 2000x1600+1300+2400 vroh.jpg -scale 50% mathsem.jpg

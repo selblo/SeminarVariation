@@ -7,113 +7,138 @@
 % !TEX encoding = UTF-8
 %
 \subsection{Kugel\label{geodaeten:section:Standardverfahren:Kugel}}
-\rhead{Standardverfahren Beispiele}
 
-In diesem Abschnitt werden wir die Geodätengleichungen für eine Kugeloberfläche herleiten und lösen.
 Intuitiv erwarten wir, dass die Geodäten auf der Kugeloberfläche Grosskreise sind.
+\index{Grosskreis}%
 Ein Grosskreis ist der geradlinigste Weg zwischen zwei Punkten auf einer Kugel.
-Dies lässt sich vorstellen, indem man zwei Nadeln in eine Kugeloberfläche steckt und einen Faden um die beiden Nadeln spannt.
+Dies kann man sich vorstellen, indem man zwei Nadeln in eine Kugeloberfläche steckt und einen Faden um die beiden Nadeln spannt.
 Der Faden wird immer entlang eines Grosskreises verlaufen.
 Tatsächlich folgen Flugzeuge auf Langstreckenflügen dieser Logik und fliegen entlang von Grosskreisen, um die kürzeste Strecke zwischen zwei Punkten auf der Erde zurückzulegen.
+\index{Flugzeug}%
+\index{Langstreckenflug}%
 Wir möchten nun überprüfen, ob wir mit dem Standardverfahren tatsächlich zu dieser Lösung kommen.
 
 Um dies zu tun, benötigen wir den bereits im vorherigen Abschnitt hergeleiteten metrischen Tensor für die Kugeloberfläche.
-Dieser ist in Kugelkoordinaten $(\theta, \phi)$ gegeben durch:
+Dieser ist in Kugelkoordinaten $(\vartheta, \varphi)$ gegeben durch
 \begin{equation}
-	g_{ij} = r^2 \begin{pmatrix}
+	g_{i\!j} = r^2 \begin{pmatrix}
 		1 & 0 \\
-		0 & \sin^2\theta
+		0 & \sin^2\vartheta
 	\end{pmatrix}.
 \end{equation}
 
-Zuerst berechnen wir die Inverse des metrischen Tensors, da diese für die Berechnung der Christoffelsymbole benötigt wird.
-Der inverse Tensor $g^{ij}$ ist gegeben durch:
+Zuerst berechnen wir die Inverse des metrischen Tensors, da diese für die Berechnung der Christoffel-Symbol benötigt wird.
+Der inverse Tensor $g^{i\!j}$ ergibt sich zu
 \begin{equation}
-	g^{ij} = \frac{1}{r^2} 
+	g^{i\!j} = \frac{1}{r^2} 
 	\begin{pmatrix}
 		1 & 0 \\
-		0 & \frac{1}{\sin^2\theta}
+		0 & \frac{1}{\sin^2\vartheta}
 	\end{pmatrix}.
+	\label{geodaeten:equation:StaKugel:TensorInverse}
 \end{equation}
 
-Nun berechnen wir die partiellen Ableitungen des metrischen Tensors $g_{ij}$ in Bezug auf die Koordinaten $\theta$ und $\phi$.
-Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\theta$, erhalten wir:
+Nun berechnen wir die partiellen Ableitungen des metrischen Tensors $g_{i\!j}$ den Koordinaten $\vartheta$ und $\varphi$.
+Da $g_{11} = r^2$ und $g_{22} = r^2 \sin^2\vartheta$, erhalten wir
 \begin{equation}
-	\frac{\partial g_{11}}{\partial \theta} = 0, \quad \frac{\partial g_{11}}{\partial \phi} = 0, \quad \frac{\partial g_{22}}{\partial \theta} = 2r^2 \sin\theta \cos\theta, \quad \frac{\partial g_{22}}{\partial \phi} = 0.
+	\frac{\partial g_{11}}{\partial \vartheta} = 0, \quad \frac{\partial g_{11}}{\partial \varphi} = 0, \quad \frac{\partial g_{22}}{\partial \vartheta} = 2r^2 \sin\vartheta \cos\vartheta, \quad \frac{\partial g_{22}}{\partial \varphi} = 0.
+	\label{geodaeten:equation:StaKugel:Ableitungen}
 \end{equation}
 
-Mit diesen Ableitungen und dem inversen Tensor $g^{ij}$ können wir nun die Christoffelsymbole berechnen:
+\subsection{Christoffel-Symbole}
+Mit den Ableitungen \eqref{geodaeten:equation:StaKugel:Ableitungen} und dem inversen Tensor $g^{i\!j}$ \eqref{geodaeten:equation:StaKugel:TensorInverse} können wir nun die Christoffel-Symbole durch
 \begin{equation}
-	\Gamma_{ij}^k = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{ij}}{\partial u^l} \right),
+	\Gamma_{i\!j}^k = \frac{1}{2} g^{kl} \left( \frac{\partial g_{jl}}{\partial u^i} + \frac{\partial g_{il}}{\partial u^j} - \frac{\partial g_{i\!j}}{\partial u^l} \right)
 \end{equation}
-wobei $u^1 = \theta$ und $u^2 = \phi$.
+berechnen,
+wobei $u^1 = \vartheta$ und $u^2 = \varphi$.
 
-Nach Einsetzen der Werte und Vereinfachung erhalten wir folgende nicht-verschwindende Christoffelsymbole:
+Nach Einsetzen der Werte und Vereinfachung erhalten wir folgende nicht-verschwindende Christoffel-Symbole
 \begin{equation}
-	\Gamma_{12}^2 = \Gamma_{21}^2 = \cot\theta \quad \text{und} \quad \Gamma_{22}^1 = -\sin\theta \cos\theta.
+	\Gamma_{12}^2 = \Gamma_{21}^2 = \cot\vartheta \quad \text{und} \quad \Gamma_{22}^1 = -\sin\vartheta \cos\vartheta.
 \end{equation}
 
-Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von den Koordinaten ($\theta$) zu nicht-verschwindenden Christoffelsymbolen, die die intrinsische Krümmung der Kugeloberfläche beschreiben.
+Anders als im Fall des Zylinders, wo der metrische Tensor konstant war, führt die Abhängigkeit des metrischen Tensors von der Koordinate $\vartheta$ zu nicht-verschwindenden Christoffel-Symbolen, welche die intrinsische Krümmung der Kugeloberfläche beschreiben.
 
-Um diese Krümmung zu verstehen, betrachten wir die Geometrie entlang unterschiedlicher Wege.
-Bewegt man einen Vektor entlang des Äquators, bleibt seine Richtung relativ zur Kugeloberfläche konstant, da das Bogenmaß von $\phi$ am Äquator unverändert bleibt.
-Entlang eines Längengrads hingegen ändert sich die Richtung des Vektors, da das Bogenmaß von $\phi$ mit $\theta$ variiert.
-Je näher man den Polen kommt, desto kürzer wird der Bogen für eine gegebene Änderung von $\phi$, was zu einer Änderung der Vektorrichtung führt.
+Um diese Krümmung zu verstehen, betrachten wir die Bewegung eines Tangentialvektors auf der Oberfläche in Bezug auf die Basisvektoren.
 
-Diese Veränderung der Vektorrichtung ist eine Folge der Krümmung der Kugeloberfläche.
-Die nicht-verschwindenden Christoffelsymbole beschreiben diese Krümmung und zeigen an, wie sich die Richtung eines Vektors während des Transports entlang der Oberfläche ändert.
+Wird die Komponente des Vektors entlang eines Breitenkreises verändert, also in $\varphi$-Richtung, führt das zu keiner Änderung der Vektorrichtung, da das Bogenmass von $\varphi$ entlang eines Breitenkreises konstant bleibt.
+Diese Bewegung beeinflusst die allgemeine Richtung des Vektors also nicht, was auch im metrischen Tensor reflektiert wird, der keinerlei Abhängigkeit von $\varphi$ aufweist.
 
-Mit den berechneten Christoffelsymbolen können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
+Andererseits führt eine Veränderung der Komponente entlang eines Längengrades, also in $\vartheta$-Richtung, zu einer Veränderung der Vektorrichtung.
+Dies liegt daran, dass das Bogenmass von $\varphi$ mit $\vartheta$ variiert: 
+Je näher man den Polen kommt, desto kürzer wird der Bogen für eine gegebene Änderung von $\vartheta$, was die Gesamtrichtung des Vektors beeinflusst. 
+Damit der Tangentialvektor seine ursprüngliche Richtung beibehält, müsste die Bewegung in der $\varphi$-Richtung zunehmend verringert werden, je näher man den Polen kommt.
 
-Die allgemeine Form der Geodätengleichung lautet:
+Diese Richtungsänderung des Vektors ist eine direkte Folge der intrinsischen Krümmung der Kugeloberfläche.
+Die nicht-verschwindenden Christoffel-Symbole beschreiben genau diese Krümmung und geben an, wie sich die Richtung eines Vektors bei seiner Bewegung entlang der Oberfläche verändert.
+
+\subsection{Geodätengleichung}
+Mit den berechneten Christoffel-Symbolen können wir nun die Geodätengleichungen für die Kugeloberfläche aufstellen.
+
+Die allgemeine Form der Geodätengleichung lautet
 \begin{equation}
-	\ddot{u}^k + \Gamma^k_{ij} \dot{u}^i \dot{u}^j = 0,
+	\ddot{u}^k + \Gamma^k_{i\!j} \dot{u}^i \dot{u}^j = 0,
 \end{equation}
-wobei $u^k$ die Koordinaten darstellen, in diesem Fall $\theta$ und $\phi$.
+wobei $u^k$ die Koordinaten darstellen, in diesem Fall $\vartheta$ und $\varphi$.
 
-Setzen wir die entsprechenden Christoffelsymbole und Koordinaten in die Gleichungen ein, erhalten wir:
+Setzen wir die entsprechenden Christoffel-Symbole und Koordinaten in die Gleichungen ein, erhalten wir
 \begin{equation}
 	\begin{aligned} 
-		0 &= \ddot{\theta} + \Gamma^1_{11} \dot{\theta} \dot{\theta} + 2\Gamma^1_{12} \dot{\theta}\dot{\phi} + \Gamma^1_{22} \dot{\phi} \dot{\phi} \\
-		0 &= \ddot{\phi} + \Gamma^2_{11} \dot{\theta} \dot{\theta} + 2\Gamma^2_{12} \dot{\theta}\dot{\phi} + \Gamma^2_{22} \dot{\phi} \dot{\phi}
+		0 &= \ddot{\vartheta} + \Gamma^1_{11} \dot{\vartheta} \dot{\vartheta} + 2\Gamma^1_{12} \dot{\vartheta}\dot{\varphi} + \Gamma^1_{22} \dot{\varphi} \dot{\varphi} \\
+		0 &= \ddot{\varphi} + \Gamma^2_{11} \dot{\vartheta} \dot{\vartheta} + 2\Gamma^2_{12} \dot{\vartheta}\dot{\varphi} + \Gamma^2_{22} \dot{\varphi} \dot{\varphi},
 	\end{aligned}
 \end{equation}
-
-Da einige der Christoffelsymbole Null sind, vereinfachen sich Geodätengleichung zu:
+und weil einige der Christoffel-Symbole Null sind, vereinfachen sich die Geodätengleichungen schliesslich zu
 \begin{align}
-	0 &= \ddot{\theta} - \sin\theta \cos\theta \, \dot{\phi}^2 \\
-	0 &= \ddot{\phi} + 2 \cot\theta \, \dot{\theta} \dot{\phi}
+	0 &= \ddot{\vartheta} - \sin\vartheta \cos\vartheta \, \dot{\varphi}^2 \\
+	0 &= \ddot{\varphi} + 2 \cot\vartheta \, \dot{\vartheta} \dot{\varphi}.
 \end{align}
 
 Da $r$ lediglich ein Skalierungsfaktor ist, kürzt es sich in den Geodätengleichungen heraus. 
 Die Geometrie wird allein durch die Winkelabhängigkeit bestimmt, sodass der Radius keinen Einfluss auf die Form der Geodäten hat.
 
 Das Lösen der Geodätengleichungen ist oft aufwendig und schwierig, was numerische Ansätze erforderlich macht. 
-Daher überprüfen wir durch Analyse, ob Groskreise diese tatsächlich erfüllen und als Lösungen gelten.
+Daher überprüfen wir durch Analyse, ob Grosskreise diese tatsächlich erfüllen und als Lösungen gelten.
 
-Betrachten wir die Geodätengleichungen für konstantes $\theta$, also entlang eines Breitengrads.
-Für konstantes $\theta$ gilt $\dot{\theta} = 0$ und $\ddot{\theta} = 0$.
+\subsection{Äquator}
+\index{Aquator@Äquator}%
+Betrachten wir die Geodätengleichungen für konstantes $\vartheta$, also entlang eines Breitengrads.
+Für konstantes $\vartheta$ gilt $\dot{\vartheta} = 0$ und $\ddot{\vartheta} = 0$.
 Setzen wir dies in die erste Geodätengleichung ein, so erhalten wir:
 \begin{equation}
-	0 = -\sin\theta \cos\theta \, \dot{\phi}^2.
+	0 = -\sin\vartheta \cos\vartheta \, \dot{\varphi}^2.
 \end{equation}
-Die zweite Geodätengleichung vereinfacht sich zu $0 = \ddot{\phi}$, was zeigt, dass $\phi(t)$ linear in der Zeit variiert.
-Diese erste GeodätenGleichung wird nur für $\theta = \frac{\pi}{2}$ erfüllt, das heisst, nur für den Äquator.
-Für alle anderen Breitengrade mit $\theta \neq \frac{\pi}{2}$ ist $\dot{\phi}$ gleich null, was bedeutet, dass es keine Bewegung in der $\phi$-Richtung gibt und somit keine Geodäte vorliegt.
-Der Äquator, als einziger Breitengrad, erfüllt daher die Geodätengleichungen und ist ein Großkreis.
+Die zweite Geodätengleichung vereinfacht sich zu $0 = \ddot{\varphi}$, was zeigt, dass $\varphi(t)$ linear in der Zeit variiert.
+Diese erste Geodätengleichung wird nur für $\vartheta = \frac{\pi}{2}$ erfüllt, das heisst, nur für den Äquator.
+Für alle anderen Breitengrade mit $\vartheta \neq \frac{\pi}{2}$ muss $\dot{\varphi}$ gleich null werden, was bedeutet, dass es keine Bewegung in der $\varphi$-Richtung gibt und somit keine Geodäte vorliegt.
+Der Äquator, als einziger Breitengrad, erfüllt daher die Geodätengleichungen und ist ein Grosskreis.
 
-Nun analysieren wir die Geodätengleichungen für konstantes $\phi$, also entlang eines Längengrads.
-Für konstantes $\phi$ gilt $\dot{\phi} = 0$ und $\ddot{\phi} = 0$.
+\begin{figure}
+	\centering
+	\includegraphics[width=7cm]{papers/geodaeten/Abbildungen/Standardverfahren/StaKugelBreitengrade}
+	\caption{Erdkugel mit Breitengrade und Äquator als Geodätenlinie.}
+	\label{geodaeten:figure:Standardverfahren:Breitengrade}
+\end{figure}
+
+\subsection{Längengrade}
+Nun analysieren wir die Geodätengleichungen für konstantes $\varphi$, also entlang eines Längengrads.
+Für konstantes $\varphi$ gilt $\dot{\varphi} = 0$ und $\ddot{\varphi} = 0$.
 Setzen wir dies in die erste Geodätengleichung ein, erhalten wir:
 \begin{equation}
-	\ddot{\theta} = 0,
+	\ddot{\vartheta} = 0,
 \end{equation}
-was bedeutet, dass $\theta(t)$ linear in der Zeit variiert.
-Die zweite Geodätengleichung wird ebenfalls trivial erfüllt, da $\dot{\phi} = 0$ und somit keine Beschleunigung in der $\phi$-Richtung vorliegt.
+was bedeutet, dass $\vartheta(t)$ linear in der Zeit variiert.
+Die zweite Geodätengleichung wird ebenfalls trivial erfüllt, da $\dot{\varphi} = 0$ und somit keine Beschleunigung in der $\varphi$-Richtung vorliegt.
 Damit sind alle Längengrade tatsächlich Geodäten.
 
 Zusammenfassend konnten wir durch unsere Analyse zeigen, dass nur Grosskreise, wie der Äquator und die Längengrade, die Geodätengleichungen vollständig erfüllen und somit die wahren Geodäten auf der Kugeloberfläche darstellen.
 
-Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleichungen $\theta(t)$ und $\phi(t)$ in Abhängigkeit vom Zeitparameter $t$ zwangsläufig die Form von Grosskreisen annehmen müssen und dass das Standardverfahren diese Grosskreise korrekt als die Geodäten auf der Kugeloberfläche identifiziert.
+Wir haben damit erfolgreich nachgewiesen, dass die Lösungen der Geodätengleichungen $\vartheta(t)$ und $\varphi(t)$ zwangsläufig die Form von Grosskreisen annehmen müssen und dass die allgemeine Geodätengleichung diese Grosskreise korrekt als die Geodäten auf der Kugeloberfläche identifiziert.
 
-
+\begin{figure}
+	\centering
+	\includegraphics[width=7cm]{papers/geodaeten/Abbildungen/Standardverfahren/StaKugelLaengengrade}
+	\caption{Erdkugel mit Längengrade als Geodätenlinen.}
+	\label{geodaeten:figure:Standardverfahren:Laengengrade}
+\end{figure}

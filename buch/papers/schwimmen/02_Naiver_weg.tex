@@ -92,68 +92,78 @@
 
 
 
-    \caption{Fluss, der überquert werden soll. Die Strömungsgeschwindigkeit \(u\) ist dunkelblau eingezeichnet und bezieht sich auf die Geschwindigkeit des Flusses. Dabei ist zu beachten, dass diese nicht überall im Fluss gleich sein muss; sie könnte zum Ufer hin langsamer und in der Mitte des Flusses schneller sein. Somit ist sie von \(x\) abhängig. \(c_x\) und \(c_y\) bezeichnen die Geschwindigkeiten in \(x\)- und \(y\)-Richtung der schwimmenden Person. \(\Delta x\) und \(\Delta y\) sind die sehr kleinen Distanzen auf der Strecke von A nach B.
+    \caption{Fluss, der überquert werden soll. Die Strömungsgeschwindigkeit \(u\) ist dunkelblau eingezeichnet und bezieht sich auf die Geschwindigkeit des Flusses. Dabei ist zu beachten, dass diese nicht überall im Fluss gleich sein muss; sie könnte zum Ufer hin langsamer und in der Mitte des Flusses schneller sein. Somit ist sie von \(x\) abhängig. \(c_x\) und \(c_y\) bezeichnen die Geschwindigkeiten in \(x\)- und \(y\)-Richtung der schwimmenden Person. Es ist definiert das die schwimmende Person in ruhigem Wasser mit einer Geschwindigkeit \(v\) schwimmen kann. Wobei sich \(c_x\) und \(c_y\) über die Formel \(v^2=c_x^2+c_y^2\) berechnen lässt. Diese Grössen beziehen sich daher auf ruhiges Wasser.\(\Delta x\) und \(\Delta y\) sind die sehr kleinen Distanzen auf der Strecke von \(A\) nach \(B\).
     \label{fig:river_dif}}
 \end{figure}
 
-\textbf{Zeitoptimierung} Die Zeit \(T\), die für die Flussüberquerung benötigt wird, kann mittels
+\subsubsection{Zeitoptimierung} Die Zeit \(T\), die für die Flussüberquerung benötigt wird, kann mittels
 \[
 T = \int \frac{1}{v} \, ds
 \]
 berechnet werden, wobei \(v\) die Geschwindigkeit ist und \(s\) die dabei zurückgelegte Strecke.
 
-\textbf{Zeit für ein Streckenstück} Die Zeit, die für ein sehr kleines Streckenstück benötigt wird, kann ermittelt werden, indem man diese kleine Strecke durch die Geschwindigkeit auf dieser kleinen Strecke teilt. Dies sieht so aus:
+\subsubsection{Zeit für ein Streckenstück} Die Zeit, die für ein sehr kleines Streckenstück benötigt wird, kann ermittelt werden, indem man diese kleine Strecke durch die Geschwindigkeit auf dieser kleinen Strecke teilt. Dies sieht so aus:
 \begin{equation}\label{eq:time_for_distance_pice}
-    \frac{ds}{\sqrt{(c_y - u)^2 + c_x^2}}
+    \frac{ds}{\sqrt{(c_y - u)^2 + c_x^2}},
 \end{equation}
 wobei \(u\) die Geschwindigkeit des Flusses bzw. der Strömung an dieser Stelle im Fluss ist. \(c_x\) und \(c_y\) bezeichnen die Geschwindigkeiten der schwimmenden Person in \(x\)- und \(y\)-Richtung. Eine grafische Darstellung ist in Abbildung \ref{fig:river_dif} zu sehen.
 
-\textbf{Zeit für die Strömungskompensation} Die Zeit, die zusätzlich zur Flussüberquerung benötigt wird, um die Strömung zu kompensieren, ist definiert als 
+\subsubsection{Zeit für die Strömungskompensation} Die Zeit, die zusätzlich zur Flussüberquerung benötigt wird, um die Strömung zu kompensieren, ist definiert als 
 \begin{equation}\label{eq:time_compenation}
-    \frac{dx}{u}
+    \frac{dx}{u}.
 \end{equation}
 
-\textbf{Gesamte Zeit} Die gesamte Zeit für ein sehr kleines Streckenstück kann mittels der Gleichungen \ref{eq:time_for_distance_pice} und \ref{eq:time_compenation} hergeleitet werden. Es folgt:
+\subsubsection{Gesamte Zeit} Die gesamte Zeit für ein sehr kleines Streckenstück kann mittels der Gleichungen \eqref{eq:time_for_distance_pice} und \eqref{eq:time_compenation} hergeleitet werden. Es folgt:
 \begin{equation}\label{eq:time_pice_total}
     \frac{dx}{u} + \frac{ds}{\sqrt{(c_y - u)^2 + c_x^2}}
 \end{equation}
 
-\textbf{Strecke}
+\subsubsection{Strecke}
 Für allgemeine Fälle kann die Distanz einer Strecke mit der Formel
 \[
 ds = \sqrt{\Delta x^2 + \Delta y^2} \approx \sqrt{1 + y'^2} \, dx
 \]
 angenähert werden, wobei sich die Variablen wieder auf Abbildung \ref{fig:river_dif} beziehen.
 
-\textbf{Integral} Nun ist es an der Zeit, ein Integral für die Zeit, die benötigt wird, um den Fluss zu überqueren, aufzustellen, basierend auf den obigen Formeln. Das Integral:
+\subsubsection{Integral} Nun ist es an der Zeit, ein Integral für die Zeit, die benötigt wird, um den Fluss zu überqueren, aufzustellen, basierend auf den obigen Formeln. Das Integral wird entlang \(x\), also vom einten Ufer \(A\) zum anderen Ufer \(B\), des Flusses, entlang Integriert. Das Integral
 \begin{equation}\label{eq:integral_time}
-    T = \int L(x, y, y') \, dx = \int \left( \frac{1}{u} + \frac{\sqrt{1 + y'^2}}{\sqrt{(c_y - u)^2 + c_x^2}} \right) dx
+    T = \int_A^B L(x, y, y') \, dx = \int_A^B \left( \frac{1}{u} + \frac{\sqrt{1 + y'^2}}{\sqrt{(c_y - u)^2 + c_x^2}} \right) dx
 \end{equation}
 soll für eine möglichst kleine Zeit \(T\) optimiert werden, um die energieeffizienteste Überquerung zu erreichen.
 
-\textbf{Lagrange-Funktion} Aus dem Lagrange-Integral \ref{eq:integral_time} kann die Lagrange-Funktion
+\subsubsection{Lagrange-Funktion} Aus dem Lagrange-Integral \ref{eq:integral_time} kann die Lagrange-Funktion
 \begin{equation}\label{eq:lagrange_integral}
     L(x, y, y') = \frac{1}{u} + \frac{\sqrt{1 + y'^2}}{\sqrt{(c_y - u)^2 + c_x^2}}
 \end{equation}
 herausgelesen werden. Die Lagrange-Funktion wird für das Variationsprinzip benötigt, um die Funktion für die energieeffizienteste Methode für die Flussüberquerung zu berechnen.
 
-\textbf{Euler-Lagrange-Gleichung} Die Euler-Lagrange-Gleichung kann vereinfacht werden, da sie nicht direkt von \(y\) abhängig ist. Die Ableitungen der Lagrange-Funktion sind:
+\subsubsection{Euler-Lagrange-Differentialgleichung} Die Euler-Lagrange-Differentialgleichung kann vereinfacht werden, da sie nicht direkt von \(y\) abhängig ist:
+
+\begin{gather}
+    \frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0 - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0 \\
+    \frac{d}{dx}\frac{\partial L}{\partial y'} = 0.
+\end{gather}
+
+Daraus folgt die Ableitung der Lagrange-Funktion:
 \begin{equation}\label{eq:Lagrange_derivites_1}
     \frac{\partial L}{\partial y'} = \text{constant}
 \end{equation}
 \begin{multline}\label{eq:Lagrange_derivites_2}
-    \frac{\partial L}{\partial y'} = \frac{\partial}{\partial y'} \left( \frac{1}{u} + \frac{\sqrt{1 + y'^2}}{\sqrt{(c_y - u)^2 + c_x^2}} \right) \\
-    = \frac{1}{\sqrt{(c_y - u)^2 + c_x^2}} \cdot \frac{y'}{\sqrt{1 + y'^2}} = \text{constant} = \frac{1}{g}
+    \frac{\partial L}{\partial y'} \\
+    = \frac{\partial}{\partial y'} \left( \frac{1}{u} + \frac{\sqrt{1 + y'^2}}{\sqrt{(c_y - u)^2 + c_x^2}} \right) 
+    = \frac{1}{\sqrt{(c_y - u)^2 + c_x^2}} \cdot \frac{y'}{\sqrt{1 + y'^2}} = \text{constant} = \frac{1}{g}.
 \end{multline}
 Auflösung nach \(y'\):
 \begin{align}
     y' &= \sqrt{(c_y - u)^2 + c_x^2} \cdot \sqrt{1 + y'^2} \cdot \frac{1}{g} \\
-    y' &= \sqrt{\frac{c_y^2 - 2 \cdot c_y \cdot u + u^2 + c_x^2}{g^2 - c_y^2 + 2 \cdot c_y \cdot u - u^2 - c_x^2}}\label{eq:angle}
+    y' &= \sqrt{\frac{c_y^2 - 2 \cdot c_y \cdot u + u^2 + c_x^2}{g^2 - c_y^2 + 2 \cdot c_y \cdot u - u^2 - c_x^2}}.\label{eq:angle}
 \end{align}
-Wird das Integral über \(y'\) gebildet, erhält man die Zeit:
-\begin{equation}\label{eq:time_integral}
-    T = y = \int \sqrt{\frac{c_y^2 - 2 \cdot c_y \cdot u + u^2 + c_x^2}{g^2 - c_y^2 + 2 \cdot c_y \cdot u - u^2 - c_x^2}} \, dx
-\end{equation}
+
+\(y'\) bildet den Winkel, abhängig von \(x\), der die schwimmende Person in jeder Position schwimmen soll, um das andere Ufer am Effizientesten zu erreichen.
+% Wird das Integral über \(y'\) gebildet, erhält man die Zeit:
+% \begin{equation}\label{eq:time_integral}
+%     T = y = \int \sqrt{\frac{c_y^2 - 2 \cdot c_y \cdot u + u^2 + c_x^2}{g^2 - c_y^2 + 2 \cdot c_y \cdot u - u^2 - c_x^2}} \, dx
+% \end{equation}
 
 
 

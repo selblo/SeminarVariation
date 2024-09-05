@@ -9,7 +9,7 @@
 %Elektrodynmaik
 
 \section{Elektrodynamik\label{section:maxwell:elektrodynmaik}}
-\rhead{Elektrodynamik}
+\kopfrechts{Elektrodynamik}
 In der Elektrodynamik erlauben wir, dass
 \[
 \frac{\partial f}{\partial t}
@@ -25,6 +25,7 @@ Daraus folgen einige spannende Tatsachen, auf die wir später noch zu sprechen k
 Im folgenden werden wir unseren Raum definieren und bekannte Vektorfelder in ihrer Definition anpassen.
 
 \subsubsection{Der vierdimensionale Raum}
+\index{vierdimensionale Raum}%
 Der Raum in dem wir uns nun bewegen, definieren wir als
 \begin{equation}
 	\Omega
@@ -52,8 +53,9 @@ Damit wir uns später ein wenig Schreibaufwand sparen können, schreiben wir die
 \partial^{\mu}.
 \]
 
-\subsubsection{4er Gradient}
-Der 4er Gradient einer Funktion $f: \mathbb{R}^4 \rightarrow \mathbb{R}$ im Raum $\Omega$ ist von der Form
+\subsubsection{4er-Gradient}
+\index{4er-Gradient}%
+Der 4er-Gradient einer Funktion $f: \mathbb{R}^4 \rightarrow \mathbb{R}$ im Raum $\Omega$ ist von der Form
 \[
 \renewcommand{\arraystretch}{1.9}
 \nabla^\mu f
@@ -161,7 +163,7 @@ besteht und die Kopplungsterme
 und
 \(
 \vec{A}\cdot\vec{\jmath}
-\)
+\){}\,
 sind.
 Hiermit ist es uns allerdings noch nicht gelungen ein Energiefunktional zu formulieren, welches von der Form
 \[
@@ -169,9 +171,10 @@ I(f) = \int_{t_0}^{t_1} \int_{z_0}^{z_1} \int_{y_0}^{y_1} \int_{x_0}^{x_1} L(t,x
 \]
 ist, weil das elektrische und magnetische Feld von unterschiedlichen Potentialen abhängig sind.
 
-\subsubsection{Elektromagnetisches 4er Potential}
+\subsubsection{Elektromagnetisches 4er-Potential}
+\index{4er-Potential}%
 An dieser Stelle führen wir ein neues Vektorfeld ein, welches die Potentiale des elektrischen und magnetischen Feldes beinhaltet.
-Dieses neue Vektorfeld heisst elektromagnetisches 4er Potential
+Dieses neue Vektorfeld heisst elektromagnetisches 4er-Potential
 \(
 A:\mathbb{R}^4 \rightarrow \mathbb{R}^4
 \)
@@ -241,8 +244,8 @@ w_{\text{m}}
 \left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr).
 \]
 
-\subsubsection{4er Stromdichte}
-Damit wir nun auch die Kopplungsterme mit dem elektromagnetischen 4er Potential ausdrücken können, führen wir die 4er Stromdichte
+\subsubsection{4er-Stromdichte}
+Damit wir nun auch die Kopplungsterme mit dem elektromagnetischen 4er-Potential ausdrücken können, führen wir die 4er-Stromdichte
 \(
 J:\mathbb{R}^4 \rightarrow \mathbb{R}^4
 \)
@@ -273,23 +276,27 @@ Uns ist es nun gelungen die Grösse $D$ mit einer Funktion und ihren partiellen 
 Es ist nämlich 
 \begin{align*}
 D
-=
+&=
 \int_{\Omega}
 \frac{1}{2\mu_0}\,\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
 \left(\partial^0 A^3 + \partial^3 A^0\right)^2\biggr) \\
+&\qquad
 -  \frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
 \left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr)\\
+&\qquad
 + J^0 A^0 + J^1 A^1 + J^2 A^2 + J^3 A^3 \,d\Omega
 \end{align*}
 und somit die Lagrange-Funktion
 \begin{align*}
-L(\Omega^0,...,\Omega^3, A^0,...,A^3, \partial^0 A^i,...,\partial^3 A^i)
-=
+\rlap{$L(\Omega^0,...,\Omega^3, A^0,...,A^3, \partial^0 A^i,...,\partial^3 A^i)$}
+\qquad
+\\
+&=
 \frac{1}{2\mu_0}\,\biggl(\left(\partial^0 A^1 + \partial^1 A^0\right)^2 + \left(\partial^0 A^2 + \partial^2 A^0\right)^2 + 
 \left(\partial^0 A^3 + \partial^3 A^0\right)^2\biggr) \\
--  \frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
+&\qquad -  \frac{1}{2\mu_0}\,\biggl(\left(\partial^2 A^3 - \partial^3 A^2\right)^2 + \left(\partial^3 A^1 - \partial^1 A^3\right)^2 + 
 \left(\partial^1 A^2 - \partial^2 A^1\right)^2\biggr)\\
-+ J^0 A^0 + J^1 A^1 + J^2 A^2 + J^3 A^3.
+&\qquad + J^0 A^0 + J^1 A^1 + J^2 A^2 + J^3 A^3.
 \end{align*}
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
@@ -420,7 +427,7 @@ Diese partiellen Differentialgleichungen sagen uns, dass eine zeitliche Verände
 	\caption{Elektromagnetische Welle im Vakuum}
 	\label{maxwell:section:bild_em_welle}
 \end{figure}
-In einem luftleeren Raum, in welchem keine Stromdichte $\vec{\jmath}$ und keine Ladungsdichte $\varrho$ existieren, gilt
+In einem luftleeren Raum, in welchem keine Stromdichte $\vec{\jmath}$\, und keine Ladungsdichte $\varrho$ existieren, gilt
 \begin{align}
 \nabla \times \vec{B}
 &=
@@ -433,30 +440,34 @@ In einem luftleeren Raum, in welchem keine Stromdichte $\vec{\jmath}$ und keine 
 \label{maxwell:section:faraday_vakuum}
 \end{align}
 Nun können wir in Gleichung \eqref{maxwell:section:ampere_vakuum} die Rotation auf beiden Seiten anwenden und mithilfe der Grassmann-Identität resultiert
-\begin{align*}
-\nabla \times \nabla \times \vec{B}
+\begin{equation*}
+\begin{aligned}
+&&\nabla \times \nabla \times \vec{B}
 &=
 \varepsilon_0\,\mu_0 \frac{\partial}{\partial t} (\nabla \times \vec{E})\\
-\Leftrightarrow \qquad \nabla \underbrace{(\nabla \cdot \vec{B})}_{\displaystyle=0} - \Delta \vec{B}
+&\Leftrightarrow& \nabla \underbrace{(\nabla \cdot \vec{B})}_{\displaystyle=0} - \Delta \vec{B}
 &=
 -\varepsilon_0\,\mu_0 \frac{\partial ^2 \vec{B}}{\partial t^2}\\
-\Leftrightarrow \qquad \frac{\partial ^2 \vec{B}}{\partial t^2}
+&\Leftrightarrow& \frac{\partial ^2 \vec{B}}{\partial t^2}
 &=
 \underbrace{\frac{1}{\varepsilon_0\,\mu_0}}_{\displaystyle=c^2} \Delta \vec{B}.
-\end{align*}
+\end{aligned}
+\end{equation*}
 Dies entspricht genau der Wellengleichung.
 Mit dem gleichen Vorgehen resultiert für die Gleichung \eqref{maxwell:section:faraday_vakuum}
-\begin{align*}
-\nabla \times \nabla \times \vec{E}
+\begin{equation*}
+\begin{aligned}
+&&\nabla \times \nabla \times \vec{E}
 &=
 - \frac{\partial}{\partial t} (\nabla \times \vec{B})\\
-\Leftrightarrow \qquad \nabla \underbrace{(\nabla \cdot \vec{E})}_{\displaystyle=0} - \Delta \vec{E}
+&\Leftrightarrow& \nabla \underbrace{(\nabla \cdot \vec{E})}_{\displaystyle=0} - \Delta \vec{E}
 &=
 - \varepsilon_0\,\mu_0 \frac{\partial ^2 \vec{E}}{\partial t^2}\\
-\Leftrightarrow \qquad \frac{\partial ^2 \vec{E}}{\partial t^2}
+&\Leftrightarrow& \frac{\partial ^2 \vec{E}}{\partial t^2}
 &=
 \underbrace{\frac{1}{\varepsilon_0\,\mu_0}}_{\displaystyle=c^2} \Delta \vec{E}.
-\end{align*}
+\end{aligned}
+\end{equation*}
 Wir kommen also zum Schluss, dass beide Felder die Wellengleichung im genannten Raum erfüllen. Eine Lösung der Wellengleichung kann wie in Abbildung \ref{maxwell:section:bild_em_welle} aussehen. Was dabei auffällt ist, dass die Ausbreitungsgeschwindigkeit in beiden Fällen die Lichtgeschwindigkeit $c$ ist. 
 %Daraus kann man schliessen, dass Licht eine elektromagnetische Welle ist.
 Daraus kann man erahnen und plausibilisieren, dass Licht eine elektromagnetische Welle ist. 
