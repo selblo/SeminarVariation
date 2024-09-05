@@ -17,7 +17,7 @@ Das Vorgehen zum Herleiten der Metode der Finiten Elemente kann in fünf Schritt
     \item Codieren der Anfangsbedingungen
     \item Lösen des Gleichungssystems bzw. invertieren der Matrix
 \end{enumerate}
-% TODO: Sechs Schritte durch das Paper ziehen
+% TODO: Fünf Schritte durch das Paper ziehen
 
 Um die einzelnen Schritte darzustellen, betrachten wir das Problem
 \begin{equation}
@@ -65,7 +65,8 @@ Dies spart Rechenleistung.
 
 
 \subsection{Diskretisieren\label{fem:1d:diskretisieren}}
-% TODO: Bild zu den Formfunktionen / Approximation einer Fkt. durch diese. Zudem: unterschiedliche delta x
+% TODO: Bild zu den Formfunktionen / Approximation einer Fkt. durch diese. 
+% TODO: Unterschiedliche Längen delta x
 % TODO: Besser schreiben
 Um das Problem besser lösbar zu machen, werden die ursprünglichen Funktionen, deren Träger sich in der Regel über den ganzen Wertebereich erstreckt, als Summe einzelner Funktionen mit schmalem Träger 
 \begin{equation}
@@ -139,16 +140,15 @@ hergeleitet werden.
 Der quadratische Ansatz mit den Formfunktionen
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \text{für} \quad -2 \Delta x < x < 0 \\
-        TODO: Formel & \text{für} \quad 0 \leq x < 2 \Delta x \\
-        0            & \text{sonst}
+        \frac{1}{2(\Delta x)^2} \cdot x^2 + \frac{3}{2 \Delta x} + 1  & \text{für} \quad -2 \Delta x < x < 0 \\
+        \frac{1}{2(\Delta x)^2} \cdot x^2 - \frac{3}{2 \Delta x} + 1 & \text{für} \quad 0 \leq x < 2 \Delta x \\
+        0                                                             & \text{sonst}
     \end{array} \right.
 \end{equation}
 für gerade $n$ und
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \text{für} \quad -\Delta x < x < 0 \\
-        TODO: Formel & \text{für} \quad 0 \leq x < \Delta x \\
+        -\frac{1}{(\Delta x)^2} x^2 + 1 & \text{für} \quad -\Delta x < x < \Delta x \\
         0            & \text{sonst}
     \end{array} \right.
 \end{equation}
@@ -183,36 +183,46 @@ Dafür muss der Ansatz etwas erweitert werden:
 Die Formfunktionen
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \text{für} \quad -\Delta x < x < 0 \\
-        TODO: Formel & \text{für} \quad 0 \leq x < \Delta x \\
-        0            & \text{sonst}
+        - \frac{2}{(\Delta x)^3} \cdot x^3 + \frac{3}{(\Delta x)^2} \cdot x^2 + 1 
+            & \text{für} \quad -\Delta x < x < 0 \\
+        \frac{2}{(\Delta x)^3} \cdot x^3 + \frac{3}{(\Delta x)^2} \cdot x^2 + 1 
+            & \text{für} \quad 0 \leq x < \Delta x \\
+        0
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
 und
 \begin{equation}
     b(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \text{für} \quad -\Delta x < x < 0 \\
-        TODO: Formel & \text{für} \quad 0 \leq x < \Delta x \\
-        0            & \text{sonst}
+        \frac{1}{(\Delta x)^2} \cdot x^3 + \frac{2}{\Delta x} \cdot x^2 + x 
+            & \text{für} \quad -\Delta x < x < 0 \\
+        \frac{1}{(\Delta x)^2} \cdot x^3 - \frac{2}{\Delta x} \cdot x^2 + x 
+            & \text{für} \quad 0 \leq x < \Delta x \\
+        0
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
 können ebenfalls mit dem Ansatz
 \begin{equation}
     a(x) = c_3x^3 + c_2x^2 + c_1x + c_0 \quad 
     \text{bzw.} \quad
-    b(x) = c_3x^3 + c_2x^2 + c_1x + c_0
+    b(x) = d_3x^3 + d_2x^2 + d_1x + d_0
 \end{equation}
 und den Bedingungen 
 \begin{equation}
         a(0) = 1 \quad
         \text{und} \quad
-         a(-\Delta x) = a(\Delta x) = 0
+        a(-\Delta x) = a(\Delta x) = 0 \quad
+        \text{sowie} \quad
+        a'(-\Delta x) = a'(0) = a'(\Delta x) = 0
 \end{equation}
 und
 \begin{equation}
-        b(0) = 1 \quad
+        b'(0) = 1 \quad
         \text{und} \quad
-        b(-\Delta x) = b(\Delta x) = 0
+        b'(-\Delta x) = b'(\Delta x) = 0 \quad
+        \text{sowie} \quad
+        b(-\Delta x) = b(0) = b(\Delta x) = 0
 \end{equation}
 hergeleitet werden.
 
@@ -309,11 +319,11 @@ Auch hier verlangt der kubische Ansatz mit seinen zwei Funktionen pro Datenpunkt
 \end{itemize}
 
 
-\subsection{Codieren der Anfangsbedingungen}
+\subsection{Codieren der Anfangsbedingungen\label{fem:1d:anfangsbedingungen}}
 TODO: Erklären, wie Anfangsbedingungen codiert werden können
 
 
-\subsection{Invertieren der Matrix\label{fem:1d:invertieren_matrix}}
+\subsection{Invertieren der Matrix\label{fem:1d:matrix_invertieren}}
 Zur Lösung der Poisson-Gleichung muss nun also "nur" noch die Matrix $\mathbf{L}$ invertiert werden.
 Das Resultat in Form des Spaltenvektors $\vec{u}$, enthaltend die Stützstellen der Lösungsfunktion, lässt sich dann als
 \begin{equation}
