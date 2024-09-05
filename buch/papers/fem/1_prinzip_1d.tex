@@ -9,15 +9,15 @@
 \section{Prinzip in einer Dimension\label{fem:prinzip_1d}}
 \kopfrechts{Prinzip 1D}
 
-Das Vorgehen zum Herleiten der Metode der Finiten Elemente kann in sechs Schritte unterteilt werden:
+Das Vorgehen zum Herleiten der Metode der Finiten Elemente kann in fünf Schritte unterteilt werden:
 \begin{enumerate}
     \item Bilden der schwachen Form
     \item Diskretisieren
-    \item Aufstellen des linearen Gleichungssystems
-    \item Überführung in eine Matrix
+    \item Aufstellen der Matrix
     \item Codieren der Anfangsbedingungen
     \item Lösen des Gleichungssystems bzw. invertieren der Matrix
 \end{enumerate}
+% TODO: Sechs Schritte durch das Paper ziehen
 
 Um die einzelnen Schritte darzustellen, betrachten wir das Problem
 \begin{equation}
@@ -65,24 +65,28 @@ Dies spart Rechenleistung.
 
 
 \subsection{Diskretisieren\label{fem:1d:diskretisieren}}
-% TODO: Bild zu den Formfunktionen / Approximation einer Fkt. durch diese.
+% TODO: Bild zu den Formfunktionen / Approximation einer Fkt. durch diese. Zudem: unterschiedliche delta x
 % TODO: Besser schreiben
 Um das Problem besser lösbar zu machen, werden die ursprünglichen Funktionen, deren Träger sich in der Regel über den ganzen Wertebereich erstreckt, als Summe einzelner Funktionen mit schmalem Träger 
 \begin{equation}
     %TODO: Wiederspruch (PDF Korrektur Hr. Müller) beheben?
-    a(x) = \left\{ \begin{array} {ll}
-        a(x) = 1            & \text{für} x = 0 \\
-        a(x) \in \mathbb{R} & \text{für} 0 < |x| < \Delta x \\
+    a(x) = \left\{ \begin{array}{ll}
+        a(x) = 1            & \text{für} \quad x = 0 \\
+        a(x) \in \mathbb{R} & \text{für} \quad 0 < |x| < \Delta x \\
         a(x) = 0            & \text{sonst} 
-    \end{array}\right.
+    \end{array} \right.
 \end{equation}
 beschrieben:
 \begin{equation}
-    u(x) \approx \sum_{n=0}^{N}{u_n \cdot a_n(x)} \text{ und } v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}
+    u(x) \approx \sum_{n=0}^{N}{u_n \cdot a_n(x)} \quad
+    \text{und} \quad
+    v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}
 \end{equation}
 wobei 
 \begin{equation}
-    u_n = u(n \cdot \Delta x) \text{ und } v_n = v(n \cdot \Delta x)
+    u_n = u(n \cdot \Delta x) \quad
+    \text{und} \quad
+     v_n = v(n \cdot \Delta x)
 \end{equation}
 sowie 
 \begin{equation}
@@ -112,8 +116,8 @@ Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt we
 Der lineare Ansatz verwendet die einfachen linearen Funktionen
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        1+\frac{x}{\Delta x} & \text{für} -\Delta x < x < 0 \\
-        1-\frac{x}{\Delta x} & \text{für} 0 \leq x < \Delta x \\
+        1+\frac{x}{\Delta x} & \text{für} \quad -\Delta x < x < 0 \\
+        1-\frac{x}{\Delta x} & \text{für} \quad 0 \leq x < \Delta x \\
         0                    & \text{sonst}.
     \end{array} \right.
 \end{equation}
@@ -124,9 +128,9 @@ Diese Funktionen können mit dem Ansatz
 \end{equation}
 und den zu erfüllenden Bedingungen
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \text{und} & a(-\Delta x) = a(\Delta x) = 0
-    \end{array}
+        a(0) = 1 \quad
+        \text{und} \quad
+        a(-\Delta x) = a(\Delta x) = 0
 \end{equation}
 hergeleitet werden.
 
@@ -135,16 +139,16 @@ hergeleitet werden.
 Der quadratische Ansatz mit den Formfunktionen
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \text{für} -2 \Delta x < x < 0 \\
-        TODO: Formel & \text{für} 0 \leq x < 2 \Delta x \\
+        TODO: Formel & \text{für} \quad -2 \Delta x < x < 0 \\
+        TODO: Formel & \text{für} \quad 0 \leq x < 2 \Delta x \\
         0            & \text{sonst}
     \end{array} \right.
 \end{equation}
 für gerade $n$ und
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \text{für} -\Delta x < x < 0 \\
-        TODO: Formel & \text{für} 0 \leq x < \Delta x \\
+        TODO: Formel & \text{für} \quad -\Delta x < x < 0 \\
+        TODO: Formel & \text{für} \quad 0 \leq x < \Delta x \\
         0            & \text{sonst}
     \end{array} \right.
 \end{equation}
@@ -156,15 +160,15 @@ Auch er kann mittels dem Ansatz
 \end{equation}
 und den Bedingungen 
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \text{und} & a(-2 \Delta x) = a(-\Delta x) = a(\Delta x) = a(2 \Delta x) = 0
-    \end{array}
+        a(0) = 1 \quad
+        \text{und} \quad 
+        a(-2 \Delta x) = a(-\Delta x) = a(\Delta x) = a(2 \Delta x) = 0
 \end{equation}
 für gerade $n$ bzw.
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \text{und} & a(-\Delta x) = a(\Delta x) = 0
-    \end{array}
+        a(0) = 1 \quad
+        \text{und} \quad
+        a(-\Delta x) = a(\Delta x) = 0
 \end{equation}
 für ungerade $n$ hergeleitet werden.
 
@@ -178,40 +182,43 @@ Dafür muss der Ansatz etwas erweitert werden:
 
 Die Formfunktionen
 \begin{equation}
-    a(x) = \left\{ \begin{array}{rcl}
-        TODO: Formel & \text{für} -\Delta x < x < 0 \\
-        TODO: Formel & \text{für} 0 \leq x < \Delta x \\
+    a(x) = \left\{ \begin{array}{ll}
+        TODO: Formel & \text{für} \quad -\Delta x < x < 0 \\
+        TODO: Formel & \text{für} \quad 0 \leq x < \Delta x \\
         0            & \text{sonst}
     \end{array} \right.
 \end{equation}
 und
 \begin{equation}
-    b(x) = \left\{ \begin{array}{rcl}
-        TODO: Formel & \text{für} & -\Delta x < x < 0 \\
-        TODO: Formel & \text{für} & 0 \leq x < \Delta x \\
+    b(x) = \left\{ \begin{array}{ll}
+        TODO: Formel & \text{für} \quad -\Delta x < x < 0 \\
+        TODO: Formel & \text{für} \quad 0 \leq x < \Delta x \\
         0            & \text{sonst}
     \end{array} \right.
 \end{equation}
 können ebenfalls mit dem Ansatz
 \begin{equation}
-    a(x) = c_3x^3 + c_2x^2 + c_1x + c_0 \text{bzw.} b(x) = c_3x^3 + c_2x^2 + c_1x + c_0
+    a(x) = c_3x^3 + c_2x^2 + c_1x + c_0 \quad 
+    \text{bzw.} \quad
+    b(x) = c_3x^3 + c_2x^2 + c_1x + c_0
 \end{equation}
 und den Bedingungen 
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \text{und} & a(-\Delta x) = a(\Delta x) = 0
-    \end{array}
+        a(0) = 1 \quad
+        \text{und} \quad
+         a(-\Delta x) = a(\Delta x) = 0
 \end{equation}
 und
 \begin{equation}
-    \begin{array}{ccc}
-        b(0) = 1 & \text{und} & b(-\Delta x) = b(\Delta x) = 0
-    \end{array}
+        b(0) = 1 \quad
+        \text{und} \quad
+        b(-\Delta x) = b(\Delta x) = 0
 \end{equation}
 hergeleitet werden.
 
 
-\subsection{Lineares Gleichungssystem aufstellen\label{fem:1d:lineares_gleichungssystem}}
+\subsection{Erstellen der Matrix \label{fem:1d:matrix_erstellen}}
+Um das Problem als Matrixgleichung zu repräsentieren, muss zunächst die Differentialgleichung in der schwachen Form in ein lineares Gleichungssystem überführt werden.
 Mit den Approximationen 
 \begin{align}
     f(x) &\approx \sum_i f_i \cdot a_i(x) \\
@@ -240,9 +247,7 @@ Dies ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung 
 zu schreiben.
 Übrig bleibt also, da die Integrale ausgewertet werden können, ein lineares Gleichungssystem mit $N$ Unbekannten $u_j$ und $N$ Gleichungen (eine pro $i$). 
 
-
-\subsection{Überführung in eine Matrix\label{fem:1d:final_eq}}
-Das im vorherigen Schritt erhaltene Gleichungssystem lässt sich sehr gut als Matrizen, bei denen die Zeilen über $i$ und die Spalten über $j$ iterieren, darstellen:
+Das erhaltene Gleichungssystem lässt sich nun sehr gut als Matrizen, bei denen die Zeilen über $i$ und die Spalten über $j$ iterieren, darstellen:
 \begin{multline}
     \left(
         \begin{matrix}
@@ -287,7 +292,9 @@ führt.
 
 Diese Matrizen werden aufgrund des schmalen Trägers der Funktionen $a_n(x)$ (sowie $b_n(x)$ beim kubischen Ansatz) sehr schwach besetzt sein, da viele der Integralen
 \begin{equation}
-    \int a_i(x) \cdot a_j \diff x \text{ bzw. } \int a'_i(x) \cdot a'_j \diff x 
+    \int a_i(x) \cdot a_j \diff x \quad 
+    \text{ bzw. } 
+    \quad \int a'_i(x) \cdot a'_j \diff x 
 \end{equation}
 Null sein werden.
 Von Null verschieden sind nur die Einträge, deren zugehörige Datenpunkte nebeneinander liegen.

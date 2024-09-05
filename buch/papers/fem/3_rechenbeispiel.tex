@@ -9,32 +9,23 @@
 \section{Rechenbeispiel\label{fem:rechenbsp}}
 \kopfrechts{Rechenbeispiel}
 
-Als Beispiel wurde die Differentialgleichung eines einfachen Pendels gelöst. % TODO: evtl. Ref. zu Kap. Doppelpendel
-Diese lässt sich aus dem Term
-\begin{equation}
-    E_{\text{kin}} = \frac{1}{2} m l^2 {\theta'}^2,
-\end{equation}
-der die kinetische Energie des Systems beschreibt, und dem Term
-\begin{equation}
-    E_{\text{pot}} = m g l (1 - \cos \theta),
-\end{equation}
-der die potentielle Energie des Systems beschreibt, herleiten. 
-Diese Terme zusammengesetzt ergeben die Lagrange-Funktion
+Als Rechenbeispiel soll ein einfaches Pendel betrachtet werden. 
+Dessen Bewegungsgleichung kann aus der Lagrange-Funktion
 \begin{equation}
     L = \frac{1}{2} m l^2 {\theta'}^2 - m g l (1 - \cos \theta),
 \end{equation}
-welche minimiert werden soll.
-Die Euler-Lagrange-Differenzialgleichung dieser sollte also Null ergeben:
+mittels der Euler-Lagrange-Differentialgleichung
 \begin{equation}
     \theta'' + \frac{g}{l} \sin \theta = 0.
 \end{equation}
+bestimmt werden.
 
 Da wir mit dem bisher behandelten Vorgehen nur lineare Differentialgleichungen lösen können, wird die Approximation
 \begin{equation}
     \sin \theta \approx \theta
 \end{equation}
 verwendet. % TODO: währe es möglich, nichtlineare DGLs zu lösen?
-Dies hat jedoch leider zur Folge, dass unsere Lösung nur für kleine $\theta$ (ungefähr $\theta < 15 \deg$) gut stimmen wird.
+Dies hat jedoch zur Folge, dass die Lösung nur für kleine $\theta$ (ungefähr $\theta < 15 \deg$) gut stimmen wird.
 
 Die Differentialgleichung, die es zu lösen gilt, ist also
 \begin{equation}
@@ -56,7 +47,34 @@ und kann durch partielles Integrieren des Terms $\int \theta'' \cdot v \diff t$ 
 \end{equation}
 
 
-\subsection{Befüllen der Matrix}
+\subsection{Diskretisieren}
+Um den Lösungsweg möglichst übersichtlich zu gestalten, werden die Funktionen $f(x)$ und $\theta(t)$ in $N$ $\Delta t$ lange Stücke unterteilt:
+\begin{equation}
+    f(t) = \sum_{n=0}^{N} f_n \cdot a(t) \quad
+    \text{mit} \quad
+    f_n = f(n \cdot \Delta t)
+\end{equation}
+und
+\begin{equation}
+    \theta(t) = \sum_{n=0}^{N} \theta_n \cdot a(t) \quad
+    \text{mit} \quad
+    \theta_n = \theta(n \cdot \Delta t).
+\end{equation}
+
+Zur Interpolation werden lineare Formfunktionen verwendet.
+Dies, da dies die weiteren Rechnungen erleichtert, für eine Demonstration genau genug ist, und weil es die Ordnung des zu lösenden Problems erlaubt.
+Für $a_n(t)$ ist also mit $t_0 = n \cdot \Delta t$
+\begin{equation}
+    a_n(t) = \left\{ \begin{array}{ll}
+        1+\frac{t-t_0}{\Delta t} & \text{für} \quad t_0 - \Delta t < t < t_0 \\
+        1-\frac{t-t_0}{\Delta t} & \text{für} \quad t_0 \leq t < t_0 + \Delta t \\
+        0 & \text{sonst}
+    \end{array} \right.
+\end{equation}
+einzusetzen.
+
+
+\subsection{Erstellen der Matrix}
 Der Vektor $\vec{b}$ ist in diesem Fall besonders einfach zu bestimmen: Da die rechte Seite Null ist, gilt
 \begin{equation}
     \vec{b} = \vec{0}.
@@ -64,26 +82,6 @@ Der Vektor $\vec{b}$ ist in diesem Fall besonders einfach zu bestimmen: Da die r
 Um die Elemente der Matrix $\mathbf{L}$ zu ermitteln, werden die Integrale aus Gleichung \ref{fem:rechenbsp:schwache_form} verwendet:
 \begin{equation}
     l_{ij} = - \int a_i'(t) \cdot a_j'(t) \diff t + \int \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
-\end{equation}
-
-
-\subsection{Formfunktion wählen}
-Da sich das Problem durch die partielle Integration auf eine DGL 1. Ordnung reduzieren liess und es bei diesem Beispiel vor allem um das Vorgehen und nicht um präzise Resultate geht, wird der lineare Ansatz gewählt.
-Die Formfunktionen lauten also 
-\begin{equation}
-    a(t) = \left\{ \begin{array}{ll}
-        1+\frac{t}{\Delta t} & \mbox{für} -\Delta t < t < 0 \\
-        1-\frac{t}{\Delta t} & \mbox{für} 0 \leq t < \Delta t \\
-        0 & \mbox{sonst}
-    \end{array} \right.
-\end{equation}
-und
-\begin{equation}
-    a'(t) = \left\{ \begin{array}{ll}
-        \frac{1}{\Delta t} & \mbox{für} -\Delta t < t < 0 \\
-        -\frac{1}{\Delta t} & \mbox{für} 0 < t < \Delta t \\
-        0 & \mbox{sonst}
-    \end{array} \right. .
 \end{equation}
 
 % TODO: Insert Immage
@@ -110,7 +108,7 @@ Für das Integral über die Ableitungen der Formfunktionen resultiert
 \begin{equation}
     \int a_k'(t) \cdot a_k'(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = \frac{2}{\Delta t},
 \end{equation}
-da $a_1'(t)= \frac{1}{\Delta t} \ \mbox{wenn} \ 0 \leq t < \Delta t$.
+da $a_1'(t)= \frac{1}{\Delta t} \ \text{wenn} \ 0 \leq t < \Delta t$.
 
 \subsubsection{Benachbarte Elemente ($|i - j| = 1$)}
 Auch hier reicht es aus, eines der Integrale zu berechnen. 
@@ -124,7 +122,7 @@ Auch hier wird noch das Integral über die Ableitungen
     \int a_k'(t) \cdot a_{k+1}'(t) \diff t = \int_{0}^{\Delta t} -\frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = -\frac{1}{\Delta t},
 \end{equation}
 benötigt.
-Hierbei gilt $a_0'(t)= -\frac{1}{\Delta t} \ \mbox{und} \ a_1'(t)= \frac{1}{\Delta t} \ \mbox{wenn} \ 0 \leq t < \Delta t$
+Hierbei gilt $a_0'(t)= -\frac{1}{\Delta t} \ \text{und} \ a_1'(t)= \frac{1}{\Delta t} \ \text{wenn} \ 0 \leq t < \Delta t$
 
 \subsubsection{Zusammenfassung} % TODO: Braucht anderen TItel
 Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also:
@@ -134,10 +132,17 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also:
         &= - \int a_i'(t) \cdot a_j'(t) \diff t + \frac{g}{l} \int a_i(t) \cdot a_j(t) \diff t \\
         &=  \left\{ 
                 \begin{array}{ll}
-                    - \frac{2}{\Delta t} + \frac{2g}{3l} \Delta t & \mbox{für} i = j \\
-                    \frac{1}{\Delta t} + \frac{g}{6l} \Delta t & \mbox{für} |i - j| = 1 \\
-                    0 & \mbox{sonst}
+                    - \frac{2}{\Delta t} + \frac{2g}{3l} \Delta t & \text{für} \quad i = j \\
+                    \frac{1}{\Delta t} + \frac{g}{6l} \Delta t & \text{für} \quad |i - j| = 1 \\
+                    0 & \text{sonst}
                 \end{array} 
             \right.
     \end{aligned}
 \end{equation}
+
+
+\subsection{Codieren der Anfangsbedingungen}
+TODO: Anfangsbedingungen festlegen und codieren.
+
+\subsection{Invertieren der Matrix}
+TODO: Beschreiben, wie die Matrix invertiert wurde und wie gut das erhaltene Resultat stimmt.
