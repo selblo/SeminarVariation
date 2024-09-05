@@ -55,7 +55,8 @@ Null ist, wenn die Testfunktionen die Randbedingung
 \begin{equation}
     v(x_1) = v(x_2) = 0
 \end{equation}
-erfüllen. % TODO: Hat das nicht implikationen für das Setzen von Randbedingungen?
+erfüllen. 
+TODO: Hat das nicht Implikationen für das Setzen von Randbedingungen?
 
 Der erhaltene Term wird als $-\Phi(u, v)$ abgekürzt.
 Dieser Weg kann, abhängig von der ursprünglichen Differenzialgleichung, anders sein.
@@ -65,9 +66,8 @@ Dies spart Rechenleistung.
 
 
 \subsection{Diskretisieren\label{fem:1d:diskretisieren}}
-% TODO: Bild zu den Formfunktionen / Approximation einer Fkt. durch diese. 
-% TODO: Unterschiedliche Längen delta x
-% TODO: Besser schreiben
+TODO: Bild zu den Formfunktionen und Approximation einer Funktion durch diese. 
+
 Um das Problem besser lösbar zu machen, werden die ursprünglichen Funktionen, deren Träger sich in der Regel über den ganzen Wertebereich erstreckt, als Summe einzelner Funktionen mit schmalem Träger 
 \begin{equation}
     %TODO: Wiederspruch (PDF Korrektur Hr. Müller) beheben?
@@ -81,9 +81,9 @@ beschrieben:
 \begin{equation}
     u(x) \approx \sum_{n=0}^{N}{u_n \cdot a_n(x)} \quad
     \text{und} \quad
-    v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}
+    v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}.
 \end{equation}
-wobei 
+Dabei ist
 \begin{equation}
     u_n = u(n \cdot \Delta x) \quad
     \text{und} \quad
@@ -94,9 +94,7 @@ sowie
     a_n(x) = a(x - n \cdot \Delta x).
 \end{equation}
 
-Dabei wird die ursprüngliche Funktion an den gleichmässig verteilten Punkten $x_n = n \cdot \Delta x$ abgetastet. 
-Die Funktion könnte auch ungleichmässig abgetastet werden, was bei geschickter Wahl der Intervalllänge zu Effizienzverbesserungen führt.
-In diesem Paper werden, um die Erklärung möglichst einfach zu halten, nur gleichmässige Intervalle behandelt. 
+Dabei wird die ursprüngliche Funktion an den Punkten $x_n = n \cdot \Delta x$ abgetastet. 
 
 Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt werden:
 \begin{itemize}
@@ -117,15 +115,18 @@ Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt we
 Der lineare Ansatz verwendet die einfachen linearen Funktionen
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        1+\frac{x}{\Delta x} & \text{für} \quad -\Delta x < x < 0 \\
-        1-\frac{x}{\Delta x} & \text{für} \quad 0 \leq x < \Delta x \\
-        0                    & \text{sonst}.
-    \end{array} \right.
+        1+\frac{x}{\Delta x} 
+            & \text{für} \quad -\Delta x < x < 0 \\
+        1-\frac{x}{\Delta x} 
+            & \text{für} \quad 0 \leq x < \Delta x \\
+        0
+            & \text{sonst}
+    \end{array} \right..
 \end{equation}
 
 Diese Funktionen können mit dem Ansatz 
 \begin{equation}
-    a(x) = c_1x + c_0 % TODO: Zwei verschiedene a aber keine nicht verwendeten Buchstaben
+    a(x) = c_1x + c_0
 \end{equation}
 und den zu erfüllenden Bedingungen
 \begin{equation}
@@ -140,16 +141,21 @@ hergeleitet werden.
 Der quadratische Ansatz mit den Formfunktionen
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        \frac{1}{2(\Delta x)^2} \cdot x^2 + \frac{3}{2 \Delta x} + 1  & \text{für} \quad -2 \Delta x < x < 0 \\
-        \frac{1}{2(\Delta x)^2} \cdot x^2 - \frac{3}{2 \Delta x} + 1 & \text{für} \quad 0 \leq x < 2 \Delta x \\
-        0                                                             & \text{sonst}
+        \frac{1}{2(\Delta x)^2} \cdot x^2 + \frac{3}{2 \Delta x} + 1  
+            & \text{für} \quad -2 \Delta x < x < 0 \\
+        \frac{1}{2(\Delta x)^2} \cdot x^2 - \frac{3}{2 \Delta x} + 1 
+            & \text{für} \quad 0 \leq x < 2 \Delta x \\
+        0
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
 für gerade $n$ und
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        -\frac{1}{(\Delta x)^2} x^2 + 1 & \text{für} \quad -\Delta x < x < \Delta x \\
-        0            & \text{sonst}
+        -\frac{1}{(\Delta x)^2} x^2 + 1 
+            & \text{für} \quad -\Delta x < x < \Delta x \\
+        0 
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
 für ungerade $n$ ist einiges aufwändiger als der lineare Ansatz.
@@ -246,11 +252,15 @@ als
     \myforall v_i
 \end{equation}
 geschrieben werden.
-Die Bedingung $\forall v_i$ ist auch erfüllt, wenn die Summe über $i$ sowie die Multiplikation mit dem beliebigen Faktor $v_i$ weggelassen wird und die resultierende Gleichung für alle $i$ erfüllt sein muss: % TODO: Proof this... Or argue better
+Diese Gleichung kann zu
 \begin{equation}
-    - \int \sum_j u_j \cdot a'_j \cdot a'_i(x) \diff x = \int \sum_j f_j \cdot a_j(x) \cdot a_i(x) \diff x \myforall i.
+    - \int \sum_j u_j \cdot a'_j \cdot a'_i(x) \diff x = \int \sum_j f_j \cdot a_j(x) \cdot a_i(x) \diff x \myforall i
 \end{equation}
-Dies ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
+vereinfacht werden.
+Dabei wird die Menge der Testfunktionen reduziert.
+Anstelle, dass alle Testfunktionen mit beliebig breitem Träger berücksichtigt werden, werden nur die $N$ verschiedenen Testfunktionen mit schmalst möglichem Träger verwendet.
+Da alle anderen Testfunktionen aus diesen "zusammengebaut" werden können, ist die Gleichung auch für diese erfüllt.
+Diese Vereinfachung ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
 \begin{equation}
     - \sum_j u_j \int a'_j \cdot a'_i(x) \diff x = \sum_j f_j \int a_j(x) \cdot a_i(x) \diff x \myforall i \label{papers:fem:prinzip1d:finale_gleichung}
 \end{equation}
@@ -315,12 +325,51 @@ Auch hier verlangt der kubische Ansatz mit seinen zwei Funktionen pro Datenpunkt
 \begin{itemize}
     \item Die Vektoren $\vec{b}$ und $\vec{f}$ werden für die gleiche Menge Datenpunkte doppelt so viele Elemente enthalten.
           Dies aus dem Grund, dass für jeden Wert $u_i$ ein zweiter Wert $u'_i$ dazukommt.
-    \item Die Matrix $\mathbf{L}$ wird zwangsweise doppelt so viele Zeilen und Spalten enthalten müssen, um mit den neuen Werten rechnen zu können. % TODO: Diese Begrüngung ist noch nicht ganz zufriedenstellend.
+    \item Folglich wird die Matrix $\mathbf{L}$ doppelt so viele Zeilen und Spalten enthalten. 
 \end{itemize}
 
 
 \subsection{Codieren der Anfangsbedingungen\label{fem:1d:anfangsbedingungen}}
-TODO: Erklären, wie Anfangsbedingungen codiert werden können
+TODO: Überarbeiten, ggf. verständlicher machen.
+
+Wir betrachten das Gleichungssystem in der Form $\mathbf{L}\vec{u} + \vec{b} = 0$. 
+Die Zeilen und Spalten der Matrix $\mathbf{L}$ codieren dabei die Beziehungen zwischen den einzelnen Elementen.
+Der $k$-ten Zeile kann zum Beispiel entnommen werden, welche anderen Elemente das $k$-te Element berühren. 
+Sollte nun also $u_k$ gegeben sein, so wird der $k$-te Wert der $k$-ten Zeile eins gesetzt, während die übrigen Elemente der Zeile alle null gesetzt werden.
+Die $k$-te Zeile stellt folglich die Gleichung 
+\begin{equation}
+    1 \cdot u_n + b_n = 0
+\end{equation}
+dar. 
+Es kann nun also durch Setzen von $b_n = -u_n$ die Anfangsbedingung codiert werden.
+
+Nun ist aber $\mathbf{L}$ nicht mehr symmetrisch, was Effizienzeinbussen beim Invertieren dieser zur Folge hätte.
+Das nächste Ziel ist also, auch die $k$-te Spalte so weit zu bringen, dass nur das $k$-te Element ungleich null ist.
+Um dies zu erreichen, wird vor dem Nullsetzen der Spalte zu jedem Element von $\vec{b}$ ein Korrekturterm addiert.
+Der zu $b_k$ zu addierende Term berechnet sich als
+\begin{equation}
+    L_{ik} * u_k.
+\end{equation}
+Bei homogenen Anfangsbedingungen ist dieser Term offensichtlich null (da $u_k = 0$), was diese besonders einfach zu codieren macht.
+
+\subsubsection{Codieren von gegebenen Ableitungen}
+Da der lineare wie auch der quadratische Ansatz keinen direkten Weg bietet, die Ableitungen der Funktion $u(x)$ zu bestimmen, muss mit einem Trick Abhilfe geschafft werden: 
+Die Anfangsbedingung
+\begin{equation}
+    u'(0) = 0
+\end{equation}
+kann näherungsweise als 
+\begin{equation}
+    u_0 = u_1
+\end{equation}
+codiert werden. 
+
+Der kubische Ansatz hat dabei einen klaren Vorteil: 
+Der gegebene Wert der Ableitung kann direkt als 
+\begin{equation}
+    u'_n = u'(0)
+\end{equation}
+codiert werden.
 
 
 \subsection{Invertieren der Matrix\label{fem:1d:matrix_invertieren}}
@@ -331,7 +380,7 @@ Das Resultat in Form des Spaltenvektors $\vec{u}$, enthaltend die Stützstellen 
 \end{equation}
 berechnen.
 
-Zum Invertieren der Matrix gibt es optimierte Zerlegungsalgorithmen wie SuperLU, Choldmod oder Mumps, die die schwache Besetzung der Matrizen ausnützen, um diese effizient zu zerlegen. % TODO: Maybe cite this.
+Zum Invertieren der Matrix gibt es optimierte Zerlegungsalgorithmen wie SuperLU, Choldmod oder Mumps, die die schwache Besetzung der Matrizen ausnützen, um diese effizient zu zerlegen.
 Nach dem Zerlegen ist das Invertieren stark vereinfacht.
 Weiter bieten sich iterative Vorgehen wie die Methode des konjugierten Gradienten oder GMRES an.
 Auch diese können aus der schwachen Besetzung der Matrix Nutzen ziehen.
