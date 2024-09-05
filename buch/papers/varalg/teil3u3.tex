@@ -8,7 +8,7 @@
 %
 \subsection{Selektion
 \label{buch:paper:varalg:subsection:selection}}
-\rhead{Selektion}
+\index{Selektion}%
 In diesem Schritt werden Elternpaare ausgewählt, aus denen neue 
 Nachkommen erzeugt werden. Die Selektion erfolgt so, dass in der 
 Regel nur die Fittesten die Chance erhalten, neue Kinder zu erzeugen. 
@@ -38,6 +38,7 @@ Für die Selektion gibt es verschiedene Möglichkeiten, die folgenden zeigen bew
 Methoden auf.
 \begin{enumerate}
     \item \textbf{Roulette-Rad-Selektion:} Individuen werden zufällig und
+\index{Roulette-Rad-Selektion}%
     proportional zu ihrer Fitness ausgewählt. Die Wahrscheinlichkeit wird 
     anhand ihrer Fitness definiert. Die Wahrscheinlichkeit lässt sich mit der Formel
     \begin{equation}
@@ -49,6 +50,7 @@ Methoden auf.
     berechnen. In dieser Formel sind hohe Fitnesswerte wahrscheinlicher. Die Funktion \(f_i\) 
     berechnet die Fitness des Individuums. Im Nenner erhalten wir die totale Fitness der Population.
     \item \textbf{Rangselektion:} Individuen werden nach ihrer Fitness sortiert und basierend
+\index{Rangselektion}%
     auf ihrem Rang ausgewählt. Die Formel 
     \begin{equation}
         P_i
@@ -59,6 +61,7 @@ Methoden auf.
     ist die gleiche wie \eqref{eq:probability_fittest}, mit dem Unterschied, dass die verwendete Funktion 
     \(r_i\) den Rang des Individuums zurückgibt.
     \item \textbf{Turnierselektion:} Eine Gruppe von Individuen wird zufällig ausgewählt
+\index{Turnierselektion}%
     und das fitteste Individuum dieser Gruppe wird als Elternteil gewählt.
 \end{enumerate}
 Es gibt auch die Möglichkeit, ein eigenes Selektionssystem zu entwickeln, 
@@ -66,10 +69,9 @@ das ein Ausscheidungsverfahren beinhaltet, aus dem schliesslich ein
 Elternpaar hervorgeht. Das System folgt einem logischen Ablauf, wobei 
 die Wahrscheinlichkeit mathematisch berechnet wird.
 
-\subsection{Selektion auf das TSP angepasst
+\subsubsection{Selektion auf das TSP angepasst
 \label{buch:paper:varalg:subsection:selection_tsp}}
-\rhead{Selektion TSP}
-Beim Traveling Salesman Problem sucht man nach der kürzesten Strecke. Die Formel 
+Beim Travelling-Salesman-Problem sucht man nach der kürzesten Strecke. Die Formel 
 \eqref{eq:probability_fittest} würde aber die längste Strecke höher gewichten, was
 nicht dem Ziel entspricht. Daher wird die Formel angepasst und neu 
 \begin{equation}
