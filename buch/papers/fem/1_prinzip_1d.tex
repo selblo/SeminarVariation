@@ -9,7 +9,7 @@
 \section{Prinzip in einer Dimension\label{fem:prinzip_1d}}
 \kopfrechts{Prinzip 1D}
 
-Das Vorgehen zum Herleiten der Metode der Finiten Elemente kann in fünf Schritte unterteilt werden:
+Das Vorgehen zum Herleiten der Methode der finiten Elemente kann in fünf Schritte unterteilt werden:
 \begin{enumerate}
     \item Bilden der schwachen Form
     \item Diskretisieren
@@ -25,12 +25,12 @@ Um die einzelnen Schritte darzustellen, betrachten wir das Problem
     \label{fem:1d:poisson_gleichung},
 \end{equation}
 was der Poisson-Gleichung entspricht. 
-Diese findet in vielen Teilen der Physik Anwendung und ist gleichzeitig ein gutes, einfaches Beispiel einer mit der FEM lösbaren Differentialgleichung.
+Diese findet in vielen Teilen der Physik Anwendung und ist gleichzeitig ein gutes, einfaches Beispiel einer mit der FEM lösbaren Differenzialgleichung.
 
 
 \subsection{Bilden der schwachen Form}
 Um die Poisson-Gleichung in die schwache Form zu bringen, wird über beide Seiten der Poisson-Gleichung \ref{fem:1d:poisson_gleichung} integriert.
-Zufor werden jedoch beide Seiten mit der Testfunktion $ v(x) $ multipliziert. % TODO: Testfunktion -> Variation
+Zuvor werden jedoch beide Seiten mit der Testfunktion $ v(x) $ multipliziert. % TODO: Testfunktion -> Variation
 Diese wird definiert als eine beliebige Funktion $ v \colon \mathbb{R} \rightarrow \mathbb{R} $.
 Die resultierende Gleichung
 \begin{equation}
@@ -38,9 +38,9 @@ Die resultierende Gleichung
     \label{fem:1d:schwache_form}
 \end{equation}
 sollte einem bekannt vorkommen: Sie entsteht auch beim Herleiten der ersten Variation.
-Im Kapitel \ref{buch:variation:section:fundamentallemma} zum Fundamentalemma wird bewiesen, dass die beiden Ausdrücke \ref{fem:1d:poisson_gleichung} und \ref{fem:1d:schwache_form} gleichwertig sind.
+Im Kapitel \ref{buch:variation:section:fundamentallemma} zum Fundamentallemma wird bewiesen, dass die beiden Ausdrücke \ref{fem:1d:poisson_gleichung} und \ref{fem:1d:schwache_form} gleichwertig sind.
 
-Durch partielles Integrieren der linken Seite kann die Ordnung der Differentialgleichung um eins verringert werden:
+Durch partielles Integrieren der linken Seite kann die Ordnung der Differenzialgleichung um eins verringert werden:
 \begin{align}
     \int f(x) \cdot v(x) \diff x &= \int u''(x) \cdot v(x) \diff x \\
                                  &= \left. u'(x) \cdot v(x) \right|_{x_1}^{x_2} - \int u'(x) \cdot v'(x) \diff x \\
@@ -58,9 +58,9 @@ Null ist, wenn die Testfunktionen die Randbedingung
 erfüllen. % TODO: Hat das nicht implikationen für das Setzen von Randbedingungen?
 
 Der erhaltene Term wird als $-\Phi(u, v)$ abgekürzt.
-Dieser Weg kann, abhängig von der ursprünglichen Differentialgleichung, anders sein.
+Dieser Weg kann, abhängig von der ursprünglichen Differenzialgleichung, anders sein.
 Das häufigste Vorgehen dabei --- das partielle Ableiten der rechten Seite --- wurde jedoch hier gezeigt.
-Ziel ist es, die Ordnung der Differentialgleichung möglichst stark zu verkleinern, da so Ansätze kleiner Ordnung verwendet werden können.
+Ziel ist es, die Ordnung der Differenzialgleichung möglichst stark zu verkleinern, da so Ansätze kleiner Ordnung verwendet werden können.
 Dies spart Rechenleistung.
 
 
@@ -94,7 +94,7 @@ sowie
     a_n(x) = a(x - n \cdot \Delta x).
 \end{equation}
 
-Dabei wird die ursprüngliche Funktion an den gleichmässig verteilten Punkten $x_n = n \cdot \Delta x$ gesampelt. 
+Dabei wird die ursprüngliche Funktion an den gleichmässig verteilten Punkten $x_n = n \cdot \Delta x$ abgetastet. 
 Die Funktion könnte auch ungleichmässig abgetastet werden, was bei geschickter Wahl der Intervalllänge zu Effizienzverbesserungen führt.
 In diesem Paper werden, um die Erklärung möglichst einfach zu halten, nur gleichmässige Intervalle behandelt. 
 
@@ -102,7 +102,7 @@ Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt we
 \begin{itemize}
     \item[\textbf{linear:}] 
         Einfach zu rechnen und zu verstehen, jedoch ist die erste Ableitung unstetig und die zweite Ableitung Null.
-        Dementsprechend kann dieser Ansatz nur verwedet werden, wenn keine zweiten Ableitungen im vereinfachten Problem vorkommen.
+        Dementsprechend kann dieser Ansatz nur verwendet werden, wenn keine zweiten Ableitungen im vereinfachten Problem vorkommen.
     \item[\textbf{quadratisch:}]
         Ist die Ordnung des Problems um eins zu hoch, um den linearen Ansatz zu verwenden, kann der quadratische Ansatz eingesetzt werden.
         Die ersten Ableitungen sind jedoch nach wie vor unstetig.
@@ -154,7 +154,7 @@ für gerade $n$ und
 \end{equation}
 für ungerade $n$ ist einiges aufwändiger als der lineare Ansatz.
 
-Auch er kann mittels dem Ansatz 
+Auch diese Formfunktionen können mit dem Ansatz 
 \begin{equation}
     a(x) = c_2x^2 + c_1x + c_0
 \end{equation}
@@ -227,15 +227,15 @@ und
 hergeleitet werden.
 
 
-\subsection{Erstellen der Matrix \label{fem:1d:matrix_erstellen}}
-Um das Problem als Matrixgleichung zu repräsentieren, muss zunächst die Differentialgleichung in der schwachen Form in ein lineares Gleichungssystem überführt werden.
+\subsection{Erstellen der Matrix\label{fem:1d:matrix_erstellen}}
+Um das Problem als Matrixgleichung zu repräsentieren, muss zunächst die Differenzialgleichung in der schwachen Form in ein lineares Gleichungssystem überführt werden.
 Mit den Approximationen 
 \begin{align}
     f(x) &\approx \sum_i f_i \cdot a_i(x) \\
     u(x) &\approx \sum_i u_i \cdot a_i(x) \\
     v(x) &\approx \sum_i v_i \cdot a_i(x)
 \end{align}
-aus der Diskretisierung kann die schwache Form der Differentialgleichung 
+aus der Diskretisierung kann die schwache Form der Differenzialgleichung 
 \begin{equation}
     - \int u'(x) \cdot v'(x) \diff x = \int f(x) \cdot v(x) \diff x
 \end{equation}
@@ -248,7 +248,7 @@ als
 geschrieben werden.
 Die Bedingung $\forall v_i$ ist auch erfüllt, wenn die Summe über $i$ sowie die Multiplikation mit dem beliebigen Faktor $v_i$ weggelassen wird und die resultierende Gleichung für alle $i$ erfüllt sein muss: % TODO: Proof this... Or argue better
 \begin{equation}
-    - \int \sum_j u_j \cdot a'_j \cdot a'_i(x) \diff x = \int \sum_j f_j \cdot a_j(x) \cdot a_i(x) \diff x \myforall i
+    - \int \sum_j u_j \cdot a'_j \cdot a'_i(x) \diff x = \int \sum_j f_j \cdot a_j(x) \cdot a_i(x) \diff x \myforall i.
 \end{equation}
 Dies ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
 \begin{equation}
@@ -307,7 +307,7 @@ Diese Matrizen werden aufgrund des schmalen Trägers der Funktionen $a_n(x)$ (so
     \quad \int a'_i(x) \cdot a'_j \diff x 
 \end{equation}
 Null sein werden.
-Von Null verschieden sind nur die Einträge, deren zugehörige Datenpunkte nebeneinander liegen.
+Von null verschieden sind nur die Einträge, deren zugehörige Datenpunkte nebeneinander liegen.
 Zudem sind sie symmetrisch und positiv definit, da es keine Rolle spielt in welcher Reihenfolge man die Testfunktionen multipliziert.
 
 \subsubsection{Kubischer Ansatz}
@@ -331,9 +331,9 @@ Das Resultat in Form des Spaltenvektors $\vec{u}$, enthaltend die Stützstellen 
 \end{equation}
 berechnen.
 
-Zum Invertieren der Matrix gibt es optimierte Zerlegungsalgorithmen wie SuperLU, Choldmod oder Mumps, die die schwache Besetzung der Matrizen ausnützen, um diese effizient zu zerlegen.
+Zum Invertieren der Matrix gibt es optimierte Zerlegungsalgorithmen wie SuperLU, Choldmod oder Mumps, die die schwache Besetzung der Matrizen ausnützen, um diese effizient zu zerlegen. % TODO: Maybe cite this.
 Nach dem Zerlegen ist das Invertieren stark vereinfacht.
 Weiter bieten sich iterative Vorgehen wie die Methode des konjugierten Gradienten oder GMRES an.
-Auch diese können aus der schwachen Besetzung der Matrix nutzen ziehen.
+Auch diese können aus der schwachen Besetzung der Matrix Nutzen ziehen.
 
-TODO: properly research and cite this. Research notes for now.
+TODO: Sauber recherchieren und referenzieren. Soweit nur Notizen.

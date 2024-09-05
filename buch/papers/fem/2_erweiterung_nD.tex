@@ -7,13 +7,13 @@
 % !TEX encoding = UTF-8
 %
 \section{Erweiterung auf $n$ Dimensionen\label{fem:erweiterung_nD}}
-\kopfrechts{Erweiterung nD}
+\kopfrechts{Erweiterung auf $n$ Dimensionen}
 Der Schritt vom eindimensionalen Prinzip in höherdimensionale Räume bedingt einige Anpassungen. 
 Um den Umfang zu reduzieren, wurde das Vorgehen grob im Prinzip dargestellt, jedoch nicht bis ins Detail behandelt.
 % TODO: Ref Buch Finite Elemente
 
 \subsection{Aufstellen der schwachen Form}
-Um die Schwache Form auf höhere Dimensionen zu erweitern, muss zum einen statt über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden --- aus 
+Um die schwache Form auf höhere Dimensionen zu erweitern, muss zum einen statt über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden --- aus 
 \begin{equation}
     \int_{l} u(x) \cdot v(x) \diff x
 \end{equation}
@@ -33,12 +33,12 @@ wird zu
 
 \subsection{Diskretisieren}
 Meist wird das zu evaluierende Gebiet in Dreiecke, Tetraeder oder höherdimensionale euklidische Simplexe unterteilt. 
-Entlang den Dreieckskanten werden die selben Formfunktionen, die im Kapitel \ref{fem:1d:diskretisieren} beschrieben wurden, verwendet.
+Entlang den Dreieckskanten werden dieselben Formfunktionen, die im Kapitel \ref{fem:1d:diskretisieren} beschrieben wurden, verwendet.
 Das Gebiet zwischen zwei Elementverbindungen wird wie in der Grafik TODO: \ref{} "ausgefüllt".
 
 \subsection{Aufstellen der Matrix}
 Das zu lösende Problem wird erneut diskretisiert, es werden also einzelne Punkte aus dem Definitionsbereich ausgewählt.
-Diese Punkte werden Elemente genannt und jeweils mit den nächstgelegenen Nachbaren verbunden und nummeriert. 
+Diese Punkte werden Elemente genannt und jeweils mit den nächstgelegenen Nachbarn verbunden und nummeriert. 
 Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix "möglichst diagonal" wird. % TODO: Tönt schlecht... Gibt sicher ein Name für dieses Problem -> Fussnote
 Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung TODO: \ref{} resultieren. % TODO: Bild einfügen
 
@@ -54,11 +54,11 @@ während für $\mathbf{M}$
 eingesetzt werden muss.
 
 Es werden auch hier nur die Einträge ungleich null sein, deren Elemente sich berühren.
-Der Eintrag in der Zeile $a$ und Spalte $b$ ist also nur dann ungleich Null, wenn Element $a$ und Elelment $b$ im Graphen TODO: \ref{} verbunden sind.
-Werden also nun die Matrizen für den skizzierten Graphen befüllt, so sind all die Elemente undleich null, die in TODO: \ref{} schwarz markiert sind.
+Der Eintrag in der Zeile $a$ und Spalte $b$ ist also nur dann ungleich Null, wenn Element $a$ und Element $b$ im Graphen TODO: \ref{} verbunden sind.
+Werden also nun die Matrizen für den skizzierten Graphen befüllt, so sind all die Elemente ungleich null, die in TODO: \ref{} schwarz markiert sind.
 
 \subsection{Codieren der Anfangsbedingungen}
-Das Vorgehen zum Codieren der Anfangsbedingungen unterscheidet sich nicht von dem des eindimensionalen Fall. 
+Das Vorgehen zum Codieren der Anfangsbedingungen unterscheidet sich nicht von dem des eindimensionalen Falls. 
 Dieses wurde in Kapitel \ref{fem:1d:anfangsbedingungen} behandelt
 
 \subsection{Invertieren der Matrix}
