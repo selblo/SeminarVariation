@@ -24,13 +24,29 @@ Da wir mit dem bisher behandelten Vorgehen nur lineare Differenzialgleichungen l
 \begin{equation}
     \sin \theta \approx \theta
 \end{equation}
-verwendet. % TODO: währe es möglich, nichtlineare DGLs zu lösen?
+verwendet.
 Dies hat jedoch zur Folge, dass die Lösung nur für kleine $\theta$ (ungefähr $\theta < 15 \deg$) gut stimmen wird.
 
 Die Differenzialgleichung, die es zu lösen gilt, ist also
 \begin{equation}
     \theta'' + \frac{g}{l} \theta = 0.
 \end{equation}
+
+Zudem soll unsere Lösung die Anfangsbedingungen
+\begin{equation}
+    \theta(0) = 10 \deg
+    \quad \text{und} \quad
+    \theta'(0) = 0
+\end{equation}
+erfüllen.
+
+Für die Parameter $g$ und $l$ sind die Werte
+\begin{equation}
+    g = 10
+    \quad \text{und} \quad
+    l = 1
+\end{equation}
+gegeben.
 
 
 \subsection{Schwache Form}
@@ -84,7 +100,8 @@ Um die Elemente der Matrix $\mathbf{L}$ zu ermitteln, werden die Integrale aus G
     l_{ij} = - \int a_i'(t) \cdot a_j'(t) \diff t + \int \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
 \end{equation}
 
-% TODO: Insert Immage
+TODO: Klärendes Bild einfügen.
+
 Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei Fällen unterschieden werden:
 \begin{itemize}
     \item[$i = j$:] Volle Überlappung der Formfunktion: Die Formfunktion wird quadriert und integriert. 
@@ -93,7 +110,7 @@ Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei F�
 \end{itemize}
 Im Mehrdimensionalen müsste anhand des Graphen ermittelt werden, ob zwei Elemente nebeneinander liegen oder nicht.
 
-\subsubsection{Element mit sich selbst ($i = j$)} %TODO: Besseren Titel finden.
+\subsubsection{Volles Überlappen ($i = j$)}
 Da die Integrale aller Elemente gleich und die Formfunktionen symmetrisch sind, reicht es aus, nur das Integral
 \begin{equation}
     \int_{0}^{\Delta t} \frac{1}{(\Delta t)^2} t^2 \diff t = \frac{1}{3} \Delta t
@@ -124,8 +141,8 @@ Auch hier wird noch das Integral über die Ableitungen
 benötigt.
 Hierbei gilt $a_0'(t)= -\frac{1}{\Delta t} \ \text{und} \ a_1'(t)= \frac{1}{\Delta t} \ \text{wenn} \ 0 \leq t < \Delta t$
 
-\subsubsection{Zusammenfassung} % TODO: Braucht anderen TItel
-Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also:
+\subsubsection{Resultat}
+Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also
 \begin{equation}
     \begin{aligned}
         l_{ij} 
@@ -137,12 +154,37 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also:
                     0 & \text{sonst}
                 \end{array} 
             \right.
-    \end{aligned}
+    \end{aligned}.
+\end{equation}
+Für einen willkürlich gewählten Zeitschritt von $\Delta t = 0.1$ und den in der Aufgabenstellung festgelegten Parametern $g = 10$ und $l = 1$ resultiert das Gleichungssystem
+\begin{equation}
+    TODO: Matrix L mit tatsächlichen Werten, inkl. u- und b-Vektoren
 \end{equation}
 
 
 \subsection{Codieren der Anfangsbedingungen}
-TODO: Anfangsbedingungen festlegen und codieren.
+Die Anfangsbedingungen
+\begin{equation}
+    u(0) = 10 \deg \approx 0.175 \radian
+    \quad \text{und} \quad
+    u'(0) = 0
+\end{equation}
+werden wie in Kapitel \ref{fem:1d:anfangsbedingungen} beschrieben in die Matrix eingebracht.
+
+\subsubsection{$u(0) = 0.175 \radian $}
+Nach null setzen der Zeile und Anpassen von $\vec{b}$ resultiert
+\begin{equation}
+    TODO: Gleichungssystem mit codierter Anfangsbedingung.
+\end{equation}
+
+\subsubsection{$u'(0) = 0 $}
+Hier wird die erwähnte Annäherung zum Codieren der Anfangsbedingung bezüglich der Ableitung angewandt.
+Es wird also nicht direkt $u'(0) = 0 $, sondern $u(\Delta t) = u(0) = 0.175 \radian$ codiert.
+Daraus resultiert
+\begin{equation}
+    TODO: Gleichungssystem mit codierter Anfangsbedingung.
+\end{equation}
+
 
 \subsection{Invertieren der Matrix}
 TODO: Beschreiben, wie die Matrix invertiert wurde und wie gut das erhaltene Resultat stimmt.
