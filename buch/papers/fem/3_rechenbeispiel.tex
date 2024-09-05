@@ -158,8 +158,8 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also
 \end{equation}
 Für einen willkürlich gewählten Zeitschritt von $\Delta t = 0.1$ und den in der Aufgabenstellung festgelegten Parametern $g = 10$ und $l = 1$ resultiert das Gleichungssystem
 \begin{equation}
-    TODO: Matrix L mit tatsächlichen Werten, inkl. u- und b-Vektoren
 \end{equation}
+TODO: Matrix L mit Werten, inkl. u- und b-Vektoren
 
 
 \subsection{Codieren der Anfangsbedingungen}
@@ -171,19 +171,19 @@ Die Anfangsbedingungen
 \end{equation}
 werden wie in Kapitel \ref{fem:1d:anfangsbedingungen} beschrieben in die Matrix eingebracht.
 
-\subsubsection{$u(0) = 0.175 \radian $}
+\subsubsection{$\mathbf{u(0) = 0.175 \radian}$:}
 Nach null setzen der Zeile und Anpassen von $\vec{b}$ resultiert
 \begin{equation}
-    TODO: Gleichungssystem mit codierter Anfangsbedingung.
 \end{equation}
+TODO: Gleichungssystem mit codierter Anfangsbedingung.
 
-\subsubsection{$u'(0) = 0 $}
+\subsubsection{$\mathbf{u'(0) = 0 }$:}
 Hier wird die erwähnte Annäherung zum Codieren der Anfangsbedingung bezüglich der Ableitung angewandt.
 Es wird also nicht direkt $u'(0) = 0 $, sondern $u(\Delta t) = u(0) = 0.175 \radian$ codiert.
 Daraus resultiert
 \begin{equation}
-    TODO: Gleichungssystem mit codierter Anfangsbedingung.
 \end{equation}
+TODO: Gleichungssystem mit codierter Anfangsbedingung.
 
 
 \subsection{Invertieren der Matrix}
