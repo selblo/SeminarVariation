@@ -10,7 +10,8 @@
 \kopfrechts{Erweiterung auf $n$ Dimensionen}
 Der Schritt vom eindimensionalen Prinzip in höherdimensionale Räume bedingt einige Anpassungen. 
 Um den Umfang zu reduzieren, wurde das Vorgehen grob im Prinzip dargestellt, jedoch nicht bis ins Detail behandelt.
-% TODO: Ref Buch Finite Elemente
+Für eine detailliertere Ausführung ist das Buch "Methode der finiten Elemente" von H. R. Schwarz zu empfehlen.
+TODO: Richtig referenzieren.
 
 \subsection{Aufstellen der schwachen Form}
 Um die schwache Form auf höhere Dimensionen zu erweitern, muss zum einen statt über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden --- aus 
@@ -34,15 +35,20 @@ wird zu
 \subsection{Diskretisieren}
 Meist wird das zu evaluierende Gebiet in Dreiecke, Tetraeder oder höherdimensionale euklidische Simplexe unterteilt. 
 Entlang den Dreieckskanten werden dieselben Formfunktionen, die im Kapitel \ref{fem:1d:diskretisieren} beschrieben wurden, verwendet.
-Das Gebiet zwischen zwei Elementverbindungen wird wie in der Grafik TODO: \ref{} "ausgefüllt".
+Das Gebiet zwischen zwei Elementverbindungen wird wie in der Grafik 
+TODO: Grafik erstellen und referenzieren
+"ausgefüllt".
 
 \subsection{Aufstellen der Matrix}
 Das zu lösende Problem wird erneut diskretisiert, es werden also einzelne Punkte aus dem Definitionsbereich ausgewählt.
 Diese Punkte werden Elemente genannt und jeweils mit den nächstgelegenen Nachbarn verbunden und nummeriert. 
-Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix "möglichst diagonal" wird. % TODO: Tönt schlecht... Gibt sicher ein Name für dieses Problem -> Fussnote
-Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung TODO: \ref{} resultieren. % TODO: Bild einfügen
+Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix "möglichst diagonal" wird.
+Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung 
+TODO: Grafik erstellen und referenzieren
+resultieren.
 
-Zum Befüllen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
+\subsection{Befüllen der Matrix}
+Zum Aufstellen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
 Für $\mathbf{L}$ gilt
 \begin{equation}
     l_{ij} = \int_{\Omega} a_i(\vec{x}) \cdot a_j(\vec{x}) \diff \vec{x},
