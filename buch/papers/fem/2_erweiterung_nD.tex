@@ -6,14 +6,15 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Erweiterung auf $n$ Dimensionen\label{fem:erweiterung_nD}}
+\section{Erweiterung auf $n$ Dimensionen\label{fem:nD}}
 \kopfrechts{Erweiterung auf $n$ Dimensionen}
 Der Schritt vom eindimensionalen Prinzip in höherdimensionale Räume bedingt einige Anpassungen. 
 Um den Umfang zu reduzieren, wurde das Vorgehen grob im Prinzip dargestellt, jedoch nicht bis ins Detail behandelt.
-Für eine detailliertere Ausführung ist das Buch "Methode der finiten Elemente" von H. R. Schwarz zu empfehlen.
+Für eine detailliertere Ausführung ist das Buch \"Methode der finiten Elemente\" von H. R. Schwarz zu empfehlen.
 TODO: Richtig referenzieren.
 
-\subsection{Aufstellen der schwachen Form}
+
+\subsection{Bilden der schwachen Form}
 Um die schwache Form auf höhere Dimensionen zu erweitern, muss zum einen statt über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden --- aus 
 \begin{equation}
     \int_{l} u(x) \cdot v(x) \diff x
@@ -32,23 +33,25 @@ wird zu
     \int_{\Omega} \nabla f(\vec{x}) \cdot \nabla v(\vec{x}) \diff \vec{x}.
 \end{equation}
 
+
 \subsection{Diskretisieren}
 Meist wird das zu evaluierende Gebiet in Dreiecke, Tetraeder oder höherdimensionale euklidische Simplexe unterteilt. 
 Entlang den Dreieckskanten werden dieselben Formfunktionen, die im Kapitel \ref{fem:1d:diskretisieren} beschrieben wurden, verwendet.
 Das Gebiet zwischen zwei Elementverbindungen wird wie in der Grafik 
 TODO: Grafik erstellen und referenzieren
-"ausgefüllt".
+\"ausgefüllt\".
 
-\subsection{Aufstellen der Matrix}
+
+\subsection{Erstellen der Matrix}
 Das zu lösende Problem wird erneut diskretisiert, es werden also einzelne Punkte aus dem Definitionsbereich ausgewählt.
-Diese Punkte werden Elemente genannt und jeweils mit den nächstgelegenen Nachbarn verbunden und nummeriert. 
+Diese Knoten werden dann jeweils mit den nächstgelegenen Nachbarn verbunden und nummeriert.
 Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix "möglichst diagonal" wird.
+Dies macht das invertieren effizienter.
 Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung 
 TODO: Grafik erstellen und referenzieren
 resultieren.
 
-\subsection{Befüllen der Matrix}
-Zum Aufstellen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
+Zum Befüllen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
 Für $\mathbf{L}$ gilt
 \begin{equation}
     l_{ij} = \int_{\Omega} a_i(\vec{x}) \cdot a_j(\vec{x}) \diff \vec{x},
@@ -65,7 +68,7 @@ Werden also nun die Matrizen für den skizzierten Graphen befüllt, so sind all 
 
 \subsection{Codieren der Anfangsbedingungen}
 Das Vorgehen zum Codieren der Anfangsbedingungen unterscheidet sich nicht von dem des eindimensionalen Falls. 
-Dieses wurde in Kapitel \ref{fem:1d:anfangsbedingungen} behandelt
+Dieses wurde in Kapitel \ref{fem:1d:anfangsbedingungen} behandelt.
 
 \subsection{Invertieren der Matrix}
 Auch hier unterscheidet sich das Vorgehen nicht vom im Kapitel \ref{fem:1d:matrix_invertieren} behandelten eindimensionalen Fall.

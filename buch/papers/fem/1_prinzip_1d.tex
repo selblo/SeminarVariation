@@ -6,16 +6,16 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Prinzip in einer Dimension\label{fem:prinzip_1d}}
+\section{Prinzip in einer Dimension\label{fem:1d}}
 \kopfrechts{Prinzip 1D}
 
-Das Vorgehen zum Herleiten der Methode der finiten Elemente kann in fünf Schritte unterteilt werden:
+Das Vorgehen zum Lösen eines Problems mit der Methode der finiten Elemente kann in fünf Schritte unterteilt werden:
 \begin{enumerate}
     \item Bilden der schwachen Form
     \item Diskretisieren
     \item Aufstellen der Matrix
     \item Codieren der Anfangsbedingungen
-    \item Lösen des Gleichungssystems bzw. invertieren der Matrix
+    \item Lösen des Gleichungssystems bzw. Invertieren der Matrix
 \end{enumerate}
 % TODO: Fünf Schritte durch das Paper ziehen
 
@@ -29,12 +29,12 @@ Diese findet in vielen Teilen der Physik Anwendung und ist gleichzeitig ein gute
 
 
 \subsection{Bilden der schwachen Form}
-Um die Poisson-Gleichung in die schwache Form zu bringen, wird über beide Seiten der Poisson-Gleichung \ref{fem:1d:poisson_gleichung} integriert.
+Um das Problem in die schwache Form zu bringen, wird über beide Seiten der Poisson-Gleichung \ref{fem:1d:poisson_gleichung} integriert.
 Zuvor werden jedoch beide Seiten mit der Testfunktion $ v(x) $ multipliziert. % TODO: Testfunktion -> Variation
 Diese wird definiert als eine beliebige Funktion $ v \colon \mathbb{R} \rightarrow \mathbb{R} $.
 Die resultierende Gleichung
 \begin{equation}
-    \int(u''(x) \cdot v(x) \diff x) = \int(f(x) \cdot v(x) \diff x) \myforall v(x)
+    \int(u''(x) \cdot v(x)) \diff x = \int(f(x) \cdot v(x)) \diff x \myforall v(x)
     \label{fem:1d:schwache_form}
 \end{equation}
 sollte einem bekannt vorkommen: Sie entsteht auch beim Herleiten der ersten Variation.
@@ -56,45 +56,48 @@ Null ist, wenn die Testfunktionen die Randbedingung
     v(x_1) = v(x_2) = 0
 \end{equation}
 erfüllen. 
+
 TODO: Hat das nicht Implikationen für das Setzen von Randbedingungen?
 
 Der erhaltene Term wird als $-\Phi(u, v)$ abgekürzt.
 Dieser Weg kann, abhängig von der ursprünglichen Differenzialgleichung, anders sein.
 Das häufigste Vorgehen dabei --- das partielle Ableiten der rechten Seite --- wurde jedoch hier gezeigt.
-Ziel ist es, die Ordnung der Differenzialgleichung möglichst stark zu verkleinern, da so Ansätze kleiner Ordnung verwendet werden können.
+Ziel ist es, die Ordnung der Differenzialgleichung möglichst stark zu verkleinern, da so Ansätze kleinerer Ordnung verwendet werden können.
 Dies spart Rechenleistung.
 
 
 \subsection{Diskretisieren\label{fem:1d:diskretisieren}}
 TODO: Bild zu den Formfunktionen und Approximation einer Funktion durch diese. 
 
-Um das Problem besser lösbar zu machen, werden die ursprünglichen Funktionen, deren Träger sich in der Regel über den ganzen Wertebereich erstreckt, als Summe einzelner Funktionen mit schmalem Träger 
+Ziel des Diskretisierens ist es, das Unendlichdimensionale Problem in ein endlich dimensionales umzuwandeln.
+Dazu werden die ursprünglichen Funktionen $u(x)$, $f(x)$ und $v(x)$ an $N$ verschiedenen Punkten $x_n$ abgetastet.
+Die resultierenden Knotenvariablen
 \begin{equation}
-    %TODO: Wiederspruch (PDF Korrektur Hr. Müller) beheben?
-    a(x) = \left\{ \begin{array}{ll}
-        a(x) = 1            & \text{für} \quad x = 0 \\
-        a(x) \in \mathbb{R} & \text{für} \quad 0 < |x| < \Delta x \\
-        a(x) = 0            & \text{sonst} 
+    u_n = u(x_n) 
+    \text{,} \quad
+    f_n = f(x_n)
+    \quad \text{und} \quad
+    v_n = v(x_n)
+\end{equation}
+können dann mit einer Interpolationsfunktion mit schmalem Träger
+\begin{equation}
+    a_n(x) = \left\{ \begin{array}{ll}
+        1
+            & \text{für} \quad x = x_n \\
+        a(x) \in (0, 1) 
+            & \text{für} \quad x_{n-1} < x < x_n \quad \text{und} \quad x_n < x < x_{n+1} \\
+        0
+            & \text{sonst} 
     \end{array} \right.
 \end{equation}
-beschrieben:
+multipliziert werden und zu einer durch $N$ Werte parametrisierten stetigen Funktion zusammengesetzt werden:
 \begin{equation}
-    u(x) \approx \sum_{n=0}^{N}{u_n \cdot a_n(x)} \quad
-    \text{und} \quad
+    u(x) \approx \sum_{n=0}^{N}{u_n \cdot a_n(x)} 
+    \text{,} \quad
+    f(x) \approx \sum_{n=0}^{N}{f_n \cdot a_n(x)} 
+    \quad \text{und} \quad
     v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}.
 \end{equation}
-Dabei ist
-\begin{equation}
-    u_n = u(n \cdot \Delta x) \quad
-    \text{und} \quad
-     v_n = v(n \cdot \Delta x)
-\end{equation}
-sowie 
-\begin{equation}
-    a_n(x) = a(x - n \cdot \Delta x).
-\end{equation}
-
-Dabei wird die ursprüngliche Funktion an den Punkten $x_n = n \cdot \Delta x$ abgetastet. 
 
 Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt werden:
 \begin{itemize}
@@ -112,69 +115,78 @@ Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt we
 
 \subsubsection{Linearer Ansatz}
 \input{papers/fem/fig/linearer_ansatz.tex} % TODO: Widerholende Formfunktionen und Summe deren als Graphen zeigen
-Der lineare Ansatz verwendet die einfachen linearen Funktionen
+Der lineare Ansatz verwendet die in Abb. \ref{fem:1d:abb:linear} gezeigten linearen Funktionen
 \begin{equation}
-    a(x) = \left\{ \begin{array}{ll}
-        1+\frac{x}{\Delta x} 
-            & \text{für} \quad -\Delta x < x < 0 \\
-        1-\frac{x}{\Delta x} 
-            & \text{für} \quad 0 \leq x < \Delta x \\
+    a_n(x) = \left\{ \begin{array}{ll}
+        1+\frac{x-x_n}{x_n - x_{n-1}} 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        1-\frac{x-x_n}{x_{n+1} - x_n} 
+            & \text{für} \quad x_n \leq x < x_{n+1} \\
         0
             & \text{sonst}
     \end{array} \right..
 \end{equation}
 
-Diese Funktionen können mit dem Ansatz 
+Die Formfunktionen des Linearen Ansatzes können mit dem Ansatz 
 \begin{equation}
     a(x) = c_1x + c_0
 \end{equation}
 und den zu erfüllenden Bedingungen
 \begin{equation}
-        a(0) = 1 \quad
-        \text{und} \quad
-        a(-\Delta x) = a(\Delta x) = 0
+        a(x_n) = 1 
+        \quad \text{und} \quad
+        a(x_{n-1}) = a(x_{n+1}) = 0
 \end{equation}
 hergeleitet werden.
 
 \subsubsection{Quadratischer Ansatz}
 \input{papers/fem/fig/quadratischer_ansatz.tex} % TODO: Widerholende Formfunktionen und Summe deren als Graphen zeigen
-Der quadratische Ansatz mit den Formfunktionen
+Für das Interpolieren mit dem quadratischen Ansatz muss das Vorgehen leicht angepasst werden. 
+Während beim linearen Ansatz für jeden Knoten dieselbe Formfunktion verwendet wurde, wird beim quadratischen Ansatz zwischen zwei Funktionen abgewechselt.
+
+Die in Abb. \ref{fem:1d:abb:quadratisch} gezeigten Formfunktionen lauten
 \begin{equation}
-    a(x) = \left\{ \begin{array}{ll}
-        \frac{1}{2(\Delta x)^2} \cdot x^2 + \frac{3}{2 \Delta x} + 1  
-            & \text{für} \quad -2 \Delta x < x < 0 \\
-        \frac{1}{2(\Delta x)^2} \cdot x^2 - \frac{3}{2 \Delta x} + 1 
-            & \text{für} \quad 0 \leq x < 2 \Delta x \\
+    a_n(x) = \left\{ \begin{array}{ll}
+        \frac{1}{2(x_{n-1} - x_{n-2})^2} \cdot x^2 + \frac{3}{2 (x_{n-1} - x_{n-2})} \cdot x + 1  
+            & \text{für} \quad x_{n-2} < x < x_{n-1} \\
+        \frac{1}{2(x_{n} - x_{n-1})^2} \cdot x^2 + \frac{3}{2 (x_{n} - x_{n-1})} \cdot x + 1  
+            & \text{für} \quad x_{n-1} \leq x < x_n \\
+        \frac{1}{2(x_{n+1} - x_{n})^2} \cdot x^2 - \frac{3}{2 (x_{n+1} - x_{n})} \cdot x + 1
+            & \text{für} \quad x_n < x \leq x_{n+1} \\
+        \frac{1}{2(x_{n+2} - x_{n+1})^2} \cdot x^2 - \frac{3}{2 (x_{n+2} - x_{n+1})} \cdot x + 1
+            & \text{für} \quad x_{n+1} \leq x < x_{n+2} \\
         0
             & \text{sonst}
     \end{array} \right.
 \end{equation}
 für gerade $n$ und
 \begin{equation}
-    a(x) = \left\{ \begin{array}{ll}
-        -\frac{1}{(\Delta x)^2} x^2 + 1 
-            & \text{für} \quad -\Delta x < x < \Delta x \\
+    a_n(x) = \left\{ \begin{array}{ll}
+        -\frac{1}{(x_n - x_{n-1})^2} x^2 + 1 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        -\frac{1}{(x_{n+1} - x_n)^2} x^2 + 1 
+            & \text{für} \quad x_n \leq x < x_n+1 \\
         0 
             & \text{sonst}
     \end{array} \right.
 \end{equation}
-für ungerade $n$ ist einiges aufwändiger als der lineare Ansatz.
+für ungerade $n$.
 
-Auch diese Formfunktionen können mit dem Ansatz 
+Diese Formfunktionen können mit dem Ansatz 
 \begin{equation}
-    a(x) = c_2x^2 + c_1x + c_0
+    a_n(x) = c_2x^2 + c_1x + c_0
 \end{equation}
 und den Bedingungen 
 \begin{equation}
-        a(0) = 1 \quad
-        \text{und} \quad 
-        a(-2 \Delta x) = a(-\Delta x) = a(\Delta x) = a(2 \Delta x) = 0
+        a_n(x_n) = 1 
+        \quad \text{und} \quad 
+        a_n(x_{n-2}) = a(x_{n-1}) = a(x_{n+1}) = a(x_{n+2}) = 0
 \end{equation}
 für gerade $n$ bzw.
 \begin{equation}
-        a(0) = 1 \quad
-        \text{und} \quad
-        a(-\Delta x) = a(\Delta x) = 0
+        a_n(x_n) = 1 
+        \quad \text{und} \quad
+        a(x_{n-1}) = a(x_{n+1}) = 0
 \end{equation}
 für ungerade $n$ hergeleitet werden.
 
@@ -186,13 +198,13 @@ Dafür muss der Ansatz etwas erweitert werden:
     u(x) \approx \sum{u_n \cdot a_n(x)} \rightarrow u(x) \approx \sum{u_n \cdot a_n(x) + u'_n \cdot b_n(x)}.
 \end{equation}
 
-Die Formfunktionen
+Die Formfunktionen, dargestellt in Abb. \ref{fem:1d:abb:kubisch}, 
 \begin{equation}
     a(x) = \left\{ \begin{array}{ll}
-        - \frac{2}{(\Delta x)^3} \cdot x^3 + \frac{3}{(\Delta x)^2} \cdot x^2 + 1 
-            & \text{für} \quad -\Delta x < x < 0 \\
-        \frac{2}{(\Delta x)^3} \cdot x^3 + \frac{3}{(\Delta x)^2} \cdot x^2 + 1 
-            & \text{für} \quad 0 \leq x < \Delta x \\
+        - \frac{2}{(x_n - x_{n-1})^3} \cdot x^3 + \frac{3}{(x_n - x_{n-1})^2} \cdot x^2 + 1 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        \frac{2}{(x_{n+1} - x_n)^3} \cdot x^3 + \frac{3}{(x_{n+1} - x_n)^2} \cdot x^2 + 1 
+            & \text{für} \quad x_n \leq x < x_{n+1} \\
         0
             & \text{sonst}
     \end{array} \right.
@@ -200,35 +212,35 @@ Die Formfunktionen
 und
 \begin{equation}
     b(x) = \left\{ \begin{array}{ll}
-        \frac{1}{(\Delta x)^2} \cdot x^3 + \frac{2}{\Delta x} \cdot x^2 + x 
-            & \text{für} \quad -\Delta x < x < 0 \\
-        \frac{1}{(\Delta x)^2} \cdot x^3 - \frac{2}{\Delta x} \cdot x^2 + x 
-            & \text{für} \quad 0 \leq x < \Delta x \\
+        \frac{1}{(x_n - x_{n-1})^2} \cdot x^3 + \frac{2}{x_n - x_{n-1}} \cdot x^2 + x 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        \frac{1}{(x_{n+1} - x_n)^2} \cdot x^3 - \frac{2}{x_{n+1} - x_n} \cdot x^2 + x 
+            & \text{für} \quad x_n \leq x < x_{n+1} \\
         0
             & \text{sonst}
     \end{array} \right.
 \end{equation}
-können ebenfalls mit dem Ansatz
+können mit dem Ansatz
 \begin{equation}
-    a(x) = c_3x^3 + c_2x^2 + c_1x + c_0 \quad 
-    \text{bzw.} \quad
+    a(x) = c_3x^3 + c_2x^2 + c_1x + c_0 
+    \quad \text{bzw.} \quad
     b(x) = d_3x^3 + d_2x^2 + d_1x + d_0
 \end{equation}
 und den Bedingungen 
 \begin{equation}
-        a(0) = 1 \quad
-        \text{und} \quad
-        a(-\Delta x) = a(\Delta x) = 0 \quad
-        \text{sowie} \quad
-        a'(-\Delta x) = a'(0) = a'(\Delta x) = 0
+        a(x_n) = 1 
+        \quad \text{und} \quad
+        a(x_{n-1}) = a(x_{n+1}) = 0 
+        \quad \text{sowie} \quad
+        a'(x_{n-1}) = a'(x_n) = a'(x_{n+1}) = 0
 \end{equation}
 und
 \begin{equation}
-        b'(0) = 1 \quad
-        \text{und} \quad
-        b'(-\Delta x) = b'(\Delta x) = 0 \quad
-        \text{sowie} \quad
-        b(-\Delta x) = b(0) = b(\Delta x) = 0
+        b'(x_n) = 1 
+        \quad \text{und} \quad
+        b'(x_{n-1}) = b'(x_{n+1}) = 0 
+        \quad \text{sowie} \quad
+        b(x_{n-1}) = b(x_n) = b(x_{n+1}) = 0
 \end{equation}
 hergeleitet werden.
 
@@ -237,8 +249,8 @@ hergeleitet werden.
 Um das Problem als Matrixgleichung zu repräsentieren, muss zunächst die Differenzialgleichung in der schwachen Form in ein lineares Gleichungssystem überführt werden.
 Mit den Approximationen 
 \begin{align}
-    f(x) &\approx \sum_i f_i \cdot a_i(x) \\
     u(x) &\approx \sum_i u_i \cdot a_i(x) \\
+    f(x) &\approx \sum_i f_i \cdot a_i(x) \\
     v(x) &\approx \sum_i v_i \cdot a_i(x)
 \end{align}
 aus der Diskretisierung kann die schwache Form der Differenzialgleichung 
@@ -259,7 +271,7 @@ Diese Gleichung kann zu
 vereinfacht werden.
 Dabei wird die Menge der Testfunktionen reduziert.
 Anstelle, dass alle Testfunktionen mit beliebig breitem Träger berücksichtigt werden, werden nur die $N$ verschiedenen Testfunktionen mit schmalst möglichem Träger verwendet.
-Da alle anderen Testfunktionen aus diesen "zusammengebaut" werden können, ist die Gleichung auch für diese erfüllt.
+Da alle anderen Testfunktionen aus diesen \"zusammengebaut\" werden können, ist die Gleichung auch für diese erfüllt.
 Diese Vereinfachung ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
 \begin{equation}
     - \sum_j u_j \int a'_j \cdot a'_i(x) \diff x = \sum_j f_j \int a_j(x) \cdot a_i(x) \diff x \myforall i \label{papers:fem:prinzip1d:finale_gleichung}
@@ -348,7 +360,7 @@ Das nächste Ziel ist also, auch die $k$-te Spalte so weit zu bringen, dass nur 
 Um dies zu erreichen, wird vor dem Nullsetzen der Spalte zu jedem Element von $\vec{b}$ ein Korrekturterm addiert.
 Der zu $b_k$ zu addierende Term berechnet sich als
 \begin{equation}
-    L_{ik} * u_k.
+    l_{ik} \cdot u_k.
 \end{equation}
 Bei homogenen Anfangsbedingungen ist dieser Term offensichtlich null (da $u_k = 0$), was diese besonders einfach zu codieren macht.
 
