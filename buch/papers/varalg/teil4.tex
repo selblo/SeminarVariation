@@ -1,5 +1,5 @@
 %
-% teil3.tex -- Beispiel-File für Teil 3
+% teil4.tex -- Beispiel-File für Teil 3
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
@@ -8,10 +8,10 @@
 %
 \section{Variationsprinzip der Analysis und genetischer Algorithmus
   \label{buch:paper:varalg:section:variations_analysis_algorithm_result}}
-\rhead{Variationsprinzip Analysis und genetischer Algorithmus}
+\kopfrechts{Variationsprinzip Analysis und genetischer Algorithmus}
 Im vorherigen Abschnitt \ref{buch:paper:varalg:section:genetic_algorithm_process}
 wurde dargelegt, aus welchen Komponenten ein genetischer Algorithmus besteht und wie 
-solcher aufgebaut werden kann. 
+ein solcher aufgebaut werden kann. 
 Obwohl in beiden Fällen das Ziel darin besteht, das Optimum zu erreichen, unterscheidet
 sich das Variationsprinzip der Analysis grundlegend von dem, was in einem genetischen 
 Algorithmus zur Anwendung kommt. In diesem Abschnitt werden die Unterschiede in der 
@@ -24,7 +24,9 @@ Richtung, das Differential, was in der Richtungsableitung/Variation steckt. Die 
 beschreibt, wie sich eine Funktion in eine bestimmte Richtung ändert. Die Variation in  
 der Variationsrechnung untersucht die Änderung eines Funktionalen. Das bedeutet, durch die Ableitung 
 erhalten wir eine Funktion, mit welcher das Optimum berechnen werden kann, wie z.B. die  
-Durchbiegung einer Kette. Im Algorithmus wird versucht, das Optimum durch Zufall von   
+\index{Zufall}%
+\index{Optimum}%
+Durchbiegung einer Kette. In einem genetischen Algorithmus wird versucht, das Optimum durch Zufall von   
 Variationen, durch neue Kombinationen der genetischen Strings, zu finden. Am 
 Ende erhält man für die gestellte Problemstellung eine Lösung, die das Optimum sein könnte,  
 sehr nahe dran ist oder komplett daneben liegt. Ändert sich die Ausgangslage, muss der Algorithmus 
@@ -34,10 +36,11 @@ erneut ausgeführt werden, um eine neue mögliche Lösung zu finden.
   \caption{Unterschiede des Variationsprinzips der Analysis und genetischer Algorithmus}
   \label{tab:variation_comparison} \\
   \hline
-  & Analysis 
+  & Analysis \raisebox{3pt}{\strut}
   & genetischer Algorithmus 
+  \raisebox{-2pt}{\strut}
   \\ \hline
-  Ziel
+  \raisebox{3pt}{\strut}Ziel
   & 
   Wie im Abschnitt \ref{buch:variation:problem:subsection:funktionale} Funktionale und
   im Abschnitt \ref{buch:paper:varalg:section:variations_analysis_algorithm_result}
@@ -45,6 +48,7 @@ erneut ausgeführt werden, um eine neue mögliche Lösung zu finden.
   Ableitung erhält man am Ende eine Funktion, mit welcher das Optimum berechnet werden kann. 
   Ändern sich nun die Gegebenheiten, wie z.B. der Startpunkt liegt neu höher, werden die Parameter 
   angepasst und die Funktion neu ausgerechnet, ohne die Ableitung noch einmal zu machen.
+  \raisebox{-2pt}{\strut}
   & 
   Im Algorithmus bedeutet die Variation, dass es eine Menge möglicher Lösungen gibt, 
   aus denen die besten ausgewählt und weiterverarbeitet werden, in der 
@@ -52,13 +56,14 @@ erneut ausgeführt werden, um eine neue mögliche Lösung zu finden.
   genau die gestellte Problemstellung. Ein weiteres Ziel ist es,
   ein genügend gutes Ergebnis zu erhalten, mit einer annehmbaren Laufzeit.
   \\ \hline
-  Lösung
+  Lösung\raisebox{3pt}{\strut}
   & 
   Die Lösung ist eine Funktion, mit der das Optimum errechnet werden kann.
+  \raisebox{-2pt}{\strut}
   & 
   Die Lösung am Ende könnte das Optimum sein oder nur sehr nah dran.
   \\ \hline
-  Techniken  
+  \raisebox{3pt}{\strut}Techniken  
   & 
   Hier werden analytische Techniken wie die Euler-Lagrange-Gleichung verwendet, 
   um Optimierungsprobleme zu lösen. Die verschiedenen Techniken sind ab Kapitel
@@ -71,9 +76,10 @@ erneut ausgeführt werden, um eine neue mögliche Lösung zu finden.
   Methoden wie Kreuzung und Mutation beinhalten, um Vielfalt zu erzeugen und aufrechtzuerhalten.
   Die Techniken sollen die Wahrscheinlichkeit erhöhen, die besten Lösungen zu finden, 
   sowie den Zeit- und Speicheraufwand reduzieren.
-  Die Techniken sind im Abschnitt \ref{buch:paper:varalg:section:genetic_algorithm_process}
+  Die Techniken sind im Abschnitt \ref{buch:paper:varalg:section:genetic_algorithm_process} beschrieben.
+  \raisebox{-2pt}{\strut}
   \\ \hline
-  Nachbarlösungen
+  Nachbarlösungen\raisebox{3pt}{\strut}
   & 
   Es wird das Konzept der Richtungsableitung in Richtung einer Funktion \(f(x)\)
   genutzt. Diese Funktion kann durch kleine Änderungen des Parameters \(x\) beliebig
@@ -88,12 +94,14 @@ erneut ausgeführt werden, um eine neue mögliche Lösung zu finden.
   Da so keine kontinuierliche Variation möglich ist, gibt es keine Ableitungen
   und es müssen Methoden dazu genutzt werden, wie im Abschnitt 
   \ref{buch:paper:varalg:section:genetic_algorithm_process} beschrieben.
+  \raisebox{-2pt}{\strut}
   \\ \hline
-  Änderung der Parameter
+  \raisebox{3pt}{\strut}Änderung der Parameter
   & 
   Ändern sich nun die Gegebenheiten, wie z.B. der Startpunkt liegt neu höher, werden die Parameter 
   angepasst und die Funktion neu ausgerechnet, ohne die Ableitung noch einmal zu machen. Der Zeitaufwand
   hält sich in Grenzen.
+  \raisebox{-2pt}{\strut}
   & 
   Ändert sich die Ausgangslage, muss der Algorithmus erneut ausgeführt werden, um eine
   neue mögliche Lösung zu finden. Beispiel wird eine weitere Stadt hinzugefügt, braucht

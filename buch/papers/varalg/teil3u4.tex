@@ -8,7 +8,7 @@
 %
 \subsection{Kreuzung
 \label{buch:paper:varalg:subsection:crossover}}
-\rhead{Kreuzung}
+\index{Kreuzung}%
 In diesem Schritt des Algorithmus werden aus den gewählten Elternpaaren 
 neue Nachkommen erzeugt. Dies wird erreicht, indem Teile des genetischen 
 Strings miteinander ausgetauscht werden, 
@@ -30,6 +30,7 @@ Für die Kreuzung gibt es unterschiedliche Methoden, die gebräuchlichsten sind
 die folgenden:
 \begin{itemize}
 	\item \textbf{Einpunkt-Kreuzung:} Ein zufälliger Punkt \( k \) \((1 \leq k < n)\)
+\index{Einpunkt-Kreuzung}%
 	wird auf den Elternchromosomen ausgewählt. Der Teil vor diesem Punkt stammt
 	von einem Elternteil, die Gene ab diesem Punkt kommen vom anderen Elternteil. 
 	Für die Erzeugung der Nachkommen wird mit den Formeln
@@ -39,6 +40,7 @@ die folgenden:
 	\end{align*}
 	gearbeitet. Die Abbildung \ref{fig:one_point_crossover} stellt diese Kreuzung bildlich dar.
 	\item \textbf{Zweipunkt-Kreuzung:} Zwei zufällige Punkte \( k_1 \) und \( k_2 \)
+\index{Zweipunkt-Kreuzung}%
 	\((1 \leq k_1 < k_2 < n)\) werden ausgewählt und
 	der Genabschnitt zwischen diesen Punkten wird zwischen den Eltern 
 	getauscht. Die Nachkommen werden durch die Formeln
@@ -48,6 +50,8 @@ die folgenden:
 	\end{align*}
 	erzeugt.
 	\item \textbf{Uniforme Kreuzung:} Jedes Gen wird mit einer bestimmten
+\index{Kreuzung, uniform}%
+\index{uniforme Kreuzung}%
 	Wahrscheinlichkeit vom ersten oder zweiten Elternteil übernommen, was zu
 	einer zufälligeren Kombination führt. Für jedes Gen \( i \) \((1 \leq i \leq n)\)
 	wird eine zufällige Zahl \( r_i \) im Intervall [0, 1] gewählt. Wenn
@@ -77,10 +81,9 @@ die folgenden:
 %		}.
 \end{itemize}
 
-\subsection{Kreuzung auf das TSP angepasst
+\subsubsection{Kreuzung auf das TSP angepasst
 \label{buch:paper:varalg:subsection:crossover_tsp}}
-\rhead{Kreuzung TSP}
-Für das Travelling Salesman Problem muss der Algorithmus angepasst werden.
+Für das Travelling-Salesman-Problem muss der Algorithmus angepasst werden.
 Würde das System wie in der Abbildung \ref{fig:one_point_crossover} 
 übernommen werden, würde das Resultat unkorrekte Teile enthalten, was zu einem 
 String wie in der Abbildung \ref{fig:one_point_crossover_cities} führt.
