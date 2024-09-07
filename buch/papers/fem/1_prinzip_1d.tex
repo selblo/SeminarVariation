@@ -6,18 +6,18 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Prinzip 1D\label{fem:prinzip_1d}}
+\section{Prinzip in einer Dimension\label{fem:1d}}
 \kopfrechts{Prinzip 1D}
 
-Das Vorgehen zum Herleiten der Metode der Finiten Elemente kann in sechs Schritte unterteilt werden:
-\begin{itemize}
-    \item Bilden der Schwachen Form
+Das Vorgehen zum Lösen eines Problems mit der Methode der finiten Elemente kann in fünf Schritte unterteilt werden:
+\begin{enumerate}
+    \item Bilden der schwachen Form
     \item Diskretisieren
-    \item Aufstellen des linearen Gleichungssystems
-    \item Überführung in eine Matrix
+    \item Aufstellen der Matrix
     \item Codieren der Anfangsbedingungen
-    \item Lösen des Gleichungssystems bzw. invertieren der Matrix
-\end{itemize}
+    \item Lösen des Gleichungssystems bzw. Invertieren der Matrix
+\end{enumerate}
+% TODO: Fünf Schritte durch das Paper ziehen
 
 Um die einzelnen Schritte darzustellen, betrachten wir das Problem
 \begin{equation}
@@ -25,22 +25,22 @@ Um die einzelnen Schritte darzustellen, betrachten wir das Problem
     \label{fem:1d:poisson_gleichung},
 \end{equation}
 was der Poisson-Gleichung entspricht. 
-Diese findet in vielen Teilen der Physik Anwendung und ist gleichzeitig ein gutes, einfaches Beispiel einer mit der FEM lösbaren Differentialgleichung.
+Diese findet in vielen Teilen der Physik Anwendung und ist gleichzeitig ein gutes, einfaches Beispiel einer mit der FEM lösbaren Differenzialgleichung.
 
 
-\subsection{Bilden der Schwachen Form\label{fem:1d:schwache_form}}
-Um die Poisson-Gleichung in die Schwache Form zu bringen, wird über beide Seiten der Poisson-Gleichung \ref{fem:1d:poisson_gleichung} integriert.
-Zufor werden jedoch beide Seiten mit der Testfunktion $ v(x) $ multipliziert. % TODO: Testfunktion -> Variation
-Diese wird definiert als eine beliebige Funktion $ v: \mathbb{R} \rightarrow \mathbb{R} $.
+\subsection{Bilden der schwachen Form}
+Um das Problem in die schwache Form zu bringen, wird über beide Seiten der Poisson-Gleichung \ref{fem:1d:poisson_gleichung} integriert.
+Zuvor werden jedoch beide Seiten mit der Testfunktion $ v(x) $ multipliziert. % TODO: Testfunktion -> Variation
+Diese wird definiert als eine beliebige Funktion $ v \colon \mathbb{R} \rightarrow \mathbb{R} $.
 Die resultierende Gleichung
 \begin{equation}
-    \int(u''(x) \cdot v(x) \diff x) = \int(f(x) \cdot v(x) \diff x) \myforall v(x)
-    \label{fem:1d:schwache_form_equation}
+    \int(u''(x) \cdot v(x)) \diff x = \int(f(x) \cdot v(x)) \diff x \myforall v(x)
+    \label{fem:1d:schwache_form}
 \end{equation}
 sollte einem bekannt vorkommen: Sie entsteht auch beim Herleiten der ersten Variation.
-Im Kapitel \ref{buch:variation:fundamentallemma} zum Fundamentalemma wird bewiesen, dass die beiden Ausdrücke \ref{fem:1d:poisson_gleichung} und \ref{fem:1d:schwache_form} gleichwertig sind.
+Im Kapitel \ref{buch:variation:section:fundamentallemma} zum Fundamentallemma wird bewiesen, dass die beiden Ausdrücke \ref{fem:1d:poisson_gleichung} und \ref{fem:1d:schwache_form} gleichwertig sind.
 
-Durch partielles Integrieren der linken Seite kann die Ordnung der Differentialgleichung um eins verringert werden:
+Durch partielles Integrieren der linken Seite kann die Ordnung der Differenzialgleichung um eins verringert werden:
 \begin{align}
     \int f(x) \cdot v(x) \diff x &= \int u''(x) \cdot v(x) \diff x \\
                                  &= \left. u'(x) \cdot v(x) \right|_{x_1}^{x_2} - \int u'(x) \cdot v'(x) \diff x \\
@@ -51,50 +51,59 @@ wobei der Term
 \begin{equation}
     \left. u'(x) \cdot v(x) \right|_{x_1}^{x_2}
 \end{equation}
-Null ist, wenn die Testfunktionen die Bedingung
+Null ist, wenn die Testfunktionen die Randbedingung
 \begin{equation}
     v(x_1) = v(x_2) = 0
 \end{equation}
-erfüllen. % TODO: Hat das nicht implikationen für das Setzen von Randbedingungen?
+erfüllen. 
+
+TODO: Hat das nicht Implikationen für das Setzen von Randbedingungen?
 
 Der erhaltene Term wird als $-\Phi(u, v)$ abgekürzt.
-Dieser Weg kann, abhängig von der ursprünglichen Differentialgleichung, anders sein.
-Das häufigste Vorgehen dabei - das partielle Ableiten der rechten Seite - wurde jedoch hier gezeigt.
-Ziel ist es, die Ordnung der Differentialgleichung möglichst stark zu verkleinern, da so Ansätze kleiner Ordnung verwendet werden können.
+Dieser Weg kann, abhängig von der ursprünglichen Differenzialgleichung, anders sein.
+Das häufigste Vorgehen dabei --- das partielle Ableiten der rechten Seite --- wurde jedoch hier gezeigt.
+Ziel ist es, die Ordnung der Differenzialgleichung möglichst stark zu verkleinern, da so Ansätze kleinerer Ordnung verwendet werden können.
 Dies spart Rechenleistung.
 
 
 \subsection{Diskretisieren\label{fem:1d:diskretisieren}}
-Um das Problem besser lösbar zu machen, werden die kontinuierlichen Funktionen als Summe einzelner Funktionen mit schmalem Träger 
-\begin{equation}
-    a(x) = \left\{ \begin{array} {ll}
-        a(x) = 1            & \mbox{für} x = 0 \\
-        a(x) \in \mathbb{R} & \mbox{für} 0 < |x| < \Delta t \\
-        a(x) = 0            & \mbox{sonst} 
-    \end{array}\right.
-\end{equation}
-beschrieben:
-\begin{equation}
-    u(x) \approx \sum{u_n \cdot a_n(x)} \mbox{ und } v(x) \approx \sum{v_n \cdot a_n(x)}
-\end{equation}
-wobei 
-\begin{equation}
-    u_n = u(n \cdot \Delta x) \mbox{ und } v_n = v(n \cdot \Delta x)
-\end{equation}
-sowie 
-\begin{equation}
-    a_n(x) = a(x - n \cdot \Delta x).
-\end{equation}
+TODO: Bild zu den Formfunktionen und Approximation einer Funktion durch diese. 
 
-Dabei wird die ursprüngliche Funktion an den gleichmässig verteilten Punkten $x_n = n \cdot \Delta x$ gesampelt. 
-Die Funktion könnte auch ungleichmässig abgetastet werden, was bei geschickter Wahl der Intervalllänge zu Effizienzverbesserungen führt.
-In diesem Paper werden, um die Erklärung möglichst einfach zu halten, nur gleichmässige Intervalle behandelt. 
+Ziel des Diskretisierens ist es, das Unendlichdimensionale Problem in ein endlich dimensionales umzuwandeln.
+Dazu werden die ursprünglichen Funktionen $u(x)$, $f(x)$ und $v(x)$ an $N$ verschiedenen Punkten $x_n$ abgetastet.
+Die resultierenden Knotenvariablen
+\begin{equation}
+    u_n = u(x_n) 
+    \text{,} \quad
+    f_n = f(x_n)
+    \quad \text{und} \quad
+    v_n = v(x_n)
+\end{equation}
+können dann mit einer Interpolationsfunktion mit schmalem Träger
+\begin{equation}
+    a_n(x) = \left\{ \begin{array}{ll}
+        1
+            & \text{für} \quad x = x_n \\
+        a(x) \in (0, 1) 
+            & \text{für} \quad x_{n-1} < x < x_n \quad \text{und} \quad x_n < x < x_{n+1} \\
+        0
+            & \text{sonst} 
+    \end{array} \right.
+\end{equation}
+multipliziert werden und zu einer durch $N$ Werte parametrisierten stetigen Funktion zusammengesetzt werden:
+\begin{equation}
+    u(x) \approx \sum_{n=0}^{N}{u_n \cdot a_n(x)} 
+    \text{,} \quad
+    f(x) \approx \sum_{n=0}^{N}{f_n \cdot a_n(x)} 
+    \quad \text{und} \quad
+    v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}.
+\end{equation}
 
 Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt werden:
 \begin{itemize}
     \item[\textbf{linear:}] 
         Einfach zu rechnen und zu verstehen, jedoch ist die erste Ableitung unstetig und die zweite Ableitung Null.
-        Dementsprechend kann dieser Ansatz nur verwedet werden, wenn keine zweiten Ableitungen im vereinfachten Problem vorkommen.
+        Dementsprechend kann dieser Ansatz nur verwendet werden, wenn keine zweiten Ableitungen im vereinfachten Problem vorkommen.
     \item[\textbf{quadratisch:}]
         Ist die Ordnung des Problems um eins zu hoch, um den linearen Ansatz zu verwenden, kann der quadratische Ansatz eingesetzt werden.
         Die ersten Ableitungen sind jedoch nach wie vor unstetig.
@@ -106,62 +115,78 @@ Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt we
 
 \subsubsection{Linearer Ansatz}
 \input{papers/fem/fig/linearer_ansatz.tex} % TODO: Widerholende Formfunktionen und Summe deren als Graphen zeigen
-Der lineare Ansatz verwendet die einfachen linearen Funktionen
+Der lineare Ansatz verwendet die in Abb. \ref{fem:1d:abb:linear} gezeigten linearen Funktionen
 \begin{equation}
-    a(x) = \left\{ \begin{array}{ll}
-        1+\frac{x}{\Delta x} & \mbox{für} -\Delta x < x < 0 \\
-        1-\frac{x}{\Delta x} & \mbox{für} 0 \leq x < \Delta x \\
-        0                    & \mbox{sonst}.
-    \end{array} \right.
+    a_n(x) = \left\{ \begin{array}{ll}
+        1+\frac{x-x_n}{x_n - x_{n-1}} 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        1-\frac{x-x_n}{x_{n+1} - x_n} 
+            & \text{für} \quad x_n \leq x < x_{n+1} \\
+        0
+            & \text{sonst}
+    \end{array} \right..
 \end{equation}
 
-Diese Funktionen können mit dem Ansatz 
+Die Formfunktionen des Linearen Ansatzes können mit dem Ansatz 
 \begin{equation}
-    a(x) = c_1x + c_0 % TODO: Zwei verschiedene a aber keine nicht verwendeten Buchstaben
+    a(x) = c_1x + c_0
 \end{equation}
 und den zu erfüllenden Bedingungen
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \mbox{und} & a(-\Delta x) = a(\Delta x) = 0
-    \end{array}
+        a(x_n) = 1 
+        \quad \text{und} \quad
+        a(x_{n-1}) = a(x_{n+1}) = 0
 \end{equation}
 hergeleitet werden.
 
 \subsubsection{Quadratischer Ansatz}
 \input{papers/fem/fig/quadratischer_ansatz.tex} % TODO: Widerholende Formfunktionen und Summe deren als Graphen zeigen
-Der quadratische Ansatz mit den Formfunktionen
+Für das Interpolieren mit dem quadratischen Ansatz muss das Vorgehen leicht angepasst werden. 
+Während beim linearen Ansatz für jeden Knoten dieselbe Formfunktion verwendet wurde, wird beim quadratischen Ansatz zwischen zwei Funktionen abgewechselt.
+
+Die in Abb. \ref{fem:1d:abb:quadratisch} gezeigten Formfunktionen lauten
 \begin{equation}
-    a(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \mbox{für} -2 \Delta x < x < 0 \\
-        TODO: Formel & \mbox{für} 0 \leq x < 2 \Delta x \\
-        0            & \mbox{sonst}
+    a_n(x) = \left\{ \begin{array}{ll}
+        \frac{1}{2(x_{n-1} - x_{n-2})^2} \cdot x^2 + \frac{3}{2 (x_{n-1} - x_{n-2})} \cdot x + 1  
+            & \text{für} \quad x_{n-2} < x < x_{n-1} \\
+        \frac{1}{2(x_{n} - x_{n-1})^2} \cdot x^2 + \frac{3}{2 (x_{n} - x_{n-1})} \cdot x + 1  
+            & \text{für} \quad x_{n-1} \leq x < x_n \\
+        \frac{1}{2(x_{n+1} - x_{n})^2} \cdot x^2 - \frac{3}{2 (x_{n+1} - x_{n})} \cdot x + 1
+            & \text{für} \quad x_n < x \leq x_{n+1} \\
+        \frac{1}{2(x_{n+2} - x_{n+1})^2} \cdot x^2 - \frac{3}{2 (x_{n+2} - x_{n+1})} \cdot x + 1
+            & \text{für} \quad x_{n+1} \leq x < x_{n+2} \\
+        0
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
 für gerade $n$ und
 \begin{equation}
-    a(x) = \left\{ \begin{array}{ll}
-        TODO: Formel & \mbox{für} -\Delta x < x < 0 \\
-        TODO: Formel & \mbox{für} 0 \leq x < \Delta x \\
-        0            & \mbox{sonst}
+    a_n(x) = \left\{ \begin{array}{ll}
+        -\frac{1}{(x_n - x_{n-1})^2} x^2 + 1 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        -\frac{1}{(x_{n+1} - x_n)^2} x^2 + 1 
+            & \text{für} \quad x_n \leq x < x_n+1 \\
+        0 
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
-für ungerade $n$ ist einiges aufwändiger als der lineare Ansatz.
+für ungerade $n$.
 
-Auch er kann mittels dem Ansatz 
+Diese Formfunktionen können mit dem Ansatz 
 \begin{equation}
-    a(x) = c_2x^2 + c_1x + c_0
+    a_n(x) = c_2x^2 + c_1x + c_0
 \end{equation}
 und den Bedingungen 
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \mbox{und} & a(-2 \Delta x) = a(-\Delta x) = a(\Delta x) = a(2 \Delta x) = 0
-    \end{array}
+        a_n(x_n) = 1 
+        \quad \text{und} \quad 
+        a_n(x_{n-2}) = a(x_{n-1}) = a(x_{n+1}) = a(x_{n+2}) = 0
 \end{equation}
 für gerade $n$ bzw.
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \mbox{und} & a(-\Delta x) = a(\Delta x) = 0
-    \end{array}
+        a_n(x_n) = 1 
+        \quad \text{und} \quad
+        a(x_{n-1}) = a(x_{n+1}) = 0
 \end{equation}
 für ungerade $n$ hergeleitet werden.
 
@@ -173,74 +198,88 @@ Dafür muss der Ansatz etwas erweitert werden:
     u(x) \approx \sum{u_n \cdot a_n(x)} \rightarrow u(x) \approx \sum{u_n \cdot a_n(x) + u'_n \cdot b_n(x)}.
 \end{equation}
 
-Die Formfunktionen
+Die Formfunktionen, dargestellt in Abb. \ref{fem:1d:abb:kubisch}, 
 \begin{equation}
-    a(x) = \left\{ \begin{array}{rcl}
-        TODO: Formel & \mbox{für} -\Delta x < x < 0 \\
-        TODO: Formel & \mbox{für} 0 \leq x < \Delta x \\
-        0            & \mbox{sonst}
+    a(x) = \left\{ \begin{array}{ll}
+        - \frac{2}{(x_n - x_{n-1})^3} \cdot x^3 + \frac{3}{(x_n - x_{n-1})^2} \cdot x^2 + 1 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        \frac{2}{(x_{n+1} - x_n)^3} \cdot x^3 + \frac{3}{(x_{n+1} - x_n)^2} \cdot x^2 + 1 
+            & \text{für} \quad x_n \leq x < x_{n+1} \\
+        0
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
 und
 \begin{equation}
-    b(x) = \left\{ \begin{array}{rcl}
-        TODO: Formel & \mbox{für} & -\Delta x < x < 0 \\
-        TODO: Formel & \mbox{für} & 0 \leq x < \Delta x \\
-        0            & \mbox{sonst}
+    b(x) = \left\{ \begin{array}{ll}
+        \frac{1}{(x_n - x_{n-1})^2} \cdot x^3 + \frac{2}{x_n - x_{n-1}} \cdot x^2 + x 
+            & \text{für} \quad x_{n-1} < x < x_n \\
+        \frac{1}{(x_{n+1} - x_n)^2} \cdot x^3 - \frac{2}{x_{n+1} - x_n} \cdot x^2 + x 
+            & \text{für} \quad x_n \leq x < x_{n+1} \\
+        0
+            & \text{sonst}
     \end{array} \right.
 \end{equation}
-können ebenfalls mit dem Ansatz
+können mit dem Ansatz
 \begin{equation}
-    a(x) = c_3x^3 + c_2x^2 + c_1x + c_0 \mbox{bzw.} b(x) = c_3x^3 + c_2x^2 + c_1x + c_0
+    a(x) = c_3x^3 + c_2x^2 + c_1x + c_0 
+    \quad \text{bzw.} \quad
+    b(x) = d_3x^3 + d_2x^2 + d_1x + d_0
 \end{equation}
 und den Bedingungen 
 \begin{equation}
-    \begin{array}{ccc}
-        a(0) = 1 & \mbox{und} & a(-\Delta x) = a(\Delta x) = 0
-    \end{array}
+        a(x_n) = 1 
+        \quad \text{und} \quad
+        a(x_{n-1}) = a(x_{n+1}) = 0 
+        \quad \text{sowie} \quad
+        a'(x_{n-1}) = a'(x_n) = a'(x_{n+1}) = 0
 \end{equation}
 und
 \begin{equation}
-    \begin{array}{ccc}
-        b(0) = 1 & \mbox{und} & b(-\Delta x) = b(\Delta x) = 0
-    \end{array}
+        b'(x_n) = 1 
+        \quad \text{und} \quad
+        b'(x_{n-1}) = b'(x_{n+1}) = 0 
+        \quad \text{sowie} \quad
+        b(x_{n-1}) = b(x_n) = b(x_{n+1}) = 0
 \end{equation}
 hergeleitet werden.
 
 
-\subsection{Lineares Gleichungssystem aufstellen\label{fem:1d:lineares_gleichungssystem}}
+\subsection{Erstellen der Matrix\label{fem:1d:matrix_erstellen}}
+Um das Problem als Matrixgleichung zu repräsentieren, muss zunächst die Differenzialgleichung in der schwachen Form in ein lineares Gleichungssystem überführt werden.
 Mit den Approximationen 
 \begin{align}
-    f(x) &\approx \sum_i f_i \cdot a_i(x) \\
     u(x) &\approx \sum_i u_i \cdot a_i(x) \\
+    f(x) &\approx \sum_i f_i \cdot a_i(x) \\
     v(x) &\approx \sum_i v_i \cdot a_i(x)
 \end{align}
-aus der Diskretisierung kann die Schwache Form der Differentialgleichung 
+aus der Diskretisierung kann die schwache Form der Differenzialgleichung 
 \begin{equation}
     - \int u'(x) \cdot v'(x) \diff x = \int f(x) \cdot v(x) \diff x
 \end{equation}
 als
 \begin{equation}
-    - \int \left(\sum_i u_j \cdot a'_j(x)\right) \left(\sum_j v_i \cdot a'_i(x)\right) \diff x 
-    = \int \left(\sum_i f_j \cdot a_j(x) \right) \left(\sum_j v_i \cdot a_i(x) \right) \diff x 
+    - \int \biggl(\sum_i u_j \cdot a'_j(x)\biggr) \biggl(\sum_j v_i \cdot a'_i(x)\biggr) \diff x 
+    = \int \biggl(\sum_i f_j \cdot a_j(x) \biggr) \biggl(\sum_j v_i \cdot a_i(x) \biggr) \diff x 
     \myforall v_i
 \end{equation}
 geschrieben werden.
-Die Bedingung $\forall v_i$ ist auch erfüllt, wenn die Summe über i sowie die multiplikation mit dem beliebigen Faktor $v_i$ weggelassen wird und die resultierende Gleichung für alle $i$ erfüllt sein muss: % TODO: Proof this... Or argue better
+Diese Gleichung kann zu
 \begin{equation}
     - \int \sum_j u_j \cdot a'_j \cdot a'_i(x) \diff x = \int \sum_j f_j \cdot a_j(x) \cdot a_i(x) \diff x \myforall i
 \end{equation}
-
-Dies ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
+vereinfacht werden.
+Dabei wird die Menge der Testfunktionen reduziert.
+Anstelle, dass alle Testfunktionen mit beliebig breitem Träger berücksichtigt werden, werden nur die $N$ verschiedenen Testfunktionen mit schmalst möglichem Träger verwendet.
+Da alle anderen Testfunktionen aus diesen \"zusammengebaut\" werden können, ist die Gleichung auch für diese erfüllt.
+Diese Vereinfachung ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
 \begin{equation}
     - \sum_j u_j \int a'_j \cdot a'_i(x) \diff x = \sum_j f_j \int a_j(x) \cdot a_i(x) \diff x \myforall i \label{papers:fem:prinzip1d:finale_gleichung}
 \end{equation}
 zu schreiben.
 Übrig bleibt also, da die Integrale ausgewertet werden können, ein lineares Gleichungssystem mit $N$ Unbekannten $u_j$ und $N$ Gleichungen (eine pro $i$). 
 
-
-\subsection{Überführung in eine Matrix\label{fem:1d:final_eq}}
-Das im vorherigen Schritt erhaltene Gleichungssystem lässt sich sehr gut als Matrizen, bei denen die Zeilen über $i$ und die Spalten über $j$ iterieren, darstellen:
+Das erhaltene Gleichungssystem lässt sich nun sehr gut als Matrizen, bei denen die Zeilen über $i$ und die Spalten über $j$ iterieren, darstellen:
 \begin{multline}
     \left(
         \begin{matrix}
@@ -283,12 +322,14 @@ Auch gängig ist das Zusammenfassen von $\mathbf{M}\vec{f}$ zu $\vec{b}$, was zu
 \end{equation}
 führt.
 
-Diese Matrizen werden aufgrund des schmalen Trägers der Funktionen $a_n(x)$ (sowie $b_n()$ beim kubischen Ansatz) sehr schwach besetzt sein, da viele der Integralen
+Diese Matrizen werden aufgrund des schmalen Trägers der Funktionen $a_n(x)$ (sowie $b_n(x)$ beim kubischen Ansatz) sehr schwach besetzt sein, da viele der Integralen
 \begin{equation}
-    \int a_i(x) \cdot a_j \diff x \mbox{ bzw. } \int a'_i(x) \cdot a'_j \diff x 
+    \int a_i(x) \cdot a_j \diff x \quad 
+    \text{ bzw. } 
+    \quad \int a'_i(x) \cdot a'_j \diff x 
 \end{equation}
 Null sein werden.
-Von Null verschieden sind nur die Einträge, deren zugehörige Datenpunkte nebeneinander liegen.
+Von null verschieden sind nur die Einträge, deren zugehörige Datenpunkte nebeneinander liegen.
 Zudem sind sie symmetrisch und positiv definit, da es keine Rolle spielt in welcher Reihenfolge man die Testfunktionen multipliziert.
 
 \subsubsection{Kubischer Ansatz}
@@ -296,25 +337,64 @@ Auch hier verlangt der kubische Ansatz mit seinen zwei Funktionen pro Datenpunkt
 \begin{itemize}
     \item Die Vektoren $\vec{b}$ und $\vec{f}$ werden für die gleiche Menge Datenpunkte doppelt so viele Elemente enthalten.
           Dies aus dem Grund, dass für jeden Wert $u_i$ ein zweiter Wert $u'_i$ dazukommt.
-    \item Die Matrix $\mathbf{L}$ wird zwangsweise doppelt so viele Zeilen und Spalten enthalten müssen, um mit den neuen Werten rechnen zu können. % TODO: Diese Begrüngung ist noch nicht ganz zufriedenstellend.
+    \item Folglich wird die Matrix $\mathbf{L}$ doppelt so viele Zeilen und Spalten enthalten. 
 \end{itemize}
 
 
-\subsection{Codieren der Anfangsbedingungen}
-TODO: Erklären, wie Anfangsbedingungen codiert werden können
+\subsection{Codieren der Anfangsbedingungen\label{fem:1d:anfangsbedingungen}}
+TODO: Überarbeiten, ggf. verständlicher machen.
+
+Wir betrachten das Gleichungssystem in der Form $\mathbf{L}\vec{u} + \vec{b} = 0$. 
+Die Zeilen und Spalten der Matrix $\mathbf{L}$ codieren dabei die Beziehungen zwischen den einzelnen Elementen.
+Der $k$-ten Zeile kann zum Beispiel entnommen werden, welche anderen Elemente das $k$-te Element berühren. 
+Sollte nun also $u_k$ gegeben sein, so wird der $k$-te Wert der $k$-ten Zeile eins gesetzt, während die übrigen Elemente der Zeile alle null gesetzt werden.
+Die $k$-te Zeile stellt folglich die Gleichung 
+\begin{equation}
+    1 \cdot u_n + b_n = 0
+\end{equation}
+dar. 
+Es kann nun also durch Setzen von $b_n = -u_n$ die Anfangsbedingung codiert werden.
+
+Nun ist aber $\mathbf{L}$ nicht mehr symmetrisch, was Effizienzeinbussen beim Invertieren dieser zur Folge hätte.
+Das nächste Ziel ist also, auch die $k$-te Spalte so weit zu bringen, dass nur das $k$-te Element ungleich null ist.
+Um dies zu erreichen, wird vor dem Nullsetzen der Spalte zu jedem Element von $\vec{b}$ ein Korrekturterm addiert.
+Der zu $b_k$ zu addierende Term berechnet sich als
+\begin{equation}
+    l_{ik} \cdot u_k.
+\end{equation}
+Bei homogenen Anfangsbedingungen ist dieser Term offensichtlich null (da $u_k = 0$), was diese besonders einfach zu codieren macht.
+
+\subsubsection{Codieren von gegebenen Ableitungen}
+Da der lineare wie auch der quadratische Ansatz keinen direkten Weg bietet, die Ableitungen der Funktion $u(x)$ zu bestimmen, muss mit einem Trick Abhilfe geschafft werden: 
+Die Anfangsbedingung
+\begin{equation}
+    u'(0) = 0
+\end{equation}
+kann näherungsweise als 
+\begin{equation}
+    u_0 = u_1
+\end{equation}
+codiert werden. 
+
+Der kubische Ansatz hat dabei einen klaren Vorteil: 
+Der gegebene Wert der Ableitung kann direkt als 
+\begin{equation}
+    u'_n = u'(0)
+\end{equation}
+codiert werden.
 
 
-\subsection{Invertieren der Matrix\label{fem:1d:invertieren_matrix}}
-Zur Lösung der Poisson gleichung muss nun also nur noch die Matrix $\mathbf{L}$ invertiert werden.
-Das Resultat in Form des Spaltenvektors $\vec{u}$, enthaltend der Stützstellen der Lösungsfunktion, lässt sich dann als
+\subsection{Invertieren der Matrix\label{fem:1d:matrix_invertieren}}
+Zur Lösung der Poisson-Gleichung muss nun also "nur" noch die Matrix $\mathbf{L}$ invertiert werden.
+Das Resultat in Form des Spaltenvektors $\vec{u}$, enthaltend die Stützstellen der Lösungsfunktion, lässt sich dann als
 \begin{equation}
     \vec{u} = - \mathbf{L}^{-1}\mathbf{M}\vec{f} = - \mathbf{L}^{-1}\vec{b}
 \end{equation}
 berechnen.
 
-Zum Invertieren der Matrix gibt es optimierte Zerlegungsalgorytmen wie SuperLU, Choldmod oder Mumps, die die schwache Besetzung der Matrizen ausnützen, um diese effizient zu zerlegen.
+Zum Invertieren der Matrix gibt es optimierte Zerlegungsalgorithmen wie SuperLU, Choldmod oder Mumps, die die schwache Besetzung der Matrizen ausnützen, um diese effizient zu zerlegen.
 Nach dem Zerlegen ist das Invertieren stark vereinfacht.
 Weiter bieten sich iterative Vorgehen wie die Methode des konjugierten Gradienten oder GMRES an.
-Auch diese können aus der schwachen Besetzung der Matrix nutzen ziehen.
+Auch diese können aus der schwachen Besetzung der Matrix Nutzen ziehen.
 
-TODO: properly research and cite this. Research notes for now.
+TODO: Sauber recherchieren und referenzieren. Soweit nur Notizen.
