@@ -32,9 +32,9 @@ mit unendlicher Geschwindigkeit in alle Teile des Körpers ausbreitet.
 
 Koordinatentransformationen werden benutzt,
 um Koordinaten aus einem Bezugssystem in diejenigen eines anderen Bezugssystems umzurechnen.
-In der Physik dienen sie besipielsweise dazu,
+In der Physik dienen sie beispielsweise dazu,
 ein System oder einen Vorgang aus einer anderen Perspektive bzw.
-von einem anderen Refernzpunkt aus zu beschreiben.
+von einem anderen Referenzpunkt aus zu beschreiben.
 
 \subsubsection{Galilei-Transformation 
 \label{relativ:section:galilei-trafo}}
@@ -47,12 +47,19 @@ zu vergleichen:
     &\text{Translation in der Zeit: } && t \rightarrow t + b \\
     &\text{Translation im Raum: } && \vec{r} \rightarrow \vec{r} + \vec{a} \\
     &\text{Orthogonale Drehung: } && \vec{r} \rightarrow A \vec{r} \\
-    &\text{Transformation auf ein Bezugssystem mit Relativgeschwindigkeit: } && \vec{r} \rightarrow \vec{r} + \vec{v} \cdot t
+    &\text{Transformation auf ein Bezugssystem mit Relativgeschwindigkeit: } && \vec{r} \rightarrow \vec{r} + \vec{v} \cdot t .
 \end{aligned}
 \]
-
 Eine Kombination aus diesen Transformationen wird als Galilei-Transformation bezeichnet.
-\todo{Abbildung Galilei-Transformation}
+Ein einfaches Beispiel dafür ist in Abbildung~\ref{relativ:fig:galilei-trafo} zu finden.
+\begin{figure}
+    \centering
+    \includegraphics{papers/relativ/tikz/galilei_trafo.pdf}
+    \caption{Darstellung einer einfachen Galilei-Transformation in \(\mathbb{R}^2\)
+    vom Koordinatensystem \(K\) zum System \(K'\).
+    Sie besteht lediglich aus einer Translation um den Vektor \(\vec{r}\).
+    \label{relativ:fig:galilei-trafo}}
+\end{figure}
 
 \subsubsection{Lorentz-Transformation 
 \label{relativ:section:lorentz-trafo}}
@@ -60,18 +67,26 @@ Eine Kombination aus diesen Transformationen wird als Galilei-Transformation bez
 In der relativistischen Mechanik muss man sich hingegen der Lorentz-Transformation bedienen,
 welche eine Erweiterung der Galilei-Transformation darstellt
 und wesentlich kompliziertere Formeln annehmen kann.
-Besipielsweise ergeben sich die Transformation von einem
+Beispielsweise ergeben sich die Transformation von einem
 Bezugssystem \(K\) in ein anderes System \(K'\),
 welches sich entlang der \(x\)-Achse mit der Geschwindigkeit \(V\)
-relativ zu \(K\) bewegt, die folgenden Gleichungen
+relativ zu \(K\) bewegt (siehe Abbildung~\ref{relativ:fig:lorentz-trafo-koords}),
+die Gleichungen
 \begin{equation}
     x = \frac{x' + V t'}{\sqrt{1 - \frac{V^2}{c^2}}}, \quad
     y = y', \quad
     z = z', \quad
     t = \frac{t' + \frac{V}{c^2}x'}{\sqrt{1-\frac{V^2}{c^2}}}.
+    \label{relativ:eqn:lorentz-trafo-beisp}
 \end{equation}
-\todo{Abbildung Lorentz-Transformation}
-
+\begin{figure}
+    \centering
+    \includegraphics{papers/relativ/tikz/lorentz-trafo-koord.pdf}
+    \caption{Bezugssystem \(K\) und ein zweites Koordinatensystem \(K'\),
+    welches sich relativ zu \(K\) mit der konstanten Geschwindigkeit \(V\)
+    entlang der \(x\)-Achse bewegt.
+    \label{relativ:fig:lorentz-trafo-koords}}
+\end{figure}
 
 \subsection{Der Abstand 
 \label{relativ:section:abstand}}
@@ -80,14 +95,16 @@ Ebenfalls muss der Begriff des Abstands für die relativistische Mechanik umform
 In der klassischen Mechanik ist der euklidische Abstand
 \begin{equation}
     ds=\sqrt{dx^2 + dy^2 + dz^2}
+    \label{relativ:eqn:abstand-klass}
 \end{equation}
 für alle Bezugssysteme identisch.
 
 Analog dazu gibt es in der relativistischen Mechanik den erweiterten Abstand
 \begin{equation}
     ds = \sqrt{c^2dt^2 - dx^2 - dy^2 - dz^2},
+    \label{relativ:eqn:abstand-relativ}
 \end{equation}
-welcher abenfalls für verschiedene Bezugssysteme identisch ist.
+welcher ebenfalls für verschiedene Bezugssysteme identisch ist.
 
 
 \subsection{Die Eigenzeit 
@@ -104,16 +121,18 @@ Gemäss der Invarianz des Abstands gilt somit
     \underbrace{ds^2 = c^2 dt^2 - dx^2 - dy^2 - dz^2}_{\text{Unser Koordinatensystem}}
         = \underbrace{ds'^2 = c^2 dt'^2}_{\text{Koordinatensystem der Uhr}} .
 \end{equation*}
-Wird dieser Ausruck nach dem Differential der Zeit im System der Uhr aufgelöst,
+Wird dieser Ausdruck nach dem Differential der Zeit im System der Uhr aufgelöst,
 so folgt
 \begin{equation}
     dt' = \frac{ds}{c} = \frac{ds'}{c}
     = dt \sqrt{1 - \frac{dx^2+dy^2+dz^2}{c^2 dt^2}}
     = dt \sqrt{1 - \frac{v^2}{c^2}}.
+    \label{relativ:eqn:differential-eigenzeit}
 \end{equation}
-Dieses Zeitdifferntial kann nun zur Zeitdifferenz
+Dieses Zeitdifferential kann nun zur Zeitdifferenz
 \begin{equation}
     t_2' - t_1' = \int_{t_1}^{t_2} dt \sqrt{1 - \frac{v^2}{c^2}}
+    \label{relativ:eqn:eigenzeit}
 \end{equation}
 integriert werden.
 Das ist nun die Zeit, die von der bewegten Uhr gemessen wird.
@@ -122,6 +141,6 @@ welche sich mit einem Gegenstand mitbewegt, gemessen wird,
 nennt man \emph{Eigenzeit}.
 Durch den Ausdruck unter der Wurzel wird auch klar,
 dass die Zeitdifferenz \(t_2'- t_1'\) kleiner ist
-als \(t_2 - t_1\) im Refernzsystem.
+als \(t_2 - t_1\) im Referenzsystem.
 Daher kommt auch der Ausdruck
 ``bewegte Uhren gehen langsamer''.

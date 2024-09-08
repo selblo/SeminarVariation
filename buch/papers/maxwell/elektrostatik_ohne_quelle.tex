@@ -9,8 +9,9 @@
 % erste Maxwellgleichung ohne Quelle
 
 \section{Elektrostatik\label{maxwell:section:elekktrostatik}}
-\rhead{Elektrostatik}
+\kopfrechts{Elektrostatik}
 Die Elektrostatik ist ein Spezialfall der Elektrodynamik, bei dem statische, das heisst zeitlich nicht veränderliche Felder betrachtet werden.
+\index{Elektrostatik}%
 Dies setzt voraus, dass
 \begin{equation}
 	\frac{\partial f}{\partial t}
@@ -37,6 +38,8 @@ Dafür werden wir in den folgenden Abschnitten die nötigen Begriffe definieren 
 
 \subsubsection{Elektrisches Potentialfeld}
 Das elektrische Potentialfeld
+\index{elektrisches Potentialfeld}%
+\index{Potentialfeld!elektrisch}%
 \(
 \varphi:\mathbb{R}^3
 \rightarrow
@@ -76,6 +79,8 @@ wird in der Elektrostatik definiert als
 \end{equation}
 Diese Definition besagt, dass das elektrische Feld ein statisches Gradientenfeld ist.
 Dieses Feld kann man anhand der Kraftwirkung an sogenannten Probeladungen $q$ messen, da
+\index{Kraft}%
+\index{Probeladung}%
 \[
 \vec{E}
 =
@@ -95,6 +100,7 @@ Somit sind die Vektoren in Abbildung \ref{maxwell:section:E-Feld_punktladung} Kr
 \subsubsection{Energiedichte im elektrischen Feld}
 Das elektrische Feld beinhaltet eine Energie und somit auch eine Energiedichte.
 Diese Energiedichte ist definiert als
+\index{Energiedichte}%
 \begin{equation}
 w_{\text{e}}
 =
@@ -102,6 +108,7 @@ w_{\text{e}}
 \label{maxwell:section:definiton_energiedichte_elektrischesFeld}
 \end{equation}
 wobei $\varepsilon$ die Permittivität ist.
+\index{Permittivität}%
 Die Permittivität
 \(
 \varepsilon
@@ -120,7 +127,7 @@ des Vakuums in SI-Einheiten nennt man auch die elektrische Feldkonstante.
 
 \subsection{Laplace-Gleichung
 	\label{maxwell:section:elektrostatik_ohne_quelle}}
-Man stelle sich nun einen ladungsfreien, luftleeren, drei dimensionalen Raum $V\subset\mathbb{R}^3$
+Man stelle sich nun einen ladungsfreien, luftleeren, dreidimensionalen Raum $V\subset\mathbb{R}^3$
 vor, indem ein elektrisches Potentialfeld $\varphi(x,y,z)$ existiert.
 Für diesen Raum möchten wir mittels der Variationsrechnung eine partielle Differentialgleichung entwickeln, die beschreibt, wie sich das Potentialfeld und somit auch das elektrische Feld verhält. 
 
@@ -171,7 +178,7 @@ w_{\text{e}}
 \frac{1}{2}\,\varepsilon_0\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right).
 \label{maxwell:section:energiedichte}
 \end{align}
-Dies können wir in das zu minimerende Integral einsetzen und bekommen
+Dies können wir in das zu minimierende Integral einsetzen und bekommen
 \begin{equation}
 	W_{\text{e}}
 	=
@@ -189,7 +196,7 @@ ist.
 Somit haben wir unsere Lagrange-Funktion gefunden, die wir in einem nächsten Schritt in die Euler-Ostrogradski-Differentialgleichung einsetzen können.
 
 \subsubsection{Einsetzen in die Euler-Ostrogradski-Differentialgleichung}
-Nun gilt es, die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differentialgleichung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
+Nun gilt es, die in \eqref{maxwell:section:lagrangefunktion_quellenfrei} gefundene Gleichung in die Euler-Ostrogradski-Differential\-glei\-chung \eqref{buch:felder:ostrogradski:eqn:euler-ostrogradski} einzusetzen.
 Nach Einsetzen wird die Differentialgleichung zu
 \begin{align*}
 \frac{1}{2}\,\varepsilon_0\,\biggl(\underbrace{\frac{\partial}{\partial\varphi}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)}_{\displaystyle=0} &- \frac{\partial}{\partial x}\frac{\partial}{\partial \varphi_x}\left(\varphi_x^2 + \varphi_y^2 + \varphi_z^2\right)\\
@@ -215,6 +222,7 @@ Wenn man nun noch die letzten partiellen Ableitungen durchführt, resultiert
 %TODO:definiton des laplace operators suchen
 An dieser Gleichung sieht man, dass die Klammer mit den partiellen Ableitungen gleich null sein muss, da die Permittivität des Vakuums nicht null sein kann.
 Zusätzlich wird nun ersichtlich, dass der Klammerterm nach Definition \eqref{buch:fundamentallemma:definition:laplace-operator} mit dem Laplace-Operator angewendet auf das elektrische Potentialfeld $\varphi$ ersetzt werden kann.
+\index{Laplace-Operator}%
 Somit wird unsere Schlussdifferentialgleichung zu
 \begin{equation}
 	\Delta\varphi
@@ -252,6 +260,8 @@ Ein Potentialfeld, das die Laplace-Gleichung
 \]
 erfüllt, führt zu einem Gradientenfeld $\nabla\varphi$, das rotationsfrei und quellenfrei ist.
 Diese Gleichung findet nicht nur Anwendungen in der Elektrostatik, sondern auch in der stationären Fluiddynamik und der stationären Wärmeleitung.
+\index{Fluiddynamik}%
+\index{Wärmeleitung}%
 
 
 

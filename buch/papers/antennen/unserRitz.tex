@@ -24,6 +24,8 @@ Solch eine Funktion ist die Lösung der Euler-Lagrange Differentialgleichung
 \end{equation}
 Wenn diese Gleichung \eqref{antennen:el-DGL} 
 jedoch analytisch nicht lösbar ist, kommt das Verfahren nach Ritz ins Spiel.
+\index{Verfahren von Ritz}%
+\index{Ritz, Verfahren von}%
 
 \subsection{Approximationsfunktion nach Ritz\label{antennen:approxFunkt}}
 
@@ -47,7 +49,10 @@ y(x)=\sum_{k=1}^n a_k \psi_k(x)
 \end{equation}
 mit den Funktionen $\psi_k(x)$ und den Koeffizienten $a_k$, oder
 wie in der Welt des Verfahrens nach Ritz, den 
-\em Koordinatenfunktionen $\psi_k(x)$ \em und den \em Koordinaten \em $a_k$ definiert. 
+{\em Koordinatenfunktionen} $\psi_k(x)$ und den {\em Koordinaten}
+$a_k$ definiert. 
+\index{Koordinatenfunktionen}%
+\index{Koordinaten}%
 Im weiteren Verlauf behalten wir jedoch die intuitiveren, zuerst genannten Namen.
 
 \subsection{Mögliche Approximationsfunktionen\label{antennen:approxBsp}}
@@ -67,7 +72,10 @@ Mögliche ausgeschriebene Funktionen können so aussehen:
 		\text{Exponential-Entwicklung: } 
 		y(x)
 		&=
-		a_1 e^{\lambda x}+a_2 e^{-\lambda x}+\cdots+a_n e^{(-1)^n \lambda}
+		a_1 e^{\lambda x}+b_1 e^{-\lambda x}+\cdots+
+		a_n e^{\lambda nx}
+		+
+		b_n e^{-\lambda nx}
 	\end{aligned}
 \label{antennen:approxFunktBsp}
 \end{equation}

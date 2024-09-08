@@ -1,13 +1,19 @@
 \hyphenation{Minimal-eigen-schaften}
 \section{Lagrange-Formalismus}
+\kopfrechts{Lagrange-Formalismus}
+\index{Lagrange-Formalismus}%
 Das Prinzip der kleinsten Wirkung besagt, dass die Natur immer Trajektoren
 mit Minimaleigenschaften wählt.
+\index{Prinzip der kleinsten Wirkung}%
 Beispielsweise wählt das Licht durch jedes Medium den Weg mit der kürzesten Zeit, was zur Folge hat,
-dass das Licht gebrochen wird wenn es ein Medium verlässt und in ein anderes übergeht.
+dass das Licht gebrochen wird, wenn es ein Medium verlässt und in ein anderes übergeht.
 Dieses Phänomen wird auch im Brechungsgesetz von Snellius beschrieben
 (siehe Abschnitt \ref{buch:variation:problem:satz:snellius}).
+\index{Brechnungsgesetz}%
+\index{Snellius}%
 
 Die Wirkung \(S\) wird definiert als
+\index{Wirkung}%
 \begin{align*}
     S = \int_{t_0}^{t_1} L(t,q_i,\dot{q}_i) \: dt.
 \end{align*}
@@ -24,10 +30,12 @@ Die Lagrange-Funktion \(L\) ist definiert als
     \label{eq:lagrange} 
 \end{equation}
 Dies gilt aber nur für Systeme mit verallgemeinertem Potential und holonomen Zwangsbedingungen.
+\index{Zwangsbedingungen}%
+\index{holonom}%
 Holonome Zwangsbedingungen sind solche, die durch eine algebraische Gleichung
 ausgedrückt werden können.
 
-Um die Lagrange-Funktion anschliessend noch zu minimieren, muss sie in die
+Um das Funktional $S$ anschliessend zu minimieren, muss die Lagrange-Funktion in die
 Euler-Lagrange-Differentialgleichung
 \begin{equation*}
     \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_i} \right) 

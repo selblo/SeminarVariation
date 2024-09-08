@@ -7,13 +7,17 @@
 % !TEX encoding = UTF-8
 %
 \section{Magnetostatik\label{maxwell:magnetostatik}}
-\rhead{Magnetostatik}
+\kopfrechts{Magnetostatik}
 
 
 Wenn sich eine Ladung mit konstanter Geschwindigkeit bewegt, entsteht um sie herum ein rotationssymmetrisches Magnetfeld. Darüber hinaus wirken auch magnetische Kräfte auf die Ladung.
 Wenn sich viele Ladungen mit einer konstanten Geschwindigkeit durch einen Leiter bewegen, erzeugen diese einen konstanten Strom, welcher ein zeitunabhängiges magnetisches Feld zur Folge hat. Dieses wirkt konzentrisch um den Leiter, wie in Abbildung \ref{maxwell:flussdichte} ersichtlich ist. Ausserdem ist in der Abbildung ersichtlich, dass die Feldlinien einen geschlossenen Pfad bilden. Dies zeigt, dass das magnetische Feld keine Quellen aufweist, also quellenfrei ist, und dass es somit keine magnetischen Monopole gibt.
+\index{magnetisches Feld}%
+\index{Monopol}%
 
 In der Magnetostatik betrachten wir also stationäre magnetische Felder, die Ursache dafür sind Permanentmagnete oder wie bereits erwähnt Gleichströme bzw. Ladungen mit konstanter Geschwindigkeit.
+\index{Permanentmagnet}%
+\index{Magnetostatik}%
 Wir setzen also neu
 \[ 
 \frac{\partial q}{\partial t}
@@ -41,9 +45,10 @@ also das elektrische Potentialfeld im gesamten Raum als null angenommen.
 
 
 \subsubsection{Magnetisches Vektorpotential}
+\index{Vektorpotential}%
 
 Wie in der Elektrostatik, gibt es auch in der Magnetostatik ein Potential, mit welchem energetische Zustände berechnet und ausgedrückt werden können. Im Unterschied ist jedoch das magnetische Potential ebenfalls eine vektorielle Grösse, also auch ein Vektorfeld. Das magnetische Vektorpotential zeigt jeweils in die selbe Richtung wie der Geschwindigkeitsvektor der bewegten Ladung.
-Durch das magnetische Vektorpotential, kann die magnetische Flussdichte als 
+Durch das magnetische Vektorpotential kann die magnetische Flussdichte als 
 \begin{equation}
 	\operatorname{rot}\vec{A}=\nabla \times \vec{A}
 	=
@@ -81,7 +86,7 @@ beschrieben werden, wobei wir dies für später bereits konkret ausrechnen wolle
 \end{equation}
 Im Gegensatz zum elektrischen Feld, ist das magnetische Feld also kein Gradientenfeld seines Potentials, sondern ein Rotationsfeld.
 
-Analog zur Elektrostatik, lässt sich mit dem magnetischen Vektorpotential die potentielle Energie der Wirkgrösse berechnen. Die Wirkgrösse ist jetzt allerdings keine ruhende Ladung $q$ mehr, sondern eine Ladung $q$ mit einer Geschwindigkeit $\vec{v}$, also eine bewegte Ladung. Explizit lässt sich die potentielle Energie als 
+Analog zur Elektrostatik lässt sich mit dem magnetischen Vektorpotential die potentielle Energie der Wirkgrösse berechnen. Die Wirkgrösse ist jetzt allerdings keine ruhende Ladung $q$ mehr, sondern eine Ladung $q$ mit einer Geschwindigkeit $\vec{v}$, also eine bewegte Ladung. Explizit lässt sich die potentielle Energie als 
 \[ W_{\text{p}} =  q\vec{v}\cdot\vec{A}\]
 berechnen. Also das Skalarprodukt der Wirkgrösse und dem Potential des wirkenden Feldes an jenem Punkt im Raum.
 
@@ -120,6 +125,7 @@ Da unser Ziel jedoch ist, das Integral der Gesamtenergie zu minimieren, müssen 
 
 Dafür betrachten wir erneut nur ein kleines, ein infinitesimales Stück der Ladung also $dq\,\vec{v}$ und können mithilfe von $dq = \varrho\,dV$, wobei $\varrho$ die Ladungsdichte ist, dieses kleine Stück der Ladung sofort zu $\vec{v}\varrho\,dV$ umschreiben.
 Wenn wir uns jetzt überlegen, dass sich eine Ladungsdichte mit einer Geschwindigkeit $\vec{v}$ bewegt, können wir auch sagen, dass dies äquivalent zu einer Stromdichte $\vec{\jmath}=\varrho\vec{v}$ ist. 
+\index{Stromdichte}%
 Die kleinen bzw. infinitesimalen Stücke der Wirkgrösse formen wir also zu \[\vec{\jmath}\,dV = \varrho\vec{v}\,dV\]
 um und erhalten mit einer Integration über den ganzen Raum $V$
 \begin{equation}
@@ -140,29 +146,19 @@ W_{\text{p}} - W_{\text{m}}
 \iiint_V \vec{A}\cdot\vec{\jmath}
 - \frac{1}{2\mu_0}\left(\nabla\times\vec{A}\right)\cdot\left(\nabla\times\vec{A}\right)\, dV \\
 &=
-\iiint_V \left( A_1j_1 + A_2j_2 + A_3j_3\right) - 
- \frac{1}{2\mu_0}\biggl( 
+\iiint_V \left( A_1j_1 + A_2j_2 + A_3j_3\right) 
+\\
+&\qquad\qquad
+- \frac{1}{2\mu_0}\bigg( 
  	\biggl( \frac{\partial A_3}{\partial y} -\frac{\partial A_2}{\partial z}\biggr)^2 
  + \biggl( \frac{\partial A_1}{\partial z} -\frac{\partial A_3}{\partial x}\biggr)^2
  + \biggl(\frac{\partial A_2}{\partial x} -\frac{\partial A_1}{\partial y} \biggr)^2   
- \biggr) \,dV
+ \bigg) \,dV
 \end{align*}
 zusammenfassen.
 
-In dieser Gleichung wird sofort das zu minimierende Integral ersichtlich und die Lagrange-Funktion kann als 
-
-	%\begin{align}
-	%\label{maxwell:magnetostatikLagrange}
-	%L\left(x,y,z, \vec{A}, \vec{A}_x. \vec{A}_y, \vec{A}_z\right)
-	%=&\left( A_1j_1 + A_2j_2 + A_3j_3\right) \\ \nonumber
-	% &- \frac{1}{2\mu_0}\left( 
-	%\left( \frac{\partial A_3}{\partial y} -\frac{\partial A_2}{\partial %z}\right)^2 
-	%+ \left( \frac{\partial A_1}{\partial z} -\frac{\partial A_3}{\partial x}\right)^2
-	%+ \left(\frac{\partial A_2}{\partial x} -\frac{\partial A_1}{\partial y} \right)^2   
-	%\right)	
-	%\end{align}
-	
-	\begin{align}
+In dieser Gleichung wird sofort das zu minimierende Integral ersichtlich und die La\-gran\-ge-Funktion kann als 
+\begin{align}
 	\label{maxwell:magnetostatikLagrange}
 	L\left(x,y,z, \vec{A}, \vec{A}_x. \vec{A}_y, \vec{A}_z\right)
 	=&\left( A_1j_1 + A_2j_2 + A_3j_3\right) \\ \nonumber
@@ -171,7 +167,7 @@ In dieser Gleichung wird sofort das zu minimierende Integral ersichtlich und die
 	+ (A_{1,z} -A_{3,x})^2
 	+ (A_{2,x} -A_{1,y})^2   
 	\bigr)
-	\end{align}
+\end{align}
 abgelesen und definiert werden. 
 Hierbei wollen wir darauf hinweisen, dass die Lagrange-Funktion in diesem Fall von einem Vektor, dem magnetischen Vektorpotential $\vec{A}$ abhängig ist. 
 Das bedeutet, dass jede Komponente des Vektorpotentials einzeln variiert werden kann, was später die Ursache für mehrere Ausführungen der Euler-Ostrogradski-Differentialgleichung sein wird.
@@ -266,6 +262,7 @@ Dank der kompakten vektoriellen Schreibweise, können wir also unser Ergebnis de
 \nabla \times \vec{B}
  \]
 zusammenfassen. Hierbei resultiert das ampèresche Gesetz.
+\index{ampersches Gesetz@ampèrsches Gesetz}%
 
 \subsubsection{Interpretation des Resultates}
 

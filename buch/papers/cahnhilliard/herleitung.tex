@@ -8,13 +8,13 @@
 % !TeX spellcheck = de_CH
 %
 \section{Herleitung der Cahn-Hilliard-Gleichung\label{cahnhilliard:section:herleitung}}
-\rhead{Herleitung der Cahn-Hilliard-Gleichung}
-Mit \eqref{cahnhilliard:energy} haben wir nun einen Ausdruck auf den wir ein Variationsprinzip anwenden können.
+\kopfrechts{Herleitung der Cahn-Hilliard-Gleichung}
+Mit \eqref{cahnhilliard:energy} haben wir nun einen Ausdruck, auf den wir ein Variationsprinzip anwenden können.
 In den folgenden Abschnitten werden wir das Variationsproblem aufstellen und
 das Resultat an die Kontinuitätsgleichung koppeln.
 Daraus werden wir die Cahn-Hilliard-Gleichung erhalten.
 
-\subsection{Anwenden von Euler-Ostrogradski-Gleichung}
+\subsection{Anwenden der Euler-Ostrogradski-Gleichung}
 Bevor wir die Euler-Ostrogradski-Gleichung anwenden,
 entfernen wir den Skalierungsfaktor $N_V$ aus \eqref{cahnhilliard:energy}.
 Wir nehmen zudem an,
@@ -30,7 +30,7 @@ I(c)
 \nonumber
 \\
 &=
-\int_\Omega F(c) + \frac{\epsilon^2}{2} |\nabla c|^2 \di{x}.
+\int_\Omega F(c) + \frac{\varepsilon^2}{2} |\nabla c|^2 \di{x}.
 \end{align}
 Berechnen wir nun die Ableitungen des Funktionals nach den Feldvariablen erhalten wir
 \begin{align*}
@@ -40,15 +40,15 @@ Berechnen wir nun die Ableitungen des Funktionals nach den Feldvariablen erhalte
 \\
 \pderiv{I}{(\nabla c)}
 &=
-% \pderiv{}{(\nabla c)} \frac{\epsilon^2}{2} |\nabla c|^2
+% \pderiv{}{(\nabla c)} \frac{\varepsilon^2}{2} |\nabla c|^2
 % &=
-\epsilon^2 \sum_{i=1}^3 \pderiv{c}{x_i}
+\varepsilon^2 \sum_{i=1}^3 \pderiv{c}{x_i}
 \\
 \pderiv{}{x_i}\pderiv{I}{(\nabla c)}
 &=
-\epsilon^2 \sum_{i=1}^3 \pderiv[2]{c}{x_i}
+\varepsilon^2 \sum_{i=1}^3 \pderiv[2]{c}{x_i}
 =
-\epsilon^2 \Delta c
+\varepsilon^2 \Delta c
 % \pderiv{}{(\nabla c)} \left[
 % \sum_{i=1}^3 \left( \pderiv{I}{c_i} \right)
 % \right]
@@ -61,13 +61,15 @@ Somit können wir nun die Euler-Ostrogradski-Gleichung anwenden:
 \begin{align*}
 \frac{\delta I}{\delta c}
 &=
-\deriv{F}{c} -  \epsilon^2 \Delta c
+\deriv{F}{c} -  \varepsilon^2 \Delta c
 \equiv
 \mu
 .
 \end{align*}
 Der erhaltene Ausdruck $\mu$ wird in der Literatur häufig als
 \emph{chemisches Potential} bezeichnet.
+\index{chemisches Potential}%
+\index{Potential!chemisch}%
 Im Gleichgewichtszustand gilt $\mu = 0$.
 Wir sind jedoch insbesondere daran interessiert,
 wie sich unser Gemisch über die Zeit verhält und entmischt.
@@ -122,6 +124,7 @@ Daher vermuten wir:
 .
 \end{align*}
 In der Literatur wird $M$ als die Mobilitätsfunktion bezeichnet,
+\index{Mobilitätsfunktion}%
 die häufig als konstant angenommen wird.
 Der negative Vorzeichen in der Flussgleichung impliziert,
 dass die Bewegung der Teilchen in Richtung des abnehmenden chemischen Potentials erfolgt,
@@ -150,19 +153,19 @@ erhalten wir
 \deriv{}{t} I
 &=
 \int_\Omega \deriv{F}{c} \pderiv{c}{t}
-+ \epsilon^2 \nabla c \cdot \nabla \pderiv{c}{t} \di{x}
++ \varepsilon^2 \nabla c \cdot \nabla \pderiv{c}{t} \di{x}
 .
 \end{align*}
 Mit diesem Ausdruck lässt sich jedoch noch keine Aussage treffen,
 ob die Bedingung der Energieminimierung erfüllt wird.
-Um den Ausdruck weiter zu vereinfach integrieren wir den 2. Term partiell
+Um den Ausdruck weiter zu vereinfach integrieren wir den zweiten Term partiell
 und wenden noch einige Umformungen an.
 Dann resultiert:
 \begin{align*}
 \deriv{}{t} I
 &=
-\int_\Omega \deriv{F}{c} \pderiv{c}{t} - \epsilon^2 \Delta c \pderiv{c}{t} \di{x}
-+ \int_{\partial\Omega} \epsilon^2 \pderiv{c}{t} \underbrace{\nabla c\cdot n}_{=0} \di{s}
+\int_\Omega \deriv{F}{c} \pderiv{c}{t} - \varepsilon^2 \Delta c \pderiv{c}{t} \di{x}
++ \int_{\partial\Omega} \varepsilon^2 \pderiv{c}{t} \underbrace{\nabla c\cdot n}_{\displaystyle =0} \di{s}
 \\
 &=
 \int_\Omega \mu \pderiv{c}{t} \di{x}
@@ -204,7 +207,7 @@ x &\in \Omega
 \\
 \mu
 &=
-\deriv{F}{c} -  \epsilon^2 \Delta c
+\deriv{F}{c} -  \varepsilon^2 \Delta c
 ,&
 x &\in \Omega
 \\

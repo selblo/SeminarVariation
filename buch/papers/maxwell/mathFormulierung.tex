@@ -7,32 +7,43 @@
 % !TEX encoding = UTF-8
 %
 \section{Felder\label{maxwell:mathFormulierung}}
-\rhead{Felder}
+\kopfrechts{Felder}
 
 Da sowohl das elektrische Feld $\vec{E}$ wie auch das magnetische Feld bzw. die magnetische Flussdichte $\vec{B}$ als Vektorfeld beschrieben werden, soll hier der Begriff des Feldes erläutert und grafisch aufgezeigt werden.
+\index{magnetische Flussdichte}%
 
 \subsection{Skalarfeld\label{maxwell:skalarfeld}}
 
 Ein Skalarfeld ist eine Funktion der Form
-\( f:\mathbb{R}^n \rightarrow \mathbb{R}, \) 
+\( f\colon \mathbb{R}^n \rightarrow \mathbb{R}, \) 
+\index{Skalarfeld}%
 die jedem Punkt im Raum ein Skalar zuordnet.
 Alltägliche Beispiele für Skalarfelder sind Temperaturverteilungen, Ladungsdichten oder Potentiale. In Abbildung \ref{maxwell:skalarGrad} ist ein Skalarfeld abgebildet.
-
+\index{Temperaturverteilung}%
+\index{Ladungsdichte}%
+\index{Potential}%
 
 %Zu den wichtigsten Operationen eines Skalarfeldes gehört der Gradient, welcher dem Skalar- ein Vektorfeld zuordnet.
 %Sei $\phi$ ein Skalarfeld, dann ist $\nabla\phi$ ein Vektorfeld, dargestellt in \ref{maxwell:skalarGrad}.
 
 \begin{figure}
 	\centering
-	\subfigure{\includegraphics[width=0.50\textwidth]{papers/maxwell/skalar}}
-	\subfigure{\includegraphics[width=0.45\textwidth]{papers/maxwell/gradient}}
+	\begin{subfigure}{0.50\textwidth}
+	%\subfigure{\includegraphics[width=0.50\textwidth]{papers/maxwell/skalar}}
+	\includegraphics[width=\textwidth]{papers/maxwell/skalar}
+	\end{subfigure}
+	%\subfigure{\includegraphics[width=0.45\textwidth]{papers/maxwell/gradient}}
+	\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=\textwidth]{papers/maxwell/gradient}
+	\end{subfigure}
 	\caption{Skalar- und Vektorfeld}
 	\label{maxwell:skalarGrad}
 \end{figure}
 
 \subsection{Vektorfeld\label{maxwell:vektorfeld}}
 
-Ein Vektorfeld ist eine Funktion der Form \( f: \mathbb{R}^n \rightarrow \mathbb{R}^m, \) welche jedem Punkt im Raum einen Vektor zuweist. 
+Ein Vektorfeld ist eine Funktion der Form \( f\colon \mathbb{R}^n \rightarrow \mathbb{R}^m, \) welche jedem Punkt im Raum einen Vektor zuweist. 
+\index{Vektorfeld}%
 Die Richtung dieses Vektors gibt hierbei an, in welche Richtung der Fluss des Feldes an diesem Punkt geht, während der Betrag die Intensität repräsentiert.
 
 
@@ -43,7 +54,7 @@ In Abbildung \ref{maxwell:skalarGrad} ist ein Vektorfeld abgebildet.
 \subsection{Operationen}
 
 \subsubsection{Gradient}
-
+\index{Gradient}%
 Der Gradient einer Funktion $f:\mathbb{R}^3 \rightarrow \mathbb{R}$ ist als 
 \[
 \renewcommand{\arraystretch}{1.9} 
@@ -60,6 +71,7 @@ Die Richtung der Vektoren dieses neuen Vektorfeldes zeigen immer in die Richtung
 %Weiter unten wird ersichtlich, dass auch das elektrische Feld ein Gradientenfeld ist \[ \vec{E} = -\nabla\varphi, \] wobei $\varphi$ das elektrische Potential ist.
 
 \subsubsection{Divergenz}
+\index{Divergenz}%
 %TODO: Link auf Kapitel von Müller
 Die Divergenz eines Vektorfeldes $\vec{F}:\mathbb{R}^3 \rightarrow \mathbb{R}^3$ ist definiert als 
 \[ \operatorname{div}\vec{F} = \nabla\cdot\vec{F} 
@@ -70,6 +82,7 @@ Wenn die Divergenz negativ ist, liegt eine Senke vor, wenn sie positiv ist eine 
 Ein Vektorfeld wird als quellenfrei bezeichnet, wenn seine Divergenz gleich null ist.
 
 \subsubsection{Rotation}
+\index{Rotation}%
 %TODO: Link auf Kapitel von Müller
 Die Rotation eines Vektorfeldes $\vec{F}:\mathbb{R}^3 \rightarrow \mathbb{R}^3$ ist definiert als
 \[

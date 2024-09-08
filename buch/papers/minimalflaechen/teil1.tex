@@ -8,7 +8,7 @@
 %
 \section{Das Katenoid
 	\label{minimalflaechen:section:Das Katenoid}}
-\rhead{Das Katenoid}
+\kopfrechts{Das Katenoid}
 Da im Kapitel \ref{chapter:kettenlinie} bereits die Kettenlinie behandelt wurde, wird hier das Katenoid als Erweiterung der Erkenntnisse über die Kettenlinie näher erläutert. 
 
 \subsection{Katenoid und Kettenlinie
@@ -39,6 +39,7 @@ Für eine detaillierte Berechnung siehe Kapitel \ref{chapter:kettenlinie}.
 	\label{Das Katenoid:subsection:Katenoid als minimale Rotationsfläche}}
 Mit den folgenden Schritten werden wir überprüfen, ob die Funktion  \( y(x) = a \cdot \cosh \left( \frac{x}{a} \right) \) der Euler-Lagrange-DGL genügt und somit die Bedingung für Minimalflächen erfüllt ist.
 Zuerst brauchen wir das Flächenintegral der Rotationsfläche, die durch die Drehung einer Kurve um die $x$-Achse entsteht:
+\index{Oberflächenintegral der Rotationsfläche}%
 \begin{equation}
 	A = 2\pi \int_{a}^{b} y(x) \sqrt{1 + (y'(x))^2} \,dx.
 \end{equation}
@@ -46,7 +47,7 @@ Somit lautet die Lagrange-Funktion
 \begin{equation}
 	L(x, y, y') = y \sqrt{1 + (y')^2}.	
 \end{equation}
-Die Euler-Lagrange-DGL muss erfüllt sein: 
+Die Euler-Lagrange-Differentialgleichung muss erfüllt sein: 
 \begin{equation}
 	\frac{\partial L}{\partial y} - \frac{d}{dx}  \frac{\partial L}{\partial y'} = 0.
 \end{equation}
@@ -61,17 +62,23 @@ und
 \end{equation}
 Damit es sich um eine Minimalfläche handelt, muss die Gleichung
 \begin{equation}
-	\sqrt{1 + (y')^2} = \frac{d}{dx} \left( y \frac{y'}{\sqrt{1 + (y')^2}} \right)
+	\sqrt{1 + (y')^2} = \frac{d}{dx} \biggl( y \frac{y'}{\sqrt{1 + (y')^2}} \biggr)
 	\label{minimalflaechen:eqn:elgleichung}
 \end{equation}
 erfüllt sein.
 Wenn wir in der Gleichung \eqref{minimalflaechen:eqn:elgleichung}  die Funktion der Kettenlinie einsetzen, erhalten wir 
 \begin{equation}
-	\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 } = \frac{d}{dx} \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\left( a \cosh \left( \frac{x}{a} \right) \right)'}{\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 }},
+	\sqrt{1 + \biggl( \biggl( a \cosh \biggl( \frac{x}{a} \biggr) \biggr)' \biggr)^2 }
+=
+\frac{d}{dx} \biggl( a \cosh \biggl( \frac{x}{a} \biggr) \biggr)
+\cdot
+\frac{\left( a \cosh \left( \frac{x}{a} \right) \right)'}{\sqrt{1 + \left( \left( a \cosh \left( \frac{x}{a} \right) \right)' \right)^2 }},
 \end{equation}
 nach der Ableitung ergibt sich 
 \begin{equation}
-	\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} = \frac{d}{dx}  \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\sinh \left( \frac{x}{a} \right)}{\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)}}.
+\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)}
+=
+\frac{d}{dx}  \left( a \cosh \left( \frac{x}{a} \right) \right) \cdot \frac{\sinh \left( \frac{x}{a} \right)}{\sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)}}.
 \end{equation}
 Weil
 \begin{equation}
@@ -79,7 +86,9 @@ Weil
 \end{equation}
 ist, gilt 
 \begin{equation}
-	\cosh \left( \frac{x}{a} \right) = \frac{d}{dx} \left( \frac{a \cosh \left( \frac{x}{a} \right) \sinh \left( \frac{x}{a} \right)}{\cosh \left( \frac{x}{a} \right)} \right).
+\cosh \left( \frac{x}{a} \right)
+=
+\frac{d}{dx} \biggl( \frac{a \cosh \left( \frac{x}{a} \right) \sinh \left( \frac{x}{a} \right)}{\cosh \left( \frac{x}{a} \right)} \biggr).
 \end{equation}	
 Nach dem Kürzen und Ableiten erhalten wir 
 \begin{equation}
@@ -90,6 +99,7 @@ und somit ist unsere Bedingung erfüllt und es handelt sich tatsächlich um eine
 \subsection{Oberfläche des Katenoids
 	\label{Das Katenoid:subsection:Oberfläche des Katenoids}}
 Um die Oberfläche des Katenoids zu berechnen, setzen wir die Funktion der Kettenlinie im Flächenintegral ein und erhalten 
+\index{Oberfläche des Katenoids}%
 \begin{align}
 	A &= 2\pi \int_{c}^{d} a \cosh \left( \frac{x}{a} \right) \sqrt{1 + \sinh^2 \left( \frac{x}{a} \right)} \,dx \\
 	&= 2\pi \cdot a \int_{c}^{d} \cosh^2 \left( \frac{x}{a} \right) \,dx.
@@ -106,10 +116,10 @@ Durch Anwenden der Identität \(\cosh^2 (x) = \frac{1}{2} (\cosh (2x) + 1)\) kan
 \begin{align*}
 	A &= 2\pi \int_{-1}^{1} \frac{1}{2} (\cosh (2x) + 1) \, dx \\
 	&= \pi \int_{-1}^{1} (\cosh (2x) + 1) \,dx \\
-	&= \pi \left[ \frac{1}{2} \sinh (2x) + x \right]_{-1}^{1} \\
-	&= \pi \left( \left[ \frac{1}{2} \sinh (2) + 1 \right] - \left[ \frac{1}{2} \sinh (-2) - 1 \right] \right) \\
-	&= \pi \left( \frac{1}{2} \sinh (2) + 1 - \left( \frac{1}{2} \sinh (-2) - 1 \right) \right) \\
-	&= \pi \left( \sinh (2) + 2 \right)
+	&= \pi \biggl[ \frac{1}{2} \sinh (2x) + x \biggr]_{-1}^{1} \\
+	&= \pi \biggl( \biggl[ \frac{1}{2} \sinh (2) + 1 \biggr] - \biggl[ \frac{1}{2} \sinh (-2) - 1 \biggr] \biggr) \\
+	&= \pi \biggl( \frac{1}{2} \sinh (2) + 1 - \biggl( \frac{1}{2} \sinh (-2) - 1 \biggr) \biggr) \\
+	&= \pi \biggl( \sinh (2) + 2 \biggr)
 \end{align*}
 %
 vereinfacht werden. Das Endergebnis lautet somit
@@ -120,7 +130,10 @@ Diese Berechnung zeigt, wie die Fläche eines Katenoids analytisch bestimmt werd
 \end{beispiel}
 In vielen Fällen ist es jedoch praktischer, numerische Methoden zur Berechnung solcher Integrale zu verwenden, insbesondere wenn die Grenzen oder die Funktionen komplexer sind.
 Dies beinhaltet die Diskretisierung der Funktion und die Anwendung von Algorithmen zur approximativen Lösung des Integrals.
+\index{Diskretisierung}%
 In der Praxis werden Softwaretools wie MATLAB oder Mathematica verwendet, um solche Berechnungen durchzuführen.
+\index{Matlab}%
+\index{Mathematica}%
 Diese Tools bieten leistungsstarke Funktionen zur numerischen Integration und können komplexe Flächenberechnungen effizient und genau durchführen.
 
 Das Beispiel 17.1 kann man mit den folgenden Befehlen in MATLAB berechnen
@@ -153,6 +166,7 @@ und erhalten die Oberfläche des Katenoids, die in diesem Fall 17.6773 beträgt.
 \subsection{Unterschied zwischen Katenoid und Hyperboloid
 	\label{Das Katenoid:subsection:Unterschied zwischen Katenoid und Hyperboloid}}
 Das Katenoid (Abbildung \ref{fig:katenoid}) und das Hyperboloid (Abbildung \ref{fig:bild1}) sind beide Rotationsflächen, unterscheiden sich jedoch wesentlich in ihren geometrischen und physikalischen Eigenschaften.
+\index{Hyperboloid}%
 Das Hyperboloid entsteht durch die Rotation einer Hyperbel und das Katenoid durch die Rotation der Kettenlinie. 
 Das Katenoid ist eine Minimalfläche mit mittlerer Krümmung von null, während das Hyperboloid eine Fläche mit konstanter negativer Krümmung ist.
 Diese Unterschiede führen zu unterschiedlichen Anwendungen und strukturellen Eigenschaften.

@@ -9,8 +9,8 @@
 %
 
 \section{Spinodale Entmischung\label{cahnhilliard:section:spinodal}}
-\rhead{Spinodale Entmischung}
-
+\kopfrechts{Spinodale Entmischung}
+\index{spinodale Entmischung}%
 Nachdem wir die Cahn-Hilliard-Gleichung hergeleitet haben,
 möchten wir nun überprüfen,
 ob \eqref{cahnhilliard:cheq} tatsächlich das Verhalten von Essig und Öl widerspiegelt.
@@ -23,7 +23,7 @@ M
 &=
 1,
 &
-\epsilon
+\varepsilon
 &=
 0.01,
 &
@@ -43,6 +43,7 @@ X
 \end{align*}
 Dabei stellt $\mathcal{U}(-1,1)$ eine Gleichverteilung von $-1$ bis $1$ dar.
 Für $c(x,0)$ wurde absichtlich das aus Kochbüchern typische Verhältnis von
+\index{Kochbuch}%
 2 Teile Öl zu 1 Teil Essig gewählt.
 Wir nehmen ausserdem an, dass die Sauce initial sehr gut gemischt ist.
 Der Code für die Simulation ist unter \cite{cahnhilliard:repo} abgelegt.
@@ -59,10 +60,19 @@ bei der kleine Fluktuationen in der Konzentration zu einer Trennung der Phasen f
 \begin{figure}
 \centering
 \foreach \n [count=\xi] \i in {0,5,10,15,25,50,80,130,300,1500,70000}{
-\subfigure[$t = \i\,\tau$]{
-\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/ch_sim/\i.pdf}
-}}
-\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+%\subfigure[$t = \i\,\tau$]{
+%\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/ch_sim/\i.pdf}
+%}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{papers/cahnhilliard/presentation/images/ch_sim/\i.pdf}
+\caption{$t = \i\,\tau$}
+\end{subfigure}
+}
+%\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}
+\caption{Farbskala}
+\end{subfigure}
 \caption[Simulation der Cahn-Hilliard-Gleichung]{%
 Simulation der Cahn-Hilliard-Gleichung und Entwicklung von $c(x,t)$ über einen langen Zeitraum.}
 \label{cahnhilliard:fig:chsim}
@@ -93,7 +103,9 @@ F(c)
 Hierbei ist $\omega$ ein Parameter,
 der die Wechselwirkungsenergie zwischen den Komponenten beschreibt,
 $R$ die universelle Gaskonstante und
+\index{Gaskonstante}%
 $T$ die Temperatur.
+\index{Temperatur}%
 
 Ein wesentlicher Aspekt ist die unterschiedliche chemische Affinität
 der Moleküle zueinander.
@@ -101,7 +113,10 @@ Essig,
 der hauptsächlich aus Wasser besteht,
 und Öl haben sehr unterschiedliche molekulare Strukturen und Wechselwirkungen.
 Wasser ist ein polares Molekül und bildet starke Wasserstoffbrückenbindungen,
+\index{polar}%
+\index{Wasserstoffbrückenbindung}%
 während Öl aus unpolaren Kohlenwasserstoffmolekülen besteht,
+\index{Kohlenwasserstoff}%
 die keine solchen Bindungen eingehen.
 Diese unterschiedlichen Wechselwirkungen führen dazu,
 dass die Moleküle von Essig und Öl es vorziehen,
@@ -109,6 +124,7 @@ sich jeweils mit ihresgleichen zu umgeben,
 anstatt sich miteinander zu vermischen.
 
 \subsubsection{Kritische Temperatur}
+\index{Temperatur!kritisch}%
 Wenn wir die freie Energie $F(c)$ eines homogenen Gemisches analysieren,
 stellen wir fest,
 dass bei bestimmten Temperaturen die freie Energie eine Form annimmt,
@@ -132,7 +148,7 @@ bestimmt werden.
 \begin{figure}
 \centering
 \includegraphics[scale=0.8]{papers/cahnhilliard/presentation/images/energy.book.pdf}
-\caption{Temperaturabhängigkeit von $F(c)$}
+\caption{Temperaturabhängigkeit von $F(c)$.}
 \label{cahnhilliard:fig:fc}
 \end{figure}
 
@@ -158,10 +174,14 @@ kann eine Erhöhung der Temperatur helfen,
 die Mischung stabiler zu halten.
 Allerdings ist dies für kalt servierte Salate eher ungeeignet.
 \item \emph{Verwendung von Stabilisatoren:}
+\index{Stabilisator}%
+\index{Xanthan}%
+\index{Agar-Agar}%
 Stabilisatoren wie Xanthan oder Agar-Agar können der Mischung hinzugefügt werden,
 um die Viskosität zu erhöhen und die Bewegung der Tröpfchen zu verlangsamen,
 was die Phasentrennung erschwert.
 \item \emph{Emulgatoren hinzufügen:}
+\index{Emulgator}%
 Emulgatoren sind Moleküle,
 die sowohl hydrophile (wasserliebende)
 als auch lipophile (fettliebende) Eigenschaften besitzen.
@@ -171,8 +191,11 @@ Dadurch wird die Bildung kleiner,
 stabiler Tröpfchen erleichtert,
 was die Entmischung verhindert.
 Beispiele für Emulgatoren sind Lecithin (in Eigelb enthalten) oder Senf.
+\index{Lecithin}%
+\index{Senf}%
 \item \emph{Intensives Rühren:}
 Mechanisches Rühren oder Schütteln kann die Mischung homogen halten,
+\index{rühren}%
 indem es die Bildung von Phasengrenzen stört und die Tröpfchen klein hält.
 Je intensiver und länger gerührt wird,
 desto feiner und stabiler wird die Emulsion.
@@ -201,7 +224,7 @@ Gemäss \cite{cahnhilliard:deriv-advective} ergibt sich dann
 \\
 \mu
 &=
-\deriv{F}{c} -  \epsilon^2 \Delta c
+\deriv{F}{c} -  \varepsilon^2 \Delta c
 \\
 \nabla \cdot v
 &=
@@ -288,32 +311,66 @@ wie das Rühren, eine wesentliche Rolle bei der Herstellung von Emulsionen spiel
 
 \begin{figure}
 \centering
-\subfigure[Anfangsbedingung]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[Anfangsbedingung]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/initial.pdf}
+%\label{cahnhilliard:subfig:initial}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/initial.pdf}
+\caption{Anfangsbedingung
 \label{cahnhilliard:subfig:initial}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ sehr klein]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ sehr klein]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/very_weak.pdf}
+%\label{cahnhilliard:subfig:vweak}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/very_weak.pdf}
+\caption{$\alpha$ sehr klein
 \label{cahnhilliard:subfig:vweak}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ klein]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ klein]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/weak.pdf}
+%\label{cahnhilliard:subfig:weak}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/weak.pdf}
+\caption{$\alpha$ klein
 \label{cahnhilliard:subfig:weak}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ moderat]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ moderat]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/nearly.pdf}
+%\label{cahnhilliard:subfig:nearly}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/nearly.pdf}
+\caption{$\alpha$ moderat
 \label{cahnhilliard:subfig:nearly}}
+\end{subfigure}
 %
-\subfigure[$\alpha$ gross]{
-\includegraphics[width=0.3\textwidth]{%
+%\subfigure[$\alpha$ gross]{
+%\includegraphics[width=0.3\textwidth]{%
+%papers/cahnhilliard/presentation/images/ach_sim/strong.pdf}
+%\label{cahnhilliard:subfig:strong}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{%
 papers/cahnhilliard/presentation/images/ach_sim/strong.pdf}
+\caption{$\alpha$ gross
 \label{cahnhilliard:subfig:strong}}
+\end{subfigure}
 %
-\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+%\subfigure[Farbskala]{\includegraphics[width=0.3\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{papers/cahnhilliard/presentation/images/colorbar.book.pdf}
+\caption{Farbskala}
+\end{subfigure}
 \caption[Simulation der angepassten Cahn-Hilliard-Gleichung]{%
 Anfangsbedingung $c(x,0)$ und
 Simulationsresultate $c(x,1000\tau)$ von \eqref{cahnhilliard:acheq}

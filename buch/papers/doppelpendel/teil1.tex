@@ -1,4 +1,5 @@
 \section{Newtonsche Mechanik}
+\kopfrechts{Newtonsche Mechanik}%
 Um die Anwendung der Langrange-Mechanik zu verstehen, schauen wir uns zunächst
 die Herleitung des einfachen mathematischen Pendels mittels Newtonscher-Mechanik an.
 Im Fokus stehen dabei die Kräfte, die in einem System wirken.
@@ -30,33 +31,35 @@ Wir wissen, dass gemäss dem zweitem newtonschen Gesetz
 \end{align*}
 gilt. Wenden wir dies auf unser Problem an, erhalten wir
 \begin{align*}
-    F_t &= m l \ddot{\theta}.
+    F_t &= m l \ddot{\vartheta}.
 \end{align*}
 Nun betrachten wir das Ganze aus geometrischer Sicht und
 lesen aus Abbildung \ref{fig:pendulum1}
 \begin{align*}
-    F_t &= F_g \sin(\theta)
+    F_t &= F_g \sin(\vartheta)
     \shortintertext{ab. Umformuliert ergibt das}
-    F_t &= -m g \sin(\theta).
+    F_t &= -m g \sin(\vartheta).
     \shortintertext{Setzen wir alles gleich, dann erhalten wir}
-    m l \ddot{\theta} &= -m g \sin(\theta).
+    m l \ddot{\vartheta} &= -m g \sin(\vartheta).
 \end{align*}
 Aufgelöst nach der Beschleunigung resultiert daraus
 \begin{align}
         \label{eq:mathematisches_pendel}
-        \ddot{\theta} &= -\frac{g}{l} \sin(\theta).
+        \ddot{\vartheta} &= -\frac{g}{l} \sin(\vartheta).
 \end{align}
 Damit ist die Gleichung des mathematischen Pendels hergeleitet.
 
 \subsection{Vorteile der Lagrange-Methode}
-In diesem Fall könnten wir auch nach der Position \(\theta\) des Pendels auflösen,
+In diesem Fall könnten wir auch nach der Position \(\vartheta\) des Pendels auflösen,
 aber wir geben uns hiermit schon zufrieden.
 Wir stellen fest, dass wenn wenige Kräfte wirken und alle davon bekannt sind,
 dann lässt sich die Bewegungsgleichung gut mit der newtonschen Methode herleiten.
 Verwendet man diese Herangehensweise beim Doppelpendel, wie in Abbildung \ref{fig:pendulum},
 scheint das markant schwieriger, aufgrund der zusätzlichen Zwangskräfte durch die zweite Masse.
+\index{Zwangskraft}%
 Sicherlich ist es auf diese Weise möglich, doch mit der Lagrange-Mechanik setzt man mit der Energie an.
 Genau in Fällen wie diesen und noch komplexeren Systemen, wo sich die Krafteinwirkungen nicht einfach
 bestimmen lassen, stellt sich die Lagrange-Mechanik als hilfreicher heraus.
 Dies hat sich auch in der Praxis als nützlicher erwiesen, wie beispielsweise 
 in den Gebieten der Quantenmechanik.
+\index{Quantenmechanik}%
