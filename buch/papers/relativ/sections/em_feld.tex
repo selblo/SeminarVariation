@@ -22,26 +22,26 @@ die drei Raumkoordinaten und die drei zugehörigen Geschwindigkeitskomponenten.
 
 Das Wirkungsintegral für ein Elementarteilchen im elektromagnetischen Feld ist
 \begin{equation}
-    S = \int_a^b \left(-mc\,ds + \frac{e}{c} \mathbf{A}\,d\mathbf{r} - e\varphi\,dt\right).
+    S = \int_a^b \biggl(-mc\,ds + \frac{e}{c} \bm{A}\,d\bm{r} - e\varphi\,dt\biggr).
     \label{relativ:eqn:wirk-int-em-feld}
 \end{equation}
-Dabei ist \(\mathbf{A}\) das \emph{Vektorpotential des Feldes}\footnote{
+Dabei ist \(\bm{A}\) das \emph{Vektorpotential des Feldes}\footnote{
     Auch bekannt als \emph{magnetisches Vektorpotential}.}
 und \(\varphi\) das \emph{skalare Potential des Feldes}\footnote{
     Auch bekannt als \emph{elektrisches Potential}.}.
 In der relativistischen Raumzeit schreibt man diese zwei Grössen
-auch als Vierervektor \(A^i = (\varphi, \mathbf{A})\),
+auch als Vierervektor \(A^i = (\varphi, \bm{A})\),
 wobei \(\varphi\) zur Zeitkoordinate \(t\) gehört und
-\(\mathbf{A}\) zu den räumlichen Koordinaten \(x, y, z\).
+\(\bm{A}\) zu den räumlichen Koordinaten \(x, y, z\).
 Als Integral über die Zeit geschrieben ergibt sich das Wirkungsintegral als
 \begin{equation}
-    S = \int_{t_1}^{t_2} \biggl( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi \biggr) \, dt,
+    S = \int_{t_1}^{t_2} \biggl( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \bm{A} \bm{v} - e \varphi \biggr) \, dt,
     \label{relativ:eqn:wirk-int-em-feld-zeit}
 \end{equation}
-wobei \(\displaystyle \mathbf{v} = \frac{d\mathbf{r}}{dt}\) der Geschwindigkeitsvektor der drei räumlichen Dimensionen ist.
+wobei \(\displaystyle \bm{v} = \frac{d\bm{r}}{dt}\) der Geschwindigkeitsvektor der drei räumlichen Dimensionen ist.
 Der Integrand in \eqref{relativ:eqn:wirk-int-em-feld-zeit} ist gerade die Lagrange-Funktion
 \begin{equation}
-    L = -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \mathbf{A} \mathbf{v} - e \varphi
+    L = -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \bm{A} \bm{v} - e \varphi
     \label{relativ:eqn:lagrange-em-feld}
 \end{equation}
 
@@ -71,78 +71,82 @@ entspricht, einem Wert weitaus grösser als alle bekannten physikalischen Phäno
 Die Bewegungsgleichung ergibt sich aus der Variation des Wirkungsintegrals
 mit der Euler-Lagrange-Differentialgleichung
 \begin{equation}
-    \frac{d}{dt} \frac{\partial L}{\partial \mathbf{v}} - \frac{\partial L}{\partial \mathbf{r}} = 0,
-    \label{realtiv:eqn:euler-lagrange-em-feld}
+    \frac{d}{dt} \frac{\partial L}{\partial \bm{v}} - \frac{\partial L}{\partial \bm{r}} = 0,
+    \label{relativ:eqn:euler-lagrange-em-feld}
 \end{equation}
 wobei \(L\) in \eqref{relativ:eqn:lagrange-em-feld} gegeben ist.
-Die Ableitung nach dem Geschwindigkeitsvektor \(\mathbf{v}\) ergibt
+Die Ableitung nach dem Geschwindigkeitsvektor \(\bm{v}\) ergibt
 \begin{equation}
-    \frac{\partial L}{\partial \mathbf{v}} =
-    mc^2 \frac{-\frac{2}{c^2}\mathbf{v}}{-2\sqrt{1-\frac{v^2}{c^2}}}
-    + \frac{e}{c} \mathbf{A} - 0
-    = \frac{m \mathbf{v}}{\sqrt{1-\frac{v^2}{c^2}}} + \frac{e}{c} \mathbf{A}.
-    \label{realtiv:eqn:part-diff-v}
+    \frac{\partial L}{\partial \bm{v}} =
+    mc^2 \frac{-\frac{2}{c^2}\bm{v}}{-2\sqrt{1-\frac{v^2}{c^2}}}
+    + \frac{e}{c} \bm{A} - 0
+    = \frac{m \bm{v}}{\sqrt{1-\frac{v^2}{c^2}}} + \frac{e}{c} \bm{A}.
+    \label{relativ:eqn:part-diff-v}
 \end{equation}
-Dies wird auch als verallgemeinerter Teilchenimpuls \(\mathbf{P}\) bezeichnet,
-wovon der linke Term der gewöhnliche (relativistische) Impuls \(\mathbf{p}\)
+Dies wird auch als verallgemeinerter Teilchenimpuls \(\bm{P}\) bezeichnet,
+wovon der linke Term der gewöhnliche (relativistische) Impuls \(\bm{p}\)
 des Teilchens ist.
-Vergleicht man diesen mit dem Impuls der klassischen Mechanik, \(m\mathbf{v}\),
+Vergleicht man diesen mit dem Impuls der klassischen Mechanik, \(m\bm{v}\),
 so unterscheidet er sich um den wiederkehrenden Faktor
 \(\gamma=\frac{1}{\sqrt{1-v^2/c^2}}\), den sogenannten \emph{Lorentzfaktor}.
 Der Gesamtausdruck \(\frac{m}{\sqrt{1-\frac{v^2}{c^2}}}\) wird auch als
 relativistische Masse \(m^*\) bezeichnet. Somit kann beispielsweise der
 Impuls analog zur gewöhnlichen Mechanik als
-\(\mathbf{p}=m^*\mathbf{v}\) geschrieben werden.
+\(\bm{p}=m^*\bm{v}\) geschrieben werden.
 In diesem Zusammenhang wird die Ruhemasse eines Objekts, d.h.
 die Masse, die ein Körper hat, wenn er in Ruhe ist,
 als \(m_0\) bezeichnet.
 Wir werden bei der Bezeichnung \(m\) bleiben.
 
-Die partielle Ableitung von \(L\) nach \(\mathbf{r}\) ergibt dann
+Die partielle Ableitung von \(L\) nach \(\bm{r}\) ergibt dann
 \begin{equation}
-    \frac{\partial L}{\partial \mathbf{r}} = \nabla L
-    = 0 + \frac{e}{c} \operatorname{grad} \mathbf{Av} - e \operatorname{grad} \varphi.
-    \label{realtiv:eqn:part-diff-r}
+    \frac{\partial L}{\partial \bm{r}} = \nabla L
+    = 0 + \frac{e}{c} \operatorname{grad} \bm{Av} - e \operatorname{grad} \varphi.
+    \label{relativ:eqn:part-diff-r}
 \end{equation}
-Wir können nun \eqref{realtiv:eqn:part-diff-v} und \eqref{realtiv:eqn:part-diff-r}
-in \eqref{realtiv:eqn:euler-lagrange-em-feld} einsetzen und erhalten
+Wir können nun \eqref{relativ:eqn:part-diff-v} und \eqref{relativ:eqn:part-diff-r}
+in \eqref{relativ:eqn:euler-lagrange-em-feld} einsetzen und erhalten
 \begin{equation}
-    \frac{d}{dt} \biggl(\mathbf{p} + \frac{e}{c} \mathbf{A}\biggr)
-    - \frac{e}{c} \operatorname{grad} \mathbf{Av} + e \operatorname{grad} \varphi = 0.
-    \label{realtiv:eqn:euler-lagrange-em-eingesetzt}
+    \frac{d}{dt} \biggl(\bm{p} + \frac{e}{c} \bm{A}\biggr)
+    - \frac{e}{c} \operatorname{grad} \bm{Av} + e \operatorname{grad} \varphi = 0.
+    \label{relativ:eqn:euler-lagrange-em-eingesetzt}
 \end{equation}
 Diese Differentialgleichung kann mittels Formeln der Vektoranalysis
 umgeformt werden, um schliesslich
 \begin{equation}
-    \frac{d\mathbf{p}}{dt} = -\frac{e}{c} \frac{\partial\mathbf{A}}{\partial t}
+    \frac{d\bm{p}}{dt} = -\frac{e}{c} \frac{\partial\bm{A}}{\partial t}
     - e \operatorname{grad} \varphi +
-    \frac{e}{c} \mathbf{v} \times \operatorname{rot} \mathbf{A}
-    \label{realtiv:eqn:euler-lagrange-em-eingesetzt}
+    \frac{e}{c} \bm{v} \times \operatorname{rot} \bm{A}
+    \label{relativ:eqn:euler-lagrange-em-umgeformt}
 \end{equation}
 zu erhalten.
 
-\begin{beispiel}
-\label{realtiv:bsp:teilchen-konst-e-feld}
+\subsection{Beispiel mit einem statischen elektrischen Feld
+\label{relativ:section:teilchen-konst-e-feld}}
+
 Gehen wir von der einfachen Situation aus,
 in der sich ein Elektron durch ein statisches
-elektrisches Feld bewegt und \(\mathbf{A}\)
+elektrisches Feld bewegt und \(\bm{A}\)
 somit dem Nullvektor entspricht.
 Der Geschwindigkeitsvektor des Elektrons sei
-\(\mathbf{v}_0 = \mathbf{v}(t=0) =(\beta c, 0, 0)^T\), wobei
-\(\beta \in (0, 1)\).
-Die Differentialgleichung reduziert sich somit zu
+\(\bm{v}_0 = \bm{v}(t=0) =(\beta_0 c, 0, 0)^T\), wobei
+\(\beta_0 \in (0, 1)\).
+
+\subsubsection{Euler-Lagrange-Differentialgleichung}
+Die Differentialgleichung aus \eqref{relativ:eqn:euler-lagrange-em-umgeformt} reduziert sich zu
 \begin{equation}
-    \frac{d\mathbf{p}}{dt} =
+    \frac{d\bm{p}}{dt} =
     - e \operatorname{grad} \varphi.
     \label{relativ:eqn:euler-lagrange-bsp-1}
 \end{equation}
-In einem nächsten Schritt wird für \(\mathbf{p}\)
-wieder der Ausdruck in \eqref{realtiv:eqn:part-diff-v} eingesetzt,
+In einem nächsten Schritt wird für \(\bm{p}\)
+wieder der Ausdruck in \eqref{relativ:eqn:part-diff-v} eingesetzt,
 womit
 \begin{equation}
-    \frac{d\mathbf{p}}{dt} =
-    \frac{d}{dt} \Biggl(\frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}} \mathbf{v}\Biggr) =
+    \frac{d\bm{p}}{dt} =
+    \frac{d}{dt} \Biggl(\frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}} \bm{v}\Biggr) =
     - e \operatorname{grad} \varphi,
+    \label{relativ:eqn:euler-lagrange-bsp-eingesetzt}
 \end{equation}
 mit der Elektronenmasse \(m_e\) und der Elementarladung \(e\).
 Die Ableitung des Impulses entspricht somit lediglich
@@ -152,21 +156,28 @@ der bekannte relativistische Korrekturfaktor
 \(\sqrt{1-\frac{v^2}{c^2}}\).
 
 Die zeitliche Ableitung des Ausdrucks in der Klammer ist nicht ganz trivial,
-da \(v^2=\sqrt{\mathbf{v}\cdot\mathbf{v}}\)
+da \(v^2=\sqrt{\bm{v}\cdot\bm{v}}\)
 und somit natürlich auch von \(t\) abhängt.
+Zur Vereinfachung der folgenden Rechnung führen wir an dieser Stelle
+die Geschwindigkeit in Abhängigkeit der Vakuumlichtgeschwindigkeit ein:
+\begin{equation*}
+    \bm{\beta} = \frac{\bm{v}}{c} \quad \text{und} \quad
+    \beta = \frac{v}{c}.
+\end{equation*}
 Mittels Quotientenregel ergibt sich
 \begin{multline*}
-    \frac{d\mathbf{p}}{dt}
-    = \frac{d}{dt} \Biggl(\frac{m_e \mathbf{v}}{\sqrt{1-\frac{v^2}{c^2}}}\Biggr)
-    = \frac{m_e\frac{d\mathbf{v}}{dt}\sqrt{1-\frac{v^2}{c^2}}
-    -m_e\mathbf{v}\cdot\frac{-\frac{\cancel{2}}{c^2}\mathbf{v}}{\cancel{2}\sqrt{1-\frac{v^2}{c^2}}}
-    \frac{d\mathbf{v}}{dt}}{1-\frac{v^2}{c^2}}\\
-    = m_e\frac{d\mathbf{v}}{dt}\frac{\biggl(1-\frac{v^2}{c^2}\biggr)^\frac{1}{2}
-    +\frac{\mathbf{v}\cdot\mathbf{v}}{c^2} \biggl(1-\frac{v^2}{c^2}\biggr)^{-\frac{1}{2}}}
-    {\biggl(1-\frac{v^2}{c^2}\biggr)^1}
-    = m_e\frac{d\mathbf{v}}{dt}\frac{\biggl(1-\frac{v^2}{c^2}\biggr)^1
-    +\frac{v^2}{c^2}}{\biggl(1-\frac{v^2}{c^2}\biggr)^\frac{3}{2}}
-    = \frac{m_e}{\biggl(1-\frac{v^2}{c^2}\biggr)^\frac{3}{2}}\frac{d\mathbf{v}}{dt}.
+    \frac{d\bm{p}}{dt}
+    = \frac{d}{dt} \Biggl(\frac{m_e \bm{v}}{\sqrt{1-\frac{v^2}{c^2}}}\Biggr)
+    = \frac{d}{dt} \Biggl(\frac{m_e c \bm{\beta}}{\sqrt{1-\beta^2}}\Biggr)
+    = \frac{m_ec\frac{d\bm{\beta}}{dt}\sqrt{1-\beta^2}
+    -m_ec\bm{\beta}\cdot\frac{-\cancel{2}\bm{\beta}}{\cancel{2}\sqrt{1-\beta^2}}
+    \frac{d\bm{\beta}}{dt}}{1-\beta^2}\\
+    = m_ec\frac{d\bm{\beta}}{dt}\frac{\bigl(1-\beta^2\bigr)^\frac{1}{2}
+    +\bm{\beta}\cdot\bm{\beta} \ \bigl(1-\beta^2\bigr)^{-\frac{1}{2}}}
+    {\bigl(1-\beta^2\bigr)^1}
+    = m_ec\frac{d\bm{\beta}}{dt}\frac{\bigl(1-\beta^2\bigr)^1
+    +\beta^2}{\bigl(1-\beta^2\bigr)^\frac{3}{2}}
+    = \frac{m_ec}{\bigl(1-\beta^2\bigr)^\frac{3}{2}}\frac{d\bm{\beta}}{dt}.
 \end{multline*}
 
 Nehmen wir nun beispielsweise an,
@@ -175,71 +186,94 @@ sprich \( \operatorname{grad} \varphi = (E_x, 0, 0)^T \),
 so ergibt sich für die Ableitung des Geschwindigkeitsvektors
 \begin{equation}
     \frac{d}{dt}
-        \begin{pmatrix}
-            v_x \\
-            v_y \\
-            v_z
-        \end{pmatrix} =
-        - \frac{e \biggl(1-\frac{v^2}{c^2}\biggr)^\frac{3}{2}}{m_e}
-        \begin{pmatrix}
-            E_x \\
-            0 \\
-            0
-        \end{pmatrix}.
+    \begin{pmatrix}
+        v_x \\
+        v_y \\
+        v_z
+    \end{pmatrix} =
+    \frac{d}{dt} c
+    \begin{pmatrix}
+        \beta_x \\
+        \beta_y \\
+        \beta_z
+    \end{pmatrix} =
+    - \frac{e \bigl(1-\beta^2\bigr)^\frac{3}{2}}{m_e}
+    \begin{pmatrix}
+        E_x \\
+        0 \\
+        0
+    \end{pmatrix}.
     \label{relativ:eqn:bsp-abl-v-vec}
 \end{equation}
 Hierbei ist klar, dass sich die Geschwindigkeitskomponenten
 in \(y\)- und \(z\)-Richtung nicht ändern können.
-Zusammen mit der Anfangsgeschwindigkeit \(\mathbf{v}_0\)
+Zusammen mit der Anfangsgeschwindigkeit \(\bm{v}_0\)
 ergibt sich somit die nichtlineare Differentialgleichung erster Ordnung
 \begin{equation}
-    \frac{dv_x}{dt} = - \frac{e E_x}{m_e} \biggl(1-\frac{v_x^2}{c^2}\biggr)^\frac{3}{2}
+    \frac{d\beta_x}{dt} = - \frac{c e E_x}{m_e} \bigl(1-\beta_x^2\bigr)^\frac{3}{2}
 \end{equation}
-für die Geschwindigkeit in \(x\)-Richtung \(v_x\).
+für die Geschwindigkeit in \(x\)-Richtung \(\beta_x\).
 Diese kann mittels Separierung gelöst werden.
-Wir separieren nach den Variablen \(v_x\) und \(t\)
+Wir separieren nach den Variablen \(\beta_x\) und \(t\)
 und integrieren auf beiden Seiten:
 \begin{align*}
-    \int\frac{dv_x}{\biggl(1-\frac{v_x^2}{c^2}\biggr)^\frac{3}{2}}
-    &= \int-\frac{e E_x}{m_e}dt \\
-    \Rightarrow\quad\frac{v_x}{\sqrt{1-\frac{v_x^2}{c^2}}}
-    &= -\frac{e E_x}{m_e}t + K_1.
+    \int\frac{d\beta_x}{\bigl(1-\beta_x^2\bigr)^\frac{3}{2}}
+    &= \int-\frac{c e E_x}{m_e}dt \\
+    \Rightarrow\quad\frac{\beta_x}{\sqrt{1-\beta_x^2}}
+    &= -\frac{c e E_x}{m_e}t + K_1.
 \end{align*}
-Diese Gleichung kann nun (etwas mühsam) nach \(v_x\) aufgelöst werden:
+Diese Gleichung kann nun (etwas mühsam) nach \(\beta_x\) aufgelöst werden:
 \begin{align*}
-    \frac{v_x^2}{1-\frac{v_x^2}{c^2}}
-    &= \biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2\\
-    \Leftrightarrow\quad v_x^2 &= \biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2
-    \biggl(1-\frac{v_x^2}{c^2}\biggr)\\
+    \frac{\beta_x^2}{1-\beta_x^2}
+    &= \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2\\
+    \Leftrightarrow\quad \beta_x^2 &= \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2
+    \biggl(1-\beta_x^2\biggr)\\
     \Leftrightarrow\quad
-    v_x^2 \biggl(1 + \frac{1}{c^2}\biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2\biggr)
-    &= \biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2\\
+    \beta_x^2 \biggl(1 + \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2\biggr)
+    &= \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2\\
     \Leftrightarrow\quad
-    v_x^2 &= \frac{\biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2}
-    {1 + \frac{1}{c^2}\biggl(-\frac{e E_x}{m_e}t + K_1\biggr)^2}\\
+    \beta_x^2 &= \frac{\biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2}
+    {1 + \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2}\\
     \Leftrightarrow\quad
-    v_x(t) &= \frac{-\frac{e E_x}{m_e}t + K_1}
-    {\sqrt{1+\biggl(-\frac{eE_x}{m_e c}t+\frac{K_1}{c}\biggr)^2}}.
+    \beta_x(t) &= \frac{-\frac{c e E_x}{m_e}t + K_1}
+    {\sqrt{1+\biggl(-\frac{ceE_x}{m_e}t+K_1\biggr)^2}}.
 \end{align*}
-Und mit der Anfangsbedingung \(v_x(t=0)=\beta c\) erhält man
+
+\subsubsection{Anfangsbedingungen}
+Mit der Anfangsbedingung \(\beta_x(t=0)=\beta_0 c\) erhält man
 \begin{multline*}
-    v_x(0) = \beta c = \frac{K_1}{\sqrt{1+\biggl(\frac{K_1}{c}\biggr)^2}}\quad
-    \Leftrightarrow\quad K_1^2 = \beta^2 c^2 \Biggl(1+\Biggl(\frac{K_1}{c}\Biggr)^2\Biggr)\\
-    \Leftrightarrow\quad K_1^2 (1-\beta^2) = \beta^2 c^2\quad
-    \Leftrightarrow\quad K_1 = \frac{\beta c}{\sqrt{1-\beta^2}}
+    v_x(0) = \beta_0 c = \frac{K_1}{\sqrt{1+K_1^2}}\quad
+    \Leftrightarrow\quad K_1^2 = \beta_0^2 c^2 \bigl(1+K_1^2\bigr)\\
+    \Leftrightarrow\quad K_1^2 (1-\beta_0^2 c^2) = \beta_0^2 c^2\quad
+    \Leftrightarrow\quad K_1 = \frac{\beta_0 c}{\sqrt{1-\beta_0^2 c^2}}
 \end{multline*}
 und somit eine vollständige Gleichung für die Geschwindigkeit des Elektrons.
 In Abbildung~\ref{relativ:fig:elektron-em-feld} ist die Gleichung für einige
-Werte von \(\beta\) und \(E_x\) dargestellt.
+Werte von \(\beta_0\) und \(E_x\) dargestellt.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{papers/relativ/images/elektron_e-feld.pdf}
-    \caption{Geschwindigkeit eines Elektrons in einem
-    statischen elektrischen Feld in Abhängigkeit der Zeit \(t\),
-    für verschiedene Feldstärken \(E_x\) und Startgeschwindigkeiten \(\beta c\).
+    \caption{Geschwindigkeit in Einheiten der Vakuumlichtgeschwindigkeit
+    eines Elektrons in einem statischen elektrischen Feld in Abhängigkeit der Zeit \(t\),
+    für verschiedene Feldstärken \(E_x\) und Startgeschwindigkeiten \(\beta_0 c\).
     \label{relativ:fig:elektron-em-feld}}
 \end{figure}
 
-\todo{Erläuterungen}
+\subsubsection{Diskussion}
+An den Ergebnissen der Rechnung sieht man, dass das Elektron (und tatsächlich auch kein anderes
+massebehaftetes Teilchen) über die Lichtgeschwindigkeit \(c\) hinaus beschleunigt werden kann.
+Je näher das Elektron der Lichtgeschwindigkeit kommt, dest mehr sieht es so aus,
+als würde es immer schwerer werden anstatt zu beschleunigen.
+Dies ist natürlich dem Lorentzfaktor in Gleichung~\eqref{relativ:eqn:euler-lagrange-bsp-eingesetzt}
+zu verdanken.
 
-\end{beispiel}
+Diese Eigenschaft wird in Teilchenbeschleunigern wie dem LHC\footnote{
+Der \emph{Large Hadron Collider} (LHC) ist der leistungsstärkste
+Teilchenbeschleuniger der Welt und befindet sich am
+Kernforschungszentrum CERN bei Genf.
+}
+dazu verwendet, um eine hohe Menge Energie in Elementarteilchen zu bringen.
+Da die Teilchen dabei irgendwann nicht mehr schneller werden
+(sondern nur noch ``schwerer''),
+können sie stets mit Strahlung derselben Frequenz angeregt werden, und
+diese muss nicht an die Geschwindigkeit angepasst werden.

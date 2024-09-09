@@ -37,13 +37,13 @@ vx_beta_00_05 = calculate_vx(0.0, -0.5e-3, t)
 fig, ax = plt.subplots(figsize=(6, 4))
 
 # Plot the two graphs
-ax.plot(t, vx_beta_00_1/const.c, label=r'$\beta = 0.0$, $E_x=1\, \small\frac{\textrm{mV}}{\textrm{m}}$', color='blue')
-ax.plot(t, vx_beta_00_05/const.c, label=r'$\beta = 0.0$, $E_x=0.5\, \small\frac{\textrm{mV}}{\textrm{m}}$', color='red')
-ax.plot(t, vx_beta_07_1/const.c, label=r'$\beta = 0.7$, $E_x=1\, \small\frac{\textrm{mV}}{\textrm{m}}$', color='green')
+ax.plot(t, vx_beta_00_1/const.c, label=r'$\beta_0 = 0.0$, $E_x=1\, \small\frac{\textrm{mV}}{\textrm{m}}$', color='blue')
+ax.plot(t, vx_beta_00_05/const.c, label=r'$\beta_0 = 0.0$, $E_x=0.5\, \small\frac{\textrm{mV}}{\textrm{m}}$', color='red')
+ax.plot(t, vx_beta_07_1/const.c, label=r'$\beta_0 = 0.7$, $E_x=1\, \small\frac{\textrm{mV}}{\textrm{m}}$', color='green')
 
 # Set axis labels (with LaTeX math mode)
 ax.set_xlabel(r"$t$ in s")
-ax.set_ylabel(r"$v_x(t)/c$")
+ax.set_ylabel(r"$\beta_x(t)$")
 
 # Set axis limits
 ax.set_ylim(0, 1)
