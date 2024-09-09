@@ -17,7 +17,6 @@ Das Vorgehen zum Lösen eines Problems mit der Methode der finiten Elemente kann
     \item Codieren der Anfangsbedingungen
     \item Lösen des Gleichungssystems bzw. Invertieren der Matrix
 \end{enumerate}
-% TODO: Fünf Schritte durch das Paper ziehen
 
 Um die einzelnen Schritte darzustellen, betrachten wir das Problem
 \begin{equation}
@@ -30,7 +29,7 @@ Diese findet in vielen Teilen der Physik Anwendung und ist gleichzeitig ein gute
 
 \subsection{Bilden der schwachen Form}
 Um das Problem in die schwache Form zu bringen, wird über beide Seiten der Poisson-Gleichung \ref{fem:1d:poisson_gleichung} integriert.
-Zuvor werden jedoch beide Seiten mit der Testfunktion $ v(x) $ multipliziert. % TODO: Testfunktion -> Variation
+Zuvor werden jedoch beide Seiten mit der Testfunktion $ v(x) $ multipliziert.
 Diese wird definiert als eine beliebige Funktion $ v \colon \mathbb{R} \rightarrow \mathbb{R} $.
 Die resultierende Gleichung
 \begin{equation}
@@ -43,21 +42,19 @@ Im Kapitel \ref{buch:variation:section:fundamentallemma} zum Fundamentallemma wi
 Durch partielles Integrieren der linken Seite kann die Ordnung der Differenzialgleichung um eins verringert werden:
 \begin{align}
     \int f(x) \cdot v(x) \diff x &= \int u''(x) \cdot v(x) \diff x \\
-                                 &= \left. u'(x) \cdot v(x) \right|_{x_1}^{x_2} - \int u'(x) \cdot v'(x) \diff x \\
+                                 &= \left[ u'(x) \cdot v(x) \right]_{x_1}^{x_2} - \int u'(x) \cdot v'(x) \diff x \\
                                  &= - \int u'(x) \cdot v'(x) \diff x \\
                                  &= - \Phi(u, v)
 \end{align}
 wobei der Term
 \begin{equation}
-    \left. u'(x) \cdot v(x) \right|_{x_1}^{x_2}
+    \left[ u'(x) \cdot v(x) \right]_{x_1}^{x_2}
 \end{equation}
-Null ist, wenn die Testfunktionen die Randbedingung
+Null ist, wenn die Funktion $u'(x)$ die Randbedingung
 \begin{equation}
-    v(x_1) = v(x_2) = 0
+    u'(x_1) = u'(x_2) = 0
 \end{equation}
-erfüllen. 
-
-TODO: Hat das nicht Implikationen für das Setzen von Randbedingungen?
+erfüllt. 
 
 Der erhaltene Term wird als $-\Phi(u, v)$ abgekürzt.
 Dieser Weg kann, abhängig von der ursprünglichen Differenzialgleichung, anders sein.
@@ -67,9 +64,7 @@ Dies spart Rechenleistung.
 
 
 \subsection{Diskretisieren\label{fem:1d:diskretisieren}}
-TODO: Bild zu den Formfunktionen und Approximation einer Funktion durch diese. 
-
-Ziel des Diskretisierens ist es, das Unendlichdimensionale Problem in ein endlich dimensionales umzuwandeln.
+Ziel des Diskretisierens ist es, das unendlichdimensionale Problem in ein endlichdimensionales umzuwandeln.
 Dazu werden die ursprünglichen Funktionen $u(x)$, $f(x)$ und $v(x)$ an $N$ verschiedenen Punkten $x_n$ abgetastet.
 Die resultierenden Knotenvariablen
 \begin{equation}
@@ -114,7 +109,7 @@ Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt we
 \end{itemize}
 
 \subsubsection{Linearer Ansatz}
-\input{papers/fem/fig/linearer_ansatz.tex} % TODO: Widerholende Formfunktionen und Summe deren als Graphen zeigen
+\input{papers/fem/fig/linearer_ansatz_entwurf.tex} % TODO: Widerholende Formfunktionen und Summe deren als Graphen zeigen
 Der lineare Ansatz verwendet die in Abb. \ref{fem:1d:abb:linear} gezeigten linearen Funktionen
 \begin{equation}
     a_n(x) = \left\{ \begin{array}{ll}
@@ -147,14 +142,10 @@ Während beim linearen Ansatz für jeden Knoten dieselbe Formfunktion verwendet 
 Die in Abb. \ref{fem:1d:abb:quadratisch} gezeigten Formfunktionen lauten
 \begin{equation}
     a_n(x) = \left\{ \begin{array}{ll}
-        \frac{1}{2(x_{n-1} - x_{n-2})^2} \cdot x^2 + \frac{3}{2 (x_{n-1} - x_{n-2})} \cdot x + 1  
-            & \text{für} \quad x_{n-2} < x < x_{n-1} \\
         \frac{1}{2(x_{n} - x_{n-1})^2} \cdot x^2 + \frac{3}{2 (x_{n} - x_{n-1})} \cdot x + 1  
             & \text{für} \quad x_{n-1} \leq x < x_n \\
         \frac{1}{2(x_{n+1} - x_{n})^2} \cdot x^2 - \frac{3}{2 (x_{n+1} - x_{n})} \cdot x + 1
             & \text{für} \quad x_n < x \leq x_{n+1} \\
-        \frac{1}{2(x_{n+2} - x_{n+1})^2} \cdot x^2 - \frac{3}{2 (x_{n+2} - x_{n+1})} \cdot x + 1
-            & \text{für} \quad x_{n+1} \leq x < x_{n+2} \\
         0
             & \text{sonst}
     \end{array} \right.
@@ -165,7 +156,7 @@ für gerade $n$ und
         -\frac{1}{(x_n - x_{n-1})^2} x^2 + 1 
             & \text{für} \quad x_{n-1} < x < x_n \\
         -\frac{1}{(x_{n+1} - x_n)^2} x^2 + 1 
-            & \text{für} \quad x_n \leq x < x_n+1 \\
+            & \text{für} \quad x_n \leq x < x_{n+1} \\
         0 
             & \text{sonst}
     \end{array} \right.
@@ -180,7 +171,7 @@ und den Bedingungen
 \begin{equation}
         a_n(x_n) = 1 
         \quad \text{und} \quad 
-        a_n(x_{n-2}) = a(x_{n-1}) = a(x_{n+1}) = a(x_{n+2}) = 0
+        a(x_{n-1}) = a(x_{n+1}) = 0
 \end{equation}
 für gerade $n$ bzw.
 \begin{equation}
@@ -195,7 +186,7 @@ für ungerade $n$ hergeleitet werden.
 Der kubische Ansatz erbringt die Möglichkeit, den Wert der Funktion wie auch den Wert der Ableitung an den Stützstellen frei zu wählen.
 Dafür muss der Ansatz etwas erweitert werden:
 \begin{equation}
-    u(x) \approx \sum{u_n \cdot a_n(x)} \rightarrow u(x) \approx \sum{u_n \cdot a_n(x) + u'_n \cdot b_n(x)}.
+    u(x) \approx \sum_{n}{u_n \cdot a_n(x)} \rightarrow u(x) \approx \sum_{n}{u_n \cdot a_n(x) + u'_n \cdot b_n(x)}.
 \end{equation}
 
 Die Formfunktionen, dargestellt in Abb. \ref{fem:1d:abb:kubisch}, 
@@ -270,8 +261,8 @@ Diese Gleichung kann zu
 \end{equation}
 vereinfacht werden.
 Dabei wird die Menge der Testfunktionen reduziert.
-Anstelle, dass alle Testfunktionen mit beliebig breitem Träger berücksichtigt werden, werden nur die $N$ verschiedenen Testfunktionen mit schmalst möglichem Träger verwendet.
-Da alle anderen Testfunktionen aus diesen \"zusammengebaut\" werden können, ist die Gleichung auch für diese erfüllt.
+Anstelle, dass alle Testfunktionen mit beliebig breitem Träger berücksichtigt werden, werden nur die $N$ verschiedenen Testfunktionen mit schmalstmöglichem Träger verwendet.
+Da alle anderen Testfunktionen aus diesen ``zusammengebaut'' werden können, ist die Gleichung auch für diese erfüllt.
 Diese Vereinfachung ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
 \begin{equation}
     - \sum_j u_j \int a'_j \cdot a'_i(x) \diff x = \sum_j f_j \int a_j(x) \cdot a_i(x) \diff x \myforall i \label{papers:fem:prinzip1d:finale_gleichung}
@@ -322,14 +313,14 @@ Auch gängig ist das Zusammenfassen von $\mathbf{M}\vec{f}$ zu $\vec{b}$, was zu
 \end{equation}
 führt.
 
-Diese Matrizen werden aufgrund des schmalen Trägers der Funktionen $a_n(x)$ (sowie $b_n(x)$ beim kubischen Ansatz) sehr schwach besetzt sein, da viele der Integralen
+Diese Matrizen werden aufgrund des schmalen Trägers der Funktionen $a_n(x)$ (sowie $b_n(x)$ beim kubischen Ansatz) sehr schwach besetzt sein, da viele der Integrale
 \begin{equation}
     \int a_i(x) \cdot a_j \diff x \quad 
     \text{ bzw. } 
     \quad \int a'_i(x) \cdot a'_j \diff x 
 \end{equation}
 Null sein werden.
-Von null verschieden sind nur die Einträge, deren zugehörige Datenpunkte nebeneinander liegen.
+Von Null verschieden sind nur die Einträge, deren zugehörige Datenpunkte nebeneinander liegen.
 Zudem sind sie symmetrisch und positiv definit, da es keine Rolle spielt in welcher Reihenfolge man die Testfunktionen multipliziert.
 
 \subsubsection{Kubischer Ansatz}
@@ -342,12 +333,10 @@ Auch hier verlangt der kubische Ansatz mit seinen zwei Funktionen pro Datenpunkt
 
 
 \subsection{Codieren der Anfangsbedingungen\label{fem:1d:anfangsbedingungen}}
-TODO: Überarbeiten, ggf. verständlicher machen.
-
 Wir betrachten das Gleichungssystem in der Form $\mathbf{L}\vec{u} + \vec{b} = 0$. 
 Die Zeilen und Spalten der Matrix $\mathbf{L}$ codieren dabei die Beziehungen zwischen den einzelnen Elementen.
 Der $k$-ten Zeile kann zum Beispiel entnommen werden, welche anderen Elemente das $k$-te Element berühren. 
-Sollte nun also $u_k$ gegeben sein, so wird der $k$-te Wert der $k$-ten Zeile eins gesetzt, während die übrigen Elemente der Zeile alle null gesetzt werden.
+Sollte nun also $u_k$ gegeben sein, so wird der $k$-te Wert der $k$-ten Zeile eins gesetzt, während die übrigen Elemente der Zeile alle Null gesetzt werden.
 Die $k$-te Zeile stellt folglich die Gleichung 
 \begin{equation}
     1 \cdot u_n + b_n = 0
@@ -356,13 +345,13 @@ dar.
 Es kann nun also durch Setzen von $b_n = -u_n$ die Anfangsbedingung codiert werden.
 
 Nun ist aber $\mathbf{L}$ nicht mehr symmetrisch, was Effizienzeinbussen beim Invertieren dieser zur Folge hätte.
-Das nächste Ziel ist also, auch die $k$-te Spalte so weit zu bringen, dass nur das $k$-te Element ungleich null ist.
+Das nächste Ziel ist also, auch die $k$-te Spalte so weit zu bringen, dass nur das $k$-te Element ungleich Null ist.
 Um dies zu erreichen, wird vor dem Nullsetzen der Spalte zu jedem Element von $\vec{b}$ ein Korrekturterm addiert.
 Der zu $b_k$ zu addierende Term berechnet sich als
 \begin{equation}
     l_{ik} \cdot u_k.
 \end{equation}
-Bei homogenen Anfangsbedingungen ist dieser Term offensichtlich null (da $u_k = 0$), was diese besonders einfach zu codieren macht.
+Bei homogenen Anfangsbedingungen ist dieser Term offensichtlich Null (da $u_k = 0$), was diese besonders einfach zu codieren macht.
 
 \subsubsection{Codieren von gegebenen Ableitungen}
 Da der lineare wie auch der quadratische Ansatz keinen direkten Weg bietet, die Ableitungen der Funktion $u(x)$ zu bestimmen, muss mit einem Trick Abhilfe geschafft werden: 
@@ -385,7 +374,7 @@ codiert werden.
 
 
 \subsection{Invertieren der Matrix\label{fem:1d:matrix_invertieren}}
-Zur Lösung der Poisson-Gleichung muss nun also "nur" noch die Matrix $\mathbf{L}$ invertiert werden.
+Zur Lösung der Poisson-Gleichung muss nun also ``nur'' noch die Matrix $\mathbf{L}$ invertiert werden.
 Das Resultat in Form des Spaltenvektors $\vec{u}$, enthaltend die Stützstellen der Lösungsfunktion, lässt sich dann als
 \begin{equation}
     \vec{u} = - \mathbf{L}^{-1}\mathbf{M}\vec{f} = - \mathbf{L}^{-1}\vec{b}

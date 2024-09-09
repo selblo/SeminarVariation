@@ -10,7 +10,7 @@
 \kopfrechts{Erweiterung auf $n$ Dimensionen}
 Der Schritt vom eindimensionalen Prinzip in höherdimensionale Räume bedingt einige Anpassungen. 
 Um den Umfang zu reduzieren, wurde das Vorgehen grob im Prinzip dargestellt, jedoch nicht bis ins Detail behandelt.
-Für eine detailliertere Ausführung ist das Buch \"Methode der finiten Elemente\" von H. R. Schwarz zu empfehlen.
+Für eine detailliertere Ausführung ist das Buch ``Methode der finiten Elemente'' von H. R. Schwarz zu empfehlen.
 TODO: Richtig referenzieren.
 
 
@@ -37,18 +37,16 @@ wird zu
 \subsection{Diskretisieren}
 Meist wird das zu evaluierende Gebiet in Dreiecke, Tetraeder oder höherdimensionale euklidische Simplexe unterteilt. 
 Entlang den Dreieckskanten werden dieselben Formfunktionen, die im Kapitel \ref{fem:1d:diskretisieren} beschrieben wurden, verwendet.
-Das Gebiet zwischen zwei Elementverbindungen wird wie in der Grafik 
-TODO: Grafik erstellen und referenzieren
-\"ausgefüllt\".
+Das Gebiet zwischen zwei Elementverbindungen wird wie in der Abbildung \ref{fem:nd:2d_mesh_und_basisfkt} ``ausgefüllt''.
+\input{papers/fem/fig/2d_mesh_und_basisfkt.tex}
 
 
 \subsection{Erstellen der Matrix}
 Das zu lösende Problem wird erneut diskretisiert, es werden also einzelne Punkte aus dem Definitionsbereich ausgewählt.
 Diese Knoten werden dann jeweils mit den nächstgelegenen Nachbarn verbunden und nummeriert.
-Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix "möglichst diagonal" wird.
+Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix ``möglichst diagonal'' wird.
 Dies macht das invertieren effizienter.
-Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung 
-TODO: Grafik erstellen und referenzieren
+Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung \ref{fem:nd:2d_mesh_und_basisfkt}
 resultieren.
 
 Zum Befüllen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
@@ -63,8 +61,7 @@ während für $\mathbf{M}$
 eingesetzt werden muss.
 
 Es werden auch hier nur die Einträge ungleich null sein, deren Elemente sich berühren.
-Der Eintrag in der Zeile $a$ und Spalte $b$ ist also nur dann ungleich Null, wenn Element $a$ und Element $b$ im Graphen TODO: \ref{} verbunden sind.
-Werden also nun die Matrizen für den skizzierten Graphen befüllt, so sind all die Elemente ungleich null, die in TODO: \ref{} schwarz markiert sind.
+Der Eintrag in der Zeile $a$ und Spalte $b$ ist also nur dann ungleich Null, wenn Element $a$ und Element $b$ im Graphen \ref{fem:nd:2d_mesh_und_basisfkt} verbunden sind.
 
 \subsection{Codieren der Anfangsbedingungen}
 Das Vorgehen zum Codieren der Anfangsbedingungen unterscheidet sich nicht von dem des eindimensionalen Falls. 
