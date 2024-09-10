@@ -36,7 +36,7 @@ wobei \(L(x(t), u(t))\) die Laufkostenfunktion darstellt, die Treibstoffverbrauc
 
 \subsection{Kostenfunktional und Steuerverluste}
 
-In Kapitel 8.3 wird das optimale Steuerungsproblem als Minimierungsproblem eines Integrals dargestellt, das die Steuerkosten über die Zeit aufintegriert. Für das Raketenproblem bedeutet dies, dass der Treibstoffverbrauch minimiert werden soll, während die Randbedingungen eingehalten werden. Die Lagrange-Funktion \(L(x(t), u(t))\) hängt in diesem Fall von der Position, Geschwindigkeit der Rakete und den Steuergrößen ab.
+In Kapitel \ref{buch:hamiltonjacobi:section:oc} wird das optimale Steuerungsproblem als Minimierungsproblem eines Integrals dargestellt, das die Steuerkosten über die Zeit aufintegriert. Für das Raketenproblem bedeutet dies, dass der Treibstoffverbrauch minimiert werden soll, während die Randbedingungen eingehalten werden. Die Lagrange-Funktion \(L(x(t), u(t))\) hängt in diesem Fall von der Position, Geschwindigkeit der Rakete und den Steuergrößen ab.
 
 Ein wichtiger Aspekt der Steuerung sind die \textit{Steuerverluste}, die durch die Kursänderung der Rakete entstehen. Diese Verluste wurden bereits in der Formel \eqref{leo:aufstiegsgleichung} beschrieben:
 \[
@@ -46,7 +46,7 @@ Hier beschreibt der Term \(2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\
 
 \subsection{Hamilton-Funktion und das Pontryagin’sche Minimum-Prinzip}
 
-Um dieses optimale Steuerungsproblem zu lösen, wird das Pontryagin'sche Minimum-Prinzip verwendet, das in Kapitel 8.3 eingeführt wurde. Dazu wird eine \textit{Hamilton-Funktion} \(H(x,u,p)\) definiert:
+Um dieses optimale Steuerungsproblem zu lösen, wird das Pontryagin'sche Minimum-Prinzip verwendet, das in Kapitel \ref{buch:hamiltonjacobi:oc:subsection:minimum} eingeführt wurde. Dazu wird eine \textit{Hamilton-Funktion} \(H(x,u,p)\) definiert:
 \[
 H(x,u,p) = p \cdot f(x,u) + L(x,u),
 \]
