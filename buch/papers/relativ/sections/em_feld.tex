@@ -7,45 +7,6 @@ In diesem Abschnitt soll die Berechnung des Verhaltens eines Elementarteilchens
 unter der Einwirkung eines elektromagnetischen Feldes erläutert werden.
 
 
-\subsection{Elementarteilchen in der Relativitätstheorie
-\label{relativ:section:elementarteilchen}}
-
-Wie bereits in der Einleitung zu Abschnitt~\ref{relativ:section:relativistik} erwähnt,
-kann es gemäss der Relativitätstheorie keine starren Körper geben.
-Angemessener ist daher die Betrachtung \emph{punktförmiger Elementarteilchen}.
-Der Zustand eines solchen Elementarteilchens ist dabei vollständig definiert durch
-die drei Raumkoordinaten und die drei zugehörigen Geschwindigkeitskomponenten.
-
-
-\subsection{Wirkungsintegral
-\label{relativ:section:wirkungsintegral}}
-
-Das Wirkungsintegral für ein Elementarteilchen im elektromagnetischen Feld ist
-\begin{equation}
-    S = \int_a^b \biggl(-mc\,ds + \frac{e}{c} \bm{A}\,d\bm{r} - e\varphi\,dt\biggr).
-    \label{relativ:eqn:wirk-int-em-feld}
-\end{equation}
-Dabei ist \(\bm{A}\) das \emph{Vektorpotential des Feldes}\footnote{
-    Auch bekannt als \emph{magnetisches Vektorpotential}.}
-und \(\varphi\) das \emph{skalare Potential des Feldes}\footnote{
-    Auch bekannt als \emph{elektrisches Potential}.}.
-In der relativistischen Raumzeit schreibt man diese zwei Grössen
-auch als Vierervektor \(A^i = (\varphi, \bm{A})\),
-wobei \(\varphi\) zur Zeitkoordinate \(t\) gehört und
-\(\bm{A}\) zu den räumlichen Koordinaten \(x, y, z\).
-Als Integral über die Zeit geschrieben ergibt sich das Wirkungsintegral als
-\begin{equation}
-    S = \int_{t_1}^{t_2} \biggl( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \bm{A} \bm{v} - e \varphi \biggr) \, dt,
-    \label{relativ:eqn:wirk-int-em-feld-zeit}
-\end{equation}
-wobei \(\displaystyle \bm{v} = \frac{d\bm{r}}{dt}\) der Geschwindigkeitsvektor der drei räumlichen Dimensionen ist.
-Der Integrand in \eqref{relativ:eqn:wirk-int-em-feld-zeit} ist gerade die Lagrange-Funktion
-\begin{equation}
-    L = -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \bm{A} \bm{v} - e \varphi
-    \label{relativ:eqn:lagrange-em-feld}
-\end{equation}
-
-
 \subsection{Bewegungsgleichung
 \label{relativ:section:bewegungsgleichung}}
 
@@ -89,14 +50,14 @@ des Teilchens ist.
 Vergleicht man diesen mit dem Impuls der klassischen Mechanik, \(m\bm{v}\),
 so unterscheidet er sich um den wiederkehrenden Faktor
 \(\gamma=\frac{1}{\sqrt{1-v^2/c^2}}\), den sogenannten \emph{Lorentz-Faktor}.
-Der Gesamtausdruck \(\frac{m}{\sqrt{1-\frac{v^2}{c^2}}}\) wird auch als
+Der Gesamtausdruck \(\frac{m}{\sqrt{1-v^2/c^2}}\) wird auch als
 relativistische Masse \(m^*\) bezeichnet. Somit kann beispielsweise der
 Impuls analog zur gewöhnlichen Mechanik als
 \(\bm{p}=m^*\bm{v}\) geschrieben werden.
 In diesem Zusammenhang wird die Ruhemasse eines Objekts, d.h.
 die Masse, die ein Körper hat, wenn er in Ruhe ist,
 als \(m_0\) bezeichnet.
-Wir werden bei der Bezeichnung \(m\) bleiben.
+Wir werden hier bei der Bezeichnung \(m\) bleiben.
 
 Die partielle Ableitung von \(L\) nach \(\bm{r}\) ergibt dann
 \begin{equation}
@@ -140,7 +101,7 @@ Die Differentialgleichung aus \eqref{relativ:eqn:euler-lagrange-em-umgeformt} re
     \label{relativ:eqn:euler-lagrange-bsp-1}
 \end{equation}
 In einem nächsten Schritt wird für \(\bm{p}\)
-wieder der Ausdruck in \eqref{relativ:eqn:part-diff-v} eingesetzt,
+wieder der Ausdruck aus \eqref{relativ:eqn:part-diff-v} eingesetzt,
 womit
 \begin{equation}
     \frac{d\bm{p}}{dt} =
@@ -152,8 +113,7 @@ mit der Elektronenmasse \(m_e\) und der Elementarladung \(e\).
 Die Ableitung des Impulses entspricht somit lediglich
 dem Gradienten des elektrischen Potentials, oder dem elektrischen Feld.
 Der wesentliche Unterschied zur klassischen Mechanik ist hierbei
-der bekannte relativistische Korrekturfaktor
-\(\sqrt{1-\frac{v^2}{c^2}}\).
+der bekannte Lorentz-Faktor \(\gamma\).
 
 Die zeitliche Ableitung des Ausdrucks in der Klammer ist nicht ganz trivial,
 da \(v^2=\sqrt{\bm{v}\cdot\bm{v}}\)
@@ -162,7 +122,7 @@ Zur Vereinfachung der folgenden Rechnung führen wir an dieser Stelle
 die Geschwindigkeit in Einheiten der Vakuumlichtgeschwindigkeit ein:
 \begin{equation*}
     \bm{\beta} = \frac{\bm{v}}{c} \quad \text{und} \quad
-    \beta = \frac{v}{c}.
+    \beta = \sqrt{\bm{\beta}\cdot\bm{\beta}} = \frac{v}{c}.
 \end{equation*}
 Mittels Quotientenregel ergibt sich
 \begin{multline*}
@@ -210,42 +170,46 @@ in \(y\)- und \(z\)-Richtung nicht ändern können.
 Zusammen mit der Anfangsgeschwindigkeit \(\bm{v}_0\)
 ergibt sich somit die nichtlineare Differentialgleichung erster Ordnung
 \begin{equation}
-    \frac{d\beta_x}{dt} = - \frac{c e E_x}{m_e} \bigl(1-\beta_x^2\bigr)^\frac{3}{2}
+    \frac{d\beta_x}{dt} = - \frac{e E_x}{c m_e} \bigl(1-\beta_x^2\bigr)^\frac{3}{2}
+    := \eta \, \bigl(1-\beta_x^2\bigr)^\frac{3}{2}
 \end{equation}
-für die Geschwindigkeit \(\beta_x\) in \(x\)-Richtung.
-Diese kann mittels Separierung gelöst werden.
+für die Geschwindigkeit \(\beta_x\) in \(x\)-Richtung,
+wobei der Übersicht halber die Konstante
+\(\eta=-\frac{e E_x}{c m_e}\) eingeführt wurde.
+Diese Differentialgleichung kann mittels Separierung gelöst werden.
 Wir separieren nach den Variablen \(\beta_x\) und \(t\)
 und integrieren auf beiden Seiten:
 \begin{align*}
     \int\frac{d\beta_x}{\bigl(1-\beta_x^2\bigr)^\frac{3}{2}}
-    &= \int-\frac{c e E_x}{m_e}dt \\
+    &= \int\eta dt \\
     \Rightarrow\quad\frac{\beta_x}{\sqrt{1-\beta_x^2}}
-    &= -\frac{c e E_x}{m_e}t + K_1.
+    &= \eta t + K_1,
 \end{align*}
-Diese Gleichung kann nun (etwas mühsam) nach \(\beta_x\) aufgelöst werden:
+mit der Integrationskonstanten \(K_1\).
+Diese Gleichung kann nun nach \(\beta_x\) aufgelöst werden:
 \begin{align*}
     \frac{\beta_x^2}{1-\beta_x^2}
-    &= \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2\\
-    \Leftrightarrow\quad \beta_x^2 &= \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2
-    \biggl(1-\beta_x^2\biggr)\\
+    &= \bigl(\eta t + K_1\bigr)^2\\
+    \Leftrightarrow\quad \beta_x^2 &= \bigl(\eta t + K_1\bigr)^2
+    \bigl(1-\beta_x^2\bigr)\\
     \Leftrightarrow\quad
-    \beta_x^2 \biggl(1 + \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2\biggr)
-    &= \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2\\
+    \beta_x^2 \bigl(1 + \bigl(\eta t + K_1\bigr)^2\bigr)
+    &= \bigl(\eta t + K_1\bigr)^2\\
     \Leftrightarrow\quad
-    \beta_x^2 &= \frac{\biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2}
-    {1 + \biggl(-\frac{c e E_x}{m_e}t + K_1\biggr)^2}\\
+    \beta_x^2 &= \frac{\bigl(\eta t + K_1\bigr)^2}
+    {1 + \bigl(\eta t + K_1\bigr)^2}\\
     \Leftrightarrow\quad
-    \beta_x(t) &= \frac{-\frac{c e E_x}{m_e}t + K_1}
-    {\sqrt{1+\biggl(-\frac{ceE_x}{m_e}t+K_1\biggr)^2}}.
+    \beta_x(t) &= \frac{\eta t + K_1}
+    {\sqrt{1+\bigl(\eta t+K_1\bigr)^2}}.
 \end{align*}
 
 \subsubsection{Anfangsbedingungen}
-Mit der Anfangsbedingung \(\beta_x(t=0)=\beta_0 c\) erhält man
+Mit der Anfangsbedingung \(\beta_x(t=0)=\beta_0\) erhält man
 \begin{multline*}
-    v_x(0) = \beta_0 c = \frac{K_1}{\sqrt{1+K_1^2}}\quad
-    \Leftrightarrow\quad K_1^2 = \beta_0^2 c^2 \bigl(1+K_1^2\bigr)\\
-    \Leftrightarrow\quad K_1^2 (1-\beta_0^2 c^2) = \beta_0^2 c^2\quad
-    \Leftrightarrow\quad K_1 = \frac{\beta_0 c}{\sqrt{1-\beta_0^2 c^2}}
+    \beta_x(0) = \beta_0 = \frac{K_1}{\sqrt{1+K_1^2}}\quad
+    \Leftrightarrow\quad K_1^2 = \beta_0^2 \bigl(1+K_1^2\bigr)\\
+    \Leftrightarrow\quad K_1^2 (1-\beta_0^2 ) = \beta_0^2 \quad
+    \Leftrightarrow\quad K_1 = \frac{\beta_0}{\sqrt{1-\beta_0^2 }}
 \end{multline*}
 und somit eine vollständige Gleichung für die Geschwindigkeit des Elektrons.
 In Abbildung~\ref{relativ:fig:elektron-em-feld} ist die Gleichung für einige
@@ -263,7 +227,7 @@ Werte von \(\beta_0\) und \(E_x\) dargestellt.
 An den Ergebnissen der Rechnung sieht man, dass das Elektron (und tatsächlich auch kein anderes
 massebehaftetes Teilchen) über die Lichtgeschwindigkeit \(c\) hinaus beschleunigt werden kann.
 Je näher das Elektron der Lichtgeschwindigkeit kommt, dest mehr sieht es so aus,
-als würde es immer schwerer werden anstatt zu beschleunigen.
+als würde es immer schwerer werden anstatt weiter zu beschleunigen.
 Dies ist natürlich dem Lorentz-Faktor in Gleichung~\eqref{relativ:eqn:euler-lagrange-bsp-eingesetzt}
 zu verdanken.
 
