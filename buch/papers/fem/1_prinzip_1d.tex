@@ -333,25 +333,62 @@ Auch hier verlangt der kubische Ansatz mit seinen zwei Funktionen pro Datenpunkt
 
 
 \subsection{Codieren der Anfangsbedingungen\label{fem:1d:anfangsbedingungen}}
-Wir betrachten das Gleichungssystem in der Form $\mathbf{L}\vec{u} + \vec{b} = 0$. 
-Die Zeilen und Spalten der Matrix $\mathbf{L}$ codieren dabei die Beziehungen zwischen den einzelnen Elementen.
-Der $k$-ten Zeile kann zum Beispiel entnommen werden, welche anderen Elemente das $k$-te Element berühren. 
-Sollte nun also $u_k$ gegeben sein, so wird der $k$-te Wert der $k$-ten Zeile eins gesetzt, während die übrigen Elemente der Zeile alle Null gesetzt werden.
-Die $k$-te Zeile stellt folglich die Gleichung 
+Wir betrachten das Gleichungssystem in der Form 
 \begin{equation}
-    1 \cdot u_n + b_n = 0
+    \mathbf{L}\vec{u} = -\vec{b}. 
+    \label{fem:1d:gleichungssystem}
 \end{equation}
-dar. 
-Es kann nun also durch Setzen von $b_n = -u_n$ die Anfangsbedingung codiert werden.
+Dieses kann, um die kommenden Schritte besser verständlich zu machen, in einem Gauss-Tableau als
+\begin{equation}
+    \boxed{
+        \begin{matrix}
+            l_{11} & l_{12} & l_{13} & \cdots & l_{1N} & -b_1   \\
+            l_{21} & l_{22} & l_{23} & \cdots & l_{2N} & -b_2   \\
+            l_{31} & l_{32} & l_{33} & \cdots & l_{3N} & -b_3   \\
+            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+            l_{N1} & l_{N2} & l_{N3} & \cdots & l_{NN} & -b_N   \\
+        \end{matrix}
+    }
+\end{equation}
+repräsentiert werden.
 
-Nun ist aber $\mathbf{L}$ nicht mehr symmetrisch, was Effizienzeinbussen beim Invertieren dieser zur Folge hätte.
-Das nächste Ziel ist also, auch die $k$-te Spalte so weit zu bringen, dass nur das $k$-te Element ungleich Null ist.
-Um dies zu erreichen, wird vor dem Nullsetzen der Spalte zu jedem Element von $\vec{b}$ ein Korrekturterm addiert.
-Der zu $b_k$ zu addierende Term berechnet sich als
+Das Ziel ist es nun also, die Anfangsbedingung
 \begin{equation}
-    l_{ik} \cdot u_k.
+    u_n = x \in \mathbb{R} 
+    \label{fem:1d:anfangsbedingung}
 \end{equation}
-Bei homogenen Anfangsbedingungen ist dieser Term offensichtlich Null (da $u_k = 0$), was diese besonders einfach zu codieren macht.
+in das Gleichungssystem einzufügen.
+Am einfachsten gelingt dies, indem man die $n$-te Zeile so umformt, dass sie die Gleichung \ref{fem:1d:anfangsbedingung} widerspiegelt.
+Ist beispielsweise $n = 2$ gewählt, so resultiert
+\begin{equation}
+    \boxed{
+        \begin{matrix}
+            l_{11} & l_{12} & l_{13} & \cdots & l_{1N} & -b_1   \\
+            0      & 1      & 0      & \cdots & l_{2N} & x      \\
+            l_{31} & l_{32} & l_{33} & \cdots & l_{3N} & -b_3   \\
+            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+            l_{N1} & l_{N2} & l_{N3} & \cdots & l_{NN} & -b_N   \\
+        \end{matrix}
+    }.
+\end{equation}
+Dabei kann die ersetzte Zeile ohne Weiteres weggelassen werden, da die $N$ unbekannten Terme in $\vec{u}$ für eine eindeutige Lösung nur $N$ Gleichungen fordern. 
+Dies ist auch nach der gemachten Anpassung der Fall.
+
+Durch diese Operation wurde die Matrix jedoch asymmetrisch. Da dies beim Invertieren der Matrix zu Effizienzeinbussen führt, gilt es, die Symmetrie wieder herzustellen.
+Dazu bedienen wir uns dem im Gauss-Algorithmus angewandten Vorgehen zum Nullsetzen einer Spalte: Von jeder Zeile (ausser der $n$-ten bzw. hier $2$.) wird ein vielfaches der $n$-ten Zeile abgezogen.
+Es resultiert
+\begin{equation}
+    \boxed{
+        \begin{matrix}
+            l_{11} & 0      & l_{13} & \cdots & l_{1N} & -b_1 - l_{12} \cdot x \\
+            0      & 1      & 0      & \cdots & l_{2N} & x                     \\
+            l_{31} & 0      & l_{33} & \cdots & l_{3N} & -b_3 - l_{32} \cdot x \\
+            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots                \\
+            l_{N1} & 0      & l_{N3} & \cdots & l_{NN} & -b_N - l_{32} \cdot x \\
+        \end{matrix}
+    }.
+\end{equation}
+Dabei ist leicht zu erkennen, dass homogene Anfangsbedingungen, also $x=0$, besonders einfach zu codieren sind, da der von $-\vec{b}$ subtrahierte Term Null sein wird.
 
 \subsubsection{Codieren von gegebenen Ableitungen}
 Da der lineare wie auch der quadratische Ansatz keinen direkten Weg bietet, die Ableitungen der Funktion $u(x)$ zu bestimmen, muss mit einem Trick Abhilfe geschafft werden: 
