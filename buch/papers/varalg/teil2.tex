@@ -6,10 +6,10 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Einfacher Bruteforce Algorithmus
+\section{Einfacher Bruteforce-Algorithmus
   \label{buch:paper:varalg:section:bruteforce}}
-\rhead{Einfacher Bruteforce Algorithmus}
-In der Bruteforce Methode wird jede mögliche Variante durchprobiert,
+\kopfrechts{Einfacher Bruteforce-Algorithmus}
+In der Bruteforce-Methode wird jede mögliche Variante durchprobiert,
 um die beste Lösung zu finden. Dabei wird systematisch jede mögliche
 Route durchlaufen und überprüft, wie lange die Strecke ist.
 Ist die Strecke kürzer als die bisher kürzeste gefundene Route,
@@ -22,6 +22,7 @@ wird diese als neue optimale Lösung gespeichert.
 \end{figure}
 Auf dem Bild \ref{fig:results_bruteforce} ist ersichtlich, dass der
 Aufwand mit jedem weiteren Knoten exponentiell steigt. Anders
+\index{exponentiell}%
 ausgedrückt, mit jeder weiteren Stadt gibt es mehr Varianten, die
 durchprobiert werden müssen. Die Anzahl der Möglichkeiten lässt sich
 mit der Formel \((n-1)!\) berechnen, wobei \(n\) die Anzahl der Städte ist.
@@ -41,6 +42,7 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel ist wie folgt:
               Zum Beispiel, wenn wir die Menge {1,2,3} haben, können daraus alle möglichen 
               Permutationen dieser Menge gebildet werden: 123, 132, 213, 231, 312, 321 
           }
+\index{Permutation}%
           der Städte \( \{1, 2, \ldots, n\} \),
           wobei jede \( \sigma \) unterschiedliche Reihenfolge der Städte darstellt.
     \item \( d(i, j) \) ist die Funktion, welche die Entfernung zwischen der Stadt \( i \) und
@@ -79,16 +81,15 @@ beschreiben. Die Bedeutung der einzelnen Teile der Formel ist wie folgt:
     müssen alle möglichen Permutationen durchgerechnet werden. Die kürzeste Strecke ist dann
     das Optimum. 
 \end{beispiel}
-\subsection{Aufwand für den Bruteforce Algorithmus
+\subsection{Aufwand für den Bruteforce-Algorithmus
     \label{buch:paper:varalg:subsection:bruteforce_efforts}}
-\rhead{Aufwand Bruteforce}
 Aus dem vorherigen Abschnitt \ref{buch:paper:varalg:section:bruteforce} ist 
 ersichtlich, dass der Aufwand für die Berechnung der kürzesten Strecke exponentiell steigt.
 Mit jedem weiteren Knoten gibt es mehr Permutationen, die berechnet und verglichen werden 
 müssen. Aus den Testversuchen mit steigender Anzahl können die Resultate, welche in der 
 Tabelle \ref{tab:bruteforce_tabelle_time} und der grafischen Abbildung \ref{fig:bruteforce_graph_time} 
 dargestellt sind, erhalten werden. Daraus ist ersichtlich,
-dass es bei 8 Städten einen Zeitaufwand von 17 Minuten erreicht.
+dass es bei acht Städten einen Zeitaufwand von 17 Minuten erreicht.
 % Tabelle
 \begin{table}
     \centering

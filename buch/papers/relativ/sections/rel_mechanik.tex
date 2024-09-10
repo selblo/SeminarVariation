@@ -1,4 +1,59 @@
 
-\section{Relativistische Mechanik 
-\label{relativ:section:rel_mechanik}}
-\rhead{Relativistische Mechanik}
+\section{Das Prinzip der kleinsten Wirkung 
+\label{relativ:section:kleinste-wirkung}}
+\rhead{Das Prinzip der kleinsten Wirkung}
+
+Für die Berechnung der Bewegung von materiellen Teilchen geht man
+vom Prinzip der kleinsten Wirkung aus.
+Dieses besagt, dass es für jedes mechanische System ein sogenanntes
+Wirkungsintegral \(S\) gibt,
+dass für diejenige Bewegung ein Minimum besitzt, die tatsächlich erfolgt.
+Wie bereits zu erahnen ist, kann dieses Minimum durch die Variation \(dS\)
+des Wirkungsintegrals ermittelt werden.
+
+Da dieses Integral unabhängig vom gewählten Koordinatensystem sein muss,
+kann es nur von Skalaren und nicht von den Variablen \(x, y, z, t\) abhängen.
+Das Wirkungsintegral hat daher die Form
+\begin{equation}
+    S = - \alpha \int_{a}^{b} ds,
+\label{relativ:eqn:wirk-int-grundform}
+\end{equation}
+wobei \(\alpha\) eine vom Teilchen abhängige Konstante,
+und \(a\) und \(b\) zwei Ereignisse in der Raumzeit sind.
+Integriert wird über die Weltlinie des Teilchens,
+d.h. entlang dessen Bahn durch die Raumzeit.
+
+Das Wirkungsintegral lässt sich auch über die Zeit darstellen,
+wobei es die Form
+\begin{equation}
+    S = \int_{t_1}^{t_2} L \, dt
+\label{relativ:eqn:wirk-int-zeit}
+\end{equation}
+annimmt, mit der Lagrange-Funktion \(L\).
+Ersetzt man \(ds\) in \eqref{relativ:eqn:wirk-int-grundform}
+gemäss \eqref{relativ:eqn:differential-eigenzeit} und passt
+die Integrationsgrenzen an, so erhält man
+\begin{equation}
+    S = -\int_{t_1}^{t_2} \alpha c \sqrt{1-\frac{v^2}{c^2}} dt.
+\end{equation}
+
+Zur Bestimmung der Teilchenkonstante \(\alpha\) beginnt man mit der Forderung,
+dass die Lagrange-Funktion im Grenzfall \(c\rightarrow\infty\) in den
+Ausdruck \(L=mv^2/2\) der klassischen Mechanik übergehen soll.
+Die Taylorreihe von \(L\) ergibt beim Weglassen der Terme höherer Ordnung
+\begin{equation}
+    L = - \alpha c \sqrt{1-\frac{v^2}{c^2}}
+    \approx -\alpha c + \frac{\alpha v^2}{2c}.
+\end{equation}
+Da Konstanten in der Lagrange-Funktion keinen Einfluss auf die Bewegungsgleichung haben,
+kann der erste Term ignoriert werden. Somit bleibt die Forderung
+\begin{equation}
+    \frac{\alpha v^2}{2c} = \frac{mv^2}{2}\
+    \text{und daraus ergibt sich}\
+    \alpha = mc.
+\end{equation}
+Für ein freies Teilchen ergibt sich folglich die Lagrange-Funktion
+\begin{equation}
+    L = -mc^2 \sqrt{1-\frac{v^2}{c^2}}.
+\label{relativ:eqn:lagrange-freies-teilchen}
+\end{equation}

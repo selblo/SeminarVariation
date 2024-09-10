@@ -9,8 +9,8 @@
 %
 
 \section{Spinodale Entmischung\label{cahnhilliard:section:spinodal}}
-\rhead{Spinodale Entmischung}
-
+\kopfrechts{Spinodale Entmischung}
+\index{spinodale Entmischung}%
 Nachdem wir die Cahn-Hilliard-Gleichung hergeleitet haben,
 möchten wir nun überprüfen,
 ob \eqref{cahnhilliard:cheq} tatsächlich das Verhalten von Essig und Öl widerspiegelt.
@@ -23,7 +23,7 @@ M
 &=
 1,
 &
-\epsilon
+\varepsilon
 &=
 0.01,
 &
@@ -43,6 +43,7 @@ X
 \end{align*}
 Dabei stellt $\mathcal{U}(-1,1)$ eine Gleichverteilung von $-1$ bis $1$ dar.
 Für $c(x,0)$ wurde absichtlich das aus Kochbüchern typische Verhältnis von
+\index{Kochbuch}%
 2 Teile Öl zu 1 Teil Essig gewählt.
 Wir nehmen ausserdem an, dass die Sauce initial sehr gut gemischt ist.
 Der Code für die Simulation ist unter \cite{cahnhilliard:repo} abgelegt.
@@ -102,7 +103,9 @@ F(c)
 Hierbei ist $\omega$ ein Parameter,
 der die Wechselwirkungsenergie zwischen den Komponenten beschreibt,
 $R$ die universelle Gaskonstante und
+\index{Gaskonstante}%
 $T$ die Temperatur.
+\index{Temperatur}%
 
 Ein wesentlicher Aspekt ist die unterschiedliche chemische Affinität
 der Moleküle zueinander.
@@ -110,7 +113,10 @@ Essig,
 der hauptsächlich aus Wasser besteht,
 und Öl haben sehr unterschiedliche molekulare Strukturen und Wechselwirkungen.
 Wasser ist ein polares Molekül und bildet starke Wasserstoffbrückenbindungen,
+\index{polar}%
+\index{Wasserstoffbrückenbindung}%
 während Öl aus unpolaren Kohlenwasserstoffmolekülen besteht,
+\index{Kohlenwasserstoff}%
 die keine solchen Bindungen eingehen.
 Diese unterschiedlichen Wechselwirkungen führen dazu,
 dass die Moleküle von Essig und Öl es vorziehen,
@@ -118,6 +124,7 @@ sich jeweils mit ihresgleichen zu umgeben,
 anstatt sich miteinander zu vermischen.
 
 \subsubsection{Kritische Temperatur}
+\index{Temperatur!kritisch}%
 Wenn wir die freie Energie $F(c)$ eines homogenen Gemisches analysieren,
 stellen wir fest,
 dass bei bestimmten Temperaturen die freie Energie eine Form annimmt,
@@ -141,7 +148,7 @@ bestimmt werden.
 \begin{figure}
 \centering
 \includegraphics[scale=0.8]{papers/cahnhilliard/presentation/images/energy.book.pdf}
-\caption{Temperaturabhängigkeit von $F(c)$}
+\caption{Temperaturabhängigkeit von $F(c)$.}
 \label{cahnhilliard:fig:fc}
 \end{figure}
 
@@ -167,10 +174,14 @@ kann eine Erhöhung der Temperatur helfen,
 die Mischung stabiler zu halten.
 Allerdings ist dies für kalt servierte Salate eher ungeeignet.
 \item \emph{Verwendung von Stabilisatoren:}
+\index{Stabilisator}%
+\index{Xanthan}%
+\index{Agar-Agar}%
 Stabilisatoren wie Xanthan oder Agar-Agar können der Mischung hinzugefügt werden,
 um die Viskosität zu erhöhen und die Bewegung der Tröpfchen zu verlangsamen,
 was die Phasentrennung erschwert.
 \item \emph{Emulgatoren hinzufügen:}
+\index{Emulgator}%
 Emulgatoren sind Moleküle,
 die sowohl hydrophile (wasserliebende)
 als auch lipophile (fettliebende) Eigenschaften besitzen.
@@ -180,8 +191,11 @@ Dadurch wird die Bildung kleiner,
 stabiler Tröpfchen erleichtert,
 was die Entmischung verhindert.
 Beispiele für Emulgatoren sind Lecithin (in Eigelb enthalten) oder Senf.
+\index{Lecithin}%
+\index{Senf}%
 \item \emph{Intensives Rühren:}
 Mechanisches Rühren oder Schütteln kann die Mischung homogen halten,
+\index{rühren}%
 indem es die Bildung von Phasengrenzen stört und die Tröpfchen klein hält.
 Je intensiver und länger gerührt wird,
 desto feiner und stabiler wird die Emulsion.
@@ -210,7 +224,7 @@ Gemäss \cite{cahnhilliard:deriv-advective} ergibt sich dann
 \\
 \mu
 &=
-\deriv{F}{c} -  \epsilon^2 \Delta c
+\deriv{F}{c} -  \varepsilon^2 \Delta c
 \\
 \nabla \cdot v
 &=
