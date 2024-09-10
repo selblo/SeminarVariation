@@ -37,7 +37,7 @@
 ({\x},{\x+1});
 \draw[color=darkred,line width=1.4pt] plot[domain=0:1, scale=4, smooth]
 ({\x},{1-\x});
-\draw[color=darkred,line width=1.4pt] plot[domain=1:1.075, scale=4, smooth]
+\draw[color=darkred,line width=1.4pt] plot[domain=1:1.025, scale=4, smooth]
 ({\x},{0});
 %     % a_{n+1}
 % \draw[color=darkblue,line width=1.4pt,dashed] plot[domain=-1.025:0, scale=4, smooth]
@@ -48,12 +48,12 @@
 % ({\x},{2-\x});
 
 % x-Achse
-\draw[->] (-4.1,0) -- (4.3,0) coordinate[label={$x$}];
+\draw[->] (-4.1,0) -- (4.4,0) coordinate[label={$x$}];
 \draw (4,-0.1) -- (4,0.1);
 \draw (-4,-0.1) -- (-4,0.1);
-\node at (-4,0) [below] {$-\Delta x$};
-\node at ( 0,0) [below] {$0$};
-\node at ( 4,0) [below] {$\Delta x$};
+\node at (-4,0) [below] {$x_{n-1}$};
+\node at ( 0,0) [below] {$x_n$};
+\node at ( 4,0) [below] {$x_{n+1}$};
 
 % y-Achse
 \draw[->] (0,{-0.1}) -- (0,{4.3})

@@ -27,36 +27,36 @@
 ({\x},{0});
 \draw[color=darkred,line width=1.4pt] plot[domain=-1:0, scale=4, smooth]
 ({\x},{(-4*(-1-\x)*(0-\x))});
-\draw[color=darkred,line width=1.4pt] plot[domain=0:1.075, scale=4, smooth]
+\draw[color=darkred,line width=1.4pt] plot[domain=0:1.025, scale=4, smooth]
 ({\x},{0});
 
-\draw[color=darkpurple,line width=1.4pt] plot[domain=-1.025:-1, scale=4, smooth]
+\draw[color=darkpurple,line width=1.4pt] plot[domain=-1.025:-0.5, scale=4, smooth]
 ({\x},{0});
-\draw[color=darkpurple,line width=1.4pt] plot[domain=-1:0, scale=4, smooth]
+\draw[color=darkpurple,line width=1.4pt] plot[domain=-0.5:0, scale=4, smooth]
 ({\x},{(2*(-1-\x)*(-0.5-\x))});
-\draw[color=darkpurple,line width=1.4pt] plot[domain=0:1, scale=4, smooth]
+\draw[color=darkpurple,line width=1.4pt] plot[domain=0:0.5, scale=4, smooth]
 ({\x},{(2*(0.5-\x)*(1-\x))});
-\draw[color=darkpurple,line width=1.4pt] plot[domain=1:1.075, scale=4, smooth]
+\draw[color=darkpurple,line width=1.4pt] plot[domain=0.5:1.025, scale=4, smooth]
 ({\x},{0});
 
 \draw[color=darkblue,line width=1.4pt] plot[domain=-1.025:0, scale=4, smooth]
 ({\x},{0});
 \draw[color=darkblue,line width=1.4pt] plot[domain=0:1, scale=4, smooth]
 ({\x},{(-4*(0-\x)*(1-\x))});
-\draw[color=darkblue,line width=1.4pt] plot[domain=1:1.075, scale=4, smooth]
+\draw[color=darkblue,line width=1.4pt] plot[domain=1:1.025, scale=4, smooth]
 ({\x},{0});
 
 % x-Achse
-\draw[->] (-4.1,0) -- (4.3,0) coordinate[label={$x$}];
-\node at (-4,0) [below left]  {$-2 \Delta x$};
+\draw[->] (-4.1,0) -- (4.4,0) coordinate[label={$x$}];
+\node at (-4,0) [below]  {$x_{n-2}$};
 \draw (-4,-0.1) -- (-4,0.1);
-\node at (-2,0) [below right] {$-\Delta x$};
+\node at (-2,0) [below]  {$x_{n-1}$};
 \draw (-2,-0.1) -- (-2,0.1);
-\node at ( 0,0) [below]       {$0$};
+\node at ( 0,0) [below]  {$x_n$};
 \draw ( 0,-0.1) -- ( 0,0.1);
-\node at ( 2,0) [below left]  {$\Delta x$};
+\node at ( 2,0) [below]  {$x_{n+1}$};
 \draw ( 2,-0.1) -- ( 2,0.1);
-\node at ( 4,0) [below right] {$2 \Delta x$};
+\node at ( 4,0) [below] {$x_{n+2}$};
 \draw ( 4,-0.1) -- ( 4,0.1);
 
 % y-Achse
