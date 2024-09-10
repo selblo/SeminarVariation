@@ -157,11 +157,11 @@ Für einen willkürlich gewählten Zeitschritt von $\Delta t = 0.1$ und den in d
 \begin{equation}
     \mathbf{L}\vec{u} + \vec{b} 
     = \left(\begin{matrix}
-        19.33  & 10.17  &  0.00  & \cdots &  0.00  \\
-        10.17  & 19.33  & 10.17  & \ddots & \vdots \\
-         0.00  & 10.17  & 19.33  & \ddots &  0.00  \\
-        \vdots & \ddots & \ddots & \ddots & 10.17  \\
-         0.00  & \cdots & 0.00   & 10.17  & 19.33
+        -19.33  & 10.17  &        &        &        \\
+         10.17  &-19.33  & 10.17  &        &        \\
+                & 10.17  &-19.33  & \ddots &        \\
+                &        & \ddots & \ddots & 10.17  \\
+                &        &        & 10.17  &-19.33
     \end{matrix}\right)
     \left(\begin{matrix}
         u_0 \\ u_1 \\ u_2 \\ u_3 \\ \vdots \\ u_N
@@ -171,6 +171,7 @@ Für einen willkürlich gewählten Zeitschritt von $\Delta t = 0.1$ und den in d
         0 \\ 0 \\ 0 \\ 0 \\ \vdots \\ 0
     \end{matrix}\right)
     = 0
+    \label{fem:rechenbsp:gleichungssystem}
 \end{equation}
 
 
@@ -182,51 +183,85 @@ Die Anfangsbedingungen
     u'(0) = 0
 \end{equation}
 werden wie in Kapitel \ref{fem:1d:anfangsbedingungen} beschrieben in die Matrix eingebracht.
+Dazu wird das Gleichungssystem \ref{fem:rechenbsp:gleichungssystem} zunächst als Gauss-Tableau geschrieben:
+\begin{equation}
+    \boxed{\begin{matrix}
+       -19.33  & 10.17  &        &        &        & 0 \\
+        10.17  &-19.33  & 10.17  &        &        & 0 \\
+               & 10.17  &-19.33  & \ddots &        & 0 \\
+               &        & \ddots & \ddots & 10.17  & \vdots \\
+               &        &        & 10.17  &-19.33  & 0 
+    \end{matrix}}.
+\end{equation}
 
 \subsubsection{$\mathbf{u(0) = 0.175 \radian}$:}
-Nach null setzen der Zeile und Anpassen von $\vec{b}$ resultiert
+Die einzufügende Gleichung
 \begin{equation}
-    \mathbf{L}\vec{u} + \vec{b} 
-    = \left(\begin{matrix}
-         1.00  &  0.00  &  0.00  & \cdots & 0.00 \\
-         0.00  & 19.33  & 10.17  & \ddots & \vdots \\
-         0.00  & 10.17  & 19.33  & \ddots & 0.00 \\
-        \vdots & \ddots & \ddots & \ddots & 10.17 \\
-         0.00  & \cdots & 0.00   & 10.17  & 19.33
-    \end{matrix}\right)
-    \left(\begin{matrix}
-        u_0 \\ u_1 \\ u_2 \\ u_3 \\ \vdots \\ u_N
-    \end{matrix}\right)
-    +
-    \left(\begin{matrix}
-        -0.175 \\ 1.78 \\ 0 \\ 0 \\ \vdots \\ 0
-    \end{matrix}\right)
-    = 0
+    x_0 = 0.175
+\end{equation}
+ersetzt also die Zeile $0$:
+\begin{equation}
+    \boxed{\begin{matrix}
+         1.00  &        &        &        &        & 0.175 \\
+        10.17  &-19.33  & 10.17  &        &        & 0 \\
+               & 10.17  &-19.33  & \ddots &        & \vdots \\
+               &        & \ddots & \ddots & 10.17  & 0 \\
+               &        &        & 10.17  &-19.33  & 0 
+    \end{matrix}}.
+\end{equation}
+
+Anschliessend wird noch die Spalte Null gesetzt, indem das $ 10.17 $-fache der $1$. Zeile von der $2$. abgezogen wird.
+Es resultiert
+\begin{equation}
+    \boxed{\begin{matrix}
+         1.00  &        &        &        &        & 0.175 \\
+               &-19.33  & 10.17  &        &        & -1.78 \\
+               & 10.17  &-19.33  & \ddots &        & \vdots \\
+               &        & \ddots & \ddots & 10.17  & 0 \\
+               &        &        & 10.17  &-19.33  & 0 
+    \end{matrix}}.
 \end{equation}
 
 \subsubsection{$\mathbf{u'(0) = 0 }$:}
 Hier wird die erwähnte Annäherung zum Codieren der Anfangsbedingung bezüglich der Ableitung angewandt.
 Es wird also nicht direkt $u'(0) = 0 $, sondern $u(\Delta t) = u(0) = 0.175 \radian$ codiert.
-Daraus resultiert
+Es gilt also, zusätzlich die Gleichung
+\begin{equation}
+    x_1 = 0.175
+\end{equation}
+in das Tableau einzufügen.
+Nach gleichem Vorgehen wie bei der vorherigen Randbedingung resultiert
+\begin{equation}
+    \boxed{\begin{matrix}
+         1.00  &        &        &        &        &        & 0.175 \\
+               &  1.00  &        &        &        &        & 0.175 \\
+               &        &-19.33  & 10.17  &        &        & -1.78 \\
+               &        & 10.17  &        & \ddots &        & 0 \\
+               &        &        & \ddots & \ddots & 10.17  & \vdots \\
+               &        &        &        & 10.17  &-19.33  & 0 
+    \end{matrix}},
+\end{equation}
+was wieder in Vektorschreibweise dargestellt
 \begin{equation}
     \mathbf{L}\vec{u} + \vec{b} 
     = \left(\begin{matrix}
-         1.00  &  0.00  &  0.00  &  0.00  & \cdots &  0.00  \\
-         0.00  &  1.00  &  0.00  &  0.00  & \ddots & \vdots \\
-         0.00  &  0.00  & 19.33  & 10.17  & \ddots &  0.00  \\
-         0.00  &  0.00  & 10.17  & 19.33  & \ddots &  0.00  \\
-        \vdots & \ddots & \ddots & \ddots & \ddots & 10.17  \\
-         0.00  & \cdots & 0.00   &  0.00  & 10.17  & 19.33
+         1.00  &        &        &        &        &        \\
+               &  1.00  &        &        &        &        \\
+               &        &-19.33  & 10.17  &        &        \\
+               &        & 10.17  &-19.33  & \ddots &        \\
+               &        &        & \ddots & \ddots & 10.17  \\
+               &        &        &        & 10.17  &-19.33
     \end{matrix}\right)
     \left(\begin{matrix}
         u_0 \\ u_1 \\ u_2 \\ u_3 \\ u_4 \\ \vdots \\ u_N
     \end{matrix}\right)
-    +
+    =
     \left(\begin{matrix}
-        -0.175 \\ -0.175 \\ 1.78 \\ 0 \\ 0 \\ \vdots \\ 0
+        0.175 \\ 0.175 \\ -1.78 \\ 0 \\ 0 \\ \vdots \\ 0
     \end{matrix}\right)
-    = 0
 \end{equation}
+ergibt.
+Es ist nun auch festzustellen, dass das zu lösende Gleichungssystem für jede Anfangsbedingung um eine Variable kleiner geworden ist, da ja zwei der gesuchten Werte bereits gegeben sind.
 
 
 \subsection{Invertieren der Matrix}
