@@ -1,15 +1,40 @@
 
-\section{Das Prinzip der kleinsten Wirkung 
+\section{Die relativistische Mechanik
+\label{relativ:section:rel-mech}}
+\rhead{Die relativistische Mechanik}
+
+Dieser Abschnitt soll eine kurze Einführung geben in die
+Grundlagen der Berechnungen in der relativistischen Mechanik.
+
+
+\subsection{Elementarteilchen in der Relativitätstheorie
+\label{relativ:section:elementarteilchen}}
+
+Wie bereits in der Einleitung zu Abschnitt~\ref{relativ:section:relativistik} erwähnt,
+kann es gemäss der Relativitätstheorie keine starren Körper geben.
+Angemessener ist daher die Betrachtung \emph{punktförmiger Elementarteilchen}.
+Der Zustand eines solchen Elementarteilchens ist dabei vollständig definiert durch
+die drei Raumkoordinaten und die drei zugehörigen Geschwindigkeitskomponenten.
+
+
+\subsection{Das Prinzip der kleinsten Wirkung
 \label{relativ:section:kleinste-wirkung}}
-\rhead{Das Prinzip der kleinsten Wirkung}
 
 Für die Berechnung der Bewegung von materiellen Teilchen geht man
-vom Prinzip der kleinsten Wirkung aus.
+von dem bereits in Kapitel~\ref{buch:chapter:mechanik} eingeführten
+Maupertuisschen Prinzip der kleinsten Wirkung aus.
 Dieses besagt, dass es für jedes mechanische System ein sogenanntes
 Wirkungsintegral \(S\) gibt,
 dass für diejenige Bewegung ein Minimum besitzt, die tatsächlich erfolgt.
 Wie bereits zu erahnen ist, kann dieses Minimum durch die Variation \(dS\)
 des Wirkungsintegrals ermittelt werden.
+
+\subsubsection{Wirkungsintegral für ein freies Teilchen
+\label{relativ:section:wirk-int-freies-teilchen}}
+
+Nachfolgend werden das Wirkungsintegral und die Lagrange-Funktion
+für ein freies Teilchen, das heisst ein Teilchen, welches nicht
+unter dem Einfluss äusserer Kräfte oder Felder steht, hergeleitet.
 
 Da dieses Integral unabhängig vom gewählten Koordinatensystem sein muss,
 kann es nur von Skalaren und nicht von den Variablen \(x, y, z, t\) abhängen.
@@ -34,26 +59,68 @@ Ersetzt man \(ds\) in \eqref{relativ:eqn:wirk-int-grundform}
 gemäss \eqref{relativ:eqn:differential-eigenzeit} und passt
 die Integrationsgrenzen an, so erhält man
 \begin{equation}
-    S = -\int_{t_1}^{t_2} \alpha c \sqrt{1-\frac{v^2}{c^2}} dt.
+    S = -\int_{t_1}^{t_2} \alpha c \sqrt{1-\frac{v^2}{c^2}} dt
+    \quad \text{und somit} \quad
+    L = -\alpha c \sqrt{1-\frac{v^2}{c^2}}.
+    \label{relativ:eq:wirk-int-lagrange}
 \end{equation}
 
 Zur Bestimmung der Teilchenkonstante \(\alpha\) beginnt man mit der Forderung,
 dass die Lagrange-Funktion im Grenzfall \(c\rightarrow\infty\) in den
 Ausdruck \(L=mv^2/2\) der klassischen Mechanik übergehen soll.
-Die Taylorreihe von \(L\) ergibt beim Weglassen der Terme höherer Ordnung
+Mittels der Potenzreihe
+\begin{equation*}
+    \sqrt{1+w} = 1 + \frac{1}{2} w - \frac{1}{2\cdot4} w^2 +
+    \frac{1\cdot3}{2\cdot4\cdot6} w^3 \mp \cdots, \quad
+    -1\leq w \leq1
+\end{equation*}
+kann die Lagrange-Funktion aus
+\eqref{relativ:eq:wirk-int-lagrange} beim Weglassen der
+Glieder höherer Ordnung und mit der Substitution
+\(w=-\frac{v^2}{c^2}\) entwickelt werden zu
 \begin{equation}
     L = - \alpha c \sqrt{1-\frac{v^2}{c^2}}
-    \approx -\alpha c + \frac{\alpha v^2}{2c}.
+    \approx -\alpha c \biggl(1 - \frac{v^2}{2c^2}\biggr)
+    = -\alpha c + \frac{\alpha v^2}{2c}.
 \end{equation}
 Da Konstanten in der Lagrange-Funktion keinen Einfluss auf die Bewegungsgleichung haben,
 kann der erste Term ignoriert werden. Somit bleibt die Forderung
 \begin{equation}
-    \frac{\alpha v^2}{2c} = \frac{mv^2}{2}\
-    \text{und daraus ergibt sich}\
+    \frac{\alpha v^2}{2c} = \frac{mv^2}{2}
+    \quad \text{und daraus ergibt sich} \quad
     \alpha = mc.
 \end{equation}
-Für ein freies Teilchen ergibt sich folglich die Lagrange-Funktion
+Ein freies Teilchen besitzt folglich die Lagrange-Funktion
 \begin{equation}
     L = -mc^2 \sqrt{1-\frac{v^2}{c^2}}.
 \label{relativ:eqn:lagrange-freies-teilchen}
+\end{equation}
+
+\subsubsection{Wirkungsintegral für ein Teilchen im elektromagnetischen Feld
+\label{relativ:section:wirk-int-em-feld}}
+
+Das Wirkungsintegral für ein Elementarteilchen im elektromagnetischen Feld ist
+\begin{equation}
+    S = \int_a^b \biggl(-mc\,ds + \frac{e}{c} \bm{A}\,d\bm{r} - e\varphi\,dt\biggr)
+    \label{relativ:eqn:wirk-int-em-feld}
+\end{equation}
+und somit eine Erweiterung von \eqref{relativ:eqn:wirk-int-grundform}.
+Dabei ist \(\bm{A}\) das \emph{Vektorpotential des Feldes}\footnote{
+    Auch bekannt als \emph{magnetisches Vektorpotential}.}
+und \(\varphi\) das \emph{skalare Potential des Feldes}\footnote{
+    Auch bekannt als \emph{elektrisches Potential}.}.
+In der relativistischen Raumzeit schreibt man diese zwei Grössen
+auch als Vierervektor \(A^i = (\varphi, \bm{A})\),
+wobei \(\varphi\) zur Zeitkoordinate \(t\) gehört und
+\(\bm{A}\) zu den räumlichen Koordinaten \(x, y, z\).
+Als Integral über die Zeit geschrieben wird das Wirkungsintegral zu
+\begin{equation}
+    S = \int_{t_1}^{t_2} \biggl( -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \bm{A} \bm{v} - e \varphi \biggr) \, dt,
+    \label{relativ:eqn:wirk-int-em-feld-zeit}
+\end{equation}
+wobei \(\displaystyle \bm{v} = \frac{d\bm{r}}{dt}\) der Geschwindigkeitsvektor der drei räumlichen Dimensionen ist.
+Der Integrand in \eqref{relativ:eqn:wirk-int-em-feld-zeit} ist gerade die Lagrange-Funktion
+\begin{equation}
+    L = -mc^2 \sqrt{1-\frac{v^2}{c^2}} + \frac{e}{c} \bm{A} \bm{v} - e \varphi.
+    \label{relativ:eqn:lagrange-em-feld}
 \end{equation}

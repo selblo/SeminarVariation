@@ -6,42 +6,49 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
+
 \section{Vereinfachungen und ihre Folgen 
-\label{leo:section:vereinfachungen}}
+	\label{leo:section:vereinfachungen}}
 \rhead{Vereinfachungen und ihre Folgen}
+
+Bei der Betrachtung der Bewegungsgleichungen der Rakete werden oft Vereinfachungen vorgenommen, um die Lösung zu erleichtern. Diese Vereinfachungen haben jedoch direkte Konsequenzen auf die berechnete Flugbahn und die erzielbare Endgeschwindigkeit. Im Folgenden werden drei Arten von Verlusten besprochen, die bei einer Vereinfachung vernachlässigt oder isoliert betrachtet werden können: Steuerverluste, Strömungsverluste und Schwerkraftverluste.
+
 \begin{itemize}
-	\item Werden nur \textbf{Steuerungsverluste} beachtet, würde die Rakete um das Integral zu minimieren immer weiter geradeaus fliegen.
-	Das kommt von $\sin^2\left( \frac{\alpha}{2}\right) $ welches 0 ist wen Alpha 0 ist.
-	Die Rakete würde nie auf eine Flugbahn um den Orbit einlenken das Steuern teuer ist.
-	Der Steuerungsverlust schafft Anreiz die Rakete möglichst wenig zu Steuern.
+	\item \textbf{Steuerverluste:} Werden nur die Steuerverluste berücksichtigt, würde die Rakete dazu tendieren, möglichst geradeaus zu fliegen, um das Integral zu minimieren. Dies ergibt sich aus dem Term $\sin^2\left( \frac{\alpha}{2}\right)$, der null wird, wenn der Steuerungswinkel $\alpha$ null ist. Das bedeutet, dass keine Kurskorrekturen durchgeführt würden, um eine Umlaufbahn zu erreichen, da jede Steuerung zusätzlichen Energieaufwand bedeutet. Die Rakete würde also niemals in eine Orbitbahn einlenken.
+	
 	\begin{equation*}
 		v_f = \underbrace{v_* \ln \left(\frac{m_0}{m_f}\right)}_{\text{Raketengleichung}} 
 		- \underbrace{2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt }_{\text{Steuerverluste}}
-		- \underbrace{\Cancel[red]{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }}_{\text{Strömungswiderstand}}
-		- \underbrace{\Cancel[red]{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}}_{\text{Schwerkraftsverluste}}
+		- \underbrace{\Cancel[red]{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }}_{\text{Strömungsverluste}}
+		- \underbrace{\Cancel[red]{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}}_{\text{Schwerkraftverluste}}.
 	\end{equation*}
 	
-	\item Werden nur \textbf{Strömungsverluste} beachtet, würde die Rakete möglichst Schnell aus der Atmosphäre raus fliegen wollen. Damit würde $e^{-\frac{h}{H}}$ minimiert. 
-	Sie hätte aber auch keine Anreiz in einen Orbit einzukehren.
-	Der Strömungsverlust ist der Anreiz, dass die Rakete möglichst schnell aus der Widerstandsbehafteten Atmospähre raus kommt.
+	Das Fehlen von Steuerung hätte zur Folge, dass die Rakete ihre Flugbahn nicht anpassen würde und eine Umlaufbahn unmöglich wäre. Steuerverluste stellen also einen Kompromiss zwischen Kurskorrekturen und Effizienz dar.
+	
+	\item \textbf{Strömungsverluste:} Wenn nur die Strömungsverluste beachtet werden, würde die Rakete so schnell wie möglich aus der dichten Atmosphäre aufsteigen, um den Luftwiderstand zu minimieren. Der Term $e^{-\frac{h}{H}}$ beschreibt, dass die Luftdichte mit zunehmender Höhe exponentiell abnimmt. Die Rakete würde jedoch keinen Anreiz haben, in eine horizontale Umlaufbahn einzulenken, da der Fokus allein auf der Minimierung des Luftwiderstands liegt.
+	
 	\begin{equation*}
 		v_f = \underbrace{v_* \ln \left(\frac{m_0}{m_f}\right)}_{\text{Raketengleichung}} 
 		- \underbrace{\Cancel[red]{2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt }}_{\text{Steuerverluste}}
-		- \underbrace{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }_{\text{Strömungswiderstand}}
-		- \underbrace{\Cancel[red]{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}}_{\text{Schwerkraftsverluste}}
+		- \underbrace{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }_{\text{Strömungsverluste}}
+		- \underbrace{\Cancel[red]{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}}_{\text{Schwerkraftverluste}}.
 	\end{equation*}
 	
-	\item Werden nur \textbf{Schwerkraftsverluste} beachte müsste $\sin(\gamma)$ minimiert werden.
-	Die Rakete würde dafür sofort bei Start sich um 90° drehen.
-	Was offensichtlich auch nicht die Lösung sein kann
-	Der Schwerkraftsverlust ist aber der Anreiz das die Rakete in einen Orbit kommt.
+	Diese Vereinfachung führt dazu, dass der Aufstieg so schnell wie möglich erfolgt, um den Strömungsverlust zu minimieren, ohne jedoch den Orbit zu erreichen.
+	
+	\item \textbf{Schwerkraftverluste:} Wenn nur die Schwerkraftverluste berücksichtigt werden, müsste die Rakete den Flugwinkel \(\gamma\) minimieren, indem sie sofort bei Start einen Horizontalflug beginnt. Dies würde jedoch eine sofortige Kursänderung um 90° bedeuten, was strukturell und aerodynamisch nicht möglich ist. Schwerkraftverluste sind der Hauptanreiz, dass die Rakete nach dem Start allmählich in eine horizontale Flugbahn einlenkt, um die Schwerkraft so effizient wie möglich zu überwinden.
+	
 	\begin{equation*}
 		v_f = \underbrace{v_* \ln \left(\frac{m_0}{m_f}\right)}_{\text{Raketengleichung}} 
 		- \underbrace{\Cancel[red]{2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt }}_{\text{Steuerverluste}}
-		- \underbrace{\Cancel[red]{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }}_{\text{Strömungswiderstand}}
-		- \underbrace{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}_{\text{Schwerkraftsverluste}}
+		- \underbrace{\Cancel[red]{\frac{1}{H} \int_0^{t_f} k_Dv^2 e^{-\frac{h}{H}} \, dt }}_{\text{Strömungsverluste}}
+		- \underbrace{\int_0^{t_f} g \sin \left(\gamma\right) \, dt}_{\text{Schwerkraftverluste}}.
 	\end{equation*}
+	
+	Ohne eine Berücksichtigung der anderen Verluste wäre ein sofortiger Horizontalflug ebenfalls nicht praktikabel.
 \end{itemize}
 
-Die Verluste dieser eines typische Steigungprofils für die Erdatmosphäre sind bekannt. Der Steuerverlust ist ca. 3\%, der Strömungswiderstand ist ca. 27\% und der Schwerkraftsverlust ist ca. 70\%. Das Ziel ist es deshalb vor allem die Gravitationsverluste zu reduzieren, entweder durch höhere Beschleunigungen und damit geringere Flugzeit oder durch kleinere Flugbahnwinkel (früher Horizontalflug) an der Grenze der aerodynamischen Strukturbelastung.
+Ein typisches Profil eines Raketenaufstiegs zeigt, dass die Steuerverluste etwa 3\%, die Strömungsverluste etwa 27\% und die Schwerkraftverluste etwa 70\% der Gesamtverluste ausmachen \cite{leo:astronautics}. Daher ist es entscheidend, vor allem die Schwerkraftverluste zu minimieren. Dies kann entweder durch höhere Beschleunigungen und damit kürzere Flugzeiten oder durch kleinere Flugbahnwinkel (frühzeitiger Horizontalflug) erreicht werden
+
+Die vollständige Eliminierung von Steuerverlusten wäre theoretisch möglich, indem die Rakete direkt ohne Steuerung in eine Umlaufbahn gebracht wird. Dies könnte durch das Pitchover-Manöver geschehen, bei dem die Rakete einen automatischen Neigewinkel einnimmt, der die Steuerverluste minimiert und die Rakete auf eine optimale Umlaufbahn bringt. das kann dazu führen das man nahezu "Gratis" die Steuerverluste minimieren kann. 
 
