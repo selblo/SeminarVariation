@@ -6,31 +6,64 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Mathe
-\label{leo:section:mathe}}
-\rhead{Mathe}
-\todo{Optimale Steuerung ausführen}
-Das Problem:
+
+\section{Das optimale Steuerungsproblem der Rakete \label{leo:section:optimalsteuerung}}
+\rhead{Optimales Steuerungsproblem}
+
+Der Raketenaufstieg ist ein klassisches Beispiel für ein \textit{optimales Steuerungsproblem}. Im Gegensatz zu Standard-Variationsproblemen, bei denen eine Funktion gesucht wird, die ein bestimmtes Integral extremal macht, erfordert das Raketenproblem die Steuerung eines Systems, um ein Ziel wie die Minimierung des Treibstoffverbrauchs oder das Erreichen einer bestimmten Endgeschwindigkeit zu erreichen. Dabei wird das System durch Differentialgleichungen beschrieben, die den physikalischen Gesetzen folgen, und die Steuerung erfolgt über gezielte Eingaben wie den Schubwinkel oder die Schubkraft.
+
+Ziel des Raketenaufstiegs ist es, eine Umlaufbahn zu erreichen, während Verluste durch Schwerkraft, Luftwiderstand und Steuerung minimiert werden. Diese Verluste hängen jedoch von der Steuerfunktion \( u(t) \) ab, die dynamisch angepasst werden muss. Im Unterschied zu klassischen Variationsproblemen, bei denen die Lösung nur von den Zustandsvariablen \( x(t) \) abhängt, wird hier die Steuerung \( u(t) \) als eigenständige Funktion betrachtet, die die Dynamik der Zustandsgrößen beeinflusst.
+
+\subsection{Warum das Problem nicht mit einer üblichen Lagrange-Funktion lösbar ist}
+
+In klassischen Variationsproblemen wird eine Lagrange-Funktion \(L(x, \dot{x})\) verwendet, die von den Zustandsvariablen \(x(t)\) und deren zeitlichen Ableitungen \(\dot{x}(t)\) abhängt, um den optimalen Pfad eines Systems zu berechnen. Diese Probleme lassen sich häufig analytisch durch die Euler-Lagrange-Gleichungen lösen.
+
+Das Raketenproblem ist jedoch komplexer. Hier müssen Steuerfunktionen wie der Schubwinkel oder die Schubkraft dynamisch angepasst werden, um äußeren Bedingungen wie der Schwerkraft oder dem Luftwiderstand zu begegnen. Die alleinige Optimierung der Zustandsgrößen \(x(t)\) reicht nicht aus, da die Steuerfunktion \(u(t)\) aktiv in die Dynamik des Systems eingreift. Daher muss das Problem als \textit{optimales Steuerungsproblem} betrachtet werden, bei dem sowohl die Zustandsgrößen \(x(t)\) als auch die Steuergrößen \(u(t)\) optimiert werden, um den Treibstoffverbrauch zu minimieren und die gewünschten Endbedingungen zu erreichen.
+
+\subsection{Identifizierung des optimalen Steuerungsproblems}
+
+Das Steuerungsproblem lässt sich durch eine Differentialgleichung des Systems beschreiben:
+\[
+\dot{x} = f(x,u),
+\]
+wobei \(x(t)\) den Zustandsvektor der Rakete (z.\,B. Position, Geschwindigkeit) und \(u(t)\) die Steuerfunktionen (z.\,B. Schubwinkel) darstellt. Die Funktion \(f(x,u)\) beschreibt die Dynamik der Rakete, die durch Schwerkraft, Luftwiderstand und Schub beeinflusst wird.
+
+Ziel des optimalen Steuerungsproblems ist es, die Steuerfunktionen \(u(t)\) so zu wählen, dass die Rakete mit minimalem Treibstoffverbrauch und unter Einhaltung bestimmter Randbedingungen (z.\,B. Umlaufbahngeschwindigkeit) in den Orbit gelangt. Dies lässt sich durch ein Kostenfunktional ausdrücken:
+\[
+J(u) = \int_{t_0}^{t_f} L(x(t), u(t))\, dt + K(x(t_f)),
+\]
+wobei \(L(x(t), u(t))\) die Laufkostenfunktion darstellt, die Treibstoffverbrauch und Verluste beschreibt, und \(K(x(t_f))\) die Endkostenfunktion, die Bedingungen am Endpunkt wie z.\,B. die Geschwindigkeit und Höhe im Orbit berücksichtigt.
+
+\subsection{Kostenfunktional und Steuerverluste}
+
+In Kapitel \ref{buch:hamiltonjacobi:section:oc} wird das optimale Steuerungsproblem als Minimierungsproblem eines Integrals dargestellt, das die Steuerkosten über die Zeit aufintegriert. Für das Raketenproblem bedeutet dies, dass der Treibstoffverbrauch minimiert werden soll, während die Randbedingungen eingehalten werden. Die Lagrange-Funktion \(L(x(t), u(t))\) hängt in diesem Fall von der Position, Geschwindigkeit der Rakete und den Steuergrößen ab.
+
+Ein wichtiger Aspekt der Steuerung sind die \textit{Steuerverluste}, die durch die Kursänderung der Rakete entstehen. Diese Verluste wurden bereits in der Formel \eqref{leo:aufstiegsgleichung} beschrieben:
+\[
+v_f = v_* \ln \left(\frac{m_0}{m_f}\right) - 2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt - \dots
+\]
+Hier beschreibt der Term \(2F_* \int_0^{t_f} \frac{\sin^2\left(\frac{\alpha}{2}\right)}{m} \, dt\) die Steuerverluste, die minimiert werden sollen, um den Treibstoffverbrauch zu verringern.
+
+\subsection{Hamilton-Funktion und das Pontryagin’sche Minimum-Prinzip}
+
+Um dieses optimale Steuerungsproblem zu lösen, wird das Pontryagin'sche Minimum-Prinzip verwendet, das in Kapitel \ref{buch:hamiltonjacobi:oc:subsection:minimum} eingeführt wurde. Dazu wird eine \textit{Hamilton-Funktion} \(H(x,u,p)\) definiert:
+\[
+H(x,u,p) = p \cdot f(x,u) + L(x,u),
+\]
+wobei \(p(t)\) ein Vektor von Lagrange-Multiplikatoren ist, die die Sensitivität des Kostenfunktionals gegenüber den Zustandsgrößen beschreiben. Die Aufgabe besteht nun darin, eine Steuerfunktion \(u(t)\) zu finden, die die Hamilton-Funktion minimiert:
+\[
+u_*(t) = \operatorname{argmin}_{u \in \mathbb{R}} H(x_*(t), u, p_*(t)).
+\]
+Diese Bedingung garantiert, dass die Steuerstrategie den minimalen Treibstoffverbrauch erfordert, um die vorgegebene Bahn zu erreichen.
+
+\subsection{Zusammenfassung der Komponenten}
+
+Das optimale Steuerungsproblem der Rakete lässt sich in folgende wesentliche Komponenten unterteilen:
+
 \begin{itemize}
-	\item $\mathbf{x(t)}$ und $\mathbf{u(t)}$ nicht unabhängig!
-	\item Die DGL $\dot{x} = f\left(x,u\right)$ müsste zuerst gelöst werden, jedoch ist der Steuerungsparameter in der DGL enthalten.
+	\item \textbf{Systemgleichung}: Die Dynamik der Rakete wird durch eine Differentialgleichung beschrieben, bei der die Zustandsgrößen \(x(t)\) und die Steuergrößen \(u(t)\) interagieren.
+	\item \textbf{Kostenfunktional}: Das Kostenfunktional beschreibt die zu minimierenden Verluste, einschließlich des Treibstoffverbrauchs und der Verluste durch Schwerkraft und Luftwiderstand. Es besteht aus einem Integral über die Laufkosten und einem Randterm, der die Endbedingungen festlegt.
+	\item \textbf{Hamilton-Funktion}: Die Hamilton-Funktion kombiniert die Dynamik des Systems mit dem Kostenfunktional und dient als Grundlage für die Optimierung der Steuerfunktion. Das Pontryagin'sche Minimum-Prinzip hilft, die optimale Steuerfunktion zu finden.
 \end{itemize}
-\vspace{20pt}
-Die Lösung:
-\begin{itemize}
-	\item Die DGL $\mathbf{\dot{x}} = f\left(\mathbf{x},\mathbf{u}\right)$ als Nebenbedingung betrachten und in das Problem einbauen.
-	\item Wie: Lagrange-Multiplikator-Funktion $p(t)$
-\end{itemize}
-\vspace{10pt}
-Das führt zum neuen Funktional:
-\[F\left(\mathbf{x},\mathbf{u}, p\right) = L\left(\mathbf{x},\mathbf{u}\right) + p \cdot \left(f\left(\mathbf{x},\mathbf{u}\right) - \mathbf{\dot{x}}\right)\]
 
-
-\subsubsection{Steuerungs-Hamiltonfunktion}
-Steuerungs-Hamiltonfunktion \( H(\mathbf{x},\mathbf{u}, p) = p \cdot f(\mathbf{x},\mathbf{u}) + L(\mathbf{x},\mathbf{u}) \) lösst die Bewegungsgleichungen für $\mathbf{x}$ und $p$.
-
-
-\subsubsection{Minimum-Prinzip von Pontrjagyn}
-Minimum-Prinzip von Pontrjagyn kann die Steuerungsvariable $u$ eindeutig bestimmen.
-
-
+Das Steuerungsproblem der Rakete zeigt die Komplexität der Steuerung in der Raumfahrt auf, bei der verschiedene Einflüsse wie Schwerkraft und Luftwiderstand berücksichtigt werden müssen. Eine genaue Lösung dieses Problems erfordert numerische Methoden, um die optimalen Steuerfunktionen zu berechnen.
