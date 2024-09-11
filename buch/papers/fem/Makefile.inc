@@ -11,7 +11,6 @@ dependencies-fem =							\
 	papers/fem/1_prinzip_1d.tex				\
 	papers/fem/2_erweiterung_nD.tex			\
 	papers/fem/3_rechenbeispiel.tex			\
-	papers/fem/4_matlab.tex 				\
-	papers/fem/5_anwendungen.tex			\
+	papers/fem/4_anwendungen.tex			\
 	papers/fem/custom_commands.tex
 

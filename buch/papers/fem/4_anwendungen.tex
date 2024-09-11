@@ -1,0 +1,29 @@
+%
+% 5_Anwendungen.tex -- Eine kurze Vorstellung der Anwendungsgebiete der Methode der finiten Elemente
+%
+% (c) 2024 Flurin Brechbühler, OST - Ostschweizer Fachhochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Anwendungen\label{fem:section:anwendungen}}
+\kopfrechts{Anwendungen}
+
+Die Methode der finiten Elemente findet überall wo Differenzialgleichungen vorkommen Verwendung.
+Einige Beispiele dazu sind
+\begin{itemize}
+    \item [\textbf{Strukturelle Simulationen}] um die Beanspruchung von komplexen Bauten wie Brücken oder mechanischen Bauteilen wie Zahnprothesen vorherzusagen,
+    \item [\textbf{Thermische Simulationen}] die Auskunft darüber geben, wie sich zum Beispiel die Wärme in einer Bremse oder einem Wärmetauscher verteilt,
+    \item [\textbf{Aero- und hydrodynamische Simulationen}] mit denen zum Beispiel der Luftstrom über einen Flügel oder der Wasserstrom über eine Turbine simuliert werden kann und
+    \item [\textbf{Elektromagnetische Simulationen}] um zum Beispiel das Abstrahlverhalten von Antenne vorherzusagen.
+\end{itemize}
+
+Oft wird für jedes Teilgebiet eine separate spezialisierte Softwaresuite verwendet.
+Wer jedoch mal die Welt der durch die FEM ermöglichten Simulationen erkunden möchte, kann seine ersten Schritte sehr wohl auch mit etwas weiter verbreiteter Software tun: 
+Die PDE-Toolbox von Matlab bietet eine Umgebung, mit der durch sehr wenig Aufwand beeindruckende Ergebnisse erzielt werden können.
+Man kann so zum Beispiel eine .STL-Datei --- also ein 3D-Modell --- eines Balkens laden und die Problemdomäne von Matlab diskretisieren, beziehungsweise ein dazugehöriges Mesh generieren lassen. 
+\input{papers/fem/fig/balken_mesh.tex}
+Das resultierende Mesh ist in Abb. \ref{fem:anw:mesh} ersichtlich.
+Nun können durch einige wenige Befehle die Randbedingungen festgelegt und anschliessend die Simulation gestartet werden.
+\input{papers/fem/fig/balken_resultat.tex}
+Es resultiert das in Abb. \ref{fem:anw:resultat} abgebildete Resultat der Simulation, in dem durch den Farbgradienten die Belastung, sowie (überhöht dargestellt) die zu erwartende Deformation zu erkennen ist.
