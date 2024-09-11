@@ -38,6 +38,10 @@ Zudem soll unsere Lösung die Anfangsbedingungen
     \theta'(0) = 0
 \end{equation}
 erfüllen.
+Die Pendelschwingung soll über 4 Sekunden hinweg berechnet werden, der Definitionsbereich $\Omega$ ist also
+\begin{equation}
+    \Omega = [0\sec, 4\sec].
+\end{equation}
 
 Für die Parameter $g$ und $l$ sind die Werte
 \begin{equation}
@@ -51,13 +55,13 @@ gegeben.
 \subsection{Bilden der schwachen Form}
 Die schwache Form des Problems lautet
 \begin{equation}
-    \int \left( \theta'' + \frac{g}{l} \theta \right) \cdot v \diff t 
-    = \int \theta'' \cdot v \diff t + \int \frac{g}{l} \theta \cdot v \diff t
+    \int\limits_\Omega \left( \theta'' + \frac{g}{l} \theta \right) \cdot v \diff t 
+    = \int\limits_\Omega \theta'' \cdot v \diff t + \int\limits_\Omega \frac{g}{l} \theta \cdot v \diff t
     = 0
 \end{equation}
-und kann durch partielles Integrieren des Terms $\int \theta'' \cdot v \diff t$ zu einer Differenzialgleichung erster Ordnung gemacht werden:
+und kann durch partielles Integrieren des Terms $\int\limits_\Omega \theta'' \cdot v \diff t$ zu einer Differenzialgleichung erster Ordnung gemacht werden:
 \begin{equation}
-    - \int \theta' \cdot v' \diff t + \int \frac{g}{l} \theta \cdot v \diff t = -\Phi(\theta, v) = 0
+    - \int\limits_\Omega \theta' \cdot v' \diff t + \int\limits_\Omega \frac{g}{l} \theta \cdot v \diff t = -\Phi(\theta, v) = 0
     \label{fem:rechenbsp:schwache_form}
 \end{equation}
 
@@ -96,7 +100,7 @@ Der Vektor $\vec{b}$ ist in diesem Fall besonders einfach zu bestimmen: Da die r
 \end{equation}
 Um die Elemente der Matrix $\mathbf{L}$ zu ermitteln, werden die Integrale aus Gleichung \ref{fem:rechenbsp:schwache_form} verwendet:
 \begin{equation}
-    l_{ij} = - \int a_i'(t) \cdot a_j'(t) \diff t + \int \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
+    l_{ij} = - \int\limits_\Omega a_i'(t) \cdot a_j'(t) \diff t + \int\limits_\Omega \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
 \end{equation}
 
 Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei Fällen unterschieden werden:
@@ -115,12 +119,17 @@ Da die Integrale aller Elemente gleich und die Formfunktionen symmetrisch sind, 
 der Formfunktion $ a_1(t) = \frac{t}{\Delta t} $ zu lösen.
 Es resultiert
 \begin{equation}
-    \int a_k(t) \cdot a_k(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{t^2}{(\Delta t)^2} \diff t = \frac{2}{3} \Delta t.
+    \int\limits_\Omega a_k(t) \cdot a_k(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{t^2}{(\Delta t)^2} \diff t = \frac{2}{3} \Delta t \quad \text{für} \quad 0 < k < N.
 \end{equation}
+Dabei werden die Indizes $1$ und $N$ ausgeklammert, da die linke Hälfte der Formfunktion $a_0(t)$ sowie die rechte Hälfte der Formfunktion $a_N$ ausserhalb des Definitionsbereichs liegen und für diese Knotenvariablen folglich
+\begin{equation}
+    \int\limits_\Omega a_k(t) \cdot a_k(t) \diff t = \int_{0}^{\Delta t} \frac{t^2}{(\Delta t)^2} \diff t = \frac{1}{3} \Delta t \quad \text{für} \quad k = 1 \quad \text{oder} \quad k = N
+\end{equation}
+gilt.
 
 Für das Integral über die Ableitungen der Formfunktionen resultiert
 \begin{equation}
-    \int a_k'(t) \cdot a_k'(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = \frac{2}{\Delta t},
+    \int\limits_\Omega a_k'(t) \cdot a_k'(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = \frac{2}{\Delta t},
 \end{equation}
 da $a_1'(t)= \frac{1}{\Delta t} \ \text{wenn} \ 0 \leq t < \Delta t$.
 
@@ -129,11 +138,11 @@ Auch hier reicht es aus, eines der Integrale zu berechnen.
 Gewählt wurden ebenfalls aufgrund der einfachen Formfunktionen die Funktionen $a_0(t) = 1 - \frac{t}{\Delta t}$ und $a_1(t) = \frac{t}{\Delta t}$.
 Es resultiert
 \begin{equation}
-    \int a_k(t) \cdot a_{k+1}(t) \diff t = \int_{0}^{\Delta t} \left(1 - \frac{t}{\Delta t}\right) \cdot \frac{t}{\Delta t} \diff t = \frac{1}{6} \Delta t.
+    \int\limits_\Omega a_k(t) \cdot a_{k+1}(t) \diff t = \int_{0}^{\Delta t} \left(1 - \frac{t}{\Delta t}\right) \cdot \frac{t}{\Delta t} \diff t = \frac{1}{6} \Delta t.
 \end{equation}
 Auch hier wird noch das Integral über die Ableitungen 
 \begin{equation}
-    \int a_k'(t) \cdot a_{k+1}'(t) \diff t = \int_{0}^{\Delta t} -\frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = -\frac{1}{\Delta t},
+    \int\limits_\Omega a_k'(t) \cdot a_{k+1}'(t) \diff t = \int_{0}^{\Delta t} -\frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = -\frac{1}{\Delta t},
 \end{equation}
 benötigt.
 Hierbei gilt $a_0'(t)= -\frac{1}{\Delta t} \ \text{und} \ a_1'(t)= \frac{1}{\Delta t} \ \text{wenn} \ 0 \leq t < \Delta t$
@@ -143,10 +152,11 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also
 \begin{equation}
     \begin{aligned}
         l_{ij} 
-        &= - \int a_i'(t) \cdot a_j'(t) \diff t + \frac{g}{l} \int a_i(t) \cdot a_j(t) \diff t \\
+        &= - \int\limits_\Omega a_i'(t) \cdot a_j'(t) \diff t + \frac{g}{l} \int\limits_\Omega a_i(t) \cdot a_j(t) \diff t \\
         &=  \left\{ 
                 \begin{array}{ll}
-                    - \frac{2}{\Delta t} + \frac{2g}{3l} \Delta t & \text{für} \quad i = j \\
+                    - \frac{1}{\Delta t} + \frac{g}{3l} \Delta t & \text{für} \quad i = j = 0 \\
+                    - \frac{2}{\Delta t} + \frac{2g}{3l} \Delta t & \text{für} \quad i = j \neq 0 \\
                     \frac{1}{\Delta t} + \frac{g}{6l} \Delta t & \text{für} \quad |i - j| = 1 \\
                     0 & \text{sonst}
                 \end{array} 
@@ -156,21 +166,23 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also
 Für einen willkürlich gewählten Zeitschritt von $\Delta t = 0.1$ und den in der Aufgabenstellung festgelegten Parametern $g = 10$ und $l = 1$ resultiert das Gleichungssystem
 \begin{equation}
     \mathbf{L}\vec{u} + \vec{b} 
-    = \left(\begin{matrix}
-        19.33  & 10.17  &  0.00  & \cdots &  0.00  \\
-        10.17  & 19.33  & 10.17  & \ddots & \vdots \\
-         0.00  & 10.17  & 19.33  & \ddots &  0.00  \\
-        \vdots & \ddots & \ddots & \ddots & 10.17  \\
-         0.00  & \cdots & 0.00   & 10.17  & 19.33
-    \end{matrix}\right)
-    \left(\begin{matrix}
-        u_0 \\ u_1 \\ u_2 \\ u_3 \\ \vdots \\ u_N
-    \end{matrix}\right)
+    = \begin{pmatrix}
+         -9.67  & 10.17  &        &        &        &        \\
+         10.17  &-19.33  & 10.17  &        &        &        \\
+                & 10.17  &-19.33  & \ddots &        &        \\
+                &        & \ddots & \ddots & 10.17  &        \\
+                &        &        & 10.17  &-19.33  & 10.17  \\
+                &        &        &        & 10.17  & -9.67
+    \end{pmatrix}
+    \begin{pmatrix}
+        u_0 \\ u_1 \\ u_2 \\ \vdots \\ u_N
+    \end{pmatrix}
     +
-    \left(\begin{matrix}
-        0 \\ 0 \\ 0 \\ 0 \\ \vdots \\ 0
-    \end{matrix}\right)
+    \begin{pmatrix}
+        0 \\ 0 \\ 0 \\ \vdots \\ 0
+    \end{pmatrix}
     = 0
+    \label{fem:rechenbsp:gleichungssystem}
 \end{equation}
 
 
@@ -182,51 +194,91 @@ Die Anfangsbedingungen
     u'(0) = 0
 \end{equation}
 werden wie in Kapitel \ref{fem:1d:anfangsbedingungen} beschrieben in die Matrix eingebracht.
+Dazu wird das Gleichungssystem \ref{fem:rechenbsp:gleichungssystem} zunächst als Gauss-Tableau geschrieben:
+\begin{equation}
+    \boxed{\begin{matrix}
+        -9.69  & 10.17  &        &        &        &        & 0 \\
+        10.17  &-19.33  & 10.17  &        &        &        & 0 \\
+               & 10.17  &-19.33  & \ddots &        &        & 0 \\
+               &        & \ddots & \ddots & 10.17  &        & \vdots \\
+               &        &        & 10.17  &-19.33  & 10.17  & 0 \\
+               &        &        &        & 10.17  & -9.67  & 0 
+    \end{matrix}}.
+\end{equation}
 
 \subsubsection{$\mathbf{u(0) = 0.175 \radian}$:}
-Nach null setzen der Zeile und Anpassen von $\vec{b}$ resultiert
+Die einzufügende Gleichung
 \begin{equation}
-    \mathbf{L}\vec{u} + \vec{b} 
-    = \left(\begin{matrix}
-         1.00  &  0.00  &  0.00  & \cdots & 0.00 \\
-         0.00  & 19.33  & 10.17  & \ddots & \vdots \\
-         0.00  & 10.17  & 19.33  & \ddots & 0.00 \\
-        \vdots & \ddots & \ddots & \ddots & 10.17 \\
-         0.00  & \cdots & 0.00   & 10.17  & 19.33
-    \end{matrix}\right)
-    \left(\begin{matrix}
-        u_0 \\ u_1 \\ u_2 \\ u_3 \\ \vdots \\ u_N
-    \end{matrix}\right)
-    +
-    \left(\begin{matrix}
-        -0.175 \\ 1.78 \\ 0 \\ 0 \\ \vdots \\ 0
-    \end{matrix}\right)
-    = 0
+    x_0 = 0.175
+\end{equation}
+ersetzt also die Zeile $0$:
+\begin{equation}
+    \boxed{\begin{matrix}
+         1.00  &        &        &        &        &        & 0.175 \\
+        10.17  &-19.33  & 10.17  &        &        &        & 0 \\
+               & 10.17  &-19.33  & \ddots &        &        & 0 \\
+               &        & \ddots & \ddots & 10.17  &        & \vdots \\
+               &        &        & 10.17  &-19.33  & 10.17  & 0 \\
+               &        &        &        & 10.17  & -9.67  & 0 
+    \end{matrix}}.
+\end{equation}
+
+Anschliessend wird noch die Spalte Null gesetzt, indem das $ 10.17 $-fache der $1$. Zeile von der $2$. abgezogen wird.
+Es resultiert
+\begin{equation}
+    \boxed{\begin{matrix}
+         1.00  &        &        &        &        &        & 0.175 \\
+               &-19.33  & 10.17  &        &        &        & -1.78 \\
+               & 10.17  &-19.33  & \ddots &        &        & 0 \\
+               &        & \ddots & \ddots & 10.17  &        & \vdots \\
+               &        &        & 10.17  &-19.33  & 10.17  & 0 \\
+               &        &        &        & 10.17  & -9.67  & 0 
+    \end{matrix}}.
 \end{equation}
 
 \subsubsection{$\mathbf{u'(0) = 0 }$:}
 Hier wird die erwähnte Annäherung zum Codieren der Anfangsbedingung bezüglich der Ableitung angewandt.
 Es wird also nicht direkt $u'(0) = 0 $, sondern $u(\Delta t) = u(0) = 0.175 \radian$ codiert.
-Daraus resultiert
+Es gilt also, zusätzlich die Gleichung
 \begin{equation}
-    \mathbf{L}\vec{u} + \vec{b} 
-    = \left(\begin{matrix}
-         1.00  &  0.00  &  0.00  &  0.00  & \cdots &  0.00  \\
-         0.00  &  1.00  &  0.00  &  0.00  & \ddots & \vdots \\
-         0.00  &  0.00  & 19.33  & 10.17  & \ddots &  0.00  \\
-         0.00  &  0.00  & 10.17  & 19.33  & \ddots &  0.00  \\
-        \vdots & \ddots & \ddots & \ddots & \ddots & 10.17  \\
-         0.00  & \cdots & 0.00   &  0.00  & 10.17  & 19.33
-    \end{matrix}\right)
-    \left(\begin{matrix}
-        u_0 \\ u_1 \\ u_2 \\ u_3 \\ u_4 \\ \vdots \\ u_N
-    \end{matrix}\right)
-    +
-    \left(\begin{matrix}
-        -0.175 \\ -0.175 \\ 1.78 \\ 0 \\ 0 \\ \vdots \\ 0
-    \end{matrix}\right)
-    = 0
+    x_1 = 0.175
 \end{equation}
+in das Tableau einzufügen.
+Nach gleichem Vorgehen wie bei der vorherigen Randbedingung resultiert
+\begin{equation}
+    \boxed{\begin{matrix}
+         1.00  &        &        &        &        &        & 0.175 \\
+               &  1.00  &        &        &        &        & 0.175 \\
+               &        &-19.33  & 10.17  &        &        & -1.78 \\
+               &        & 10.17  &-19.33  & \ddots &        & 0 \\
+               &        & \ddots & \ddots & 10.17  &        & \vdots \\
+               &        &        & 10.17  &-19.33  & 10.17  & 0 \\
+               &        &        &        & 10.17  & -9.67  & 0 
+    \end{matrix}},
+\end{equation}
+was wieder in Vektorschreibweise dargestellt
+\begin{equation}
+    \mathbf{L}\vec{u} 
+    = -\vec{b} 
+    = \begin{pmatrix}
+         1.00  &        &        &        &        &        &        \\
+               &  1.00  &        &        &        &        &        \\
+               &        &-19.33  & 10.17  &        &        &        \\
+               &        & 10.17  &-19.33  & \ddots &        &        \\
+               &        &        & \ddots & \ddots & 10.17  &        \\
+               &        &        &        & 10.17  &-19.33  & 10.17  \\
+               &        &        &        &        & 10.17  & -9.67  
+    \end{pmatrix}
+    \begin{pmatrix}
+        u_0 \\ u_1 \\ u_2 \\ u_3 \\ u_4 \\ \vdots \\ u_N
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0.175 \\ 0.175 \\ -1.78 \\ 0 \\ 0 \\ \vdots \\ 0
+    \end{pmatrix}
+\end{equation}
+ergibt.
+Es ist nun auch festzustellen, dass das zu lösende Gleichungssystem für jede Anfangsbedingung um eine Variable kleiner geworden ist, da ja zwei der gesuchten Werte bereits gegeben sind.
 
 
 \subsection{Invertieren der Matrix}
@@ -237,3 +289,4 @@ Mit einem Werkzeug wie Matlab kann die erhaltene Matrix $\mathbf{L}$ invertiert 
 berechnet werden.
 \input{papers/fem/fig/loesung_rechenbsp.tex}
 Der Abbildung \ref{fem:rechenbsp:loesung} kann entnommen werden, dass die erhaltene Lösung (in Blau) nicht sehr weit von der analytischen Lösung (in Rot) abweicht.
+Der zugehörige Matlab-Code kann auf GitHub \cite{fem:bib:matlab} eingesehen werden.
