@@ -376,11 +376,14 @@ Ist beispielsweise $n = 2$ gewählt, so resultiert
         \end{matrix}
     }.
 \end{equation}
-Dabei kann die ersetzte Zeile ohne Weiteres weggelassen werden, da die $N$ unbekannten Terme in $\vec{u}$ für eine eindeutige Lösung nur $N$ Gleichungen fordern. 
-Dies ist auch nach der gemachten Anpassung der Fall.
+Die dabei ersetzte Gleichung sagt, wie jede Zeile der Matrix, etwas über den Bezug von den verschiedenen Knotenvariablen zueinander aus.
+Diese wird durch die Anfangsbedingung, die etwas über eine einzelne Variable aussagt, ersetzt.
+Es kann grundsätzlich irgendeine Zeile des Gleichungssystems durch die Anfangsbedingung ersetzt werden, denn da für die $N$ unbekannten nach wie vor $N$ Gleichungen bestehen, kann das Gleichungssystem nach wie vor gelöst werden.
+Es macht jedoch aus Hinsicht der Effizienz Sinn, diese Zeile zu wählen, die nach dem Einfügen der Randbedingung eine Symmetrische Matrix zur Folge hat.
 
-Durch diese Operation wurde die Matrix jedoch asymmetrisch. Da dies beim Invertieren der Matrix zu Effizienzeinbussen führt, gilt es, die Symmetrie wieder herzustellen.
-Dazu bedienen wir uns dem im Gauss-Algorithmus angewandten Vorgehen zum Nullsetzen einer Spalte: Von jeder Zeile (ausser der $n$-ten bzw. hier $2$.) wird ein Vielfaches der $n$-ten Zeile abgezogen.
+Durch die vorherige Operation wurde die Matrix asymmetrisch. 
+Es sollte nun also die Symmetrie wieder hergestellt werden.
+Dazu bedienen wir uns dem im Gauss-Algorithmus angewandten Vorgehen zum Nullsetzen einer Spalte: Von jeder Zeile (ausser der $n$-ten bzw. hier der $2$.) wird ein Vielfaches der $n$-ten Zeile abgezogen.
 Es resultiert
 \begin{equation}
     \boxed{
