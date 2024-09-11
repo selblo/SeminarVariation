@@ -93,6 +93,8 @@ multipliziert werden und zu einer durch $N$ Werte parametrisierten stetigen Funk
     \quad \text{und} \quad
     v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}.
 \end{equation}
+Dies funktioniert, da die Formfunktionen so gewählt wurden, dass an den Stützstellen jeweils nur eine der Formfunktionen von Null verschieden ist.
+Dabei hat die Formfunktion an ebendieser Stützstelle den Wert Eins, was dazu führt, dass die interpolierte Funktion, die aus der Summe der einzelnen Formfunktionen entsteht, in den Stützstellen die gleichen Werte aufweist wie die ursprüngliche Funktion.
 
 Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt werden:
 \begin{itemize}
@@ -384,7 +386,7 @@ Es resultiert
             0      & 1      & 0      & \cdots & l_{2N} & x                     \\
             l_{31} & 0      & l_{33} & \cdots & l_{3N} & -b_3 - l_{32} \cdot x \\
             \vdots & \vdots & \vdots & \ddots & \vdots & \vdots                \\
-            l_{N1} & 0      & l_{N3} & \cdots & l_{NN} & -b_N - l_{32} \cdot x \\
+            l_{N1} & 0      & l_{N3} & \cdots & l_{NN} & -b_N - l_{N2} \cdot x \\
         \end{matrix}
     }.
 \end{equation}

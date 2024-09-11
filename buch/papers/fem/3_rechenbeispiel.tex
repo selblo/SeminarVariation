@@ -38,6 +38,10 @@ Zudem soll unsere Lösung die Anfangsbedingungen
     \theta'(0) = 0
 \end{equation}
 erfüllen.
+Die Pendelschwingung soll über 4 Sekunden hinweg berechnet werden, der Definitionsbereich $\Omega$ ist also
+\begin{equation}
+    \Omega = [0\sec, 4\sec].
+\end{equation}
 
 Für die Parameter $g$ und $l$ sind die Werte
 \begin{equation}
@@ -51,13 +55,13 @@ gegeben.
 \subsection{Bilden der schwachen Form}
 Die schwache Form des Problems lautet
 \begin{equation}
-    \int \left( \theta'' + \frac{g}{l} \theta \right) \cdot v \diff t 
-    = \int \theta'' \cdot v \diff t + \int \frac{g}{l} \theta \cdot v \diff t
+    \int\limits_\Omega \left( \theta'' + \frac{g}{l} \theta \right) \cdot v \diff t 
+    = \int\limits_\Omega \theta'' \cdot v \diff t + \int\limits_\Omega \frac{g}{l} \theta \cdot v \diff t
     = 0
 \end{equation}
-und kann durch partielles Integrieren des Terms $\int \theta'' \cdot v \diff t$ zu einer Differenzialgleichung erster Ordnung gemacht werden:
+und kann durch partielles Integrieren des Terms $\int\limits_\Omega \theta'' \cdot v \diff t$ zu einer Differenzialgleichung erster Ordnung gemacht werden:
 \begin{equation}
-    - \int \theta' \cdot v' \diff t + \int \frac{g}{l} \theta \cdot v \diff t = -\Phi(\theta, v) = 0
+    - \int\limits_\Omega \theta' \cdot v' \diff t + \int\limits_\Omega \frac{g}{l} \theta \cdot v \diff t = -\Phi(\theta, v) = 0
     \label{fem:rechenbsp:schwache_form}
 \end{equation}
 
@@ -96,7 +100,7 @@ Der Vektor $\vec{b}$ ist in diesem Fall besonders einfach zu bestimmen: Da die r
 \end{equation}
 Um die Elemente der Matrix $\mathbf{L}$ zu ermitteln, werden die Integrale aus Gleichung \ref{fem:rechenbsp:schwache_form} verwendet:
 \begin{equation}
-    l_{ij} = - \int a_i'(t) \cdot a_j'(t) \diff t + \int \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
+    l_{ij} = - \int\limits_\Omega a_i'(t) \cdot a_j'(t) \diff t + \int\limits_\Omega \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
 \end{equation}
 
 Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei Fällen unterschieden werden:
@@ -115,12 +119,12 @@ Da die Integrale aller Elemente gleich und die Formfunktionen symmetrisch sind, 
 der Formfunktion $ a_1(t) = \frac{t}{\Delta t} $ zu lösen.
 Es resultiert
 \begin{equation}
-    \int a_k(t) \cdot a_k(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{t^2}{(\Delta t)^2} \diff t = \frac{2}{3} \Delta t.
+    \int\limits_\Omega a_k(t) \cdot a_k(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{t^2}{(\Delta t)^2} \diff t = \frac{2}{3} \Delta t.
 \end{equation}
 
 Für das Integral über die Ableitungen der Formfunktionen resultiert
 \begin{equation}
-    \int a_k'(t) \cdot a_k'(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = \frac{2}{\Delta t},
+    \int\limits_\Omega a_k'(t) \cdot a_k'(t) \diff t = 2 \cdot \int_{0}^{\Delta t} \frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = \frac{2}{\Delta t},
 \end{equation}
 da $a_1'(t)= \frac{1}{\Delta t} \ \text{wenn} \ 0 \leq t < \Delta t$.
 
@@ -129,11 +133,11 @@ Auch hier reicht es aus, eines der Integrale zu berechnen.
 Gewählt wurden ebenfalls aufgrund der einfachen Formfunktionen die Funktionen $a_0(t) = 1 - \frac{t}{\Delta t}$ und $a_1(t) = \frac{t}{\Delta t}$.
 Es resultiert
 \begin{equation}
-    \int a_k(t) \cdot a_{k+1}(t) \diff t = \int_{0}^{\Delta t} \left(1 - \frac{t}{\Delta t}\right) \cdot \frac{t}{\Delta t} \diff t = \frac{1}{6} \Delta t.
+    \int\limits_\Omega a_k(t) \cdot a_{k+1}(t) \diff t = \int_{0}^{\Delta t} \left(1 - \frac{t}{\Delta t}\right) \cdot \frac{t}{\Delta t} \diff t = \frac{1}{6} \Delta t.
 \end{equation}
 Auch hier wird noch das Integral über die Ableitungen 
 \begin{equation}
-    \int a_k'(t) \cdot a_{k+1}'(t) \diff t = \int_{0}^{\Delta t} -\frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = -\frac{1}{\Delta t},
+    \int\limits_\Omega a_k'(t) \cdot a_{k+1}'(t) \diff t = \int_{0}^{\Delta t} -\frac{1}{\Delta t} \cdot \frac{1}{\Delta t} \diff t = -\frac{1}{\Delta t},
 \end{equation}
 benötigt.
 Hierbei gilt $a_0'(t)= -\frac{1}{\Delta t} \ \text{und} \ a_1'(t)= \frac{1}{\Delta t} \ \text{wenn} \ 0 \leq t < \Delta t$
@@ -143,7 +147,7 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also
 \begin{equation}
     \begin{aligned}
         l_{ij} 
-        &= - \int a_i'(t) \cdot a_j'(t) \diff t + \frac{g}{l} \int a_i(t) \cdot a_j(t) \diff t \\
+        &= - \int\limits_\Omega a_i'(t) \cdot a_j'(t) \diff t + \frac{g}{l} \int\limits_\Omega a_i(t) \cdot a_j(t) \diff t \\
         &=  \left\{ 
                 \begin{array}{ll}
                     - \frac{2}{\Delta t} + \frac{2g}{3l} \Delta t & \text{für} \quad i = j \\
@@ -156,20 +160,20 @@ Für die Elemente $l_{ij}$ der Array $\mathbf{L}$ gilt also
 Für einen willkürlich gewählten Zeitschritt von $\Delta t = 0.1$ und den in der Aufgabenstellung festgelegten Parametern $g = 10$ und $l = 1$ resultiert das Gleichungssystem
 \begin{equation}
     \mathbf{L}\vec{u} + \vec{b} 
-    = \left(\begin{matrix}
+    = \begin{pmatrix}
         -19.33  & 10.17  &        &        &        \\
          10.17  &-19.33  & 10.17  &        &        \\
                 & 10.17  &-19.33  & \ddots &        \\
                 &        & \ddots & \ddots & 10.17  \\
                 &        &        & 10.17  &-19.33
-    \end{matrix}\right)
-    \left(\begin{matrix}
-        u_0 \\ u_1 \\ u_2 \\ u_3 \\ \vdots \\ u_N
-    \end{matrix}\right)
+    \end{pmatrix}
+    \begin{pmatrix}
+        u_0 \\ u_1 \\ u_2 \\ \vdots \\ u_N
+    \end{pmatrix}
     +
-    \left(\begin{matrix}
-        0 \\ 0 \\ 0 \\ 0 \\ \vdots \\ 0
-    \end{matrix}\right)
+    \begin{pmatrix}
+        0 \\ 0 \\ 0 \\ \vdots \\ 0
+    \end{pmatrix}
     = 0
     \label{fem:rechenbsp:gleichungssystem}
 \end{equation}
@@ -204,8 +208,8 @@ ersetzt also die Zeile $0$:
     \boxed{\begin{matrix}
          1.00  &        &        &        &        & 0.175 \\
         10.17  &-19.33  & 10.17  &        &        & 0 \\
-               & 10.17  &-19.33  & \ddots &        & \vdots \\
-               &        & \ddots & \ddots & 10.17  & 0 \\
+               & 10.17  &-19.33  & \ddots &        & 0 \\
+               &        & \ddots & \ddots & 10.17  & \vdots \\
                &        &        & 10.17  &-19.33  & 0 
     \end{matrix}}.
 \end{equation}
@@ -216,8 +220,8 @@ Es resultiert
     \boxed{\begin{matrix}
          1.00  &        &        &        &        & 0.175 \\
                &-19.33  & 10.17  &        &        & -1.78 \\
-               & 10.17  &-19.33  & \ddots &        & \vdots \\
-               &        & \ddots & \ddots & 10.17  & 0 \\
+               & 10.17  &-19.33  & \ddots &        & 0 \\
+               &        & \ddots & \ddots & 10.17  & \vdots \\
                &        &        & 10.17  &-19.33  & 0 
     \end{matrix}}.
 \end{equation}
@@ -236,7 +240,7 @@ Nach gleichem Vorgehen wie bei der vorherigen Randbedingung resultiert
          1.00  &        &        &        &        &        & 0.175 \\
                &  1.00  &        &        &        &        & 0.175 \\
                &        &-19.33  & 10.17  &        &        & -1.78 \\
-               &        & 10.17  &        & \ddots &        & 0 \\
+               &        & 10.17  &-19.33  & \ddots &        & 0 \\
                &        &        & \ddots & \ddots & 10.17  & \vdots \\
                &        &        &        & 10.17  &-19.33  & 0 
     \end{matrix}},
@@ -244,21 +248,21 @@ Nach gleichem Vorgehen wie bei der vorherigen Randbedingung resultiert
 was wieder in Vektorschreibweise dargestellt
 \begin{equation}
     \mathbf{L}\vec{u} + \vec{b} 
-    = \left(\begin{matrix}
+    = \begin{pmatrix}
          1.00  &        &        &        &        &        \\
                &  1.00  &        &        &        &        \\
                &        &-19.33  & 10.17  &        &        \\
                &        & 10.17  &-19.33  & \ddots &        \\
                &        &        & \ddots & \ddots & 10.17  \\
                &        &        &        & 10.17  &-19.33
-    \end{matrix}\right)
-    \left(\begin{matrix}
+    \end{pmatrix}
+    \begin{pmatrix}
         u_0 \\ u_1 \\ u_2 \\ u_3 \\ u_4 \\ \vdots \\ u_N
-    \end{matrix}\right)
+    \end{pmatrix}
     =
-    \left(\begin{matrix}
+    \begin{pmatrix}
         0.175 \\ 0.175 \\ -1.78 \\ 0 \\ 0 \\ \vdots \\ 0
-    \end{matrix}\right)
+    \end{pmatrix}
 \end{equation}
 ergibt.
 Es ist nun auch festzustellen, dass das zu lösende Gleichungssystem für jede Anfangsbedingung um eine Variable kleiner geworden ist, da ja zwei der gesuchten Werte bereits gegeben sind.
