@@ -14,7 +14,7 @@ Für eine detailliertere Ausführung ist das Buch ``Methode der finiten Elemente
 
 
 \subsection{Bilden der schwachen Form}
-Um die schwache Form auf höhere Dimensionen zu erweitern, muss zum einen statt über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden --- aus 
+Um die schwache Form auf höhere Dimensionen zu erweitern, muss zum Einen statt über eine Länge über den n-Dimensionalen Raum $\Omega$ integriert werden --- aus 
 \begin{equation}
     \int_{l} u(x) \cdot v(x) \diff x
 \end{equation}
@@ -22,7 +22,6 @@ wird also
 \begin{equation}
     \int_{\Omega} u(\vec{x}) \cdot v(\vec{x}) \diff \vec{x}.
 \end{equation}
-
 Zum anderen werden die Ableitungen durch Gradienten ersetzt ---
 \begin{equation}
     \int_{l} f'(x) \cdot v'(x) \diff x
@@ -43,12 +42,12 @@ Das Gebiet zwischen zwei Elementverbindungen wird wie in der Abbildung \ref{fem:
 \subsection{Erstellen der Matrix}
 Das zu lösende Problem wird erneut diskretisiert, es werden also einzelne Punkte aus dem Definitionsbereich ausgewählt.
 Diese Knoten werden dann jeweils mit den nächstgelegenen Nachbarn verbunden und nummeriert.
-Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung benachbart sind, da so die Matrix ``möglichst diagonal'' wird.
+Bei der Nummerierung der Elemente sollte darauf geachtet werden, dass benachbarte Elemente auch in der Nummerierung nebeneinander sind, da so die Matrix ``möglichst diagonal'' wird.
 Dies macht das invertieren effizienter.
 Es sollte ein Bild ähnlich des zweidimensionalen Beispiels in Abbildung \ref{fem:nd:2d_mesh_und_basisfkt}
 resultieren.
 
-Zum Befüllen der Matrizen wird, analog zum eindimensionalen Fall, jeder Eintrag mit der zugehörigen Formel ausgewertet.
+Zum Befüllen der Matrizen wird analog zum eindimensionalen Fall jeder Eintrag mit der zugehörigen Formel ausgewertet.
 Für $\mathbf{L}$ gilt
 \begin{equation}
     l_{ij} = \int_{\Omega} a_i(\vec{x}) \cdot a_j(\vec{x}) \diff \vec{x},
