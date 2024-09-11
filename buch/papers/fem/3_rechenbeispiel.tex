@@ -80,8 +80,7 @@ und
     \theta_n = \theta(n \cdot \Delta t).
 \end{equation}
 
-Zur Interpolation werden lineare Formfunktionen verwendet.
-Dies, da dies die weiteren Rechnungen erleichtert, für eine Demonstration genau genug ist, und weil es die Ordnung des zu lösenden Problems erlaubt.
+Zur Interpolation werden lineare Formfunktionen verwendet, da dies die weiteren Rechnungen erleichtert und weil es die Ordnung des zu lösenden Problems erlaubt.
 Für $a_n(t)$ ist also mit $t_0 = n \cdot \Delta t$
 \begin{equation}
     a_n(t) = \left\{ \begin{array}{ll}
@@ -102,14 +101,13 @@ Um die Elemente der Matrix $\mathbf{L}$ zu ermitteln, werden die Integrale aus G
 \begin{equation}
     l_{ij} = - \int\limits_\Omega a_i'(t) \cdot a_j'(t) \diff t + \int\limits_\Omega \frac{g}{l} a_i(t) \cdot a_j(t) \diff t.
 \end{equation}
-
 Im eindimensionalen Fall kann mittels einfacher Bedingungen zwischen den drei Fällen unterschieden werden:
 \begin{itemize}
     \item[$i = j$:] Volle Überlappung der Formfunktion: Die Formfunktion wird quadriert und integriert. 
     \item[$|i - j| = 1$:] Die beiden Elemente grenzen aneinander: Es wird über das Produkt der beiden Formfunktionen integriert.
-    \item[$|i - j| > 1$:] Die beiden Elemente grenzen nicht aneinander: Die Formfunktionen überlappen nicht, das Integral über das Produkt ist also null.
+    \item[$|i - j| > 1$:] Die beiden Elemente grenzen nicht aneinander: Die Formfunktionen überlappen nicht, das Integral über das Produkt ist also Null.
 \end{itemize}
-Im Mehrdimensionalen müsste anhand des Graphen ermittelt werden, ob zwei Elemente nebeneinander liegen oder nicht.
+Bei einem mehrdimensionalen Problem müsste anhand des Graphen ermittelt werden, ob zwei Elemente nebeneinander liegen oder nicht.
 
 \subsubsection{Volles Überlappen ($i = j$)}
 Da die Integrale aller Elemente gleich und die Formfunktionen symmetrisch sind, reicht es aus, nur das Integral

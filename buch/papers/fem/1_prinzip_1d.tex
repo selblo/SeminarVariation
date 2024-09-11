@@ -36,7 +36,7 @@ Die resultierende Gleichung
     \int(u''(x) \cdot v(x)) \diff x = \int(f(x) \cdot v(x)) \diff x \myforall v(x)
     \label{fem:1d:schwache_form}
 \end{equation}
-sollte einem bekannt vorkommen: Sie entsteht auch beim Herleiten der ersten Variation.
+sollte einem bekannt vorkommen, denn sie entsteht auch beim Herleiten der ersten Variation.
 Im Kapitel \ref{buch:variation:section:fundamentallemma} zum Fundamentallemma wird bewiesen, dass die beiden Ausdrücke \ref{fem:1d:poisson_gleichung} und \ref{fem:1d:schwache_form} gleichwertig sind.
 
 Durch partielles Integrieren der linken Seite kann die Ordnung der Differenzialgleichung um eins verringert werden:
@@ -57,8 +57,8 @@ Null ist, wenn die Funktion $u'(x)$ die Randbedingung
 erfüllt. 
 
 Der erhaltene Term wird als $-\Phi(u, v)$ abgekürzt.
-Dieser Weg kann, abhängig von der ursprünglichen Differenzialgleichung, anders sein.
-Das häufigste Vorgehen dabei --- das partielle Ableiten der rechten Seite --- wurde jedoch hier gezeigt.
+Dieser Weg kann abhängig von der ursprünglichen Differenzialgleichung variieren.
+Das häufigste Vorgehen, das partielle Ableiten der rechten Seite, wurde hier jedoch gezeigt.
 Ziel ist es, die Ordnung der Differenzialgleichung möglichst stark zu verkleinern, da so Ansätze kleinerer Ordnung verwendet werden können.
 Dies spart Rechenleistung.
 
@@ -94,7 +94,8 @@ multipliziert werden und zu einer durch $N$ Werte parametrisierten stetigen Funk
     v(x) \approx \sum_{n=0}^{N}{v_n \cdot a_n(x)}.
 \end{equation}
 Dies funktioniert, da die Formfunktionen so gewählt wurden, dass an den Stützstellen jeweils nur eine der Formfunktionen von Null verschieden ist.
-Dabei hat die Formfunktion an ebendieser Stützstelle den Wert Eins, was dazu führt, dass die interpolierte Funktion, die aus der Summe der einzelnen Formfunktionen entsteht, in den Stützstellen die gleichen Werte aufweist wie die ursprüngliche Funktion.
+Dabei hat die Formfunktion an ebendieser Stützstelle den Wert Eins.
+Das führt dazu, dass die interpolierte Funktion, die aus der Summe der einzelnen skalierten Formfunktionen entsteht, in den Stützstellen die gleichen Werte aufweist wie die ursprüngliche Funktion.
 
 Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt werden:
 \begin{itemize}
@@ -103,10 +104,12 @@ Für die Interpolationsfunktion $a(x)$ können verschiedene Ansätze gewählt we
         Dementsprechend kann dieser Ansatz nur verwendet werden, wenn keine zweiten Ableitungen im vereinfachten Problem vorkommen.
     \item[\textbf{quadratisch:}]
         Ist die Ordnung des Problems um eins zu hoch, um den linearen Ansatz zu verwenden, kann der quadratische Ansatz eingesetzt werden.
-        Die ersten Ableitungen sind jedoch nach wie vor unstetig.
+        Dieser besitzt nämlich eine zweite Ableitung ungleich Null.
+        Die erste Ableitung ist jedoch nach wie vor unstetig, was zu nicht sehr schönen Resultaten führt.
     \item[\textbf{kubisch:}]  
-        Der kubische Ansatz hat sehr gute Eigenschaften - er besitzt eine stetige erste Ableitung sowie zweite und dritte Ableitungen ungleich Null. 
-        Zudem bietet er die Möglichkeit, die ersten Ableitungen an den Stützpunkten frei zu wählen.
+        Der kubische Ansatz hat sehr gute Eigenschaften: 
+        Er besitzt eine stetige erste Ableitung sowie zweite und dritte Ableitungen ungleich Null. 
+        Zudem bietet er die Möglichkeit, die ersten Ableitungen der Zielfunktion an den Stützpunkten frei zu wählen.
         Dies wird später zum Berücksichtigen der Anfangsbedingungen hilfreich sein.
 \end{itemize}
 
@@ -257,13 +260,13 @@ als
     \myforall v_i
 \end{equation}
 geschrieben werden.
-Diese Gleichung kann zu
+Die vorherige Gleichung kann zu
 \begin{equation}
     - \int \sum_j u_j \cdot a'_j \cdot a'_i(x) \diff x = \int \sum_j f_j \cdot a_j(x) \cdot a_i(x) \diff x \myforall i
 \end{equation}
 vereinfacht werden.
 Dabei wird die Menge der Testfunktionen reduziert.
-Anstelle, dass alle Testfunktionen mit beliebig breitem Träger berücksichtigt werden, werden nur die $N$ verschiedenen Testfunktionen mit schmalstmöglichem Träger verwendet.
+Um nicht alle Testfunktionen mit beliebig breitem Träger berücksichtigen zu müssen, werden nur die $N$ verschiedenen Testfunktionen mit schmalstmöglichem Träger verwendet.
 Da alle anderen Testfunktionen aus diesen ``zusammengebaut'' werden können, ist die Gleichung auch für diese erfüllt.
 Diese Vereinfachung ermöglicht es, die Summen aus den Integralen zu bringen und die Gleichung als
 \begin{equation}
@@ -377,7 +380,7 @@ Dabei kann die ersetzte Zeile ohne Weiteres weggelassen werden, da die $N$ unbek
 Dies ist auch nach der gemachten Anpassung der Fall.
 
 Durch diese Operation wurde die Matrix jedoch asymmetrisch. Da dies beim Invertieren der Matrix zu Effizienzeinbussen führt, gilt es, die Symmetrie wieder herzustellen.
-Dazu bedienen wir uns dem im Gauss-Algorithmus angewandten Vorgehen zum Nullsetzen einer Spalte: Von jeder Zeile (ausser der $n$-ten bzw. hier $2$.) wird ein vielfaches der $n$-ten Zeile abgezogen.
+Dazu bedienen wir uns dem im Gauss-Algorithmus angewandten Vorgehen zum Nullsetzen einer Spalte: Von jeder Zeile (ausser der $n$-ten bzw. hier $2$.) wird ein Vielfaches der $n$-ten Zeile abgezogen.
 Es resultiert
 \begin{equation}
     \boxed{
@@ -414,7 +417,7 @@ codiert werden.
 
 \subsection{Invertieren der Matrix\label{fem:1d:matrix_invertieren}}
 Zur Lösung der Poisson-Gleichung muss nun also ``nur'' noch die Matrix $\mathbf{L}$ invertiert werden.
-Das Resultat in Form des Spaltenvektors $\vec{u}$, enthaltend die Stützstellen der Lösungsfunktion, lässt sich dann als
+Das Resultat in Form des Spaltenvektors $\vec{u}$, der die Stützstellen der Lösungsfunktion enthält, lässt sich dann als
 \begin{equation}
     \vec{u} = - \mathbf{L}^{-1}\mathbf{M}\vec{f} = - \mathbf{L}^{-1}\vec{b}
 \end{equation}
