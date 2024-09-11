@@ -23,15 +23,15 @@ t = np.linspace(0, 12, 1000)  # Time vector
 
 # Function to calculate velocity beta_x(t) for a given beta0
 def calculate_betax(beta0, E_x, t):
-    eta = - const.e * E_x / (const.c * const.m_e)
+    eta = const.e * E_x / (const.c * const.m_e)
     K_1 = beta0 / np.sqrt(1 - beta0**2)
     betax = (eta * t + K_1) / np.sqrt(1 + (eta * t + K_1)**2)
     return betax
 
 # Calculate vx for different beta0 and E_x values
-vx_beta_00_1 = calculate_betax(0.0, -1e-3, t)
-vx_beta_07_1 = calculate_betax(0.7, -1e-3, t)
-vx_beta_00_05 = calculate_betax(0.0, -0.5e-3, t)
+vx_beta_00_1 = calculate_betax(0.0, 1e-3, t)
+vx_beta_07_1 = calculate_betax(0.7, 1e-3, t)
+vx_beta_00_05 = calculate_betax(0.0, 0.5e-3, t)
 
 # Create the plot
 fig, ax = plt.subplots(figsize=(6, 4))

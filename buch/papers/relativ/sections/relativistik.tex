@@ -15,7 +15,7 @@ Punkte in dieser Raumzeit werden als \emph{Ereignisse} oder \emph{Weltpunkte} be
 Der zweite Unterschied ist,
 dass die Geschwindigkeit der Wirkungsausbreitung begrenzt ist,
 und zwar durch die Lichtgeschwindigkeit
-\(c=299792458\unit[per-mode = fraction]{\metre\per\second}\).
+\(c=\num{299792458}\unit[per-mode = fraction]{\metre\per\second}\).
 Diese ist zwar auch in der klassischen Mechanik eine Konstante,
 jedoch ist die Geschwindigkeit der Wirkungsausbreitung dort unbegrenzt.
 Ein einfaches Beispiel, um dies zu veranschaulichen,
@@ -51,10 +51,6 @@ in den Koordinaten \(ct, x, y, z\) der Raumzeit.
 Dieser ist ebenfalls für verschiedene Bezugssysteme identisch.
 Ausgehend von der Invarianz des Abstandes lassen sich
 viele Gesetze der relativistischen Mechanik herleiten.
-Beispielsweise ist aus \eqref{relativ:eqn:abstand-relativ}
-bereits ersichtlich, dass eine hohe Geschwindigkeit
-im Raum (\(dx, dy, dz\) gross) eine langsamere Geschwindigkeit
-in der Zeitdimension (\(dt\) klein) bedeuten muss.
 
 
 \subsection{Die Eigenzeit 
@@ -76,9 +72,10 @@ so folgt
 \begin{equation}
     dt' = \frac{ds}{c} = \frac{ds'}{c}
     = dt \sqrt{1 - \frac{dx^2+dy^2+dz^2}{c^2 dt^2}}
-    = dt \sqrt{1 - \frac{v^2}{c^2}}.
+    = dt \sqrt{1 - \frac{v^2}{c^2}},
     \label{relativ:eqn:differential-eigenzeit}
 \end{equation}
+mit der Geschwindigkeit \(v\) der Uhr.
 Dieses Zeitdifferential kann nun zur Zeitdifferenz
 \begin{equation}
     t_2' - t_1' = \int_{t_1}^{t_2} dt \sqrt{1 - \frac{v^2}{c^2}}
@@ -87,9 +84,9 @@ Dieses Zeitdifferential kann nun zur Zeitdifferenz
 integriert werden.
 Das ist nun die Zeit, die von der bewegten Uhr gemessen wird.
 Eine solche Zeit, welche von einer Uhr,
-welche sich mit einem Gegenstand mitbewegt, gemessen wird,
+die sich mit einem Gegenstand mitbewegt, gemessen wird,
 nennt man \emph{Eigenzeit}.
-Durch den Ausdruck unter der Wurzel wird auch klar,
+Durch den Ausdruck unter der Wurzel wird klar,
 dass die Zeitdifferenz \(t_2'- t_1'\) kleiner ist
 als \(t_2 - t_1\) im Referenzsystem.
 Daher kommt auch der Ausdruck
@@ -164,12 +161,12 @@ wir erhalten die Gleichungen
 \end{equation}
 sofern man als Startzeitpunkt den Moment wählt,
 in dem die beiden Koordinatensysteme am selben Ort sind.
-Um den Erhalt des relativistischen Abstands zu gewährleisten
+Um den Erhalt des relativistischen Abstands zu gewährleisten,
 ergeben sich jedoch (ohne Herleitung) die Gleichungen
 \begin{equation}
     t = \frac{t' + \frac{V}{c^2}x'}{\sqrt{1-\frac{V^2}{c^2}}}, \quad
     x = \frac{x' + V t'}{\sqrt{1 - \frac{V^2}{c^2}}}, \quad
-    y = y', \quad
+    y = y', \quad \text{und} \quad
     z = z'.
     \label{relativ:eqn:lorentz-trafo-beisp}
 \end{equation}

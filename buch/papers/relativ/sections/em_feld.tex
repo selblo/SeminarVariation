@@ -53,11 +53,12 @@ so unterscheidet er sich um den wiederkehrenden Faktor
 Der Gesamtausdruck \(\frac{m}{\sqrt{1-v^2/c^2}}\) wird auch als
 relativistische Masse \(m^*\) bezeichnet. Somit kann beispielsweise der
 Impuls analog zur gewöhnlichen Mechanik als
-\(\bm{p}=m^*\bm{v}\) geschrieben werden.
-In diesem Zusammenhang wird die Ruhemasse eines Objekts, d.h.
-die Masse, die ein Körper hat, wenn er in Ruhe ist,
-als \(m_0\) bezeichnet.
-Wir werden hier bei der Bezeichnung \(m\) bleiben.
+\(\bm{p}=m^*\bm{v}\) geschrieben werden\footnote{
+    In diesem Zusammenhang wird die Ruhemasse eines Objekts, d.h.
+    die Masse, die ein Körper hat, wenn er in Ruhe ist,
+    als \(m_0\) bezeichnet.
+    Wir werden hier bei der Bezeichnung \(m\) bleiben.
+}.
 
 Die partielle Ableitung von \(L\) nach \(\bm{r}\) ergibt dann
 \begin{equation}
@@ -89,7 +90,7 @@ Gehen wir von der einfachen Situation aus,
 in der sich ein Elektron durch ein statisches
 elektrisches Feld bewegt und \(\bm{A}\)
 somit dem Nullvektor entspricht.
-Der Geschwindigkeitsvektor des Elektrons sei
+Der Geschwindigkeitsvektor des Elektrons zu Beginn sei
 \(\bm{v}_0 = \bm{v}(t=0) =(\beta_0 c, 0, 0)^T\), wobei
 \(\beta_0 \in (0, 1)\).
 
@@ -121,10 +122,10 @@ und somit natürlich auch von \(t\) abhängt.
 Zur Vereinfachung der folgenden Rechnung führen wir an dieser Stelle
 die Geschwindigkeit in Einheiten der Vakuumlichtgeschwindigkeit ein:
 \begin{equation*}
-    \bm{\beta} = \frac{\bm{v}}{c} \quad \text{und} \quad
+    \bm{\beta} := \frac{\bm{v}}{c} \quad \text{und} \quad
     \beta = \sqrt{\bm{\beta}\cdot\bm{\beta}} = \frac{v}{c}.
 \end{equation*}
-Mittels Quotientenregel ergibt sich
+Mittels Quotientenregel ergibt sich dann
 \begin{multline*}
     \frac{d\bm{p}}{dt}
     = \frac{d}{dt} \Biggl(\frac{m_e \bm{v}}{\sqrt{1-\frac{v^2}{c^2}}}\Biggr)
@@ -142,7 +143,7 @@ Mittels Quotientenregel ergibt sich
 
 Nehmen wir nun beispielsweise an,
 dass das elektrische Feld lediglich eine \(x\)-Kom"-po"-nen"-te hat,
-sprich \( \operatorname{grad} \varphi = (E_x, 0, 0)^T \),
+sprich \( \operatorname{grad} \varphi = (-E_x, 0, 0)^T \),
 so ergibt sich für die Ableitung des Geschwindigkeitsvektors
 \begin{equation}
     \frac{d}{dt}
@@ -159,7 +160,7 @@ so ergibt sich für die Ableitung des Geschwindigkeitsvektors
     \end{pmatrix} =
     - \frac{e \bigl(1-\beta^2\bigr)^\frac{3}{2}}{m_e}
     \begin{pmatrix}
-        E_x \\
+        -E_x \\
         0 \\
         0
     \end{pmatrix}.
@@ -170,12 +171,12 @@ in \(y\)- und \(z\)-Richtung nicht ändern können.
 Zusammen mit der Anfangsgeschwindigkeit \(\bm{v}_0\)
 ergibt sich somit die nichtlineare Differentialgleichung erster Ordnung
 \begin{equation}
-    \frac{d\beta_x}{dt} = - \frac{e E_x}{c m_e} \bigl(1-\beta_x^2\bigr)^\frac{3}{2}
+    \frac{d\beta_x}{dt} = \frac{e E_x}{c m_e} \bigl(1-\beta_x^2\bigr)^\frac{3}{2}
     := \eta \, \bigl(1-\beta_x^2\bigr)^\frac{3}{2}
 \end{equation}
 für die Geschwindigkeit \(\beta_x\) in \(x\)-Richtung,
 wobei der Übersicht halber die Konstante
-\(\eta=-\frac{e E_x}{c m_e}\) eingeführt wurde.
+\(\eta=\frac{e E_x}{c m_e}\) eingeführt wurde.
 Diese Differentialgleichung kann mittels Separierung gelöst werden.
 Wir separieren nach den Variablen \(\beta_x\) und \(t\)
 und integrieren auf beiden Seiten:
@@ -225,7 +226,7 @@ Werte von \(\beta_0\) und \(E_x\) dargestellt.
 
 \subsubsection{Diskussion}
 An den Ergebnissen der Rechnung sieht man, dass das Elektron (und tatsächlich auch kein anderes
-massebehaftetes Teilchen) über die Lichtgeschwindigkeit \(c\) hinaus beschleunigt werden kann.
+massebehaftetes Teilchen) nicht über die Lichtgeschwindigkeit \(c\) hinaus beschleunigt werden kann.
 Je näher das Elektron der Lichtgeschwindigkeit kommt, dest mehr sieht es so aus,
 als würde es immer schwerer werden anstatt weiter zu beschleunigen.
 Dies ist natürlich dem Lorentz-Faktor in Gleichung~\eqref{relativ:eqn:euler-lagrange-bsp-eingesetzt}
