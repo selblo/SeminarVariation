@@ -1,7 +1,7 @@
 
 \section{Ladungen im elektromagnetischen Feld
 \label{relativ:section:em_feld}}
-\rhead{Ladungen im Elektromagnetischen Feld}
+\kopfrechts{Ladungen im elektromagnetischen Feld}
 
 In diesem Abschnitt soll die Berechnung des Verhaltens eines Elementarteilchens
 unter der Einwirkung eines elektromagnetischen Feldes erläutert werden.
@@ -12,7 +12,7 @@ unter der Einwirkung eines elektromagnetischen Feldes erläutert werden.
 
 Bei der Berechnung der Bahn eines Elementarteilchens
 in einem elektromagnetischen Feld geht man von
-der vereinfachenden aber angemessenen Annahme aus,
+der vereinfachenden, aber angemessenen Annahme aus,
 dass die Rückwirkung des Teilchens auf das Feld vernachlässigt werden kann\footnote{
 Konkret muss für diese Annahme beispielsweise
 für die magnetische Feldstärke
@@ -50,6 +50,7 @@ des Teilchens ist.
 Vergleicht man diesen mit dem Impuls der klassischen Mechanik, \(m\bm{v}\),
 so unterscheidet er sich um den wiederkehrenden Faktor
 \(\gamma=\frac{1}{\sqrt{1-v^2/c^2}}\), den sogenannten \emph{Lorentz-Faktor}.
+\index{Lorentz-Faktor}%
 Der Gesamtausdruck \(\frac{m}{\sqrt{1-v^2/c^2}}\) wird auch als
 relativistische Masse \(m^*\) bezeichnet. Somit kann beispielsweise der
 Impuls analog zur gewöhnlichen Mechanik als
@@ -111,6 +112,9 @@ womit
     \label{relativ:eqn:euler-lagrange-bsp-eingesetzt}
 \end{equation}
 mit der Elektronenmasse \(m_e\) und der Elementarladung \(e\).
+\index{Elektronenmasse}%
+\index{Elementarladung}%
+\index{e@$e$, Elementarladung}%
 Die Ableitung des Impulses entspricht somit lediglich
 dem Gradienten des elektrischen Potentials, oder dem elektrischen Feld.
 Der wesentliche Unterschied zur klassischen Mechanik ist hierbei
@@ -126,20 +130,20 @@ die Geschwindigkeit in Einheiten der Vakuumlichtgeschwindigkeit ein:
     \beta = \sqrt{\bm{\beta}\cdot\bm{\beta}} = \frac{v}{c}.
 \end{equation*}
 Mittels Quotientenregel ergibt sich dann
-\begin{multline*}
+\begin{align*}
     \frac{d\bm{p}}{dt}
-    = \frac{d}{dt} \Biggl(\frac{m_e \bm{v}}{\sqrt{1-\frac{v^2}{c^2}}}\Biggr)
+    &= \frac{d}{dt} \Biggl(\frac{m_e \bm{v}}{\sqrt{1-\frac{v^2}{c^2}}}\Biggr)
     = \frac{d}{dt} \Biggl(\frac{m_e c \bm{\beta}}{\sqrt{1-\beta^2}}\Biggr)
     = \frac{m_ec\frac{d\bm{\beta}}{dt}\sqrt{1-\beta^2}
     -m_ec\bm{\beta}\cdot\frac{-\cancel{2}\bm{\beta}}{\cancel{2}\sqrt{1-\beta^2}}
     \frac{d\bm{\beta}}{dt}}{1-\beta^2}\\
-    = m_ec\frac{d\bm{\beta}}{dt}\frac{\bigl(1-\beta^2\bigr)^\frac{1}{2}
+    &= m_ec\frac{d\bm{\beta}}{dt}\frac{\bigl(1-\beta^2\bigr)^\frac{1}{2}
     +\bm{\beta}\cdot\bm{\beta} \ \bigl(1-\beta^2\bigr)^{-\frac{1}{2}}}
     {\bigl(1-\beta^2\bigr)^1}
     = m_ec\frac{d\bm{\beta}}{dt}\frac{\bigl(1-\beta^2\bigr)^1
     +\beta^2}{\bigl(1-\beta^2\bigr)^\frac{3}{2}}
     = \frac{m_ec}{\bigl(1-\beta^2\bigr)^\frac{3}{2}}\frac{d\bm{\beta}}{dt}.
-\end{multline*}
+\end{align*}
 
 Nehmen wir nun beispielsweise an,
 dass das elektrische Feld lediglich eine \(x\)-Kom"-po"-nen"-te hat,
@@ -157,7 +161,8 @@ so ergibt sich für die Ableitung des Geschwindigkeitsvektors
         \beta_x \\
         \beta_y \\
         \beta_z
-    \end{pmatrix} =
+    \end{pmatrix}
+    =
     - \frac{e \bigl(1-\beta^2\bigr)^\frac{3}{2}}{m_e}
     \begin{pmatrix}
         -E_x \\
@@ -183,35 +188,64 @@ und integrieren auf beiden Seiten:
 \begin{align*}
     \int\frac{d\beta_x}{\bigl(1-\beta_x^2\bigr)^\frac{3}{2}}
     &= \int\eta dt \\
-    \Rightarrow\quad\frac{\beta_x}{\sqrt{1-\beta_x^2}}
+    \Rightarrow\qquad\frac{\beta_x}{\sqrt{1-\beta_x^2}}
     &= \eta t + K_1,
 \end{align*}
 mit der Integrationskonstanten \(K_1\).
 Diese Gleichung kann nun nach \(\beta_x\) aufgelöst werden:
-\begin{align*}
+\begin{equation*}
+\begin{aligned}
+    &&
     \frac{\beta_x^2}{1-\beta_x^2}
-    &= \bigl(\eta t + K_1\bigr)^2\\
-    \Leftrightarrow\quad \beta_x^2 &= \bigl(\eta t + K_1\bigr)^2
-    \bigl(1-\beta_x^2\bigr)\\
-    \Leftrightarrow\quad
-    \beta_x^2 \bigl(1 + \bigl(\eta t + K_1\bigr)^2\bigr)
-    &= \bigl(\eta t + K_1\bigr)^2\\
-    \Leftrightarrow\quad
+    &= \bigl(\eta t + K_1\bigr)^2
+\\
+&\Leftrightarrow&
+\beta_x^2 &= \bigl(\eta t + K_1\bigr)^2
+\bigl(1-\beta_x^2\bigr)
+\\
+&\Leftrightarrow&\qquad
+\beta_x^2 \bigl(1 + \bigl(\eta t + K_1\bigr)^2\bigr)
+&= \bigl(\eta t + K_1\bigr)^2
+\\
+    &\Leftrightarrow&
     \beta_x^2 &= \frac{\bigl(\eta t + K_1\bigr)^2}
-    {1 + \bigl(\eta t + K_1\bigr)^2}\\
-    \Leftrightarrow\quad
+    {1 + \bigl(\eta t + K_1\bigr)^2}
+\\
+    &\Leftrightarrow&
     \beta_x(t) &= \frac{\eta t + K_1}
     {\sqrt{1+\bigl(\eta t+K_1\bigr)^2}}.
-\end{align*}
+\end{aligned}
+\end{equation*}
 
 \subsubsection{Anfangsbedingungen}
 Mit der Anfangsbedingung \(\beta_x(t=0)=\beta_0\) erhält man
-\begin{multline*}
-    \beta_x(0) = \beta_0 = \frac{K_1}{\sqrt{1+K_1^2}}\quad
-    \Leftrightarrow\quad K_1^2 = \beta_0^2 \bigl(1+K_1^2\bigr)\\
-    \Leftrightarrow\quad K_1^2 (1-\beta_0^2 ) = \beta_0^2 \quad
-    \Leftrightarrow\quad K_1 = \frac{\beta_0}{\sqrt{1-\beta_0^2 }}
-\end{multline*}
+\begin{align*}
+\beta_x(0)
+&=
+\beta_0 = \frac{K_1}{\sqrt{1+K_1^2}}
+&
+&\Leftrightarrow
+&
+K_1^2
+&=
+\beta_0^2 \bigl(1+K_1^2\bigr)
+&
+&&&
+\\
+&
+&
+&\Leftrightarrow
+&
+K_1^2 (1-\beta_0^2 )
+&=
+\beta_0^2 
+&
+&\Leftrightarrow
+&
+K_1
+&=
+\frac{\beta_0}{\sqrt{1-\beta_0^2 }}
+\end{align*}
 und somit eine vollständige Gleichung für die Geschwindigkeit des Elektrons.
 In Abbildung~\ref{relativ:fig:elektron-em-feld} ist die Gleichung für einige
 Werte von \(\beta_0\) und \(E_x\) dargestellt.
@@ -227,15 +261,19 @@ Werte von \(\beta_0\) und \(E_x\) dargestellt.
 \subsubsection{Diskussion}
 An den Ergebnissen der Rechnung sieht man, dass das Elektron (und tatsächlich auch kein anderes
 massebehaftetes Teilchen) nicht über die Lichtgeschwindigkeit \(c\) hinaus beschleunigt werden kann.
-Je näher das Elektron der Lichtgeschwindigkeit kommt, dest mehr sieht es so aus,
+Je näher das Elektron der Lichtgeschwindigkeit kommt, desto mehr sieht es so aus,
 als würde es immer schwerer werden anstatt weiter zu beschleunigen.
 Dies ist natürlich dem Lorentz-Faktor in Gleichung~\eqref{relativ:eqn:euler-lagrange-bsp-eingesetzt}
 zu verdanken.
 
 Diese Eigenschaft wird in Teilchenbeschleunigern wie dem LHC\footnote{
+\index{LHC}%
+\index{Large Hadron Collider}%
 Der \emph{Large Hadron Collider} (LHC) ist der leistungsstärkste
 Teilchenbeschleuniger der Welt und befindet sich am
+\index{Teilchenbeschleuniger}%
 Kernforschungszentrum CERN bei Genf.
+\index{CERN}%
 }
 dazu verwendet, um eine hohe Menge Energie in Elementarteilchen zu bringen.
 Da die Teilchen dabei irgendwann nicht mehr schneller werden

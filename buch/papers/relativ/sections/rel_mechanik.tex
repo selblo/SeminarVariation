@@ -1,7 +1,7 @@
 
 \section{Die relativistische Mechanik
 \label{relativ:section:rel-mech}}
-\rhead{Die relativistische Mechanik}
+\kopfrechts{Die relativistische Mechanik}
 
 Dieser Abschnitt soll eine kurze Einführung geben in die
 Grundlagen der Berechnungen in der relativistischen Mechanik.
@@ -9,10 +9,10 @@ Grundlagen der Berechnungen in der relativistischen Mechanik.
 
 \subsection{Elementarteilchen in der Relativitätstheorie
 \label{relativ:section:elementarteilchen}}
-
 Wie bereits in der Einleitung zu Abschnitt~\ref{relativ:section:relativistik} erwähnt,
 kann es gemäss der Relativitätstheorie keine starren Körper geben.
 Angemessener ist daher die Betrachtung \emph{punktförmiger Elementarteilchen}.
+\index{Elementarteilchen}%
 Der Zustand eines solchen Elementarteilchens ist dabei vollständig definiert durch
 die drei Raumkoordinaten und die drei zugehörigen Geschwindigkeitskomponenten.
 
@@ -25,8 +25,8 @@ von dem bereits in Kapitel~\ref{buch:chapter:mechanik} eingeführten
 Maupertuisschen Prinzip der kleinsten Wirkung aus.
 Dieses besagt, dass es für jedes mechanische System ein sogenanntes
 Wirkungsintegral \(S\) gibt,
-dass für diejenige Bewegung ein Minimum besitzt, die tatsächlich erfolgt.
-Wie bereits zu erahnen ist, kann dieses Minimum durch die Variation \(dS\)
+das für diejenige Bewegung ein Minimum besitzt, die tatsächlich erfolgt.
+Wie bereits zu erahnen ist, kann dieses Minimum durch die Variation \(\delta S\)
 des Wirkungsintegrals ermittelt werden.
 
 \subsubsection{Wirkungsintegral für ein freies Teilchen
@@ -59,7 +59,7 @@ Ersetzt man \(ds\) in \eqref{relativ:eqn:wirk-int-grundform}
 gemäss \eqref{relativ:eqn:differential-eigenzeit} und passt
 die Integrationsgrenzen an, so erhält man
 \begin{equation}
-    S = -\int_{t_1}^{t_2} \alpha c \sqrt{1-\frac{v^2}{c^2}} dt
+    S = -\int_{t_1}^{t_2} \alpha c \sqrt{1-\frac{v^2}{c^2}}\, dt
     \quad \text{und somit} \quad
     L = -\alpha c \sqrt{1-\frac{v^2}{c^2}}.
     \label{relativ:eq:wirk-int-lagrange}
@@ -100,15 +100,19 @@ Ein freies Teilchen besitzt folglich die Lagrange-Funktion
 \label{relativ:section:wirk-int-em-feld}}
 
 Das Wirkungsintegral für ein Elementarteilchen im elektromagnetischen Feld ist
+\index{Wirkungsintegral für Elementarteilchen}%
 \begin{equation}
     S = \int_a^b \biggl(-mc\,ds + \frac{e}{c} \bm{A}\,d\bm{r} - e\varphi\,dt\biggr)
     \label{relativ:eqn:wirk-int-em-feld}
 \end{equation}
 und somit eine Erweiterung von \eqref{relativ:eqn:wirk-int-grundform}.
 Dabei ist \(\bm{A}\) das \emph{Vektorpotential des Feldes}\footnote{
+\index{Vektorpotential}
     Auch bekannt als \emph{magnetisches Vektorpotential}.}
+\index{magnetisches Vektorpotential}%
 und \(\varphi\) das \emph{skalare Potential des Feldes}\footnote{
     Auch bekannt als \emph{elektrisches Potential}.}.
+\index{elektrisches Potential}%
 In der relativistischen Raumzeit schreibt man diese zwei Grössen
 auch als Vierervektor \(A^i = (\varphi, \bm{A})\),
 wobei \(\varphi\) zur Zeitkoordinate \(t\) gehört und
